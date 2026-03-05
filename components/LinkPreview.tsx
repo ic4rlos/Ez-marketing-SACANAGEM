@@ -4,7 +4,7 @@ import * as React from "react";
 import {
   PlasmicLinkPreview,
   DefaultLinkPreviewProps
-} from "./plasmic/ez_marketing_platform_sacanagem/PlasmicLinkPreview";
+} from "./plasmic/ez_marketing_platform/PlasmicLinkPreview";
 
 // Your component props start with props for variants and slots you defined
 // in Plasmic, but you can add more here, like event handlers that you can
@@ -37,7 +37,7 @@ function LinkPreview(props: LinkPreviewProps) {
   // By default, we are just piping all LinkPreviewProps here, but feel free
   // to do whatever works for you.
 
-  return <PlasmicLinkPreview {...props} />;
+  return <PlasmicLinkPreview  />;
 }
 
 export default LinkPreview;

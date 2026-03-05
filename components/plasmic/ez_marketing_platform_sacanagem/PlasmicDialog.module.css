@@ -1,0 +1,128 @@
+.dialog:global(.__wab_instance) {
+  background: rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+  max-width: 100%;
+  object-fit: cover;
+  position: relative;
+  -webkit-backdrop-filter: blur(10px);
+}
+.loginButton__b8Dx:global(.__wab_instance) {
+  max-width: 100%;
+  position: relative;
+}
+.svg__gnEnS {
+  position: relative;
+  object-fit: cover;
+  width: auto;
+  height: 1em;
+}
+.svg__zP0J5 {
+  position: relative;
+  object-fit: cover;
+  width: auto;
+  height: 1em;
+}
+.dialogContent:global(.__wab_instance) {
+  box-shadow: 2px 4px 7px 0px #00000033;
+  background: rgb(255, 255, 255);
+  width: auto;
+  object-fit: cover;
+  position: relative;
+  left: auto;
+  top: auto;
+  min-width: 300px;
+  z-index: 1;
+  align-self: flex-start;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  border-radius: 20px;
+  padding: 24px;
+  margin: 169px;
+  border: 1px solid #e2e8f0;
+}
+.freeBox__lHbhi {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: auto;
+  max-width: none;
+  justify-content: flex-start;
+  align-items: stretch;
+  column-gap: 8px;
+  row-gap: 8px;
+  padding: 8px;
+}
+.dialogTitle:global(.__wab_instance) {
+  max-width: 100%;
+  object-fit: cover;
+  width: auto;
+  margin: 0px;
+}
+.h5 {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+.freeBox__qg0Ms {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  row-gap: 8px;
+  padding: 0px;
+}
+.text__oUAx1 {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+}
+.freeBox__sEn2 {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  top: auto;
+  right: auto;
+  padding: 8px;
+}
+.dialogClose:global(.__wab_instance) {
+  opacity: 0.7;
+  max-width: 100%;
+  object-fit: cover;
+  padding-right: 10px;
+  padding-left: 10px;
+  border-radius: 999px;
+}
+.loginButton:global(.__wab_instance) {
+  max-width: 100%;
+}
+.svg__tvFui {
+  position: relative;
+  object-fit: cover;
+  width: auto;
+  height: 1em;
+}
+.text {
+  font-size: 12px;
+}
+.svg__yJjDk {
+  position: relative;
+  object-fit: cover;
+  width: auto;
+  height: 1em;
+}

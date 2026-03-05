@@ -1,0 +1,464 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: 100px;
+  width: 255px;
+}
+.rootcolor_softGreen {
+  border-color: #ffffff00;
+}
+.root:focus-within {
+  outline: none;
+}
+.root___focusVisibleWithin {
+  outline: none;
+}
+.trigger {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border-radius: 6px;
+  padding: 0px;
+  border: 1px solid transparent;
+}
+.triggerisOpen {
+  background: #cfcf04;
+}
+.triggercolor_softBlue {
+  background: linear-gradient(0deg, var(--token-j-ZwOKbpUCqd) 0%, #56b9ff 100%)
+    0% 0% / 100% 100% repeat;
+  border-color: #ffffff00;
+}
+.triggercolor_softCyan {
+  background: #e7f9fb;
+  border-color: #ffffff00;
+}
+.triggercolor_softGreen {
+  background: #e9f9ee;
+  border-color: #ffffff00;
+}
+.triggercolor_softYellow {
+  background: #fffbd1;
+  border-color: #ffffff00;
+}
+.triggercolor_softOrange {
+  background: #fff1e7;
+  border-color: #ffffff00;
+}
+.triggercolor_softRed {
+  background: #ffefef;
+  border-color: #ffffff00;
+}
+.triggercolor_softPink {
+  background: #feeef8;
+  border-color: #ffffff00;
+}
+.triggercolor_softPurple {
+  background: #f9f1fe;
+  border-color: #ffffff00;
+}
+.triggercolor_softGray {
+  background: #f3f3f2;
+}
+.triggercolor_clear {
+  background: none;
+}
+.root:focus-within .trigger {
+  box-shadow: none;
+  outline: none;
+}
+.root .trigger___focusVisibleWithin {
+  box-shadow: 0px 0px 0px 3px #96c7f2;
+  outline: none;
+}
+.contentContainer {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  min-width: 0;
+}
+.contentContainerisOpen {
+  justify-content: flex-start;
+  align-items: center;
+}
+.root:focus-within .contentContainer {
+  background: #c01919;
+  outline: none;
+}
+.slotTargetSelectedContent {
+  white-space: pre;
+  font-size: 14px;
+  font-family: "Montserrat", sans-serif;
+}
+.slotTargetSelectedContent > :global(.__wab_text),
+.slotTargetSelectedContent > :global(.__wab_expr_html_text),
+.slotTargetSelectedContent > :global(.__wab_slot-string-wrapper),
+.slotTargetSelectedContent > :global(.__wab_slot) > :global(.__wab_text),
+.slotTargetSelectedContent
+  > :global(.__wab_slot)
+  > :global(.__wab_expr_html_text),
+.slotTargetSelectedContent
+  > :global(.__wab_slot)
+  > :global(.__wab_slot-string-wrapper),
+.slotTargetSelectedContent
+  > :global(.__wab_slot)
+  > :global(.__wab_slot)
+  > :global(.__wab_text),
+.slotTargetSelectedContent
+  > :global(.__wab_slot)
+  > :global(.__wab_slot)
+  > :global(.__wab_expr_html_text),
+.slotTargetSelectedContent
+  > :global(.__wab_slot)
+  > :global(.__wab_slot)
+  > :global(.__wab_slot-string-wrapper),
+.slotTargetSelectedContent
+  > :global(.__wab_slot)
+  > :global(.__wab_slot)
+  > :global(.__wab_slot)
+  > :global(.__wab_text),
+.slotTargetSelectedContent
+  > :global(.__wab_slot)
+  > :global(.__wab_slot)
+  > :global(.__wab_slot)
+  > :global(.__wab_expr_html_text),
+.slotTargetSelectedContent
+  > :global(.__wab_slot)
+  > :global(.__wab_slot)
+  > :global(.__wab_slot)
+  > :global(.__wab_slot-string-wrapper) {
+  text-overflow: ellipsis;
+}
+.slotTargetSelectedContent > *,
+.slotTargetSelectedContent > :global(.__wab_slot) > *,
+.slotTargetSelectedContent > :global(.__wab_slot) > :global(.__wab_slot) > *,
+.slotTargetSelectedContent
+  > :global(.__wab_slot)
+  > :global(.__wab_slot)
+  > :global(.__wab_slot)
+  > *,
+.slotTargetSelectedContent > picture > img,
+.slotTargetSelectedContent > :global(.__wab_slot) > picture > img,
+.slotTargetSelectedContent
+  > :global(.__wab_slot)
+  > :global(.__wab_slot)
+  > picture
+  > img,
+.slotTargetSelectedContent
+  > :global(.__wab_slot)
+  > :global(.__wab_slot)
+  > :global(.__wab_slot)
+  > picture
+  > img {
+  overflow: hidden;
+}
+.slotTargetSelectedContentcolor_softBlue {
+  color: #006adc;
+}
+.slotTargetSelectedContentcolor_softCyan {
+  color: #0c7792;
+}
+.slotTargetSelectedContentcolor_softGreen {
+  color: #18794e;
+}
+.slotTargetSelectedContentcolor_softYellow {
+  color: #946800;
+}
+.slotTargetSelectedContentcolor_softOrange {
+  color: #bd4b00;
+}
+.slotTargetSelectedContentcolor_softRed {
+  color: #cd2b31;
+}
+.slotTargetSelectedContentcolor_softPink {
+  color: #cd1d8d;
+}
+.slotTargetSelectedContentcolor_softPurple {
+  color: #793aaf;
+}
+.root:focus-within .slotTargetSelectedContent > *,
+.root:focus-within .slotTargetSelectedContent > :global(.__wab_slot) > *,
+.root:focus-within
+  .slotTargetSelectedContent
+  > :global(.__wab_slot)
+  > :global(.__wab_slot)
+  > *,
+.root:focus-within
+  .slotTargetSelectedContent
+  > :global(.__wab_slot)
+  > :global(.__wab_slot)
+  > :global(.__wab_slot)
+  > *,
+.root:focus-within .slotTargetSelectedContent > picture > img,
+.root:focus-within
+  .slotTargetSelectedContent
+  > :global(.__wab_slot)
+  > picture
+  > img,
+.root:focus-within
+  .slotTargetSelectedContent
+  > :global(.__wab_slot)
+  > :global(.__wab_slot)
+  > picture
+  > img,
+.root:focus-within
+  .slotTargetSelectedContent
+  > :global(.__wab_slot)
+  > :global(.__wab_slot)
+  > :global(.__wab_slot)
+  > picture
+  > img {
+  outline: none;
+}
+.slotTargetPlaceholder {
+  white-space: pre;
+  color: #000000;
+  font-size: 14px;
+  font-family: "Montserrat", sans-serif;
+}
+.slotTargetPlaceholder > :global(.__wab_text),
+.slotTargetPlaceholder > :global(.__wab_expr_html_text),
+.slotTargetPlaceholder > :global(.__wab_slot-string-wrapper),
+.slotTargetPlaceholder > :global(.__wab_slot) > :global(.__wab_text),
+.slotTargetPlaceholder > :global(.__wab_slot) > :global(.__wab_expr_html_text),
+.slotTargetPlaceholder
+  > :global(.__wab_slot)
+  > :global(.__wab_slot-string-wrapper),
+.slotTargetPlaceholder
+  > :global(.__wab_slot)
+  > :global(.__wab_slot)
+  > :global(.__wab_text),
+.slotTargetPlaceholder
+  > :global(.__wab_slot)
+  > :global(.__wab_slot)
+  > :global(.__wab_expr_html_text),
+.slotTargetPlaceholder
+  > :global(.__wab_slot)
+  > :global(.__wab_slot)
+  > :global(.__wab_slot-string-wrapper),
+.slotTargetPlaceholder
+  > :global(.__wab_slot)
+  > :global(.__wab_slot)
+  > :global(.__wab_slot)
+  > :global(.__wab_text),
+.slotTargetPlaceholder
+  > :global(.__wab_slot)
+  > :global(.__wab_slot)
+  > :global(.__wab_slot)
+  > :global(.__wab_expr_html_text),
+.slotTargetPlaceholder
+  > :global(.__wab_slot)
+  > :global(.__wab_slot)
+  > :global(.__wab_slot)
+  > :global(.__wab_slot-string-wrapper) {
+  text-overflow: ellipsis;
+}
+.slotTargetPlaceholder > *,
+.slotTargetPlaceholder > :global(.__wab_slot) > *,
+.slotTargetPlaceholder > :global(.__wab_slot) > :global(.__wab_slot) > *,
+.slotTargetPlaceholder
+  > :global(.__wab_slot)
+  > :global(.__wab_slot)
+  > :global(.__wab_slot)
+  > *,
+.slotTargetPlaceholder > picture > img,
+.slotTargetPlaceholder > :global(.__wab_slot) > picture > img,
+.slotTargetPlaceholder
+  > :global(.__wab_slot)
+  > :global(.__wab_slot)
+  > picture
+  > img,
+.slotTargetPlaceholder
+  > :global(.__wab_slot)
+  > :global(.__wab_slot)
+  > :global(.__wab_slot)
+  > picture
+  > img {
+  overflow: hidden;
+}
+.slotTargetPlaceholderisOpen {
+  text-align: left;
+}
+.slotTargetPlaceholdercolor_softBlue {
+  text-align: right;
+  font-size: 20px;
+  font-weight: 900;
+}
+.slotTargetPlaceholdercolor_softBlue_showPlaceholder {
+  color: #006adc;
+}
+.slotTargetPlaceholdercolor_softCyan_showPlaceholder {
+  color: #0c7792;
+}
+.slotTargetPlaceholdercolor_softGreen_showPlaceholder {
+  color: #18794e;
+}
+.slotTargetPlaceholdercolor_softYellow_showPlaceholder {
+  color: #946800;
+}
+.slotTargetPlaceholdercolor_softOrange_showPlaceholder {
+  color: #bd4b00;
+}
+.slotTargetPlaceholdercolor_softRed_showPlaceholder {
+  color: #cd2b31;
+}
+.slotTargetPlaceholdercolor_softPink_showPlaceholder {
+  color: #cd1d8d;
+}
+.slotTargetPlaceholdercolor_softPurple_showPlaceholder {
+  color: #793aaf;
+}
+.dropdownIcon {
+  position: relative;
+  object-fit: cover;
+  width: 20px;
+  height: 20px;
+  color: #000000;
+  align-self: flex-start;
+  flex-shrink: 0;
+}
+.dropdownIconcolor_softBlue {
+  color: #0091ff;
+}
+.dropdownIconcolor_softCyan {
+  color: #05a2c2;
+}
+.dropdownIconcolor_softGreen {
+  color: #30a46c;
+}
+.dropdownIconcolor_softYellow {
+  color: #f5d90a;
+}
+.dropdownIconcolor_softOrange {
+  color: #f76808;
+}
+.dropdownIconcolor_softRed {
+  color: #e5484d;
+}
+.dropdownIconcolor_softPink {
+  color: #d6409f;
+}
+.dropdownIconcolor_softPurple {
+  color: #8e4ec6;
+}
+.root .dropdownIcon___focusVisibleWithin {
+  outline: none;
+}
+.root:focus-within .dropdownIcon {
+  outline: none;
+}
+.img {
+  object-fit: cover;
+  max-width: 100%;
+  display: none;
+}
+.img > picture > img {
+  object-fit: cover;
+}
+.imgisOpen {
+  display: none;
+}
+.imgcolor_softBlue {
+  width: 70px;
+  height: 70px;
+  flex-shrink: 0;
+  display: block;
+}
+.overlay:global(.__wab_instance) {
+  position: relative;
+  left: auto;
+  top: auto;
+  z-index: 1000;
+  display: none;
+}
+.overlayisOpen:global(.__wab_instance) {
+  align-self: auto;
+  display: flex;
+}
+.root:focus-within .overlay:global(.__wab_instance) {
+  flex-shrink: 0;
+  display: flex;
+  outline: none;
+}
+.root .overlay___focusVisibleWithin:global(.__wab_instance) {
+  outline: none;
+}
+.optionsContainer {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  width: 100%;
+  height: auto;
+  overflow: auto;
+  min-width: 0;
+}
+.optionsContainershowPlaceholder {
+  background: none;
+}
+.optionsContainerisOpen {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  width: auto;
+  max-height: var(--token-yxMuvWy3k2Xn);
+  column-gap: 0px;
+}
+.root:focus-within .optionsContainer {
+  height: auto;
+  width: auto;
+  display: flex;
+  flex-direction: row;
+  row-gap: 0px;
+  outline: none;
+}
+.root .optionsContainer___focusVisibleWithin {
+  background: #ff0000;
+  outline: none;
+}
+.slotTargetChildren {
+  font-size: 12px;
+}
+.slotTargetChildrenisOpen {
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  text-align: center;
+  color: #d00000;
+}
+.root:focus-within .slotTargetChildren > *,
+.root:focus-within .slotTargetChildren > :global(.__wab_slot) > *,
+.root:focus-within
+  .slotTargetChildren
+  > :global(.__wab_slot)
+  > :global(.__wab_slot)
+  > *,
+.root:focus-within
+  .slotTargetChildren
+  > :global(.__wab_slot)
+  > :global(.__wab_slot)
+  > :global(.__wab_slot)
+  > *,
+.root:focus-within .slotTargetChildren > picture > img,
+.root:focus-within .slotTargetChildren > :global(.__wab_slot) > picture > img,
+.root:focus-within
+  .slotTargetChildren
+  > :global(.__wab_slot)
+  > :global(.__wab_slot)
+  > picture
+  > img,
+.root:focus-within
+  .slotTargetChildren
+  > :global(.__wab_slot)
+  > :global(.__wab_slot)
+  > :global(.__wab_slot)
+  > picture
+  > img {
+  outline: none;
+}

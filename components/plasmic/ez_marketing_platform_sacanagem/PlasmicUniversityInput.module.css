@@ -1,0 +1,131 @@
+.root {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: auto;
+  align-items: center;
+  justify-content: flex-start;
+  background: none;
+  position: sticky;
+  box-shadow: none;
+  min-width: 0;
+  padding: 7px 11px;
+}
+.rootcolor_dark {
+  background: #232320;
+  border-color: #717069;
+}
+.root:hover {
+  background: none;
+  border-color: #c8c7c1;
+}
+.root:focus-within {
+  box-shadow: none;
+  outline: none;
+  border-radius: 6px;
+}
+.root___focusVisibleWithin {
+  outline: none;
+  border-radius: 6px;
+}
+.startIconContainer {
+  position: relative;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: flex-start;
+  left: auto;
+  top: auto;
+  margin-right: 8px;
+  display: none;
+}
+.startIconContainershowStartIcon {
+  display: flex;
+}
+.root .startIconContainer___focusVisibleWithin {
+  outline: none;
+}
+.slotTargetStartIconshowStartIcon {
+  color: #90908c;
+}
+.slotTargetStartIconcolor_dark {
+  color: #ffffff;
+}
+.svg__bMq6O {
+  position: relative;
+  object-fit: cover;
+  width: auto;
+  height: 1em;
+}
+.input {
+  width: 100%;
+  left: auto;
+  top: auto;
+  background: #ffffff00;
+  color: #000000;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: right;
+  min-width: 0;
+  padding: 0px;
+  border: 0px solid #32ab61;
+}
+.inputisDisabled {
+  cursor: not-allowed;
+}
+.inputcolor_dark {
+  color: #ffffff;
+}
+.root:hover .input {
+  background: #ffffff4d;
+}
+.root .input___focusVisibleWithin {
+  background: #b51818cf;
+  outline: none;
+  border-width: 12px;
+}
+.root:focus-within .input {
+  background: none;
+  outline: none;
+}
+.root .input:focus {
+  color: #000000;
+  outline: none;
+}
+.root .input::placeholder {
+  color: #00000099;
+  font-weight: 600;
+}
+.rootcolor_dark .inputcolor_dark::placeholder {
+  color: #c8c7c1;
+}
+.root:focus-within .input:focus {
+  outline: none;
+}
+.root:focus-within .input::placeholder {
+  outline: none;
+}
+.endIconContainer {
+  position: relative;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: flex-start;
+  left: auto;
+  top: auto;
+  margin-left: 8px;
+  display: none;
+}
+.endIconContainershowEndIcon {
+  display: flex;
+}
+.slotTargetEndIconshowEndIcon {
+  color: #90908c;
+}
+.slotTargetEndIconcolor_dark {
+  color: #ffffff;
+}
+.svg__rj7PR {
+  position: relative;
+  object-fit: cover;
+  width: auto;
+  height: 1em;
+}

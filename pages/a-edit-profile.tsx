@@ -127,7 +127,7 @@ export default function AEditProfile() {
       ...profileFields
     } = payload;
 
-    let avatarUrl = profileFields["Profile image"];
+    let avatarUrl = profileFields["Profile pic"];
 
     if (
       avatarUrl &&

@@ -8,18 +8,14 @@ import { PlusOutlined } from "@ant-design/icons";
 import supabase from "../lib/c-supabaseClient";
 
 export interface CropUploadProps {
-  bucket: string;                     // ⭐ bucket agora é dinâmico
-  path?: string;                      // ⭐ pasta dentro do bucket
   className?: string;
   accept?: string;
   onChange?: (url: string) => void;
   size?: number;
-  value?: string | null | { url?: string };
+  value?: string | null | { url?: string }; // ✅ aceita string ou objeto
 }
 
 export default function CropUpload({
-  bucket,
-  path = "",
   className,
   accept = "image/*",
   onChange,
@@ -30,8 +26,10 @@ export default function CropUpload({
   const [imageUrl, setImageUrl] = useState<string | null>(null);
   const [uploading, setUploading] = useState(false);
 
-  // sincroniza value externo
+  // 🧪 Teste decisivo + conversão automática
   useEffect(() => {
+    console.log("🧪 CropUpload recebeu value:", value);
+
     if (typeof value === "string" && value) {
       setImageUrl(value);
     } else if (value && typeof value === "object" && "url" in value) {
@@ -41,6 +39,7 @@ export default function CropUpload({
     }
   }, [value]);
 
+  // ✅ fileList controlado tipado corretamente
   const fileList: UploadFile[] = imageUrl
     ? [
         {
@@ -53,35 +52,56 @@ export default function CropUpload({
     : [];
 
   const handleChange: UploadProps["onChange"] = async (info) => {
+    // Corrigindo a referência do arquivo
     const rawFile = info.file.originFileObj || info.file;
 
-    if (!rawFile) return;
+    if (!rawFile) {
+      console.log("🚨 No file detected", info);
+      return;
+    }
 
     try {
       setUploading(true);
 
       const fileExt = rawFile.name?.split(".").pop() || "png";
       const fileName = `${Date.now()}.${fileExt}`;
+      const filePath = `logos/${fileName}`;
 
-      const filePath = path ? `${path}/${fileName}` : fileName;
+console.log("📤 Uploading:", filePath);
 
-      const { error: uploadError } = await supabase.storage
-        .from(bucket)
-        .upload(filePath, rawFile, { upsert: true });
+const buckets = ["company-logos", "agency-pics"];
+let publicUrl: string | null = null;
 
-      if (uploadError) throw uploadError;
+for (const bucket of buckets) {
+  const { error } = await supabase.storage
+    .from(bucket)
+    .upload(filePath, rawFile as File, { upsert: true });
 
-      const { data } = supabase.storage
-        .from(bucket)
-        .getPublicUrl(filePath);
+  if (!error) {
+    const { data } = supabase.storage
+      .from(bucket)
+      .getPublicUrl(filePath);
+
+    publicUrl = data.publicUrl;
+    console.log(`✅ Uploaded to ${bucket}:`, publicUrl);
+    break;
+  }
+
+  console.warn(`⚠️ Failed in ${bucket}, trying next...`);
+}
+
+if (!publicUrl) {
+  throw new Error("Upload failed in all buckets");
+}
 
       const publicUrl = data.publicUrl;
 
+      console.log("✅ Uploaded URL:", publicUrl);
+
       setImageUrl(publicUrl);
       onChange?.(publicUrl);
-
     } catch (err) {
-      console.error("Upload failed:", err);
+      console.error("❌ Upload failed:", err);
     } finally {
       setUploading(false);
     }
@@ -105,7 +125,7 @@ export default function CropUpload({
       {imageUrl ? (
         <img
           src={imageUrl}
-          alt="upload"
+          alt="logo"
           style={{ width: "100%", height: "100%", objectFit: "cover" }}
         />
       ) : uploading ? (
@@ -123,9 +143,9 @@ export default function CropUpload({
         accept={accept}
         multiple={false}
         showUploadList={false}
-        beforeUpload={() => false}
+        beforeUpload={() => false} // ⭐ ESSENCIAL
         onChange={handleChange}
-        fileList={fileList}
+        fileList={fileList} // ✅ agora tipado corretamente
         {...props}
       >
         {uploadUI}

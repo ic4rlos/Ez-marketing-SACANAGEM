@@ -89,7 +89,7 @@ export default function CLogin() {
       >
         {/* LOGO */}
         <img
-          src="/plasmic/ez_marketing_platform/images/logo2Svg.svg"
+          src="/plasmic/ez_marketing_platform_sacanagem/images/logo2Svg.svg"
           alt="ezmarketing"
           style={{
             width: 700,

@@ -4,7 +4,7 @@ import * as React from "react";
 import {
   PlasmicLinkPreview,
   DefaultLinkPreviewProps
-} from "./plasmic/ez_marketing_platform/PlasmicLinkPreview";
+} from "./plasmic/ez_marketing_platform_sacanagem/PlasmicLinkPreview";
 
 // Your component props start with props for variants and slots you defined
 // in Plasmic, but you can add more here, like event handlers that you can

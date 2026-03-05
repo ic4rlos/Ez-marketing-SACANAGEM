@@ -21,8 +21,8 @@ const SignInWithGoogle = dynamic(
   { ssr: false }
 );
 
-import UserSvgIcon from "../components/plasmic/ez_marketing_platform/icons/PlasmicIcon__UserSvg";
-import LockSvgIcon from "../components/plasmic/ez_marketing_platform/icons/PlasmicIcon__LockSvg";
+import UserSvgIcon from "../components/plasmic/ez_marketing_platform_sacanagem/icons/PlasmicIcon__UserSvg";
+import LockSvgIcon from "../components/plasmic/ez_marketing_platform_sacanagem/icons/PlasmicIcon__LockSvg";
 
 export default function ACreateAccount() {
   const router = useRouter();

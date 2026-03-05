@@ -12,7 +12,7 @@ export interface CropUploadProps {
   accept?: string;
   onChange?: (url: string) => void;
   size?: number;
-  value?: string | null | { url?: string }; // ✅ aceita string ou objeto
+  value?: string | null | { url?: string };
 }
 
 export default function CropUpload({
@@ -26,7 +26,6 @@ export default function CropUpload({
   const [imageUrl, setImageUrl] = useState<string | null>(null);
   const [uploading, setUploading] = useState(false);
 
-  // 🧪 Teste decisivo + conversão automática
   useEffect(() => {
     console.log("🧪 CropUpload recebeu value:", value);
 
@@ -39,7 +38,6 @@ export default function CropUpload({
     }
   }, [value]);
 
-  // ✅ fileList controlado tipado corretamente
   const fileList: UploadFile[] = imageUrl
     ? [
         {
@@ -52,7 +50,6 @@ export default function CropUpload({
     : [];
 
   const handleChange: UploadProps["onChange"] = async (info) => {
-    // Corrigindo a referência do arquivo
     const rawFile = info.file.originFileObj || info.file;
 
     if (!rawFile) {
@@ -67,34 +64,32 @@ export default function CropUpload({
       const fileName = `${Date.now()}.${fileExt}`;
       const filePath = `logos/${fileName}`;
 
-console.log("📤 Uploading:", filePath);
+      console.log("📤 Uploading:", filePath);
 
-const buckets = ["company-logos", "agency-pics"];
-let publicUrl: string | null = null;
+      const buckets = ["company-logos", "agency-pics"];
+      let publicUrl: string | null = null;
 
-for (const bucket of buckets) {
-  const { error } = await supabase.storage
-    .from(bucket)
-    .upload(filePath, rawFile as File, { upsert: true });
+      for (const bucket of buckets) {
+        const { error } = await supabase.storage
+          .from(bucket)
+          .upload(filePath, rawFile as File, { upsert: true });
 
-  if (!error) {
-    const { data } = supabase.storage
-      .from(bucket)
-      .getPublicUrl(filePath);
+        if (!error) {
+          const { data } = supabase.storage
+            .from(bucket)
+            .getPublicUrl(filePath);
 
-    publicUrl = data.publicUrl;
-    console.log(`✅ Uploaded to ${bucket}:`, publicUrl);
-    break;
-  }
+          publicUrl = data.publicUrl;
+          console.log(`✅ Uploaded to ${bucket}:`, publicUrl);
+          break;
+        }
 
-  console.warn(`⚠️ Failed in ${bucket}, trying next...`);
-}
+        console.warn(`⚠️ Failed in ${bucket}, trying next...`);
+      }
 
-if (!publicUrl) {
-  throw new Error("Upload failed in all buckets");
-}
-
-      const publicUrl = data.publicUrl;
+      if (!publicUrl) {
+        throw new Error("Upload failed in all buckets");
+      }
 
       console.log("✅ Uploaded URL:", publicUrl);
 
@@ -143,9 +138,9 @@ if (!publicUrl) {
         accept={accept}
         multiple={false}
         showUploadList={false}
-        beforeUpload={() => false} // ⭐ ESSENCIAL
+        beforeUpload={() => false}
         onChange={handleChange}
-        fileList={fileList} // ✅ agora tipado corretamente
+        fileList={fileList}
         {...props}
       >
         {uploadUI}

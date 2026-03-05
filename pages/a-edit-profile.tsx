@@ -129,11 +129,12 @@ export default function AEditProfile() {
 
     let avatarUrl = profileFields["Profile pic"];
 
-    if (
-      avatarUrl &&
-      typeof avatarUrl !== "string" &&
-      avatarUrl?.files?.[0]?.contents
-    ) {
+let avatarUrl = profileFields["Profile pic"] ?? null;
+
+// se já for URL (caso do CropUpload) não faz upload de novo
+if (typeof avatarUrl === "string") {
+  // já está pronto
+} else if (avatarUrl?.files?.[0]?.contents) {
       const fileObj = avatarUrl.files[0];
 
       const fileExt = fileObj.name.split(".").pop();

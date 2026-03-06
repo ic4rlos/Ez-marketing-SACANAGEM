@@ -302,7 +302,7 @@ function PlasmicACreateCommunity__RenderFunc(props: {
         path: "type.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => "Venture"
       },
       {
         path: "tiktok.value",
@@ -1049,6 +1049,7 @@ function PlasmicACreateCommunity__RenderFunc(props: {
                     projectcss.plasmic_mixins,
                     styleTokensClassNames
                   )}
+                  defaultValue={"Venture"}
                   dropdownMatchSelectWidth={false}
                   mode={"single"}
                   onChange={async (...eventArgs: any) => {
@@ -1955,7 +1956,7 @@ function PlasmicACreateCommunity__RenderFunc(props: {
                                   "\uD83E\uDDEA DONE CLICKADO - CREATE COMMUNITY"
                                 );
                                 const typeValue = $state.type?.value ?? null;
-                                if (typeValue !== "venture") {
+                                if (typeValue !== "Venture") {
                                   alert(
                                     "EZ Marketing does not currently support this type of agency."
                                   );

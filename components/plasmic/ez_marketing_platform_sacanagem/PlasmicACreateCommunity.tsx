@@ -302,7 +302,8 @@ function PlasmicACreateCommunity__RenderFunc(props: {
         path: "type.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) => "Venture"
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
+          $props.formData?.["Type"] ?? null
       },
       {
         path: "tiktok.value",
@@ -1049,7 +1050,7 @@ function PlasmicACreateCommunity__RenderFunc(props: {
                     projectcss.plasmic_mixins,
                     styleTokensClassNames
                   )}
-                  defaultValue={"Venture"}
+                  defaultValue={$props.formData?.["Type"] ?? null}
                   dropdownMatchSelectWidth={false}
                   mode={"single"}
                   onChange={async (...eventArgs: any) => {

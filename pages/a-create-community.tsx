@@ -19,6 +19,7 @@ export default function ACreateCommunity() {
   const supabase = getSupabaseA();
 
   const [user, setUser] = useState<any>(null);
+  const [community, setCommunity] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
   const BUCKET = "community-pics";
@@ -31,11 +32,37 @@ export default function ACreateCommunity() {
     async function loadUser() {
       const { data } = await supabase.auth.getUser();
       setUser(data.user ?? null);
-      setLoading(false);
     }
 
     loadUser();
   }, []);
+
+  // =========================
+  // LOAD COMMUNITY
+  // =========================
+
+  useEffect(() => {
+    if (!user) {
+      setLoading(false);
+      return;
+    }
+
+    async function loadCommunity() {
+      const { data } = await supabase
+        .from("Community")
+        .select("*")
+        .eq("owner_user_id", user.id)
+        .maybeSingle();
+
+      if (data) {
+        setCommunity(data);
+      }
+
+      setLoading(false);
+    }
+
+    loadCommunity();
+  }, [user]);
 
   // =========================
   // BASE64 → FILE
@@ -60,10 +87,25 @@ export default function ACreateCommunity() {
   async function handleSave(payload: any) {
     if (!user) return;
 
+    // =========================
+    // VALIDATE TYPE
+    // =========================
+
+    if (!payload["Type"] || payload["Type"] !== "venture") {
+      alert(
+        "EZ Marketing does not yet have the technology to support this type of agency."
+      );
+
+      router.push("/a-login");
+      return;
+    }
+
     let communityLogo = payload["Community logo"];
     let agencyPic = payload["Agency pic"];
 
-    // ===== Upload Community Logo =====
+    // =========================
+    // COMMUNITY LOGO UPLOAD
+    // =========================
 
     if (
       communityLogo &&
@@ -96,7 +138,9 @@ export default function ACreateCommunity() {
       }
     }
 
-    // ===== Upload Agency Pic =====
+    // =========================
+    // AGENCY PIC UPLOAD
+    // =========================
 
     if (
       agencyPic &&
@@ -169,6 +213,7 @@ export default function ACreateCommunity() {
   return (
     <PlasmicACreateCommunity
       args={{
+        community,
         onSave: handleSave,
       }}
     />

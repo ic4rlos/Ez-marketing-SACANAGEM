@@ -5,7 +5,8 @@ import ImgCrop from "antd-img-crop";
 import { Upload } from "antd";
 import type { UploadProps, UploadFile } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
-import supabase from "../lib/c-supabaseClient";
+import { supabaseCompany } from "../lib/company-supabaseClient";
+import { supabaseAgency } from "../lib/agency-supabaseClient";
 
 export interface CropUploadProps {
   className?: string;

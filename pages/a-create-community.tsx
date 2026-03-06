@@ -113,7 +113,7 @@ export default function ACreateCommunity() {
     if (!user) return;
 
     // Validação type (conforme sua regra)
-    if (!payload["Type"] || payload["Type"] !== "venture") {
+    if (!payload["Type"] || payload["Type"] !== "Venture") {
       alert(
         "EZ Marketing does not yet have the technology to support this type of agency."
       );

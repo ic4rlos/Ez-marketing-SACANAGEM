@@ -19,15 +19,19 @@ export interface GlobalContextsProviderProps {
   antdConfigProviderProps?: Partial<
     Omit<React.ComponentProps<typeof AntdConfigProvider>, "children">
   >;
+
   contentfulCredentialsProviderProps?: Partial<
     Omit<React.ComponentProps<typeof ContentfulCredentialsProvider>, "children">
   >;
+
   cmsCredentialsProviderProps?: Partial<
     Omit<React.ComponentProps<typeof CmsCredentialsProvider>, "children">
   >;
+
   parallaxProviderWrapperProps?: Partial<
     Omit<React.ComponentProps<typeof ParallaxProviderWrapper>, "children">
   >;
+
   embedCssProps?: Partial<
     Omit<React.ComponentProps<typeof EmbedCss>, "children">
   >;

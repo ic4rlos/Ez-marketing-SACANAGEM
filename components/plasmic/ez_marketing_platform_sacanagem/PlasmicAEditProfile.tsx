@@ -388,7 +388,8 @@ function PlasmicAEditProfile__RenderFunc(props: {
         path: "office.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
+          $props.formData.offices ?? []
       },
       {
         path: "impressive.value",
@@ -417,7 +418,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
-              return $props.company?.["Profile pic"] || "";
+              return $props.formData?.["Profile pic"] || "";
             } catch (e) {
               if (
                 e instanceof TypeError ||
@@ -2828,6 +2829,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                   projectcss.plasmic_mixins,
                   styleTokensClassNames
                 )}
+                defaultValue={$props.formData.offices ?? []}
                 dropdownMatchSelectWidth={false}
                 mode={"multiple"}
                 onChange={async (...eventArgs: any) => {

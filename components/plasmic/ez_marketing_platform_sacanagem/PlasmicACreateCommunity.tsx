@@ -1954,22 +1954,31 @@ function PlasmicACreateCommunity__RenderFunc(props: {
                                 console.log(
                                   "\uD83E\uDDEA DONE CLICKADO - CREATE COMMUNITY"
                                 );
+                                const typeValue = $state.type?.value ?? null;
+                                if (typeValue !== "venture") {
+                                  alert(
+                                    "EZ Marketing does not currently support this type of agency."
+                                  );
+                                  window.location.href = "/a-login";
+                                  return;
+                                }
                                 return $props.onSave({
-                                  community_name:
+                                  "Community name":
                                     $state.communityName?.value ?? "",
-                                  type: $state.type?.value ?? "",
-                                  location: $state.location?.value ?? "",
-                                  about: $state.about?.value ?? "",
-                                  website: $state.website?.value ?? "",
-                                  youtube_channel:
+                                  Type: typeValue,
+                                  Location: $state.location?.value ?? "",
+                                  About: $state.about?.value ?? "",
+                                  Website: $state.website?.value ?? "",
+                                  "Youtube channel":
                                     $state.youtubeChannel?.value ?? "",
-                                  youtube_video:
+                                  "Youtube video":
                                     $state.youtubeVideo?.value ?? "",
                                   Instagram: $state.instagram?.value ?? "",
-                                  tiktok: $state.tiktok?.value ?? "",
-                                  x: $state.x?.value ?? "",
-                                  community_logo: $state.communityLogo ?? null,
-                                  agency_pic: $state.agencyPic ?? null
+                                  Tiktok: $state.tiktok?.value ?? "",
+                                  X: $state.x?.value ?? "",
+                                  "Community logo":
+                                    $state.communityLogo ?? null,
+                                  "Agency pic": $state.agencyPic ?? null
                                 });
                               })();
                             }

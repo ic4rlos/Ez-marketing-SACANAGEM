@@ -130,24 +130,31 @@ export default function ACreateCommunity() {
     }
 
     // =========================
-    // INSERT COMMUNITY
+    // UPSERT COMMUNITY
     // =========================
 
-    const { error } = await supabase.from("Community").insert({
-      owner_user_id: user.id,
-      community_name: payload["Community name"],
-      type: payload["Type"],
-      location: payload["Location"],
-      about: payload["About"],
-      community_logo: communityLogo,
-      agency_pic: agencyPic,
-      website: payload["Website"],
-      youtube_channel: payload["Youtube channel"],
-      youtube_video: payload["Youtube video"],
-      Instagram: payload["Instagram"],
-      tiktok: payload["Tiktok"],
-      x: payload["X"],
-    });
+    const { error } = await supabase
+      .from("Community")
+      .upsert(
+        {
+          owner_user_id: user.id,
+          community_name: payload["Community name"],
+          type: payload["Type"],
+          location: payload["Location"],
+          about: payload["About"],
+          community_logo: communityLogo,
+          agency_pic: agencyPic,
+          website: payload["Website"],
+          youtube_channel: payload["Youtube channel"],
+          youtube_video: payload["Youtube video"],
+          Instagram: payload["Instagram"],
+          tiktok: payload["Tiktok"],
+          x: payload["X"],
+        },
+        {
+          onConflict: "owner_user_id",
+        }
+      );
 
     if (error) {
       console.error(error);

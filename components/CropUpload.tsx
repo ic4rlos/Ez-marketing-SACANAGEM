@@ -27,6 +27,9 @@ export default function CropUpload({
   const [imageUrl, setImageUrl] = useState<string | null>(null);
   const [uploading, setUploading] = useState(false);
 
+  const supabaseC = getSupabaseC();
+  const supabaseA = getSupabaseA();
+
   useEffect(() => {
     console.log("🧪 CropUpload recebeu value:", value);
 
@@ -67,25 +70,29 @@ export default function CropUpload({
 
       console.log("📤 Uploading:", filePath);
 
-      const buckets = ["company-logos", "agency-pics"];
+      const targets = [
+        { client: supabaseC, bucket: "company-logos" },
+        { client: supabaseA, bucket: "agency-pics" },
+      ];
+
       let publicUrl: string | null = null;
 
-      for (const bucket of buckets) {
-        const { error } = await supabase.storage
-          .from(bucket)
+      for (const target of targets) {
+        const { error } = await target.client.storage
+          .from(target.bucket)
           .upload(filePath, rawFile as File, { upsert: true });
 
         if (!error) {
-          const { data } = supabase.storage
-            .from(bucket)
+          const { data } = target.client.storage
+            .from(target.bucket)
             .getPublicUrl(filePath);
 
           publicUrl = data.publicUrl;
-          console.log(`✅ Uploaded to ${bucket}:`, publicUrl);
+          console.log(`✅ Uploaded to ${target.bucket}:`, publicUrl);
           break;
         }
 
-        console.warn(`⚠️ Failed in ${bucket}, trying next...`);
+        console.warn(`⚠️ Failed in ${target.bucket}, trying next...`);
       }
 
       if (!publicUrl) {

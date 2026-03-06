@@ -243,7 +243,7 @@ function PlasmicACreateCommunity__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
-          $props.community?.["Community name"] ?? "",
+          $props.formData?.["Community name"] ?? "",
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
@@ -252,7 +252,7 @@ function PlasmicACreateCommunity__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
-          $props.community?.[Location] ?? "",
+          $props.formData?.[Location] ?? "",
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
@@ -261,7 +261,7 @@ function PlasmicACreateCommunity__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
-          $props.community?.["Youtube channel"] ?? "",
+          $props.formData?.["Youtube channel"] ?? "",
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
@@ -270,7 +270,7 @@ function PlasmicACreateCommunity__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
-          $props.community?.[Instagram] ?? "",
+          $props.formData?.[Instagram] ?? "",
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
@@ -279,7 +279,7 @@ function PlasmicACreateCommunity__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
-          $props.community?.[X] ?? "",
+          $props.formData?.[X] ?? "",
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
@@ -288,7 +288,7 @@ function PlasmicACreateCommunity__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
-          $props.community?.[about] ?? "",
+          $props.formData?.[about] ?? "",
 
         onMutate: generateOnMutateForSpec("value", AntdTextArea_Helpers)
       },
@@ -309,7 +309,7 @@ function PlasmicACreateCommunity__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
-          $props.community?.[Tiktok] ?? "",
+          $props.formData?.[Tiktok] ?? "",
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
@@ -318,7 +318,7 @@ function PlasmicACreateCommunity__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
-          $props.community?.["Youtube video"] ?? "",
+          $props.formData?.["Youtube video"] ?? "",
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
@@ -327,7 +327,7 @@ function PlasmicACreateCommunity__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
-          $props.community?.[Website] ?? "",
+          $props.formData?.[Website] ?? "",
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
@@ -338,7 +338,7 @@ function PlasmicACreateCommunity__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
-              return $props.community?.["Community logo"] || "";
+              return $props.formData?.["Community logo"] || "";
             } catch (e) {
               if (
                 e instanceof TypeError ||
@@ -357,7 +357,7 @@ function PlasmicACreateCommunity__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
-              return $props.community?.["Agency pic"] || "";
+              return $props.formData?.["Agency pic"] || "";
             } catch (e) {
               if (
                 e instanceof TypeError ||
@@ -1003,8 +1003,8 @@ function PlasmicACreateCommunity__RenderFunc(props: {
                     try {
                       return (
                         $state.communityLogo ||
-                        ($props.community?.["Community logo"]
-                          ? $props.community["Community logo"]
+                        ($props.formData?.["Community logo"]
+                          ? $props.formData["Community logo"]
                           : null)
                       );
                     } catch (e) {
@@ -1212,7 +1212,7 @@ function PlasmicACreateCommunity__RenderFunc(props: {
                       {
                         name: "location.value",
                         initFunc: ({ $props, $state, $queries, $q }) =>
-                          $props.community?.[Location] ?? ""
+                          $props.formData?.[Location] ?? ""
                       }
                     ],
                     []
@@ -1402,7 +1402,7 @@ function PlasmicACreateCommunity__RenderFunc(props: {
                       {
                         name: "instagram.value",
                         initFunc: ({ $props, $state, $queries, $q }) =>
-                          $props.community?.[Instagram] ?? ""
+                          $props.formData?.[Instagram] ?? ""
                       }
                     ],
                     []
@@ -1459,7 +1459,7 @@ function PlasmicACreateCommunity__RenderFunc(props: {
                       {
                         name: "tiktok.value",
                         initFunc: ({ $props, $state, $queries, $q }) =>
-                          $props.community?.[Tiktok] ?? ""
+                          $props.formData?.[Tiktok] ?? ""
                       }
                     ],
                     []
@@ -1516,7 +1516,7 @@ function PlasmicACreateCommunity__RenderFunc(props: {
                       {
                         name: "x.value",
                         initFunc: ({ $props, $state, $queries, $q }) =>
-                          $props.community?.[X] ?? ""
+                          $props.formData?.[X] ?? ""
                       }
                     ],
                     []
@@ -1688,8 +1688,8 @@ function PlasmicACreateCommunity__RenderFunc(props: {
                     try {
                       return (
                         $state.agencyPic ||
-                        ($props.community?.["Agency pic"]
-                          ? $props.community["Agency pic"]
+                        ($props.formData?.["Agency pic"]
+                          ? $props.formData["Agency pic"]
                           : null)
                       );
                     } catch (e) {
@@ -1810,7 +1810,7 @@ function PlasmicACreateCommunity__RenderFunc(props: {
                       {
                         name: "website.value",
                         initFunc: ({ $props, $state, $queries, $q }) =>
-                          $props.community?.[Website] ?? ""
+                          $props.formData?.[Website] ?? ""
                       }
                     ],
                     []
@@ -1862,7 +1862,7 @@ function PlasmicACreateCommunity__RenderFunc(props: {
                       {
                         name: "about.value",
                         initFunc: ({ $props, $state, $queries, $q }) =>
-                          $props.community?.[about] ?? ""
+                          $props.formData?.[about] ?? ""
                       }
                     ],
                     []

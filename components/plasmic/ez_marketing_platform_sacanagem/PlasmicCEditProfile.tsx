@@ -455,21 +455,24 @@ function PlasmicCEditProfile__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
-              return (() => {
-                const analysis = $state.radioGroup2.value;
-                const travel = $state.radioGroup3.value;
-                if (analysis === "Yes" && travel === "Yes") {
-                  return "Analysis - At Customer Location";
-                } else if (analysis === "Yes" && travel === "No") {
-                  return "Analysis - At Company Location";
-                } else if (analysis === "No" && travel === "Yes") {
-                  return "Table - At Customer Location";
-                } else if (analysis === "No" && travel === "No") {
-                  return "Table - At Company Location";
-                } else {
-                  return "Undefined";
-                }
-              })();
+              return (
+                $props.company?.["Company nature"] ??
+                (() => {
+                  const analysis = $state.radioGroup2.value;
+                  const travel = $state.radioGroup3.value;
+                  if (analysis === "Yes" && travel === "Yes") {
+                    return "Analysis - At Customer Location";
+                  } else if (analysis === "Yes" && travel === "No") {
+                    return "Analysis - At Company Location";
+                  } else if (analysis === "No" && travel === "Yes") {
+                    return "Table - At Customer Location";
+                  } else if (analysis === "No" && travel === "No") {
+                    return "Table - At Company Location";
+                  } else {
+                    return "Undefined";
+                  }
+                })()
+              );
             } catch (e) {
               if (
                 e instanceof TypeError ||

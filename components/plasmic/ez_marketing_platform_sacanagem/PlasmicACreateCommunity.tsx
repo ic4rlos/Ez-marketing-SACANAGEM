@@ -71,7 +71,7 @@ import { AntdDropdown } from "@plasmicpkgs/antd5/skinny/registerDropdown";
 import { AntdMenuItem } from "@plasmicpkgs/antd5/skinny/registerMenu";
 import { AntdButton } from "@plasmicpkgs/antd5/skinny/registerButton";
 import { AntdSteps } from "@plasmicpkgs/antd5/skinny/registerSteps";
-import { UploadWrapper } from "@plasmicpkgs/antd5/skinny/registerUpload";
+import CropUpload from "@/components/CropUpload"; // plasmic-import: HQBO4CsWmaOx/codeComponent
 import { AntdSelect } from "@plasmicpkgs/antd5/skinny/registerSelect";
 import { AntdOption } from "@plasmicpkgs/antd5/skinny/registerSelect";
 import { AntdInput } from "@plasmicpkgs/antd5/skinny/registerInput";
@@ -152,11 +152,12 @@ export type PlasmicACreateCommunity__OverridesType = {
   topBar?: Flex__<"div">;
   navigationBar?: Flex__<typeof NavigationBar>;
   account?: Flex__<typeof AntdDropdown>;
+  button?: Flex__<typeof AntdButton>;
   rectangle?: Flex__<"div">;
   stepsStack?: Flex__<"div">;
   steps?: Flex__<typeof AntdSteps>;
   basicInfo?: Flex__<"div">;
-  communityLogo?: Flex__<typeof UploadWrapper>;
+  uploadDoCarlos?: Flex__<typeof CropUpload>;
   type?: Flex__<typeof AntdSelect>;
   communityName?: Flex__<typeof AntdInput>;
   location?: Flex__<typeof AntdInput>;
@@ -166,7 +167,7 @@ export type PlasmicACreateCommunity__OverridesType = {
   tiktok?: Flex__<typeof AntdInput>;
   x?: Flex__<typeof AntdInput>;
   skills?: Flex__<"div">;
-  agencyPic?: Flex__<typeof UploadWrapper>;
+  uploadDoCarlos2?: Flex__<typeof CropUpload>;
   youtubeVideo?: Flex__<typeof AntdInput>;
   website?: Flex__<typeof AntdInput>;
   about?: Flex__<typeof AntdTextArea>;
@@ -238,16 +239,11 @@ function PlasmicACreateCommunity__RenderFunc(props: {
           })()
       },
       {
-        path: "communityLogo.files",
-        type: "private",
-        variableType: "array",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) => []
-      },
-      {
         path: "communityName.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
+          $props.community?.[community_name] ?? "",
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
@@ -255,7 +251,8 @@ function PlasmicACreateCommunity__RenderFunc(props: {
         path: "location.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
+          $props.community?.[location] ?? "",
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
@@ -263,7 +260,8 @@ function PlasmicACreateCommunity__RenderFunc(props: {
         path: "youtubeChannel.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
+          $props.community?.[youtube_channel] ?? "",
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
@@ -271,7 +269,8 @@ function PlasmicACreateCommunity__RenderFunc(props: {
         path: "instagram.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
+          $props.community?.["Instagram"] ?? "",
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
@@ -279,7 +278,8 @@ function PlasmicACreateCommunity__RenderFunc(props: {
         path: "x.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
+          $props.community?.[x] ?? "",
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
@@ -287,7 +287,8 @@ function PlasmicACreateCommunity__RenderFunc(props: {
         path: "about.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
+          $props.community?.[about] ?? "",
 
         onMutate: generateOnMutateForSpec("value", AntdTextArea_Helpers)
       },
@@ -295,7 +296,7 @@ function PlasmicACreateCommunity__RenderFunc(props: {
         path: "currentStep",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 2
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 0
       },
       {
         path: "type.value",
@@ -307,21 +308,17 @@ function PlasmicACreateCommunity__RenderFunc(props: {
         path: "tiktok.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
+          $props.community?.[tiktok] ?? "",
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
-      },
-      {
-        path: "agencyPic.files",
-        type: "private",
-        variableType: "array",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) => []
       },
       {
         path: "youtubeVideo.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
+          $props.community?.[youtube_channel] ?? "",
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
@@ -329,9 +326,48 @@ function PlasmicACreateCommunity__RenderFunc(props: {
         path: "website.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
+          $props.community?.[website] ?? "",
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
+      },
+      {
+        path: "communityLogo",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
+          (() => {
+            try {
+              return $props.community?.[community_logo] || "";
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
+      },
+      {
+        path: "agencyPic",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
+          (() => {
+            try {
+              return $props.community?.[agency_pic] || "";
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
       }
     ],
     [$props, $ctx, $refs]
@@ -775,7 +811,9 @@ function PlasmicACreateCommunity__RenderFunc(props: {
                 useMenuItemsSlot={false}
               >
                 <AntdButton
-                  className={classNames("__wab_instance", sty.button__l6H7G)}
+                  data-plasmic-name={"button"}
+                  data-plasmic-override={overrides.button}
+                  className={classNames("__wab_instance", sty.button)}
                   href={`/a-login`}
                   target={true}
                 >
@@ -933,39 +971,54 @@ function PlasmicACreateCommunity__RenderFunc(props: {
                 </React.Fragment>
               </div>
               <div className={classNames(projectcss.all, sty.freeBox__cYwRg)}>
-                <UploadWrapper
-                  data-plasmic-name={"communityLogo"}
-                  data-plasmic-override={overrides.communityLogo}
-                  accept={"image/*"}
-                  className={classNames("__wab_instance", sty.communityLogo)}
-                  files={generateStateValueProp($state, [
-                    "communityLogo",
-                    "files"
-                  ])}
-                  listType={"picture-circle"}
-                  maxCount={1}
-                  onFilesChange={async (...eventArgs: any) => {
-                    generateStateOnChangeProp($state, [
-                      "communityLogo",
-                      "files"
-                    ]).apply(null, eventArgs);
+                <CropUpload
+                  data-plasmic-name={"uploadDoCarlos"}
+                  data-plasmic-override={overrides.uploadDoCarlos}
+                  accept={``}
+                  className={classNames("__wab_instance", sty.uploadDoCarlos)}
+                  onChange={async url => {
+                    const $steps = {};
+
+                    $steps["runCode"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            customFunction: async () => {
+                              return ($state.communityLogo = url);
+                            }
+                          };
+                          return (({ customFunction }) => {
+                            return customFunction();
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["runCode"] != null &&
+                      typeof $steps["runCode"] === "object" &&
+                      typeof $steps["runCode"].then === "function"
+                    ) {
+                      $steps["runCode"] = await $steps["runCode"];
+                    }
                   }}
-                  showUploadList={false}
-                >
-                  <AntdButton
-                    className={classNames("__wab_instance", sty.button___0T5OE)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__s1SfD
-                      )}
-                    >
-                      {"Upload"}
-                    </div>
-                  </AntdButton>
-                </UploadWrapper>
+                  value={(() => {
+                    try {
+                      return (
+                        $state.communityLogo ||
+                        ($props.community?.[community_logo]
+                          ? $props.community[community_logo]
+                          : null)
+                      );
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return undefined;
+                      }
+                      throw e;
+                    }
+                  })()}
+                />
+
                 <div
                   className={classNames(
                     projectcss.all,
@@ -1105,7 +1158,17 @@ function PlasmicACreateCommunity__RenderFunc(props: {
                     AntdInput_Helpers ?? {},
                     child$Props
                   );
-
+                  initializePlasmicStates(
+                    $state,
+                    [
+                      {
+                        name: "communityName.value",
+                        initFunc: ({ $props, $state, $queries, $q }) =>
+                          $props.community?.[community_name] ?? ""
+                      }
+                    ],
+                    []
+                  );
                   return (
                     <AntdInput
                       data-plasmic-name={"communityName"}
@@ -1152,7 +1215,17 @@ function PlasmicACreateCommunity__RenderFunc(props: {
                     AntdInput_Helpers ?? {},
                     child$Props
                   );
-
+                  initializePlasmicStates(
+                    $state,
+                    [
+                      {
+                        name: "location.value",
+                        initFunc: ({ $props, $state, $queries, $q }) =>
+                          $props.community?.[location] ?? ""
+                      }
+                    ],
+                    []
+                  );
                   return (
                     <AntdInput
                       data-plasmic-name={"location"}
@@ -1282,7 +1355,17 @@ function PlasmicACreateCommunity__RenderFunc(props: {
                     AntdInput_Helpers ?? {},
                     child$Props
                   );
-
+                  initializePlasmicStates(
+                    $state,
+                    [
+                      {
+                        name: "youtubeChannel.value",
+                        initFunc: ({ $props, $state, $queries, $q }) =>
+                          $props.community?.[youtube_channel] ?? ""
+                      }
+                    ],
+                    []
+                  );
                   return (
                     <AntdInput
                       data-plasmic-name={"youtubeChannel"}
@@ -1379,7 +1462,17 @@ function PlasmicACreateCommunity__RenderFunc(props: {
                     AntdInput_Helpers ?? {},
                     child$Props
                   );
-
+                  initializePlasmicStates(
+                    $state,
+                    [
+                      {
+                        name: "tiktok.value",
+                        initFunc: ({ $props, $state, $queries, $q }) =>
+                          $props.community?.[tiktok] ?? ""
+                      }
+                    ],
+                    []
+                  );
                   return (
                     <AntdInput
                       data-plasmic-name={"tiktok"}
@@ -1426,7 +1519,17 @@ function PlasmicACreateCommunity__RenderFunc(props: {
                     AntdInput_Helpers ?? {},
                     child$Props
                   );
-
+                  initializePlasmicStates(
+                    $state,
+                    [
+                      {
+                        name: "x.value",
+                        initFunc: ({ $props, $state, $queries, $q }) =>
+                          $props.community?.[x] ?? ""
+                      }
+                    ],
+                    []
+                  );
                   return (
                     <AntdInput
                       data-plasmic-name={"x"}
@@ -1562,35 +1665,54 @@ function PlasmicACreateCommunity__RenderFunc(props: {
                 </React.Fragment>
               </div>
               <div className={classNames(projectcss.all, sty.freeBox__uSn6Z)}>
-                <UploadWrapper
-                  data-plasmic-name={"agencyPic"}
-                  data-plasmic-override={overrides.agencyPic}
-                  accept={"image/*"}
-                  className={classNames("__wab_instance", sty.agencyPic)}
-                  files={generateStateValueProp($state, ["agencyPic", "files"])}
-                  listType={"text"}
-                  onFilesChange={async (...eventArgs: any) => {
-                    generateStateOnChangeProp($state, [
-                      "agencyPic",
-                      "files"
-                    ]).apply(null, eventArgs);
+                <CropUpload
+                  data-plasmic-name={"uploadDoCarlos2"}
+                  data-plasmic-override={overrides.uploadDoCarlos2}
+                  accept={``}
+                  className={classNames("__wab_instance", sty.uploadDoCarlos2)}
+                  onChange={async url => {
+                    const $steps = {};
+
+                    $steps["runCode"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            customFunction: async () => {
+                              return ($state.agencyPic = url);
+                            }
+                          };
+                          return (({ customFunction }) => {
+                            return customFunction();
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["runCode"] != null &&
+                      typeof $steps["runCode"] === "object" &&
+                      typeof $steps["runCode"].then === "function"
+                    ) {
+                      $steps["runCode"] = await $steps["runCode"];
+                    }
                   }}
-                  showUploadList={false}
-                >
-                  <AntdButton
-                    className={classNames("__wab_instance", sty.button__dcIbz)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__zie3X
-                      )}
-                    >
-                      {"Upload"}
-                    </div>
-                  </AntdButton>
-                </UploadWrapper>
+                  value={(() => {
+                    try {
+                      return (
+                        $state.agencyPic ||
+                        ($props.community?.[agency_pic]
+                          ? $props.community[agency_pic]
+                          : null)
+                      );
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return undefined;
+                      }
+                      throw e;
+                    }
+                  })()}
+                />
+
                 <div
                   className={classNames(
                     projectcss.all,
@@ -1644,7 +1766,17 @@ function PlasmicACreateCommunity__RenderFunc(props: {
                     AntdInput_Helpers ?? {},
                     child$Props
                   );
-
+                  initializePlasmicStates(
+                    $state,
+                    [
+                      {
+                        name: "youtubeVideo.value",
+                        initFunc: ({ $props, $state, $queries, $q }) =>
+                          $props.community?.[youtube_channel] ?? ""
+                      }
+                    ],
+                    []
+                  );
                   return (
                     <AntdInput
                       data-plasmic-name={"youtubeVideo"}
@@ -1691,7 +1823,17 @@ function PlasmicACreateCommunity__RenderFunc(props: {
                     AntdInput_Helpers ?? {},
                     child$Props
                   );
-
+                  initializePlasmicStates(
+                    $state,
+                    [
+                      {
+                        name: "website.value",
+                        initFunc: ({ $props, $state, $queries, $q }) =>
+                          $props.community?.[website] ?? ""
+                      }
+                    ],
+                    []
+                  );
                   return (
                     <AntdInput
                       data-plasmic-name={"website"}
@@ -1733,7 +1875,17 @@ function PlasmicACreateCommunity__RenderFunc(props: {
                     AntdTextArea_Helpers ?? {},
                     child$Props
                   );
-
+                  initializePlasmicStates(
+                    $state,
+                    [
+                      {
+                        name: "about.value",
+                        initFunc: ({ $props, $state, $queries, $q }) =>
+                          $props.community?.[about] ?? ""
+                      }
+                    ],
+                    []
+                  );
                   return (
                     <AntdTextArea
                       data-plasmic-name={"about"}
@@ -1791,33 +1943,48 @@ function PlasmicACreateCommunity__RenderFunc(props: {
                   onClick={async event => {
                     const $steps = {};
 
-                    $steps["goToACommunityDashboard"] = true
+                    $steps["runCode"] = true
                       ? (() => {
                           const actionArgs = {
-                            destination: `/a-community-dashboard`
-                          };
-                          return (({ destination }) => {
-                            if (
-                              typeof destination === "string" &&
-                              destination.startsWith("#")
-                            ) {
-                              document
-                                .getElementById(destination.substr(1))
-                                .scrollIntoView({ behavior: "smooth" });
-                            } else {
-                              __nextRouter?.push(destination);
+                            customFunction: async () => {
+                              return (() => {
+                                console.log(
+                                  "================================="
+                                );
+                                console.log(
+                                  "\uD83E\uDDEA DONE CLICKADO - CREATE COMMUNITY"
+                                );
+                                return $props.onSave({
+                                  community_name:
+                                    $state.communityName?.value ?? "",
+                                  type: $state.type?.value ?? "",
+                                  location: $state.location?.value ?? "",
+                                  about: $state.about?.value ?? "",
+                                  website: $state.website?.value ?? "",
+                                  youtube_channel:
+                                    $state.youtubeChannel?.value ?? "",
+                                  youtube_video:
+                                    $state.youtubeVideo?.value ?? "",
+                                  Instagram: $state.instagram?.value ?? "",
+                                  tiktok: $state.tiktok?.value ?? "",
+                                  x: $state.x?.value ?? "",
+                                  community_logo: $state.communityLogo ?? null,
+                                  agency_pic: $state.agencyPic ?? null
+                                });
+                              })();
                             }
+                          };
+                          return (({ customFunction }) => {
+                            return customFunction();
                           })?.apply(null, [actionArgs]);
                         })()
                       : undefined;
                     if (
-                      $steps["goToACommunityDashboard"] != null &&
-                      typeof $steps["goToACommunityDashboard"] === "object" &&
-                      typeof $steps["goToACommunityDashboard"].then ===
-                        "function"
+                      $steps["runCode"] != null &&
+                      typeof $steps["runCode"] === "object" &&
+                      typeof $steps["runCode"].then === "function"
                     ) {
-                      $steps["goToACommunityDashboard"] =
-                        await $steps["goToACommunityDashboard"];
+                      $steps["runCode"] = await $steps["runCode"];
                     }
                   }}
                 >
@@ -1846,11 +2013,12 @@ const PlasmicDescendants = {
     "topBar",
     "navigationBar",
     "account",
+    "button",
     "rectangle",
     "stepsStack",
     "steps",
     "basicInfo",
-    "communityLogo",
+    "uploadDoCarlos",
     "type",
     "communityName",
     "location",
@@ -1860,21 +2028,22 @@ const PlasmicDescendants = {
     "tiktok",
     "x",
     "skills",
-    "agencyPic",
+    "uploadDoCarlos2",
     "youtubeVideo",
     "website",
     "about",
     "done"
   ],
-  topBar: ["topBar", "navigationBar", "account"],
+  topBar: ["topBar", "navigationBar", "account", "button"],
   navigationBar: ["navigationBar"],
-  account: ["account"],
+  account: ["account", "button"],
+  button: ["button"],
   rectangle: [
     "rectangle",
     "stepsStack",
     "steps",
     "basicInfo",
-    "communityLogo",
+    "uploadDoCarlos",
     "type",
     "communityName",
     "location",
@@ -1884,7 +2053,7 @@ const PlasmicDescendants = {
     "tiktok",
     "x",
     "skills",
-    "agencyPic",
+    "uploadDoCarlos2",
     "youtubeVideo",
     "website",
     "about",
@@ -1894,12 +2063,12 @@ const PlasmicDescendants = {
   steps: ["steps"],
   basicInfo: [
     "basicInfo",
-    "communityLogo",
+    "uploadDoCarlos",
     "type",
     "communityName",
     "location"
   ],
-  communityLogo: ["communityLogo"],
+  uploadDoCarlos: ["uploadDoCarlos"],
   type: ["type"],
   communityName: ["communityName"],
   location: ["location"],
@@ -1908,8 +2077,15 @@ const PlasmicDescendants = {
   instagram: ["instagram"],
   tiktok: ["tiktok"],
   x: ["x"],
-  skills: ["skills", "agencyPic", "youtubeVideo", "website", "about", "done"],
-  agencyPic: ["agencyPic"],
+  skills: [
+    "skills",
+    "uploadDoCarlos2",
+    "youtubeVideo",
+    "website",
+    "about",
+    "done"
+  ],
+  uploadDoCarlos2: ["uploadDoCarlos2"],
   youtubeVideo: ["youtubeVideo"],
   website: ["website"],
   about: ["about"],
@@ -1923,11 +2099,12 @@ type NodeDefaultElementType = {
   topBar: "div";
   navigationBar: typeof NavigationBar;
   account: typeof AntdDropdown;
+  button: typeof AntdButton;
   rectangle: "div";
   stepsStack: "div";
   steps: typeof AntdSteps;
   basicInfo: "div";
-  communityLogo: typeof UploadWrapper;
+  uploadDoCarlos: typeof CropUpload;
   type: typeof AntdSelect;
   communityName: typeof AntdInput;
   location: typeof AntdInput;
@@ -1937,7 +2114,7 @@ type NodeDefaultElementType = {
   tiktok: typeof AntdInput;
   x: typeof AntdInput;
   skills: "div";
-  agencyPic: typeof UploadWrapper;
+  uploadDoCarlos2: typeof CropUpload;
   youtubeVideo: typeof AntdInput;
   website: typeof AntdInput;
   about: typeof AntdTextArea;
@@ -2009,11 +2186,12 @@ export const PlasmicACreateCommunity = Object.assign(
     topBar: makeNodeComponent("topBar"),
     navigationBar: makeNodeComponent("navigationBar"),
     account: makeNodeComponent("account"),
+    button: makeNodeComponent("button"),
     rectangle: makeNodeComponent("rectangle"),
     stepsStack: makeNodeComponent("stepsStack"),
     steps: makeNodeComponent("steps"),
     basicInfo: makeNodeComponent("basicInfo"),
-    communityLogo: makeNodeComponent("communityLogo"),
+    uploadDoCarlos: makeNodeComponent("uploadDoCarlos"),
     type: makeNodeComponent("type"),
     communityName: makeNodeComponent("communityName"),
     location: makeNodeComponent("location"),
@@ -2023,7 +2201,7 @@ export const PlasmicACreateCommunity = Object.assign(
     tiktok: makeNodeComponent("tiktok"),
     x: makeNodeComponent("x"),
     skills: makeNodeComponent("skills"),
-    agencyPic: makeNodeComponent("agencyPic"),
+    uploadDoCarlos2: makeNodeComponent("uploadDoCarlos2"),
     youtubeVideo: makeNodeComponent("youtubeVideo"),
     website: makeNodeComponent("website"),
     about: makeNodeComponent("about"),

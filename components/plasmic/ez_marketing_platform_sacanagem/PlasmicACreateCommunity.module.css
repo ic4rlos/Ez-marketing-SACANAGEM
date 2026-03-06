@@ -287,7 +287,7 @@
   max-width: 100%;
   min-width: 0;
 }
-.button__l6H7G:global(.__wab_instance) {
+.button:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;
   border-width: 0px;
@@ -593,37 +593,16 @@
   min-width: 0;
   padding: 8px;
 }
-.communityLogo:global(.__wab_instance) {
+.uploadDoCarlos:global(.__wab_instance) {
+  animation: none;
   max-width: 100%;
   object-fit: cover;
-  text-align: left;
-  padding-left: 58px;
-  width: auto;
-  padding-right: 23px;
-}
-.button___0T5OE:global(.__wab_instance) {
-  max-width: 100%;
-  object-fit: cover;
-}
-.text__s1SfD {
-  position: relative;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  font-family: "Inter", sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  font-style: normal;
-  color: #535353;
-  text-align: left;
-  text-transform: none;
-  line-height: 1.5;
-  letter-spacing: normal;
-  white-space: pre-wrap;
-  user-select: text;
-  text-decoration-line: none !important;
-  text-overflow: clip !important;
-  min-width: 0;
+  width: 150px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
 }
 .text__dBiYk {
   position: relative;
@@ -1298,37 +1277,16 @@
   min-width: 0;
   padding: 8px;
 }
-.agencyPic:global(.__wab_instance) {
+.uploadDoCarlos2:global(.__wab_instance) {
+  animation: none;
   max-width: 100%;
   object-fit: cover;
-  text-align: left;
-  padding-left: 58px;
-  width: auto;
-  padding-right: 23px;
-}
-.button__dcIbz:global(.__wab_instance) {
-  max-width: 100%;
-  object-fit: cover;
-}
-.text__zie3X {
-  position: relative;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  font-family: "Inter", sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  font-style: normal;
-  color: #535353;
-  text-align: left;
-  text-transform: none;
-  line-height: 1.5;
-  letter-spacing: normal;
-  white-space: pre-wrap;
-  user-select: text;
-  text-decoration-line: none !important;
-  text-overflow: clip !important;
-  min-width: 0;
+  width: 150px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
 }
 .text___8AIlB {
   position: relative;

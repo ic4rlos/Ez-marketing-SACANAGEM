@@ -309,7 +309,7 @@ function PlasmicACreateCommunity__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
-          $props.formData?.[Tiktok] ?? "",
+          $props.formData?.["Tiktok"] ?? "",
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
@@ -1433,17 +1433,7 @@ function PlasmicACreateCommunity__RenderFunc(props: {
                     AntdInput_Helpers ?? {},
                     child$Props
                   );
-                  initializePlasmicStates(
-                    $state,
-                    [
-                      {
-                        name: "tiktok.value",
-                        initFunc: ({ $props, $state, $queries, $q }) =>
-                          $props.formData?.[Tiktok] ?? ""
-                      }
-                    ],
-                    []
-                  );
+
                   return (
                     <AntdInput
                       data-plasmic-name={"tiktok"}

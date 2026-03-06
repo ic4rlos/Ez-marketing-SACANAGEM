@@ -1877,7 +1877,19 @@ function PlasmicACreateCommunity__RenderFunc(props: {
                                   "\uD83E\uDDEA DONE CLICKADO - CREATE COMMUNITY"
                                 );
                                 const typeValue = $state.type?.value ?? null;
+                                console.log(
+                                  "\uD83D\uDCCC TYPE VALUE:",
+                                  typeValue
+                                );
+                                console.log(
+                                  "\uD83D\uDCCC TYPE STATE COMPLETO:",
+                                  $state.type
+                                );
                                 if (typeValue !== "Venture") {
+                                  console.log(
+                                    "\u26D4 TYPE BLOQUEADO:",
+                                    typeValue
+                                  );
                                   alert(
                                     "EZ Marketing does not currently support this type of agency."
                                   );

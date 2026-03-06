@@ -252,7 +252,7 @@ function PlasmicACreateCommunity__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
-          $props.formData?.[Location] ?? "",
+          $props.formData?.["Location"] ?? "",
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
@@ -270,7 +270,7 @@ function PlasmicACreateCommunity__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
-          $props.formData?.[Instagram] ?? "",
+          $props.formData?.["Instagram"] ?? "",
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
@@ -279,7 +279,7 @@ function PlasmicACreateCommunity__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
-          $props.formData?.[X] ?? "",
+          $props.formData?.["X"] ?? "",
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
@@ -288,7 +288,7 @@ function PlasmicACreateCommunity__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
-          $props.formData?.[about] ?? "",
+          $props.formData?.["About"] ?? "",
 
         onMutate: generateOnMutateForSpec("value", AntdTextArea_Helpers)
       },
@@ -327,7 +327,7 @@ function PlasmicACreateCommunity__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
-          $props.formData?.[Website] ?? "",
+          $props.formData?.["Website"] ?? "",
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
@@ -1206,17 +1206,7 @@ function PlasmicACreateCommunity__RenderFunc(props: {
                     AntdInput_Helpers ?? {},
                     child$Props
                   );
-                  initializePlasmicStates(
-                    $state,
-                    [
-                      {
-                        name: "location.value",
-                        initFunc: ({ $props, $state, $queries, $q }) =>
-                          $props.formData?.[Location] ?? ""
-                      }
-                    ],
-                    []
-                  );
+
                   return (
                     <AntdInput
                       data-plasmic-name={"location"}
@@ -1396,17 +1386,7 @@ function PlasmicACreateCommunity__RenderFunc(props: {
                     AntdInput_Helpers ?? {},
                     child$Props
                   );
-                  initializePlasmicStates(
-                    $state,
-                    [
-                      {
-                        name: "instagram.value",
-                        initFunc: ({ $props, $state, $queries, $q }) =>
-                          $props.formData?.[Instagram] ?? ""
-                      }
-                    ],
-                    []
-                  );
+
                   return (
                     <AntdInput
                       data-plasmic-name={"instagram"}
@@ -1510,17 +1490,7 @@ function PlasmicACreateCommunity__RenderFunc(props: {
                     AntdInput_Helpers ?? {},
                     child$Props
                   );
-                  initializePlasmicStates(
-                    $state,
-                    [
-                      {
-                        name: "x.value",
-                        initFunc: ({ $props, $state, $queries, $q }) =>
-                          $props.formData?.[X] ?? ""
-                      }
-                    ],
-                    []
-                  );
+
                   return (
                     <AntdInput
                       data-plasmic-name={"x"}
@@ -1804,17 +1774,7 @@ function PlasmicACreateCommunity__RenderFunc(props: {
                     AntdInput_Helpers ?? {},
                     child$Props
                   );
-                  initializePlasmicStates(
-                    $state,
-                    [
-                      {
-                        name: "website.value",
-                        initFunc: ({ $props, $state, $queries, $q }) =>
-                          $props.formData?.[Website] ?? ""
-                      }
-                    ],
-                    []
-                  );
+
                   return (
                     <AntdInput
                       data-plasmic-name={"website"}
@@ -1856,17 +1816,7 @@ function PlasmicACreateCommunity__RenderFunc(props: {
                     AntdTextArea_Helpers ?? {},
                     child$Props
                   );
-                  initializePlasmicStates(
-                    $state,
-                    [
-                      {
-                        name: "about.value",
-                        initFunc: ({ $props, $state, $queries, $q }) =>
-                          $props.formData?.[about] ?? ""
-                      }
-                    ],
-                    []
-                  );
+
                   return (
                     <AntdTextArea
                       data-plasmic-name={"about"}

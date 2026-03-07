@@ -445,7 +445,7 @@ function PlasmicCApplyACommunitie__RenderFunc(props: {
                       sty.link__ehGul
                     )}
                     component={Link}
-                    href={`/corporative-page`}
+                    href={`/c-corporative-page`}
                     legacyBehavior={false}
                     platform={"nextjs"}
                   >
@@ -492,7 +492,7 @@ function PlasmicCApplyACommunitie__RenderFunc(props: {
                         sty.link__reXZl
                       )}
                       component={Link}
-                      href={`/company-profile`}
+                      href={`/c-company-profile`}
                       legacyBehavior={false}
                       platform={"nextjs"}
                     >
@@ -506,7 +506,7 @@ function PlasmicCApplyACommunitie__RenderFunc(props: {
                         sty.link__amG0N
                       )}
                       component={Link}
-                      href={`/services-dashboard`}
+                      href={`/c-services-dashboard`}
                       legacyBehavior={false}
                       platform={"nextjs"}
                     >
@@ -533,7 +533,7 @@ function PlasmicCApplyACommunitie__RenderFunc(props: {
                         sty.link__aGp1E
                       )}
                       component={Link}
-                      href={`/find-a-affiliate`}
+                      href={`/c-find-a-affiliate`}
                       legacyBehavior={false}
                       platform={"nextjs"}
                     >
@@ -4821,8 +4821,8 @@ export const PlasmicCApplyACommunitie = Object.assign(
     internalArgProps: PlasmicCApplyACommunitie__ArgProps,
 
     pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
-      pageRoute: "/apply-a-community",
-      pagePath: "/apply-a-community",
+      pageRoute: "/c-apply-a-community",
+      pagePath: "/c-apply-a-community",
       params: {},
       query: {}
     })

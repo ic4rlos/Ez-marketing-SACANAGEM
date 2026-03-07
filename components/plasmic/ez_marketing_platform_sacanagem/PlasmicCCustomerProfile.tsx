@@ -313,7 +313,7 @@ function PlasmicCCustomerProfile__RenderFunc(props: {
                       sty.link__sT1H
                     )}
                     component={Link}
-                    href={`/corporative-page`}
+                    href={`/c-corporative-page`}
                     legacyBehavior={false}
                     onClick={async event => {
                       const $steps = {};
@@ -384,7 +384,7 @@ function PlasmicCCustomerProfile__RenderFunc(props: {
                         sty.link__j5Hx
                       )}
                       component={Link}
-                      href={`/company-profile`}
+                      href={`/c-company-profile`}
                       legacyBehavior={false}
                       platform={"nextjs"}
                     >
@@ -398,7 +398,7 @@ function PlasmicCCustomerProfile__RenderFunc(props: {
                         sty.link___9TD0C
                       )}
                       component={Link}
-                      href={`/services-dashboard`}
+                      href={`/c-services-dashboard`}
                       legacyBehavior={false}
                       platform={"nextjs"}
                     >
@@ -425,7 +425,7 @@ function PlasmicCCustomerProfile__RenderFunc(props: {
                         sty.link__pEl3
                       )}
                       component={Link}
-                      href={`/find-a-affiliate`}
+                      href={`/c-find-a-affiliate`}
                       legacyBehavior={false}
                       platform={"nextjs"}
                     >
@@ -1974,8 +1974,8 @@ export const PlasmicCCustomerProfile = Object.assign(
     internalArgProps: PlasmicCCustomerProfile__ArgProps,
 
     pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
-      pageRoute: "/customer-profile",
-      pagePath: "/customer-profile",
+      pageRoute: "/c-customer-profile",
+      pagePath: "/c-customer-profile",
       params: {},
       query: {}
     })

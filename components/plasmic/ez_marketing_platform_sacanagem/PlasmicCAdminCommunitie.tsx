@@ -334,7 +334,7 @@ function PlasmicCAdminCommunitie__RenderFunc(props: {
                       sty.link__kw7L
                     )}
                     component={Link}
-                    href={`/corporative-page`}
+                    href={`/c-corporative-page`}
                     legacyBehavior={false}
                     platform={"nextjs"}
                   >
@@ -381,7 +381,7 @@ function PlasmicCAdminCommunitie__RenderFunc(props: {
                         sty.link__hwiaC
                       )}
                       component={Link}
-                      href={`/company-profile`}
+                      href={`/c-company-profile`}
                       legacyBehavior={false}
                       platform={"nextjs"}
                     >
@@ -395,7 +395,7 @@ function PlasmicCAdminCommunitie__RenderFunc(props: {
                         sty.link___9COd
                       )}
                       component={Link}
-                      href={`/services-dashboard`}
+                      href={`/c-services-dashboard`}
                       legacyBehavior={false}
                       platform={"nextjs"}
                     >
@@ -422,7 +422,7 @@ function PlasmicCAdminCommunitie__RenderFunc(props: {
                         sty.link__chVZ
                       )}
                       component={Link}
-                      href={`/find-a-affiliate`}
+                      href={`/c-find-a-affiliate`}
                       legacyBehavior={false}
                       platform={"nextjs"}
                     >
@@ -2718,8 +2718,8 @@ export const PlasmicCAdminCommunitie = Object.assign(
     internalArgProps: PlasmicCAdminCommunitie__ArgProps,
 
     pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
-      pageRoute: "/admin-community",
-      pagePath: "/admin-community",
+      pageRoute: "/c-admin-community",
+      pagePath: "/c-admin-community",
       params: {},
       query: {}
     })

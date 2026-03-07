@@ -1221,7 +1221,7 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
                         sty.link__fMFqu
                       )}
                       component={Link}
-                      href={`/company-profile`}
+                      href={`/c-company-profile`}
                       legacyBehavior={false}
                       platform={"nextjs"}
                     >
@@ -1235,7 +1235,7 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
                         sty.link__hcjHj
                       )}
                       component={Link}
-                      href={`/services-dashboard`}
+                      href={`/c-services-dashboard`}
                       legacyBehavior={false}
                       platform={"nextjs"}
                     >
@@ -1262,7 +1262,7 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
                         sty.link__onN26
                       )}
                       component={Link}
-                      href={`/find-a-affiliate`}
+                      href={`/c-find-a-affiliate`}
                       legacyBehavior={false}
                       platform={"nextjs"}
                     >
@@ -16193,8 +16193,8 @@ export const PlasmicCServiceDashboard = Object.assign(
     internalArgProps: PlasmicCServiceDashboard__ArgProps,
 
     pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
-      pageRoute: "/services-dashboard",
-      pagePath: "/services-dashboard",
+      pageRoute: "/c-services-dashboard",
+      pagePath: "/c-services-dashboard",
       params: {},
       query: {}
     })

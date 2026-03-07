@@ -337,7 +337,7 @@ function PlasmicCRateACommunitie__RenderFunc(props: {
                       sty.link__naiH9
                     )}
                     component={Link}
-                    href={`/corporative-page`}
+                    href={`/c-corporative-page`}
                     legacyBehavior={false}
                     platform={"nextjs"}
                   >
@@ -384,7 +384,7 @@ function PlasmicCRateACommunitie__RenderFunc(props: {
                         sty.link__xpo5Q
                       )}
                       component={Link}
-                      href={`/company-profile`}
+                      href={`/c-company-profile`}
                       legacyBehavior={false}
                       platform={"nextjs"}
                     >
@@ -398,7 +398,7 @@ function PlasmicCRateACommunitie__RenderFunc(props: {
                         sty.link___8V84C
                       )}
                       component={Link}
-                      href={`/services-dashboard`}
+                      href={`/c-services-dashboard`}
                       legacyBehavior={false}
                       platform={"nextjs"}
                     >
@@ -425,7 +425,7 @@ function PlasmicCRateACommunitie__RenderFunc(props: {
                         sty.link___9L71V
                       )}
                       component={Link}
-                      href={`/find-a-affiliate`}
+                      href={`/c-find-a-affiliate`}
                       legacyBehavior={false}
                       platform={"nextjs"}
                     >

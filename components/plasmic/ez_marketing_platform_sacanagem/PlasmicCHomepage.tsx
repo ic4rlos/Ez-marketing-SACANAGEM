@@ -398,7 +398,7 @@ function PlasmicCHomepage__RenderFunc(props: {
                       sty.link__s7PzF
                     )}
                     component={Link}
-                    href={`/corporative-page`}
+                    href={`/c-corporative-page`}
                     legacyBehavior={false}
                     onClick={async event => {
                       const $steps = {};
@@ -469,7 +469,7 @@ function PlasmicCHomepage__RenderFunc(props: {
                         sty.link__hUWqj
                       )}
                       component={Link}
-                      href={`/company-profile`}
+                      href={`/c-company-profile`}
                       legacyBehavior={false}
                       platform={"nextjs"}
                     >
@@ -483,7 +483,7 @@ function PlasmicCHomepage__RenderFunc(props: {
                         sty.link__mW3R6
                       )}
                       component={Link}
-                      href={`/services-dashboard`}
+                      href={`/c-services-dashboard`}
                       legacyBehavior={false}
                       platform={"nextjs"}
                     >
@@ -510,7 +510,7 @@ function PlasmicCHomepage__RenderFunc(props: {
                         sty.link__nuntu
                       )}
                       component={Link}
-                      href={`/find-a-affiliate`}
+                      href={`/c-find-a-affiliate`}
                       legacyBehavior={false}
                       platform={"nextjs"}
                     >
@@ -2976,8 +2976,8 @@ export const PlasmicCHomepage = Object.assign(
     internalArgProps: PlasmicCHomepage__ArgProps,
 
     pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
-      pageRoute: "/corporative-page",
-      pagePath: "/corporative-page",
+      pageRoute: "/c-corporative-page",
+      pagePath: "/c-corporative-page",
       params: {},
       query: {}
     })

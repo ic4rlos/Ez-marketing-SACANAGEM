@@ -483,7 +483,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                         sty.link__vxiKn
                       )}
                       component={Link}
-                      href={`/company-profile`}
+                      href={`/c-company-profile`}
                       legacyBehavior={false}
                       platform={"nextjs"}
                     >
@@ -497,7 +497,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                         sty.link__eZbY
                       )}
                       component={Link}
-                      href={`/services-dashboard`}
+                      href={`/c-services-dashboard`}
                       legacyBehavior={false}
                       platform={"nextjs"}
                     >
@@ -524,7 +524,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                         sty.link__p0FlT
                       )}
                       component={Link}
-                      href={`/find-a-affiliate`}
+                      href={`/c-find-a-affiliate`}
                       legacyBehavior={false}
                       platform={"nextjs"}
                     >
@@ -4520,8 +4520,8 @@ export const PlasmicCCompanyProfile = Object.assign(
     internalArgProps: PlasmicCCompanyProfile__ArgProps,
 
     pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
-      pageRoute: "/company-profile",
-      pagePath: "/company-profile",
+      pageRoute: "/c-company-profile",
+      pagePath: "/c-company-profile",
       params: {},
       query: {}
     })

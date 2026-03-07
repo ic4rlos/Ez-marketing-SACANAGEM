@@ -1926,7 +1926,7 @@
           "projectId": "5uU4LbmmcY9V8oBke7M62e",
           "renderModuleFilePath": "plasmic/ez_marketing_platform_sacanagem/PlasmicCHomepage.tsx",
           "importSpec": {
-            "modulePath": "../pages/corporative-page.tsx"
+            "modulePath": "../pages/c-corporative-page.tsx"
           },
           "cssFilePath": "plasmic/ez_marketing_platform_sacanagem/PlasmicCHomepage.module.css",
           "scheme": "blackbox",
@@ -1940,7 +1940,7 @@
           "projectId": "5uU4LbmmcY9V8oBke7M62e",
           "renderModuleFilePath": "plasmic/ez_marketing_platform_sacanagem/PlasmicCCompanyProfile.tsx",
           "importSpec": {
-            "modulePath": "../pages/company-profile.tsx"
+            "modulePath": "../pages/c-company-profile.tsx"
           },
           "cssFilePath": "plasmic/ez_marketing_platform_sacanagem/PlasmicCCompanyProfile.module.css",
           "scheme": "blackbox",
@@ -1954,7 +1954,7 @@
           "projectId": "5uU4LbmmcY9V8oBke7M62e",
           "renderModuleFilePath": "plasmic/ez_marketing_platform_sacanagem/PlasmicCServiceDashboard.tsx",
           "importSpec": {
-            "modulePath": "../pages/services-dashboard.tsx"
+            "modulePath": "../pages/c-services-dashboard.tsx"
           },
           "cssFilePath": "plasmic/ez_marketing_platform_sacanagem/PlasmicCServiceDashboard.module.css",
           "scheme": "blackbox",
@@ -2073,7 +2073,7 @@
           "projectId": "5uU4LbmmcY9V8oBke7M62e",
           "renderModuleFilePath": "plasmic/ez_marketing_platform_sacanagem/PlasmicCFindAffiliate.tsx",
           "importSpec": {
-            "modulePath": "../pages/find-a-affiliate.tsx"
+            "modulePath": "../pages/c-find-a-affiliate.tsx"
           },
           "cssFilePath": "plasmic/ez_marketing_platform_sacanagem/PlasmicCFindAffiliate.module.css",
           "scheme": "blackbox",
@@ -2126,7 +2126,7 @@
           "projectId": "5uU4LbmmcY9V8oBke7M62e",
           "renderModuleFilePath": "plasmic/ez_marketing_platform_sacanagem/PlasmicCApplyACommunitie.tsx",
           "importSpec": {
-            "modulePath": "../pages/apply-a-community.tsx"
+            "modulePath": "../pages/c-apply-a-community.tsx"
           },
           "cssFilePath": "plasmic/ez_marketing_platform_sacanagem/PlasmicCApplyACommunitie.module.css",
           "scheme": "blackbox",
@@ -2535,7 +2535,7 @@
           "projectId": "5uU4LbmmcY9V8oBke7M62e",
           "renderModuleFilePath": "plasmic/ez_marketing_platform_sacanagem/PlasmicCAdminCommunitie.tsx",
           "importSpec": {
-            "modulePath": "../pages/admin-community.tsx"
+            "modulePath": "../pages/c-admin-community.tsx"
           },
           "cssFilePath": "plasmic/ez_marketing_platform_sacanagem/PlasmicCAdminCommunitie.module.css",
           "scheme": "blackbox",
@@ -2615,7 +2615,7 @@
           "projectId": "5uU4LbmmcY9V8oBke7M62e",
           "renderModuleFilePath": "plasmic/ez_marketing_platform_sacanagem/PlasmicCCustomerProfile.tsx",
           "importSpec": {
-            "modulePath": "../pages/customer-profile.tsx"
+            "modulePath": "../pages/c-customer-profile.tsx"
           },
           "cssFilePath": "plasmic/ez_marketing_platform_sacanagem/PlasmicCCustomerProfile.module.css",
           "scheme": "blackbox",

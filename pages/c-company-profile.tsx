@@ -60,10 +60,7 @@ if (!companyData) {
   return;
 }
 
-      if (!companyData) {
-        setLoading(false);
-        return;
-      }
+
 
       setCompany(companyData);
 

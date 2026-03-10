@@ -49,11 +49,16 @@ export default function CCompanyProfile() {
 
     async function loadAll() {
       // company
-      const { data: companyData } = await supabase
-        .from("companies")
-        .select("*")
-        .eq("user_id", user.id)
-        .single();
+const { data: companyData } = await supabase
+  .from("companies")
+  .select("*")
+  .eq("user_id", user.id)
+  .maybeSingle();
+
+if (!companyData) {
+  setLoading(false);
+  return;
+}
 
       if (!companyData) {
         setLoading(false);

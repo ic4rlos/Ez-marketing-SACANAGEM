@@ -268,6 +268,8 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
+  const $globalActions = useGlobalActions?.();
+
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
       {
@@ -654,29 +656,27 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                     __composite["1"]["onClick"] = async info => {
                       const $steps = {};
 
-                      $steps["goToALogin"] = true
+                      $steps["invokeGlobalAction"] = true
                         ? (() => {
-                            const actionArgs = { destination: `/a-login` };
-                            return (({ destination }) => {
-                              if (
-                                typeof destination === "string" &&
-                                destination.startsWith("#")
-                              ) {
-                                document
-                                  .getElementById(destination.substr(1))
-                                  .scrollIntoView({ behavior: "smooth" });
-                              } else {
-                                __nextRouter?.push(destination);
-                              }
-                            })?.apply(null, [actionArgs]);
+                            const actionArgs = {
+                              args: [
+                                undefined,
+                                "aaaaaaaaaaaaaaaa",
+                                "sssssssssssssssss"
+                              ]
+                            };
+                            return $globalActions[
+                              "plasmic-antd5-config-provider.showNotification"
+                            ]?.apply(null, [...actionArgs.args]);
                           })()
                         : undefined;
                       if (
-                        $steps["goToALogin"] != null &&
-                        typeof $steps["goToALogin"] === "object" &&
-                        typeof $steps["goToALogin"].then === "function"
+                        $steps["invokeGlobalAction"] != null &&
+                        typeof $steps["invokeGlobalAction"] === "object" &&
+                        typeof $steps["invokeGlobalAction"].then === "function"
                       ) {
-                        $steps["goToALogin"] = await $steps["goToALogin"];
+                        $steps["invokeGlobalAction"] =
+                          await $steps["invokeGlobalAction"];
                       }
                     };
                     __composite["2"]["type"] = "divider";
@@ -687,12 +687,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                   __composite["1"]["onClick"] = async info => {
                     const $steps = {};
 
-                    $steps["runCode"] = (() => {
-                      if (info.dropdownOptionClicked === "Sign out") {
-                        localStorage.removeItem("your_token_key");
-                        return (window.location.pathname = "/c-login");
-                      }
-                    })()
+                    $steps["runCode"] = true
                       ? (() => {
                           const actionArgs = {
                             customFunction: async () => {

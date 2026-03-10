@@ -2909,7 +2909,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                 {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
                   (() => {
                     try {
-                      return $props.solutions ?? [1];
+                      return $props.formData || [1];
                     } catch (e) {
                       if (
                         e instanceof TypeError ||
@@ -2947,7 +2947,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                               !_par ? [] : Array.isArray(_par) ? _par : [_par])(
                               (() => {
                                 try {
-                                  return $currentItem?.steps ?? [1];
+                                  return currentItem;
                                 } catch (e) {
                                   if (
                                     e instanceof TypeError ||
@@ -2993,9 +2993,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                                     <React.Fragment>
                                       {(() => {
                                         try {
-                                          return (
-                                            $currentItem?.step_text ?? "working"
-                                          );
+                                          return step.step_text;
                                         } catch (e) {
                                           if (
                                             e instanceof TypeError ||
@@ -3030,10 +3028,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                                 <React.Fragment>
                                   {(() => {
                                     try {
-                                      return (
-                                        $currentItem?.description ??
-                                        "description"
-                                      );
+                                      return currentItem.description;
                                     } catch (e) {
                                       if (
                                         e instanceof TypeError ||
@@ -3074,7 +3069,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                                   <React.Fragment>
                                     {(() => {
                                       try {
-                                        return $currentItem?.price ?? "55";
+                                        return currentItem.price;
                                       } catch (e) {
                                         if (
                                           e instanceof TypeError ||
@@ -3106,7 +3101,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                           <React.Fragment>
                             {(() => {
                               try {
-                                return $currentItem?.title ?? "Solution";
+                                return currentItem.title;
                               } catch (e) {
                                 if (
                                   e instanceof TypeError ||

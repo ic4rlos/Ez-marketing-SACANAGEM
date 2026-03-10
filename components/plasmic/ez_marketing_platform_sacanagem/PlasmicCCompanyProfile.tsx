@@ -268,6 +268,8 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
+  const $globalActions = useGlobalActions?.();
+
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
       {
@@ -684,7 +686,32 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                   })();
                   __composite["1"]["type"] = "item";
                   __composite["1"]["label"] = "Sign out";
-                  __composite["1"]["onClick"] = $props.onLogout?.();
+                  __composite["1"]["onClick"] = async info => {
+                    const $steps = {};
+
+                    $steps["invokeGlobalAction"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            args: [
+                              undefined,
+                              "FILHO DA PUTA TEIMOSO ESSA MENSAGEM NAO DEVERIA APARECER",
+                              "NAO ERA PRA SER CAPAZ DE LER ISSO"
+                            ]
+                          };
+                          return $globalActions[
+                            "plasmic-antd5-config-provider.showNotification"
+                          ]?.apply(null, [...actionArgs.args]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["invokeGlobalAction"] != null &&
+                      typeof $steps["invokeGlobalAction"] === "object" &&
+                      typeof $steps["invokeGlobalAction"].then === "function"
+                    ) {
+                      $steps["invokeGlobalAction"] =
+                        await $steps["invokeGlobalAction"];
+                    }
+                  };
                   return __composite;
                 })()}
                 trigger={"hover"}

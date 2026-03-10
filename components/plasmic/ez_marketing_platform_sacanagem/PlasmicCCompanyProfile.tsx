@@ -2921,8 +2921,8 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                                 }
                               })()
                             ).map((__plasmic_item_1, __plasmic_idx_1) => {
-                              const currentItem = __plasmic_item_1;
-                              const currentIndex = __plasmic_idx_1;
+                              const step = __plasmic_item_1;
+                              const stepIndex = __plasmic_idx_1;
                               return (
                                 <div
                                   data-plasmic-name={"steps"}
@@ -2931,7 +2931,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                                     projectcss.all,
                                     sty.steps
                                   )}
-                                  key={currentIndex}
+                                  key={stepIndex}
                                 >
                                   <div
                                     className={classNames(

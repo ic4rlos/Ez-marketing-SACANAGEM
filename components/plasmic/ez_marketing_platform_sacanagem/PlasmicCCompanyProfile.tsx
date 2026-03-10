@@ -2634,7 +2634,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                     sty.goalsSum
                   )}
                 >
-                  {"88"}
+                  {"80"}
                 </div>
                 <div
                   className={classNames(
@@ -2870,7 +2870,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                 {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
                   (() => {
                     try {
-                      return $props.formData || [1];
+                      return $props.formData || [];
                     } catch (e) {
                       if (
                         e instanceof TypeError ||

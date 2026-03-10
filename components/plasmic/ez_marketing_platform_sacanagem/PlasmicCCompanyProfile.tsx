@@ -128,7 +128,7 @@ export function generateDynamicMetadata($q: any, $ctx: PageCtx) {
       title: "Company Profile"
     },
     twitter: {
-      card: "summary",
+      card: "summary" as const,
       title: "Company Profile"
     }
   };
@@ -289,7 +289,20 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
         path: "averageRate.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
+          (() => {
+            try {
+              return $props.reviews?.length ?? 0;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return 5;
+              }
+              throw e;
+            }
+          })()
       },
       {
         path: "disconnect.isOpen",
@@ -684,34 +697,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                   })();
                   __composite["1"]["type"] = "item";
                   __composite["1"]["label"] = "Sign out";
-                  __composite["1"]["onClick"] = async info => {
-                    const $steps = {};
-
-                    $steps["goToALogin"] = true
-                      ? (() => {
-                          const actionArgs = { destination: `/c-login` };
-                          return (({ destination }) => {
-                            if (
-                              typeof destination === "string" &&
-                              destination.startsWith("#")
-                            ) {
-                              document
-                                .getElementById(destination.substr(1))
-                                .scrollIntoView({ behavior: "smooth" });
-                            } else {
-                              __nextRouter?.push(destination);
-                            }
-                          })?.apply(null, [actionArgs]);
-                        })()
-                      : undefined;
-                    if (
-                      $steps["goToALogin"] != null &&
-                      typeof $steps["goToALogin"] === "object" &&
-                      typeof $steps["goToALogin"].then === "function"
-                    ) {
-                      $steps["goToALogin"] = await $steps["goToALogin"];
-                    }
-                  };
+                  __composite["1"]["onClick"] = $props.onLogout?.();
                   return __composite;
                 })()}
                 trigger={"hover"}
@@ -757,6 +743,19 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
               displayMinWidth={"0"}
               displayWidth={"100px"}
               loading={"lazy"}
+              src={(() => {
+                try {
+                  return $props.company?.["Company Logo"] ?? "";
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return undefined;
+                  }
+                  throw e;
+                }
+              })()}
             />
 
             <div className={classNames(projectcss.all, sty.freeBox___1J9Zf)}>
@@ -770,7 +769,21 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                     sty.companyName
                   )}
                 >
-                  {"Company"}
+                  <React.Fragment>
+                    {(() => {
+                      try {
+                        return $props.company?.["Company name"] ?? "Company";
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return "Company";
+                        }
+                        throw e;
+                      }
+                    })()}
+                  </React.Fragment>
                 </div>
                 <div
                   data-plasmic-name={"companyType"}
@@ -781,7 +794,21 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                     sty.companyType
                   )}
                 >
-                  {"INC"}
+                  <React.Fragment>
+                    {(() => {
+                      try {
+                        return $props.company?.["Company type"] ?? "INC";
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return "INC";
+                        }
+                        throw e;
+                      }
+                    })()}
+                  </React.Fragment>
                 </div>
                 <div className={classNames(projectcss.all, sty.freeBox__mVO)}>
                   <AntdRate
@@ -789,7 +816,19 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                     data-plasmic-override={overrides.averageRate}
                     allowHalf={true}
                     className={classNames("__wab_instance", sty.averageRate)}
-                    defaultValue={5}
+                    defaultValue={(() => {
+                      try {
+                        return $props.reviews?.length ?? 0;
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return 5;
+                        }
+                        throw e;
+                      }
+                    })()}
                     disabled={true}
                     multiCharacter={false}
                     onChange={async (...eventArgs: any) => {
@@ -862,7 +901,21 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                       sty.rateSum
                     )}
                   >
-                    {"(50)"}
+                    <React.Fragment>
+                      {(() => {
+                        try {
+                          return $props.reviews?.length ?? 0;
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return "(50)";
+                          }
+                          throw e;
+                        }
+                      })()}
+                    </React.Fragment>
                   </div>
                 </div>
                 <PlasmicLink__
@@ -892,7 +945,21 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                     sty.area
                   )}
                 >
-                  {"Niche"}
+                  <React.Fragment>
+                    {(() => {
+                      try {
+                        return $props.company?.["Area"] ?? "Niche";
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return "Niche";
+                        }
+                        throw e;
+                      }
+                    })()}
+                  </React.Fragment>
                 </div>
                 <div
                   data-plasmic-name={"subArea"}
@@ -903,7 +970,21 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                     sty.subArea
                   )}
                 >
-                  {"Subniche"}
+                  <React.Fragment>
+                    {(() => {
+                      try {
+                        return $props.company?.["Sub area"] ?? "Subniche";
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return "Subniche";
+                        }
+                        throw e;
+                      }
+                    })()}
+                  </React.Fragment>
                 </div>
               </div>
               <div
@@ -915,7 +996,21 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                   sty.location
                 )}
               >
-                {"New York"}
+                <React.Fragment>
+                  {(() => {
+                    try {
+                      return $props.company?.["Location"] ?? "New York";
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return "New York";
+                      }
+                      throw e;
+                    }
+                  })()}
+                </React.Fragment>
               </div>
             </div>
             <div className={classNames(projectcss.all, sty.freeBox__jJhnI)}>
@@ -939,7 +1034,24 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                       sty.foundationDate
                     )}
                   >
-                    {"Botstrap"}
+                    <React.Fragment>
+                      {(() => {
+                        try {
+                          return (
+                            $props.company?.["Foundation date"] ??
+                            "Foundation date"
+                          );
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return "Botstrap";
+                          }
+                          throw e;
+                        }
+                      })()}
+                    </React.Fragment>
                   </div>
                 </div>
                 <Modal
@@ -2584,7 +2696,23 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
               sty.companyTagline
             )}
           >
-            {"Startup tagline"}
+            <React.Fragment>
+              {(() => {
+                try {
+                  return (
+                    $props.company?.["Company tagline"] ?? "Startup tagline"
+                  );
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return "Startup tagline";
+                  }
+                  throw e;
+                }
+              })()}
+            </React.Fragment>
           </div>
           <div className={classNames(projectcss.all, sty.freeBox__p3KxW)}>
             <div className={classNames(projectcss.all, sty.freeBox__p9BXm)}>
@@ -2603,7 +2731,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                   sty.linkedIn
                 )}
                 component={Link}
-                href={"https://www.plasmic.app/"}
+                href={$props.company?.["LinkedIn"] ?? ""}
                 legacyBehavior={false}
                 platform={"nextjs"}
               >
@@ -2626,7 +2754,19 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                   sty.instagram
                 )}
                 component={Link}
-                href={"https://www.plasmic.app/"}
+                href={(() => {
+                  try {
+                    return $props.company?.["Instagram"] ?? "";
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return "https://www.plasmic.app/";
+                    }
+                    throw e;
+                  }
+                })()}
                 legacyBehavior={false}
                 platform={"nextjs"}
               >
@@ -2649,7 +2789,19 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                   sty.x
                 )}
                 component={Link}
-                href={"https://www.plasmic.app/"}
+                href={(() => {
+                  try {
+                    return $props.company?.["X"] ?? "";
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return "https://www.plasmic.app/";
+                    }
+                    throw e;
+                  }
+                })()}
                 legacyBehavior={false}
                 platform={"nextjs"}
               >
@@ -2672,7 +2824,19 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                   sty.website
                 )}
                 component={Link}
-                href={"https://www.plasmic.app/"}
+                href={(() => {
+                  try {
+                    return $props.company?.["Website"] ?? "";
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return "https://www.plasmic.app/";
+                    }
+                    throw e;
+                  }
+                })()}
                 legacyBehavior={false}
                 platform={"nextjs"}
               >
@@ -2742,114 +2906,223 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                 data-plasmic-override={overrides.sliderCarousel}
                 {...child$Props}
               >
-                <div
-                  data-plasmic-name={"solution"}
-                  data-plasmic-override={overrides.solution}
-                  className={classNames(projectcss.all, sty.solution)}
-                >
-                  <AntdTooltip
-                    className={classNames(
-                      "__wab_instance",
-                      sty.tooltip___2Re8F
-                    )}
-                    placement={"right"}
-                    title={
-                      <div
+                {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
+                  (() => {
+                    try {
+                      return $props.solutions ?? [1];
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return [];
+                      }
+                      throw e;
+                    }
+                  })()
+                ).map((__plasmic_item_0, __plasmic_idx_0) => {
+                  const currentItem = __plasmic_item_0;
+                  const currentIndex = __plasmic_idx_0;
+                  return (
+                    <div
+                      data-plasmic-name={"solution"}
+                      data-plasmic-override={overrides.solution}
+                      className={classNames(projectcss.all, sty.solution)}
+                      key={currentIndex}
+                    >
+                      <AntdTooltip
                         className={classNames(
-                          projectcss.all,
-                          sty.freeBox__gPysX
+                          "__wab_instance",
+                          sty.tooltip___2Re8F
                         )}
+                        placement={"right"}
+                        title={
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              sty.freeBox__gPysX
+                            )}
+                          >
+                            {(_par =>
+                              !_par ? [] : Array.isArray(_par) ? _par : [_par])(
+                              (() => {
+                                try {
+                                  return $currentItem?.steps ?? [1];
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return [];
+                                  }
+                                  throw e;
+                                }
+                              })()
+                            ).map((__plasmic_item_1, __plasmic_idx_1) => {
+                              const currentItem = __plasmic_item_1;
+                              const currentIndex = __plasmic_idx_1;
+                              return (
+                                <div
+                                  data-plasmic-name={"steps"}
+                                  data-plasmic-override={overrides.steps}
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.steps
+                                  )}
+                                  key={currentIndex}
+                                >
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text___9HSl
+                                    )}
+                                  >
+                                    {"Steps"}
+                                  </div>
+                                  <div
+                                    data-plasmic-name={"stepText"}
+                                    data-plasmic-override={overrides.stepText}
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.stepText
+                                    )}
+                                  >
+                                    <React.Fragment>
+                                      {(() => {
+                                        try {
+                                          return (
+                                            $currentItem?.step_text ?? "working"
+                                          );
+                                        } catch (e) {
+                                          if (
+                                            e instanceof TypeError ||
+                                            e?.plasmicType ===
+                                              "PlasmicUndefinedDataError"
+                                          ) {
+                                            return "Working";
+                                          }
+                                          throw e;
+                                        }
+                                      })()}
+                                    </React.Fragment>
+                                  </div>
+                                </div>
+                              );
+                            })}
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                sty.freeBox__aJfa
+                              )}
+                            >
+                              <div
+                                data-plasmic-name={"description"}
+                                data-plasmic-override={overrides.description}
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.__wab_text,
+                                  sty.description
+                                )}
+                              >
+                                <React.Fragment>
+                                  {(() => {
+                                    try {
+                                      return (
+                                        $currentItem?.description ??
+                                        "description"
+                                      );
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.";
+                                      }
+                                      throw e;
+                                    }
+                                  })()}
+                                </React.Fragment>
+                              </div>
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox__cdvtU
+                                )}
+                              >
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__kdIau
+                                  )}
+                                >
+                                  {"U$"}
+                                </div>
+                                <div
+                                  data-plasmic-name={"price"}
+                                  data-plasmic-override={overrides.price}
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.price
+                                  )}
+                                >
+                                  <React.Fragment>
+                                    {(() => {
+                                      try {
+                                        return $currentItem?.price ?? "55";
+                                      } catch (e) {
+                                        if (
+                                          e instanceof TypeError ||
+                                          e?.plasmicType ===
+                                            "PlasmicUndefinedDataError"
+                                        ) {
+                                          return "2,405.00";
+                                        }
+                                        throw e;
+                                      }
+                                    })()}
+                                  </React.Fragment>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        }
+                        titleText={"Tooltip contents"}
                       >
                         <div
-                          data-plasmic-name={"steps"}
-                          data-plasmic-override={overrides.steps}
-                          className={classNames(projectcss.all, sty.steps)}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text___9HSl
-                            )}
-                          >
-                            {"Steps"}
-                          </div>
-                          <div
-                            data-plasmic-name={"stepText"}
-                            data-plasmic-override={overrides.stepText}
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.stepText
-                            )}
-                          >
-                            {"Working"}
-                          </div>
-                        </div>
-                        <div
+                          data-plasmic-name={"title"}
+                          data-plasmic-override={overrides.title}
                           className={classNames(
                             projectcss.all,
-                            sty.freeBox__aJfa
+                            projectcss.__wab_text,
+                            sty.title
                           )}
                         >
-                          <div
-                            data-plasmic-name={"description"}
-                            data-plasmic-override={overrides.description}
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.description
-                            )}
-                          >
-                            {
-                              "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-                            }
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__cdvtU
-                            )}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__kdIau
-                              )}
-                            >
-                              {"U$"}
-                            </div>
-                            <div
-                              data-plasmic-name={"price"}
-                              data-plasmic-override={overrides.price}
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.price
-                              )}
-                            >
-                              {"2,405.00"}
-                            </div>
-                          </div>
+                          <React.Fragment>
+                            {(() => {
+                              try {
+                                return $currentItem?.title ?? "Solution";
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return "Solution";
+                                }
+                                throw e;
+                              }
+                            })()}
+                          </React.Fragment>
                         </div>
-                      </div>
-                    }
-                    titleText={"Tooltip contents"}
-                  >
-                    <div
-                      data-plasmic-name={"title"}
-                      data-plasmic-override={overrides.title}
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.title
-                      )}
-                    >
-                      {"Solution"}
+                      </AntdTooltip>
                     </div>
-                  </AntdTooltip>
-                </div>
+                  );
+                })}
               </SliderWrapper>
             );
           })()}
@@ -3198,6 +3471,19 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
               displayMinWidth={"0"}
               displayWidth={"170px"}
               loading={"lazy"}
+              src={(() => {
+                try {
+                  return $props.company?.["Company image"] ?? "";
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return undefined;
+                  }
+                  throw e;
+                }
+              })()}
             />
 
             <div className={classNames(projectcss.all, sty.freeBox___4Ryxz)}>
@@ -3219,7 +3505,9 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                   sty.customerProblem
                 )}
               >
-                {"Enter some text"}
+                <React.Fragment>
+                  {$props.company?.["Customer problem"] ?? "Enter some text"}
+                </React.Fragment>
               </div>
               <div
                 className={classNames(
@@ -3239,7 +3527,10 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                   sty.solutionDescription
                 )}
               >
-                {"Enter some text"}
+                <React.Fragment>
+                  {$props.company?.["Solution description"] ??
+                    "Enter some text"}
+                </React.Fragment>
               </div>
               <div
                 className={classNames(
@@ -3259,9 +3550,24 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                   sty.whyShouldTheyChoose
                 )}
               >
-                {
-                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-                }
+                <React.Fragment>
+                  {(() => {
+                    try {
+                      return (
+                        $props.company?.["Why should they choose"] ??
+                        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+                      );
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.";
+                      }
+                      throw e;
+                    }
+                  })()}
+                </React.Fragment>
               </div>
             </div>
           </div>

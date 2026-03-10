@@ -97,7 +97,7 @@ export function generateDynamicMetadata($q: any, $ctx: PageCtx) {
       title: "Create account"
     },
     twitter: {
-      card: "summary",
+      card: "summary" as const,
       title: "Create account"
     }
   };

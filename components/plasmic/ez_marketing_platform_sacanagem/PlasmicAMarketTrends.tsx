@@ -243,7 +243,7 @@ export function generateDynamicMetadata($q: any, $ctx: PageCtx) {
       title: "Market Trends"
     },
     twitter: {
-      card: "summary",
+      card: "summary" as const,
       title: "Market Trends"
     }
   };

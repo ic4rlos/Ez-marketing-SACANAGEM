@@ -111,7 +111,7 @@ export function generateDynamicMetadata($q: any, $ctx: PageCtx) {
       title: "Apply a Community"
     },
     twitter: {
-      card: "summary",
+      card: "summary" as const,
       title: "Apply a Community"
     }
   };

@@ -18,11 +18,8 @@ export default function CCompanyProfile() {
   const router = useRouter();
 
   const [user, setUser] = useState<any>(undefined);
-
   const [company, setCompany] = useState<any>(null);
   const [solutions, setSolutions] = useState<any[]>([]);
-  const [reviews, setReviews] = useState<any[]>([]);
-  const [connections, setConnections] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
   // =========================
@@ -68,6 +65,7 @@ export default function CCompanyProfile() {
         }
 
         setCompany(companyData);
+
         const companyId = companyData.id;
 
         // =========================
@@ -110,28 +108,6 @@ export default function CCompanyProfile() {
 
         setSolutions(structuredSolutions);
 
-        // =========================
-        // COMPANY REVIEWS
-        // =========================
-
-        const { data: reviewsData } = await supabase
-          .from("company_reviews")
-          .select("*")
-          .eq("company_id", companyId);
-
-        setReviews(reviewsData ?? []);
-
-        // =========================
-        // CONNECTIONS
-        // =========================
-
-        const { data: connectionsData } = await supabase
-          .from("CONNECTIONS")
-          .select("*")
-          .eq("company_id", companyId);
-
-        setConnections(connectionsData ?? []);
-
         setLoading(false);
       } catch (err) {
         console.error("Load error:", err);
@@ -157,10 +133,8 @@ export default function CCompanyProfile() {
     <PlasmicCCompanyProfile
       args={{
         company: company,
-        formData: solutions,   // 🔥 compatível com o Repeat do Plasmic
-        solutions: solutions,  // mantém compatibilidade futura
-        reviews: reviews,
-        connections: connections,
+        formData: solutions,
+        solutions: solutions,
         onLogout: handleLogout,
       }}
     />

@@ -289,20 +289,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
         path: "averageRate.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
-          (() => {
-            try {
-              return $props.reviews?.length ?? 0;
-            } catch (e) {
-              if (
-                e instanceof TypeError ||
-                e?.plasmicType === "PlasmicUndefinedDataError"
-              ) {
-                return 5;
-              }
-              throw e;
-            }
-          })()
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "disconnect.isOpen",
@@ -816,19 +803,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                     data-plasmic-override={overrides.averageRate}
                     allowHalf={true}
                     className={classNames("__wab_instance", sty.averageRate)}
-                    defaultValue={(() => {
-                      try {
-                        return $props.reviews?.length ?? 0;
-                      } catch (e) {
-                        if (
-                          e instanceof TypeError ||
-                          e?.plasmicType === "PlasmicUndefinedDataError"
-                        ) {
-                          return 5;
-                        }
-                        throw e;
-                      }
-                    })()}
+                    defaultValue={5}
                     disabled={true}
                     multiCharacter={false}
                     onChange={async (...eventArgs: any) => {
@@ -901,21 +876,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                       sty.rateSum
                     )}
                   >
-                    <React.Fragment>
-                      {(() => {
-                        try {
-                          return $props.reviews?.length ?? 0;
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return "(50)";
-                          }
-                          throw e;
-                        }
-                      })()}
-                    </React.Fragment>
+                    {"50"}
                   </div>
                 </div>
                 <PlasmicLink__
@@ -2673,7 +2634,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                     sty.goalsSum
                   )}
                 >
-                  {"80"}
+                  {"88"}
                 </div>
                 <div
                   className={classNames(
@@ -2947,7 +2908,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                               !_par ? [] : Array.isArray(_par) ? _par : [_par])(
                               (() => {
                                 try {
-                                  return currentItem;
+                                  return currentItem.steps;
                                 } catch (e) {
                                   if (
                                     e instanceof TypeError ||

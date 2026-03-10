@@ -59,14 +59,14 @@ export default function CLogin() {
       data.session.access_token
     );
 
-    router.push("/find-a-affiliate");
+    router.push("/c-find-a-affiliate");
   }
 
   async function handleGoogleLogin() {
     await supabase.auth.signInWithOAuth({
       provider: "google",
       options: {
-        redirectTo: "https://www.ezmarketing.space/find-a-affiliate",
+        redirectTo: "https://www.ezmarketing.space/c-find-a-affiliate",
       },
     });
   }

@@ -10,7 +10,7 @@ const PlasmicCCompanyProfile = dynamic(
   () =>
     import(
       "../components/plasmic/ez_marketing_platform_sacanagem/PlasmicCCompanyProfile"
-    ).then((m) => m.PlasmicCCompanyProfile),
+    ),
   { ssr: false }
 );
 
@@ -22,32 +22,21 @@ export default function CCompanyProfile() {
   const [solutions, setSolutions] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
-  // =========================
-  // LOAD USER
-  // =========================
-
   useEffect(() => {
     async function loadUser() {
       const { data } = await supabase.auth.getUser();
       setUser(data?.user ?? null);
     }
-
     loadUser();
   }, []);
 
-  // =========================
-  // REDIRECT IF NOT LOGGED
-  // =========================
-
   useEffect(() => {
-    if (user === null) {
-      router.replace("/");
+    if (user === null && !loading) {
+      if (router.pathname !== "/") {
+        router.replace("/");
+      }
     }
-  }, [user, router]);
-
-  // =========================
-  // LOAD COMPANY + SOLUTIONS
-  // =========================
+  }, [user, loading, router]);
 
   useEffect(() => {
     if (!user) return;
@@ -56,7 +45,6 @@ export default function CCompanyProfile() {
       try {
         setLoading(true);
 
-        // COMPANY
         const { data: companyData } = await supabase
           .from("companies")
           .select("*")
@@ -72,9 +60,6 @@ export default function CCompanyProfile() {
 
         setCompany(companyData);
 
-        const companyId = companyData.id;
-
-        // SOLUTIONS + STEPS
         const { data: solutionsData } = await supabase
           .from("solutions")
           .select(`
@@ -88,7 +73,7 @@ export default function CCompanyProfile() {
               Step_order
             )
           `)
-          .eq("Company_id", companyId)
+          .eq("Company_id", companyData.id)
           .order("id", { ascending: true });
 
         const structuredSolutions =
@@ -120,24 +105,13 @@ export default function CCompanyProfile() {
     loadAll();
   }, [user]);
 
-  // =========================
-  // LOGOUT
-  // =========================
-
   async function handleLogout() {
     await supabase.auth.signOut();
     router.replace("/");
   }
 
-  // =========================
-  // LOADING STATE
-  // =========================
-
-  if (user === undefined || loading) return null;
-
-  // =========================
-  // RENDER
-  // =========================
+  if (user === undefined) return null;
+  if (loading) return null;
 
   return (
     <PlasmicCCompanyProfile

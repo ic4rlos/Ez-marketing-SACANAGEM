@@ -126,7 +126,7 @@ export default function CCompanyProfile() {
         // =========================
 
         const { data: connectionsData } = await supabase
-          .from("connections")
+          .from("CONNECTIONS")
           .select("*")
           .eq("company_id", companyId);
 

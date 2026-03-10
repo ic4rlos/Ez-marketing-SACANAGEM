@@ -68,7 +68,6 @@ export default function CCompanyProfile() {
         }
 
         setCompany(companyData);
-
         const companyId = companyData.id;
 
         // =========================
@@ -100,7 +99,8 @@ export default function CCompanyProfile() {
             steps:
               sol.solutions_steps
                 ?.sort(
-                  (a: any, b: any) => (a.Step_order ?? 0) - (b.Step_order ?? 0)
+                  (a: any, b: any) =>
+                    (a.Step_order ?? 0) - (b.Step_order ?? 0)
                 )
                 .map((s: any) => ({
                   id: s.id,
@@ -157,7 +157,8 @@ export default function CCompanyProfile() {
     <PlasmicCCompanyProfile
       args={{
         company: company,
-        solutions: solutions,
+        formData: solutions,   // 🔥 compatível com o Repeat do Plasmic
+        solutions: solutions,  // mantém compatibilidade futura
         reviews: reviews,
         connections: connections,
         onLogout: handleLogout,

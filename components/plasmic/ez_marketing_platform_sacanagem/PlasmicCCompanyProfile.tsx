@@ -268,8 +268,6 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
-  const $globalActions = useGlobalActions?.();
-
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
       {
@@ -689,27 +687,29 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                   __composite["1"]["onClick"] = async info => {
                     const $steps = {};
 
-                    $steps["invokeGlobalAction"] = true
+                    $steps["runCode"] = (() => {
+                      if (info.dropdownOptionClicked === "Sign out") {
+                        localStorage.removeItem("your_token_key");
+                        return (window.location.pathname = "/c-login");
+                      }
+                    })()
                       ? (() => {
                           const actionArgs = {
-                            args: [
-                              undefined,
-                              "FILHO DA PUTA TEIMOSO ESSA MENSAGEM NAO DEVERIA APARECER",
-                              "NAO ERA PRA SER CAPAZ DE LER ISSO"
-                            ]
+                            customFunction: async () => {
+                              return $props.onLogout?.();
+                            }
                           };
-                          return $globalActions[
-                            "plasmic-antd5-config-provider.showNotification"
-                          ]?.apply(null, [...actionArgs.args]);
+                          return (({ customFunction }) => {
+                            return customFunction();
+                          })?.apply(null, [actionArgs]);
                         })()
                       : undefined;
                     if (
-                      $steps["invokeGlobalAction"] != null &&
-                      typeof $steps["invokeGlobalAction"] === "object" &&
-                      typeof $steps["invokeGlobalAction"].then === "function"
+                      $steps["runCode"] != null &&
+                      typeof $steps["runCode"] === "object" &&
+                      typeof $steps["runCode"].then === "function"
                     ) {
-                      $steps["invokeGlobalAction"] =
-                        await $steps["invokeGlobalAction"];
+                      $steps["runCode"] = await $steps["runCode"];
                     }
                   };
                   return __composite;
@@ -2897,7 +2897,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                 {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
                   (() => {
                     try {
-                      return $props.formData || [];
+                      return $props.formData || [1];
                     } catch (e) {
                       if (
                         e instanceof TypeError ||
@@ -2923,6 +2923,9 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                           "__wab_instance",
                           sty.tooltip___2Re8F
                         )}
+                        overlayClassName={classNames({
+                          [sty["pcls_Fi4z3vOFihmc"]]: true
+                        })}
                         placement={"right"}
                         title={
                           <div
@@ -3036,15 +3039,30 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                                   sty.freeBox__cdvtU
                                 )}
                               >
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__kdIau
-                                  )}
-                                >
-                                  {"U$"}
-                                </div>
+                                {(() => {
+                                  try {
+                                    return currentItem.Price !== "";
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return true;
+                                    }
+                                    throw e;
+                                  }
+                                })() ? (
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text__kdIau
+                                    )}
+                                  >
+                                    {"U$"}
+                                  </div>
+                                ) : null}
                                 <div
                                   data-plasmic-name={"price"}
                                   data-plasmic-override={overrides.price}

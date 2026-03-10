@@ -17,7 +17,11 @@ const PlasmicCCompanyProfile = dynamic(
 export default function CCompanyProfile() {
   const router = useRouter();
 
-  const [user, setUser] = useState<any>(null);
+  // undefined = carregando auth
+  // null = não logado
+  // object = usuário logado
+  const [user, setUser] = useState<any>(undefined);
+
   const [company, setCompany] = useState<any>(null);
   const [solutions, setSolutions] = useState<any[]>([]);
   const [reviews, setReviews] = useState<any[]>([]);
@@ -42,25 +46,25 @@ export default function CCompanyProfile() {
   // =========================
 
   useEffect(() => {
+    if (user === undefined) return;
+
     if (!user) {
-      setLoading(false);
+      router.replace("/");
       return;
     }
 
     async function loadAll() {
       // company
-const { data: companyData } = await supabase
-  .from("companies")
-  .select("*")
-  .eq("user_id", user.id)
-  .maybeSingle();
+      const { data: companyData } = await supabase
+        .from("companies")
+        .select("*")
+        .eq("user_id", user.id)
+        .maybeSingle();
 
-if (!companyData) {
-  setLoading(false);
-  return;
-}
-
-
+      if (!companyData) {
+        setLoading(false);
+        return;
+      }
 
       setCompany(companyData);
 
@@ -121,7 +125,7 @@ if (!companyData) {
     }
 
     loadAll();
-  }, [user]);
+  }, [user, router]);
 
   // =========================
   // LOGOUT

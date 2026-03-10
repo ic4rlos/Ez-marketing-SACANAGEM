@@ -23,7 +23,7 @@ export default function CCompanyProfile() {
   const [loading, setLoading] = useState(true);
 
   // =========================
-  // AUTH
+  // LOAD USER
   // =========================
 
   useEffect(() => {
@@ -36,23 +36,27 @@ export default function CCompanyProfile() {
   }, []);
 
   // =========================
-  // LOAD COMPANY DATA
+  // REDIRECT IF NOT LOGGED
   // =========================
 
   useEffect(() => {
-    if (user === undefined) return;
-
-    if (!user) {
+    if (user === null) {
       router.replace("/");
-      return;
     }
+  }, [user, router]);
+
+  // =========================
+  // LOAD COMPANY + SOLUTIONS
+  // =========================
+
+  useEffect(() => {
+    if (!user) return;
 
     async function loadAll() {
       try {
-        // =========================
-        // COMPANY
-        // =========================
+        setLoading(true);
 
+        // COMPANY
         const { data: companyData } = await supabase
           .from("companies")
           .select("*")
@@ -60,6 +64,8 @@ export default function CCompanyProfile() {
           .maybeSingle();
 
         if (!companyData) {
+          setCompany(null);
+          setSolutions([]);
           setLoading(false);
           return;
         }
@@ -68,10 +74,7 @@ export default function CCompanyProfile() {
 
         const companyId = companyData.id;
 
-        // =========================
         // SOLUTIONS + STEPS
-        // =========================
-
         const { data: solutionsData } = await supabase
           .from("solutions")
           .select(`
@@ -107,16 +110,15 @@ export default function CCompanyProfile() {
           })) ?? [];
 
         setSolutions(structuredSolutions);
-
-        setLoading(false);
       } catch (err) {
         console.error("Load error:", err);
-        setLoading(false);
       }
+
+      setLoading(false);
     }
 
     loadAll();
-  }, [user, router]);
+  }, [user]);
 
   // =========================
   // LOGOUT
@@ -127,14 +129,22 @@ export default function CCompanyProfile() {
     router.replace("/");
   }
 
-  if (loading) return null;
+  // =========================
+  // LOADING STATE
+  // =========================
+
+  if (user === undefined || loading) return null;
+
+  // =========================
+  // RENDER
+  // =========================
 
   return (
     <PlasmicCCompanyProfile
       args={{
-        company: company,
-        formData: solutions,
-        solutions: solutions,
+        company: company ?? {},
+        formData: solutions ?? [],
+        solutions: solutions ?? [],
         onLogout: handleLogout,
       }}
     />

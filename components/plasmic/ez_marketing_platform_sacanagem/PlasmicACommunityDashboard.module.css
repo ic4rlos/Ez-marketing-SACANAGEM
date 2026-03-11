@@ -406,7 +406,7 @@
   font-weight: 400;
   font-style: normal;
   color: #535353;
-  text-transform: none;
+  text-transform: capitalize;
   line-height: 1.5;
   letter-spacing: normal;
   user-select: text;
@@ -453,7 +453,7 @@
   font-weight: 400;
   font-style: normal;
   color: var(--token-azDG17mCuVLt);
-  text-transform: none;
+  text-transform: capitalize;
   line-height: 1.5;
   letter-spacing: normal;
   user-select: text;
@@ -660,6 +660,7 @@
 .text__csMJv {
   font-size: 14px;
   font-weight: 400;
+  padding: 3px;
 }
 .root .text__csMJv:hover {
   text-decoration-line: underline !important;
@@ -689,6 +690,7 @@
 .text__rtWAe {
   font-size: 14px;
   font-weight: 400;
+  padding: 3px;
 }
 .root .text__rtWAe:hover {
   text-decoration-line: underline !important;
@@ -852,6 +854,7 @@
   max-width: 100%;
   text-align: center;
   font-size: 18px;
+  text-transform: capitalize;
   min-width: 0;
   margin: 60px 0px 0px;
 }
@@ -862,6 +865,7 @@
   max-width: 100%;
   height: auto;
   width: 100%;
+  text-transform: capitalize;
   min-width: 0;
 }
 .modal:global(.__wab_instance):global(.__wab_instance) {

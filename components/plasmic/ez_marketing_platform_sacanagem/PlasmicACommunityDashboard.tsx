@@ -1079,6 +1079,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
               controls={false}
               loop={true}
               muted={true}
+              poster={$props.formData?.["agency_pic"] ?? ""}
               ref={ref => {
                 $refs["agencyPic"] = ref;
               }}
@@ -1316,7 +1317,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                     className={classNames("__wab_instance", sty.editCommunity)}
                     color={"softSand"}
                     link={`/a-create-community`}
-                    shape={"sharp"}
+                    shape={"rounded"}
                     size={"minimal"}
                   >
                     <div
@@ -1538,7 +1539,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                           sty.loginButton__urfzw
                         )}
                         color={"softRed"}
-                        shape={"sharp"}
+                        shape={"rounded"}
                         size={"minimal"}
                       >
                         <div
@@ -1972,63 +1973,113 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                 data-plasmic-override={overrides.membersCarousel}
                 {...child$Props}
               >
-                <div
-                  data-plasmic-name={"member"}
-                  data-plasmic-override={overrides.member}
-                  className={classNames(projectcss.all, sty.member)}
-                >
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__iBgP0)}
-                  >
+                {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
+                  (() => {
+                    try {
+                      return $props.formData?.members || [1];
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return [];
+                      }
+                      throw e;
+                    }
+                  })()
+                ).map((__plasmic_item_0, __plasmic_idx_0) => {
+                  const currentItem = __plasmic_item_0;
+                  const currentIndex = __plasmic_idx_0;
+                  return (
                     <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__iqqHs
-                      )}
+                      data-plasmic-name={"member"}
+                      data-plasmic-override={overrides.member}
+                      className={classNames(projectcss.all, sty.member)}
+                      key={currentIndex}
                     >
-                      {"Bacharel"}
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__iBgP0
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__iqqHs
+                          )}
+                        >
+                          {"Bacharel"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__bCrgz
+                          )}
+                        >
+                          {"Gold"}
+                        </div>
+                        <PlasmicImg__
+                          data-plasmic-name={"profilePic"}
+                          data-plasmic-override={overrides.profilePic}
+                          alt={""}
+                          className={classNames(sty.profilePic)}
+                          displayHeight={"250px"}
+                          displayMaxHeight={"none"}
+                          displayMaxWidth={"100%"}
+                          displayMinHeight={"0"}
+                          displayMinWidth={"0"}
+                          displayWidth={"200px"}
+                          src={(() => {
+                            try {
+                              return currentItem["Profile pic"];
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return {
+                                  src: "/plasmic/ez_marketing_platform_sacanagem/images/vecteezyUserAccountIconForYourDesignOnly21079672Png.png",
+                                  fullWidth: 2551,
+                                  fullHeight: 2551,
+                                  aspectRatio: undefined
+                                };
+                              }
+                              throw e;
+                            }
+                          })()}
+                        />
+                      </div>
+                      <div
+                        data-plasmic-name={"office"}
+                        data-plasmic-override={overrides.office}
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.office
+                        )}
+                      >
+                        <React.Fragment>
+                          {(() => {
+                            try {
+                              return currentItem.Office;
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return "Data Analyst";
+                              }
+                              throw e;
+                            }
+                          })()}
+                        </React.Fragment>
+                      </div>
                     </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__bCrgz
-                      )}
-                    >
-                      {"Gold"}
-                    </div>
-                    <PlasmicImg__
-                      data-plasmic-name={"profilePic"}
-                      data-plasmic-override={overrides.profilePic}
-                      alt={""}
-                      className={classNames(sty.profilePic)}
-                      displayHeight={"250px"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={"200px"}
-                      src={{
-                        src: "/plasmic/ez_marketing_platform_sacanagem/images/vecteezyUserAccountIconForYourDesignOnly21079672Png.png",
-                        fullWidth: 2551,
-                        fullHeight: 2551,
-                        aspectRatio: undefined
-                      }}
-                    />
-                  </div>
-                  <div
-                    data-plasmic-name={"office"}
-                    data-plasmic-override={overrides.office}
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.office
-                    )}
-                  >
-                    {"Data Analyst"}
-                  </div>
-                </div>
+                  );
+                })}
               </SliderWrapper>
             );
           })()}

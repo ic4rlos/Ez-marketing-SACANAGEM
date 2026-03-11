@@ -1082,7 +1082,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
               ref={ref => {
                 $refs["agencyPic"] = ref;
               }}
-              src={$props.formData?.["Agency pic"] ?? ""}
+              src={$props.formData?.["agency_pic"] ?? ""}
             />
 
             <div className={classNames(projectcss.all, sty.freeBox__j3Stf)}>
@@ -1164,7 +1164,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                         sty.youtubeChannel
                       )}
                       component={Link}
-                      href={$props.formData?.["Youtube channel"] ?? ""}
+                      href={$props.formData?.["youtube_channel"] ?? ""}
                       legacyBehavior={false}
                       platform={"nextjs"}
                     >
@@ -1195,7 +1195,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                         sty.x
                       )}
                       component={Link}
-                      href={$props.formData?.["X"] ?? ""}
+                      href={$props.formData?.["x"] ?? ""}
                       legacyBehavior={false}
                       platform={"nextjs"}
                     >
@@ -1226,7 +1226,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                         sty.tiktok
                       )}
                       component={Link}
-                      href={$props.formData?.["Tiktok"] ?? ""}
+                      href={$props.formData?.["tiktok"] ?? ""}
                       legacyBehavior={false}
                       platform={"nextjs"}
                     >
@@ -1572,7 +1572,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
               loading={"lazy"}
               src={(() => {
                 try {
-                  return $props.formData?.["Community logo"] ?? null;
+                  return $props.formData?.["community_logo"] ?? null;
                 } catch (e) {
                   if (
                     e instanceof TypeError ||
@@ -1610,7 +1610,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
           <React.Fragment>
             {(() => {
               try {
-                return $props.formData?.["Community name"] ?? "Community name";
+                return $props.formData?.["community_name"] ?? "Community name";
               } catch (e) {
                 if (
                   e instanceof TypeError ||
@@ -1635,7 +1635,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
           <React.Fragment>
             {(() => {
               try {
-                return $props.formData?.["Location"] ?? "Location";
+                return $props.formData?.["location"] ?? "Location";
               } catch (e) {
                 if (
                   e instanceof TypeError ||
@@ -8292,7 +8292,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
             data-plasmic-name={"youtubeVideo"}
             data-plasmic-override={overrides.youtubeVideo}
             className={classNames("__wab_instance", sty.youtubeVideo)}
-            videoId={`R6MeLqRQzYw${$props.formData?.["Youtube video"] ?? ""}`}
+            videoId={`R6MeLqRQzYw${$props.formData?.["youtube_video"] ?? ""}`}
           />
 
           <div className={classNames(projectcss.all, sty.freeBox__sYNai)}>
@@ -8318,7 +8318,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                 {(() => {
                   try {
                     return (
-                      $props.formData?.["About"] ??
+                      $props.formData?.["about"] ??
                       "Our differential: Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
                     );
                   } catch (e) {
@@ -8345,7 +8345,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
               component={Link}
               href={(() => {
                 try {
-                  return $props.formData?.["Website"] ?? "";
+                  return $props.formData?.["website"] ?? "";
                 } catch (e) {
                   if (
                     e instanceof TypeError ||

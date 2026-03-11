@@ -26,7 +26,10 @@ export default function ACommunityDashboard() {
 
   const [loading, setLoading] = useState(true);
 
+  // =========================
   // AUTH
+  // =========================
+
   useEffect(() => {
     async function loadUser() {
       const { data } = await supabase.auth.getUser();
@@ -36,7 +39,10 @@ export default function ACommunityDashboard() {
     loadUser();
   }, []);
 
+  // =========================
   // LOAD COMMUNITY + MEMBERS
+  // =========================
+
   useEffect(() => {
     if (!user) {
       setLoading(false);
@@ -58,21 +64,26 @@ export default function ACommunityDashboard() {
         return;
       }
 
-      // dados da comunidade
+      const communityId = member.community_id;
+
+      // =========================
+      // COMMUNITY INFO
+      // =========================
+
       const { data: community } = await supabase
         .from("Community")
         .select("*")
-        .eq("id", member.community_id)
+        .eq("id", communityId)
         .maybeSingle();
 
       // =========================
-      // MEMBERS
+      // MEMBERS OF SAME COMMUNITY
       // =========================
 
       const { data: membersDb } = await supabase
         .from("community_members")
-        .select("*")
-        .eq("community_id", member.community_id)
+        .select("user_id")
+        .eq("community_id", communityId)
         .eq("status", "connected");
 
       let members: any[] = [];
@@ -82,27 +93,26 @@ export default function ACommunityDashboard() {
         members = await Promise.all(
           membersDb.map(async (m: any) => {
 
-            // profile
+            // PROFILE
             const { data: profile } = await supabase
               .from("User profile")
-              .select("*")
+              .select("id, \"Profile pic\", user_id")
               .eq("user_id", m.user_id)
               .maybeSingle();
 
             if (!profile) return null;
 
-            // first office
+            // FIRST OFFICE
             const { data: office } = await supabase
               .from("Multicharge")
-              .select("*")
+              .select("Office")
               .eq("User profile_id", profile.id)
               .limit(1)
               .maybeSingle();
 
             return {
-              profile_pic: profile["Profile pic"] ?? null,
-              office: office?.Office ?? null,
-              profile_id: profile.id
+              "Profile pic": profile["Profile pic"] ?? null,
+              Office: office?.Office ?? null
             };
 
           })
@@ -111,7 +121,10 @@ export default function ACommunityDashboard() {
         members = members.filter(Boolean);
       }
 
+      // =========================
       // FINAL STATE
+      // =========================
+
       setFormData({
         ...community,
         members

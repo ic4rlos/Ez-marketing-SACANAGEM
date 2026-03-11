@@ -19,6 +19,7 @@ export default function AProfile() {
   const supabase = getSupabaseA();
 
   const [user, setUser] = useState<any>(null);
+
   const [formData, setFormData] = useState<any>({
     education: [],
     jobs: [],
@@ -34,7 +35,7 @@ export default function AProfile() {
   useEffect(() => {
     async function loadUser() {
       const { data } = await supabase.auth.getUser();
-      setUser(data.user ?? null);
+      setUser(data?.user ?? null);
     }
 
     loadUser();
@@ -83,7 +84,11 @@ export default function AProfile() {
         .select("*")
         .eq("User profile_id", profileId);
 
-      const offices = officesDb?.map((o: any) => o.Office) ?? [];
+      // 🔥 CORREÇÃO
+      const offices =
+        officesDb?.map((o: any) => ({
+          Offices: o.Office,
+        })) ?? [];
 
       // =========================
       // COMMUNITY
@@ -118,10 +123,19 @@ export default function AProfile() {
         const today = new Date();
 
         age = today.getFullYear() - birth.getFullYear();
+
+        const monthDiff = today.getMonth() - birth.getMonth();
+
+        if (
+          monthDiff < 0 ||
+          (monthDiff === 0 && today.getDate() < birth.getDate())
+        ) {
+          age--;
+        }
       }
 
       // =========================
-      // STATE FINAL
+      // FINAL STATE
       // =========================
 
       setFormData({

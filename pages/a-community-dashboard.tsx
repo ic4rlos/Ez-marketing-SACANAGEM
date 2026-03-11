@@ -19,13 +19,12 @@ export default function ACommunityDashboard() {
   const supabase = getSupabaseA();
 
   const [user, setUser] = useState<any>(null);
-  const [community, setCommunity] = useState<any>(null);
+
+  const [formData, setFormData] = useState<any>({});
+
   const [loading, setLoading] = useState(true);
 
-  // ======================
   // AUTH
-  // ======================
-
   useEffect(() => {
     async function loadUser() {
       const { data } = await supabase.auth.getUser();
@@ -35,16 +34,12 @@ export default function ACommunityDashboard() {
     loadUser();
   }, []);
 
-  // ======================
   // LOAD COMMUNITY
-  // ======================
-
   useEffect(() => {
     if (!user) return;
 
     async function loadCommunity() {
 
-      // descobrir qual comunidade o user pertence
       const { data: member } = await supabase
         .from("community_members")
         .select("community_id")
@@ -57,19 +52,20 @@ export default function ACommunityDashboard() {
         return;
       }
 
-      // buscar comunidade
-      const { data: communityData } = await supabase
+      const { data: community } = await supabase
         .from("Community")
         .select("*")
         .eq("id", member.community_id)
         .maybeSingle();
 
-      setCommunity(communityData ?? null);
+      setFormData({
+        ...community
+      });
+
       setLoading(false);
     }
 
     loadCommunity();
-
   }, [user]);
 
   if (loading) return null;
@@ -77,7 +73,8 @@ export default function ACommunityDashboard() {
   return (
     <PlasmicACommunityDashboard
       args={{
-        community: community
+        formData: formData,
+        setFormData: setFormData
       }}
     />
   );

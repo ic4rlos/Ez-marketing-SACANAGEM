@@ -3,14 +3,16 @@ import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 import { getSupabaseA } from "../lib/a-supabaseClient";
 
+// 🔥 Mesma estratégia do primogênito
 export const dynamic_config = "force-dynamic";
 export const runtime = "nodejs";
 
+// 🔥 Plasmic sem SSR
 const PlasmicAEditProfile = dynamic(
   () =>
-    import(
-      "../components/plasmic/ez_marketing_platform_sacanagem/PlasmicAEditProfile"
-    ).then((m) => m.PlasmicAEditProfile),
+    import("../components/plasmic/ez_marketing_platform_sacanagem/PlasmicAEditProfile").then(
+      (m) => m.PlasmicAEditProfile
+    ),
   { ssr: false }
 );
 
@@ -19,7 +21,6 @@ export default function AEditProfile() {
   const supabase = getSupabaseA();
 
   const [user, setUser] = useState<any>(null);
-
   const [formData, setFormData] = useState<any>({
     education: [],
     jobs: [],
@@ -33,20 +34,17 @@ export default function AEditProfile() {
   // =========================
   // AUTH
   // =========================
-
   useEffect(() => {
     async function loadUser() {
       const { data } = await supabase.auth.getUser();
-      setUser(data?.user ?? null);
+      setUser(data.user ?? null);
     }
-
     loadUser();
   }, []);
 
   // =========================
   // LOAD PROFILE + RELAÇÕES
   // =========================
-
   useEffect(() => {
     if (!user) {
       setLoading(false);
@@ -82,11 +80,7 @@ export default function AEditProfile() {
         .select("*")
         .eq("User profile_id", profileId);
 
-      // 🔥 CORREÇÃO PRINCIPAL
-      const offices =
-        officesDb?.map((o) => ({
-          Offices: o.Office,
-        })) ?? [];
+      const offices = officesDb?.map((o) => o.Office) ?? [];
 
       setFormData({
         ...profileData,
@@ -104,10 +98,8 @@ export default function AEditProfile() {
   // =========================
   // BASE64 → FILE
   // =========================
-
   function base64ToFile(base64: string, filename: string, mime: string) {
     const byteString = atob(base64);
-
     const ab = new ArrayBuffer(byteString.length);
     const ia = new Uint8Array(ab);
 
@@ -121,36 +113,19 @@ export default function AEditProfile() {
   // =========================
   // SAVE
   // =========================
-
   async function handleSave(payload: any) {
     if (!user) return;
 
-    const {
-      education = [],
-      jobs = [],
-      offices = [],
-      ...profileFields
-    } = payload;
+    const { education = [], jobs = [], offices = [], ...profileFields } = payload;
 
     let avatarUrl = profileFields["Profile image"];
 
-    if (
-      avatarUrl &&
-      typeof avatarUrl !== "string" &&
-      avatarUrl?.files?.[0]?.contents
-    ) {
+    if (avatarUrl && typeof avatarUrl !== "string" && avatarUrl?.files?.[0]?.contents) {
       const fileObj = avatarUrl.files[0];
-
       const fileExt = fileObj.name.split(".").pop();
-
       const fileName = `${user.id}-${Date.now()}.${fileExt}`;
 
-      const file = base64ToFile(
-        fileObj.contents,
-        fileName,
-        fileObj.type || "image/png"
-      );
-
+      const file = base64ToFile(fileObj.contents, fileName, fileObj.type || "image/png");
       const filePath = `avatars/${fileName}`;
 
       const { error: uploadError } = await supabase.storage
@@ -158,10 +133,7 @@ export default function AEditProfile() {
         .upload(filePath, file, { upsert: true });
 
       if (!uploadError) {
-        const { data } = supabase.storage
-          .from(BUCKET)
-          .getPublicUrl(filePath);
-
+        const { data } = supabase.storage.from(BUCKET).getPublicUrl(filePath);
         avatarUrl = data.publicUrl;
       }
     }
@@ -189,7 +161,6 @@ export default function AEditProfile() {
     // =========================
     // OFFICES
     // =========================
-
     const { data: existingOffices } = await supabase
       .from("Multicharge")
       .select("*")
@@ -197,18 +168,14 @@ export default function AEditProfile() {
 
     const existingValues = existingOffices?.map((o) => o.Office) ?? [];
 
-    const officeValues = offices.map((o: any) => o.Offices);
-
     const toDelete =
-      existingOffices
-        ?.filter((o) => !officeValues.includes(o.Office))
-        .map((o) => o.id) ?? [];
+      existingOffices?.filter((o) => !offices.includes(o.Office)).map((o) => o.id) ?? [];
 
     if (toDelete.length) {
       await supabase.from("Multicharge").delete().in("id", toDelete);
     }
 
-    const toInsert = officeValues
+    const toInsert = offices
       .filter((office: string) => !existingValues.includes(office))
       .map((office: string) => ({
         Office: office,
@@ -230,15 +197,10 @@ export default function AEditProfile() {
         formData,
         setFormData,
         onSave: handleSave,
-
         onOfficesChange: (value: any) => {
-          const arr = Array.isArray(value) ? value : [value];
-
           setFormData((prev: any) => ({
             ...prev,
-            offices: arr.map((v) =>
-              typeof v === "string" ? { Offices: v } : v
-            ),
+            offices: Array.isArray(value) ? [...value] : [value],
           }));
         },
       }}

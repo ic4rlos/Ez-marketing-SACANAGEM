@@ -1324,7 +1324,21 @@ function PlasmicAProfile__RenderFunc(props: {
                     sty.firstName
                   )}
                 >
-                  {"Name"}
+                  <React.Fragment>
+                    {(() => {
+                      try {
+                        return $props.formData?.["First name"] ?? "Name";
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return "Name";
+                        }
+                        throw e;
+                      }
+                    })()}
+                  </React.Fragment>
                 </div>
                 <div
                   data-plasmic-name={"lastName"}
@@ -1335,7 +1349,21 @@ function PlasmicAProfile__RenderFunc(props: {
                     sty.lastName
                   )}
                 >
-                  {"Last Name"}
+                  <React.Fragment>
+                    {(() => {
+                      try {
+                        return $props.formData?.["Last name"] ?? "Last name";
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return "Last Name";
+                        }
+                        throw e;
+                      }
+                    })()}
+                  </React.Fragment>
                 </div>
               </div>
               <div className={classNames(projectcss.all, sty.freeBox__u6U6K)}>
@@ -1348,7 +1376,21 @@ function PlasmicAProfile__RenderFunc(props: {
                     sty.age
                   )}
                 >
-                  {"28"}
+                  <React.Fragment>
+                    {(() => {
+                      try {
+                        return $props.formData?.["Birthday"] ?? 28;
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return "28";
+                        }
+                        throw e;
+                      }
+                    })()}
+                  </React.Fragment>
                 </div>
                 <div
                   className={classNames(
@@ -1369,7 +1411,21 @@ function PlasmicAProfile__RenderFunc(props: {
                   sty.location
                 )}
               >
-                {"New York"}
+                <React.Fragment>
+                  {(() => {
+                    try {
+                      return $props.formData?.["Location"] ?? "New York";
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return "New York";
+                      }
+                      throw e;
+                    }
+                  })()}
+                </React.Fragment>
               </div>
             </div>
             <div className={classNames(projectcss.all, sty.freeBox__oiFdo)}>
@@ -1409,7 +1465,7 @@ function PlasmicAProfile__RenderFunc(props: {
                   sty.linkedIn
                 )}
                 component={Link}
-                href={"https://www.plasmic.app/"}
+                href={$props.formData?.["LinkedIn"] ?? null}
                 legacyBehavior={false}
                 platform={"nextjs"}
               >
@@ -1432,7 +1488,7 @@ function PlasmicAProfile__RenderFunc(props: {
                   sty.instagram
                 )}
                 component={Link}
-                href={"https://www.plasmic.app/"}
+                href={$props.formData?.["Instagram"] ?? null}
                 legacyBehavior={false}
                 platform={"nextjs"}
               >
@@ -1455,7 +1511,7 @@ function PlasmicAProfile__RenderFunc(props: {
                   sty.x
                 )}
                 component={Link}
-                href={"https://www.plasmic.app/"}
+                href={$props.formData?.["X"] ?? null}
                 legacyBehavior={false}
                 platform={"nextjs"}
               >
@@ -1523,80 +1579,164 @@ function PlasmicAProfile__RenderFunc(props: {
                   data-plasmic-override={overrides.sliderCarousel}
                   {...child$Props}
                 >
-                  <div
-                    data-plasmic-name={"education"}
-                    data-plasmic-override={overrides.education}
-                    className={classNames(projectcss.all, sty.education)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__or092)}
-                    >
-                      <PlasmicImg__
-                        data-plasmic-name={"degree"}
-                        data-plasmic-override={overrides.degree}
-                        alt={""}
-                        className={classNames(sty.degree)}
-                        displayHeight={"107px"}
-                        displayMaxHeight={"none"}
-                        displayMaxWidth={"100%"}
-                        displayMinHeight={"0"}
-                        displayMinWidth={"0"}
-                        displayWidth={"180px"}
-                        loading={"lazy"}
-                      />
-
-                      <section
-                        data-plasmic-name={"section"}
-                        data-plasmic-override={overrides.section}
-                        className={classNames(projectcss.all, sty.section)}
-                      >
-                        <div
-                          data-plasmic-name={"university"}
-                          data-plasmic-override={overrides.university}
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.university
-                          )}
-                        >
-                          {"University"}
-                        </div>
-                        <div
-                          data-plasmic-name={"graduationYear"}
-                          data-plasmic-override={overrides.graduationYear}
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.graduationYear
-                          )}
-                        >
-                          {"Year"}
-                        </div>
-                        <div
-                          data-plasmic-name={"major"}
-                          data-plasmic-override={overrides.major}
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.major
-                          )}
-                        >
-                          {"Course"}
-                        </div>
-                      </section>
+                  {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
+                    (() => {
+                      try {
+                        return $props.formData?.education || [1];
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return [];
+                        }
+                        throw e;
+                      }
+                    })()
+                  ).map((__plasmic_item_0, __plasmic_idx_0) => {
+                    const currentItem = __plasmic_item_0;
+                    const currentIndex = __plasmic_idx_0;
+                    return (
                       <div
-                        data-plasmic-name={"educationLevel"}
-                        data-plasmic-override={overrides.educationLevel}
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.educationLevel
-                        )}
+                        data-plasmic-name={"education"}
+                        data-plasmic-override={overrides.education}
+                        className={classNames(projectcss.all, sty.education)}
+                        key={currentIndex}
                       >
-                        {"Graduation"}
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox__or092
+                          )}
+                        >
+                          <PlasmicImg__
+                            data-plasmic-name={"degree"}
+                            data-plasmic-override={overrides.degree}
+                            alt={""}
+                            className={classNames(sty.degree)}
+                            displayHeight={"107px"}
+                            displayMaxHeight={"none"}
+                            displayMaxWidth={"100%"}
+                            displayMinHeight={"0"}
+                            displayMinWidth={"0"}
+                            displayWidth={"180px"}
+                            loading={"lazy"}
+                          />
+
+                          <section
+                            data-plasmic-name={"section"}
+                            data-plasmic-override={overrides.section}
+                            className={classNames(projectcss.all, sty.section)}
+                          >
+                            <div
+                              data-plasmic-name={"university"}
+                              data-plasmic-override={overrides.university}
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.university
+                              )}
+                            >
+                              <React.Fragment>
+                                {(() => {
+                                  try {
+                                    return currentItem.University;
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return "University";
+                                    }
+                                    throw e;
+                                  }
+                                })()}
+                              </React.Fragment>
+                            </div>
+                            <div
+                              data-plasmic-name={"graduationYear"}
+                              data-plasmic-override={overrides.graduationYear}
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.graduationYear
+                              )}
+                            >
+                              <React.Fragment>
+                                {(() => {
+                                  try {
+                                    return currentItem["Graduation year"];
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return "Year";
+                                    }
+                                    throw e;
+                                  }
+                                })()}
+                              </React.Fragment>
+                            </div>
+                            <div
+                              data-plasmic-name={"major"}
+                              data-plasmic-override={overrides.major}
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.major
+                              )}
+                            >
+                              <React.Fragment>
+                                {(() => {
+                                  try {
+                                    return currentItem.Major;
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return "Course";
+                                    }
+                                    throw e;
+                                  }
+                                })()}
+                              </React.Fragment>
+                            </div>
+                          </section>
+                          <div
+                            data-plasmic-name={"educationLevel"}
+                            data-plasmic-override={overrides.educationLevel}
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.educationLevel
+                            )}
+                          >
+                            <React.Fragment>
+                              {(() => {
+                                try {
+                                  return currentItem["Education level"];
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return "Graduation";
+                                  }
+                                  throw e;
+                                }
+                              })()}
+                            </React.Fragment>
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                  </div>
+                    );
+                  })}
                 </SliderWrapper>
               );
             })()}
@@ -1637,60 +1777,158 @@ function PlasmicAProfile__RenderFunc(props: {
               />
             </div>
             <div className={classNames(projectcss.all, sty.freeBox__opQ8B)}>
-              <div className={classNames(projectcss.all, sty.freeBox__zS)}>
-                <div
-                  data-plasmic-name={"office"}
-                  data-plasmic-override={overrides.office}
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.office
-                  )}
-                >
-                  {"Office"}
-                </div>
-              </div>
-              <div
-                data-plasmic-name={"chargeContainer"}
-                data-plasmic-override={overrides.chargeContainer}
-                className={classNames(projectcss.all, sty.chargeContainer)}
-              >
-                <div
-                  data-plasmic-name={"charge"}
-                  data-plasmic-override={overrides.charge}
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.charge
-                  )}
-                >
-                  {"Employment"}
-                </div>
-                <div
-                  data-plasmic-name={"company"}
-                  data-plasmic-override={overrides.company}
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.company
-                  )}
-                >
-                  {
-                    "Employers, position / titles, and dates. Use a separate line for each job, most recent first."
+              {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
+                (() => {
+                  try {
+                    return $props.formData?.offices || [1];
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return [];
+                    }
+                    throw e;
                   }
-                </div>
-                <div
-                  data-plasmic-name={"howLongInOffice"}
-                  data-plasmic-override={overrides.howLongInOffice}
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.howLongInOffice
-                  )}
-                >
-                  {"2 years"}
-                </div>
-              </div>
+                })()
+              ).map((__plasmic_item_0, __plasmic_idx_0) => {
+                const currentItem = __plasmic_item_0;
+                const currentIndex = __plasmic_idx_0;
+                return (
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__zS)}
+                    key={currentIndex}
+                  >
+                    <div
+                      data-plasmic-name={"office"}
+                      data-plasmic-override={overrides.office}
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.office
+                      )}
+                    >
+                      <React.Fragment>
+                        {(() => {
+                          try {
+                            return currentItem["Offices"];
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return "Office";
+                            }
+                            throw e;
+                          }
+                        })()}
+                      </React.Fragment>
+                    </div>
+                  </div>
+                );
+              })}
+              {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
+                (() => {
+                  try {
+                    return $props.formData?.jobs || [1];
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return [];
+                    }
+                    throw e;
+                  }
+                })()
+              ).map((__plasmic_item_0, __plasmic_idx_0) => {
+                const currentItem = __plasmic_item_0;
+                const currentIndex = __plasmic_idx_0;
+                return (
+                  <div
+                    data-plasmic-name={"chargeContainer"}
+                    data-plasmic-override={overrides.chargeContainer}
+                    className={classNames(projectcss.all, sty.chargeContainer)}
+                    key={currentIndex}
+                  >
+                    <div
+                      data-plasmic-name={"charge"}
+                      data-plasmic-override={overrides.charge}
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.charge
+                      )}
+                    >
+                      <React.Fragment>
+                        {(() => {
+                          try {
+                            return currentItem.Charge;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return "Employment";
+                            }
+                            throw e;
+                          }
+                        })()}
+                      </React.Fragment>
+                    </div>
+                    <div
+                      data-plasmic-name={"company"}
+                      data-plasmic-override={overrides.company}
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.company
+                      )}
+                    >
+                      <React.Fragment>
+                        {(() => {
+                          try {
+                            return currentItem.Company;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return "Employers, position / titles, and dates. Use a separate line for each job, most recent first.";
+                            }
+                            throw e;
+                          }
+                        })()}
+                      </React.Fragment>
+                    </div>
+                    <div
+                      data-plasmic-name={"howLongInOffice"}
+                      data-plasmic-override={overrides.howLongInOffice}
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.howLongInOffice
+                      )}
+                    >
+                      <React.Fragment>
+                        {(() => {
+                          try {
+                            return currentItem["How long in office"];
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return "2 years";
+                            }
+                            throw e;
+                          }
+                        })()}
+                      </React.Fragment>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
@@ -1723,9 +1961,24 @@ function PlasmicAProfile__RenderFunc(props: {
                 sty.impressive
               )}
             >
-              {
-                "For example, an academic or professional achievement, an award you've won, or something impressive you've built."
-              }
+              <React.Fragment>
+                {(() => {
+                  try {
+                    return (
+                      $props.formData?.["Impressive"] ??
+                      "For example, an academic or professional achievement, an award you've won, or something impressive you've built."
+                    );
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return "For example, an academic or professional achievement, an award you've won, or something impressive you've built.";
+                    }
+                    throw e;
+                  }
+                })()}
+              </React.Fragment>
             </div>
             <Icon10Icon
               className={classNames(projectcss.all, sty.svg__emWne)}

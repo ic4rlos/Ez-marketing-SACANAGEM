@@ -199,7 +199,7 @@ export type PlasmicCCompanyProfile__OverridesType = {
   countainer2?: Flex__<"div">;
   sliderCarousel?: Flex__<typeof SliderWrapper>;
   solution?: Flex__<"div">;
-  title?: Flex__<"div">;
+  title2?: Flex__<"div">;
   steps?: Flex__<"div">;
   stepText?: Flex__<"div">;
   description?: Flex__<"div">;
@@ -2916,12 +2916,8 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                       <AntdTooltip
                         className={classNames(
                           "__wab_instance",
-                          sty.tooltip___2Re8F
+                          sty.tooltip___3CKs
                         )}
-                        overlayClassName={classNames({
-                          [sty["pcls_Fi4z3vOFihmc"]]: true
-                        })}
-                        placement={"right"}
                         title={
                           <div
                             className={classNames(
@@ -3091,12 +3087,12 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                         titleText={"Tooltip contents"}
                       >
                         <div
-                          data-plasmic-name={"title"}
-                          data-plasmic-override={overrides.title}
+                          data-plasmic-name={"title2"}
+                          data-plasmic-override={overrides.title2}
                           className={classNames(
                             projectcss.all,
                             projectcss.__wab_text,
-                            sty.title
+                            sty.title2
                           )}
                         >
                           <React.Fragment>
@@ -4317,7 +4313,7 @@ const PlasmicDescendants = {
     "countainer2",
     "sliderCarousel",
     "solution",
-    "title",
+    "title2",
     "steps",
     "stepText",
     "description",
@@ -4514,7 +4510,7 @@ const PlasmicDescendants = {
     "countainer2",
     "sliderCarousel",
     "solution",
-    "title",
+    "title2",
     "steps",
     "stepText",
     "description",
@@ -4523,14 +4519,14 @@ const PlasmicDescendants = {
   sliderCarousel: [
     "sliderCarousel",
     "solution",
-    "title",
+    "title2",
     "steps",
     "stepText",
     "description",
     "price"
   ],
-  solution: ["solution", "title", "steps", "stepText", "description", "price"],
-  title: ["title"],
+  solution: ["solution", "title2", "steps", "stepText", "description", "price"],
+  title2: ["title2"],
   steps: ["steps", "stepText"],
   stepText: ["stepText"],
   description: ["description"],
@@ -4649,7 +4645,7 @@ type NodeDefaultElementType = {
   countainer2: "div";
   sliderCarousel: typeof SliderWrapper;
   solution: "div";
-  title: "div";
+  title2: "div";
   steps: "div";
   stepText: "div";
   description: "div";
@@ -4790,7 +4786,7 @@ export const PlasmicCCompanyProfile = Object.assign(
     countainer2: makeNodeComponent("countainer2"),
     sliderCarousel: makeNodeComponent("sliderCarousel"),
     solution: makeNodeComponent("solution"),
-    title: makeNodeComponent("title"),
+    title2: makeNodeComponent("title2"),
     steps: makeNodeComponent("steps"),
     stepText: makeNodeComponent("stepText"),
     description: makeNodeComponent("description"),

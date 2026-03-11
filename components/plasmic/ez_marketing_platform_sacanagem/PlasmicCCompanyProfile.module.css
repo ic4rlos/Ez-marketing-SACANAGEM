@@ -2539,38 +2539,20 @@
   align-items: center;
   padding: 8px;
 }
-.tooltip___2Re8F:global(.__wab_instance) {
-  animation: none;
+.tooltip___3CKs:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;
-  text-align: center;
-  color: #1b1b18;
   height: 56px;
-  width: 150px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  background: #eeeeecbf;
+  background: #eeeeec;
   flex-shrink: 0;
   border-radius: 10px;
 }
-.pcls_Fi4z3vOFihmc {
-  width: 100%;
-  background: #4b4b4b;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  outline: none;
-}
-.title {
+.title2 {
   animation: none;
   position: relative;
   width: 50px;
   height: auto;
   max-width: 100%;
-  color: #535353;
   font-weight: 500;
   font-size: 14px;
   text-align: center;
@@ -2591,18 +2573,17 @@
   position: relative;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  width: auto;
   height: auto;
   max-width: 100%;
-  min-width: 0;
   padding: 8px;
 }
 .steps {
   animation: none;
   display: flex;
   flex-direction: column;
-  align-items: stretch;
-  justify-content: flex-start;
+  align-items: center;
+  justify-content: center;
   width: auto;
   height: auto;
   max-width: 100%;
@@ -3420,7 +3401,7 @@
   min-width: 0;
 }
 .sliderCarousel4:global(.__wab_instance) {
-  width: 900px;
+  width: auto;
   max-width: 100%;
   flex-direction: column;
   object-fit: cover;

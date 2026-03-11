@@ -1291,6 +1291,24 @@ function PlasmicAProfile__RenderFunc(props: {
                 displayMinWidth={"0"}
                 displayWidth={"100px"}
                 loading={"lazy"}
+                src={(() => {
+                  try {
+                    return (
+                      $state.profilePic ||
+                      ($props.company?.["Profile pic"]
+                        ? $props.company["Profile pic"]
+                        : null)
+                    );
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return undefined;
+                    }
+                    throw e;
+                  }
+                })()}
               />
 
               <PlasmicImg__

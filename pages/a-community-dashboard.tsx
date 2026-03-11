@@ -20,7 +20,9 @@ export default function ACommunityDashboard() {
 
   const [user, setUser] = useState<any>(null);
 
-  const [formData, setFormData] = useState<any>({});
+  const [formData, setFormData] = useState<any>({
+    members: []
+  });
 
   const [loading, setLoading] = useState(true);
 
@@ -28,18 +30,22 @@ export default function ACommunityDashboard() {
   useEffect(() => {
     async function loadUser() {
       const { data } = await supabase.auth.getUser();
-      setUser(data.user ?? null);
+      setUser(data?.user ?? null);
     }
 
     loadUser();
   }, []);
 
-  // LOAD COMMUNITY
+  // LOAD COMMUNITY + MEMBERS
   useEffect(() => {
-    if (!user) return;
+    if (!user) {
+      setLoading(false);
+      return;
+    }
 
     async function loadCommunity() {
 
+      // descobrir comunidade do usuário
       const { data: member } = await supabase
         .from("community_members")
         .select("community_id")
@@ -52,14 +58,63 @@ export default function ACommunityDashboard() {
         return;
       }
 
+      // dados da comunidade
       const { data: community } = await supabase
         .from("Community")
         .select("*")
         .eq("id", member.community_id)
         .maybeSingle();
 
+      // =========================
+      // MEMBERS
+      // =========================
+
+      const { data: membersDb } = await supabase
+        .from("community_members")
+        .select("*")
+        .eq("community_id", member.community_id)
+        .eq("status", "connected");
+
+      let members: any[] = [];
+
+      if (membersDb?.length) {
+
+        members = await Promise.all(
+          membersDb.map(async (m: any) => {
+
+            // profile
+            const { data: profile } = await supabase
+              .from("User profile")
+              .select("*")
+              .eq("user_id", m.user_id)
+              .maybeSingle();
+
+            if (!profile) return null;
+
+            // first office
+            const { data: office } = await supabase
+              .from("Multicharge")
+              .select("*")
+              .eq("User profile_id", profile.id)
+              .limit(1)
+              .maybeSingle();
+
+            return {
+              profile_pic: profile["Profile pic"] ?? null,
+              office: office?.Office ?? null,
+              profile_id: profile.id
+            };
+
+          })
+        );
+
+        members = members.filter(Boolean);
+      }
+
+      // FINAL STATE
       setFormData({
-        ...community
+        ...community,
+        members
       });
 
       setLoading(false);

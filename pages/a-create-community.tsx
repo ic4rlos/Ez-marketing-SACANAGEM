@@ -19,7 +19,7 @@ export default function ACreateCommunity() {
   const supabase = getSupabaseA();
 
   const [user, setUser] = useState<any>(null);
-  const [formData, setFormData] = useState<any>(null); // <--- usar formData
+  const [formData, setFormData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
   const BUCKET = "community-pics";
@@ -30,13 +30,13 @@ export default function ACreateCommunity() {
   useEffect(() => {
     async function loadUser() {
       const { data } = await supabase.auth.getUser();
-      setUser(data.user ?? null);
+      setUser(data?.user ?? null);
     }
     loadUser();
   }, []);
 
   // =========================
-  // LOAD COMMUNITY -> map para formData
+  // LOAD COMMUNITY
   // =========================
   useEffect(() => {
     if (!user) {
@@ -52,7 +52,6 @@ export default function ACreateCommunity() {
         .maybeSingle();
 
       if (data) {
-        // mapear colunas DB para as chaves que o Plasmic espera
         setFormData({
           "Community name": data.community_name ?? "",
           Type: data.type ?? "",
@@ -68,7 +67,6 @@ export default function ACreateCommunity() {
           "Agency pic": data.agency_pic ?? null,
         });
       } else {
-        // iniciamos formData vazio para criar novos
         setFormData({
           "Community name": "",
           Type: "",
@@ -107,12 +105,11 @@ export default function ACreateCommunity() {
   }
 
   // =========================
-  // SAVE (recebe payload do Plasmic)
+  // SAVE
   // =========================
   async function handleSave(payload: any) {
     if (!user) return;
 
-    // Validação type (conforme sua regra)
     if (!payload["Type"] || payload["Type"] !== "Venture") {
       alert(
         "EZ Marketing does not yet have the technology to support this type of agency."
@@ -133,15 +130,19 @@ export default function ACreateCommunity() {
       const fileObj = communityLogo.files[0];
       const fileExt = fileObj.name.split(".").pop();
       const fileName = `community-logo-${user.id}-${Date.now()}.${fileExt}`;
+
       const file = base64ToFile(
         fileObj.contents,
         fileName,
         fileObj.type || "image/png"
       );
+
       const filePath = `logos/${fileName}`;
+
       const { error } = await supabase.storage
         .from(BUCKET)
         .upload(filePath, file, { upsert: true });
+
       if (!error) {
         const { data } = supabase.storage.from(BUCKET).getPublicUrl(filePath);
         communityLogo = data.publicUrl;
@@ -157,15 +158,19 @@ export default function ACreateCommunity() {
       const fileObj = agencyPic.files[0];
       const fileExt = fileObj.name.split(".").pop();
       const fileName = `agency-${user.id}-${Date.now()}.${fileExt}`;
+
       const file = base64ToFile(
         fileObj.contents,
         fileName,
         fileObj.type || "image/png"
       );
+
       const filePath = `agencies/${fileName}`;
+
       const { error } = await supabase.storage
         .from(BUCKET)
         .upload(filePath, file, { upsert: true });
+
       if (!error) {
         const { data } = supabase.storage.from(BUCKET).getPublicUrl(filePath);
         agencyPic = data.publicUrl;
@@ -175,7 +180,7 @@ export default function ACreateCommunity() {
     // =========================
     // UPSERT COMMUNITY
     // =========================
-    const { error } = await supabase
+    const { data: savedCommunity, error } = await supabase
       .from("Community")
       .upsert(
         {
@@ -196,14 +201,43 @@ export default function ACreateCommunity() {
         {
           onConflict: "owner_user_id",
         }
-      );
+      )
+      .select()
+      .single();
 
-    if (error) {
+    if (error || !savedCommunity) {
       console.error(error);
       return;
     }
 
-    // atualizar local formData com o payload salvo (mantém UI sincronizada)
+    const communityId = savedCommunity.id;
+
+    // =========================
+    // CREATE ADMIN MEMBER
+    // =========================
+    const { data: existingMember } = await supabase
+      .from("community_members")
+      .select("id")
+      .eq("community_id", communityId)
+      .eq("user_id", user.id)
+      .maybeSingle();
+
+    if (!existingMember) {
+      const { error: memberError } = await supabase
+        .from("community_members")
+        .insert({
+          community_id: communityId,
+          user_id: user.id,
+          role: "admin",
+          short_message: null,
+          status: "connected",
+        });
+
+      if (memberError) {
+        console.error("Member creation error:", memberError);
+      }
+    }
+
     setFormData((prev: any) => ({ ...(prev ?? {}), ...payload }));
 
     router.push("/a-community-dashboard/");

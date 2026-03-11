@@ -97,7 +97,7 @@ import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: 2MH
 import Icon38Icon from "./icons/PlasmicIcon__Icon38"; // plasmic-import: _eklczUQ9Bdt/icon
 import CircleIcon from "./icons/PlasmicIcon__Circle"; // plasmic-import: l4RREmL1A-vM/icon
 import ChevronDownIcon from "./icons/PlasmicIcon__ChevronDown"; // plasmic-import: qJDdQLGS2RlC/icon
-import SemTitulo1SvgIcon from "./icons/PlasmicIcon__SemTitulo1Svg"; // plasmic-import: 0mbZdJyDaMFx/icon
+import SemTitulo2SvgIcon from "./icons/PlasmicIcon__SemTitulo2Svg"; // plasmic-import: Nb_GErn1yi4Z/icon
 import ReportSvgrepoComSvgIcon from "./icons/PlasmicIcon__ReportSvgrepoComSvg"; // plasmic-import: gD88w6PLGoom/icon
 import Icon12Icon from "./icons/PlasmicIcon__Icon12"; // plasmic-import: q9Iuypba6A_W/icon
 
@@ -168,10 +168,11 @@ export type PlasmicACommunityDashboard__OverridesType = {
   communityLogo?: Flex__<typeof PlasmicImg__>;
   type?: Flex__<"svg">;
   communityName?: Flex__<"div">;
-  averageRate4?: Flex__<typeof Modal>;
-  communityRate?: Flex__<typeof AntdRate>;
-  comment3?: Flex__<typeof AntdTextArea>;
-  confirmCommunityRate?: Flex__<typeof Button2>;
+  communityLocation?: Flex__<"div">;
+  modal?: Flex__<typeof Modal>;
+  communityRate2?: Flex__<typeof AntdRate>;
+  comment4?: Flex__<typeof AntdTextArea>;
+  confirmCommunityRate2?: Flex__<typeof Button2>;
   rateSum?: Flex__<"div">;
   container3?: Flex__<"div">;
   membersCarousel?: Flex__<typeof SliderWrapper>;
@@ -453,26 +454,6 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
-        path: "averageRate4.isOpen",
-        type: "private",
-        variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
-      },
-      {
-        path: "communityRate.value",
-        type: "private",
-        variableType: "number",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 4
-      },
-      {
-        path: "comment3.value",
-        type: "private",
-        variableType: "text",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
-
-        onMutate: generateOnMutateForSpec("value", AntdTextArea_Helpers)
-      },
-      {
         path: "linkedMembers.isOpen",
         type: "private",
         variableType: "boolean",
@@ -598,6 +579,26 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
         type: "private",
         variableType: "number",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
+      },
+      {
+        path: "communityRate2.value",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 4
+      },
+      {
+        path: "comment4.value",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
+
+        onMutate: generateOnMutateForSpec("value", AntdTextArea_Helpers)
+      },
+      {
+        path: "modal.isOpen",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       }
     ],
     [$props, $ctx, $refs]
@@ -1081,9 +1082,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
               ref={ref => {
                 $refs["agencyPic"] = ref;
               }}
-              src={
-                "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
-              }
+              src={$props.formData?.["Agency pic"] ?? ""}
             />
 
             <div className={classNames(projectcss.all, sty.freeBox__j3Stf)}>
@@ -1165,6 +1164,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                         sty.youtubeChannel
                       )}
                       component={Link}
+                      href={$props.formData?.["Youtube channel"] ?? ""}
                       legacyBehavior={false}
                       platform={"nextjs"}
                     >
@@ -1195,6 +1195,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                         sty.x
                       )}
                       component={Link}
+                      href={$props.formData?.["X"] ?? ""}
                       legacyBehavior={false}
                       platform={"nextjs"}
                     >
@@ -1225,6 +1226,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                         sty.tiktok
                       )}
                       component={Link}
+                      href={$props.formData?.["Tiktok"] ?? ""}
                       legacyBehavior={false}
                       platform={"nextjs"}
                     >
@@ -1255,6 +1257,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                         sty.instagram
                       )}
                       component={Link}
+                      href={$props.formData?.["Instagram"] ?? ""}
                       legacyBehavior={false}
                       platform={"nextjs"}
                     >
@@ -1567,15 +1570,27 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
               displayMinWidth={"0"}
               displayWidth={"170px"}
               loading={"lazy"}
-              src={{
-                src: "/plasmic/ez_marketing_platform_sacanagem/images/semTitulo2Jpg3.jpg",
-                fullWidth: 1014,
-                fullHeight: 1014,
-                aspectRatio: undefined
-              }}
+              src={(() => {
+                try {
+                  return $props.formData?.["Community logo"] ?? null;
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return {
+                      src: "/plasmic/ez_marketing_platform_sacanagem/images/semTitulo2Jpg3.jpg",
+                      fullWidth: 1014,
+                      fullHeight: 1014,
+                      aspectRatio: undefined
+                    };
+                  }
+                  throw e;
+                }
+              })()}
             />
 
-            <SemTitulo1SvgIcon
+            <SemTitulo2SvgIcon
               data-plasmic-name={"type"}
               data-plasmic-override={overrides.type}
               className={classNames(projectcss.all, sty.type)}
@@ -1592,19 +1607,58 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
             sty.communityName
           )}
         >
-          {"Community"}
+          <React.Fragment>
+            {(() => {
+              try {
+                return $props.formData?.["Community name"] ?? "Community name";
+              } catch (e) {
+                if (
+                  e instanceof TypeError ||
+                  e?.plasmicType === "PlasmicUndefinedDataError"
+                ) {
+                  return "Community";
+                }
+                throw e;
+              }
+            })()}
+          </React.Fragment>
+        </div>
+        <div
+          data-plasmic-name={"communityLocation"}
+          data-plasmic-override={overrides.communityLocation}
+          className={classNames(
+            projectcss.all,
+            projectcss.__wab_text,
+            sty.communityLocation
+          )}
+        >
+          <React.Fragment>
+            {(() => {
+              try {
+                return $props.formData?.["Location"] ?? "Location";
+              } catch (e) {
+                if (
+                  e instanceof TypeError ||
+                  e?.plasmicType === "PlasmicUndefinedDataError"
+                ) {
+                  return "Community";
+                }
+                throw e;
+              }
+            })()}
+          </React.Fragment>
         </div>
         <Modal
-          data-plasmic-name={"averageRate4"}
-          data-plasmic-override={overrides.averageRate4}
-          className={classNames("__wab_instance", sty.averageRate4)}
+          data-plasmic-name={"modal"}
+          data-plasmic-override={overrides.modal}
+          className={classNames("__wab_instance", sty.modal)}
           content={
-            <div className={classNames(projectcss.all, sty.freeBox__ftJu5)}>
+            <div className={classNames(projectcss.all, sty.freeBox__dpyzy)}>
               <div
                 className={classNames(
                   projectcss.all,
                   projectcss.__wab_text,
-                  sty.text__iR22
+                  sty.text__bo2Z9
                 )}
               >
                 {
@@ -1613,23 +1667,23 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
               </div>
               {(() => {
                 const child$Props = {
-                  className: classNames("__wab_instance", sty.comment3),
+                  className: classNames("__wab_instance", sty.comment4),
                   onChange: async (...eventArgs: any) => {
                     generateStateOnChangePropForCodeComponents(
                       $state,
                       "value",
-                      ["comment3", "value"],
+                      ["comment4", "value"],
                       AntdTextArea_Helpers
                     ).apply(null, eventArgs);
                   },
-                  value: generateStateValueProp($state, ["comment3", "value"])
+                  value: generateStateValueProp($state, ["comment4", "value"])
                 };
                 initializeCodeComponentStates(
                   $state,
                   [
                     {
                       name: "value",
-                      plasmicStateName: "comment3.value"
+                      plasmicStateName: "comment4.value"
                     }
                   ],
                   [],
@@ -1639,8 +1693,8 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
 
                 return (
                   <AntdTextArea
-                    data-plasmic-name={"comment3"}
-                    data-plasmic-override={overrides.comment3}
+                    data-plasmic-name={"comment4"}
+                    data-plasmic-override={overrides.comment4}
                     {...child$Props}
                   />
                 );
@@ -1648,17 +1702,17 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
             </div>
           }
           footer={
-            <div className={classNames(projectcss.all, sty.freeBox__cOfts)}>
+            <div className={classNames(projectcss.all, sty.freeBox__hQNhc)}>
               <Button2
-                data-plasmic-name={"confirmCommunityRate"}
-                data-plasmic-override={overrides.confirmCommunityRate}
+                data-plasmic-name={"confirmCommunityRate2"}
+                data-plasmic-override={overrides.confirmCommunityRate2}
                 color={"muted"}
                 label={
                   <div
                     className={classNames(
                       projectcss.all,
                       projectcss.__wab_text,
-                      sty.text__mqpXw
+                      sty.text__aLvjF
                     )}
                   >
                     {"Confirm"}
@@ -1672,7 +1726,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                         const actionArgs = {
                           variable: {
                             objRoot: $state,
-                            variablePath: ["averageRate4", "isOpen"]
+                            variablePath: ["modal", "isOpen"]
                           },
                           operation: 0,
                           value: false
@@ -1713,7 +1767,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                     className={classNames(
                       projectcss.all,
                       projectcss.__wab_text,
-                      sty.text___4JiF7
+                      sty.text__kpNwb
                     )}
                   >
                     {"Cancel"}
@@ -1727,7 +1781,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                         const actionArgs = {
                           variable: {
                             objRoot: $state,
-                            variablePath: ["averageRate4", "isOpen"]
+                            variablePath: ["modal", "isOpen"]
                           },
                           operation: 0,
                           value: false
@@ -1768,15 +1822,15 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                 projectcss.all,
                 projectcss.h3,
                 projectcss.__wab_text,
-                sty.h3___6D4Yr
+                sty.h3__sY8UT
               )}
             >
               {"Rating"}
             </h3>
           }
-          isOpen={generateStateValueProp($state, ["averageRate4", "isOpen"])}
+          isOpen={generateStateValueProp($state, ["modal", "isOpen"])}
           onOpenChange={async (...eventArgs: any) => {
-            generateStateOnChangeProp($state, ["averageRate4", "isOpen"]).apply(
+            generateStateOnChangeProp($state, ["modal", "isOpen"]).apply(
               null,
               eventArgs
             );
@@ -1791,14 +1845,14 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
           }}
           trigger={
             <AntdRate
-              data-plasmic-name={"communityRate"}
-              data-plasmic-override={overrides.communityRate}
+              data-plasmic-name={"communityRate2"}
+              data-plasmic-override={overrides.communityRate2}
               allowHalf={true}
-              className={classNames("__wab_instance", sty.communityRate)}
+              className={classNames("__wab_instance", sty.communityRate2)}
               defaultValue={4}
               onChange={async (...eventArgs: any) => {
                 generateStateOnChangeProp($state, [
-                  "communityRate",
+                  "communityRate2",
                   "value"
                 ]).apply(null, eventArgs);
               }}
@@ -1808,7 +1862,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                     className={classNames(
                       projectcss.all,
                       projectcss.__wab_text,
-                      sty.text__yZUaa
+                      sty.text__zqNeP
                     )}
                   >
                     {"1"}
@@ -1817,7 +1871,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                     className={classNames(
                       projectcss.all,
                       projectcss.__wab_text,
-                      sty.text__mJbxN
+                      sty.text__b4P84
                     )}
                   >
                     {"2"}
@@ -1826,7 +1880,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                     className={classNames(
                       projectcss.all,
                       projectcss.__wab_text,
-                      sty.text__cTvbm
+                      sty.text__ofwtM
                     )}
                   >
                     {"3"}
@@ -1835,7 +1889,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                     className={classNames(
                       projectcss.all,
                       projectcss.__wab_text,
-                      sty.text__kUrm
+                      sty.text___1DeR2
                     )}
                   >
                     {"4"}
@@ -1844,14 +1898,17 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                     className={classNames(
                       projectcss.all,
                       projectcss.__wab_text,
-                      sty.text___2S7B
+                      sty.text__snxYp
                     )}
                   >
                     {"5"}
                   </div>
                 </React.Fragment>
               }
-              value={generateStateValueProp($state, ["communityRate", "value"])}
+              value={generateStateValueProp($state, [
+                "communityRate2",
+                "value"
+              ])}
             />
           }
         />
@@ -8235,7 +8292,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
             data-plasmic-name={"youtubeVideo"}
             data-plasmic-override={overrides.youtubeVideo}
             className={classNames("__wab_instance", sty.youtubeVideo)}
-            videoId={"R6MeLqRQzYw"}
+            videoId={`R6MeLqRQzYw${$props.formData?.["Youtube video"] ?? ""}`}
           />
 
           <div className={classNames(projectcss.all, sty.freeBox__sYNai)}>
@@ -8257,9 +8314,24 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                 sty.about
               )}
             >
-              {
-                "Our differential: Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-              }
+              <React.Fragment>
+                {(() => {
+                  try {
+                    return (
+                      $props.formData?.["About"] ??
+                      "Our differential: Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+                    );
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return "Our differential: Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.";
+                    }
+                    throw e;
+                  }
+                })()}
+              </React.Fragment>
             </div>
             <PlasmicLink__
               data-plasmic-name={"website"}
@@ -8271,7 +8343,19 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                 sty.website
               )}
               component={Link}
-              href={"https://www.plasmic.app/"}
+              href={(() => {
+                try {
+                  return $props.formData?.["Website"] ?? "";
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return "https://www.plasmic.app/";
+                  }
+                  throw e;
+                }
+              })()}
               legacyBehavior={false}
               platform={"nextjs"}
             >
@@ -8304,10 +8388,11 @@ const PlasmicDescendants = {
     "communityLogo",
     "type",
     "communityName",
-    "averageRate4",
-    "communityRate",
-    "comment3",
-    "confirmCommunityRate",
+    "communityLocation",
+    "modal",
+    "communityRate2",
+    "comment4",
+    "confirmCommunityRate2",
     "rateSum",
     "container3",
     "membersCarousel",
@@ -8463,15 +8548,11 @@ const PlasmicDescendants = {
   communityLogo: ["communityLogo"],
   type: ["type"],
   communityName: ["communityName"],
-  averageRate4: [
-    "averageRate4",
-    "communityRate",
-    "comment3",
-    "confirmCommunityRate"
-  ],
-  communityRate: ["communityRate"],
-  comment3: ["comment3"],
-  confirmCommunityRate: ["confirmCommunityRate"],
+  communityLocation: ["communityLocation"],
+  modal: ["modal", "communityRate2", "comment4", "confirmCommunityRate2"],
+  communityRate2: ["communityRate2"],
+  comment4: ["comment4"],
+  confirmCommunityRate2: ["confirmCommunityRate2"],
   rateSum: ["rateSum"],
   container3: [
     "container3",
@@ -8948,10 +9029,11 @@ type NodeDefaultElementType = {
   communityLogo: typeof PlasmicImg__;
   type: "svg";
   communityName: "div";
-  averageRate4: typeof Modal;
-  communityRate: typeof AntdRate;
-  comment3: typeof AntdTextArea;
-  confirmCommunityRate: typeof Button2;
+  communityLocation: "div";
+  modal: typeof Modal;
+  communityRate2: typeof AntdRate;
+  comment4: typeof AntdTextArea;
+  confirmCommunityRate2: typeof Button2;
   rateSum: "div";
   container3: "div";
   membersCarousel: typeof SliderWrapper;
@@ -9157,10 +9239,11 @@ export const PlasmicACommunityDashboard = Object.assign(
     communityLogo: makeNodeComponent("communityLogo"),
     type: makeNodeComponent("type"),
     communityName: makeNodeComponent("communityName"),
-    averageRate4: makeNodeComponent("averageRate4"),
-    communityRate: makeNodeComponent("communityRate"),
-    comment3: makeNodeComponent("comment3"),
-    confirmCommunityRate: makeNodeComponent("confirmCommunityRate"),
+    communityLocation: makeNodeComponent("communityLocation"),
+    modal: makeNodeComponent("modal"),
+    communityRate2: makeNodeComponent("communityRate2"),
+    comment4: makeNodeComponent("comment4"),
+    confirmCommunityRate2: makeNodeComponent("confirmCommunityRate2"),
     rateSum: makeNodeComponent("rateSum"),
     container3: makeNodeComponent("container3"),
     membersCarousel: makeNodeComponent("membersCarousel"),

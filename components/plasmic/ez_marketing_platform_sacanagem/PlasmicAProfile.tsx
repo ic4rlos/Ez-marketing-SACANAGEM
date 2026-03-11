@@ -1199,29 +1199,24 @@ function PlasmicAProfile__RenderFunc(props: {
                   __composite["2"]["onClick"] = async info => {
                     const $steps = {};
 
-                    $steps["goToALogin"] = true
+                    $steps["runCode"] = true
                       ? (() => {
-                          const actionArgs = { destination: `/a-login` };
-                          return (({ destination }) => {
-                            if (
-                              typeof destination === "string" &&
-                              destination.startsWith("#")
-                            ) {
-                              document
-                                .getElementById(destination.substr(1))
-                                .scrollIntoView({ behavior: "smooth" });
-                            } else {
-                              __nextRouter?.push(destination);
+                          const actionArgs = {
+                            customFunction: async () => {
+                              return $props.onLogout?.();
                             }
+                          };
+                          return (({ customFunction }) => {
+                            return customFunction();
                           })?.apply(null, [actionArgs]);
                         })()
                       : undefined;
                     if (
-                      $steps["goToALogin"] != null &&
-                      typeof $steps["goToALogin"] === "object" &&
-                      typeof $steps["goToALogin"].then === "function"
+                      $steps["runCode"] != null &&
+                      typeof $steps["runCode"] === "object" &&
+                      typeof $steps["runCode"].then === "function"
                     ) {
-                      $steps["goToALogin"] = await $steps["goToALogin"];
+                      $steps["runCode"] = await $steps["runCode"];
                     }
                   };
                   return __composite;
@@ -1293,12 +1288,7 @@ function PlasmicAProfile__RenderFunc(props: {
                 loading={"lazy"}
                 src={(() => {
                   try {
-                    return (
-                      $state.profilePic ||
-                      ($props.company?.["Profile pic"]
-                        ? $props.company["Profile pic"]
-                        : null)
-                    );
+                    return $props.formData?.["Profile pic"] ?? null;
                   } catch (e) {
                     if (
                       e instanceof TypeError ||

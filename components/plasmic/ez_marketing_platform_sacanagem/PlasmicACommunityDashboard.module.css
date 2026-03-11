@@ -855,12 +855,19 @@
   min-width: 0;
   margin: 60px 0px 0px;
 }
-.averageRate4:global(.__wab_instance):global(.__wab_instance) {
-  animation: none;
+.communityLocation {
+  position: relative;
+  font-size: 14px;
+  text-align: center;
   max-width: 100%;
-  z-index: 9999;
+  height: auto;
+  width: 100%;
+  min-width: 0;
 }
-.communityRate:global(.__wab_instance) {
+.modal:global(.__wab_instance):global(.__wab_instance) {
+  max-width: 100%;
+}
+.communityRate2:global(.__wab_instance) {
   animation: none;
   max-width: 100%;
   object-fit: cover;
@@ -869,7 +876,7 @@
   font-size: 21px;
   padding: 8px;
 }
-.text__yZUaa {
+.text__zqNeP {
   animation: none;
   font-family: "Inter", sans-serif;
   font-size: 16px;
@@ -885,7 +892,7 @@
   text-decoration-line: none !important;
   text-overflow: clip !important;
 }
-.text__mJbxN {
+.text__b4P84 {
   animation: none;
   font-family: "Inter", sans-serif;
   font-size: 16px;
@@ -901,7 +908,7 @@
   text-decoration-line: none !important;
   text-overflow: clip !important;
 }
-.text__cTvbm {
+.text__ofwtM {
   animation: none;
   font-family: "Inter", sans-serif;
   font-size: 16px;
@@ -917,7 +924,7 @@
   text-decoration-line: none !important;
   text-overflow: clip !important;
 }
-.text__kUrm {
+.text___1DeR2 {
   animation: none;
   font-family: "Inter", sans-serif;
   font-size: 16px;
@@ -933,7 +940,7 @@
   text-decoration-line: none !important;
   text-overflow: clip !important;
 }
-.text___2S7B {
+.text__snxYp {
   animation: none;
   font-family: "Inter", sans-serif;
   font-size: 16px;
@@ -949,7 +956,7 @@
   text-decoration-line: none !important;
   text-overflow: clip !important;
 }
-.h3___6D4Yr {
+.h3__sY8UT {
   animation: none;
   width: 100%;
   height: auto;
@@ -970,7 +977,7 @@
   min-width: 0;
   padding: var(--token-UT0HlXJtiX6p);
 }
-.freeBox__ftJu5 {
+.freeBox__dpyzy {
   animation: none;
   display: flex;
   flex-direction: column;
@@ -979,7 +986,7 @@
   justify-content: flex-start;
   row-gap: var(--token-t2k15FQuuV6M);
 }
-.text__iR22 {
+.text__bo2Z9 {
   animation: none;
   font-family: "Inter", sans-serif;
   font-size: 16px;
@@ -995,12 +1002,12 @@
   text-decoration-line: none;
   text-overflow: clip;
 }
-.comment3:global(.__wab_instance) {
+.comment4:global(.__wab_instance) {
   animation: none;
   max-width: 100%;
   object-fit: cover;
 }
-.freeBox__cOfts {
+.freeBox__hQNhc {
   animation: none;
   display: flex;
   flex-direction: row;
@@ -1010,14 +1017,14 @@
   width: 100%;
   min-width: 0;
 }
-.confirmCommunityRate:global(.__wab_instance):global(.__wab_instance) {
+.confirmCommunityRate2:global(.__wab_instance):global(.__wab_instance) {
   animation: none;
 }
-.svg___6RRsC {
+.svg__kvb4C {
   position: relative;
   height: 1em;
 }
-.text__mqpXw {
+.text__aLvjF {
   animation: none;
   font-size: 12px;
   font-family: "Montserrat", sans-serif;
@@ -1033,18 +1040,18 @@
   text-decoration-line: none !important;
   text-overflow: clip !important;
 }
-.svg__mndaw {
+.svg__gqyy {
   position: relative;
   height: 1em;
 }
-.button2__e50K:global(.__wab_instance):global(.__wab_instance) {
+.button2__fgLhE:global(.__wab_instance):global(.__wab_instance) {
   animation: none;
 }
-.svg__a78Qa {
+.svg__p8VtF {
   position: relative;
   height: 1em;
 }
-.text___4JiF7 {
+.text__kpNwb {
   animation: none;
   font-size: 12px;
   font-family: "Montserrat", sans-serif;
@@ -1060,7 +1067,7 @@
   text-decoration-line: none !important;
   text-overflow: clip !important;
 }
-.svg__fkv9L {
+.svg__jKds {
   position: relative;
   height: 1em;
 }

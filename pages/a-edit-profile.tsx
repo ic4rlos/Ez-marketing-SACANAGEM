@@ -3,11 +3,9 @@ import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 import { getSupabaseA } from "../lib/a-supabaseClient";
 
-// 🔥 Mesma estratégia do primogênito
 export const dynamic_config = "force-dynamic";
 export const runtime = "nodejs";
 
-// 🔥 Plasmic sem SSR
 const PlasmicAEditProfile = dynamic(
   () =>
     import("../components/plasmic/ez_marketing_platform_sacanagem/PlasmicAEditProfile").then(
@@ -64,7 +62,6 @@ export default function AEditProfile() {
 
       const profileId = profileData.id;
 
-      // Busca tabelas relacionadas
       const { data: education } = await supabase
         .from("Education")
         .select("*")
@@ -95,23 +92,18 @@ export default function AEditProfile() {
     loadAll();
   }, [user]);
 
-  // =========================
-  // BASE64 → FILE
-  // =========================
   function base64ToFile(base64: string, filename: string, mime: string) {
     const byteString = atob(base64);
     const ab = new ArrayBuffer(byteString.length);
     const ia = new Uint8Array(ab);
-
     for (let i = 0; i < byteString.length; i++) {
       ia[i] = byteString.charCodeAt(i);
     }
-
     return new File([ab], filename, { type: mime });
   }
 
   // =========================
-  // SAVE
+  // SAVE (CORRIGIDO)
   // =========================
   async function handleSave(payload: any) {
     if (!user) return;
@@ -125,22 +117,12 @@ export default function AEditProfile() {
 
     let avatarUrl = profileFields["Profile image"];
 
-    // Upload de imagem se necessário
-    if (
-      avatarUrl &&
-      typeof avatarUrl !== "string" &&
-      avatarUrl?.files?.[0]?.contents
-    ) {
+    // Upload de imagem
+    if (avatarUrl && typeof avatarUrl !== "string" && avatarUrl?.files?.[0]?.contents) {
       const fileObj = avatarUrl.files[0];
       const fileExt = fileObj.name.split(".").pop();
       const fileName = `${user.id}-${Date.now()}.${fileExt}`;
-
-      const file = base64ToFile(
-        fileObj.contents,
-        fileName,
-        fileObj.type || "image/png"
-      );
-
+      const file = base64ToFile(fileObj.contents, fileName, fileObj.type || "image/png");
       const filePath = `avatars/${fileName}`;
 
       const { error: uploadError } = await supabase.storage
@@ -153,7 +135,7 @@ export default function AEditProfile() {
       }
     }
 
-    // Upsert do Perfil
+    // 1. Upsert do Perfil Principal
     const { data: savedProfile, error: profileError } = await supabase
       .from("User profile")
       .upsert(
@@ -168,71 +150,62 @@ export default function AEditProfile() {
       .single();
 
     if (profileError || !savedProfile) {
-      console.error(profileError);
+      console.error("Erro ao salvar perfil:", profileError);
       return;
     }
 
     const profileId = savedProfile.id;
 
-    // =========================
-    // EDUCATION SYNC
-    // =========================
-    const { data: existingEducation } = await supabase
-      .from("Education")
-      .select("*")
-      .eq("User profile_id", profileId);
+    // 2. EDUCATION SYNC
+    const { data: existingEdu } = await supabase.from("Education").select("id").eq("User profile_id", profileId);
+    const existingEduIds = existingEdu?.map((e) => e.id) ?? [];
+    const currentEduIds = education.map((e: any) => e.id).filter(Boolean);
+    
+    const eduToDelete = existingEduIds.filter((id) => !currentEduIds.includes(id));
+    if (eduToDelete.length) await supabase.from("Education").delete().in("id", eduToDelete);
 
-    const existingIds = existingEducation?.map((e) => e.id) ?? [];
-    const payloadIds = education?.map((e: any) => e.id).filter(Boolean) ?? [];
-
-    const toDelete = existingIds.filter((id) => !payloadIds.includes(id));
-
-    if (toDelete.length) {
-      await supabase.from("Education").delete().in("id", toDelete);
-    }
-
-    const toUpsert = education.map((e: any) => ({
-      id: e.id,
+    const eduPayload = education.map((e: any) => ({
+      ...(e.id ? { id: e.id } : {}), // Crucial: Só envia ID se ele existir
+      "User profile_id": profileId,
       University: e.University ?? "",
       Major: e.Major ?? "",
       "Graduation year": e["Graduation year"] ?? "",
       "Education level": e["Education level"] ?? "",
-      "User profile_id": profileId,
     }));
 
-    if (toUpsert.length) {
-      await supabase.from("Education").upsert(toUpsert, { onConflict: "id" });
-    }
+    if (eduPayload.length) await supabase.from("Education").upsert(eduPayload);
 
-    // =========================
-    // OFFICES SYNC
-    // =========================
-    const { data: existingOffices } = await supabase
-      .from("Multicharge")
-      .select("*")
-      .eq("User profile_id", profileId);
+    // 3. JOBS (CHARGE) SYNC
+    const { data: existingJobs } = await supabase.from("Charge").select("id").eq("User profile_id", profileId);
+    const existingJobIds = existingJobs?.map((j) => j.id) ?? [];
+    const currentJobIds = jobs.map((j: any) => j.id).filter(Boolean);
 
+    const jobsToDelete = existingJobIds.filter((id) => !currentJobIds.includes(id));
+    if (jobsToDelete.length) await supabase.from("Charge").delete().in("id", jobsToDelete);
+
+    const jobsPayload = jobs.map((j: any) => ({
+      ...(j.id ? { id: j.id } : {}),
+      "User profile_id": profileId,
+      Company: j.Company ?? "",
+      Role: j.Role ?? "",
+      "Start year": j["Start year"] ?? "",
+      "End year": j["End year"] ?? "",
+    }));
+
+    if (jobsPayload.length) await supabase.from("Charge").upsert(jobsPayload);
+
+    // 4. OFFICES (MULTICHARGE) SYNC
+    const { data: existingOffices } = await supabase.from("Multicharge").select("*").eq("User profile_id", profileId);
     const existingValues = existingOffices?.map((o) => o.Office) ?? [];
+    const toDeleteOffices = existingOffices?.filter((o) => !offices.includes(o.Office)).map((o) => o.id) ?? [];
 
-    const toDeleteOffices =
-      existingOffices
-        ?.filter((o) => !offices.includes(o.Office))
-        .map((o) => o.id) ?? [];
+    if (toDeleteOffices.length) await supabase.from("Multicharge").delete().in("id", toDeleteOffices);
 
-    if (toDeleteOffices.length) {
-      await supabase.from("Multicharge").delete().in("id", toDeleteOffices);
-    }
+    const toInsertOffices = offices
+      .filter((off: string) => !existingValues.includes(off))
+      .map((off: string) => ({ Office: off, "User profile_id": profileId }));
 
-    const toInsert = offices
-      .filter((office: string) => !existingValues.includes(office))
-      .map((office: string) => ({
-        Office: office,
-        "User profile_id": profileId,
-      }));
-
-    if (toInsert.length) {
-      await supabase.from("Multicharge").insert(toInsert);
-    }
+    if (toInsertOffices.length) await supabase.from("Multicharge").insert(toInsertOffices);
 
     router.replace("/a-find-a-business/");
   }

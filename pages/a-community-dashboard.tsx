@@ -34,6 +34,9 @@ export default function ACommunityDashboard() {
   useEffect(() => {
     async function loadUser() {
       const { data } = await supabase.auth.getUser();
+
+      console.log("AUTH USER:", data?.user);
+
       setUser(data?.user ?? null);
     }
 
@@ -46,11 +49,14 @@ export default function ACommunityDashboard() {
 
   useEffect(() => {
     if (!user) {
+      console.log("NO USER FOUND");
       setLoading(false);
       return;
     }
 
     async function loadCommunity() {
+
+      console.log("USER ID:", user.id);
 
       // descobrir comunidade do usuário
       const { data: member } = await supabase
@@ -60,12 +66,17 @@ export default function ACommunityDashboard() {
         .eq("status", "connected")
         .maybeSingle();
 
+      console.log("COMMUNITY MEMBERSHIP:", member);
+
       if (!member) {
+        console.log("USER NOT IN COMMUNITY");
         setLoading(false);
         return;
       }
 
       const communityId = member.community_id;
+
+      console.log("COMMUNITY ID:", communityId);
 
       // =========================
       // COMMUNITY INFO
@@ -77,6 +88,8 @@ export default function ACommunityDashboard() {
         .eq("id", communityId)
         .maybeSingle();
 
+      console.log("COMMUNITY DATA:", community);
+
       // =========================
       // MEMBERS
       // =========================
@@ -87,6 +100,8 @@ export default function ACommunityDashboard() {
         .eq("community_id", communityId)
         .eq("status", "connected");
 
+      console.log("MEMBERS DB:", membersDb);
+
       let members: any[] = [];
 
       if (membersDb?.length) {
@@ -95,23 +110,27 @@ export default function ACommunityDashboard() {
           await Promise.all(
             membersDb.map(async (m: any) => {
 
+              console.log("PROCESSING MEMBER:", m.user_id);
+
               const { data: profile } = await supabase
                 .from("User profile")
                 .select('id, "Profile pic", user_id')
                 .eq("user_id", m.user_id)
                 .maybeSingle();
 
+              console.log("PROFILE FOUND:", profile);
+
               if (!profile) return null;
 
-              // pegar TODOS offices
               const { data: offices } = await supabase
                 .from("Multicharge")
                 .select("Office")
                 .eq("User profile_id", profile.id);
 
+              console.log("OFFICES:", offices);
+
               if (!offices || offices.length === 0) return null;
 
-              // repetir membro para cada office
               return offices.map((o: any) => ({
                 "Profile pic": profile["Profile pic"],
                 Office: o.Office
@@ -122,11 +141,15 @@ export default function ACommunityDashboard() {
         ).flat().filter(Boolean);
       }
 
+      console.log("FINAL MEMBERS ARRAY:", members);
+
       // =========================
       // TRAININGS
       // =========================
 
       const currentYear = new Date().getFullYear();
+
+      console.log("CURRENT YEAR:", currentYear);
 
       let trainings: any[] = [];
 
@@ -136,23 +159,31 @@ export default function ACommunityDashboard() {
           await Promise.all(
             membersDb.map(async (m: any) => {
 
+              console.log("TRAINING CHECK MEMBER:", m.user_id);
+
               const { data: profile } = await supabase
                 .from("User profile")
                 .select('id, "Profile pic", "First name", user_id')
                 .eq("user_id", m.user_id)
                 .maybeSingle();
 
+              console.log("TRAINING PROFILE:", profile);
+
               if (!profile) return null;
 
               const { data: educationsRaw } = await supabase
-  .from("Education")
-  .select('University, "Graduation year", "User profile_id"')
-  .eq("User profile_id", profile.id);
+                .from("Education")
+                .select('University, "Graduation year", "User profile_id"')
+                .eq("User profile_id", profile.id);
 
-const educations =
-  educationsRaw?.filter(
-    (ed: any) => ed["Graduation year"] > currentYear
-  ) ?? [];
+              console.log("EDUCATIONS RAW:", educationsRaw);
+
+              const educations =
+                educationsRaw?.filter(
+                  (ed: any) => Number(ed["Graduation year"]) > currentYear
+                ) ?? [];
+
+              console.log("EDUCATIONS AFTER FILTER:", educations);
 
               if (!educations || educations.length === 0) return null;
 
@@ -168,15 +199,21 @@ const educations =
         ).flat().filter(Boolean);
       }
 
+      console.log("FINAL TRAININGS ARRAY:", trainings);
+
       // =========================
       // FINAL STATE
       // =========================
 
-      setFormData({
+      const finalData = {
         ...community,
         members,
         trainings
-      });
+      };
+
+      console.log("FORMDATA SENT TO PLASMIC:", finalData);
+
+      setFormData(finalData);
 
       setLoading(false);
     }

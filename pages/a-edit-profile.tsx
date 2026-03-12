@@ -1,7 +1,3 @@
-console.log("PAYLOAD", payload);
-console.log("EDUCATION", payload.education);
-console.log("JOBS", payload.jobs);
-console.log("OFFICES", payload.offices);
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
@@ -118,7 +114,10 @@ export default function AEditProfile() {
   // =========================
   async function handleSave(payload: any) {
     if (!user) return;
-
+console.log("PAYLOAD", payload);
+console.log("EDUCATION", payload.education);
+console.log("JOBS", payload.jobs);
+console.log("OFFICES", payload.offices);
     const { education = [], jobs = [], offices = [], ...profileFields } = payload;
 
     let avatarUrl = profileFields["Profile image"];

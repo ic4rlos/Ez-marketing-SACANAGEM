@@ -1152,6 +1152,7 @@
   width: auto;
   height: auto;
   min-height: 250px;
+  border-radius: 8px;
   margin: 0px 0px -250px;
   border-width: 1px;
 }
@@ -4841,6 +4842,7 @@
   max-width: 100%;
   font-size: 11px;
   text-align: center;
+  text-transform: capitalize;
   min-width: 0;
 }
 .text__hP60H {
@@ -4859,6 +4861,7 @@
   font-size: 11px;
   margin-left: 3px;
   margin-right: 3px;
+  white-space: pre;
 }
 .text__mYdYe {
   width: auto;
@@ -4872,6 +4875,8 @@
   max-width: 100%;
   font-size: 11px;
   margin-left: 3px;
+  white-space: pre;
+  text-transform: capitalize;
   min-width: 0;
 }
 .freeBox__na1Gz {

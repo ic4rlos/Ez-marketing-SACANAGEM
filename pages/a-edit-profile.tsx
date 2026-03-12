@@ -3,11 +3,9 @@ import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 import { getSupabaseA } from "../lib/a-supabaseClient";
 
-// 🔥 Mesma estratégia do primogênito
 export const dynamic_config = "force-dynamic";
 export const runtime = "nodejs";
 
-// 🔥 Plasmic sem SSR
 const PlasmicAEditProfile = dynamic(
   () =>
     import("../components/plasmic/ez_marketing_platform_sacanagem/PlasmicAEditProfile").then(
@@ -21,6 +19,7 @@ export default function AEditProfile() {
   const supabase = getSupabaseA();
 
   const [user, setUser] = useState<any>(null);
+
   const [formData, setFormData] = useState<any>({
     education: [],
     jobs: [],
@@ -28,57 +27,111 @@ export default function AEditProfile() {
   });
 
   const [loading, setLoading] = useState(true);
+
   const BUCKET = "agency-pics";
 
-  // =========================
+  // ====================================================
   // AUTH
-  // =========================
+  // ====================================================
+
   useEffect(() => {
     async function loadUser() {
-      const { data } = await supabase.auth.getUser();
-      setUser(data.user ?? null);
+      console.group("🔐 AUTH LOAD USER");
+
+      const { data, error } = await supabase.auth.getUser();
+
+      console.log("AUTH RAW DATA:", data);
+      console.log("AUTH ERROR:", error);
+
+      const currentUser = data?.user ?? null;
+
+      console.log("AUTH FINAL USER:", currentUser);
+
+      setUser(currentUser);
+
+      console.groupEnd();
     }
+
     loadUser();
   }, []);
 
-  // =========================
+  // ====================================================
   // LOAD PROFILE + RELAÇÕES
-  // =========================
+  // ====================================================
+
   useEffect(() => {
     if (!user) {
+      console.warn("⚠️ USER AINDA NÃO CARREGADO");
       setLoading(false);
       return;
     }
 
     async function loadAll() {
-      const { data: profileData } = await supabase
+      console.group("📦 LOAD PROFILE + RELATIONS");
+
+      console.log("USER ID:", user.id);
+
+      const { data: profileData, error: profileError } = await supabase
         .from("User profile")
         .select("*")
         .eq("user_id", user.id)
         .maybeSingle();
 
+      console.log("PROFILE DATA:", profileData);
+      console.log("PROFILE ERROR:", profileError);
+
       if (!profileData) {
+        console.warn("⚠️ PROFILE NÃO EXISTE");
         setLoading(false);
+        console.groupEnd();
         return;
       }
 
       const profileId = profileData.id;
 
-      // Busca tabelas relacionadas
-      const { data: education } = await supabase
+      console.log("PROFILE ID:", profileId);
+
+      // =========================
+      // EDUCATION
+      // =========================
+
+      const { data: education, error: eduError } = await supabase
         .from("Education")
         .select("*")
         .eq("User profile_id", profileId);
 
-      const { data: jobs } = await supabase
+      console.group("🎓 EDUCATION LOAD");
+      console.log("EDUCATION RAW:", education);
+      console.log("EDUCATION ERROR:", eduError);
+      console.groupEnd();
+
+      // =========================
+      // JOBS
+      // =========================
+
+      const { data: jobs, error: jobsError } = await supabase
         .from("Charge")
         .select("*")
         .eq("User profile_id", profileId);
 
-      const { data: officesDb } = await supabase
+      console.group("💼 JOBS LOAD");
+      console.log("JOBS RAW:", jobs);
+      console.log("JOBS ERROR:", jobsError);
+      console.groupEnd();
+
+      // =========================
+      // OFFICES
+      // =========================
+
+      const { data: officesDb, error: officesError } = await supabase
         .from("Multicharge")
         .select("*")
         .eq("User profile_id", profileId);
+
+      console.group("🏢 OFFICES LOAD");
+      console.log("OFFICES RAW:", officesDb);
+      console.log("OFFICES ERROR:", officesError);
+      console.groupEnd();
 
       const offices = officesDb?.map((o) => o.Office) ?? [];
 
@@ -90,14 +143,17 @@ export default function AEditProfile() {
       });
 
       setLoading(false);
+
+      console.groupEnd();
     }
 
     loadAll();
   }, [user]);
 
-  // =========================
+  // ====================================================
   // BASE64 → FILE
-  // =========================
+  // ====================================================
+
   function base64ToFile(base64: string, filename: string, mime: string) {
     const byteString = atob(base64);
     const ab = new ArrayBuffer(byteString.length);
@@ -110,11 +166,21 @@ export default function AEditProfile() {
     return new File([ab], filename, { type: mime });
   }
 
-  // =========================
-  // SAVE (CORRIGIDO)
-  // =========================
+  // ====================================================
+  // SAVE
+  // ====================================================
+
   async function handleSave(payload: any) {
-    if (!user) return;
+    console.group("💾 HANDLE SAVE START");
+
+    console.log("RAW PAYLOAD RECEBIDO:");
+    console.log(JSON.stringify(payload, null, 2));
+
+    if (!user) {
+      console.error("❌ USER NÃO EXISTE");
+      console.groupEnd();
+      return;
+    }
 
     const {
       education = [],
@@ -123,16 +189,39 @@ export default function AEditProfile() {
       ...profileFields
     } = payload;
 
+    console.group("📊 PAYLOAD BREAKDOWN");
+
+    console.log("PROFILE FIELDS:", profileFields);
+
+    console.log("EDUCATION ARRAY:");
+    console.log(JSON.stringify(education, null, 2));
+
+    console.log("JOBS ARRAY:");
+    console.log(JSON.stringify(jobs, null, 2));
+
+    console.log("OFFICES ARRAY:", offices);
+
+    console.groupEnd();
+
     let avatarUrl = profileFields["Profile image"];
 
-    // Upload de imagem se necessário
+    // ====================================================
+    // IMAGE UPLOAD
+    // ====================================================
+
     if (
       avatarUrl &&
       typeof avatarUrl !== "string" &&
       avatarUrl?.files?.[0]?.contents
     ) {
+      console.group("🖼 IMAGE UPLOAD");
+
       const fileObj = avatarUrl.files[0];
+
+      console.log("FILE OBJECT:", fileObj);
+
       const fileExt = fileObj.name.split(".").pop();
+
       const fileName = `${user.id}-${Date.now()}.${fileExt}`;
 
       const file = base64ToFile(
@@ -143,17 +232,31 @@ export default function AEditProfile() {
 
       const filePath = `avatars/${fileName}`;
 
+      console.log("UPLOAD PATH:", filePath);
+
       const { error: uploadError } = await supabase.storage
         .from(BUCKET)
         .upload(filePath, file, { upsert: true });
 
+      console.log("UPLOAD ERROR:", uploadError);
+
       if (!uploadError) {
         const { data } = supabase.storage.from(BUCKET).getPublicUrl(filePath);
+
         avatarUrl = data.publicUrl;
+
+        console.log("PUBLIC URL:", avatarUrl);
       }
+
+      console.groupEnd();
     }
 
-    // Upsert do Perfil
+    // ====================================================
+    // PROFILE UPSERT
+    // ====================================================
+
+    console.group("👤 PROFILE UPSERT");
+
     const { data: savedProfile, error: profileError } = await supabase
       .from("User profile")
       .upsert(
@@ -167,89 +270,98 @@ export default function AEditProfile() {
       .select()
       .single();
 
+    console.log("PROFILE RESULT:", savedProfile);
+    console.log("PROFILE ERROR:", profileError);
+
     if (profileError || !savedProfile) {
-      console.error("Erro ao salvar perfil:", profileError);
+      console.error("❌ PROFILE SAVE FAILED");
+      console.groupEnd();
+      console.groupEnd();
       return;
     }
 
     const profileId = savedProfile.id;
 
-    // =========================
-    // EDUCATION SYNC (CORRIGIDO)
-    // =========================
-    const { data: existingEducation } = await supabase
+    console.log("PROFILE ID FINAL:", profileId);
+
+    console.groupEnd();
+
+    // ====================================================
+    // EDUCATION DEBUG
+    // ====================================================
+
+    console.group("🎓 EDUCATION SYNC");
+
+    const eduPayload = education.map((e: any, index: number) => {
+      console.log(`EDU ITEM ${index}`, e);
+
+      return {
+        ...(e.id ? { id: e.id } : {}),
+        "User profile_id": profileId,
+        "University": e.University ?? "",
+        "Major": e.Major ?? "",
+        "Graduation year": e["Graduation year"] ?? "",
+        "Education level": e["Education level"] ?? "",
+      };
+    });
+
+    console.log("EDUCATION PAYLOAD FINAL:");
+    console.log(JSON.stringify(eduPayload, null, 2));
+
+    const { data: eduResult, error: eduError } = await supabase
       .from("Education")
-      .select("id")
-      .eq("User profile_id", profileId);
+      .upsert(eduPayload);
 
-    const existingEduIds = existingEducation?.map((e) => e.id) ?? [];
-    const payloadEduIds = education?.map((e: any) => e.id).filter(Boolean) ?? [];
+    console.log("EDUCATION RESULT:", eduResult);
+    console.log("EDUCATION ERROR:", eduError);
 
-    const eduToDelete = existingEduIds.filter((id) => !payloadEduIds.includes(id));
-    if (eduToDelete.length) {
-      await supabase.from("Education").delete().in("id", eduToDelete);
-    }
+    console.groupEnd();
 
-    const eduPayload = education.map((e: any) => ({
-      ...(e.id ? { id: e.id } : {}),
-      "User profile_id": profileId,
-      "University": e.University ?? "",
-      "Major": e.Major ?? "",
-      "Graduation year": e["Graduation year"] ?? "",
-      "Education level": e["Education level"] ?? "",
-    }));
+    // ====================================================
+    // JOBS DEBUG
+    // ====================================================
 
-    if (eduPayload.length) {
-      await supabase.from("Education").upsert(eduPayload);
-    }
+    console.group("💼 JOBS SYNC");
 
-    // =========================
-    // JOBS (CHARGE) SYNC (CORRIGIDO)
-    // =========================
-    const { data: existingJobs } = await supabase
+    const jobsPayload = jobs.map((j: any, index: number) => {
+      console.log(`JOB ITEM ${index}`, j);
+
+      return {
+        ...(j.id ? { id: j.id } : {}),
+        "User profile_id": profileId,
+        "Company": j.Company ?? "",
+        "Role": j.Role ?? "",
+        "Start year": j["Start year"] ?? "",
+        "End year": j["End year"] ?? "",
+      };
+    });
+
+    console.log("JOBS PAYLOAD FINAL:");
+    console.log(JSON.stringify(jobsPayload, null, 2));
+
+    const { data: jobsResult, error: jobsError } = await supabase
       .from("Charge")
-      .select("id")
-      .eq("User profile_id", profileId);
+      .upsert(jobsPayload);
 
-    const existingJobIds = existingJobs?.map((j) => j.id) ?? [];
-    const payloadJobIds = jobs?.map((j: any) => j.id).filter(Boolean) ?? [];
+    console.log("JOBS RESULT:", jobsResult);
+    console.log("JOBS ERROR:", jobsError);
 
-    const jobToDelete = existingJobIds.filter((id) => !payloadJobIds.includes(id));
-    if (jobToDelete.length) {
-      await supabase.from("Charge").delete().in("id", jobToDelete);
-    }
+    console.groupEnd();
 
-    const jobsPayload = jobs.map((j: any) => ({
-      ...(j.id ? { id: j.id } : {}),
-      "User profile_id": profileId,
-      "Company": j.Company ?? "",
-      "Role": j.Role ?? "",
-      "Start year": j["Start year"] ?? "",
-      "End year": j["End year"] ?? "",
-    }));
+    // ====================================================
+    // OFFICES
+    // ====================================================
 
-    if (jobsPayload.length) {
-      await supabase.from("Charge").upsert(jobsPayload);
-    }
+    console.group("🏢 OFFICES SYNC");
 
-    // =========================
-    // OFFICES SYNC
-    // =========================
     const { data: existingOffices } = await supabase
       .from("Multicharge")
       .select("*")
       .eq("User profile_id", profileId);
 
+    console.log("EXISTING OFFICES:", existingOffices);
+
     const existingValues = existingOffices?.map((o) => o.Office) ?? [];
-
-    const toDeleteOffices =
-      existingOffices
-        ?.filter((o) => !offices.includes(o.Office))
-        .map((o) => o.id) ?? [];
-
-    if (toDeleteOffices.length) {
-      await supabase.from("Multicharge").delete().in("id", toDeleteOffices);
-    }
 
     const toInsert = offices
       .filter((office: string) => !existingValues.includes(office))
@@ -258,9 +370,16 @@ export default function AEditProfile() {
         "User profile_id": profileId,
       }));
 
+    console.log("OFFICES TO INSERT:", toInsert);
+
     if (toInsert.length) {
-      await supabase.from("Multicharge").insert(toInsert);
+      const { error } = await supabase.from("Multicharge").insert(toInsert);
+      console.log("OFFICES INSERT ERROR:", error);
     }
+
+    console.groupEnd();
+
+    console.groupEnd();
 
     router.replace("/a-find-a-business/");
   }
@@ -274,6 +393,8 @@ export default function AEditProfile() {
         setFormData,
         onSave: handleSave,
         onOfficesChange: (value: any) => {
+          console.log("OFFICES CHANGE:", value);
+
           setFormData((prev: any) => ({
             ...prev,
             offices: Array.isArray(value) ? [...value] : [value],

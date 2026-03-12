@@ -30,21 +30,14 @@ export default function AEditProfile() {
 
   const BUCKET = "agency-pics";
 
-  // =========================
-  // AUTH
-  // =========================
   useEffect(() => {
     async function loadUser() {
       const { data } = await supabase.auth.getUser();
-      console.log("AUTH USER:", data.user);
       setUser(data.user ?? null);
     }
     loadUser();
   }, []);
 
-  // =========================
-  // LOAD PROFILE
-  // =========================
   useEffect(() => {
     if (!user) {
       setLoading(false);
@@ -52,15 +45,11 @@ export default function AEditProfile() {
     }
 
     async function loadAll() {
-      console.log("LOADING PROFILE DATA");
-
       const { data: profileData } = await supabase
         .from("User profile")
         .select("*")
         .eq("user_id", user.id)
         .maybeSingle();
-
-      console.log("PROFILE DATA:", profileData);
 
       if (!profileData) {
         setLoading(false);
@@ -86,10 +75,6 @@ export default function AEditProfile() {
 
       const offices = officesDb?.map((o) => o.Office) ?? [];
 
-      console.log("EDUCATION:", education);
-      console.log("JOBS:", jobs);
-      console.log("OFFICES:", offices);
-
       setFormData({
         ...profileData,
         education: education ?? [],
@@ -103,9 +88,6 @@ export default function AEditProfile() {
     loadAll();
   }, [user]);
 
-  // =========================
-  // BASE64 → FILE
-  // =========================
   function base64ToFile(base64: string, filename: string, mime: string) {
     const byteString = atob(base64);
     const ab = new ArrayBuffer(byteString.length);
@@ -118,13 +100,8 @@ export default function AEditProfile() {
     return new File([ab], filename, { type: mime });
   }
 
-  // =========================
-  // SAVE
-  // =========================
   async function handleSave(payload: any) {
     if (!user) return;
-
-    console.log("SAVE PAYLOAD:", payload);
 
     const {
       education = [],
@@ -133,34 +110,15 @@ export default function AEditProfile() {
       ...profileFields
     } = payload;
 
-    // =========================
-    // VALIDAR MAJOR DUPLICADO
-    // =========================
-    const majors = education.map((e: any) => e.Major?.toLowerCase());
-
-    const duplicatedMajor = majors.find(
-      (m: string, i: number) => majors.indexOf(m) !== i
-    );
-
-    if (duplicatedMajor) {
-      alert("Same major");
-      return;
-    }
-
     let avatarUrl = profileFields["Profile image"];
 
-    // =========================
-    // UPLOAD AVATAR
-    // =========================
     if (
       avatarUrl &&
       typeof avatarUrl !== "string" &&
       avatarUrl?.files?.[0]?.contents
     ) {
       const fileObj = avatarUrl.files[0];
-
       const fileExt = fileObj.name.split(".").pop();
-
       const fileName = `${user.id}-${Date.now()}.${fileExt}`;
 
       const file = base64ToFile(
@@ -170,8 +128,6 @@ export default function AEditProfile() {
       );
 
       const filePath = `avatars/${fileName}`;
-
-      console.log("UPLOADING AVATAR");
 
       const { error: uploadError } = await supabase.storage
         .from(BUCKET)
@@ -183,9 +139,6 @@ export default function AEditProfile() {
       }
     }
 
-    // =========================
-    // UPSERT PROFILE
-    // =========================
     const { data: savedProfile, error: profileError } = await supabase
       .from("User profile")
       .upsert(
@@ -199,35 +152,26 @@ export default function AEditProfile() {
       .select()
       .single();
 
-    console.log("PROFILE SAVED:", savedProfile);
-
     if (profileError || !savedProfile) {
-      console.error("PROFILE ERROR:", profileError);
+      console.error(profileError);
       return;
     }
 
     const profileId = savedProfile.id;
 
-    // =========================
-    // EDUCATION SYNC
-    // =========================
     const { data: existingEducation } = await supabase
       .from("Education")
       .select("id")
       .eq("User profile_id", profileId);
 
     const existingEduIds = existingEducation?.map((e) => e.id) ?? [];
-
-    const payloadEduIds = education
-      ?.map((e: any) => e.id)
-      .filter(Boolean) ?? [];
+    const payloadEduIds = education?.map((e: any) => e.id).filter(Boolean) ?? [];
 
     const eduToDelete = existingEduIds.filter(
       (id) => !payloadEduIds.includes(id)
     );
 
     if (eduToDelete.length) {
-      console.log("DELETE EDUCATION:", eduToDelete);
       await supabase.from("Education").delete().in("id", eduToDelete);
     }
 
@@ -240,31 +184,25 @@ export default function AEditProfile() {
       "Education level": e["Education level"] ?? "",
     }));
 
-    console.log("EDUCATION PAYLOAD:", eduPayload);
-
     if (eduPayload.length) {
-      await supabase.from("Education").upsert(eduPayload);
+      await supabase.from("Education").upsert(eduPayload, {
+        onConflict: "id",
+      });
     }
 
-    // =========================
-    // JOBS SYNC (CORRIGIDO)
-    // =========================
     const { data: existingJobs } = await supabase
       .from("Charge")
       .select("id")
       .eq("User profile_id", profileId);
 
     const existingJobIds = existingJobs?.map((j) => j.id) ?? [];
-
-    const payloadJobIds =
-      jobs?.map((j: any) => j.id).filter(Boolean) ?? [];
+    const payloadJobIds = jobs?.map((j: any) => j.id).filter(Boolean) ?? [];
 
     const jobToDelete = existingJobIds.filter(
       (id) => !payloadJobIds.includes(id)
     );
 
     if (jobToDelete.length) {
-      console.log("DELETE JOBS:", jobToDelete);
       await supabase.from("Charge").delete().in("id", jobToDelete);
     }
 
@@ -276,15 +214,12 @@ export default function AEditProfile() {
       "How long in office": j["How long in office"] ?? "",
     }));
 
-    console.log("JOBS PAYLOAD:", jobsPayload);
-
     if (jobsPayload.length) {
-      await supabase.from("Charge").upsert(jobsPayload);
+      await supabase.from("Charge").upsert(jobsPayload, {
+        onConflict: "id",
+      });
     }
 
-    // =========================
-    // OFFICES SYNC
-    // =========================
     const { data: existingOffices } = await supabase
       .from("Multicharge")
       .select("*")
@@ -298,7 +233,6 @@ export default function AEditProfile() {
         .map((o) => o.id) ?? [];
 
     if (toDeleteOffices.length) {
-      console.log("DELETE OFFICES:", toDeleteOffices);
       await supabase.from("Multicharge").delete().in("id", toDeleteOffices);
     }
 
@@ -309,13 +243,9 @@ export default function AEditProfile() {
         "User profile_id": profileId,
       }));
 
-    console.log("INSERT OFFICES:", toInsert);
-
     if (toInsert.length) {
       await supabase.from("Multicharge").insert(toInsert);
     }
-
-    console.log("PROFILE SAVE COMPLETED");
 
     router.replace("/a-find-a-business/");
   }

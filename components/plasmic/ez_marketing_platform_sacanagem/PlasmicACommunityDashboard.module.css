@@ -1112,12 +1112,11 @@
   padding: 0px;
 }
 .membersCarousel:global(.__wab_instance) {
-  width: 100%;
+  width: 1064px;
   max-width: 100%;
   flex-direction: column;
   object-fit: cover;
   height: 100%;
-  min-width: 0;
   min-height: 0;
 }
 .member {

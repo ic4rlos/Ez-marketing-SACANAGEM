@@ -114,11 +114,11 @@ export default function AEditProfile() {
   // =========================
   async function handleSave(payload: any) {
     if (!user) return;
-console.log("PAYLOAD", payload);
-console.log("EDUCATION", payload.education);
-console.log("JOBS", payload.jobs);
-console.log("OFFICES", payload.offices);
-    const { education = [], jobs = [], offices = [], ...profileFields } = payload;
+
+    console.log("PAYLOAD", payload);
+
+    const { education = [], jobs = [], offices = [], ...profileFields } =
+      payload;
 
     let avatarUrl = profileFields["Profile image"];
 
@@ -180,21 +180,20 @@ console.log("OFFICES", payload.offices);
     // =========================
     const { data: existingEducation } = await supabase
       .from("Education")
-      .select("*")
+      .select("id")
       .eq("User profile_id", profileId);
 
     const existingIds = existingEducation?.map((e) => e.id) ?? [];
-    const payloadIds =
-      education?.map((e: any) => e.id).filter(Boolean) ?? [];
+    const incomingIds = education.filter((e: any) => e.id).map((e: any) => e.id);
 
-    const toDelete = existingIds.filter((id) => !payloadIds.includes(id));
+    const toDelete = existingIds.filter((id) => !incomingIds.includes(id));
 
     if (toDelete.length) {
       await supabase.from("Education").delete().in("id", toDelete);
     }
 
-    const toUpsert = education.map((e: any) => ({
-      id: e.id,
+    const educationPayload = education.map((e: any) => ({
+      ...(e.id ? { id: e.id } : {}),
       University: e.University ?? "",
       Major: e.Major ?? "",
       "Graduation year": e["Graduation year"] ?? "",
@@ -202,10 +201,44 @@ console.log("OFFICES", payload.offices);
       "User profile_id": profileId,
     }));
 
-    if (toUpsert.length) {
-    await supabase.from("Education").upsert(toUpsert, {
-  onConflict: "id",
-});
+    if (educationPayload.length) {
+      await supabase.from("Education").upsert(educationPayload, {
+        onConflict: "id",
+      });
+    }
+
+    // =========================
+    // JOBS SYNC
+    // =========================
+    const { data: existingJobs } = await supabase
+      .from("Charge")
+      .select("id")
+      .eq("User profile_id", profileId);
+
+    const existingJobIds = existingJobs?.map((j) => j.id) ?? [];
+    const incomingJobIds = jobs.filter((j: any) => j.id).map((j: any) => j.id);
+
+    const jobsToDelete = existingJobIds.filter(
+      (id) => !incomingJobIds.includes(id)
+    );
+
+    if (jobsToDelete.length) {
+      await supabase.from("Charge").delete().in("id", jobsToDelete);
+    }
+
+    const jobsPayload = jobs.map((j: any) => ({
+      ...(j.id ? { id: j.id } : {}),
+      Company: j.Company ?? "",
+      Role: j.Role ?? "",
+      "Start year": j["Start year"] ?? "",
+      "End year": j["End year"] ?? "",
+      "User profile_id": profileId,
+    }));
+
+    if (jobsPayload.length) {
+      await supabase.from("Charge").upsert(jobsPayload, {
+        onConflict: "id",
+      });
     }
 
     // =========================
@@ -237,6 +270,8 @@ console.log("OFFICES", payload.offices);
     if (toInsert.length) {
       await supabase.from("Multicharge").insert(toInsert);
     }
+
+    console.log("✅ SAVE FINALIZADO");
 
     router.replace("/a-find-a-business/");
   }

@@ -147,9 +147,9 @@ export default function ACommunityDashboard() {
       // TRAININGS
       // =========================
 
-      const currentYear = new Date().getFullYear();
+      const today = new Date().toISOString().split("T")[0];
 
-      console.log("CURRENT YEAR:", currentYear);
+      console.log("TODAY DATE:", today);
 
       let trainings: any[] = [];
 
@@ -180,12 +180,12 @@ export default function ACommunityDashboard() {
 
               const educations =
                 educationsRaw?.filter(
-                  (ed: any) => Number(ed["Graduation year"]) > currentYear
+                  (ed: any) => ed["Graduation year"] > today
                 ) ?? [];
 
               console.log("EDUCATIONS AFTER FILTER:", educations);
 
-              if (!educations || educations.length === 0) return null;
+              if (!educations.length) return null;
 
               return educations.map((ed: any) => ({
                 "Profile pic": profile["Profile pic"],

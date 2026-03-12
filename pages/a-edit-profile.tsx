@@ -30,9 +30,7 @@ export default function AEditProfile() {
 
   const BUCKET = "agency-pics";
 
-  // =========================
   // AUTH
-  // =========================
   useEffect(() => {
     async function loadUser() {
       const { data } = await supabase.auth.getUser();
@@ -41,9 +39,7 @@ export default function AEditProfile() {
     loadUser();
   }, []);
 
-  // =========================
   // LOAD PROFILE
-  // =========================
   useEffect(() => {
     if (!user) {
       setLoading(false);
@@ -94,9 +90,7 @@ export default function AEditProfile() {
     loadAll();
   }, [user]);
 
-  // =========================
   // BASE64 → FILE
-  // =========================
   function base64ToFile(base64: string, filename: string, mime: string) {
     const byteString = atob(base64);
     const ab = new ArrayBuffer(byteString.length);
@@ -109,22 +103,15 @@ export default function AEditProfile() {
     return new File([ab], filename, { type: mime });
   }
 
-  // =========================
-  // SAVE
-  // =========================
   async function handleSave(payload: any) {
     if (!user) return;
-
-    console.log("PAYLOAD", payload);
 
     const { education = [], jobs = [], offices = [], ...profileFields } =
       payload;
 
     let avatarUrl = profileFields["Profile image"];
 
-    // =========================
-    // AVATAR UPLOAD
-    // =========================
+    // AVATAR
     if (
       avatarUrl &&
       typeof avatarUrl !== "string" &&
@@ -152,10 +139,8 @@ export default function AEditProfile() {
       }
     }
 
-    // =========================
     // UPSERT PROFILE
-    // =========================
-    const { data: savedProfile, error: profileError } = await supabase
+    const { data: savedProfile } = await supabase
       .from("User profile")
       .upsert(
         {
@@ -168,97 +153,84 @@ export default function AEditProfile() {
       .select()
       .single();
 
-    if (profileError || !savedProfile) {
-      console.error(profileError);
-      return;
-    }
-
     const profileId = savedProfile.id;
 
-    // =========================
-    // EDUCATION SYNC
-    // =========================
+    // EDUCATION DELETE
     const { data: existingEducation } = await supabase
       .from("Education")
       .select("id")
       .eq("User profile_id", profileId);
 
     const existingIds = existingEducation?.map((e) => e.id) ?? [];
-    const incomingIds = education.filter((e: any) => e.id).map((e: any) => e.id);
+    const payloadIds = education.filter((e: any) => e.id).map((e: any) => e.id);
 
-    const toDelete = existingIds.filter((id) => !incomingIds.includes(id));
+    const toDelete = existingIds.filter((id) => !payloadIds.includes(id));
 
-    if (toDelete.length) {
+    if (toDelete.length)
       await supabase.from("Education").delete().in("id", toDelete);
-    }
 
+    // EDUCATION UPSERT
     const educationPayload = education.map((e: any) => ({
       ...(e.id ? { id: e.id } : {}),
-      University: e.University ?? "",
-      Major: e.Major ?? "",
-      "Graduation year": e["Graduation year"] ?? "",
-      "Education level": e["Education level"] ?? "",
+      University: e.University ?? null,
+      Major: e.Major ?? null,
+      "Graduation year": e["Graduation year"] ?? null,
+      "Education level": e["Education level"] ?? null,
       "User profile_id": profileId,
     }));
 
-    if (educationPayload.length) {
+    if (educationPayload.length)
       await supabase.from("Education").upsert(educationPayload, {
         onConflict: "id",
       });
-    }
 
-    // =========================
-    // JOBS SYNC
-    // =========================
+    // JOBS DELETE
     const { data: existingJobs } = await supabase
       .from("Charge")
       .select("id")
       .eq("User profile_id", profileId);
 
     const existingJobIds = existingJobs?.map((j) => j.id) ?? [];
-    const incomingJobIds = jobs.filter((j: any) => j.id).map((j: any) => j.id);
+    const payloadJobIds = jobs.filter((j: any) => j.id).map((j: any) => j.id);
 
     const jobsToDelete = existingJobIds.filter(
-      (id) => !incomingJobIds.includes(id)
+      (id) => !payloadJobIds.includes(id)
     );
 
-    if (jobsToDelete.length) {
+    if (jobsToDelete.length)
       await supabase.from("Charge").delete().in("id", jobsToDelete);
-    }
 
+    // JOBS UPSERT
     const jobsPayload = jobs.map((j: any) => ({
       ...(j.id ? { id: j.id } : {}),
-      Company: j.Company ?? "",
-      Role: j.Role ?? "",
-      "Start year": j["Start year"] ?? "",
-      "End year": j["End year"] ?? "",
+      Company: j.Company ?? null,
+      Role: j.Role ?? null,
+      "Start year": j["Start year"] ?? null,
+      "End year": j["End year"] ?? null,
       "User profile_id": profileId,
     }));
 
-    if (jobsPayload.length) {
+    if (jobsPayload.length)
       await supabase.from("Charge").upsert(jobsPayload, {
         onConflict: "id",
       });
-    }
 
-    // =========================
-    // OFFICES SYNC
-    // =========================
+    // OFFICES DELETE
     const { data: existingOffices } = await supabase
       .from("Multicharge")
       .select("*")
       .eq("User profile_id", profileId);
-
-    const existingValues = existingOffices?.map((o) => o.Office) ?? [];
 
     const toDeleteOffices =
       existingOffices
         ?.filter((o) => !offices.includes(o.Office))
         .map((o) => o.id) ?? [];
 
-    if (toDeleteOffices.length) {
+    if (toDeleteOffices.length)
       await supabase.from("Multicharge").delete().in("id", toDeleteOffices);
-    }
+
+    // OFFICES INSERT
+    const existingValues = existingOffices?.map((o) => o.Office) ?? [];
 
     const toInsert = offices
       .filter((office: string) => !existingValues.includes(office))
@@ -267,11 +239,7 @@ export default function AEditProfile() {
         "User profile_id": profileId,
       }));
 
-    if (toInsert.length) {
-      await supabase.from("Multicharge").insert(toInsert);
-    }
-
-    console.log("✅ SAVE FINALIZADO");
+    if (toInsert.length) await supabase.from("Multicharge").insert(toInsert);
 
     router.replace("/a-find-a-business/");
   }

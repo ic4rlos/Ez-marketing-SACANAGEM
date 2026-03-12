@@ -195,7 +195,7 @@ export default function AEditProfile() {
       University: e.University ?? "",
       Major: e.Major ?? "",
       "Graduation year": e["Graduation year"] ?? "",
-      "Graduation level": e["Graduation level"] ?? "",
+      "Education level": e["Education level"] ?? "",
       "User profile_id": profileId,
     }));
 

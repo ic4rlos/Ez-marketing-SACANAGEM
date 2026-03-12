@@ -203,7 +203,9 @@ console.log("OFFICES", payload.offices);
     }));
 
     if (toUpsert.length) {
-      await supabase.from("Education").upsert(toUpsert);
+    await supabase.from("Education").upsert(toUpsert, {
+  onConflict: "id",
+});
     }
 
     // =========================

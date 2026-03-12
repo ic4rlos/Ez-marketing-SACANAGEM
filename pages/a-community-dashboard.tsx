@@ -21,7 +21,8 @@ export default function ACommunityDashboard() {
   const [user, setUser] = useState<any>(null);
 
   const [formData, setFormData] = useState<any>({
-    members: []
+    members: [],
+    trainings: []
   });
 
   const [loading, setLoading] = useState(true);
@@ -40,7 +41,7 @@ export default function ACommunityDashboard() {
   }, []);
 
   // =========================
-  // LOAD COMMUNITY + MEMBERS
+  // LOAD COMMUNITY + MEMBERS + TRAININGS
   // =========================
 
   useEffect(() => {
@@ -77,7 +78,7 @@ export default function ACommunityDashboard() {
         .maybeSingle();
 
       // =========================
-      // MEMBERS OF SAME COMMUNITY
+      // MEMBERS
       // =========================
 
       const { data: membersDb } = await supabase
@@ -93,16 +94,14 @@ export default function ACommunityDashboard() {
         members = await Promise.all(
           membersDb.map(async (m: any) => {
 
-            // PROFILE
             const { data: profile } = await supabase
               .from("User profile")
-              .select("id, \"Profile pic\", user_id")
+              .select('id, "Profile pic", user_id')
               .eq("user_id", m.user_id)
               .maybeSingle();
 
             if (!profile) return null;
 
-            // FIRST OFFICE
             const { data: office } = await supabase
               .from("Multicharge")
               .select("Office")
@@ -122,12 +121,55 @@ export default function ACommunityDashboard() {
       }
 
       // =========================
+      // TRAININGS (members studying)
+      // =========================
+
+      const currentYear = new Date().getFullYear();
+
+      let trainings: any[] = [];
+
+      if (membersDb?.length) {
+
+        trainings = (
+          await Promise.all(
+            membersDb.map(async (m: any) => {
+
+              const { data: profile } = await supabase
+                .from("User profile")
+                .select('id, "Profile pic", "First name", user_id')
+                .eq("user_id", m.user_id)
+                .maybeSingle();
+
+              if (!profile) return null;
+
+              const { data: educations } = await supabase
+                .from("Education")
+                .select('University, "Graduation year"')
+                .eq("User profile_id", profile.id)
+                .gt("Graduation year", currentYear);
+
+              if (!educations || educations.length === 0) return null;
+
+              return educations.map((ed: any) => ({
+                "Profile pic": profile["Profile pic"],
+                "First name": profile["First name"],
+                University: ed.University,
+                "Graduation year": ed["Graduation year"]
+              }));
+
+            })
+          )
+        ).flat().filter(Boolean);
+      }
+
+      // =========================
       // FINAL STATE
       // =========================
 
       setFormData({
         ...community,
-        members
+        members,
+        trainings
       });
 
       setLoading(false);

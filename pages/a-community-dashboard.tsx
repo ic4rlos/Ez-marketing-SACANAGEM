@@ -145,10 +145,10 @@ export default function ACommunityDashboard() {
               if (!profile) return null;
 
               const { data: educations } = await supabase
-                .from("Education")
-                .select('University, "Graduation year"')
-                .eq("User profile_id", profile.id)
-                .gt("Graduation year", currentYear);
+  .from("Education")
+  .select('University, "Graduation year"')
+  .filter('"User profile_id"', "eq", profile.id)
+  .filter('"Graduation year"', "gt", currentYear);
 
               if (!educations || educations.length === 0) return null;
 

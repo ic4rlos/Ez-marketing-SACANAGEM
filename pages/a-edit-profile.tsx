@@ -154,39 +154,76 @@ export default function AEditProfile() {
 
     const profileId = savedProfile.id;
 
-    /* EDUCATION (FUNCIONANDO) */
+    //* EDUCATION DEBUG */
 
-    const { data: existingEducation } = await supabase
-      .from("Education")
-      .select("id")
-      .eq("User profile_id", profileId);
+console.log("=== EDUCATION PAYLOAD RECEBIDO DO FORM ===");
+console.log(education);
 
-    const existingEduIds = existingEducation?.map((e) => e.id) ?? [];
-    const payloadEduIds = education?.map((e: any) => e.id).filter(Boolean) ?? [];
+const { data: existingEducation } = await supabase
+  .from("Education")
+  .select("id")
+  .eq("User profile_id", profileId);
 
-    const eduToDelete = existingEduIds.filter(
-      (id) => !payloadEduIds.includes(id)
-    );
+console.log("=== EDUCATION EXISTENTE NO BANCO ===");
+console.log(existingEducation);
 
-    if (eduToDelete.length) {
-      await supabase.from("Education").delete().in("id", eduToDelete);
-    }
+const existingEduIds = existingEducation?.map((e) => e.id) ?? [];
+const payloadEduIds = education?.map((e: any) => e.id).filter(Boolean) ?? [];
 
-    const eduPayload = education.map((e: any) => ({
-      ...(e.id ? { id: e.id } : {}),
-      "User profile_id": profileId,
-      "University": e.University ?? "",
-      "Major": e.Major ?? "",
-      "Graduation year": e["Graduation year"] ?? "",
-      "Education level": e["Education level"] ?? "",
-    }));
+console.log("existingEduIds:", existingEduIds);
+console.log("payloadEduIds:", payloadEduIds);
 
-    if (eduPayload.length) {
-      await supabase.from("Education").upsert(eduPayload, {
-        onConflict: "id",
-      });
-    }
+const eduToDelete = existingEduIds.filter(
+  (id) => !payloadEduIds.includes(id)
+);
 
+console.log("eduToDelete:", eduToDelete);
+
+if (eduToDelete.length) {
+  const { error } = await supabase.from("Education").delete().in("id", eduToDelete);
+  console.log("DELETE RESULT:", error);
+}
+
+/* MAP EDUCATION */
+
+const eduPayload = education.map((e: any) => {
+
+  console.log("=== EDUCATION ITEM RAW ===");
+  console.log(e);
+
+  console.log("Education level recebido:", e["Education level"]);
+
+  const mapped = {
+    ...(e.id ? { id: e.id } : {}),
+    "User profile_id": profileId,
+    "University": e.University ?? "",
+    "Major": e.Major ?? "",
+    "Graduation year": e["Graduation year"] ?? "",
+    "Education level": e["Education level"] ?? "",
+  };
+
+  console.log("=== EDUCATION ITEM MAPEADO ===");
+  console.log(mapped);
+
+  return mapped;
+});
+
+console.log("=== PAYLOAD FINAL ENVIADO AO SUPABASE ===");
+console.log(eduPayload);
+
+if (eduPayload.length) {
+
+  const { data, error } = await supabase
+    .from("Education")
+    .upsert(eduPayload, {
+      onConflict: "id",
+    })
+    .select();
+
+  console.log("=== RESPOSTA SUPABASE EDUCATION ===");
+  console.log("data:", data);
+  console.log("error:", error);
+}
     /* JOBS (MESMA LÓGICA DO EDUCATION + PROTEÇÃO EXTRA) */
 
     const cleanJobs = jobs

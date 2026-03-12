@@ -2003,35 +2003,17 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                           sty.freeBox__iBgP0
                         )}
                       >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__iqqHs
-                          )}
-                        >
-                          {"Bacharel"}
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__bCrgz
-                          )}
-                        >
-                          {"Gold"}
-                        </div>
                         <PlasmicImg__
                           data-plasmic-name={"profilePic"}
                           data-plasmic-override={overrides.profilePic}
                           alt={""}
                           className={classNames(sty.profilePic)}
-                          displayHeight={"250px"}
+                          displayHeight={"auto"}
                           displayMaxHeight={"none"}
-                          displayMaxWidth={"100%"}
-                          displayMinHeight={"0"}
+                          displayMaxWidth={"200px"}
+                          displayMinHeight={"250px"}
                           displayMinWidth={"0"}
-                          displayWidth={"200px"}
+                          displayWidth={"auto"}
                           src={(() => {
                             try {
                               return currentItem["Profile pic"];
@@ -2051,6 +2033,25 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                             }
                           })()}
                         />
+
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__iqqHs
+                          )}
+                        >
+                          {"Bacharel"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__zwQ6
+                          )}
+                        >
+                          {"Gold"}
+                        </div>
                       </div>
                       <div
                         data-plasmic-name={"office"}

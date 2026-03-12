@@ -1641,7 +1641,8 @@ function PlasmicAEditProfile__RenderFunc(props: {
                                       const actionArgs = {
                                         customFunction: async () => {
                                           return (() => {
-                                            const value = event;
+                                            const value =
+                                              event.target.innerText;
                                             return $props.setFormData({
                                               ...$props.formData,
                                               education:

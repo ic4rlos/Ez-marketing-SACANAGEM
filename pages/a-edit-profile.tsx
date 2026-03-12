@@ -154,101 +154,81 @@ export default function AEditProfile() {
 
     const profileId = savedProfile.id;
 
-/* EDUCATION — DEBUG FINAL */
+    /* EDUCATION (FUNCIONANDO) */
 
-console.log("========== EDUCATION DEBUG START ==========");
+    const { data: existingEducation } = await supabase
+      .from("Education")
+      .select("id")
+      .eq("User profile_id", profileId);
 
-/* 1 — O QUE CHEGOU DO FORM */
-console.log("FORM EDUCATION ARRAY:");
-console.log(JSON.stringify(education, null, 2));
+    const existingEduIds = existingEducation?.map((e) => e.id) ?? [];
+    const payloadEduIds = education?.map((e: any) => e.id).filter(Boolean) ?? [];
 
-console.log("FORM EDUCATION TYPE:", typeof education);
-console.log("FORM EDUCATION LENGTH:", education?.length);
+    const eduToDelete = existingEduIds.filter(
+      (id) => !payloadEduIds.includes(id)
+    );
 
-/* 2 — CARREGAR O QUE EXISTE NO BANCO */
+    if (eduToDelete.length) {
+      await supabase.from("Education").delete().in("id", eduToDelete);
+    }
 
-const { data: existingEducation, error: existingError } = await supabase
-  .from("Education")
-  .select("*")
-  .eq("User profile_id", profileId);
+    const eduPayload = education.map((e: any) => ({
+      ...(e.id ? { id: e.id } : {}),
+      "User profile_id": profileId,
+      "University": e.University ?? "",
+      "Major": e.Major ?? "",
+      "Graduation year": e["Graduation year"] ?? "",
+      "Education level": e["Education level"] ?? "",
+    }));
 
-console.log("EXISTING EDUCATION FROM DB:");
-console.log(JSON.stringify(existingEducation, null, 2));
+    if (eduPayload.length) {
+      await supabase.from("Education").upsert(eduPayload, {
+        onConflict: "id",
+      });
+    }
 
-console.log("EXISTING EDUCATION ERROR:", existingError);
+    /* JOBS (MESMA LÓGICA DO EDUCATION + PROTEÇÃO EXTRA) */
 
-/* 3 — ANALISAR CADA ITEM DO FORM */
+    const cleanJobs = jobs
+      .filter((j: any) => j.Charge || j.Company)
+      .map((j: any) => ({
+        ...(j.id ? { id: j.id } : {}),
+        "User profile_id": profileId,
+        "Charge": j.Charge ?? "",
+        "Company": j.Company ?? "",
+        "How long in office": j["How long in office"] ?? "",
+      }));
 
-education.forEach((e, i) => {
-  console.log(`----- FORM ITEM ${i} -----`);
-  console.log("RAW ITEM:", e);
-  console.log("KEYS:", Object.keys(e));
-  console.log("Education level value:", e?.["Education level"]);
-  console.log("University:", e?.University);
-  console.log("Major:", e?.Major);
-  console.log("Graduation year:", e?.["Graduation year"]);
-});
+    const uniqueJobs = Array.from(
+      new Map(
+        cleanJobs.map((j: any) => [
+          `${j["Charge"]}-${j["Company"]}`,
+          j,
+        ])
+      ).values()
+    );
 
-/* 4 — IDS EXISTENTES */
+    const { data: existingJobs } = await supabase
+      .from("Charge")
+      .select("id")
+      .eq("User profile_id", profileId);
 
-const existingEduIds = existingEducation?.map((e) => e.id) ?? [];
-const payloadEduIds = education?.map((e) => e.id).filter(Boolean) ?? [];
+    const existingJobIds = existingJobs?.map((j) => j.id) ?? [];
+    const payloadJobIds = uniqueJobs?.map((j: any) => j.id).filter(Boolean) ?? [];
 
-console.log("existingEduIds:", existingEduIds);
-console.log("payloadEduIds:", payloadEduIds);
+    const jobToDelete = existingJobIds.filter(
+      (id) => !payloadJobIds.includes(id)
+    );
 
-const eduToDelete = existingEduIds.filter(
-  (id) => !payloadEduIds.includes(id)
-);
+    if (jobToDelete.length) {
+      await supabase.from("Charge").delete().in("id", jobToDelete);
+    }
 
-console.log("eduToDelete:", eduToDelete);
-
-if (eduToDelete.length) {
-  const { error } = await supabase
-    .from("Education")
-    .delete()
-    .in("id", eduToDelete);
-
-  console.log("DELETE RESULT:", error);
-}
-
-/* 5 — MAPEAMENTO FINAL */
-
-const eduPayload = education.map((e, i) => {
-  const mapped = {
-    ...(e.id ? { id: e.id } : {}),
-    "User profile_id": profileId,
-    "University": e?.University ?? "",
-    "Major": e?.Major ?? "",
-    "Graduation year": e?.["Graduation year"] ?? "",
-    "Education level": e?.["Education level"] ?? "",
-  };
-
-  console.log(`----- MAPPED ITEM ${i} -----`);
-  console.log(JSON.stringify(mapped, null, 2));
-
-  return mapped;
-});
-
-console.log("FINAL PAYLOAD SENT TO SUPABASE:");
-console.log(JSON.stringify(eduPayload, null, 2));
-
-/* 6 — UPSERT */
-
-if (eduPayload.length) {
-  const { data, error } = await supabase
-    .from("Education")
-    .upsert(eduPayload, { onConflict: "id" })
-    .select();
-
-  console.log("UPSERT RESULT DATA:");
-  console.log(JSON.stringify(data, null, 2));
-
-  console.log("UPSERT RESULT ERROR:");
-  console.log(error);
-}
-
-console.log("========== EDUCATION DEBUG END ==========");
+    if (uniqueJobs.length) {
+      await supabase.from("Charge").upsert(uniqueJobs, {
+        onConflict: "id",
+      });
+    }
 
     /* OFFICES */
 

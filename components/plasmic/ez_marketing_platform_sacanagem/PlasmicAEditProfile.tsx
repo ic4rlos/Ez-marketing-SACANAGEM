@@ -388,8 +388,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
         path: "office.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
-          $props.formData.offices ?? []
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "impressive.value",
@@ -1642,21 +1641,137 @@ function PlasmicAEditProfile__RenderFunc(props: {
                                       const actionArgs = {
                                         customFunction: async () => {
                                           return (() => {
+                                            console.log(
+                                              "========== EDUCATION LEVEL ONCHANGE START =========="
+                                            );
+                                            console.log("EVENT OBJECT:", event);
+                                            console.log(
+                                              "EVENT TARGET:",
+                                              event?.target
+                                            );
+                                            console.log(
+                                              "EVENT TARGET VALUE:",
+                                              event?.target?.value
+                                            );
+                                            console.log(
+                                              "EVENT TARGET NAME:",
+                                              event?.target?.name
+                                            );
+                                            console.log(
+                                              "EVENT TARGET TYPE:",
+                                              event?.target?.type
+                                            );
                                             const value = event.target.value;
-                                            return $props.setFormData({
+                                            console.log(
+                                              "VALUE CAPTURED:",
+                                              value
+                                            );
+                                            console.log(
+                                              "VALUE TYPE:",
+                                              typeof value
+                                            );
+                                            console.log(
+                                              "CURRENT INDEX:",
+                                              currentIndex
+                                            );
+                                            console.log(
+                                              "FORMDATA BEFORE UPDATE:"
+                                            );
+                                            console.log(
+                                              JSON.stringify(
+                                                $props.formData,
+                                                null,
+                                                2
+                                              )
+                                            );
+                                            console.log(
+                                              "EDUCATION ARRAY BEFORE UPDATE:"
+                                            );
+                                            console.log(
+                                              JSON.stringify(
+                                                $props.formData.education,
+                                                null,
+                                                2
+                                              )
+                                            );
+                                            const newEducation =
+                                              $props.formData.education.map(
+                                                (item, index) => {
+                                                  console.log(
+                                                    "---- LOOP ITEM ----"
+                                                  );
+                                                  console.log("INDEX:", index);
+                                                  console.log(
+                                                    "ITEM BEFORE:",
+                                                    JSON.stringify(
+                                                      item,
+                                                      null,
+                                                      2
+                                                    )
+                                                  );
+                                                  if (index === currentIndex) {
+                                                    console.log(
+                                                      "MATCHED CURRENT INDEX"
+                                                    );
+                                                    const updatedItem = {
+                                                      ...item,
+                                                      ["Education level"]: value
+                                                    };
+                                                    console.log(
+                                                      "UPDATED ITEM:",
+                                                      JSON.stringify(
+                                                        updatedItem,
+                                                        null,
+                                                        2
+                                                      )
+                                                    );
+                                                    return updatedItem;
+                                                  }
+                                                  console.log("ITEM UNCHANGED");
+                                                  return item;
+                                                }
+                                              );
+                                            console.log(
+                                              "EDUCATION ARRAY AFTER MAP:"
+                                            );
+                                            console.log(
+                                              JSON.stringify(
+                                                newEducation,
+                                                null,
+                                                2
+                                              )
+                                            );
+                                            const newFormData = {
                                               ...$props.formData,
-                                              education:
-                                                $props.formData.education.map(
-                                                  (item, index) =>
-                                                    index === currentIndex
-                                                      ? {
-                                                          ...item,
-                                                          ["Education level"]:
-                                                            value
-                                                        }
-                                                      : item
-                                                )
+                                              education: newEducation
+                                            };
+                                            console.log(
+                                              "FORMDATA AFTER UPDATE:"
+                                            );
+                                            console.log(
+                                              JSON.stringify(
+                                                newFormData,
+                                                null,
+                                                2
+                                              )
+                                            );
+                                            console.log(
+                                              "CHECK EDUCATION LEVELS AFTER UPDATE:"
+                                            );
+                                            newEducation.forEach((item, i) => {
+                                              console.log(
+                                                "INDEX:",
+                                                i,
+                                                "| EDUCATION LEVEL:",
+                                                item["Education level"]
+                                              );
                                             });
+                                            console.log(
+                                              "========== EDUCATION LEVEL ONCHANGE END =========="
+                                            );
+                                            return $props.setFormData(
+                                              newFormData
+                                            );
                                           })();
                                         }
                                       };
@@ -2829,7 +2944,6 @@ function PlasmicAEditProfile__RenderFunc(props: {
                   projectcss.plasmic_mixins,
                   styleTokensClassNames
                 )}
-                defaultValue={$props.formData.offices ?? []}
                 dropdownMatchSelectWidth={false}
                 mode={"multiple"}
                 onChange={async (...eventArgs: any) => {

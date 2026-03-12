@@ -139,7 +139,7 @@ export default function AEditProfile() {
       }
     }
 
-    const { data: savedProfile, error: profileError } = await supabase
+    const { data: savedProfile } = await supabase
       .from("User profile")
       .upsert(
         {
@@ -152,12 +152,9 @@ export default function AEditProfile() {
       .select()
       .single();
 
-    if (profileError || !savedProfile) {
-      console.error(profileError);
-      return;
-    }
-
     const profileId = savedProfile.id;
+
+    /* EDUCATION (FUNCIONANDO) */
 
     const { data: existingEducation } = await supabase
       .from("Education")
@@ -190,13 +187,34 @@ export default function AEditProfile() {
       });
     }
 
+    /* JOBS (MESMA LÓGICA DO EDUCATION + PROTEÇÃO EXTRA) */
+
+    const cleanJobs = jobs
+      .filter((j: any) => j.Charge || j.Company)
+      .map((j: any) => ({
+        ...(j.id ? { id: j.id } : {}),
+        "User profile_id": profileId,
+        "Charge": j.Charge ?? "",
+        "Company": j.Company ?? "",
+        "How long in office": j["How long in office"] ?? "",
+      }));
+
+    const uniqueJobs = Array.from(
+      new Map(
+        cleanJobs.map((j: any) => [
+          `${j["Charge"]}-${j["Company"]}`,
+          j,
+        ])
+      ).values()
+    );
+
     const { data: existingJobs } = await supabase
       .from("Charge")
       .select("id")
       .eq("User profile_id", profileId);
 
     const existingJobIds = existingJobs?.map((j) => j.id) ?? [];
-    const payloadJobIds = jobs?.map((j: any) => j.id).filter(Boolean) ?? [];
+    const payloadJobIds = uniqueJobs?.map((j: any) => j.id).filter(Boolean) ?? [];
 
     const jobToDelete = existingJobIds.filter(
       (id) => !payloadJobIds.includes(id)
@@ -206,19 +224,13 @@ export default function AEditProfile() {
       await supabase.from("Charge").delete().in("id", jobToDelete);
     }
 
-    const jobsPayload = jobs.map((j: any) => ({
-      ...(j.id ? { id: j.id } : {}),
-      "User profile_id": profileId,
-      "Charge": j.Charge ?? "",
-      "Company": j.Company ?? "",
-      "How long in office": j["How long in office"] ?? "",
-    }));
-
-    if (jobsPayload.length) {
-      await supabase.from("Charge").upsert(jobsPayload, {
+    if (uniqueJobs.length) {
+      await supabase.from("Charge").upsert(uniqueJobs, {
         onConflict: "id",
       });
     }
+
+    /* OFFICES */
 
     const { data: existingOffices } = await supabase
       .from("Multicharge")

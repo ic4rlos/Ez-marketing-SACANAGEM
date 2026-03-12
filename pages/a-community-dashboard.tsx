@@ -91,37 +91,39 @@ export default function ACommunityDashboard() {
 
       if (membersDb?.length) {
 
-        members = await Promise.all(
-          membersDb.map(async (m: any) => {
+        members = (
+          await Promise.all(
+            membersDb.map(async (m: any) => {
 
-            const { data: profile } = await supabase
-              .from("User profile")
-              .select('id, "Profile pic", user_id')
-              .eq("user_id", m.user_id)
-              .maybeSingle();
+              const { data: profile } = await supabase
+                .from("User profile")
+                .select('id, "Profile pic", user_id')
+                .eq("user_id", m.user_id)
+                .maybeSingle();
 
-            if (!profile) return null;
+              if (!profile) return null;
 
-            const { data: office } = await supabase
-              .from("Multicharge")
-              .select("Office")
-              .eq("User profile_id", profile.id)
-              .limit(1)
-              .maybeSingle();
+              // pegar TODOS offices
+              const { data: offices } = await supabase
+                .from("Multicharge")
+                .select("Office")
+                .eq("User profile_id", profile.id);
 
-            return {
-              "Profile pic": profile["Profile pic"] ?? null,
-              Office: office?.Office ?? null
-            };
+              if (!offices || offices.length === 0) return null;
 
-          })
-        );
+              // repetir membro para cada office
+              return offices.map((o: any) => ({
+                "Profile pic": profile["Profile pic"],
+                Office: o.Office
+              }));
 
-        members = members.filter(Boolean);
+            })
+          )
+        ).flat().filter(Boolean);
       }
 
       // =========================
-      // TRAININGS (members studying)
+      // TRAININGS
       // =========================
 
       const currentYear = new Date().getFullYear();

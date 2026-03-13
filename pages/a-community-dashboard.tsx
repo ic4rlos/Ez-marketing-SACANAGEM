@@ -6,6 +6,162 @@ import { getSupabaseA } from "../lib/a-supabaseClient";
 export const dynamic_config = "force-dynamic";
 export const runtime = "nodejs";
 
+const SPECIALIZATIONS:any = {
+
+"Service Scheduling and Management Capabilities":[
+"Account Manager",
+"Client Services Director",
+"Project Manager",
+"Marketing Automation Specialist"
+],
+
+"Influencer and Content Creator Presence":[
+"Social Media Manager",
+"Content Strategist",
+"Copywriter",
+"Videographer",
+"Public Relations Specialist",
+"Influencer Talent Scout"
+],
+
+"Commercial Production Capabilities":[
+"Creative Director",
+"Art Director",
+"Graphic Designer",
+"Copywriter",
+"Videographer"
+],
+
+"Online Customer Service":[
+"Account Manager",
+"Client Services Director"
+],
+
+"Specialization in Vertical Sectors":[
+"Brand Strategist",
+"Marketing Analyst",
+"SEO Specialist",
+"PPC Specialist",
+"Business Development Manager",
+"Marketing Coordinator"
+],
+
+"Brand Development and Visual Identity Capabilities":[
+"Brand Strategist",
+"Creative Director",
+"Art Director",
+"Graphic Designer",
+"UX/UI Designer",
+"Copywriter"
+],
+
+"Event Production and Management Capabilities":[
+"Project Manager",
+"Public Relations Specialist",
+"Content Strategist",
+"Digital Marketing Manager"
+],
+
+"Performance Campaign Management Capabilities":[
+"Digital Marketing Manager",
+"PPC Specialist",
+"SEO Specialist",
+"Marketing Analyst",
+"Data Analyst",
+"Marketing Automation Specialist"
+],
+
+"Audiovisual Content Production":[
+"Videographer",
+"Creative Director",
+"Art Director",
+"Copywriter",
+"Graphic Designer"
+],
+
+"Content Marketing and Blogging":[
+"Content Strategist",
+"Copywriter",
+"SEO Specialist",
+"Social Media Manager",
+"Graphic Designer",
+"Marketing Coordinator"
+],
+
+"Lead Generation and Sales Funnel Strategies":[
+"Digital Marketing Manager",
+"Business Development Manager",
+"PPC Specialist",
+"Account Manager",
+"Marketing Automation Specialist"
+],
+
+"Creation of Digital Experiences (UX/UI)":[
+"UX/UI Designer",
+"Creative Director",
+"Project Manager",
+"Content Strategist"
+],
+
+"Social Media and Engagement Strategies":[
+"Social Media Manager",
+"Content Strategist",
+"Copywriter",
+"Graphic Designer",
+"Public Relations Specialist"
+],
+
+"Public Relations and Image Crisis Management":[
+"Public Relations Specialist",
+"Social Media Manager",
+"Content Strategist",
+"Brand Strategist"
+],
+
+"E-commerce Management and Optimization":[
+"Digital Marketing Manager",
+"SEO Specialist",
+"PPC Specialist",
+"UX/UI Designer",
+"Data Analyst"
+],
+
+"Data Analysis and Marketing Metrics":[
+"Data Analyst",
+"Marketing Analyst",
+"SEO Specialist",
+"PPC Specialist"
+],
+
+"Digital Product Marketing":[
+"Content Strategist",
+"PPC Specialist",
+"Social Media Manager",
+"Videographer"
+],
+
+"Direct Marketing and Email Marketing":[
+"Copywriter",
+"Marketing Automation Specialist",
+"Data Analyst"
+],
+
+"Loyalty Strategies Clients":[
+"Account Manager",
+"Marketing Automation Specialist",
+"Content Strategist"
+],
+
+"Specialization in Podcasts":[
+"Content Strategist",
+"Copywriter",
+"Social Media Manager",
+"Public Relations Specialist",
+"Project Manager"
+]
+
+};
+
 const PlasmicACommunityDashboard = dynamic(
   () =>
     import(
@@ -15,6 +171,7 @@ const PlasmicACommunityDashboard = dynamic(
 );
 
 export default function ACommunityDashboard() {
+
   const router = useRouter();
   const supabase = getSupabaseA();
 
@@ -27,38 +184,36 @@ export default function ACommunityDashboard() {
 
   const [loading, setLoading] = useState(true);
 
-  // =========================
-  // AUTH
-  // =========================
-
   useEffect(() => {
+
     async function loadUser() {
+
       const { data } = await supabase.auth.getUser();
 
       console.log("AUTH USER:", data?.user);
 
       setUser(data?.user ?? null);
+
     }
 
     loadUser();
+
   }, []);
 
-  // =========================
-  // LOAD COMMUNITY + MEMBERS + TRAININGS
-  // =========================
-
   useEffect(() => {
+
     if (!user) {
+
       console.log("NO USER FOUND");
+
       setLoading(false);
+
       return;
+
     }
 
     async function loadCommunity() {
 
-      console.log("USER ID:", user.id);
-
-      // descobrir comunidade do usuário
       const { data: member } = await supabase
         .from("community_members")
         .select("community_id")
@@ -66,21 +221,15 @@ export default function ACommunityDashboard() {
         .eq("status", "connected")
         .maybeSingle();
 
-      console.log("COMMUNITY MEMBERSHIP:", member);
-
       if (!member) {
-        console.log("USER NOT IN COMMUNITY");
+
         setLoading(false);
+
         return;
+
       }
 
       const communityId = member.community_id;
-
-      console.log("COMMUNITY ID:", communityId);
-
-      // =========================
-      // COMMUNITY INFO
-      // =========================
 
       const { data: community } = await supabase
         .from("Community")
@@ -88,37 +237,25 @@ export default function ACommunityDashboard() {
         .eq("id", communityId)
         .maybeSingle();
 
-      console.log("COMMUNITY DATA:", community);
-
-      // =========================
-      // MEMBERS
-      // =========================
-
       const { data: membersDb } = await supabase
         .from("community_members")
         .select("user_id")
         .eq("community_id", communityId)
         .eq("status", "connected");
 
-      console.log("MEMBERS DB:", membersDb);
-
-      let members: any[] = [];
+      let members:any[] = [];
 
       if (membersDb?.length) {
 
         members = (
           await Promise.all(
-            membersDb.map(async (m: any) => {
-
-              console.log("PROCESSING MEMBER:", m.user_id);
+            membersDb.map(async (m:any)=>{
 
               const { data: profile } = await supabase
                 .from("User profile")
                 .select('id, "Profile pic", user_id')
                 .eq("user_id", m.user_id)
                 .maybeSingle();
-
-              console.log("PROFILE FOUND:", profile);
 
               if (!profile) return null;
 
@@ -127,11 +264,9 @@ export default function ACommunityDashboard() {
                 .select("Office")
                 .eq("User profile_id", profile.id);
 
-              console.log("OFFICES:", offices);
+              if (!offices) return null;
 
-              if (!offices || offices.length === 0) return null;
-
-              return offices.map((o: any) => ({
+              return offices.map((o:any)=>({
                 "Profile pic": profile["Profile pic"],
                 Office: o.Office
               }));
@@ -139,35 +274,62 @@ export default function ACommunityDashboard() {
             })
           )
         ).flat().filter(Boolean);
+
       }
 
       console.log("FINAL MEMBERS ARRAY:", members);
 
-      // =========================
-      // TRAININGS
-      // =========================
+      const offices = members.map(m=>m.Office);
+
+      const detected:string[] = [];
+
+      for (const name in SPECIALIZATIONS){
+
+        const roles = SPECIALIZATIONS[name];
+
+        const match = roles.every((r:string)=>offices.includes(r));
+
+        if (match){
+
+          detected.push(name);
+
+        }
+
+      }
+
+      console.log("SPECIALTIES FOUND:", detected);
+
+      await supabase
+        .from("Community specialties")
+        .delete()
+        .eq("community_id", communityId);
+
+      for (const s of detected){
+
+        await supabase
+          .from("Community specialties")
+          .insert({
+            community_id: communityId,
+            "Professional specialty": s
+          });
+
+      }
 
       const today = new Date().toISOString().split("T")[0];
 
-      console.log("TODAY DATE:", today);
-
-      let trainings: any[] = [];
+      let trainings:any[] = [];
 
       if (membersDb?.length) {
 
         trainings = (
           await Promise.all(
-            membersDb.map(async (m: any) => {
-
-              console.log("TRAINING CHECK MEMBER:", m.user_id);
+            membersDb.map(async (m:any)=>{
 
               const { data: profile } = await supabase
                 .from("User profile")
                 .select('id, "Profile pic", "First name", user_id')
                 .eq("user_id", m.user_id)
                 .maybeSingle();
-
-              console.log("TRAINING PROFILE:", profile);
 
               if (!profile) return null;
 
@@ -176,59 +338,62 @@ export default function ACommunityDashboard() {
                 .select('University, "Graduation year", "User profile_id"')
                 .eq("User profile_id", profile.id);
 
-              console.log("EDUCATIONS RAW:", educationsRaw);
-
               const educations =
                 educationsRaw?.filter(
-                  (ed: any) => ed["Graduation year"] > today
+                  (ed:any)=>ed["Graduation year"] > today
                 ) ?? [];
-
-              console.log("EDUCATIONS AFTER FILTER:", educations);
 
               if (!educations.length) return null;
 
-              return educations.map((ed: any) => ({
+              return educations.map((ed:any)=>({
+
                 "Profile pic": profile["Profile pic"],
+
                 "First name": profile["First name"],
+
                 University: ed.University,
+
                 "Graduation year": ed["Graduation year"]
+
               }));
 
             })
           )
         ).flat().filter(Boolean);
+
       }
 
-      console.log("FINAL TRAININGS ARRAY:", trainings);
-
-      // =========================
-      // FINAL STATE
-      // =========================
-
       const finalData = {
-        ...community,
-        members,
-        trainings
-      };
 
-      console.log("FORMDATA SENT TO PLASMIC:", finalData);
+        ...community,
+
+        members,
+
+        trainings
+
+      };
 
       setFormData(finalData);
 
       setLoading(false);
+
     }
 
     loadCommunity();
+
   }, [user]);
 
   if (loading) return null;
 
   return (
+
     <PlasmicACommunityDashboard
       args={{
         formData: formData,
         setFormData: setFormData
       }}
     />
+
   );
+
 }

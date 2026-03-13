@@ -360,15 +360,17 @@ const specialtiesList =
 
       }
 
-      const finalData = {
+const finalData = {
 
-        ...community,
+  ...community,
 
-        members,
+  members,
 
-        trainings
+  trainings,
 
-      };
+  specialties: specialtiesList
+
+};
 
       setFormData(finalData);
 

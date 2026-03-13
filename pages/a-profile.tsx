@@ -15,15 +15,17 @@ const PlasmicAProfile = dynamic(
 );
 
 export default function AProfile() {
+
   const router = useRouter();
   const supabase = getSupabaseA();
 
-  const [user, setUser] = useState<any>(null);
+  const { id } = router.query;
 
+  const [user, setUser] = useState<any>(null);
   const [formData, setFormData] = useState<any>({
     education: [],
     jobs: [],
-    offices: [],
+    offices: []
   });
 
   const [loading, setLoading] = useState(true);
@@ -33,12 +35,17 @@ export default function AProfile() {
   // =========================
 
   useEffect(() => {
+
     async function loadUser() {
+
       const { data } = await supabase.auth.getUser();
+
       setUser(data?.user ?? null);
+
     }
 
     loadUser();
+
   }, []);
 
   // =========================
@@ -46,22 +53,33 @@ export default function AProfile() {
   // =========================
 
   useEffect(() => {
-    if (!user) {
-      setLoading(false);
-      return;
-    }
 
     async function loadAll() {
+
+      if (!user && !id) {
+
+        setLoading(false);
+        return;
+
+      }
+
+      // 🔥 quem vamos carregar?
+      const targetUserId = id ?? user?.id;
+
+      if (!targetUserId) return;
+
       // profile
       const { data: profile } = await supabase
         .from("User profile")
         .select("*")
-        .eq("user_id", user.id)
+        .eq("user_id", targetUserId)
         .maybeSingle();
 
       if (!profile) {
+
         setLoading(false);
         return;
+
       }
 
       const profileId = profile.id;
@@ -84,10 +102,9 @@ export default function AProfile() {
         .select("*")
         .eq("User profile_id", profileId);
 
-      // 🔥 CORREÇÃO
       const offices =
         officesDb?.map((o: any) => ({
-          Offices: o.Office,
+          Offices: o.Office
         })) ?? [];
 
       // =========================
@@ -97,12 +114,13 @@ export default function AProfile() {
       const { data: membership } = await supabase
         .from("community_members")
         .select("*")
-        .eq("user_id", user.id)
+        .eq("user_id", targetUserId)
         .maybeSingle();
 
       let communityLogo = null;
 
       if (membership?.community_id) {
+
         const { data: community } = await supabase
           .from("Community")
           .select("*")
@@ -110,6 +128,7 @@ export default function AProfile() {
           .maybeSingle();
 
         communityLogo = community?.community_logo ?? null;
+
       }
 
       // =========================
@@ -119,6 +138,7 @@ export default function AProfile() {
       let age = null;
 
       if (profile.Birthday) {
+
         const birth = new Date(profile.Birthday);
         const today = new Date();
 
@@ -132,6 +152,7 @@ export default function AProfile() {
         ) {
           age--;
         }
+
       }
 
       // =========================
@@ -139,27 +160,39 @@ export default function AProfile() {
       // =========================
 
       setFormData({
+
         ...profile,
+
         Age: age,
+
         community_logo: communityLogo,
+
         education: education ?? [],
+
         jobs: jobs ?? [],
-        offices,
+
+        offices
+
       });
 
       setLoading(false);
+
     }
 
     loadAll();
-  }, [user]);
+
+  }, [user, id]);
 
   // =========================
   // LOGOUT
   // =========================
 
   async function handleSignOut() {
+
     await supabase.auth.signOut();
+
     router.replace("/");
+
   }
 
   if (loading) return null;
@@ -169,8 +202,9 @@ export default function AProfile() {
       args={{
         formData,
         setFormData,
-        onSignOut: handleSignOut,
+        onSignOut: handleSignOut
       }}
     />
   );
+
 }

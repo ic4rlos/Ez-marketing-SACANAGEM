@@ -304,16 +304,13 @@ export default function ACommunityDashboard() {
         .delete()
         .eq("community_id", communityId);
 
-      for (const s of detected){
+const { data: specialties } = await supabase
+  .from("Community specialties")
+  .select('"Professional specialty"')
+  .eq("community_id", communityId);
 
-        await supabase
-          .from("Community specialties")
-          .insert({
-            community_id: communityId,
-            "Professional specialty": s
-          });
-
-      }
+const specialtiesList =
+  specialties?.map((s:any)=>s["Professional specialty"]) ?? [];
 
       const today = new Date().toISOString().split("T")[0];
 

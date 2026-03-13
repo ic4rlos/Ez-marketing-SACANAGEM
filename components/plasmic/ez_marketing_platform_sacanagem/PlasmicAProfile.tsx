@@ -1228,7 +1228,6 @@ function PlasmicAProfile__RenderFunc(props: {
                   data-plasmic-name={"button"}
                   data-plasmic-override={overrides.button}
                   className={classNames("__wab_instance", sty.button)}
-                  href={`/a-login`}
                   target={true}
                 >
                   <PlasmicImg__
@@ -1241,6 +1240,19 @@ function PlasmicAProfile__RenderFunc(props: {
                     displayMinWidth={"0"}
                     displayWidth={"30px"}
                     loading={"lazy"}
+                    src={(() => {
+                      try {
+                        return $props.formData?.["Profile pic"] ?? null;
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return undefined;
+                        }
+                        throw e;
+                      }
+                    })()}
                   />
                 </AntdButton>
               </AntdDropdown>

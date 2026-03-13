@@ -214,6 +214,12 @@ export default function ACommunityDashboard() {
 
     async function loadCommunity() {
 
+        const { data: myProfile } = await supabase
+    .from("User profile")
+    .select('"Profile pic"')
+    .eq("user_id", user.id)
+    .maybeSingle();
+      
       const { data: member } = await supabase
         .from("community_members")
         .select("community_id")
@@ -379,7 +385,8 @@ const finalData = {
 
   trainings,
 
-  specialties: specialtiesList
+  specialties: specialtiesList,
+    "Profile pic": myProfile?.["Profile pic"] ?? null
 
 };
 

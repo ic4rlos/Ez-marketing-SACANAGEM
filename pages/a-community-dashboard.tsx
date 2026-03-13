@@ -299,10 +299,21 @@ export default function ACommunityDashboard() {
 
       console.log("SPECIALTIES FOUND:", detected);
 
-      await supabase
-        .from("Community specialties")
-        .delete()
-        .eq("community_id", communityId);
+await supabase
+  .from("Community specialties")
+  .delete()
+  .eq("community_id", communityId);
+
+for (const s of detected){
+
+  await supabase
+    .from("Community specialties")
+    .insert({
+      community_id: communityId,
+      "Professional specialty": s
+    });
+
+}
 
 const { data: specialties } = await supabase
   .from("Community specialties")

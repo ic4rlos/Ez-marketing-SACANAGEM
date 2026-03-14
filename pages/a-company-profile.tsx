@@ -61,7 +61,10 @@ export default function ACompanyProfile() {
           .select("*")
 const companyId = Number(id);
 
-.eq("id", companyId)
+await supabase
+  .from("companies")
+  .select("*")
+  .eq("id", companyId)
           .maybeSingle();
 
         if (!companyData) {

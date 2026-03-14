@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import { getSupabaseA } from "../lib/a-supabaseClient";
+import { getSupabaseB } from "../lib/b-supabaseClient";
 
 export const dynamic_config = "force-dynamic";
 export const runtime = "nodejs";
@@ -17,7 +18,9 @@ const PlasmicACompanyProfile = dynamic(
 export default function ACompanyProfile() {
 
   const router = useRouter();
-  const supabase = getSupabaseA();
+
+  const supabaseA = getSupabaseA(); // agencies
+  const supabaseB = getSupabaseB(); // companies
 
   const { id } = router.query;
 
@@ -27,14 +30,14 @@ export default function ACompanyProfile() {
   const [loading, setLoading] = useState(true);
 
   // =========================
-  // AUTH
+  // AUTH (AGENCIES)
   // =========================
 
   useEffect(() => {
 
     async function loadUser() {
 
-      const { data } = await supabase.auth.getUser();
+      const { data } = await supabaseA.auth.getUser();
 
       setViewer(data?.user ?? null);
 
@@ -45,7 +48,7 @@ export default function ACompanyProfile() {
   }, []);
 
   // =========================
-  // LOAD COMPANY
+  // LOAD COMPANY (COMPANIES DB)
   // =========================
 
   useEffect(() => {
@@ -56,15 +59,12 @@ export default function ACompanyProfile() {
 
       try {
 
-        const { data: companyData } = await supabase
+        const companyId = Number(id);
+
+        const { data: companyData } = await supabaseB
           .from("companies")
           .select("*")
-const companyId = Number(id);
-
-await supabase
-  .from("companies")
-  .select("*")
-  .eq("id", companyId)
+          .eq("id", companyId)
           .maybeSingle();
 
         if (!companyData) {
@@ -78,7 +78,7 @@ await supabase
 
         setCompany(companyData);
 
-        const { data: solutionsData } = await supabase
+        const { data: solutionsData } = await supabaseB
           .from("solutions")
           .select(`
             id,
@@ -129,39 +129,28 @@ await supabase
   }, [id]);
 
   // =========================
-  // SAVE CONNECTION
+  // SAVE CONNECTION (AGENCIES DB)
   // =========================
 
-  async function handleSave(data: any) {
+  async function handleSave(data:any) {
 
     if (!viewer || !id) return;
 
     try {
 
-      await supabase
+      await supabaseA
         .from("CONNECTIONS")
         .insert({
-          company_id: id,
           agency_id: viewer.id,
+          company_id: id,
           short_message: data.short_message ?? ""
         });
 
     } catch (err) {
 
-      console.error("Connection insert error:", err);
+      console.error("Connection error:", err);
 
     }
-
-  }
-
-  // =========================
-  // LOGOUT
-  // =========================
-
-  async function handleSignOut() {
-
-    await supabase.auth.signOut();
-    router.replace("/");
 
   }
 
@@ -173,8 +162,7 @@ await supabase
         company: company ?? {},
         formData: formData ?? [],
         solutions: formData ?? [],
-        onSave: handleSave,
-        onSignOut: handleSignOut
+        onSave: handleSave
       }}
     />
   );

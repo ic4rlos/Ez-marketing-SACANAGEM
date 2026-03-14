@@ -21,13 +21,33 @@ export default function ACompanyProfile() {
 
   const { id } = router.query;
 
+  const [viewer, setViewer] = useState<any>(null);
   const [company, setCompany] = useState<any>(null);
   const [formData, setFormData] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
   // =========================
+  // AUTH
+  // =========================
+
+  useEffect(() => {
+
+    async function loadUser() {
+
+      const { data } = await supabase.auth.getUser();
+
+      setViewer(data?.user ?? null);
+
+    }
+
+    loadUser();
+
+  }, []);
+
+  // =========================
   // LOAD COMPANY
   // =========================
+
   useEffect(() => {
 
     if (!id) return;
@@ -43,10 +63,12 @@ export default function ACompanyProfile() {
           .maybeSingle();
 
         if (!companyData) {
+
           setCompany(null);
           setFormData([]);
           setLoading(false);
           return;
+
         }
 
         setCompany(companyData);
@@ -101,6 +123,43 @@ export default function ACompanyProfile() {
 
   }, [id]);
 
+  // =========================
+  // SAVE CONNECTION
+  // =========================
+
+  async function handleSave(data: any) {
+
+    if (!viewer || !id) return;
+
+    try {
+
+      await supabase
+        .from("CONNECTIONS")
+        .insert({
+          company_id: id,
+          agency_id: viewer.id,
+          short_message: data.short_message ?? ""
+        });
+
+    } catch (err) {
+
+      console.error("Connection insert error:", err);
+
+    }
+
+  }
+
+  // =========================
+  // LOGOUT
+  // =========================
+
+  async function handleSignOut() {
+
+    await supabase.auth.signOut();
+    router.replace("/");
+
+  }
+
   if (loading) return null;
 
   return (
@@ -108,7 +167,9 @@ export default function ACompanyProfile() {
       args={{
         company: company ?? {},
         formData: formData ?? [],
-        solutions: formData ?? []
+        solutions: formData ?? [],
+        onSave: handleSave,
+        onSignOut: handleSignOut
       }}
     />
   );

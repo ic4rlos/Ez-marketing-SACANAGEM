@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import { getSupabaseA } from "../lib/a-supabaseClient";
-import { getSupabaseB } from "../lib/b-supabaseClient";
+import { getSupabaseC } from "../lib/c-supabaseClient";
 
 export const dynamic_config = "force-dynamic";
 export const runtime = "nodejs";
@@ -20,7 +20,7 @@ export default function ACompanyProfile() {
   const router = useRouter();
 
   const supabaseA = getSupabaseA(); // agencies
-  const supabaseB = getSupabaseB(); // companies
+  const supabaseC = getSupabaseC(); // companies
 
   const { id } = router.query;
 
@@ -61,7 +61,7 @@ export default function ACompanyProfile() {
 
         const companyId = Number(id);
 
-        const { data: companyData } = await supabaseB
+        const { data: companyData } = await supabaseC
           .from("companies")
           .select("*")
           .eq("id", companyId)
@@ -78,7 +78,7 @@ export default function ACompanyProfile() {
 
         setCompany(companyData);
 
-        const { data: solutionsData } = await supabaseB
+        const { data: solutionsData } = await supabaseC
           .from("solutions")
           .select(`
             id,

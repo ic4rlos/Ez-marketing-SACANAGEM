@@ -22,7 +22,7 @@
 .root > * {
   grid-column: 4;
 }
-.topBar {
+.topBarAuto {
   animation: none;
   display: flex;
   flex-direction: row;
@@ -38,13 +38,13 @@
   border-bottom: 1px solid #53535333;
 }
 @media (min-width: 0px) and (max-width: 768px) {
-  .topBar {
+  .topBarAuto {
     animation: none;
     margin-bottom: 0px;
     padding: 0px;
   }
 }
-.freeBox__s0Fpo {
+.freeBox__lM5K {
   animation: none;
   display: flex;
   position: relative;
@@ -57,7 +57,7 @@
   min-width: 0;
 }
 @media (min-width: 0px) and (max-width: 768px) {
-  .freeBox__s0Fpo {
+  .freeBox__lM5K {
     animation: none;
     display: flex;
     flex-direction: column;
@@ -66,7 +66,7 @@
     column-gap: 0px;
   }
 }
-.freeBox__qFcIz {
+.freeBox__ofxCg {
   animation: none;
   display: flex;
   position: relative;
@@ -79,7 +79,7 @@
   flex-shrink: 0;
 }
 @media (min-width: 0px) and (max-width: 768px) {
-  .freeBox__qFcIz {
+  .freeBox__ofxCg {
     animation: none;
     flex-wrap: wrap;
     justify-content: center;
@@ -88,82 +88,82 @@
 }
 .navigationBar:global(.__wab_instance) {
   animation: none;
-  width: 982px;
+  width: auto;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: center;
-  margin-bottom: 20px;
   max-width: 100%;
   object-fit: cover;
   height: 40px;
-  position: absolute;
-  left: 0px;
-  top: 0px;
-  flex-shrink: 0;
+  position: relative;
+  left: auto;
+  top: auto;
+  align-content: center;
   padding: 16px;
+  margin: 0px;
 }
-.link__bgUqp {
+.link___560J1 {
   animation: none;
   display: flex;
   flex-direction: row;
-  position: absolute;
+  position: relative;
   align-items: stretch;
   justify-content: flex-start;
   width: 100%;
   height: auto;
   max-width: 100%;
-  left: 0px;
-  top: 0px;
+  left: auto;
+  top: auto;
   cursor: pointer;
   min-width: 0;
-  padding: 0px;
+  padding: 0px 400px 0px 0px;
 }
-.img__oWIcP {
+.img__nCc0V {
   animation: none;
   object-fit: cover;
   height: 30px;
   object-position: 100% 100%;
-  position: absolute;
-  left: 0px;
-  top: 5px;
+  position: relative;
+  left: auto;
+  top: auto;
 }
-.img__oWIcP > picture > img {
+.img__nCc0V > picture > img {
   object-fit: cover;
   object-position: 100% 100%;
 }
-.img__cm5Vk {
+.img__ix8JN {
   animation: none;
   object-fit: cover;
-  position: absolute;
-  left: 0px;
-  top: 0px;
+  position: relative;
+  left: auto;
+  top: auto;
 }
-.img__cm5Vk > picture > img {
+.img__ix8JN > picture > img {
   object-fit: cover;
 }
-.img__ax5U5 {
+.img__qhaBc {
   animation: none;
   object-fit: cover;
 }
-.img__ax5U5 > picture > img {
+.img__qhaBc > picture > img {
   object-fit: cover;
 }
-.link__eVtEs {
+.link__ie6Hq {
   animation: none;
-  position: absolute;
+  position: relative;
   width: 90px;
   height: 40px;
   max-width: 100%;
-  left: 520px;
-  top: 0px;
+  left: auto;
+  top: auto;
   text-align: center;
   font-size: 11px;
-  color: #228b22;
+  color: #545454;
   text-transform: capitalize;
-  font-weight: 600;
   font-family: "Inter", sans-serif;
+  font-weight: 400;
   font-style: normal;
   line-height: 1.5;
   letter-spacing: normal;
@@ -172,16 +172,21 @@
   text-decoration-line: none !important;
   text-overflow: clip !important;
   border-right: 1px solid #0000000d;
-  border-bottom: 2px solid #228b2266;
 }
-.link___4Br6B {
+.root .link__ie6Hq:hover {
+  color: var(--token-m_dAPYJ5EIvi);
+}
+.root .link__ie6Hq:active {
+  color: var(--token-kmgKuNT2vqAV);
+}
+.link__kjFh9 {
   animation: none;
-  position: absolute;
+  position: relative;
   width: 90px;
   height: 40px;
   max-width: 100%;
-  left: 602px;
-  top: 0px;
+  left: auto;
+  top: auto;
   font-size: 11px;
   text-align: center;
   color: #545454;
@@ -197,14 +202,20 @@
   text-overflow: clip !important;
   border-right: 1px solid #0000000d;
 }
-.link__ehh2F {
+.root .link__kjFh9:hover {
+  color: var(--token-m_dAPYJ5EIvi);
+}
+.root .link__kjFh9:active {
+  color: var(--token-kmgKuNT2vqAV);
+}
+.link__ggprR {
   animation: none;
-  position: absolute;
+  position: relative;
   width: 90px;
   height: 40px;
   max-width: 100%;
-  left: 692px;
-  top: 0px;
+  left: auto;
+  top: auto;
   font-size: 11px;
   text-align: center;
   color: #545454;
@@ -221,14 +232,20 @@
   text-overflow: clip !important;
   border-right: 1px solid #0000000d;
 }
-.link__pishz {
+.root .link__ggprR:hover {
+  color: var(--token-m_dAPYJ5EIvi);
+}
+.root .link__ggprR:active {
+  color: var(--token-kmgKuNT2vqAV);
+}
+.link__th92W {
   animation: none;
-  position: absolute;
+  position: relative;
   width: 90px;
   height: 40px;
   max-width: 100%;
-  left: 782px;
-  top: 0px;
+  left: auto;
+  top: auto;
   font-size: 11px;
   text-align: center;
   color: #545454;
@@ -244,7 +261,13 @@
   text-overflow: clip !important;
   border-right: 1px solid #0000000d;
 }
-.account:global(.__wab_instance) {
+.root .link__th92W:hover {
+  color: var(--token-m_dAPYJ5EIvi);
+}
+.root .link__th92W:active {
+  color: var(--token-kmgKuNT2vqAV);
+}
+.account2:global(.__wab_instance) {
   animation: none;
   max-width: 100%;
   object-fit: cover;
@@ -256,17 +279,17 @@
   color: #cb1717;
   box-shadow: none;
   font-weight: 300;
-  position: absolute;
-  left: 924px;
-  top: 4px;
+  position: relative;
+  left: auto;
+  top: auto;
   flex-shrink: 0;
 }
-.menuItem__aUjdv:global(.__wab_instance) {
+.menuItem___2N6Xh:global(.__wab_instance) {
   animation: none;
   max-width: 100%;
   object-fit: cover;
 }
-.text__jPbtV {
+.text__zhLp5 {
   animation: none;
   position: relative;
   width: 100%;
@@ -287,12 +310,12 @@
   text-overflow: clip !important;
   min-width: 0;
 }
-.menuItem__xmX9:global(.__wab_instance) {
+.menuItem___2Ufhq:global(.__wab_instance) {
   animation: none;
   max-width: 100%;
   object-fit: cover;
 }
-.text__lkDaI {
+.text__cWr7O {
   animation: none;
   position: relative;
   width: 100%;
@@ -319,7 +342,7 @@
   object-fit: cover;
   border-width: 0px;
 }
-.img__gw1Sn {
+.img__ocIy {
   animation: none;
   object-fit: cover;
   max-width: 100%;
@@ -330,7 +353,7 @@
   top: 0px;
   border-radius: 11px;
 }
-.img__gw1Sn > picture > img {
+.img__ocIy > picture > img {
   object-fit: cover;
 }
 .countainer1 {

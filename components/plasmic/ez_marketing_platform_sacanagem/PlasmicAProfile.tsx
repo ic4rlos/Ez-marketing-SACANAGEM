@@ -142,7 +142,7 @@ export const PlasmicAProfile__ArgProps = new Array<ArgPropType>();
 
 export type PlasmicAProfile__OverridesType = {
   root?: Flex__<"div">;
-  topBar?: Flex__<"div">;
+  topBarAuto?: Flex__<"div">;
   navigationBar?: Flex__<typeof NavigationBar>;
   account?: Flex__<typeof AntdDropdown>;
   button?: Flex__<typeof AntdButton>;
@@ -840,9 +840,9 @@ function PlasmicAProfile__RenderFunc(props: {
         )}
       >
         <div
-          data-plasmic-name={"topBar"}
-          data-plasmic-override={overrides.topBar}
-          className={classNames(projectcss.all, sty.topBar)}
+          data-plasmic-name={"topBarAuto"}
+          data-plasmic-override={overrides.topBarAuto}
+          className={classNames(projectcss.all, sty.topBarAuto)}
         >
           <div className={classNames(projectcss.all, sty.freeBox__uy6Rh)}>
             <div className={classNames(projectcss.all, sty.freeBox__pRh)}>
@@ -895,9 +895,9 @@ function PlasmicAProfile__RenderFunc(props: {
                       displayMinWidth={"0"}
                       displayWidth={"auto"}
                       src={{
-                        src: "/plasmic/ez_marketing_platform_sacanagem/images/logoPng2.png",
-                        fullWidth: 190,
-                        fullHeight: 100,
+                        src: "/plasmic/ez_marketing_platform_sacanagem/images/ezSvg2.svg",
+                        fullWidth: 60,
+                        fullHeight: 31,
                         aspectRatio: undefined
                       }}
                     />
@@ -1325,12 +1325,24 @@ function PlasmicAProfile__RenderFunc(props: {
                 displayMinWidth={"0"}
                 displayWidth={"50px"}
                 loading={"lazy"}
-                src={{
-                  src: "/plasmic/ez_marketing_platform_sacanagem/images/semTitulo2Jpg3.jpg",
-                  fullWidth: 1014,
-                  fullHeight: 1014,
-                  aspectRatio: undefined
-                }}
+                src={(() => {
+                  try {
+                    return $props.formData?.["community_logo"] ?? null;
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return {
+                        src: "/plasmic/ez_marketing_platform_sacanagem/images/semTitulo2Jpg3.jpg",
+                        fullWidth: 1014,
+                        fullHeight: 1014,
+                        aspectRatio: undefined
+                      };
+                    }
+                    throw e;
+                  }
+                })()}
               />
             </div>
             <div className={classNames(projectcss.all, sty.freeBox__fcwsM)}>
@@ -9848,7 +9860,7 @@ function PlasmicAProfile__RenderFunc(props: {
 const PlasmicDescendants = {
   root: [
     "root",
-    "topBar",
+    "topBarAuto",
     "navigationBar",
     "account",
     "button",
@@ -10052,7 +10064,7 @@ const PlasmicDescendants = {
     "userSide15",
     "userAction15"
   ],
-  topBar: ["topBar", "navigationBar", "account", "button"],
+  topBarAuto: ["topBarAuto", "navigationBar", "account", "button"],
   navigationBar: ["navigationBar"],
   account: ["account", "button"],
   button: ["button"],
@@ -11325,7 +11337,7 @@ type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   root: "div";
-  topBar: "div";
+  topBarAuto: "div";
   navigationBar: typeof NavigationBar;
   account: typeof AntdDropdown;
   button: typeof AntdButton;
@@ -11592,7 +11604,7 @@ export const PlasmicAProfile = Object.assign(
   makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
-    topBar: makeNodeComponent("topBar"),
+    topBarAuto: makeNodeComponent("topBarAuto"),
     navigationBar: makeNodeComponent("navigationBar"),
     account: makeNodeComponent("account"),
     button: makeNodeComponent("button"),

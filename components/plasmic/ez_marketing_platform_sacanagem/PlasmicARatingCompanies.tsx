@@ -134,9 +134,9 @@ export const PlasmicARatingCompanies__ArgProps = new Array<ArgPropType>();
 
 export type PlasmicARatingCompanies__OverridesType = {
   root?: Flex__<"div">;
-  topBar?: Flex__<"div">;
+  topBarAuto?: Flex__<"div">;
   navigationBar?: Flex__<typeof NavigationBar>;
-  account?: Flex__<typeof AntdDropdown>;
+  account2?: Flex__<typeof AntdDropdown>;
   button?: Flex__<typeof AntdButton>;
   countainer1?: Flex__<"div">;
   companyLogo?: Flex__<typeof PlasmicImg__>;
@@ -317,12 +317,12 @@ function PlasmicARatingCompanies__RenderFunc(props: {
           )}
         >
           <div
-            data-plasmic-name={"topBar"}
-            data-plasmic-override={overrides.topBar}
-            className={classNames(projectcss.all, sty.topBar)}
+            data-plasmic-name={"topBarAuto"}
+            data-plasmic-override={overrides.topBarAuto}
+            className={classNames(projectcss.all, sty.topBarAuto)}
           >
-            <div className={classNames(projectcss.all, sty.freeBox__s0Fpo)}>
-              <div className={classNames(projectcss.all, sty.freeBox__qFcIz)}>
+            <div className={classNames(projectcss.all, sty.freeBox__lM5K)}>
+              <div className={classNames(projectcss.all, sty.freeBox__ofxCg)}>
                 <NavigationBar
                   data-plasmic-name={"navigationBar"}
                   data-plasmic-override={overrides.navigationBar}
@@ -331,7 +331,7 @@ function PlasmicARatingCompanies__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.a,
-                        sty.link__bgUqp
+                        sty.link___560J1
                       )}
                       component={Link}
                       legacyBehavior={false}
@@ -339,7 +339,7 @@ function PlasmicARatingCompanies__RenderFunc(props: {
                     >
                       <PlasmicImg__
                         alt={""}
-                        className={classNames(sty.img__oWIcP)}
+                        className={classNames(sty.img__nCc0V)}
                         displayHeight={"30px"}
                         displayMaxHeight={"none"}
                         displayMaxWidth={"none"}
@@ -359,7 +359,7 @@ function PlasmicARatingCompanies__RenderFunc(props: {
                   closeButton={
                     <PlasmicImg__
                       alt={""}
-                      className={classNames(sty.img__ax5U5)}
+                      className={classNames(sty.img__qhaBc)}
                       displayHeight={"auto"}
                       displayMaxHeight={"none"}
                       displayMaxWidth={"none"}
@@ -377,7 +377,7 @@ function PlasmicARatingCompanies__RenderFunc(props: {
                           projectcss.all,
                           projectcss.a,
                           projectcss.__wab_text,
-                          sty.link__eVtEs
+                          sty.link__ie6Hq
                         )}
                         component={Link}
                         href={`/a-community-dashboard`}
@@ -391,7 +391,7 @@ function PlasmicARatingCompanies__RenderFunc(props: {
                           projectcss.all,
                           projectcss.a,
                           projectcss.__wab_text,
-                          sty.link___4Br6B
+                          sty.link__kjFh9
                         )}
                         component={Link}
                         href={`/a-service-dashboard`}
@@ -405,7 +405,7 @@ function PlasmicARatingCompanies__RenderFunc(props: {
                           projectcss.all,
                           projectcss.a,
                           projectcss.__wab_text,
-                          sty.link__ehh2F
+                          sty.link__ggprR
                         )}
                         component={Link}
                         legacyBehavior={false}
@@ -418,7 +418,7 @@ function PlasmicARatingCompanies__RenderFunc(props: {
                           projectcss.all,
                           projectcss.a,
                           projectcss.__wab_text,
-                          sty.link__pishz
+                          sty.link__th92W
                         )}
                         component={Link}
                         href={`/a-find-a-business`}
@@ -432,7 +432,7 @@ function PlasmicARatingCompanies__RenderFunc(props: {
                   openButton={
                     <PlasmicImg__
                       alt={""}
-                      className={classNames(sty.img__cm5Vk)}
+                      className={classNames(sty.img__ix8JN)}
                       displayHeight={"auto"}
                       displayMaxHeight={"none"}
                       displayMaxWidth={"none"}
@@ -448,16 +448,16 @@ function PlasmicARatingCompanies__RenderFunc(props: {
                 />
 
                 <AntdDropdown
-                  data-plasmic-name={"account"}
-                  data-plasmic-override={overrides.account}
-                  className={classNames("__wab_instance", sty.account)}
-                  dropdownMenuScopeClassName={sty["account__dropdownMenu"]}
+                  data-plasmic-name={"account2"}
+                  data-plasmic-override={overrides.account2}
+                  className={classNames("__wab_instance", sty.account2)}
+                  dropdownMenuScopeClassName={sty["account2__dropdownMenu"]}
                   menuItems={() => (
                     <React.Fragment>
                       <AntdMenuItem
                         className={classNames(
                           "__wab_instance",
-                          sty.menuItem__aUjdv
+                          sty.menuItem___2N6Xh
                         )}
                         key={"menu-item-1"}
                       >
@@ -465,7 +465,7 @@ function PlasmicARatingCompanies__RenderFunc(props: {
                           className={classNames(
                             projectcss.all,
                             projectcss.__wab_text,
-                            sty.text__jPbtV
+                            sty.text__zhLp5
                           )}
                         >
                           {"Menu item"}
@@ -474,7 +474,7 @@ function PlasmicARatingCompanies__RenderFunc(props: {
                       <AntdMenuItem
                         className={classNames(
                           "__wab_instance",
-                          sty.menuItem__xmX9
+                          sty.menuItem___2Ufhq
                         )}
                         key={"menu-item-2"}
                       >
@@ -482,7 +482,7 @@ function PlasmicARatingCompanies__RenderFunc(props: {
                           className={classNames(
                             projectcss.all,
                             projectcss.__wab_text,
-                            sty.text__lkDaI
+                            sty.text__cWr7O
                           )}
                         >
                           {"Menu item"}
@@ -547,7 +547,7 @@ function PlasmicARatingCompanies__RenderFunc(props: {
                   >
                     <PlasmicImg__
                       alt={""}
-                      className={classNames(sty.img__gw1Sn)}
+                      className={classNames(sty.img__ocIy)}
                       displayHeight={"30px"}
                       displayMaxHeight={"none"}
                       displayMaxWidth={"100%"}
@@ -555,6 +555,19 @@ function PlasmicARatingCompanies__RenderFunc(props: {
                       displayMinWidth={"0"}
                       displayWidth={"30px"}
                       loading={"lazy"}
+                      src={(() => {
+                        try {
+                          return $props.formData?.["Profile pic"] ?? null;
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return undefined;
+                          }
+                          throw e;
+                        }
+                      })()}
                     />
                   </AntdButton>
                 </AntdDropdown>
@@ -1718,9 +1731,9 @@ function PlasmicARatingCompanies__RenderFunc(props: {
 const PlasmicDescendants = {
   root: [
     "root",
-    "topBar",
+    "topBarAuto",
     "navigationBar",
-    "account",
+    "account2",
     "button",
     "countainer1",
     "companyLogo",
@@ -1757,9 +1770,9 @@ const PlasmicDescendants = {
     "customerInstruction",
     "averageRatingReceived"
   ],
-  topBar: ["topBar", "navigationBar", "account", "button"],
+  topBarAuto: ["topBarAuto", "navigationBar", "account2", "button"],
   navigationBar: ["navigationBar"],
-  account: ["account", "button"],
+  account2: ["account2", "button"],
   button: ["button"],
   countainer1: [
     "countainer1",
@@ -1838,9 +1851,9 @@ type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   root: "div";
-  topBar: "div";
+  topBarAuto: "div";
   navigationBar: typeof NavigationBar;
-  account: typeof AntdDropdown;
+  account2: typeof AntdDropdown;
   button: typeof AntdButton;
   countainer1: "div";
   companyLogo: typeof PlasmicImg__;
@@ -1940,9 +1953,9 @@ export const PlasmicARatingCompanies = Object.assign(
   makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
-    topBar: makeNodeComponent("topBar"),
+    topBarAuto: makeNodeComponent("topBarAuto"),
     navigationBar: makeNodeComponent("navigationBar"),
-    account: makeNodeComponent("account"),
+    account2: makeNodeComponent("account2"),
     button: makeNodeComponent("button"),
     countainer1: makeNodeComponent("countainer1"),
     companyLogo: makeNodeComponent("companyLogo"),

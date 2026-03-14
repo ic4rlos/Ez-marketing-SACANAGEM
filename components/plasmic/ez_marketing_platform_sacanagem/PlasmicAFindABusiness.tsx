@@ -59,13 +59,6 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
-import { usePlasmicDataSourceContext } from "@plasmicapp/data-sources-context";
-import {
-  executePlasmicDataOp,
-  usePlasmicDataOp,
-  usePlasmicInvalidate
-} from "@plasmicapp/react-web/lib/data-sources";
-
 import { NavigationBar } from "@plasmicpkgs/plasmic-nav";
 import { AntdDropdown } from "@plasmicpkgs/antd5/skinny/registerDropdown";
 import { AntdMenuItem } from "@plasmicpkgs/antd5/skinny/registerMenu";
@@ -137,9 +130,9 @@ export const PlasmicAFindABusiness__ArgProps = new Array<ArgPropType>();
 
 export type PlasmicAFindABusiness__OverridesType = {
   root?: Flex__<"div">;
-  topBar?: Flex__<"div">;
+  topBarAuto?: Flex__<"div">;
   navigationBar?: Flex__<typeof NavigationBar>;
-  account?: Flex__<typeof AntdDropdown>;
+  account2?: Flex__<typeof AntdDropdown>;
   button?: Flex__<typeof AntdButton>;
   highlightsContainer?: Flex__<"div">;
   sliderCarousel?: Flex__<typeof SliderWrapper>;
@@ -562,63 +555,61 @@ function PlasmicAFindABusiness__RenderFunc(props: {
     $q: {},
     $refs
   });
-  const dataSourcesCtx = usePlasmicDataSourceContext();
-  const plasmicInvalidate = usePlasmicInvalidate();
 
   const pageMetadata = generateDynamicMetadata(
     wrapQueriesWithLoadingProxy({}),
     $ctx as PageCtx
   );
 
-  const [isN14582295FocusVisible, triggerN14582295FocusVisibleProps] =
+  const [isN13478202FocusVisible, triggerN13478202FocusVisibleProps] =
     useTrigger("useFocusVisible", {
       isTextInput: false
     });
   const [
-    isN14582295FocusVisibleWithin,
-    triggerN14582295FocusVisibleWithinProps
+    isN13478202FocusVisibleWithin,
+    triggerN13478202FocusVisibleWithinProps
   ] = useTrigger("useFocusVisibleWithin", {
     isTextInput: false
   });
-  const [isN14582716FocusVisible, triggerN14582716FocusVisibleProps] =
+  const [isN13478623FocusVisible, triggerN13478623FocusVisibleProps] =
     useTrigger("useFocusVisible", {
       isTextInput: false
     });
   const [
-    isN14582716FocusVisibleWithin,
-    triggerN14582716FocusVisibleWithinProps
+    isN13478623FocusVisibleWithin,
+    triggerN13478623FocusVisibleWithinProps
   ] = useTrigger("useFocusVisibleWithin", {
     isTextInput: false
   });
-  const [isN14583137FocusVisible, triggerN14583137FocusVisibleProps] =
+  const [isN13479044FocusVisible, triggerN13479044FocusVisibleProps] =
     useTrigger("useFocusVisible", {
       isTextInput: false
     });
   const [
-    isN14583137FocusVisibleWithin,
-    triggerN14583137FocusVisibleWithinProps
+    isN13479044FocusVisibleWithin,
+    triggerN13479044FocusVisibleWithinProps
   ] = useTrigger("useFocusVisibleWithin", {
     isTextInput: false
   });
-  const [isN14583558FocusVisible, triggerN14583558FocusVisibleProps] =
+  const [isN13479465FocusVisible, triggerN13479465FocusVisibleProps] =
     useTrigger("useFocusVisible", {
       isTextInput: false
     });
   const [
-    isN14583558FocusVisibleWithin,
-    triggerN14583558FocusVisibleWithinProps
+    isN13479465FocusVisibleWithin,
+    triggerN13479465FocusVisibleWithinProps
   ] = useTrigger("useFocusVisibleWithin", {
     isTextInput: false
   });
   const triggers = {
-    focusVisible_14582295: isN14582295FocusVisible,
-    focusVisibleWithin_14582295: isN14582295FocusVisibleWithin,
-    focusVisible_14582716: isN14582716FocusVisible,
-    focusVisibleWithin_14582716: isN14582716FocusVisibleWithin,
-    focusVisible_14583137: isN14583137FocusVisible,
-    focusVisibleWithin_14583137: isN14583137FocusVisibleWithin,
-    focusVisible_14583558: isN14583558FocusVisible,
-    focusVisibleWithin_14583558: isN14583558FocusVisibleWithin
+    focusVisible_13478202: isN13478202FocusVisible,
+    focusVisibleWithin_13478202: isN13478202FocusVisibleWithin,
+    focusVisible_13478623: isN13478623FocusVisible,
+    focusVisibleWithin_13478623: isN13478623FocusVisibleWithin,
+    focusVisible_13479044: isN13479044FocusVisible,
+    focusVisibleWithin_13479044: isN13479044FocusVisibleWithin,
+    focusVisible_13479465: isN13479465FocusVisible,
+    focusVisibleWithin_13479465: isN13479465FocusVisibleWithin
   };
 
   const styleTokensClassNames = _useStyleTokens();
@@ -657,12 +648,12 @@ function PlasmicAFindABusiness__RenderFunc(props: {
         )}
       >
         <div
-          data-plasmic-name={"topBar"}
-          data-plasmic-override={overrides.topBar}
-          className={classNames(projectcss.all, sty.topBar)}
+          data-plasmic-name={"topBarAuto"}
+          data-plasmic-override={overrides.topBarAuto}
+          className={classNames(projectcss.all, sty.topBarAuto)}
         >
-          <div className={classNames(projectcss.all, sty.freeBox___9KhLm)}>
-            <div className={classNames(projectcss.all, sty.freeBox__zLsyc)}>
+          <div className={classNames(projectcss.all, sty.freeBox__kWhjq)}>
+            <div className={classNames(projectcss.all, sty.freeBox__xqXgd)}>
               <NavigationBar
                 data-plasmic-name={"navigationBar"}
                 data-plasmic-override={overrides.navigationBar}
@@ -671,39 +662,15 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                     className={classNames(
                       projectcss.all,
                       projectcss.a,
-                      sty.link__s3R7A
+                      sty.link___1DHgf
                     )}
                     component={Link}
                     legacyBehavior={false}
-                    onClick={async event => {
-                      const $steps = {};
-
-                      $steps["refreshData"] = true
-                        ? (() => {
-                            const actionArgs = {
-                              queryInvalidation: ["plasmic_refresh_all"]
-                            };
-                            return (async ({ queryInvalidation }) => {
-                              if (!queryInvalidation) {
-                                return;
-                              }
-                              await plasmicInvalidate(queryInvalidation);
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
-                      if (
-                        $steps["refreshData"] != null &&
-                        typeof $steps["refreshData"] === "object" &&
-                        typeof $steps["refreshData"].then === "function"
-                      ) {
-                        $steps["refreshData"] = await $steps["refreshData"];
-                      }
-                    }}
                     platform={"nextjs"}
                   >
                     <PlasmicImg__
                       alt={""}
-                      className={classNames(sty.img___7JD)}
+                      className={classNames(sty.img__cOzy)}
                       displayHeight={"30px"}
                       displayMaxHeight={"none"}
                       displayMaxWidth={"none"}
@@ -723,7 +690,7 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                 closeButton={
                   <PlasmicImg__
                     alt={""}
-                    className={classNames(sty.img__a0FmU)}
+                    className={classNames(sty.img__aW1ZK)}
                     displayHeight={"auto"}
                     displayMaxHeight={"none"}
                     displayMaxWidth={"none"}
@@ -741,7 +708,7 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                         projectcss.all,
                         projectcss.a,
                         projectcss.__wab_text,
-                        sty.link__ntR1P
+                        sty.link__grwYz
                       )}
                       component={Link}
                       href={`/a-community-dashboard`}
@@ -755,7 +722,7 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                         projectcss.all,
                         projectcss.a,
                         projectcss.__wab_text,
-                        sty.link__akHtc
+                        sty.link__e6Eyx
                       )}
                       component={Link}
                       href={`/a-service-dashboard`}
@@ -769,7 +736,7 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                         projectcss.all,
                         projectcss.a,
                         projectcss.__wab_text,
-                        sty.link__gwmg
+                        sty.link__eiSih
                       )}
                       component={Link}
                       legacyBehavior={false}
@@ -796,7 +763,7 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                 openButton={
                   <PlasmicImg__
                     alt={""}
-                    className={classNames(sty.img__m15B)}
+                    className={classNames(sty.img__qjSL)}
                     displayHeight={"auto"}
                     displayMaxHeight={"none"}
                     displayMaxWidth={"none"}
@@ -812,20 +779,16 @@ function PlasmicAFindABusiness__RenderFunc(props: {
               />
 
               <AntdDropdown
-                data-plasmic-name={"account"}
-                data-plasmic-override={overrides.account}
-                className={classNames("__wab_instance", sty.account)}
-                dropdownMenuScopeClassName={sty["account__dropdownMenu"]}
-                menuClassName={classNames({ [sty["pcls_ulwviJmF8h11"]]: true })}
-                menuItemClassName={classNames({
-                  [sty["pcls_-fWTyonTYspm"]]: true
-                })}
+                data-plasmic-name={"account2"}
+                data-plasmic-override={overrides.account2}
+                className={classNames("__wab_instance", sty.account2)}
+                dropdownMenuScopeClassName={sty["account2__dropdownMenu"]}
                 menuItems={() => (
                   <React.Fragment>
                     <AntdMenuItem
                       className={classNames(
                         "__wab_instance",
-                        sty.menuItem__dfbJh
+                        sty.menuItem__b974V
                       )}
                       key={"menu-item-1"}
                     >
@@ -833,7 +796,7 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                         className={classNames(
                           projectcss.all,
                           projectcss.__wab_text,
-                          sty.text__xSpDg
+                          sty.text___8Dzd9
                         )}
                       >
                         {"Menu item"}
@@ -842,7 +805,7 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                     <AntdMenuItem
                       className={classNames(
                         "__wab_instance",
-                        sty.menuItem__kOnAk
+                        sty.menuItem__uzzo7
                       )}
                       key={"menu-item-2"}
                     >
@@ -850,7 +813,7 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                         className={classNames(
                           projectcss.all,
                           projectcss.__wab_text,
-                          sty.text__plkqp
+                          sty.text__zhMoa
                         )}
                       >
                         {"Menu item"}
@@ -878,66 +841,7 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                       { type: null }
                     ];
                     __composite["0"]["label"] = "Profile";
-                    __composite["0"]["onClick"] = async info => {
-                      const $steps = {};
-
-                      $steps["goToAProfile"] = true
-                        ? (() => {
-                            const actionArgs = { destination: `/a-profile` };
-                            return (({ destination }) => {
-                              if (
-                                typeof destination === "string" &&
-                                destination.startsWith("#")
-                              ) {
-                                document
-                                  .getElementById(destination.substr(1))
-                                  .scrollIntoView({ behavior: "smooth" });
-                              } else {
-                                __nextRouter?.push(destination);
-                              }
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
-                      if (
-                        $steps["goToAProfile"] != null &&
-                        typeof $steps["goToAProfile"] === "object" &&
-                        typeof $steps["goToAProfile"].then === "function"
-                      ) {
-                        $steps["goToAProfile"] = await $steps["goToAProfile"];
-                      }
-                    };
                     __composite["1"]["label"] = "Edit profile";
-                    __composite["1"]["onClick"] = async info => {
-                      const $steps = {};
-
-                      $steps["goToACreateAccount"] = true
-                        ? (() => {
-                            const actionArgs = {
-                              destination: `/a-edit-profile`
-                            };
-                            return (({ destination }) => {
-                              if (
-                                typeof destination === "string" &&
-                                destination.startsWith("#")
-                              ) {
-                                document
-                                  .getElementById(destination.substr(1))
-                                  .scrollIntoView({ behavior: "smooth" });
-                              } else {
-                                __nextRouter?.push(destination);
-                              }
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
-                      if (
-                        $steps["goToACreateAccount"] != null &&
-                        typeof $steps["goToACreateAccount"] === "object" &&
-                        typeof $steps["goToACreateAccount"].then === "function"
-                      ) {
-                        $steps["goToACreateAccount"] =
-                          await $steps["goToACreateAccount"];
-                      }
-                    };
                     __composite["2"]["type"] = "divider";
                     return __composite;
                   })();
@@ -950,96 +854,12 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                       { type: null }
                     ];
                     __composite["0"]["label"] = "Settings & Privacy";
-                    __composite["0"]["onClick"] = async info => {
-                      const $steps = {};
-
-                      $steps["goToALogin"] = true
-                        ? (() => {
-                            const actionArgs = { destination: `/a-login` };
-                            return (({ destination }) => {
-                              if (
-                                typeof destination === "string" &&
-                                destination.startsWith("#")
-                              ) {
-                                document
-                                  .getElementById(destination.substr(1))
-                                  .scrollIntoView({ behavior: "smooth" });
-                              } else {
-                                __nextRouter?.push(destination);
-                              }
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
-                      if (
-                        $steps["goToALogin"] != null &&
-                        typeof $steps["goToALogin"] === "object" &&
-                        typeof $steps["goToALogin"].then === "function"
-                      ) {
-                        $steps["goToALogin"] = await $steps["goToALogin"];
-                      }
-                    };
                     __composite["1"]["label"] = "Help";
-                    __composite["1"]["onClick"] = async info => {
-                      const $steps = {};
-
-                      $steps["goToALogin"] = true
-                        ? (() => {
-                            const actionArgs = { destination: `/a-login` };
-                            return (({ destination }) => {
-                              if (
-                                typeof destination === "string" &&
-                                destination.startsWith("#")
-                              ) {
-                                document
-                                  .getElementById(destination.substr(1))
-                                  .scrollIntoView({ behavior: "smooth" });
-                              } else {
-                                __nextRouter?.push(destination);
-                              }
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
-                      if (
-                        $steps["goToALogin"] != null &&
-                        typeof $steps["goToALogin"] === "object" &&
-                        typeof $steps["goToALogin"].then === "function"
-                      ) {
-                        $steps["goToALogin"] = await $steps["goToALogin"];
-                      }
-                    };
                     __composite["2"]["type"] = "divider";
                     return __composite;
                   })();
                   __composite["2"]["type"] = "item";
                   __composite["2"]["label"] = "Sign out";
-                  __composite["2"]["onClick"] = async info => {
-                    const $steps = {};
-
-                    $steps["goToALogin"] = true
-                      ? (() => {
-                          const actionArgs = { destination: `/a-login` };
-                          return (({ destination }) => {
-                            if (
-                              typeof destination === "string" &&
-                              destination.startsWith("#")
-                            ) {
-                              document
-                                .getElementById(destination.substr(1))
-                                .scrollIntoView({ behavior: "smooth" });
-                            } else {
-                              __nextRouter?.push(destination);
-                            }
-                          })?.apply(null, [actionArgs]);
-                        })()
-                      : undefined;
-                    if (
-                      $steps["goToALogin"] != null &&
-                      typeof $steps["goToALogin"] === "object" &&
-                      typeof $steps["goToALogin"].then === "function"
-                    ) {
-                      $steps["goToALogin"] = await $steps["goToALogin"];
-                    }
-                  };
                   return __composite;
                 })()}
                 trigger={"hover"}
@@ -1049,12 +869,11 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                   data-plasmic-name={"button"}
                   data-plasmic-override={overrides.button}
                   className={classNames("__wab_instance", sty.button)}
-                  href={`/a-login`}
                   target={true}
                 >
                   <PlasmicImg__
                     alt={""}
-                    className={classNames(sty.img___0LUhb)}
+                    className={classNames(sty.img__mtlud)}
                     displayHeight={"30px"}
                     displayMaxHeight={"none"}
                     displayMaxWidth={"100%"}
@@ -1062,6 +881,19 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                     displayMinWidth={"0"}
                     displayWidth={"30px"}
                     loading={"lazy"}
+                    src={(() => {
+                      try {
+                        return $props.formData?.["Profile pic"] ?? null;
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return undefined;
+                        }
+                        throw e;
+                      }
+                    })()}
                   />
                 </AntdButton>
               </AntdDropdown>
@@ -3940,9 +3772,9 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                       sty.link__w7OTb,
                       {
                         [sty.link___focusVisibleWithin__w7OTb5SWd3]:
-                          triggers.focusVisibleWithin_14582295,
+                          triggers.focusVisibleWithin_13478202,
                         [sty.link___focusVisible__w7OTb9N36P]:
-                          triggers.focusVisible_14582295
+                          triggers.focusVisible_13478202
                       }
                     )}
                     component={Link}
@@ -3952,8 +3784,8 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                       "Companies with fixed prices that go to the location to provide services"
                     }
                     data-plasmic-trigger-props={[
-                      triggerN14582295FocusVisibleProps,
-                      triggerN14582295FocusVisibleWithinProps
+                      triggerN13478202FocusVisibleProps,
+                      triggerN13478202FocusVisibleWithinProps
                     ]}
                   >
                     <React.Fragment>
@@ -4591,9 +4423,9 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                       sty.link__li62,
                       {
                         [sty.link___focusVisibleWithin__li62TyKlW]:
-                          triggers.focusVisibleWithin_14582716,
+                          triggers.focusVisibleWithin_13478623,
                         [sty.link___focusVisible__li62NlhE5]:
-                          triggers.focusVisible_14582716
+                          triggers.focusVisible_13478623
                       }
                     )}
                     component={Link}
@@ -4601,8 +4433,8 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                     platform={"nextjs"}
                     title={"Fixed-price companies that welcome customers"}
                     data-plasmic-trigger-props={[
-                      triggerN14582716FocusVisibleProps,
-                      triggerN14582716FocusVisibleWithinProps
+                      triggerN13478623FocusVisibleProps,
+                      triggerN13478623FocusVisibleWithinProps
                     ]}
                   >
                     <React.Fragment>
@@ -5238,9 +5070,9 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                       sty.link___2ZDaz,
                       {
                         [sty.link___focusVisibleWithin___2ZDazAuceu]:
-                          triggers.focusVisibleWithin_14583137,
+                          triggers.focusVisibleWithin_13479044,
                         [sty.link___focusVisible___2ZDazimth]:
-                          triggers.focusVisible_14583137
+                          triggers.focusVisible_13479044
                       }
                     )}
                     component={Link}
@@ -5250,8 +5082,8 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                       "Budget-priced companies that go to the location to provide services"
                     }
                     data-plasmic-trigger-props={[
-                      triggerN14583137FocusVisibleProps,
-                      triggerN14583137FocusVisibleWithinProps
+                      triggerN13479044FocusVisibleProps,
+                      triggerN13479044FocusVisibleWithinProps
                     ]}
                   >
                     <React.Fragment>
@@ -5889,9 +5721,9 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                       sty.link___8Fedr,
                       {
                         [sty.link___focusVisibleWithin___8FedruhXAh]:
-                          triggers.focusVisibleWithin_14583558,
+                          triggers.focusVisibleWithin_13479465,
                         [sty.link___focusVisible___8FedrNhrid]:
-                          triggers.focusVisible_14583558
+                          triggers.focusVisible_13479465
                       }
                     )}
                     component={Link}
@@ -5899,8 +5731,8 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                     platform={"nextjs"}
                     title={"Budget-priced companies that welcome customers"}
                     data-plasmic-trigger-props={[
-                      triggerN14583558FocusVisibleProps,
-                      triggerN14583558FocusVisibleWithinProps
+                      triggerN13479465FocusVisibleProps,
+                      triggerN13479465FocusVisibleWithinProps
                     ]}
                   >
                     <React.Fragment>
@@ -12326,9 +12158,9 @@ function PlasmicAFindABusiness__RenderFunc(props: {
 const PlasmicDescendants = {
   root: [
     "root",
-    "topBar",
+    "topBarAuto",
     "navigationBar",
-    "account",
+    "account2",
     "button",
     "highlightsContainer",
     "sliderCarousel",
@@ -12661,9 +12493,9 @@ const PlasmicDescendants = {
     "tam19",
     "competitive19"
   ],
-  topBar: ["topBar", "navigationBar", "account", "button"],
+  topBarAuto: ["topBarAuto", "navigationBar", "account2", "button"],
   navigationBar: ["navigationBar"],
-  account: ["account", "button"],
+  account2: ["account2", "button"],
   button: ["button"],
   highlightsContainer: [
     "highlightsContainer",
@@ -14147,9 +13979,9 @@ type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   root: "div";
-  topBar: "div";
+  topBarAuto: "div";
   navigationBar: typeof NavigationBar;
-  account: typeof AntdDropdown;
+  account2: typeof AntdDropdown;
   button: typeof AntdButton;
   highlightsContainer: "div";
   sliderCarousel: typeof SliderWrapper;
@@ -14545,9 +14377,9 @@ export const PlasmicAFindABusiness = Object.assign(
   makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
-    topBar: makeNodeComponent("topBar"),
+    topBarAuto: makeNodeComponent("topBarAuto"),
     navigationBar: makeNodeComponent("navigationBar"),
-    account: makeNodeComponent("account"),
+    account2: makeNodeComponent("account2"),
     button: makeNodeComponent("button"),
     highlightsContainer: makeNodeComponent("highlightsContainer"),
     sliderCarousel: makeNodeComponent("sliderCarousel"),

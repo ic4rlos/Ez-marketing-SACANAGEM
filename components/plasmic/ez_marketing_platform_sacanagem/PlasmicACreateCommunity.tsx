@@ -59,13 +59,6 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
-import { usePlasmicDataSourceContext } from "@plasmicapp/data-sources-context";
-import {
-  executePlasmicDataOp,
-  usePlasmicDataOp,
-  usePlasmicInvalidate
-} from "@plasmicapp/react-web/lib/data-sources";
-
 import { NavigationBar } from "@plasmicpkgs/plasmic-nav";
 import { AntdDropdown } from "@plasmicpkgs/antd5/skinny/registerDropdown";
 import { AntdMenuItem } from "@plasmicpkgs/antd5/skinny/registerMenu";
@@ -149,9 +142,9 @@ export const PlasmicACreateCommunity__ArgProps = new Array<ArgPropType>();
 
 export type PlasmicACreateCommunity__OverridesType = {
   root?: Flex__<"div">;
-  topBar?: Flex__<"div">;
+  topBarAuto?: Flex__<"div">;
   navigationBar?: Flex__<typeof NavigationBar>;
-  account?: Flex__<typeof AntdDropdown>;
+  account2?: Flex__<typeof AntdDropdown>;
   button?: Flex__<typeof AntdButton>;
   rectangle?: Flex__<"div">;
   stepsStack?: Flex__<"div">;
@@ -380,8 +373,6 @@ function PlasmicACreateCommunity__RenderFunc(props: {
     $q: {},
     $refs
   });
-  const dataSourcesCtx = usePlasmicDataSourceContext();
-  const plasmicInvalidate = usePlasmicInvalidate();
 
   const pageMetadata = generateDynamicMetadata(
     wrapQueriesWithLoadingProxy({}),
@@ -424,12 +415,12 @@ function PlasmicACreateCommunity__RenderFunc(props: {
         )}
       >
         <div
-          data-plasmic-name={"topBar"}
-          data-plasmic-override={overrides.topBar}
-          className={classNames(projectcss.all, sty.topBar)}
+          data-plasmic-name={"topBarAuto"}
+          data-plasmic-override={overrides.topBarAuto}
+          className={classNames(projectcss.all, sty.topBarAuto)}
         >
-          <div className={classNames(projectcss.all, sty.freeBox__uyp17)}>
-            <div className={classNames(projectcss.all, sty.freeBox__bYoeW)}>
+          <div className={classNames(projectcss.all, sty.freeBox__mhzbb)}>
+            <div className={classNames(projectcss.all, sty.freeBox___8DDfU)}>
               <NavigationBar
                 data-plasmic-name={"navigationBar"}
                 data-plasmic-override={overrides.navigationBar}
@@ -438,39 +429,15 @@ function PlasmicACreateCommunity__RenderFunc(props: {
                     className={classNames(
                       projectcss.all,
                       projectcss.a,
-                      sty.link___8JbQd
+                      sty.link__ezSiH
                     )}
                     component={Link}
                     legacyBehavior={false}
-                    onClick={async event => {
-                      const $steps = {};
-
-                      $steps["refreshData"] = true
-                        ? (() => {
-                            const actionArgs = {
-                              queryInvalidation: ["plasmic_refresh_all"]
-                            };
-                            return (async ({ queryInvalidation }) => {
-                              if (!queryInvalidation) {
-                                return;
-                              }
-                              await plasmicInvalidate(queryInvalidation);
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
-                      if (
-                        $steps["refreshData"] != null &&
-                        typeof $steps["refreshData"] === "object" &&
-                        typeof $steps["refreshData"].then === "function"
-                      ) {
-                        $steps["refreshData"] = await $steps["refreshData"];
-                      }
-                    }}
                     platform={"nextjs"}
                   >
                     <PlasmicImg__
                       alt={""}
-                      className={classNames(sty.img__j9Adx)}
+                      className={classNames(sty.img__dkGfQ)}
                       displayHeight={"30px"}
                       displayMaxHeight={"none"}
                       displayMaxWidth={"none"}
@@ -490,7 +457,7 @@ function PlasmicACreateCommunity__RenderFunc(props: {
                 closeButton={
                   <PlasmicImg__
                     alt={""}
-                    className={classNames(sty.img__twPiw)}
+                    className={classNames(sty.img__yRcmC)}
                     displayHeight={"auto"}
                     displayMaxHeight={"none"}
                     displayMaxWidth={"none"}
@@ -508,7 +475,7 @@ function PlasmicACreateCommunity__RenderFunc(props: {
                         projectcss.all,
                         projectcss.a,
                         projectcss.__wab_text,
-                        sty.link__ut7No
+                        sty.link__j3K7F
                       )}
                       component={Link}
                       href={`/a-community-dashboard`}
@@ -522,7 +489,7 @@ function PlasmicACreateCommunity__RenderFunc(props: {
                         projectcss.all,
                         projectcss.a,
                         projectcss.__wab_text,
-                        sty.link__otrga
+                        sty.link__cgFk7
                       )}
                       component={Link}
                       href={`/a-service-dashboard`}
@@ -536,7 +503,7 @@ function PlasmicACreateCommunity__RenderFunc(props: {
                         projectcss.all,
                         projectcss.a,
                         projectcss.__wab_text,
-                        sty.link__eNNs2
+                        sty.link__tcqy3
                       )}
                       component={Link}
                       legacyBehavior={false}
@@ -549,9 +516,10 @@ function PlasmicACreateCommunity__RenderFunc(props: {
                         projectcss.all,
                         projectcss.a,
                         projectcss.__wab_text,
-                        sty.link__zNtjq
+                        sty.link___8UwqE
                       )}
                       component={Link}
+                      href={`/a-find-a-business`}
                       legacyBehavior={false}
                       platform={"nextjs"}
                     >
@@ -562,7 +530,7 @@ function PlasmicACreateCommunity__RenderFunc(props: {
                 openButton={
                   <PlasmicImg__
                     alt={""}
-                    className={classNames(sty.img__mqeD)}
+                    className={classNames(sty.img___3Oko)}
                     displayHeight={"auto"}
                     displayMaxHeight={"none"}
                     displayMaxWidth={"none"}
@@ -578,20 +546,16 @@ function PlasmicACreateCommunity__RenderFunc(props: {
               />
 
               <AntdDropdown
-                data-plasmic-name={"account"}
-                data-plasmic-override={overrides.account}
-                className={classNames("__wab_instance", sty.account)}
-                dropdownMenuScopeClassName={sty["account__dropdownMenu"]}
-                menuClassName={classNames({ [sty["pcls_xuGjt8fspvyc"]]: true })}
-                menuItemClassName={classNames({
-                  [sty["pcls_rdgmQpaQ88_a"]]: true
-                })}
+                data-plasmic-name={"account2"}
+                data-plasmic-override={overrides.account2}
+                className={classNames("__wab_instance", sty.account2)}
+                dropdownMenuScopeClassName={sty["account2__dropdownMenu"]}
                 menuItems={() => (
                   <React.Fragment>
                     <AntdMenuItem
                       className={classNames(
                         "__wab_instance",
-                        sty.menuItem__vso6U
+                        sty.menuItem__yfaEo
                       )}
                       key={"menu-item-1"}
                     >
@@ -599,7 +563,7 @@ function PlasmicACreateCommunity__RenderFunc(props: {
                         className={classNames(
                           projectcss.all,
                           projectcss.__wab_text,
-                          sty.text__tKrV5
+                          sty.text__kSb3F
                         )}
                       >
                         {"Menu item"}
@@ -608,7 +572,7 @@ function PlasmicACreateCommunity__RenderFunc(props: {
                     <AntdMenuItem
                       className={classNames(
                         "__wab_instance",
-                        sty.menuItem__zNkZi
+                        sty.menuItem___0XoS8
                       )}
                       key={"menu-item-2"}
                     >
@@ -616,7 +580,7 @@ function PlasmicACreateCommunity__RenderFunc(props: {
                         className={classNames(
                           projectcss.all,
                           projectcss.__wab_text,
-                          sty.text__uxVsa
+                          sty.text__zp83
                         )}
                       >
                         {"Menu item"}
@@ -644,66 +608,7 @@ function PlasmicACreateCommunity__RenderFunc(props: {
                       { type: null }
                     ];
                     __composite["0"]["label"] = "Profile";
-                    __composite["0"]["onClick"] = async info => {
-                      const $steps = {};
-
-                      $steps["goToAProfile"] = true
-                        ? (() => {
-                            const actionArgs = { destination: `/a-profile` };
-                            return (({ destination }) => {
-                              if (
-                                typeof destination === "string" &&
-                                destination.startsWith("#")
-                              ) {
-                                document
-                                  .getElementById(destination.substr(1))
-                                  .scrollIntoView({ behavior: "smooth" });
-                              } else {
-                                __nextRouter?.push(destination);
-                              }
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
-                      if (
-                        $steps["goToAProfile"] != null &&
-                        typeof $steps["goToAProfile"] === "object" &&
-                        typeof $steps["goToAProfile"].then === "function"
-                      ) {
-                        $steps["goToAProfile"] = await $steps["goToAProfile"];
-                      }
-                    };
                     __composite["1"]["label"] = "Edit profile";
-                    __composite["1"]["onClick"] = async info => {
-                      const $steps = {};
-
-                      $steps["goToACreateAccount"] = true
-                        ? (() => {
-                            const actionArgs = {
-                              destination: `/a-edit-profile`
-                            };
-                            return (({ destination }) => {
-                              if (
-                                typeof destination === "string" &&
-                                destination.startsWith("#")
-                              ) {
-                                document
-                                  .getElementById(destination.substr(1))
-                                  .scrollIntoView({ behavior: "smooth" });
-                              } else {
-                                __nextRouter?.push(destination);
-                              }
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
-                      if (
-                        $steps["goToACreateAccount"] != null &&
-                        typeof $steps["goToACreateAccount"] === "object" &&
-                        typeof $steps["goToACreateAccount"].then === "function"
-                      ) {
-                        $steps["goToACreateAccount"] =
-                          await $steps["goToACreateAccount"];
-                      }
-                    };
                     __composite["2"]["type"] = "divider";
                     return __composite;
                   })();
@@ -716,96 +621,12 @@ function PlasmicACreateCommunity__RenderFunc(props: {
                       { type: null }
                     ];
                     __composite["0"]["label"] = "Settings & Privacy";
-                    __composite["0"]["onClick"] = async info => {
-                      const $steps = {};
-
-                      $steps["goToALogin"] = true
-                        ? (() => {
-                            const actionArgs = { destination: `/a-login` };
-                            return (({ destination }) => {
-                              if (
-                                typeof destination === "string" &&
-                                destination.startsWith("#")
-                              ) {
-                                document
-                                  .getElementById(destination.substr(1))
-                                  .scrollIntoView({ behavior: "smooth" });
-                              } else {
-                                __nextRouter?.push(destination);
-                              }
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
-                      if (
-                        $steps["goToALogin"] != null &&
-                        typeof $steps["goToALogin"] === "object" &&
-                        typeof $steps["goToALogin"].then === "function"
-                      ) {
-                        $steps["goToALogin"] = await $steps["goToALogin"];
-                      }
-                    };
                     __composite["1"]["label"] = "Help";
-                    __composite["1"]["onClick"] = async info => {
-                      const $steps = {};
-
-                      $steps["goToALogin"] = true
-                        ? (() => {
-                            const actionArgs = { destination: `/a-login` };
-                            return (({ destination }) => {
-                              if (
-                                typeof destination === "string" &&
-                                destination.startsWith("#")
-                              ) {
-                                document
-                                  .getElementById(destination.substr(1))
-                                  .scrollIntoView({ behavior: "smooth" });
-                              } else {
-                                __nextRouter?.push(destination);
-                              }
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
-                      if (
-                        $steps["goToALogin"] != null &&
-                        typeof $steps["goToALogin"] === "object" &&
-                        typeof $steps["goToALogin"].then === "function"
-                      ) {
-                        $steps["goToALogin"] = await $steps["goToALogin"];
-                      }
-                    };
                     __composite["2"]["type"] = "divider";
                     return __composite;
                   })();
                   __composite["2"]["type"] = "item";
                   __composite["2"]["label"] = "Sign out";
-                  __composite["2"]["onClick"] = async info => {
-                    const $steps = {};
-
-                    $steps["goToALogin"] = true
-                      ? (() => {
-                          const actionArgs = { destination: `/a-login` };
-                          return (({ destination }) => {
-                            if (
-                              typeof destination === "string" &&
-                              destination.startsWith("#")
-                            ) {
-                              document
-                                .getElementById(destination.substr(1))
-                                .scrollIntoView({ behavior: "smooth" });
-                            } else {
-                              __nextRouter?.push(destination);
-                            }
-                          })?.apply(null, [actionArgs]);
-                        })()
-                      : undefined;
-                    if (
-                      $steps["goToALogin"] != null &&
-                      typeof $steps["goToALogin"] === "object" &&
-                      typeof $steps["goToALogin"].then === "function"
-                    ) {
-                      $steps["goToALogin"] = await $steps["goToALogin"];
-                    }
-                  };
                   return __composite;
                 })()}
                 trigger={"hover"}
@@ -815,12 +636,11 @@ function PlasmicACreateCommunity__RenderFunc(props: {
                   data-plasmic-name={"button"}
                   data-plasmic-override={overrides.button}
                   className={classNames("__wab_instance", sty.button)}
-                  href={`/a-login`}
                   target={true}
                 >
                   <PlasmicImg__
                     alt={""}
-                    className={classNames(sty.img__eh3MI)}
+                    className={classNames(sty.img__j0C)}
                     displayHeight={"30px"}
                     displayMaxHeight={"none"}
                     displayMaxWidth={"100%"}
@@ -828,6 +648,19 @@ function PlasmicACreateCommunity__RenderFunc(props: {
                     displayMinWidth={"0"}
                     displayWidth={"30px"}
                     loading={"lazy"}
+                    src={(() => {
+                      try {
+                        return $props.formData?.["Profile pic"] ?? null;
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return undefined;
+                        }
+                        throw e;
+                      }
+                    })()}
                   />
                 </AntdButton>
               </AntdDropdown>
@@ -1953,9 +1786,9 @@ function PlasmicACreateCommunity__RenderFunc(props: {
 const PlasmicDescendants = {
   root: [
     "root",
-    "topBar",
+    "topBarAuto",
     "navigationBar",
-    "account",
+    "account2",
     "button",
     "rectangle",
     "stepsStack",
@@ -1977,9 +1810,9 @@ const PlasmicDescendants = {
     "about",
     "done"
   ],
-  topBar: ["topBar", "navigationBar", "account", "button"],
+  topBarAuto: ["topBarAuto", "navigationBar", "account2", "button"],
   navigationBar: ["navigationBar"],
-  account: ["account", "button"],
+  account2: ["account2", "button"],
   button: ["button"],
   rectangle: [
     "rectangle",
@@ -2039,9 +1872,9 @@ type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   root: "div";
-  topBar: "div";
+  topBarAuto: "div";
   navigationBar: typeof NavigationBar;
-  account: typeof AntdDropdown;
+  account2: typeof AntdDropdown;
   button: typeof AntdButton;
   rectangle: "div";
   stepsStack: "div";
@@ -2126,9 +1959,9 @@ export const PlasmicACreateCommunity = Object.assign(
   makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
-    topBar: makeNodeComponent("topBar"),
+    topBarAuto: makeNodeComponent("topBarAuto"),
     navigationBar: makeNodeComponent("navigationBar"),
-    account: makeNodeComponent("account"),
+    account2: makeNodeComponent("account2"),
     button: makeNodeComponent("button"),
     rectangle: makeNodeComponent("rectangle"),
     stepsStack: makeNodeComponent("stepsStack"),

@@ -59,13 +59,6 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
-import { usePlasmicDataSourceContext } from "@plasmicapp/data-sources-context";
-import {
-  executePlasmicDataOp,
-  usePlasmicDataOp,
-  usePlasmicInvalidate
-} from "@plasmicapp/react-web/lib/data-sources";
-
 import { NavigationBar } from "@plasmicpkgs/plasmic-nav";
 import { AntdDropdown } from "@plasmicpkgs/antd5/skinny/registerDropdown";
 import { AntdMenuItem } from "@plasmicpkgs/antd5/skinny/registerMenu";
@@ -148,38 +141,38 @@ export type PlasmicACompanyProfile__OverridesType = {
   root?: Flex__<"div">;
   topBar?: Flex__<"div">;
   navigationBar?: Flex__<typeof NavigationBar>;
-  account?: Flex__<typeof AntdDropdown>;
+  account2?: Flex__<typeof AntdDropdown>;
   button?: Flex__<typeof AntdButton>;
-  countainer7?: Flex__<"div">;
-  companyLogo?: Flex__<typeof PlasmicImg__>;
-  companyName?: Flex__<"div">;
-  companyType?: Flex__<"div">;
-  averageRate?: Flex__<typeof AntdRate>;
-  rateSum?: Flex__<"div">;
+  countainer1?: Flex__<"div">;
+  companyLogo3?: Flex__<typeof PlasmicImg__>;
+  companyName4?: Flex__<"div">;
+  companyType2?: Flex__<"div">;
+  averageRate5?: Flex__<typeof AntdRate>;
+  rateSum4?: Flex__<"div">;
   apply?: Flex__<typeof Modal>;
   loginButton?: Flex__<typeof LoginButton>;
   h3?: Flex__<"h3">;
   shortMessage?: Flex__<typeof AntdTextArea>;
   confirm?: Flex__<typeof Button2>;
   button2?: Flex__<typeof Button2>;
-  area?: Flex__<"div">;
-  subArea?: Flex__<"div">;
-  location?: Flex__<"div">;
-  foundationDate?: Flex__<"div">;
-  goalsSum?: Flex__<"div">;
-  companyTagline?: Flex__<"div">;
-  linkedIn?: Flex__<"a"> & Partial<LinkProps>;
-  instagram?: Flex__<"a"> & Partial<LinkProps>;
-  x?: Flex__<"a"> & Partial<LinkProps>;
-  website?: Flex__<"a"> & Partial<LinkProps>;
-  countainer8?: Flex__<"div">;
-  sliderCarousel5?: Flex__<typeof SliderWrapper>;
-  solution?: Flex__<"div">;
-  title?: Flex__<"div">;
-  steps?: Flex__<"div">;
-  stepText?: Flex__<"div">;
-  description?: Flex__<"div">;
-  price?: Flex__<"div">;
+  area2?: Flex__<"div">;
+  subArea2?: Flex__<"div">;
+  location2?: Flex__<"div">;
+  foundationDate2?: Flex__<"div">;
+  goalsSum4?: Flex__<"div">;
+  companyTagline2?: Flex__<"div">;
+  linkedIn2?: Flex__<"a"> & Partial<LinkProps>;
+  instagram2?: Flex__<"a"> & Partial<LinkProps>;
+  x2?: Flex__<"a"> & Partial<LinkProps>;
+  website2?: Flex__<"a"> & Partial<LinkProps>;
+  countainer2?: Flex__<"div">;
+  sliderCarousel?: Flex__<typeof SliderWrapper>;
+  solution2?: Flex__<"div">;
+  title2?: Flex__<"div">;
+  steps2?: Flex__<"div">;
+  stepText2?: Flex__<"div">;
+  description2?: Flex__<"div">;
+  price2?: Flex__<"div">;
   countainer9?: Flex__<"div">;
   companyReviews?: Flex__<"div">;
   communityLogo?: Flex__<typeof PlasmicImg__>;
@@ -194,11 +187,10 @@ export type PlasmicACompanyProfile__OverridesType = {
   communityName2?: Flex__<"a"> & Partial<LinkProps>;
   comment2?: Flex__<"div">;
   rating2?: Flex__<typeof AntdRate>;
-  countainer11?: Flex__<"div">;
-  companyImage?: Flex__<typeof PlasmicImg__>;
-  customerProblem?: Flex__<"div">;
-  solutionDescription?: Flex__<"div">;
-  whyShouldTheyChoose?: Flex__<"div">;
+  countainer5?: Flex__<"div">;
+  companyImage2?: Flex__<typeof PlasmicImg__>;
+  customerProblem2?: Flex__<"div">;
+  solutionDescription2?: Flex__<"div">;
   countainer12?: Flex__<"div">;
   sliderCarousel6?: Flex__<typeof SliderWrapper>;
 };
@@ -247,21 +239,6 @@ function PlasmicACompanyProfile__RenderFunc(props: {
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
       {
-        path: "averageRate.value",
-        type: "private",
-        variableType: "number",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
-      },
-      {
-        path: "sliderCarousel5.currentSlide",
-        type: "private",
-        variableType: "number",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 0,
-
-        refName: "sliderCarousel5",
-        onMutate: generateOnMutateForSpec("currentSlide", SliderWrapper_Helpers)
-      },
-      {
         path: "rating.value",
         type: "private",
         variableType: "number",
@@ -295,6 +272,21 @@ function PlasmicACompanyProfile__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         onMutate: generateOnMutateForSpec("value", AntdTextArea_Helpers)
+      },
+      {
+        path: "averageRate5.value",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
+      },
+      {
+        path: "sliderCarousel.currentSlide",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 0,
+
+        refName: "sliderCarousel",
+        onMutate: generateOnMutateForSpec("currentSlide", SliderWrapper_Helpers)
       }
     ],
     [$props, $ctx, $refs]
@@ -306,8 +298,6 @@ function PlasmicACompanyProfile__RenderFunc(props: {
     $q: {},
     $refs
   });
-  const dataSourcesCtx = usePlasmicDataSourceContext();
-  const plasmicInvalidate = usePlasmicInvalidate();
 
   const pageMetadata = generateDynamicMetadata(
     wrapQueriesWithLoadingProxy({}),
@@ -364,39 +354,15 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                     className={classNames(
                       projectcss.all,
                       projectcss.a,
-                      sty.link__xVkTo
+                      sty.link___5QrLc
                     )}
                     component={Link}
                     legacyBehavior={false}
-                    onClick={async event => {
-                      const $steps = {};
-
-                      $steps["refreshData"] = true
-                        ? (() => {
-                            const actionArgs = {
-                              queryInvalidation: ["plasmic_refresh_all"]
-                            };
-                            return (async ({ queryInvalidation }) => {
-                              if (!queryInvalidation) {
-                                return;
-                              }
-                              await plasmicInvalidate(queryInvalidation);
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
-                      if (
-                        $steps["refreshData"] != null &&
-                        typeof $steps["refreshData"] === "object" &&
-                        typeof $steps["refreshData"].then === "function"
-                      ) {
-                        $steps["refreshData"] = await $steps["refreshData"];
-                      }
-                    }}
                     platform={"nextjs"}
                   >
                     <PlasmicImg__
                       alt={""}
-                      className={classNames(sty.img__wnAcb)}
+                      className={classNames(sty.img___0JHd9)}
                       displayHeight={"30px"}
                       displayMaxHeight={"none"}
                       displayMaxWidth={"none"}
@@ -416,7 +382,7 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                 closeButton={
                   <PlasmicImg__
                     alt={""}
-                    className={classNames(sty.img__wxwhy)}
+                    className={classNames(sty.img__okBm)}
                     displayHeight={"auto"}
                     displayMaxHeight={"none"}
                     displayMaxWidth={"none"}
@@ -434,7 +400,7 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                         projectcss.all,
                         projectcss.a,
                         projectcss.__wab_text,
-                        sty.link__v0NtS
+                        sty.link__kFmdh
                       )}
                       component={Link}
                       href={`/a-community-dashboard`}
@@ -448,7 +414,7 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                         projectcss.all,
                         projectcss.a,
                         projectcss.__wab_text,
-                        sty.link__vGUu
+                        sty.link__vXqh
                       )}
                       component={Link}
                       href={`/a-service-dashboard`}
@@ -462,7 +428,7 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                         projectcss.all,
                         projectcss.a,
                         projectcss.__wab_text,
-                        sty.link__ndSl6
+                        sty.link__miXby
                       )}
                       component={Link}
                       legacyBehavior={false}
@@ -475,7 +441,7 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                         projectcss.all,
                         projectcss.a,
                         projectcss.__wab_text,
-                        sty.link__hc83W
+                        sty.link__foMjE
                       )}
                       component={Link}
                       href={`/a-find-a-business`}
@@ -489,7 +455,7 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                 openButton={
                   <PlasmicImg__
                     alt={""}
-                    className={classNames(sty.img__s9YJp)}
+                    className={classNames(sty.img__pFu0O)}
                     displayHeight={"auto"}
                     displayMaxHeight={"none"}
                     displayMaxWidth={"none"}
@@ -505,20 +471,16 @@ function PlasmicACompanyProfile__RenderFunc(props: {
               />
 
               <AntdDropdown
-                data-plasmic-name={"account"}
-                data-plasmic-override={overrides.account}
-                className={classNames("__wab_instance", sty.account)}
-                dropdownMenuScopeClassName={sty["account__dropdownMenu"]}
-                menuClassName={classNames({ [sty["pcls_IZezd7n3wvzG"]]: true })}
-                menuItemClassName={classNames({
-                  [sty["pcls_E6rttpNYAvMd"]]: true
-                })}
+                data-plasmic-name={"account2"}
+                data-plasmic-override={overrides.account2}
+                className={classNames("__wab_instance", sty.account2)}
+                dropdownMenuScopeClassName={sty["account2__dropdownMenu"]}
                 menuItems={() => (
                   <React.Fragment>
                     <AntdMenuItem
                       className={classNames(
                         "__wab_instance",
-                        sty.menuItem__npJrz
+                        sty.menuItem___5BpT
                       )}
                       key={"menu-item-1"}
                     >
@@ -526,7 +488,7 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                         className={classNames(
                           projectcss.all,
                           projectcss.__wab_text,
-                          sty.text___2BQA
+                          sty.text__xfyhj
                         )}
                       >
                         {"Menu item"}
@@ -535,7 +497,7 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                     <AntdMenuItem
                       className={classNames(
                         "__wab_instance",
-                        sty.menuItem___6IoCj
+                        sty.menuItem__i3QN
                       )}
                       key={"menu-item-2"}
                     >
@@ -543,7 +505,7 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                         className={classNames(
                           projectcss.all,
                           projectcss.__wab_text,
-                          sty.text__mRvMe
+                          sty.text__hfb4M
                         )}
                       >
                         {"Menu item"}
@@ -571,66 +533,7 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                       { type: null }
                     ];
                     __composite["0"]["label"] = "Profile";
-                    __composite["0"]["onClick"] = async info => {
-                      const $steps = {};
-
-                      $steps["goToAProfile"] = true
-                        ? (() => {
-                            const actionArgs = { destination: `/a-profile` };
-                            return (({ destination }) => {
-                              if (
-                                typeof destination === "string" &&
-                                destination.startsWith("#")
-                              ) {
-                                document
-                                  .getElementById(destination.substr(1))
-                                  .scrollIntoView({ behavior: "smooth" });
-                              } else {
-                                __nextRouter?.push(destination);
-                              }
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
-                      if (
-                        $steps["goToAProfile"] != null &&
-                        typeof $steps["goToAProfile"] === "object" &&
-                        typeof $steps["goToAProfile"].then === "function"
-                      ) {
-                        $steps["goToAProfile"] = await $steps["goToAProfile"];
-                      }
-                    };
                     __composite["1"]["label"] = "Edit profile";
-                    __composite["1"]["onClick"] = async info => {
-                      const $steps = {};
-
-                      $steps["goToACreateAccount"] = true
-                        ? (() => {
-                            const actionArgs = {
-                              destination: `/a-edit-profile`
-                            };
-                            return (({ destination }) => {
-                              if (
-                                typeof destination === "string" &&
-                                destination.startsWith("#")
-                              ) {
-                                document
-                                  .getElementById(destination.substr(1))
-                                  .scrollIntoView({ behavior: "smooth" });
-                              } else {
-                                __nextRouter?.push(destination);
-                              }
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
-                      if (
-                        $steps["goToACreateAccount"] != null &&
-                        typeof $steps["goToACreateAccount"] === "object" &&
-                        typeof $steps["goToACreateAccount"].then === "function"
-                      ) {
-                        $steps["goToACreateAccount"] =
-                          await $steps["goToACreateAccount"];
-                      }
-                    };
                     __composite["2"]["type"] = "divider";
                     return __composite;
                   })();
@@ -643,96 +546,12 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                       { type: null }
                     ];
                     __composite["0"]["label"] = "Settings & Privacy";
-                    __composite["0"]["onClick"] = async info => {
-                      const $steps = {};
-
-                      $steps["goToALogin"] = true
-                        ? (() => {
-                            const actionArgs = { destination: `/a-login` };
-                            return (({ destination }) => {
-                              if (
-                                typeof destination === "string" &&
-                                destination.startsWith("#")
-                              ) {
-                                document
-                                  .getElementById(destination.substr(1))
-                                  .scrollIntoView({ behavior: "smooth" });
-                              } else {
-                                __nextRouter?.push(destination);
-                              }
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
-                      if (
-                        $steps["goToALogin"] != null &&
-                        typeof $steps["goToALogin"] === "object" &&
-                        typeof $steps["goToALogin"].then === "function"
-                      ) {
-                        $steps["goToALogin"] = await $steps["goToALogin"];
-                      }
-                    };
                     __composite["1"]["label"] = "Help";
-                    __composite["1"]["onClick"] = async info => {
-                      const $steps = {};
-
-                      $steps["goToALogin"] = true
-                        ? (() => {
-                            const actionArgs = { destination: `/a-login` };
-                            return (({ destination }) => {
-                              if (
-                                typeof destination === "string" &&
-                                destination.startsWith("#")
-                              ) {
-                                document
-                                  .getElementById(destination.substr(1))
-                                  .scrollIntoView({ behavior: "smooth" });
-                              } else {
-                                __nextRouter?.push(destination);
-                              }
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
-                      if (
-                        $steps["goToALogin"] != null &&
-                        typeof $steps["goToALogin"] === "object" &&
-                        typeof $steps["goToALogin"].then === "function"
-                      ) {
-                        $steps["goToALogin"] = await $steps["goToALogin"];
-                      }
-                    };
                     __composite["2"]["type"] = "divider";
                     return __composite;
                   })();
                   __composite["2"]["type"] = "item";
                   __composite["2"]["label"] = "Sign out";
-                  __composite["2"]["onClick"] = async info => {
-                    const $steps = {};
-
-                    $steps["goToALogin"] = true
-                      ? (() => {
-                          const actionArgs = { destination: `/a-login` };
-                          return (({ destination }) => {
-                            if (
-                              typeof destination === "string" &&
-                              destination.startsWith("#")
-                            ) {
-                              document
-                                .getElementById(destination.substr(1))
-                                .scrollIntoView({ behavior: "smooth" });
-                            } else {
-                              __nextRouter?.push(destination);
-                            }
-                          })?.apply(null, [actionArgs]);
-                        })()
-                      : undefined;
-                    if (
-                      $steps["goToALogin"] != null &&
-                      typeof $steps["goToALogin"] === "object" &&
-                      typeof $steps["goToALogin"].then === "function"
-                    ) {
-                      $steps["goToALogin"] = await $steps["goToALogin"];
-                    }
-                  };
                   return __composite;
                 })()}
                 trigger={"hover"}
@@ -742,12 +561,11 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                   data-plasmic-name={"button"}
                   data-plasmic-override={overrides.button}
                   className={classNames("__wab_instance", sty.button)}
-                  href={`/a-login`}
                   target={true}
                 >
                   <PlasmicImg__
                     alt={""}
-                    className={classNames(sty.img___6ZQK)}
+                    className={classNames(sty.img___0MeYj)}
                     displayHeight={"30px"}
                     displayMaxHeight={"none"}
                     displayMaxWidth={"100%"}
@@ -755,6 +573,19 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                     displayMinWidth={"0"}
                     displayWidth={"30px"}
                     loading={"lazy"}
+                    src={(() => {
+                      try {
+                        return $props.formData?.["Profile pic"] ?? null;
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return undefined;
+                        }
+                        throw e;
+                      }
+                    })()}
                   />
                 </AntdButton>
               </AntdDropdown>
@@ -762,16 +593,16 @@ function PlasmicACompanyProfile__RenderFunc(props: {
           </div>
         </div>
         <div
-          data-plasmic-name={"countainer7"}
-          data-plasmic-override={overrides.countainer7}
-          className={classNames(projectcss.all, sty.countainer7)}
+          data-plasmic-name={"countainer1"}
+          data-plasmic-override={overrides.countainer1}
+          className={classNames(projectcss.all, sty.countainer1)}
         >
-          <div className={classNames(projectcss.all, sty.freeBox__xw9GW)}>
+          <div className={classNames(projectcss.all, sty.freeBox__vdy5T)}>
             <PlasmicImg__
-              data-plasmic-name={"companyLogo"}
-              data-plasmic-override={overrides.companyLogo}
+              data-plasmic-name={"companyLogo3"}
+              data-plasmic-override={overrides.companyLogo3}
               alt={""}
-              className={classNames(sty.companyLogo)}
+              className={classNames(sty.companyLogo3)}
               displayHeight={"100px"}
               displayMaxHeight={"none"}
               displayMaxWidth={"100%"}
@@ -779,44 +610,85 @@ function PlasmicACompanyProfile__RenderFunc(props: {
               displayMinWidth={"0"}
               displayWidth={"100px"}
               loading={"lazy"}
+              src={(() => {
+                try {
+                  return $props.company?.["Company Logo"] ?? "";
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return undefined;
+                  }
+                  throw e;
+                }
+              })()}
             />
 
-            <div className={classNames(projectcss.all, sty.freeBox__ceQab)}>
-              <div className={classNames(projectcss.all, sty.freeBox___4Ftm)}>
+            <div className={classNames(projectcss.all, sty.freeBox___2Yq5H)}>
+              <div className={classNames(projectcss.all, sty.freeBox__uoqmu)}>
                 <div
-                  data-plasmic-name={"companyName"}
-                  data-plasmic-override={overrides.companyName}
+                  data-plasmic-name={"companyName4"}
+                  data-plasmic-override={overrides.companyName4}
                   className={classNames(
                     projectcss.all,
                     projectcss.__wab_text,
-                    sty.companyName
+                    sty.companyName4
                   )}
                 >
-                  {"Company"}
+                  <React.Fragment>
+                    {(() => {
+                      try {
+                        return $props.company?.["Company name"] ?? "Company";
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return "Company";
+                        }
+                        throw e;
+                      }
+                    })()}
+                  </React.Fragment>
                 </div>
                 <div
-                  data-plasmic-name={"companyType"}
-                  data-plasmic-override={overrides.companyType}
+                  data-plasmic-name={"companyType2"}
+                  data-plasmic-override={overrides.companyType2}
                   className={classNames(
                     projectcss.all,
                     projectcss.__wab_text,
-                    sty.companyType
+                    sty.companyType2
                   )}
                 >
-                  {"INC"}
+                  <React.Fragment>
+                    {(() => {
+                      try {
+                        return $props.company?.["Company type"] ?? "INC";
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return "INC";
+                        }
+                        throw e;
+                      }
+                    })()}
+                  </React.Fragment>
                 </div>
-                <div className={classNames(projectcss.all, sty.freeBox__drtM)}>
+                <div className={classNames(projectcss.all, sty.freeBox__p1Xy1)}>
                   <AntdRate
-                    data-plasmic-name={"averageRate"}
-                    data-plasmic-override={overrides.averageRate}
+                    data-plasmic-name={"averageRate5"}
+                    data-plasmic-override={overrides.averageRate5}
                     allowHalf={true}
-                    className={classNames("__wab_instance", sty.averageRate)}
+                    className={classNames("__wab_instance", sty.averageRate5)}
                     defaultValue={5}
                     disabled={true}
                     multiCharacter={false}
                     onChange={async (...eventArgs: any) => {
                       generateStateOnChangeProp($state, [
-                        "averageRate",
+                        "averageRate5",
                         "value"
                       ]).apply(null, eventArgs);
                     }}
@@ -826,7 +698,7 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                           className={classNames(
                             projectcss.all,
                             projectcss.__wab_text,
-                            sty.text__bsB5W
+                            sty.text__eAmK0
                           )}
                         >
                           {"1"}
@@ -835,7 +707,7 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                           className={classNames(
                             projectcss.all,
                             projectcss.__wab_text,
-                            sty.text__n5Kfk
+                            sty.text__qGsFk
                           )}
                         >
                           {"2"}
@@ -844,7 +716,7 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                           className={classNames(
                             projectcss.all,
                             projectcss.__wab_text,
-                            sty.text__amWg5
+                            sty.text__u8Jh
                           )}
                         >
                           {"3"}
@@ -853,7 +725,7 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                           className={classNames(
                             projectcss.all,
                             projectcss.__wab_text,
-                            sty.text__terEk
+                            sty.text__bl0J
                           )}
                         >
                           {"4"}
@@ -862,7 +734,7 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                           className={classNames(
                             projectcss.all,
                             projectcss.__wab_text,
-                            sty.text__bqWxL
+                            sty.text__vxaq8
                           )}
                         >
                           {"5"}
@@ -870,21 +742,21 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                       </React.Fragment>
                     }
                     value={generateStateValueProp($state, [
-                      "averageRate",
+                      "averageRate5",
                       "value"
                     ])}
                   />
 
                   <div
-                    data-plasmic-name={"rateSum"}
-                    data-plasmic-override={overrides.rateSum}
+                    data-plasmic-name={"rateSum4"}
+                    data-plasmic-override={overrides.rateSum4}
                     className={classNames(
                       projectcss.all,
                       projectcss.__wab_text,
-                      sty.rateSum
+                      sty.rateSum4
                     )}
                   >
-                    {"(50)"}
+                    {"50"}
                   </div>
                 </div>
                 <Modal
@@ -1005,6 +877,29 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                             $steps["updateApplyIsOpen"] =
                               await $steps["updateApplyIsOpen"];
                           }
+
+                          $steps["runCode"] = true
+                            ? (() => {
+                                const actionArgs = {
+                                  customFunction: async () => {
+                                    return $props.onSave({
+                                      short_message:
+                                        $state.short_message?.value ?? ""
+                                    });
+                                  }
+                                };
+                                return (({ customFunction }) => {
+                                  return customFunction();
+                                })?.apply(null, [actionArgs]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["runCode"] != null &&
+                            typeof $steps["runCode"] === "object" &&
+                            typeof $steps["runCode"].then === "function"
+                          ) {
+                            $steps["runCode"] = await $steps["runCode"];
+                          }
                         }}
                         size={"extraSmall"}
                         type={"soft"}
@@ -1117,75 +1012,134 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                   }
                 />
               </div>
-              <div className={classNames(projectcss.all, sty.freeBox__jblNk)}>
+              <div className={classNames(projectcss.all, sty.freeBox___0MJi9)}>
                 <div
-                  data-plasmic-name={"area"}
-                  data-plasmic-override={overrides.area}
+                  data-plasmic-name={"area2"}
+                  data-plasmic-override={overrides.area2}
                   className={classNames(
                     projectcss.all,
                     projectcss.__wab_text,
-                    sty.area
+                    sty.area2
                   )}
                 >
-                  {"Niche"}
+                  <React.Fragment>
+                    {(() => {
+                      try {
+                        return $props.company?.["Area"] ?? "Niche";
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return "Niche";
+                        }
+                        throw e;
+                      }
+                    })()}
+                  </React.Fragment>
                 </div>
                 <div
-                  data-plasmic-name={"subArea"}
-                  data-plasmic-override={overrides.subArea}
+                  data-plasmic-name={"subArea2"}
+                  data-plasmic-override={overrides.subArea2}
                   className={classNames(
                     projectcss.all,
                     projectcss.__wab_text,
-                    sty.subArea
+                    sty.subArea2
                   )}
                 >
-                  {"Subniche"}
+                  <React.Fragment>
+                    {(() => {
+                      try {
+                        return $props.company?.["Sub area"] ?? "Subniche";
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return "Subniche";
+                        }
+                        throw e;
+                      }
+                    })()}
+                  </React.Fragment>
                 </div>
               </div>
               <div
-                data-plasmic-name={"location"}
-                data-plasmic-override={overrides.location}
+                data-plasmic-name={"location2"}
+                data-plasmic-override={overrides.location2}
                 className={classNames(
                   projectcss.all,
                   projectcss.__wab_text,
-                  sty.location
+                  sty.location2
                 )}
               >
-                {"New York"}
+                <React.Fragment>
+                  {(() => {
+                    try {
+                      return $props.company?.["Location"] ?? "New York";
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return "New York";
+                      }
+                      throw e;
+                    }
+                  })()}
+                </React.Fragment>
               </div>
             </div>
-            <div className={classNames(projectcss.all, sty.freeBox__aJ5Q9)}>
-              <div className={classNames(projectcss.all, sty.freeBox__zGg2M)}>
-                <div className={classNames(projectcss.all, sty.freeBox__uutjF)}>
+            <div className={classNames(projectcss.all, sty.freeBox__x3CwM)}>
+              <div className={classNames(projectcss.all, sty.freeBox__qVadm)}>
+                <div className={classNames(projectcss.all, sty.freeBox__lu2UR)}>
                   <div
                     className={classNames(
                       projectcss.all,
                       projectcss.__wab_text,
-                      sty.text__holPh
+                      sty.text__n6M0R
                     )}
                   >
                     {"Since"}
                   </div>
                   <div
-                    data-plasmic-name={"foundationDate"}
-                    data-plasmic-override={overrides.foundationDate}
+                    data-plasmic-name={"foundationDate2"}
+                    data-plasmic-override={overrides.foundationDate2}
                     className={classNames(
                       projectcss.all,
                       projectcss.__wab_text,
-                      sty.foundationDate
+                      sty.foundationDate2
                     )}
                   >
-                    {"Botstrap"}
+                    <React.Fragment>
+                      {(() => {
+                        try {
+                          return (
+                            $props.company?.["Foundation date"] ??
+                            "Foundation date"
+                          );
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return "Botstrap";
+                          }
+                          throw e;
+                        }
+                      })()}
+                    </React.Fragment>
                   </div>
                 </div>
               </div>
-              <div className={classNames(projectcss.all, sty.freeBox__rKHjX)}>
+              <div className={classNames(projectcss.all, sty.freeBox__uVxa)}>
                 <div
-                  data-plasmic-name={"goalsSum"}
-                  data-plasmic-override={overrides.goalsSum}
+                  data-plasmic-name={"goalsSum4"}
+                  data-plasmic-override={overrides.goalsSum4}
                   className={classNames(
                     projectcss.all,
                     projectcss.__wab_text,
-                    sty.goalsSum
+                    sty.goalsSum4
                   )}
                 >
                   {"80"}
@@ -1194,7 +1148,7 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                   className={classNames(
                     projectcss.all,
                     projectcss.__wab_text,
-                    sty.text__oZqMk
+                    sty.text__a4KkB
                   )}
                 >
                   {"Goals achieved"}
@@ -1203,103 +1157,155 @@ function PlasmicACompanyProfile__RenderFunc(props: {
             </div>
           </div>
           <div
-            data-plasmic-name={"companyTagline"}
-            data-plasmic-override={overrides.companyTagline}
+            data-plasmic-name={"companyTagline2"}
+            data-plasmic-override={overrides.companyTagline2}
             className={classNames(
               projectcss.all,
               projectcss.__wab_text,
-              sty.companyTagline
+              sty.companyTagline2
             )}
           >
-            {"Startup tagline"}
+            <React.Fragment>
+              {(() => {
+                try {
+                  return (
+                    $props.company?.["Company tagline"] ?? "Startup tagline"
+                  );
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return "Startup tagline";
+                  }
+                  throw e;
+                }
+              })()}
+            </React.Fragment>
           </div>
-          <div className={classNames(projectcss.all, sty.freeBox___3XJi9)}>
-            <div className={classNames(projectcss.all, sty.freeBox__sdxru)}>
+          <div className={classNames(projectcss.all, sty.freeBox__kIliN)}>
+            <div className={classNames(projectcss.all, sty.freeBox__e3QJf)}>
               <Icon4Icon
-                className={classNames(projectcss.all, sty.svg__ilxKz)}
+                className={classNames(projectcss.all, sty.svg__gAkqZ)}
                 role={"img"}
               />
 
               <PlasmicLink__
-                data-plasmic-name={"linkedIn"}
-                data-plasmic-override={overrides.linkedIn}
+                data-plasmic-name={"linkedIn2"}
+                data-plasmic-override={overrides.linkedIn2}
                 className={classNames(
                   projectcss.all,
                   projectcss.a,
                   projectcss.__wab_text,
-                  sty.linkedIn
+                  sty.linkedIn2
                 )}
                 component={Link}
-                href={"https://www.plasmic.app/"}
+                href={$props.company?.["LinkedIn"] ?? ""}
                 legacyBehavior={false}
                 platform={"nextjs"}
               >
                 {"Linkedin"}
               </PlasmicLink__>
             </div>
-            <div className={classNames(projectcss.all, sty.freeBox__dvobF)}>
+            <div className={classNames(projectcss.all, sty.freeBox__bVdLw)}>
               <Icon6Icon
-                className={classNames(projectcss.all, sty.svg___3GAQr)}
+                className={classNames(projectcss.all, sty.svg__hc0P)}
                 role={"img"}
               />
 
               <PlasmicLink__
-                data-plasmic-name={"instagram"}
-                data-plasmic-override={overrides.instagram}
+                data-plasmic-name={"instagram2"}
+                data-plasmic-override={overrides.instagram2}
                 className={classNames(
                   projectcss.all,
                   projectcss.a,
                   projectcss.__wab_text,
-                  sty.instagram
+                  sty.instagram2
                 )}
                 component={Link}
-                href={"https://www.plasmic.app/"}
+                href={(() => {
+                  try {
+                    return $props.company?.["Instagram"] ?? "";
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return "https://www.plasmic.app/";
+                    }
+                    throw e;
+                  }
+                })()}
                 legacyBehavior={false}
                 platform={"nextjs"}
               >
                 {"Instagram"}
               </PlasmicLink__>
             </div>
-            <div className={classNames(projectcss.all, sty.freeBox__i8Fpc)}>
+            <div className={classNames(projectcss.all, sty.freeBox__k07XN)}>
               <IlustrgatuSvgIcon
-                className={classNames(projectcss.all, sty.svg__zObZj)}
+                className={classNames(projectcss.all, sty.svg__iii9V)}
                 role={"img"}
               />
 
               <PlasmicLink__
-                data-plasmic-name={"x"}
-                data-plasmic-override={overrides.x}
+                data-plasmic-name={"x2"}
+                data-plasmic-override={overrides.x2}
                 className={classNames(
                   projectcss.all,
                   projectcss.a,
                   projectcss.__wab_text,
-                  sty.x
+                  sty.x2
                 )}
                 component={Link}
-                href={"https://www.plasmic.app/"}
+                href={(() => {
+                  try {
+                    return $props.company?.["X"] ?? "";
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return "https://www.plasmic.app/";
+                    }
+                    throw e;
+                  }
+                })()}
                 legacyBehavior={false}
                 platform={"nextjs"}
               >
                 {"X"}
               </PlasmicLink__>
             </div>
-            <div className={classNames(projectcss.all, sty.freeBox___6Ozv)}>
+            <div className={classNames(projectcss.all, sty.freeBox__kgHp)}>
               <GlobalSvgrepoComSvgIcon
-                className={classNames(projectcss.all, sty.svg__dPbm1)}
+                className={classNames(projectcss.all, sty.svg__raUTn)}
                 role={"img"}
               />
 
               <PlasmicLink__
-                data-plasmic-name={"website"}
-                data-plasmic-override={overrides.website}
+                data-plasmic-name={"website2"}
+                data-plasmic-override={overrides.website2}
                 className={classNames(
                   projectcss.all,
                   projectcss.a,
                   projectcss.__wab_text,
-                  sty.website
+                  sty.website2
                 )}
                 component={Link}
-                href={"https://www.plasmic.app/"}
+                href={(() => {
+                  try {
+                    return $props.company?.["Website"] ?? "";
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return "https://www.plasmic.app/";
+                    }
+                    throw e;
+                  }
+                })()}
                 legacyBehavior={false}
                 platform={"nextjs"}
               >
@@ -1309,15 +1315,15 @@ function PlasmicACompanyProfile__RenderFunc(props: {
           </div>
         </div>
         <div
-          data-plasmic-name={"countainer8"}
-          data-plasmic-override={overrides.countainer8}
-          className={classNames(projectcss.all, sty.countainer8)}
+          data-plasmic-name={"countainer2"}
+          data-plasmic-override={overrides.countainer2}
+          className={classNames(projectcss.all, sty.countainer2)}
         >
           <div
             className={classNames(
               projectcss.all,
               projectcss.__wab_text,
-              sty.text__bNdJp
+              sty.text__sdZyi
             )}
           >
             {"Company solutions"}
@@ -1331,22 +1337,22 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                 generateStateOnChangePropForCodeComponents(
                   $state,
                   "currentSlide",
-                  ["sliderCarousel5", "currentSlide"],
+                  ["sliderCarousel", "currentSlide"],
                   SliderWrapper_Helpers
                 ).apply(null, eventArgs);
               },
               centerMode: true,
-              className: classNames("__wab_instance", sty.sliderCarousel5),
+              className: classNames("__wab_instance", sty.sliderCarousel),
               cssEase: "linear",
               dots: true,
               initialSlide: generateStateValueProp($state, [
-                "sliderCarousel5",
+                "sliderCarousel",
                 "currentSlide"
               ]),
               ref: ref => {
-                $refs["sliderCarousel5"] = ref;
+                $refs["sliderCarousel"] = ref;
               },
-              sliderScopeClassName: sty["sliderCarousel5__slider"],
+              sliderScopeClassName: sty["sliderCarousel__slider"],
               slidesPerRow: 4,
               speed: 1000
             };
@@ -1355,7 +1361,7 @@ function PlasmicACompanyProfile__RenderFunc(props: {
               [
                 {
                   name: "currentSlide",
-                  plasmicStateName: "sliderCarousel5.currentSlide"
+                  plasmicStateName: "sliderCarousel.currentSlide"
                 }
               ],
               [],
@@ -1365,115 +1371,236 @@ function PlasmicACompanyProfile__RenderFunc(props: {
 
             return (
               <SliderWrapper
-                data-plasmic-name={"sliderCarousel5"}
-                data-plasmic-override={overrides.sliderCarousel5}
+                data-plasmic-name={"sliderCarousel"}
+                data-plasmic-override={overrides.sliderCarousel}
                 {...child$Props}
               >
-                <div
-                  data-plasmic-name={"solution"}
-                  data-plasmic-override={overrides.solution}
-                  className={classNames(projectcss.all, sty.solution)}
-                >
-                  <AntdTooltip
-                    className={classNames("__wab_instance", sty.tooltip__hrCba)}
-                    placement={"right"}
-                    title={
-                      <div
+                {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
+                  (() => {
+                    try {
+                      return $props.formData || [1];
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return [];
+                      }
+                      throw e;
+                    }
+                  })()
+                ).map((__plasmic_item_0, __plasmic_idx_0) => {
+                  const currentItem = __plasmic_item_0;
+                  const currentIndex = __plasmic_idx_0;
+                  return (
+                    <div
+                      data-plasmic-name={"solution2"}
+                      data-plasmic-override={overrides.solution2}
+                      className={classNames(projectcss.all, sty.solution2)}
+                      key={currentIndex}
+                    >
+                      <AntdTooltip
                         className={classNames(
-                          projectcss.all,
-                          sty.freeBox__mgz9A
+                          "__wab_instance",
+                          sty.tooltip___27Eze
                         )}
+                        title={
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              sty.freeBox___1VgMx
+                            )}
+                          >
+                            {(_par =>
+                              !_par ? [] : Array.isArray(_par) ? _par : [_par])(
+                              (() => {
+                                try {
+                                  return currentItem.steps;
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return [];
+                                  }
+                                  throw e;
+                                }
+                              })()
+                            ).map((__plasmic_item_1, __plasmic_idx_1) => {
+                              const step = __plasmic_item_1;
+                              const stepIndex = __plasmic_idx_1;
+                              return (
+                                <div
+                                  data-plasmic-name={"steps2"}
+                                  data-plasmic-override={overrides.steps2}
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.steps2
+                                  )}
+                                  key={stepIndex}
+                                >
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text__obydT
+                                    )}
+                                  >
+                                    {"Steps"}
+                                  </div>
+                                  <div
+                                    data-plasmic-name={"stepText2"}
+                                    data-plasmic-override={overrides.stepText2}
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.stepText2
+                                    )}
+                                  >
+                                    <React.Fragment>
+                                      {(() => {
+                                        try {
+                                          return step.step_text;
+                                        } catch (e) {
+                                          if (
+                                            e instanceof TypeError ||
+                                            e?.plasmicType ===
+                                              "PlasmicUndefinedDataError"
+                                          ) {
+                                            return "Working";
+                                          }
+                                          throw e;
+                                        }
+                                      })()}
+                                    </React.Fragment>
+                                  </div>
+                                </div>
+                              );
+                            })}
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                sty.freeBox__qnbsi
+                              )}
+                            >
+                              <div
+                                data-plasmic-name={"description2"}
+                                data-plasmic-override={overrides.description2}
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.__wab_text,
+                                  sty.description2
+                                )}
+                              >
+                                <React.Fragment>
+                                  {(() => {
+                                    try {
+                                      return currentItem.description;
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.";
+                                      }
+                                      throw e;
+                                    }
+                                  })()}
+                                </React.Fragment>
+                              </div>
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox__niFob
+                                )}
+                              >
+                                {(() => {
+                                  try {
+                                    return currentItem.Price !== "";
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return true;
+                                    }
+                                    throw e;
+                                  }
+                                })() ? (
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text___7FflU
+                                    )}
+                                  >
+                                    {"U$"}
+                                  </div>
+                                ) : null}
+                                <div
+                                  data-plasmic-name={"price2"}
+                                  data-plasmic-override={overrides.price2}
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.price2
+                                  )}
+                                >
+                                  <React.Fragment>
+                                    {(() => {
+                                      try {
+                                        return currentItem.price;
+                                      } catch (e) {
+                                        if (
+                                          e instanceof TypeError ||
+                                          e?.plasmicType ===
+                                            "PlasmicUndefinedDataError"
+                                        ) {
+                                          return "2,405.00";
+                                        }
+                                        throw e;
+                                      }
+                                    })()}
+                                  </React.Fragment>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        }
+                        titleText={"Tooltip contents"}
                       >
                         <div
-                          data-plasmic-name={"steps"}
-                          data-plasmic-override={overrides.steps}
-                          className={classNames(projectcss.all, sty.steps)}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text___4I7Ts
-                            )}
-                          >
-                            {"Steps"}
-                          </div>
-                          <div
-                            data-plasmic-name={"stepText"}
-                            data-plasmic-override={overrides.stepText}
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.stepText
-                            )}
-                          >
-                            {"Working"}
-                          </div>
-                        </div>
-                        <div
+                          data-plasmic-name={"title2"}
+                          data-plasmic-override={overrides.title2}
                           className={classNames(
                             projectcss.all,
-                            sty.freeBox___8IjTq
+                            projectcss.__wab_text,
+                            sty.title2
                           )}
                         >
-                          <div
-                            data-plasmic-name={"description"}
-                            data-plasmic-override={overrides.description}
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.description
-                            )}
-                          >
-                            {
-                              "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-                            }
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__uvfL6
-                            )}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__kPibm
-                              )}
-                            >
-                              {"U$"}
-                            </div>
-                            <div
-                              data-plasmic-name={"price"}
-                              data-plasmic-override={overrides.price}
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.price
-                              )}
-                            >
-                              {"2,405.00"}
-                            </div>
-                          </div>
+                          <React.Fragment>
+                            {(() => {
+                              try {
+                                return currentItem.title;
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return "Solution";
+                                }
+                                throw e;
+                              }
+                            })()}
+                          </React.Fragment>
                         </div>
-                      </div>
-                    }
-                    titleText={"Tooltip contents"}
-                  >
-                    <div
-                      data-plasmic-name={"title"}
-                      data-plasmic-override={overrides.title}
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.title
-                      )}
-                    >
-                      {"Solution"}
+                      </AntdTooltip>
                     </div>
-                  </AntdTooltip>
-                </div>
+                  );
+                })}
               </SliderWrapper>
             );
           })()}
@@ -1792,25 +1919,25 @@ function PlasmicACompanyProfile__RenderFunc(props: {
           </div>
         </div>
         <div
-          data-plasmic-name={"countainer11"}
-          data-plasmic-override={overrides.countainer11}
-          className={classNames(projectcss.all, sty.countainer11)}
+          data-plasmic-name={"countainer5"}
+          data-plasmic-override={overrides.countainer5}
+          className={classNames(projectcss.all, sty.countainer5)}
         >
           <div
             className={classNames(
               projectcss.all,
               projectcss.__wab_text,
-              sty.text__fysma
+              sty.text__qQ8Yr
             )}
           >
             {"About"}
           </div>
-          <div className={classNames(projectcss.all, sty.freeBox__eqnoe)}>
+          <div className={classNames(projectcss.all, sty.freeBox___4Koyt)}>
             <PlasmicImg__
-              data-plasmic-name={"companyImage"}
-              data-plasmic-override={overrides.companyImage}
+              data-plasmic-name={"companyImage2"}
+              data-plasmic-override={overrides.companyImage2}
               alt={""}
-              className={classNames(sty.companyImage)}
+              className={classNames(sty.companyImage2)}
               displayHeight={"200px"}
               displayMaxHeight={"none"}
               displayMaxWidth={"100%"}
@@ -1818,70 +1945,101 @@ function PlasmicACompanyProfile__RenderFunc(props: {
               displayMinWidth={"0"}
               displayWidth={"170px"}
               loading={"lazy"}
+              src={(() => {
+                try {
+                  return $props.company?.["Company image"] ?? "";
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return undefined;
+                  }
+                  throw e;
+                }
+              })()}
             />
 
-            <div className={classNames(projectcss.all, sty.freeBox__eOjs)}>
+            <div className={classNames(projectcss.all, sty.freeBox__ankBw)}>
               <div
                 className={classNames(
                   projectcss.all,
                   projectcss.__wab_text,
-                  sty.text__k64U6
+                  sty.text__lf84H
                 )}
               >
                 {"Problem"}
               </div>
               <div
-                data-plasmic-name={"customerProblem"}
-                data-plasmic-override={overrides.customerProblem}
+                data-plasmic-name={"customerProblem2"}
+                data-plasmic-override={overrides.customerProblem2}
                 className={classNames(
                   projectcss.all,
                   projectcss.__wab_text,
-                  sty.customerProblem
+                  sty.customerProblem2
                 )}
               >
-                {"Enter some text"}
+                <React.Fragment>
+                  {$props.company?.["Customer problem"] ?? "Enter some text"}
+                </React.Fragment>
               </div>
               <div
                 className={classNames(
                   projectcss.all,
                   projectcss.__wab_text,
-                  sty.text__q3C5L
+                  sty.text__xqrb
                 )}
               >
                 {"Solution"}
               </div>
               <div
-                data-plasmic-name={"solutionDescription"}
-                data-plasmic-override={overrides.solutionDescription}
+                data-plasmic-name={"solutionDescription2"}
+                data-plasmic-override={overrides.solutionDescription2}
                 className={classNames(
                   projectcss.all,
                   projectcss.__wab_text,
-                  sty.solutionDescription
+                  sty.solutionDescription2
                 )}
               >
-                {"Enter some text"}
+                <React.Fragment>
+                  {$props.company?.["Solution description"] ??
+                    "Enter some text"}
+                </React.Fragment>
               </div>
               <div
                 className={classNames(
                   projectcss.all,
                   projectcss.__wab_text,
-                  sty.text__mQaA
+                  sty.text__feo9R
                 )}
               >
                 {"Competitive advantage"}
               </div>
               <div
-                data-plasmic-name={"whyShouldTheyChoose"}
-                data-plasmic-override={overrides.whyShouldTheyChoose}
                 className={classNames(
                   projectcss.all,
                   projectcss.__wab_text,
-                  sty.whyShouldTheyChoose
+                  sty.text__uAsqG
                 )}
               >
-                {
-                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-                }
+                <React.Fragment>
+                  {(() => {
+                    try {
+                      return (
+                        $props.company?.["Why should they choose"] ??
+                        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+                      );
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return "Competitive advantage";
+                      }
+                      throw e;
+                    }
+                  })()}
+                </React.Fragment>
               </div>
             </div>
           </div>
@@ -2573,38 +2731,38 @@ const PlasmicDescendants = {
     "root",
     "topBar",
     "navigationBar",
-    "account",
+    "account2",
     "button",
-    "countainer7",
-    "companyLogo",
-    "companyName",
-    "companyType",
-    "averageRate",
-    "rateSum",
+    "countainer1",
+    "companyLogo3",
+    "companyName4",
+    "companyType2",
+    "averageRate5",
+    "rateSum4",
     "apply",
     "loginButton",
     "h3",
     "shortMessage",
     "confirm",
     "button2",
-    "area",
-    "subArea",
-    "location",
-    "foundationDate",
-    "goalsSum",
-    "companyTagline",
-    "linkedIn",
-    "instagram",
-    "x",
-    "website",
-    "countainer8",
-    "sliderCarousel5",
-    "solution",
-    "title",
-    "steps",
-    "stepText",
-    "description",
-    "price",
+    "area2",
+    "subArea2",
+    "location2",
+    "foundationDate2",
+    "goalsSum4",
+    "companyTagline2",
+    "linkedIn2",
+    "instagram2",
+    "x2",
+    "website2",
+    "countainer2",
+    "sliderCarousel",
+    "solution2",
+    "title2",
+    "steps2",
+    "stepText2",
+    "description2",
+    "price2",
     "countainer9",
     "companyReviews",
     "communityLogo",
@@ -2619,88 +2777,94 @@ const PlasmicDescendants = {
     "communityName2",
     "comment2",
     "rating2",
-    "countainer11",
-    "companyImage",
-    "customerProblem",
-    "solutionDescription",
-    "whyShouldTheyChoose",
+    "countainer5",
+    "companyImage2",
+    "customerProblem2",
+    "solutionDescription2",
     "countainer12",
     "sliderCarousel6"
   ],
-  topBar: ["topBar", "navigationBar", "account", "button"],
+  topBar: ["topBar", "navigationBar", "account2", "button"],
   navigationBar: ["navigationBar"],
-  account: ["account", "button"],
+  account2: ["account2", "button"],
   button: ["button"],
-  countainer7: [
-    "countainer7",
-    "companyLogo",
-    "companyName",
-    "companyType",
-    "averageRate",
-    "rateSum",
+  countainer1: [
+    "countainer1",
+    "companyLogo3",
+    "companyName4",
+    "companyType2",
+    "averageRate5",
+    "rateSum4",
     "apply",
     "loginButton",
     "h3",
     "shortMessage",
     "confirm",
     "button2",
-    "area",
-    "subArea",
-    "location",
-    "foundationDate",
-    "goalsSum",
-    "companyTagline",
-    "linkedIn",
-    "instagram",
-    "x",
-    "website"
+    "area2",
+    "subArea2",
+    "location2",
+    "foundationDate2",
+    "goalsSum4",
+    "companyTagline2",
+    "linkedIn2",
+    "instagram2",
+    "x2",
+    "website2"
   ],
-  companyLogo: ["companyLogo"],
-  companyName: ["companyName"],
-  companyType: ["companyType"],
-  averageRate: ["averageRate"],
-  rateSum: ["rateSum"],
+  companyLogo3: ["companyLogo3"],
+  companyName4: ["companyName4"],
+  companyType2: ["companyType2"],
+  averageRate5: ["averageRate5"],
+  rateSum4: ["rateSum4"],
   apply: ["apply", "loginButton", "h3", "shortMessage", "confirm", "button2"],
   loginButton: ["loginButton"],
   h3: ["h3"],
   shortMessage: ["shortMessage"],
   confirm: ["confirm"],
   button2: ["button2"],
-  area: ["area"],
-  subArea: ["subArea"],
-  location: ["location"],
-  foundationDate: ["foundationDate"],
-  goalsSum: ["goalsSum"],
-  companyTagline: ["companyTagline"],
-  linkedIn: ["linkedIn"],
-  instagram: ["instagram"],
-  x: ["x"],
-  website: ["website"],
-  countainer8: [
-    "countainer8",
-    "sliderCarousel5",
-    "solution",
-    "title",
-    "steps",
-    "stepText",
-    "description",
-    "price"
+  area2: ["area2"],
+  subArea2: ["subArea2"],
+  location2: ["location2"],
+  foundationDate2: ["foundationDate2"],
+  goalsSum4: ["goalsSum4"],
+  companyTagline2: ["companyTagline2"],
+  linkedIn2: ["linkedIn2"],
+  instagram2: ["instagram2"],
+  x2: ["x2"],
+  website2: ["website2"],
+  countainer2: [
+    "countainer2",
+    "sliderCarousel",
+    "solution2",
+    "title2",
+    "steps2",
+    "stepText2",
+    "description2",
+    "price2"
   ],
-  sliderCarousel5: [
-    "sliderCarousel5",
-    "solution",
-    "title",
-    "steps",
-    "stepText",
-    "description",
-    "price"
+  sliderCarousel: [
+    "sliderCarousel",
+    "solution2",
+    "title2",
+    "steps2",
+    "stepText2",
+    "description2",
+    "price2"
   ],
-  solution: ["solution", "title", "steps", "stepText", "description", "price"],
-  title: ["title"],
-  steps: ["steps", "stepText"],
-  stepText: ["stepText"],
-  description: ["description"],
-  price: ["price"],
+  solution2: [
+    "solution2",
+    "title2",
+    "steps2",
+    "stepText2",
+    "description2",
+    "price2"
+  ],
+  title2: ["title2"],
+  steps2: ["steps2", "stepText2"],
+  stepText2: ["stepText2"],
+  description2: ["description2"],
+  price2: ["price2"],
   countainer9: [
     "countainer9",
     "companyReviews",
@@ -2745,17 +2909,15 @@ const PlasmicDescendants = {
   communityName2: ["communityName2"],
   comment2: ["comment2"],
   rating2: ["rating2"],
-  countainer11: [
-    "countainer11",
-    "companyImage",
-    "customerProblem",
-    "solutionDescription",
-    "whyShouldTheyChoose"
+  countainer5: [
+    "countainer5",
+    "companyImage2",
+    "customerProblem2",
+    "solutionDescription2"
   ],
-  companyImage: ["companyImage"],
-  customerProblem: ["customerProblem"],
-  solutionDescription: ["solutionDescription"],
-  whyShouldTheyChoose: ["whyShouldTheyChoose"],
+  companyImage2: ["companyImage2"],
+  customerProblem2: ["customerProblem2"],
+  solutionDescription2: ["solutionDescription2"],
   countainer12: ["countainer12", "sliderCarousel6"],
   sliderCarousel6: ["sliderCarousel6"]
 } as const;
@@ -2766,38 +2928,38 @@ type NodeDefaultElementType = {
   root: "div";
   topBar: "div";
   navigationBar: typeof NavigationBar;
-  account: typeof AntdDropdown;
+  account2: typeof AntdDropdown;
   button: typeof AntdButton;
-  countainer7: "div";
-  companyLogo: typeof PlasmicImg__;
-  companyName: "div";
-  companyType: "div";
-  averageRate: typeof AntdRate;
-  rateSum: "div";
+  countainer1: "div";
+  companyLogo3: typeof PlasmicImg__;
+  companyName4: "div";
+  companyType2: "div";
+  averageRate5: typeof AntdRate;
+  rateSum4: "div";
   apply: typeof Modal;
   loginButton: typeof LoginButton;
   h3: "h3";
   shortMessage: typeof AntdTextArea;
   confirm: typeof Button2;
   button2: typeof Button2;
-  area: "div";
-  subArea: "div";
-  location: "div";
-  foundationDate: "div";
-  goalsSum: "div";
-  companyTagline: "div";
-  linkedIn: "a";
-  instagram: "a";
-  x: "a";
-  website: "a";
-  countainer8: "div";
-  sliderCarousel5: typeof SliderWrapper;
-  solution: "div";
-  title: "div";
-  steps: "div";
-  stepText: "div";
-  description: "div";
-  price: "div";
+  area2: "div";
+  subArea2: "div";
+  location2: "div";
+  foundationDate2: "div";
+  goalsSum4: "div";
+  companyTagline2: "div";
+  linkedIn2: "a";
+  instagram2: "a";
+  x2: "a";
+  website2: "a";
+  countainer2: "div";
+  sliderCarousel: typeof SliderWrapper;
+  solution2: "div";
+  title2: "div";
+  steps2: "div";
+  stepText2: "div";
+  description2: "div";
+  price2: "div";
   countainer9: "div";
   companyReviews: "div";
   communityLogo: typeof PlasmicImg__;
@@ -2812,11 +2974,10 @@ type NodeDefaultElementType = {
   communityName2: "a";
   comment2: "div";
   rating2: typeof AntdRate;
-  countainer11: "div";
-  companyImage: typeof PlasmicImg__;
-  customerProblem: "div";
-  solutionDescription: "div";
-  whyShouldTheyChoose: "div";
+  countainer5: "div";
+  companyImage2: typeof PlasmicImg__;
+  customerProblem2: "div";
+  solutionDescription2: "div";
   countainer12: "div";
   sliderCarousel6: typeof SliderWrapper;
 };
@@ -2885,38 +3046,38 @@ export const PlasmicACompanyProfile = Object.assign(
     // Helper components rendering sub-elements
     topBar: makeNodeComponent("topBar"),
     navigationBar: makeNodeComponent("navigationBar"),
-    account: makeNodeComponent("account"),
+    account2: makeNodeComponent("account2"),
     button: makeNodeComponent("button"),
-    countainer7: makeNodeComponent("countainer7"),
-    companyLogo: makeNodeComponent("companyLogo"),
-    companyName: makeNodeComponent("companyName"),
-    companyType: makeNodeComponent("companyType"),
-    averageRate: makeNodeComponent("averageRate"),
-    rateSum: makeNodeComponent("rateSum"),
+    countainer1: makeNodeComponent("countainer1"),
+    companyLogo3: makeNodeComponent("companyLogo3"),
+    companyName4: makeNodeComponent("companyName4"),
+    companyType2: makeNodeComponent("companyType2"),
+    averageRate5: makeNodeComponent("averageRate5"),
+    rateSum4: makeNodeComponent("rateSum4"),
     apply: makeNodeComponent("apply"),
     loginButton: makeNodeComponent("loginButton"),
     h3: makeNodeComponent("h3"),
     shortMessage: makeNodeComponent("shortMessage"),
     confirm: makeNodeComponent("confirm"),
     button2: makeNodeComponent("button2"),
-    area: makeNodeComponent("area"),
-    subArea: makeNodeComponent("subArea"),
-    location: makeNodeComponent("location"),
-    foundationDate: makeNodeComponent("foundationDate"),
-    goalsSum: makeNodeComponent("goalsSum"),
-    companyTagline: makeNodeComponent("companyTagline"),
-    linkedIn: makeNodeComponent("linkedIn"),
-    instagram: makeNodeComponent("instagram"),
-    x: makeNodeComponent("x"),
-    website: makeNodeComponent("website"),
-    countainer8: makeNodeComponent("countainer8"),
-    sliderCarousel5: makeNodeComponent("sliderCarousel5"),
-    solution: makeNodeComponent("solution"),
-    title: makeNodeComponent("title"),
-    steps: makeNodeComponent("steps"),
-    stepText: makeNodeComponent("stepText"),
-    description: makeNodeComponent("description"),
-    price: makeNodeComponent("price"),
+    area2: makeNodeComponent("area2"),
+    subArea2: makeNodeComponent("subArea2"),
+    location2: makeNodeComponent("location2"),
+    foundationDate2: makeNodeComponent("foundationDate2"),
+    goalsSum4: makeNodeComponent("goalsSum4"),
+    companyTagline2: makeNodeComponent("companyTagline2"),
+    linkedIn2: makeNodeComponent("linkedIn2"),
+    instagram2: makeNodeComponent("instagram2"),
+    x2: makeNodeComponent("x2"),
+    website2: makeNodeComponent("website2"),
+    countainer2: makeNodeComponent("countainer2"),
+    sliderCarousel: makeNodeComponent("sliderCarousel"),
+    solution2: makeNodeComponent("solution2"),
+    title2: makeNodeComponent("title2"),
+    steps2: makeNodeComponent("steps2"),
+    stepText2: makeNodeComponent("stepText2"),
+    description2: makeNodeComponent("description2"),
+    price2: makeNodeComponent("price2"),
     countainer9: makeNodeComponent("countainer9"),
     companyReviews: makeNodeComponent("companyReviews"),
     communityLogo: makeNodeComponent("communityLogo"),
@@ -2931,11 +3092,10 @@ export const PlasmicACompanyProfile = Object.assign(
     communityName2: makeNodeComponent("communityName2"),
     comment2: makeNodeComponent("comment2"),
     rating2: makeNodeComponent("rating2"),
-    countainer11: makeNodeComponent("countainer11"),
-    companyImage: makeNodeComponent("companyImage"),
-    customerProblem: makeNodeComponent("customerProblem"),
-    solutionDescription: makeNodeComponent("solutionDescription"),
-    whyShouldTheyChoose: makeNodeComponent("whyShouldTheyChoose"),
+    countainer5: makeNodeComponent("countainer5"),
+    companyImage2: makeNodeComponent("companyImage2"),
+    customerProblem2: makeNodeComponent("customerProblem2"),
+    solutionDescription2: makeNodeComponent("solutionDescription2"),
     countainer12: makeNodeComponent("countainer12"),
     sliderCarousel6: makeNodeComponent("sliderCarousel6"),
 

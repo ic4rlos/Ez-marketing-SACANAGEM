@@ -884,7 +884,7 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                                   customFunction: async () => {
                                     return $props.onSave({
                                       short_message:
-                                        $state.short_message?.value ?? ""
+                                        $state.shortMessage?.value ?? ""
                                     });
                                   }
                                 };

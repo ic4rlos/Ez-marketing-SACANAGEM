@@ -17,29 +17,17 @@ const PlasmicACompanyProfile = dynamic(
 
 export default function ACompanyProfile() {
 
-  console.log("PAGE RENDER");
-
   const router = useRouter();
 
-  console.log("Router query:", router.query);
-
-  const supabaseA = getSupabaseA(); // agencies
-  const supabaseC = getSupabaseC(); // companies
+  const supabaseA = getSupabaseA(); // agencies DB
+  const supabaseC = getSupabaseC(); // companies DB
 
   const { id } = router.query;
-
-  console.log("Router id:", id);
 
   const [viewer, setViewer] = useState<any>(null);
   const [company, setCompany] = useState<any>(null);
   const [formData, setFormData] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
-
-  console.log("STATE SNAPSHOT");
-  console.log("viewer:", viewer);
-  console.log("company:", company);
-  console.log("solutions:", formData);
-  console.log("loading:", loading);
 
   // =========================
   // AUTH (AGENCIES)
@@ -49,18 +37,9 @@ export default function ACompanyProfile() {
 
     async function loadUser() {
 
-      console.log("Loading viewer from Supabase A...");
+      const { data } = await supabaseA.auth.getUser();
 
-      const { data, error } = await supabaseA.auth.getUser();
-
-      console.log("Auth response:", data);
-      console.log("Auth error:", error);
-
-      const resolvedUser = data?.user ?? null;
-
-      console.log("Viewer resolved:", resolvedUser);
-
-      setViewer(resolvedUser);
+      setViewer(data?.user ?? null);
 
     }
 
@@ -74,13 +53,7 @@ export default function ACompanyProfile() {
 
   useEffect(() => {
 
-    console.log("Company loader triggered");
-    console.log("Current id:", id);
-
-    if (!id) {
-      console.log("No ID yet — router probably not ready");
-      return;
-    }
+    if (!id) return;
 
     async function loadCompany() {
 
@@ -88,21 +61,13 @@ export default function ACompanyProfile() {
 
         const companyId = Number(id);
 
-        console.log("Converted companyId:", companyId);
-        console.log("Querying companies table (Supabase C)...");
-
-        const { data: companyData, error: companyError } = await supabaseC
+        const { data: companyData } = await supabaseC
           .from("companies")
           .select("*")
           .eq("id", companyId)
           .maybeSingle();
 
-        console.log("Company query result:", companyData);
-        console.log("Company query error:", companyError);
-
         if (!companyData) {
-
-          console.log("Company not found");
 
           setCompany(null);
           setFormData([]);
@@ -111,13 +76,9 @@ export default function ACompanyProfile() {
 
         }
 
-        console.log("Company found:", companyData);
-
         setCompany(companyData);
 
-        console.log("Loading company solutions...");
-
-        const { data: solutionsData, error: solutionsError } = await supabaseC
+        const { data: solutionsData } = await supabaseC
           .from("solutions")
           .select(`
             id,
@@ -133,17 +94,12 @@ export default function ACompanyProfile() {
           .eq("Company_id", companyData.id)
           .order("id", { ascending: true });
 
-        console.log("Solutions result:", solutionsData);
-        console.log("Solutions error:", solutionsError);
-
         const structuredSolutions =
           solutionsData?.map((sol: any) => ({
-
             id: sol.id,
             title: sol.Title ?? "",
             description: sol.Description ?? "",
             price: sol.Price ?? "",
-
             steps:
               sol.solutions_steps
                 ?.sort(
@@ -154,16 +110,13 @@ export default function ACompanyProfile() {
                   id: s.id,
                   step_text: s.step_text ?? ""
                 })) ?? []
-
           })) ?? [];
-
-        console.log("Structured solutions:", structuredSolutions);
 
         setFormData(structuredSolutions);
 
       } catch (err) {
 
-        console.error("Load company exception:", err);
+        console.error("Load company error:", err);
 
       }
 
@@ -179,59 +132,77 @@ export default function ACompanyProfile() {
   // SAVE CONNECTION (AGENCIES DB)
   // =========================
 
-  async function handleSave(data:any) {
+  async function handleSave(data: any) {
 
-    console.log("SAVE BUTTON TRIGGERED");
-    console.log("Incoming form data:", data);
-
-    console.log("Current viewer:", viewer);
-    console.log("Current router id:", id);
-
-    if (!viewer || !id) {
-
-      console.log("Save blocked — viewer or id missing");
-      return;
-
-    }
-
-    const payload = {
-
-      agency_id: viewer.id,
-      company_id: Number(id),
-      short_message: data?.short_message ?? ""
-
-    };
-
-    console.log("Payload being sent to CONNECTIONS:");
-    console.log(payload);
+    if (!viewer || !id) return;
 
     try {
 
-      const { data: insertResult, error: insertError } = await supabaseA
-        .from("CONNECTIONS")
-        .insert(payload)
-        .select();
+      console.log("Starting connection flow");
 
-      console.log("INSERT RESULT:", insertResult);
-      console.log("INSERT ERROR:", insertError);
+      const userId = viewer.id;
+
+      // descobrir agency do usuário
+      const { data: membership, error: membershipError } = await supabaseA
+        .from("community_members")
+        .select("community_id")
+        .eq("user_id", userId)
+        .maybeSingle();
+
+      if (membershipError) {
+
+        console.error("Community lookup error:", membershipError);
+        return;
+
+      }
+
+      if (!membership) {
+
+        console.error("User not part of any community");
+        return;
+
+      }
+
+      const agencyId = membership.community_id;
+
+      console.log("Agency found:", agencyId);
+
+      const payload = {
+
+        status: "agency request",
+        acceptade_at: new Date().toISOString(),
+        created_by_user_id: userId,
+        agency_id: agencyId,
+        short_message: data?.short_message ?? "",
+        company_id: Number(id)
+
+      };
+
+      console.log("Payload being sent:", payload);
+
+      const { error: insertError } = await supabaseA
+        .from("CONNECTIONS")
+        .insert(payload);
+
+      if (insertError) {
+
+        console.error("Insert error:", insertError);
+
+      } else {
+
+        console.log("Connection created successfully");
+
+      }
 
     } catch (err) {
 
-      console.error("Connection exception:", err);
+      console.error("Connection error:", err);
 
     }
 
   }
 
-  if (loading) {
-
-    console.log("Still loading — render blocked");
-
-    return null;
-
-  }
-
-  console.log("Rendering Plasmic component");
+  if (loading) return null;
 
   return (
     <PlasmicACompanyProfile

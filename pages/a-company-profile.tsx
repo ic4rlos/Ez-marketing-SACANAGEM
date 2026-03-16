@@ -134,6 +134,9 @@ export default function ACompanyProfile() {
 
   async function handleSave(data: any) {
 
+  console.log("handleSave recebeu:", data);
+  console.log("short_message:", data?.short_message);
+    
     if (!viewer || !id) return;
 
     try {

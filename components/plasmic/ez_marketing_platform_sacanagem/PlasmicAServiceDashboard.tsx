@@ -141,7 +141,7 @@ export type PlasmicAServiceDashboard__OverridesType = {
   root?: Flex__<"div">;
   topBarAuto?: Flex__<"div">;
   navigationBar?: Flex__<typeof NavigationBar>;
-  account2?: Flex__<typeof AntdDropdown>;
+  account3?: Flex__<typeof AntdDropdown>;
   button?: Flex__<typeof AntdButton>;
   container2?: Flex__<"div">;
   _7Days?: Flex__<typeof LoginButton>;
@@ -634,16 +634,20 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
               />
 
               <AntdDropdown
-                data-plasmic-name={"account2"}
-                data-plasmic-override={overrides.account2}
-                className={classNames("__wab_instance", sty.account2)}
-                dropdownMenuScopeClassName={sty["account2__dropdownMenu"]}
+                data-plasmic-name={"account3"}
+                data-plasmic-override={overrides.account3}
+                className={classNames("__wab_instance", sty.account3)}
+                dropdownMenuScopeClassName={sty["account3__dropdownMenu"]}
+                menuClassName={classNames({ [sty["pcls_IiTYbUBJUufp"]]: true })}
+                menuItemClassName={classNames({
+                  [sty["pcls_zqBcPoZaWy0S"]]: true
+                })}
                 menuItems={() => (
                   <React.Fragment>
                     <AntdMenuItem
                       className={classNames(
                         "__wab_instance",
-                        sty.menuItem__chIr2
+                        sty.menuItem__qEqZz
                       )}
                       key={"menu-item-1"}
                     >
@@ -651,7 +655,7 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
                         className={classNames(
                           projectcss.all,
                           projectcss.__wab_text,
-                          sty.text__vt21U
+                          sty.text___2YlQc
                         )}
                       >
                         {"Menu item"}
@@ -660,7 +664,7 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
                     <AntdMenuItem
                       className={classNames(
                         "__wab_instance",
-                        sty.menuItem__m5U0X
+                        sty.menuItem___65ZEi
                       )}
                       key={"menu-item-2"}
                     >
@@ -668,7 +672,7 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
                         className={classNames(
                           projectcss.all,
                           projectcss.__wab_text,
-                          sty.text___51YQ
+                          sty.text__nuO5Y
                         )}
                       >
                         {"Menu item"}
@@ -696,7 +700,66 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
                       { type: null }
                     ];
                     __composite["0"]["label"] = "Profile";
+                    __composite["0"]["onClick"] = async info => {
+                      const $steps = {};
+
+                      $steps["goToAProfile"] = true
+                        ? (() => {
+                            const actionArgs = { destination: `/a-profile` };
+                            return (({ destination }) => {
+                              if (
+                                typeof destination === "string" &&
+                                destination.startsWith("#")
+                              ) {
+                                document
+                                  .getElementById(destination.substr(1))
+                                  .scrollIntoView({ behavior: "smooth" });
+                              } else {
+                                __nextRouter?.push(destination);
+                              }
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["goToAProfile"] != null &&
+                        typeof $steps["goToAProfile"] === "object" &&
+                        typeof $steps["goToAProfile"].then === "function"
+                      ) {
+                        $steps["goToAProfile"] = await $steps["goToAProfile"];
+                      }
+                    };
                     __composite["1"]["label"] = "Edit profile";
+                    __composite["1"]["onClick"] = async info => {
+                      const $steps = {};
+
+                      $steps["goToAEditProfile"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              destination: `/a-edit-profile`
+                            };
+                            return (({ destination }) => {
+                              if (
+                                typeof destination === "string" &&
+                                destination.startsWith("#")
+                              ) {
+                                document
+                                  .getElementById(destination.substr(1))
+                                  .scrollIntoView({ behavior: "smooth" });
+                              } else {
+                                __nextRouter?.push(destination);
+                              }
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["goToAEditProfile"] != null &&
+                        typeof $steps["goToAEditProfile"] === "object" &&
+                        typeof $steps["goToAEditProfile"].then === "function"
+                      ) {
+                        $steps["goToAEditProfile"] =
+                          await $steps["goToAEditProfile"];
+                      }
+                    };
                     __composite["2"]["type"] = "divider";
                     return __composite;
                   })();
@@ -715,6 +778,29 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
                   })();
                   __composite["2"]["type"] = "item";
                   __composite["2"]["label"] = "Sign out";
+                  __composite["2"]["onClick"] = async info => {
+                    const $steps = {};
+
+                    $steps["runCode"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            customFunction: async () => {
+                              return $props.onLogout?.();
+                            }
+                          };
+                          return (({ customFunction }) => {
+                            return customFunction();
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["runCode"] != null &&
+                      typeof $steps["runCode"] === "object" &&
+                      typeof $steps["runCode"].then === "function"
+                    ) {
+                      $steps["runCode"] = await $steps["runCode"];
+                    }
+                  };
                   return __composite;
                 })()}
                 trigger={"hover"}
@@ -728,7 +814,7 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
                 >
                   <PlasmicImg__
                     alt={""}
-                    className={classNames(sty.img___8H7Jm)}
+                    className={classNames(sty.img__oKeJc)}
                     displayHeight={"30px"}
                     displayMaxHeight={"none"}
                     displayMaxWidth={"100%"}
@@ -5299,7 +5385,7 @@ const PlasmicDescendants = {
     "root",
     "topBarAuto",
     "navigationBar",
-    "account2",
+    "account3",
     "button",
     "container2",
     "_7Days",
@@ -5380,9 +5466,9 @@ const PlasmicDescendants = {
     "popover9",
     "popover10"
   ],
-  topBarAuto: ["topBarAuto", "navigationBar", "account2", "button"],
+  topBarAuto: ["topBarAuto", "navigationBar", "account3", "button"],
   navigationBar: ["navigationBar"],
-  account2: ["account2", "button"],
+  account3: ["account3", "button"],
   button: ["button"],
   container2: [
     "container2",
@@ -5606,7 +5692,7 @@ type NodeDefaultElementType = {
   root: "div";
   topBarAuto: "div";
   navigationBar: typeof NavigationBar;
-  account2: typeof AntdDropdown;
+  account3: typeof AntdDropdown;
   button: typeof AntdButton;
   container2: "div";
   _7Days: typeof LoginButton;
@@ -5752,7 +5838,7 @@ export const PlasmicAServiceDashboard = Object.assign(
     // Helper components rendering sub-elements
     topBarAuto: makeNodeComponent("topBarAuto"),
     navigationBar: makeNodeComponent("navigationBar"),
-    account2: makeNodeComponent("account2"),
+    account3: makeNodeComponent("account3"),
     button: makeNodeComponent("button"),
     container2: makeNodeComponent("container2"),
     _7Days: makeNodeComponent("_7Days"),

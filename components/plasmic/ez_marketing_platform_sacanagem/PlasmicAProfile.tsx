@@ -1067,7 +1067,7 @@ function PlasmicAProfile__RenderFunc(props: {
 
                       $steps["goToALogin"] = true
                         ? (() => {
-                            const actionArgs = { destination: `/a-login` };
+                            const actionArgs = { destination: `/a-profile` };
                             return (({ destination }) => {
                               if (
                                 typeof destination === "string" &&

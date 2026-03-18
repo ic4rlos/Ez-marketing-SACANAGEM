@@ -141,7 +141,7 @@ export type PlasmicACompanyProfile__OverridesType = {
   root?: Flex__<"div">;
   topBar?: Flex__<"div">;
   navigationBar?: Flex__<typeof NavigationBar>;
-  account2?: Flex__<typeof AntdDropdown>;
+  account?: Flex__<typeof AntdDropdown>;
   button?: Flex__<typeof AntdButton>;
   countainer1?: Flex__<"div">;
   companyLogo3?: Flex__<typeof PlasmicImg__>;
@@ -471,16 +471,20 @@ function PlasmicACompanyProfile__RenderFunc(props: {
               />
 
               <AntdDropdown
-                data-plasmic-name={"account2"}
-                data-plasmic-override={overrides.account2}
-                className={classNames("__wab_instance", sty.account2)}
-                dropdownMenuScopeClassName={sty["account2__dropdownMenu"]}
+                data-plasmic-name={"account"}
+                data-plasmic-override={overrides.account}
+                className={classNames("__wab_instance", sty.account)}
+                dropdownMenuScopeClassName={sty["account__dropdownMenu"]}
+                menuClassName={classNames({ [sty["pcls_KwkcZDA5laP8"]]: true })}
+                menuItemClassName={classNames({
+                  [sty["pcls_rkono5oi2wGa"]]: true
+                })}
                 menuItems={() => (
                   <React.Fragment>
                     <AntdMenuItem
                       className={classNames(
                         "__wab_instance",
-                        sty.menuItem___5BpT
+                        sty.menuItem__sWpX0
                       )}
                       key={"menu-item-1"}
                     >
@@ -488,7 +492,7 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                         className={classNames(
                           projectcss.all,
                           projectcss.__wab_text,
-                          sty.text__xfyhj
+                          sty.text__n6KUv
                         )}
                       >
                         {"Menu item"}
@@ -497,7 +501,7 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                     <AntdMenuItem
                       className={classNames(
                         "__wab_instance",
-                        sty.menuItem__i3QN
+                        sty.menuItem__oSb7W
                       )}
                       key={"menu-item-2"}
                     >
@@ -505,7 +509,7 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                         className={classNames(
                           projectcss.all,
                           projectcss.__wab_text,
-                          sty.text__hfb4M
+                          sty.text__vTtvW
                         )}
                       >
                         {"Menu item"}
@@ -533,7 +537,66 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                       { type: null }
                     ];
                     __composite["0"]["label"] = "Profile";
+                    __composite["0"]["onClick"] = async info => {
+                      const $steps = {};
+
+                      $steps["goToALogin"] = true
+                        ? (() => {
+                            const actionArgs = { destination: `/a-profile` };
+                            return (({ destination }) => {
+                              if (
+                                typeof destination === "string" &&
+                                destination.startsWith("#")
+                              ) {
+                                document
+                                  .getElementById(destination.substr(1))
+                                  .scrollIntoView({ behavior: "smooth" });
+                              } else {
+                                __nextRouter?.push(destination);
+                              }
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["goToALogin"] != null &&
+                        typeof $steps["goToALogin"] === "object" &&
+                        typeof $steps["goToALogin"].then === "function"
+                      ) {
+                        $steps["goToALogin"] = await $steps["goToALogin"];
+                      }
+                    };
                     __composite["1"]["label"] = "Edit profile";
+                    __composite["1"]["onClick"] = async info => {
+                      const $steps = {};
+
+                      $steps["goToACreateAccount"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              destination: `/a-edit-profile`
+                            };
+                            return (({ destination }) => {
+                              if (
+                                typeof destination === "string" &&
+                                destination.startsWith("#")
+                              ) {
+                                document
+                                  .getElementById(destination.substr(1))
+                                  .scrollIntoView({ behavior: "smooth" });
+                              } else {
+                                __nextRouter?.push(destination);
+                              }
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["goToACreateAccount"] != null &&
+                        typeof $steps["goToACreateAccount"] === "object" &&
+                        typeof $steps["goToACreateAccount"].then === "function"
+                      ) {
+                        $steps["goToACreateAccount"] =
+                          await $steps["goToACreateAccount"];
+                      }
+                    };
                     __composite["2"]["type"] = "divider";
                     return __composite;
                   })();
@@ -546,12 +609,91 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                       { type: null }
                     ];
                     __composite["0"]["label"] = "Settings & Privacy";
+                    __composite["0"]["onClick"] = async info => {
+                      const $steps = {};
+
+                      $steps["goToALogin"] = true
+                        ? (() => {
+                            const actionArgs = { destination: `/a-login` };
+                            return (({ destination }) => {
+                              if (
+                                typeof destination === "string" &&
+                                destination.startsWith("#")
+                              ) {
+                                document
+                                  .getElementById(destination.substr(1))
+                                  .scrollIntoView({ behavior: "smooth" });
+                              } else {
+                                __nextRouter?.push(destination);
+                              }
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["goToALogin"] != null &&
+                        typeof $steps["goToALogin"] === "object" &&
+                        typeof $steps["goToALogin"].then === "function"
+                      ) {
+                        $steps["goToALogin"] = await $steps["goToALogin"];
+                      }
+                    };
                     __composite["1"]["label"] = "Help";
+                    __composite["1"]["onClick"] = async info => {
+                      const $steps = {};
+
+                      $steps["goToALogin"] = true
+                        ? (() => {
+                            const actionArgs = { destination: `/a-login` };
+                            return (({ destination }) => {
+                              if (
+                                typeof destination === "string" &&
+                                destination.startsWith("#")
+                              ) {
+                                document
+                                  .getElementById(destination.substr(1))
+                                  .scrollIntoView({ behavior: "smooth" });
+                              } else {
+                                __nextRouter?.push(destination);
+                              }
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["goToALogin"] != null &&
+                        typeof $steps["goToALogin"] === "object" &&
+                        typeof $steps["goToALogin"].then === "function"
+                      ) {
+                        $steps["goToALogin"] = await $steps["goToALogin"];
+                      }
+                    };
                     __composite["2"]["type"] = "divider";
                     return __composite;
                   })();
                   __composite["2"]["type"] = "item";
                   __composite["2"]["label"] = "Sign out";
+                  __composite["2"]["onClick"] = async info => {
+                    const $steps = {};
+
+                    $steps["runCode"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            customFunction: async () => {
+                              return $props.onLogout?.();
+                            }
+                          };
+                          return (({ customFunction }) => {
+                            return customFunction();
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["runCode"] != null &&
+                      typeof $steps["runCode"] === "object" &&
+                      typeof $steps["runCode"].then === "function"
+                    ) {
+                      $steps["runCode"] = await $steps["runCode"];
+                    }
+                  };
                   return __composite;
                 })()}
                 trigger={"hover"}
@@ -565,7 +707,7 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                 >
                   <PlasmicImg__
                     alt={""}
-                    className={classNames(sty.img___0MeYj)}
+                    className={classNames(sty.img___7LNAq)}
                     displayHeight={"30px"}
                     displayMaxHeight={"none"}
                     displayMaxWidth={"100%"}
@@ -2731,7 +2873,7 @@ const PlasmicDescendants = {
     "root",
     "topBar",
     "navigationBar",
-    "account2",
+    "account",
     "button",
     "countainer1",
     "companyLogo3",
@@ -2784,9 +2926,9 @@ const PlasmicDescendants = {
     "countainer12",
     "sliderCarousel6"
   ],
-  topBar: ["topBar", "navigationBar", "account2", "button"],
+  topBar: ["topBar", "navigationBar", "account", "button"],
   navigationBar: ["navigationBar"],
-  account2: ["account2", "button"],
+  account: ["account", "button"],
   button: ["button"],
   countainer1: [
     "countainer1",
@@ -2928,7 +3070,7 @@ type NodeDefaultElementType = {
   root: "div";
   topBar: "div";
   navigationBar: typeof NavigationBar;
-  account2: typeof AntdDropdown;
+  account: typeof AntdDropdown;
   button: typeof AntdButton;
   countainer1: "div";
   companyLogo3: typeof PlasmicImg__;
@@ -3046,7 +3188,7 @@ export const PlasmicACompanyProfile = Object.assign(
     // Helper components rendering sub-elements
     topBar: makeNodeComponent("topBar"),
     navigationBar: makeNodeComponent("navigationBar"),
-    account2: makeNodeComponent("account2"),
+    account: makeNodeComponent("account"),
     button: makeNodeComponent("button"),
     countainer1: makeNodeComponent("countainer1"),
     companyLogo3: makeNodeComponent("companyLogo3"),

@@ -144,9 +144,9 @@ export const PlasmicACommunityDashboard__ArgProps = new Array<ArgPropType>();
 
 export type PlasmicACommunityDashboard__OverridesType = {
   root?: Flex__<"div">;
-  topBarAuto?: Flex__<"div">;
+  topBarSacanagem?: Flex__<"div">;
   navigationBar?: Flex__<typeof NavigationBar>;
-  account2?: Flex__<typeof AntdDropdown>;
+  account3?: Flex__<typeof AntdDropdown>;
   button?: Flex__<typeof AntdButton>;
   container1?: Flex__<"div">;
   agencyPic?: Flex__<typeof Video>;
@@ -645,9 +645,9 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
         )}
       >
         <div
-          data-plasmic-name={"topBarAuto"}
-          data-plasmic-override={overrides.topBarAuto}
-          className={classNames(projectcss.all, sty.topBarAuto)}
+          data-plasmic-name={"topBarSacanagem"}
+          data-plasmic-override={overrides.topBarSacanagem}
+          className={classNames(projectcss.all, sty.topBarSacanagem)}
         >
           <div className={classNames(projectcss.all, sty.freeBox__yd3Hg)}>
             <div className={classNames(projectcss.all, sty.freeBox__fqtqP)}>
@@ -776,16 +776,20 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
               />
 
               <AntdDropdown
-                data-plasmic-name={"account2"}
-                data-plasmic-override={overrides.account2}
-                className={classNames("__wab_instance", sty.account2)}
-                dropdownMenuScopeClassName={sty["account2__dropdownMenu"]}
+                data-plasmic-name={"account3"}
+                data-plasmic-override={overrides.account3}
+                className={classNames("__wab_instance", sty.account3)}
+                dropdownMenuScopeClassName={sty["account3__dropdownMenu"]}
+                menuClassName={classNames({ [sty["pcls_pK_PedSh6qEh"]]: true })}
+                menuItemClassName={classNames({
+                  [sty["pcls_Zuo55i1Zmjlr"]]: true
+                })}
                 menuItems={() => (
                   <React.Fragment>
                     <AntdMenuItem
                       className={classNames(
                         "__wab_instance",
-                        sty.menuItem__fs1T8
+                        sty.menuItem__gyx7K
                       )}
                       key={"menu-item-1"}
                     >
@@ -793,7 +797,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                         className={classNames(
                           projectcss.all,
                           projectcss.__wab_text,
-                          sty.text__qvFuh
+                          sty.text__oOkiq
                         )}
                       >
                         {"Menu item"}
@@ -802,7 +806,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                     <AntdMenuItem
                       className={classNames(
                         "__wab_instance",
-                        sty.menuItem__xFapz
+                        sty.menuItem__x42Di
                       )}
                       key={"menu-item-2"}
                     >
@@ -810,7 +814,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                         className={classNames(
                           projectcss.all,
                           projectcss.__wab_text,
-                          sty.text___2AjQi
+                          sty.text__zz8J1
                         )}
                       >
                         {"Menu item"}
@@ -838,7 +842,66 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                       { type: null }
                     ];
                     __composite["0"]["label"] = "Profile";
+                    __composite["0"]["onClick"] = async info => {
+                      const $steps = {};
+
+                      $steps["goToAProfile"] = true
+                        ? (() => {
+                            const actionArgs = { destination: `/a-profile` };
+                            return (({ destination }) => {
+                              if (
+                                typeof destination === "string" &&
+                                destination.startsWith("#")
+                              ) {
+                                document
+                                  .getElementById(destination.substr(1))
+                                  .scrollIntoView({ behavior: "smooth" });
+                              } else {
+                                __nextRouter?.push(destination);
+                              }
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["goToAProfile"] != null &&
+                        typeof $steps["goToAProfile"] === "object" &&
+                        typeof $steps["goToAProfile"].then === "function"
+                      ) {
+                        $steps["goToAProfile"] = await $steps["goToAProfile"];
+                      }
+                    };
                     __composite["1"]["label"] = "Edit profile";
+                    __composite["1"]["onClick"] = async info => {
+                      const $steps = {};
+
+                      $steps["goToAEditProfile"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              destination: `/a-edit-profile`
+                            };
+                            return (({ destination }) => {
+                              if (
+                                typeof destination === "string" &&
+                                destination.startsWith("#")
+                              ) {
+                                document
+                                  .getElementById(destination.substr(1))
+                                  .scrollIntoView({ behavior: "smooth" });
+                              } else {
+                                __nextRouter?.push(destination);
+                              }
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["goToAEditProfile"] != null &&
+                        typeof $steps["goToAEditProfile"] === "object" &&
+                        typeof $steps["goToAEditProfile"].then === "function"
+                      ) {
+                        $steps["goToAEditProfile"] =
+                          await $steps["goToAEditProfile"];
+                      }
+                    };
                     __composite["2"]["type"] = "divider";
                     return __composite;
                   })();
@@ -857,6 +920,29 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                   })();
                   __composite["2"]["type"] = "item";
                   __composite["2"]["label"] = "Sign out";
+                  __composite["2"]["onClick"] = async info => {
+                    const $steps = {};
+
+                    $steps["runCode"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            customFunction: async () => {
+                              return $props.onLogout?.();
+                            }
+                          };
+                          return (({ customFunction }) => {
+                            return customFunction();
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["runCode"] != null &&
+                      typeof $steps["runCode"] === "object" &&
+                      typeof $steps["runCode"].then === "function"
+                    ) {
+                      $steps["runCode"] = await $steps["runCode"];
+                    }
+                  };
                   return __composite;
                 })()}
                 trigger={"hover"}
@@ -870,7 +956,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                 >
                   <PlasmicImg__
                     alt={""}
-                    className={classNames(sty.img__mZis2)}
+                    className={classNames(sty.img__bD3Bc)}
                     displayHeight={"30px"}
                     displayMaxHeight={"none"}
                     displayMaxWidth={"100%"}
@@ -1842,8 +1928,8 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                           className={classNames(sty.profilePic)}
                           displayHeight={"auto"}
                           displayMaxHeight={"none"}
-                          displayMaxWidth={"200px"}
-                          displayMinHeight={"250px"}
+                          displayMaxWidth={"150px"}
+                          displayMinHeight={"200px"}
                           displayMinWidth={"0"}
                           displayWidth={"auto"}
                           src={(() => {
@@ -8898,9 +8984,9 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
 const PlasmicDescendants = {
   root: [
     "root",
-    "topBarAuto",
+    "topBarSacanagem",
     "navigationBar",
-    "account2",
+    "account3",
     "button",
     "container1",
     "agencyPic",
@@ -9045,9 +9131,9 @@ const PlasmicDescendants = {
     "about",
     "website"
   ],
-  topBarAuto: ["topBarAuto", "navigationBar", "account2", "button"],
+  topBarSacanagem: ["topBarSacanagem", "navigationBar", "account3", "button"],
   navigationBar: ["navigationBar"],
-  account2: ["account2", "button"],
+  account3: ["account3", "button"],
   button: ["button"],
   container1: [
     "container1",
@@ -9539,9 +9625,9 @@ type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   root: "div";
-  topBarAuto: "div";
+  topBarSacanagem: "div";
   navigationBar: typeof NavigationBar;
-  account2: typeof AntdDropdown;
+  account3: typeof AntdDropdown;
   button: typeof AntdButton;
   container1: "div";
   agencyPic: typeof Video;
@@ -9749,9 +9835,9 @@ export const PlasmicACommunityDashboard = Object.assign(
   makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
-    topBarAuto: makeNodeComponent("topBarAuto"),
+    topBarSacanagem: makeNodeComponent("topBarSacanagem"),
     navigationBar: makeNodeComponent("navigationBar"),
-    account2: makeNodeComponent("account2"),
+    account3: makeNodeComponent("account3"),
     button: makeNodeComponent("button"),
     container1: makeNodeComponent("container1"),
     agencyPic: makeNodeComponent("agencyPic"),

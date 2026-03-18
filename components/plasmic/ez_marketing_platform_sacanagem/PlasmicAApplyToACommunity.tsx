@@ -59,13 +59,6 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
-import { usePlasmicDataSourceContext } from "@plasmicapp/data-sources-context";
-import {
-  executePlasmicDataOp,
-  usePlasmicDataOp,
-  usePlasmicInvalidate
-} from "@plasmicapp/react-web/lib/data-sources";
-
 import { NavigationBar } from "@plasmicpkgs/plasmic-nav";
 import { AntdDropdown } from "@plasmicpkgs/antd5/skinny/registerDropdown";
 import { AntdMenuItem } from "@plasmicpkgs/antd5/skinny/registerMenu";
@@ -85,7 +78,7 @@ import "@plasmicapp/react-web/lib/plasmic.css";
 import projectcss from "./plasmic.module.css"; // plasmic-import: 5uU4LbmmcY9V8oBke7M62e/projectcss
 import sty from "./PlasmicAApplyToACommunity.module.css"; // plasmic-import: cmeF-xXiJ6ow/css
 
-import SemTitulo1SvgIcon from "./icons/PlasmicIcon__SemTitulo1Svg"; // plasmic-import: 0mbZdJyDaMFx/icon
+import SemTitulo2SvgIcon from "./icons/PlasmicIcon__SemTitulo2Svg"; // plasmic-import: Nb_GErn1yi4Z/icon
 import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: 2MH9wfBMgppQ/icon
 import Icon38Icon from "./icons/PlasmicIcon__Icon38"; // plasmic-import: _eklczUQ9Bdt/icon
 
@@ -139,7 +132,7 @@ export const PlasmicAApplyToACommunity__ArgProps = new Array<ArgPropType>();
 
 export type PlasmicAApplyToACommunity__OverridesType = {
   root?: Flex__<"div">;
-  topBar?: Flex__<"div">;
+  topBarAuto?: Flex__<"div">;
   navigationBar?: Flex__<typeof NavigationBar>;
   account?: Flex__<typeof AntdDropdown>;
   button?: Flex__<typeof AntdButton>;
@@ -147,10 +140,10 @@ export type PlasmicAApplyToACommunity__OverridesType = {
   communityLogo?: Flex__<typeof PlasmicImg__>;
   type?: Flex__<"svg">;
   communityName?: Flex__<"div">;
-  sliderCarousel?: Flex__<typeof SliderWrapper>;
-  member?: Flex__<"div">;
-  office?: Flex__<"div">;
-  profilePic?: Flex__<typeof PlasmicImg__>;
+  membersCarousel?: Flex__<typeof SliderWrapper>;
+  member2?: Flex__<"div">;
+  office2?: Flex__<"div">;
+  profilePic2?: Flex__<typeof PlasmicImg__>;
   container2?: Flex__<"div">;
   shortMessage?: Flex__<"textarea">;
   inviteButon?: Flex__<typeof LoginButton>;
@@ -160,31 +153,31 @@ export type PlasmicAApplyToACommunity__OverridesType = {
   company?: Flex__<typeof LoginButton>;
   companyLogo?: Flex__<typeof PlasmicImg__>;
   companyName?: Flex__<"div">;
+  container7?: Flex__<"div">;
+  popover?: Flex__<typeof AntdPopover>;
+  popover3?: Flex__<typeof AntdPopover>;
+  popover4?: Flex__<typeof AntdPopover>;
+  popover2?: Flex__<typeof AntdPopover>;
+  popover5?: Flex__<typeof AntdPopover>;
+  popover6?: Flex__<typeof AntdPopover>;
+  popover27?: Flex__<typeof AntdPopover>;
+  popover28?: Flex__<typeof AntdPopover>;
+  popover29?: Flex__<typeof AntdPopover>;
+  popover30?: Flex__<typeof AntdPopover>;
+  popover31?: Flex__<typeof AntdPopover>;
+  popover32?: Flex__<typeof AntdPopover>;
+  popover33?: Flex__<typeof AntdPopover>;
+  popover34?: Flex__<typeof AntdPopover>;
+  popover35?: Flex__<typeof AntdPopover>;
+  popover36?: Flex__<typeof AntdPopover>;
+  popover37?: Flex__<typeof AntdPopover>;
+  popover38?: Flex__<typeof AntdPopover>;
+  popover39?: Flex__<typeof AntdPopover>;
+  popover40?: Flex__<typeof AntdPopover>;
   container11?: Flex__<"div">;
-  popover21?: Flex__<typeof AntdPopover>;
-  popover22?: Flex__<typeof AntdPopover>;
-  popover23?: Flex__<typeof AntdPopover>;
-  popover24?: Flex__<typeof AntdPopover>;
-  popover25?: Flex__<typeof AntdPopover>;
-  popover26?: Flex__<typeof AntdPopover>;
-  popover7?: Flex__<typeof AntdPopover>;
-  popover8?: Flex__<typeof AntdPopover>;
-  popover9?: Flex__<typeof AntdPopover>;
-  popover10?: Flex__<typeof AntdPopover>;
-  popover11?: Flex__<typeof AntdPopover>;
-  popover12?: Flex__<typeof AntdPopover>;
-  popover13?: Flex__<typeof AntdPopover>;
-  popover14?: Flex__<typeof AntdPopover>;
-  popover15?: Flex__<typeof AntdPopover>;
-  popover16?: Flex__<typeof AntdPopover>;
-  popover17?: Flex__<typeof AntdPopover>;
-  popover18?: Flex__<typeof AntdPopover>;
-  popover19?: Flex__<typeof AntdPopover>;
-  popover20?: Flex__<typeof AntdPopover>;
-  container8?: Flex__<"div">;
-  youtubeVideo?: Flex__<typeof YouTube>;
-  about?: Flex__<"div">;
-  website?: Flex__<"a"> & Partial<LinkProps>;
+  youtubeVideo2?: Flex__<typeof YouTube>;
+  about2?: Flex__<"div">;
+  website2?: Flex__<"a"> & Partial<LinkProps>;
   container9?: Flex__<"div">;
   communityRate?: Flex__<typeof AntdRate>;
   rateSum?: Flex__<"div">;
@@ -235,15 +228,6 @@ function PlasmicAApplyToACommunity__RenderFunc(props: {
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
       {
-        path: "sliderCarousel.currentSlide",
-        type: "private",
-        variableType: "number",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 0,
-
-        refName: "sliderCarousel",
-        onMutate: generateOnMutateForSpec("currentSlide", SliderWrapper_Helpers)
-      },
-      {
         path: "sliderCarousel2.currentSlide",
         type: "private",
         variableType: "number",
@@ -256,7 +240,20 @@ function PlasmicAApplyToACommunity__RenderFunc(props: {
         path: "shortMessage.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ``
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
+          (() => {
+            try {
+              return (value = $props.formData?.short_message ?? "");
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
       },
       {
         path: "communityRate.value",
@@ -265,124 +262,133 @@ function PlasmicAApplyToACommunity__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
-        path: "popover21.open",
+        path: "popover.open",
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
-        path: "popover22.open",
+        path: "popover3.open",
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
-        path: "popover23.open",
+        path: "popover4.open",
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
-        path: "popover24.open",
+        path: "popover2.open",
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
-        path: "popover25.open",
+        path: "popover5.open",
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
-        path: "popover26.open",
+        path: "popover6.open",
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
-        path: "popover7.open",
+        path: "popover27.open",
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
-        path: "popover8.open",
+        path: "popover28.open",
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
-        path: "popover9.open",
+        path: "popover29.open",
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
-        path: "popover10.open",
+        path: "popover30.open",
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
-        path: "popover11.open",
+        path: "popover31.open",
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
-        path: "popover12.open",
+        path: "popover32.open",
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
-        path: "popover13.open",
+        path: "popover33.open",
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
-        path: "popover14.open",
+        path: "popover34.open",
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
-        path: "popover15.open",
+        path: "popover35.open",
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
-        path: "popover16.open",
+        path: "popover36.open",
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
-        path: "popover17.open",
+        path: "popover37.open",
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
-        path: "popover18.open",
+        path: "popover38.open",
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
-        path: "popover19.open",
+        path: "popover39.open",
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
-        path: "popover20.open",
+        path: "popover40.open",
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
+      },
+      {
+        path: "membersCarousel.currentSlide",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 0,
+
+        refName: "membersCarousel",
+        onMutate: generateOnMutateForSpec("currentSlide", SliderWrapper_Helpers)
       }
     ],
     [$props, $ctx, $refs]
@@ -394,8 +400,6 @@ function PlasmicAApplyToACommunity__RenderFunc(props: {
     $q: {},
     $refs
   });
-  const dataSourcesCtx = usePlasmicDataSourceContext();
-  const plasmicInvalidate = usePlasmicInvalidate();
 
   const pageMetadata = generateDynamicMetadata(
     wrapQueriesWithLoadingProxy({}),
@@ -438,12 +442,12 @@ function PlasmicAApplyToACommunity__RenderFunc(props: {
         )}
       >
         <div
-          data-plasmic-name={"topBar"}
-          data-plasmic-override={overrides.topBar}
-          className={classNames(projectcss.all, sty.topBar)}
+          data-plasmic-name={"topBarAuto"}
+          data-plasmic-override={overrides.topBarAuto}
+          className={classNames(projectcss.all, sty.topBarAuto)}
         >
-          <div className={classNames(projectcss.all, sty.freeBox__rdyUc)}>
-            <div className={classNames(projectcss.all, sty.freeBox___0CJaN)}>
+          <div className={classNames(projectcss.all, sty.freeBox__r01Pd)}>
+            <div className={classNames(projectcss.all, sty.freeBox___1Sza)}>
               <NavigationBar
                 data-plasmic-name={"navigationBar"}
                 data-plasmic-override={overrides.navigationBar}
@@ -452,40 +456,15 @@ function PlasmicAApplyToACommunity__RenderFunc(props: {
                     className={classNames(
                       projectcss.all,
                       projectcss.a,
-                      sty.link__tGMn
+                      sty.link__najb0
                     )}
                     component={Link}
-                    href={`/affiliate-homepage`}
                     legacyBehavior={false}
-                    onClick={async event => {
-                      const $steps = {};
-
-                      $steps["refreshData"] = true
-                        ? (() => {
-                            const actionArgs = {
-                              queryInvalidation: ["plasmic_refresh_all"]
-                            };
-                            return (async ({ queryInvalidation }) => {
-                              if (!queryInvalidation) {
-                                return;
-                              }
-                              await plasmicInvalidate(queryInvalidation);
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
-                      if (
-                        $steps["refreshData"] != null &&
-                        typeof $steps["refreshData"] === "object" &&
-                        typeof $steps["refreshData"].then === "function"
-                      ) {
-                        $steps["refreshData"] = await $steps["refreshData"];
-                      }
-                    }}
                     platform={"nextjs"}
                   >
                     <PlasmicImg__
                       alt={""}
-                      className={classNames(sty.img___7Qagq)}
+                      className={classNames(sty.img___3Y8Wq)}
                       displayHeight={"30px"}
                       displayMaxHeight={"none"}
                       displayMaxWidth={"none"}
@@ -493,9 +472,9 @@ function PlasmicAApplyToACommunity__RenderFunc(props: {
                       displayMinWidth={"0"}
                       displayWidth={"auto"}
                       src={{
-                        src: "/plasmic/ez_marketing_platform_sacanagem/images/logoPng2.png",
-                        fullWidth: 190,
-                        fullHeight: 100,
+                        src: "/plasmic/ez_marketing_platform_sacanagem/images/ezSvg2.svg",
+                        fullWidth: 60,
+                        fullHeight: 31,
                         aspectRatio: undefined
                       }}
                     />
@@ -505,7 +484,7 @@ function PlasmicAApplyToACommunity__RenderFunc(props: {
                 closeButton={
                   <PlasmicImg__
                     alt={""}
-                    className={classNames(sty.img__ohL5B)}
+                    className={classNames(sty.img___2S5G7)}
                     displayHeight={"auto"}
                     displayMaxHeight={"none"}
                     displayMaxWidth={"none"}
@@ -523,7 +502,7 @@ function PlasmicAApplyToACommunity__RenderFunc(props: {
                         projectcss.all,
                         projectcss.a,
                         projectcss.__wab_text,
-                        sty.link___4ZBc5
+                        sty.link__iSBoI
                       )}
                       component={Link}
                       href={`/a-community-dashboard`}
@@ -537,7 +516,7 @@ function PlasmicAApplyToACommunity__RenderFunc(props: {
                         projectcss.all,
                         projectcss.a,
                         projectcss.__wab_text,
-                        sty.link__jNYit
+                        sty.link__iWfs
                       )}
                       component={Link}
                       href={`/a-service-dashboard`}
@@ -551,7 +530,7 @@ function PlasmicAApplyToACommunity__RenderFunc(props: {
                         projectcss.all,
                         projectcss.a,
                         projectcss.__wab_text,
-                        sty.link__g1ESu
+                        sty.link__pbZG
                       )}
                       component={Link}
                       legacyBehavior={false}
@@ -564,7 +543,7 @@ function PlasmicAApplyToACommunity__RenderFunc(props: {
                         projectcss.all,
                         projectcss.a,
                         projectcss.__wab_text,
-                        sty.link__fyAvW
+                        sty.link__gNUzN
                       )}
                       component={Link}
                       href={`/a-find-a-business`}
@@ -578,7 +557,7 @@ function PlasmicAApplyToACommunity__RenderFunc(props: {
                 openButton={
                   <PlasmicImg__
                     alt={""}
-                    className={classNames(sty.img__w5Bj)}
+                    className={classNames(sty.img__kx6Zd)}
                     displayHeight={"auto"}
                     displayMaxHeight={"none"}
                     displayMaxWidth={"none"}
@@ -598,16 +577,16 @@ function PlasmicAApplyToACommunity__RenderFunc(props: {
                 data-plasmic-override={overrides.account}
                 className={classNames("__wab_instance", sty.account)}
                 dropdownMenuScopeClassName={sty["account__dropdownMenu"]}
-                menuClassName={classNames({ [sty["pcls_N-PqP_9pKAr1"]]: true })}
+                menuClassName={classNames({ [sty["pcls_KJLomL-gkeyL"]]: true })}
                 menuItemClassName={classNames({
-                  [sty["pcls_OX86G1gatRYz"]]: true
+                  [sty["pcls_OECdBCUa61A6"]]: true
                 })}
                 menuItems={() => (
                   <React.Fragment>
                     <AntdMenuItem
                       className={classNames(
                         "__wab_instance",
-                        sty.menuItem___8Ntjc
+                        sty.menuItem__sXjI
                       )}
                       key={"menu-item-1"}
                     >
@@ -615,7 +594,7 @@ function PlasmicAApplyToACommunity__RenderFunc(props: {
                         className={classNames(
                           projectcss.all,
                           projectcss.__wab_text,
-                          sty.text___1KOj
+                          sty.text__itNcE
                         )}
                       >
                         {"Menu item"}
@@ -624,7 +603,7 @@ function PlasmicAApplyToACommunity__RenderFunc(props: {
                     <AntdMenuItem
                       className={classNames(
                         "__wab_instance",
-                        sty.menuItem__ggOsz
+                        sty.menuItem__kwwnv
                       )}
                       key={"menu-item-2"}
                     >
@@ -632,7 +611,7 @@ function PlasmicAApplyToACommunity__RenderFunc(props: {
                         className={classNames(
                           projectcss.all,
                           projectcss.__wab_text,
-                          sty.text__rCGfS
+                          sty.text__qKjFa
                         )}
                       >
                         {"Menu item"}
@@ -663,7 +642,7 @@ function PlasmicAApplyToACommunity__RenderFunc(props: {
                     __composite["0"]["onClick"] = async info => {
                       const $steps = {};
 
-                      $steps["goToAProfile"] = true
+                      $steps["goToALogin"] = true
                         ? (() => {
                             const actionArgs = { destination: `/a-profile` };
                             return (({ destination }) => {
@@ -681,11 +660,11 @@ function PlasmicAApplyToACommunity__RenderFunc(props: {
                           })()
                         : undefined;
                       if (
-                        $steps["goToAProfile"] != null &&
-                        typeof $steps["goToAProfile"] === "object" &&
-                        typeof $steps["goToAProfile"].then === "function"
+                        $steps["goToALogin"] != null &&
+                        typeof $steps["goToALogin"] === "object" &&
+                        typeof $steps["goToALogin"].then === "function"
                       ) {
-                        $steps["goToAProfile"] = await $steps["goToAProfile"];
+                        $steps["goToALogin"] = await $steps["goToALogin"];
                       }
                     };
                     __composite["1"]["label"] = "Edit profile";
@@ -797,29 +776,24 @@ function PlasmicAApplyToACommunity__RenderFunc(props: {
                   __composite["2"]["onClick"] = async info => {
                     const $steps = {};
 
-                    $steps["goToALogin"] = true
+                    $steps["runCode"] = true
                       ? (() => {
-                          const actionArgs = { destination: `/a-login` };
-                          return (({ destination }) => {
-                            if (
-                              typeof destination === "string" &&
-                              destination.startsWith("#")
-                            ) {
-                              document
-                                .getElementById(destination.substr(1))
-                                .scrollIntoView({ behavior: "smooth" });
-                            } else {
-                              __nextRouter?.push(destination);
+                          const actionArgs = {
+                            customFunction: async () => {
+                              return $props.onLogout?.();
                             }
+                          };
+                          return (({ customFunction }) => {
+                            return customFunction();
                           })?.apply(null, [actionArgs]);
                         })()
                       : undefined;
                     if (
-                      $steps["goToALogin"] != null &&
-                      typeof $steps["goToALogin"] === "object" &&
-                      typeof $steps["goToALogin"].then === "function"
+                      $steps["runCode"] != null &&
+                      typeof $steps["runCode"] === "object" &&
+                      typeof $steps["runCode"].then === "function"
                     ) {
-                      $steps["goToALogin"] = await $steps["goToALogin"];
+                      $steps["runCode"] = await $steps["runCode"];
                     }
                   };
                   return __composite;
@@ -831,12 +805,11 @@ function PlasmicAApplyToACommunity__RenderFunc(props: {
                   data-plasmic-name={"button"}
                   data-plasmic-override={overrides.button}
                   className={classNames("__wab_instance", sty.button)}
-                  href={`/a-login`}
                   target={true}
                 >
                   <PlasmicImg__
                     alt={""}
-                    className={classNames(sty.img___4Dn7)}
+                    className={classNames(sty.img___4Eyd)}
                     displayHeight={"30px"}
                     displayMaxHeight={"none"}
                     displayMaxWidth={"100%"}
@@ -844,6 +817,19 @@ function PlasmicAApplyToACommunity__RenderFunc(props: {
                     displayMinWidth={"0"}
                     displayWidth={"30px"}
                     loading={"lazy"}
+                    src={(() => {
+                      try {
+                        return $props.formData?.["Profile pic"] ?? null;
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return undefined;
+                        }
+                        throw e;
+                      }
+                    })()}
                   />
                 </AntdButton>
               </AntdDropdown>
@@ -869,15 +855,27 @@ function PlasmicAApplyToACommunity__RenderFunc(props: {
                 displayMinWidth={"0"}
                 displayWidth={"100px"}
                 loading={"lazy"}
-                src={{
-                  src: "/plasmic/ez_marketing_platform_sacanagem/images/semTitulo2Jpg3.jpg",
-                  fullWidth: 1014,
-                  fullHeight: 1014,
-                  aspectRatio: undefined
-                }}
+                src={(() => {
+                  try {
+                    return undefined;
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return {
+                        src: "/plasmic/ez_marketing_platform_sacanagem/images/semTitulo2Jpg3.jpg",
+                        fullWidth: 1014,
+                        fullHeight: 1014,
+                        aspectRatio: undefined
+                      };
+                    }
+                    throw e;
+                  }
+                })()}
               />
 
-              <SemTitulo1SvgIcon
+              <SemTitulo2SvgIcon
                 data-plasmic-name={"type"}
                 data-plasmic-override={overrides.type}
                 className={classNames(projectcss.all, sty.type)}
@@ -893,7 +891,23 @@ function PlasmicAApplyToACommunity__RenderFunc(props: {
                   sty.communityName
                 )}
               >
-                {"Community"}
+                <React.Fragment>
+                  {(() => {
+                    try {
+                      return (
+                        $props.formData?.["community_name"] ?? "Community name"
+                      );
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return "Community";
+                      }
+                      throw e;
+                    }
+                  })()}
+                </React.Fragment>
               </div>
             </div>
             <div className={classNames(projectcss.all, sty.freeBox__b5O07)}>
@@ -908,37 +922,34 @@ function PlasmicAApplyToACommunity__RenderFunc(props: {
               </div>
               {(() => {
                 const child$Props = {
-                  adaptiveHeight: false,
-                  arrows: false,
                   beforeChange: async (...eventArgs: any) => {
                     generateStateOnChangePropForCodeComponents(
                       $state,
                       "currentSlide",
-                      ["sliderCarousel", "currentSlide"],
+                      ["membersCarousel", "currentSlide"],
                       SliderWrapper_Helpers
                     ).apply(null, eventArgs);
                   },
-                  centerMode: false,
-                  className: classNames("__wab_instance", sty.sliderCarousel),
+                  centerMode: true,
+                  className: classNames("__wab_instance", sty.membersCarousel),
                   dots: true,
-                  fade: true,
                   focusOnSelect: true,
                   initialSlide: generateStateValueProp($state, [
-                    "sliderCarousel",
+                    "membersCarousel",
                     "currentSlide"
                   ]),
                   ref: ref => {
-                    $refs["sliderCarousel"] = ref;
+                    $refs["membersCarousel"] = ref;
                   },
-                  sliderScopeClassName: sty["sliderCarousel__slider"],
-                  slidesPerRow: 4
+                  sliderScopeClassName: sty["membersCarousel__slider"],
+                  slidesPerRow: 3
                 };
                 initializeCodeComponentStates(
                   $state,
                   [
                     {
                       name: "currentSlide",
-                      plasmicStateName: "sliderCarousel.currentSlide"
+                      plasmicStateName: "membersCarousel.currentSlide"
                     }
                   ],
                   [],
@@ -948,59 +959,112 @@ function PlasmicAApplyToACommunity__RenderFunc(props: {
 
                 return (
                   <SliderWrapper
-                    data-plasmic-name={"sliderCarousel"}
-                    data-plasmic-override={overrides.sliderCarousel}
+                    data-plasmic-name={"membersCarousel"}
+                    data-plasmic-override={overrides.membersCarousel}
                     {...child$Props}
                   >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__lrjef)}
-                    >
-                      <div
-                        data-plasmic-name={"member"}
-                        data-plasmic-override={overrides.member}
-                        className={classNames(projectcss.all, sty.member)}
-                      >
+                    {(_par =>
+                      !_par ? [] : Array.isArray(_par) ? _par : [_par])(
+                      (() => {
+                        try {
+                          return $props.formData?.members || [1];
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return [];
+                          }
+                          throw e;
+                        }
+                      })()
+                    ).map((__plasmic_item_0, __plasmic_idx_0) => {
+                      const currentItem = __plasmic_item_0;
+                      const currentIndex = __plasmic_idx_0;
+                      return (
                         <div
-                          data-plasmic-name={"office"}
-                          data-plasmic-override={overrides.office}
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.office
-                          )}
+                          data-plasmic-name={"member2"}
+                          data-plasmic-override={overrides.member2}
+                          className={classNames(projectcss.all, sty.member2)}
+                          key={currentIndex}
                         >
-                          {"Market Mananger"}
-                        </div>
-                        <PlasmicImg__
-                          data-plasmic-name={"profilePic"}
-                          data-plasmic-override={overrides.profilePic}
-                          alt={""}
-                          className={classNames(sty.profilePic)}
-                          displayHeight={"150px"}
-                          displayMaxHeight={"none"}
-                          displayMaxWidth={"100%"}
-                          displayMinHeight={"0"}
-                          displayMinWidth={"0"}
-                          displayWidth={"120px"}
-                          src={{
-                            src: "/plasmic/ez_marketing_platform_sacanagem/images/vecteezyUserAccountIconForYourDesignOnly21079672Png.png",
-                            fullWidth: 2551,
-                            fullHeight: 2551,
-                            aspectRatio: undefined
-                          }}
-                        />
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              sty.freeBox__yrWmT
+                            )}
+                          >
+                            <div
+                              data-plasmic-name={"office2"}
+                              data-plasmic-override={overrides.office2}
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.office2
+                              )}
+                            >
+                              <React.Fragment>
+                                {(() => {
+                                  try {
+                                    return currentItem.Office;
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return "Data Analyst";
+                                    }
+                                    throw e;
+                                  }
+                                })()}
+                              </React.Fragment>
+                            </div>
+                            <PlasmicImg__
+                              data-plasmic-name={"profilePic2"}
+                              data-plasmic-override={overrides.profilePic2}
+                              alt={""}
+                              className={classNames(sty.profilePic2)}
+                              displayHeight={"auto"}
+                              displayMaxHeight={"none"}
+                              displayMaxWidth={"120px"}
+                              displayMinHeight={"150px"}
+                              displayMinWidth={"0"}
+                              displayWidth={"120px"}
+                              src={(() => {
+                                try {
+                                  return currentItem["Profile pic"];
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return {
+                                      src: "/plasmic/ez_marketing_platform_sacanagem/images/vecteezyUserAccountIconForYourDesignOnly21079672Png.png",
+                                      fullWidth: 2551,
+                                      fullHeight: 2551,
+                                      aspectRatio: undefined
+                                    };
+                                  }
+                                  throw e;
+                                }
+                              })()}
+                            />
 
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__htMlv
-                          )}
-                        >
-                          {"Gold"}
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__yoVlk
+                              )}
+                            >
+                              {"Gold"}
+                            </div>
+                          </div>
                         </div>
-                      </div>
-                    </div>
+                      );
+                    })}
                   </SliderWrapper>
                 );
               })()}
@@ -1011,36 +1075,91 @@ function PlasmicAApplyToACommunity__RenderFunc(props: {
             data-plasmic-override={overrides.container2}
             className={classNames(projectcss.all, sty.container2)}
           >
-            <textarea
-              data-plasmic-name={"shortMessage"}
-              data-plasmic-override={overrides.shortMessage}
-              className={classNames(
-                projectcss.all,
-                projectcss.textarea,
-                sty.shortMessage
-              )}
-              onChange={async (...eventArgs: any) => {
-                (e => {
-                  generateStateOnChangeProp($state, ["shortMessage", "value"])(
-                    e.target.value
-                  );
-                }).apply(null, eventArgs);
-              }}
-              placeholder={
-                'If you are excited about working with this community, please enter a short message here and click "Invite"'
-              }
-              ref={ref => {
-                $refs["shortMessage"] = ref;
-              }}
-              value={
-                generateStateValueProp($state, ["shortMessage", "value"]) ?? ""
-              }
-            />
+            {(() => {
+              const child$Props = {
+                className: classNames(
+                  projectcss.all,
+                  projectcss.textarea,
+                  sty.shortMessage
+                ),
+                onChange: async (...eventArgs: any) => {
+                  (e => {
+                    generateStateOnChangeProp($state, [
+                      "shortMessage",
+                      "value"
+                    ])(e.target.value);
+                  }).apply(null, eventArgs);
+                },
+                placeholder:
+                  'If you are excited about working with this community, please enter a short message here and click "Invite"',
+                ref: ref => {
+                  $refs["shortMessage"] = ref;
+                },
+                value:
+                  generateStateValueProp($state, ["shortMessage", "value"]) ??
+                  ""
+              };
 
+              initializePlasmicStates(
+                $state,
+                [
+                  {
+                    name: "shortMessage.value",
+                    initFunc: ({ $props, $state, $queries, $q }) =>
+                      (() => {
+                        try {
+                          return (value = $props.formData?.short_message ?? "");
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return undefined;
+                          }
+                          throw e;
+                        }
+                      })()
+                  }
+                ],
+                []
+              );
+              return (
+                <textarea
+                  data-plasmic-name={"shortMessage"}
+                  data-plasmic-override={overrides.shortMessage}
+                  {...child$Props}
+                />
+              );
+            })()}
             <LoginButton
               data-plasmic-name={"inviteButon"}
               data-plasmic-override={overrides.inviteButon}
               className={classNames("__wab_instance", sty.inviteButon)}
+              onClick={async event => {
+                const $steps = {};
+
+                $steps["runCode"] = true
+                  ? (() => {
+                      const actionArgs = {
+                        customFunction: async () => {
+                          return $props.onSave({
+                            short_message: $state.shortMessage?.value ?? ""
+                          });
+                        }
+                      };
+                      return (({ customFunction }) => {
+                        return customFunction();
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["runCode"] != null &&
+                  typeof $steps["runCode"] === "object" &&
+                  typeof $steps["runCode"].then === "function"
+                ) {
+                  $steps["runCode"] = await $steps["runCode"];
+                }
+              }}
             >
               <div
                 className={classNames(
@@ -1165,3410 +1284,3862 @@ function PlasmicAApplyToACommunity__RenderFunc(props: {
           })()}
         </div>
         <div
-          data-plasmic-name={"container11"}
-          data-plasmic-override={overrides.container11}
-          className={classNames(projectcss.all, sty.container11)}
+          data-plasmic-name={"container7"}
+          data-plasmic-override={overrides.container7}
+          className={classNames(projectcss.all, sty.container7)}
         >
           <div
             className={classNames(
               projectcss.all,
               projectcss.__wab_text,
-              sty.text__g1OMk
+              sty.text___5Dr8Q
             )}
           >
             {"Expert"}
           </div>
-          <div className={classNames(projectcss.all, sty.freeBox___162Wx)}>
-            <div className={classNames(projectcss.all, sty.freeBox__ibPju)}>
-              <AntdPopover
-                data-plasmic-name={"popover21"}
-                data-plasmic-override={overrides.popover21}
-                arrow={true}
-                className={classNames("__wab_instance", sty.popover21)}
-                content={
-                  <React.Fragment>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__ej5JO)}
-                    >
+          <div className={classNames(projectcss.all, sty.freeBox__d4RcI)}>
+            {(() => {
+              try {
+                return $props.formData?.specialties?.includes(
+                  "Service Scheduling and Management Capabilities"
+                );
+              } catch (e) {
+                if (
+                  e instanceof TypeError ||
+                  e?.plasmicType === "PlasmicUndefinedDataError"
+                ) {
+                  return true;
+                }
+                throw e;
+              }
+            })() ? (
+              <div className={classNames(projectcss.all, sty.freeBox__ySFw)}>
+                <AntdPopover
+                  data-plasmic-name={"popover"}
+                  data-plasmic-override={overrides.popover}
+                  arrow={true}
+                  className={classNames("__wab_instance", sty.popover)}
+                  content={
+                    <React.Fragment>
                       <div
                         className={classNames(
                           projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__g1Srr
+                          sty.freeBox___9C3Ep
                         )}
                       >
-                        {"\u2611"}
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text___0MxAy
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__afbsD
+                          )}
+                        >
+                          {"Account Manager"}
+                        </div>
                       </div>
                       <div
                         className={classNames(
                           projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__tUq8T
+                          sty.freeBox__mEbCv
                         )}
                       >
-                        {"COO/Managing Director"}
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__f2KR
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__x1Yd9
+                          )}
+                        >
+                          {"Client Services Director"}
+                        </div>
                       </div>
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__yd2BF)}
-                    >
                       <div
                         className={classNames(
                           projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__fmzYg
+                          sty.freeBox__q4PpK
                         )}
                       >
-                        {"\u2611"}
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__nBtp
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__jejqN
+                          )}
+                        >
+                          {"Project Manager"}
+                        </div>
                       </div>
                       <div
                         className={classNames(
                           projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__oeqo6
+                          sty.freeBox__y07Qf
                         )}
                       >
-                        {"Account Manager"}
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__aGa6Q
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__rdoO3
+                          )}
+                        >
+                          {"Marketing Automation Specialist"}
+                        </div>
                       </div>
-                    </div>
+                    </React.Fragment>
+                  }
+                  contentText={"Popover contents"}
+                  defaultOpen={false}
+                  defaultStylesClassName={classNames(
+                    projectcss.root_reset,
+                    projectcss.plasmic_default_styles,
+                    projectcss.plasmic_mixins,
+                    styleTokensClassNames
+                  )}
+                  mouseEnterDelay={0}
+                  mouseLeaveDelay={0}
+                  onOpenChange={async (...eventArgs: any) => {
+                    generateStateOnChangeProp($state, [
+                      "popover",
+                      "open"
+                    ]).apply(null, eventArgs);
+                  }}
+                  open={generateStateValueProp($state, ["popover", "open"])}
+                  overlayClassName={classNames({
+                    [sty["pcls_AshiF18u8cuc"]]: true
+                  })}
+                  popoverScopeClassName={sty["popover__popover"]}
+                  title={"Professionals:"}
+                >
+                  <LoginButton
+                    className={classNames(
+                      "__wab_instance",
+                      sty.loginButton__vCv2M
+                    )}
+                    color={"sand"}
+                    shape={"rounded"}
+                    size={"compact"}
+                  >
                     <div
                       className={classNames(
                         projectcss.all,
-                        sty.freeBox___6DGvT
+                        projectcss.__wab_text,
+                        sty.text__vMvok
                       )}
                     >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___69Eb
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__oyBws
-                        )}
-                      >
-                        {"Client Services Director"}
-                      </div>
+                      {"Service Scheduling and Management Capabilities"}
                     </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__pvu9L)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__uplkd
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__mq85Z
-                        )}
-                      >
-                        {"Project Manager"}
-                      </div>
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__gqlmG)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__okWe
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__wjSIg
-                        )}
-                      >
-                        {"Marketing Automation Specialist"}
-                      </div>
-                    </div>
-                  </React.Fragment>
+                  </LoginButton>
+                </AntdPopover>
+              </div>
+            ) : null}
+            {(() => {
+              try {
+                return $props.formData?.specialties?.includes(
+                  "Influencer and Content Creator Presence"
+                );
+              } catch (e) {
+                if (
+                  e instanceof TypeError ||
+                  e?.plasmicType === "PlasmicUndefinedDataError"
+                ) {
+                  return true;
                 }
-                contentText={"Popover contents"}
-                defaultOpen={false}
-                defaultStylesClassName={classNames(
-                  projectcss.root_reset,
-                  projectcss.plasmic_default_styles,
-                  projectcss.plasmic_mixins,
-                  styleTokensClassNames
-                )}
-                mouseEnterDelay={0}
-                mouseLeaveDelay={0}
-                onOpenChange={async (...eventArgs: any) => {
-                  generateStateOnChangeProp($state, [
-                    "popover21",
-                    "open"
-                  ]).apply(null, eventArgs);
-                }}
-                open={generateStateValueProp($state, ["popover21", "open"])}
-                popoverScopeClassName={sty["popover21__popover"]}
-                title={
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text___3CeJ7
-                    )}
-                  >
-                    {"Professionals:"}
-                  </div>
-                }
-              >
-                <LoginButton
-                  className={classNames(
-                    "__wab_instance",
-                    sty.loginButton__koAcb
+                throw e;
+              }
+            })() ? (
+              <div className={classNames(projectcss.all, sty.freeBox__zZh5Y)}>
+                <AntdPopover
+                  data-plasmic-name={"popover3"}
+                  data-plasmic-override={overrides.popover3}
+                  arrow={true}
+                  className={classNames("__wab_instance", sty.popover3)}
+                  content={
+                    <React.Fragment>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__obS1O
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__qIsxb
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__fPyv4
+                          )}
+                        >
+                          {"Influencer Marketing Manager"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox___4Bgsl
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__pEPgs
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__ivRmg
+                          )}
+                        >
+                          {"Social Media Manager"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox___1GzD5
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__hzQCg
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text___6Yrac
+                          )}
+                        >
+                          {"Content Strategist"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__qbOgV
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__wazbW
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__nv4ER
+                          )}
+                        >
+                          {"Copywriter"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__r9FHo
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__sIjKu
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__cnGD
+                          )}
+                        >
+                          {"Videographer"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__sxr9X
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__nt0K0
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text___7OvFi
+                          )}
+                        >
+                          {"Public Relations Specialist"}
+                        </div>
+                      </div>
+                    </React.Fragment>
+                  }
+                  contentText={"Popover contents"}
+                  defaultOpen={false}
+                  defaultStylesClassName={classNames(
+                    projectcss.root_reset,
+                    projectcss.plasmic_default_styles,
+                    projectcss.plasmic_mixins,
+                    styleTokensClassNames
                   )}
-                  color={"sand"}
-                  shape={"rounded"}
-                  size={"compact"}
+                  mouseEnterDelay={0}
+                  mouseLeaveDelay={0}
+                  onOpenChange={async (...eventArgs: any) => {
+                    generateStateOnChangeProp($state, [
+                      "popover3",
+                      "open"
+                    ]).apply(null, eventArgs);
+                  }}
+                  open={generateStateValueProp($state, ["popover3", "open"])}
+                  overlayClassName={classNames({
+                    [sty["pcls_NSNXtyFw-bDA"]]: true
+                  })}
+                  popoverScopeClassName={sty["popover3__popover"]}
+                  title={"Professionals:"}
                 >
-                  <div
+                  <LoginButton
                     className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__fJMv
+                      "__wab_instance",
+                      sty.loginButton__t21Qv
                     )}
+                    color={"sand"}
+                    link={`/affiliate-homepage`}
+                    shape={"rounded"}
+                    size={"compact"}
                   >
-                    {"Service Scheduling and Management Capabilities"}
-                  </div>
-                </LoginButton>
-              </AntdPopover>
-            </div>
-            <div className={classNames(projectcss.all, sty.freeBox__kRlqE)}>
-              <AntdPopover
-                data-plasmic-name={"popover22"}
-                data-plasmic-override={overrides.popover22}
-                arrow={true}
-                className={classNames("__wab_instance", sty.popover22)}
-                content={
-                  <React.Fragment>
                     <div
                       className={classNames(
                         projectcss.all,
-                        sty.freeBox___0WbDz
+                        projectcss.__wab_text,
+                        sty.text___8YCbv
                       )}
                     >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__nqBem
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__bsBjR
-                        )}
-                      >
-                        {"Influencer Marketing Manager"}
-                      </div>
+                      {"Influencer and Content Creator Presence"}
                     </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__k64Wq)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___3BNl1
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__qoTUs
-                        )}
-                      >
-                        {"Social Media Manager"}
-                      </div>
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__fkm98)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__rYjWn
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__bp5
-                        )}
-                      >
-                        {"Content Strategist"}
-                      </div>
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__wj0I2)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__blgrx
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__tZ5Qs
-                        )}
-                      >
-                        {"Copywriter"}
-                      </div>
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__kj30T)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___1M9AF
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__ou2JE
-                        )}
-                      >
-                        {"Videographer"}
-                      </div>
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__y20Av)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__xQx2T
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__acv2V
-                        )}
-                      >
-                        {"Public Relations Specialist"}
-                      </div>
-                    </div>
-                  </React.Fragment>
+                  </LoginButton>
+                </AntdPopover>
+              </div>
+            ) : null}
+            {(() => {
+              try {
+                return $props.formData?.specialties?.includes(
+                  "Commercial Production Capabilities"
+                );
+              } catch (e) {
+                if (
+                  e instanceof TypeError ||
+                  e?.plasmicType === "PlasmicUndefinedDataError"
+                ) {
+                  return true;
                 }
-                contentText={"Popover contents"}
-                defaultOpen={false}
-                defaultStylesClassName={classNames(
-                  projectcss.root_reset,
-                  projectcss.plasmic_default_styles,
-                  projectcss.plasmic_mixins,
-                  styleTokensClassNames
-                )}
-                mouseEnterDelay={0}
-                mouseLeaveDelay={0}
-                onOpenChange={async (...eventArgs: any) => {
-                  generateStateOnChangeProp($state, [
-                    "popover22",
-                    "open"
-                  ]).apply(null, eventArgs);
-                }}
-                open={generateStateValueProp($state, ["popover22", "open"])}
-                popoverScopeClassName={sty["popover22__popover"]}
-                title={
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text___7MJs2
-                    )}
-                  >
-                    {"Professionals:"}
-                  </div>
-                }
-              >
-                <LoginButton
-                  className={classNames(
-                    "__wab_instance",
-                    sty.loginButton__azku7
+                throw e;
+              }
+            })() ? (
+              <div className={classNames(projectcss.all, sty.freeBox__ooHoh)}>
+                <AntdPopover
+                  data-plasmic-name={"popover4"}
+                  data-plasmic-override={overrides.popover4}
+                  arrow={true}
+                  className={classNames("__wab_instance", sty.popover4)}
+                  content={
+                    <React.Fragment>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__p8HAk
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__w6IAw
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__rTddv
+                          )}
+                        >
+                          {"Copywriter"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__tnAyx
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__inyvq
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__pRbxB
+                          )}
+                        >
+                          {"Videographer"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__nTdHq
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__mawdn
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__nxtXt
+                          )}
+                        >
+                          {"Creative Director"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__to5Q1
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__rXwye
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__blgDo
+                          )}
+                        >
+                          {"Art Director"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__vwro9
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text___4DtCo
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text___4Oo3
+                          )}
+                        >
+                          {"Creative Director"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__u3UIc
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__n4Hi0
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__oDEb
+                          )}
+                        >
+                          {"Graphic Designer"}
+                        </div>
+                      </div>
+                    </React.Fragment>
+                  }
+                  contentText={"Popover contents"}
+                  defaultOpen={false}
+                  defaultStylesClassName={classNames(
+                    projectcss.root_reset,
+                    projectcss.plasmic_default_styles,
+                    projectcss.plasmic_mixins,
+                    styleTokensClassNames
                   )}
-                  color={"sand"}
-                  shape={"rounded"}
-                  size={"compact"}
+                  mouseEnterDelay={0}
+                  mouseLeaveDelay={0}
+                  onOpenChange={async (...eventArgs: any) => {
+                    generateStateOnChangeProp($state, [
+                      "popover4",
+                      "open"
+                    ]).apply(null, eventArgs);
+                  }}
+                  open={generateStateValueProp($state, ["popover4", "open"])}
+                  overlayClassName={classNames({
+                    [sty["pcls_myJ_Ujv00M3Q"]]: true
+                  })}
+                  popoverScopeClassName={sty["popover4__popover"]}
+                  title={"Professionals:"}
                 >
-                  <div
+                  <LoginButton
                     className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__pa5Fs
+                      "__wab_instance",
+                      sty.loginButton___3UksA
                     )}
+                    color={"sand"}
+                    link={`/affiliate-homepage`}
+                    shape={"rounded"}
+                    size={"compact"}
                   >
-                    {"Influencer and Content Creator Presence"}
-                  </div>
-                </LoginButton>
-              </AntdPopover>
-            </div>
-            <div className={classNames(projectcss.all, sty.freeBox__xw8Yr)}>
-              <AntdPopover
-                data-plasmic-name={"popover23"}
-                data-plasmic-override={overrides.popover23}
-                arrow={true}
-                className={classNames("__wab_instance", sty.popover23)}
-                content={
-                  <React.Fragment>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__dhlMa)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___9DvQz
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___0R8UX
-                        )}
-                      >
-                        {"Copywriter"}
-                      </div>
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox___15SN)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__jPk0
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__ykLwE
-                        )}
-                      >
-                        {"Videographer"}
-                      </div>
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__hnhGt)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__nmLpT
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__nHMtf
-                        )}
-                      >
-                        {"Creative Director"}
-                      </div>
-                    </div>
                     <div
                       className={classNames(
                         projectcss.all,
-                        sty.freeBox___2FV9Z
+                        projectcss.__wab_text,
+                        sty.text__eFc5T
                       )}
                     >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__gKl3
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__wzF5H
-                        )}
-                      >
-                        {"Art Director"}
-                      </div>
+                      {"Commercial Production Capabilities"}
                     </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__sVxgr)}
-                    >
+                  </LoginButton>
+                </AntdPopover>
+              </div>
+            ) : null}
+            {(() => {
+              try {
+                return $props.formData?.specialties?.includes(
+                  "Online Customer Service"
+                );
+              } catch (e) {
+                if (
+                  e instanceof TypeError ||
+                  e?.plasmicType === "PlasmicUndefinedDataError"
+                ) {
+                  return true;
+                }
+                throw e;
+              }
+            })() ? (
+              <div className={classNames(projectcss.all, sty.freeBox___16SQj)}>
+                <AntdPopover
+                  data-plasmic-name={"popover2"}
+                  data-plasmic-override={overrides.popover2}
+                  arrow={true}
+                  className={classNames("__wab_instance", sty.popover2)}
+                  content={
+                    <React.Fragment>
                       <div
                         className={classNames(
                           projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__gbhql
+                          sty.freeBox__meHe4
                         )}
                       >
-                        {"\u2611"}
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__purj5
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text___8VYwo
+                          )}
+                        >
+                          {"Account Manager"}
+                        </div>
                       </div>
                       <div
                         className={classNames(
                           projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__wp5Qw
+                          sty.freeBox__teBlF
                         )}
                       >
-                        {"Creative Director"}
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__eeRbd
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__xsJ0Z
+                          )}
+                        >
+                          {"Client Services Director"}
+                        </div>
                       </div>
-                    </div>
-                  </React.Fragment>
-                }
-                contentText={"Popover contents"}
-                defaultOpen={false}
-                defaultStylesClassName={classNames(
-                  projectcss.root_reset,
-                  projectcss.plasmic_default_styles,
-                  projectcss.plasmic_mixins,
-                  styleTokensClassNames
-                )}
-                mouseEnterDelay={0}
-                mouseLeaveDelay={0}
-                onOpenChange={async (...eventArgs: any) => {
-                  generateStateOnChangeProp($state, [
-                    "popover23",
-                    "open"
-                  ]).apply(null, eventArgs);
-                }}
-                open={generateStateValueProp($state, ["popover23", "open"])}
-                popoverScopeClassName={sty["popover23__popover"]}
-                title={
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__fNs7M
-                    )}
-                  >
-                    {"Professionals:"}
-                  </div>
-                }
-              >
-                <LoginButton
-                  className={classNames(
-                    "__wab_instance",
-                    sty.loginButton__dIPg
+                    </React.Fragment>
+                  }
+                  contentText={"Popover contents"}
+                  defaultOpen={false}
+                  defaultStylesClassName={classNames(
+                    projectcss.root_reset,
+                    projectcss.plasmic_default_styles,
+                    projectcss.plasmic_mixins,
+                    styleTokensClassNames
                   )}
-                  color={"sand"}
-                  shape={"rounded"}
-                  size={"compact"}
+                  mouseEnterDelay={0}
+                  mouseLeaveDelay={0}
+                  onOpenChange={async (...eventArgs: any) => {
+                    generateStateOnChangeProp($state, [
+                      "popover2",
+                      "open"
+                    ]).apply(null, eventArgs);
+                  }}
+                  open={generateStateValueProp($state, ["popover2", "open"])}
+                  overlayClassName={classNames({
+                    [sty["pcls_eECQVfWRB4WM"]]: true
+                  })}
+                  popoverScopeClassName={sty["popover2__popover"]}
+                  title={"Professionals:"}
                 >
-                  <div
+                  <LoginButton
                     className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__aIoWs
+                      "__wab_instance",
+                      sty.loginButton__jaAo
                     )}
+                    color={"sand"}
+                    link={`/affiliate-homepage`}
+                    shape={"rounded"}
+                    size={"compact"}
                   >
-                    {"Commercial Production Capabilities"}
-                  </div>
-                </LoginButton>
-              </AntdPopover>
-            </div>
-            <div className={classNames(projectcss.all, sty.freeBox___7TbyL)}>
-              <AntdPopover
-                data-plasmic-name={"popover24"}
-                data-plasmic-override={overrides.popover24}
-                arrow={true}
-                className={classNames("__wab_instance", sty.popover24)}
-                content={
-                  <React.Fragment>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__wEu6K)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__zzQhh
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__p47Fp
-                        )}
-                      >
-                        {"COO/Managing Director"}
-                      </div>
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__etEy)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__jwn3D
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__pcJfF
-                        )}
-                      >
-                        {"Account Manager"}
-                      </div>
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__naaz3)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___71DV8
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__xvDhQ
-                        )}
-                      >
-                        {"Client Services Director"}
-                      </div>
-                    </div>
-                  </React.Fragment>
-                }
-                contentText={"Popover contents"}
-                defaultOpen={false}
-                defaultStylesClassName={classNames(
-                  projectcss.root_reset,
-                  projectcss.plasmic_default_styles,
-                  projectcss.plasmic_mixins,
-                  styleTokensClassNames
-                )}
-                mouseEnterDelay={0}
-                mouseLeaveDelay={0}
-                onOpenChange={async (...eventArgs: any) => {
-                  generateStateOnChangeProp($state, [
-                    "popover24",
-                    "open"
-                  ]).apply(null, eventArgs);
-                }}
-                open={generateStateValueProp($state, ["popover24", "open"])}
-                popoverScopeClassName={sty["popover24__popover"]}
-                title={
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__q0VKm
-                    )}
-                  >
-                    {"Professionals:"}
-                  </div>
-                }
-              >
-                <LoginButton
-                  className={classNames(
-                    "__wab_instance",
-                    sty.loginButton__wWvGp
-                  )}
-                  color={"sand"}
-                  shape={"rounded"}
-                  size={"compact"}
-                >
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__q4C3M
-                    )}
-                  >
-                    {"Online Customer Service"}
-                  </div>
-                </LoginButton>
-              </AntdPopover>
-            </div>
-            <div className={classNames(projectcss.all, sty.freeBox__fcNqx)}>
-              <AntdPopover
-                data-plasmic-name={"popover25"}
-                data-plasmic-override={overrides.popover25}
-                arrow={true}
-                className={classNames("__wab_instance", sty.popover25)}
-                content={
-                  <React.Fragment>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__jtlSi)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__lt2I
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__rl4Mk
-                        )}
-                      >
-                        {"Brand Strategist"}
-                      </div>
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__bfhfu)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__y4BQv
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__xaw7Y
-                        )}
-                      >
-                        {"Marketing Analyst"}
-                      </div>
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__uf9V2)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__qhYuG
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__xBQsR
-                        )}
-                      >
-                        {"SEO Specialist"}
-                      </div>
-                    </div>
                     <div
                       className={classNames(
                         projectcss.all,
-                        sty.freeBox___53OnI
+                        projectcss.__wab_text,
+                        sty.text__j4VeA
                       )}
                     >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__gy4An
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__d5MY
-                        )}
-                      >
-                        {"PPC Specialist"}
-                      </div>
+                      {"Online Customer Service"}
                     </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__sDg2L)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__a8QCz
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__jVZg
-                        )}
-                      >
-                        {"Business Development Manager"}
-                      </div>
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__vAJbs)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___3V23G
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___3RogE
-                        )}
-                      >
-                        {"Marketing Coordinator"}
-                      </div>
-                    </div>
-                  </React.Fragment>
+                  </LoginButton>
+                </AntdPopover>
+              </div>
+            ) : null}
+            {(() => {
+              try {
+                return $props.formData?.specialties?.includes(
+                  "Specialization in Vertical Sectors"
+                );
+              } catch (e) {
+                if (
+                  e instanceof TypeError ||
+                  e?.plasmicType === "PlasmicUndefinedDataError"
+                ) {
+                  return true;
                 }
-                contentText={"Popover contents"}
-                defaultOpen={false}
-                defaultStylesClassName={classNames(
-                  projectcss.root_reset,
-                  projectcss.plasmic_default_styles,
-                  projectcss.plasmic_mixins,
-                  styleTokensClassNames
-                )}
-                mouseEnterDelay={0}
-                mouseLeaveDelay={0}
-                onOpenChange={async (...eventArgs: any) => {
-                  generateStateOnChangeProp($state, [
-                    "popover25",
-                    "open"
-                  ]).apply(null, eventArgs);
-                }}
-                open={generateStateValueProp($state, ["popover25", "open"])}
-                popoverScopeClassName={sty["popover25__popover"]}
-                title={
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__cHjb
-                    )}
-                  >
-                    {"Professionals:"}
-                  </div>
-                }
-              >
-                <LoginButton
-                  className={classNames(
-                    "__wab_instance",
-                    sty.loginButton__vuAoj
+                throw e;
+              }
+            })() ? (
+              <div className={classNames(projectcss.all, sty.freeBox__tgpOr)}>
+                <AntdPopover
+                  data-plasmic-name={"popover5"}
+                  data-plasmic-override={overrides.popover5}
+                  arrow={true}
+                  className={classNames("__wab_instance", sty.popover5)}
+                  content={
+                    <React.Fragment>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__iKOm
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__kE78O
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__zicaw
+                          )}
+                        >
+                          {"Brand Strategist"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__baCzd
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__eoS
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__wSsKq
+                          )}
+                        >
+                          {"Marketing Analyst"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__mUTph
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__dIzXs
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__o1Iq5
+                          )}
+                        >
+                          {"SEO Specialist"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox___1CnoT
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__qb3Xw
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text___5THyP
+                          )}
+                        >
+                          {"PPC Specialist"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__jaZtF
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text___6Wa34
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__qVmcD
+                          )}
+                        >
+                          {"Business Development Manager"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__aq4Aq
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__mtJ8
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__qcmgq
+                          )}
+                        >
+                          {"Marketing Coordinator"}
+                        </div>
+                      </div>
+                    </React.Fragment>
+                  }
+                  contentText={"Popover contents"}
+                  defaultOpen={false}
+                  defaultStylesClassName={classNames(
+                    projectcss.root_reset,
+                    projectcss.plasmic_default_styles,
+                    projectcss.plasmic_mixins,
+                    styleTokensClassNames
                   )}
-                  color={"sand"}
-                  shape={"rounded"}
-                  size={"compact"}
+                  mouseEnterDelay={0}
+                  mouseLeaveDelay={0}
+                  onOpenChange={async (...eventArgs: any) => {
+                    generateStateOnChangeProp($state, [
+                      "popover5",
+                      "open"
+                    ]).apply(null, eventArgs);
+                  }}
+                  open={generateStateValueProp($state, ["popover5", "open"])}
+                  overlayClassName={classNames({
+                    [sty["pcls_iyGtn1rwRuI1"]]: true
+                  })}
+                  popoverScopeClassName={sty["popover5__popover"]}
+                  title={"Professionals:"}
                 >
-                  <div
+                  <LoginButton
                     className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__gPdD
+                      "__wab_instance",
+                      sty.loginButton__fViqQ
                     )}
+                    color={"sand"}
+                    link={`/affiliate-homepage`}
+                    shape={"rounded"}
+                    size={"compact"}
                   >
-                    {"Specialization in Vertical Sectors"}
-                  </div>
-                </LoginButton>
-              </AntdPopover>
-            </div>
-            <div className={classNames(projectcss.all, sty.freeBox__bd6S5)}>
-              <AntdPopover
-                data-plasmic-name={"popover26"}
-                data-plasmic-override={overrides.popover26}
-                arrow={true}
-                className={classNames("__wab_instance", sty.popover26)}
-                content={
-                  <React.Fragment>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__rkv5V)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__d8QhU
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__d14Hc
-                        )}
-                      >
-                        {"Brand Strategist"}
-                      </div>
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__xfsO)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___0Iujs
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__aGmWa
-                        )}
-                      >
-                        {"Creative Director"}
-                      </div>
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__cXwVo)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__r8VsL
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__bmw4M
-                        )}
-                      >
-                        {"Art Director"}
-                      </div>
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__dvLm)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__n3ImQ
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__ltAQo
-                        )}
-                      >
-                        {"Graphic Designer"}
-                      </div>
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__a7Ar8)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__h84Jn
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__kwXiP
-                        )}
-                      >
-                        {"UX/UI Designer"}
-                      </div>
-                    </div>
                     <div
                       className={classNames(
                         projectcss.all,
-                        sty.freeBox___9ZtJi
+                        projectcss.__wab_text,
+                        sty.text__thPf
                       )}
                     >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__g9Ido
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__mYyUz
-                        )}
-                      >
-                        {"Copywriter"}
-                      </div>
+                      {"Specialization in Vertical Sectors"}
                     </div>
-                  </React.Fragment>
+                  </LoginButton>
+                </AntdPopover>
+              </div>
+            ) : null}
+            {(() => {
+              try {
+                return $props.formData?.specialties?.includes(
+                  "Brand Development and Visual Identity Capabilities"
+                );
+              } catch (e) {
+                if (
+                  e instanceof TypeError ||
+                  e?.plasmicType === "PlasmicUndefinedDataError"
+                ) {
+                  return true;
                 }
-                contentText={"Popover contents"}
-                defaultOpen={false}
-                defaultStylesClassName={classNames(
-                  projectcss.root_reset,
-                  projectcss.plasmic_default_styles,
-                  projectcss.plasmic_mixins,
-                  styleTokensClassNames
-                )}
-                mouseEnterDelay={0}
-                mouseLeaveDelay={0}
-                onOpenChange={async (...eventArgs: any) => {
-                  generateStateOnChangeProp($state, [
-                    "popover26",
-                    "open"
-                  ]).apply(null, eventArgs);
-                }}
-                open={generateStateValueProp($state, ["popover26", "open"])}
-                popoverScopeClassName={sty["popover26__popover"]}
-                title={
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__uYjVj
-                    )}
-                  >
-                    {"Professionals:"}
-                  </div>
-                }
-              >
-                <LoginButton
-                  className={classNames(
-                    "__wab_instance",
-                    sty.loginButton__n3C7D
+                throw e;
+              }
+            })() ? (
+              <div className={classNames(projectcss.all, sty.freeBox__ggOaz)}>
+                <AntdPopover
+                  data-plasmic-name={"popover6"}
+                  data-plasmic-override={overrides.popover6}
+                  arrow={true}
+                  className={classNames("__wab_instance", sty.popover6)}
+                  content={
+                    <React.Fragment>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__do6L5
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__ra6K
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__gtUbn
+                          )}
+                        >
+                          {"Brand Strategist"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__bCFbU
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__pfgcs
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__nrHLe
+                          )}
+                        >
+                          {"Creative Director"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__shJ4H
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__mpPuK
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__kFbyg
+                          )}
+                        >
+                          {"Art Director"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__tv8SO
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__d5THr
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__nj3Hg
+                          )}
+                        >
+                          {"Graphic Designer"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__nL93
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__owlVq
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__za3Ax
+                          )}
+                        >
+                          {"UX/UI Designer"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__i9By7
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__nSkny
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__wjNfU
+                          )}
+                        >
+                          {"Copywriter"}
+                        </div>
+                      </div>
+                    </React.Fragment>
+                  }
+                  contentText={"Popover contents"}
+                  defaultOpen={false}
+                  defaultStylesClassName={classNames(
+                    projectcss.root_reset,
+                    projectcss.plasmic_default_styles,
+                    projectcss.plasmic_mixins,
+                    styleTokensClassNames
                   )}
-                  color={"sand"}
-                  shape={"rounded"}
-                  size={"compact"}
+                  mouseEnterDelay={0}
+                  mouseLeaveDelay={0}
+                  onOpenChange={async (...eventArgs: any) => {
+                    generateStateOnChangeProp($state, [
+                      "popover6",
+                      "open"
+                    ]).apply(null, eventArgs);
+                  }}
+                  open={generateStateValueProp($state, ["popover6", "open"])}
+                  overlayClassName={classNames({
+                    [sty["pcls_dHiSIbiKj81E"]]: true
+                  })}
+                  popoverScopeClassName={sty["popover6__popover"]}
+                  title={"Professionals:"}
                 >
-                  <div
+                  <LoginButton
                     className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__tW0Jq
+                      "__wab_instance",
+                      sty.loginButton___10P8O
                     )}
+                    color={"sand"}
+                    link={`/affiliate-homepage`}
+                    shape={"rounded"}
+                    size={"compact"}
                   >
-                    {"Brand Development and Visual Identity Capabilities"}
-                  </div>
-                </LoginButton>
-              </AntdPopover>
-            </div>
-            <div className={classNames(projectcss.all, sty.freeBox__b2803)}>
-              <AntdPopover
-                data-plasmic-name={"popover7"}
-                data-plasmic-override={overrides.popover7}
-                arrow={true}
-                className={classNames("__wab_instance", sty.popover7)}
-                content={
-                  <React.Fragment>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__rkf9Z)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___699Zs
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__g4Y9H
-                        )}
-                      >
-                        {"Project Manager"}
-                      </div>
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__aO7Q9)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__kcoft
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___0XS
-                        )}
-                      >
-                        {"Public Relations Specialist"}
-                      </div>
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__smZny)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__gznkr
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__aAf6N
-                        )}
-                      >
-                        {"Content Strategist"}
-                      </div>
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__a6RW3)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__t95OC
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__ymTvd
-                        )}
-                      >
-                        {"Digital Marketing Manager"}
-                      </div>
-                    </div>
-                  </React.Fragment>
-                }
-                contentText={"Popover contents"}
-                defaultOpen={false}
-                defaultStylesClassName={classNames(
-                  projectcss.root_reset,
-                  projectcss.plasmic_default_styles,
-                  projectcss.plasmic_mixins,
-                  styleTokensClassNames
-                )}
-                mouseEnterDelay={0}
-                mouseLeaveDelay={0}
-                onOpenChange={async (...eventArgs: any) => {
-                  generateStateOnChangeProp($state, ["popover7", "open"]).apply(
-                    null,
-                    eventArgs
-                  );
-                }}
-                open={generateStateValueProp($state, ["popover7", "open"])}
-                popoverScopeClassName={sty["popover7__popover"]}
-                title={
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__gdp3K
-                    )}
-                  >
-                    {"Professionals:"}
-                  </div>
-                }
-              >
-                <LoginButton
-                  className={classNames(
-                    "__wab_instance",
-                    sty.loginButton__jcqzh
-                  )}
-                  color={"sand"}
-                  shape={"rounded"}
-                  size={"compact"}
-                >
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text___7Ns6
-                    )}
-                  >
-                    {"Event Production and Management Capabilities"}
-                  </div>
-                </LoginButton>
-              </AntdPopover>
-            </div>
-            <div className={classNames(projectcss.all, sty.freeBox__o320R)}>
-              <AntdPopover
-                data-plasmic-name={"popover8"}
-                data-plasmic-override={overrides.popover8}
-                arrow={true}
-                className={classNames("__wab_instance", sty.popover8)}
-                content={
-                  <React.Fragment>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__qhuwT)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__g6YBm
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___8T4Qi
-                        )}
-                      >
-                        {"Digital Marketing Manager"}
-                      </div>
-                    </div>
                     <div
                       className={classNames(
                         projectcss.all,
-                        sty.freeBox___7Gfkt
+                        projectcss.__wab_text,
+                        sty.text__teMjt
                       )}
                     >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__abfnp
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__mRkO
-                        )}
-                      >
-                        {"PPC Specialist"}
-                      </div>
+                      {"Brand Development and Visual Identity Capabilities"}
                     </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__bKkzi)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__bI0L5
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__gaQi8
-                        )}
-                      >
-                        {"SEO Specialist"}
-                      </div>
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__utCNh)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__nSymw
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__ch1Et
-                        )}
-                      >
-                        {"Marketing Analyst"}
-                      </div>
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__oo9M)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__pe5AB
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___8Whc
-                        )}
-                      >
-                        {"Data Analyst"}
-                      </div>
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__eFnVj)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___4AB4O
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___0EWw
-                        )}
-                      >
-                        {"Marketing Automation Specialist"}
-                      </div>
-                    </div>
-                  </React.Fragment>
+                  </LoginButton>
+                </AntdPopover>
+              </div>
+            ) : null}
+            {(() => {
+              try {
+                return $props.formData?.specialties?.includes(
+                  "Event Production and Management Capabilities"
+                );
+              } catch (e) {
+                if (
+                  e instanceof TypeError ||
+                  e?.plasmicType === "PlasmicUndefinedDataError"
+                ) {
+                  return true;
                 }
-                contentText={"Popover contents"}
-                defaultOpen={false}
-                defaultStylesClassName={classNames(
-                  projectcss.root_reset,
-                  projectcss.plasmic_default_styles,
-                  projectcss.plasmic_mixins,
-                  styleTokensClassNames
-                )}
-                mouseEnterDelay={0}
-                mouseLeaveDelay={0}
-                onOpenChange={async (...eventArgs: any) => {
-                  generateStateOnChangeProp($state, ["popover8", "open"]).apply(
-                    null,
-                    eventArgs
-                  );
-                }}
-                open={generateStateValueProp($state, ["popover8", "open"])}
-                popoverScopeClassName={sty["popover8__popover"]}
-                title={
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__yxJrf
-                    )}
-                  >
-                    {"Professionals:"}
-                  </div>
-                }
-              >
-                <LoginButton
-                  className={classNames(
-                    "__wab_instance",
-                    sty.loginButton__cHxeb
+                throw e;
+              }
+            })() ? (
+              <div className={classNames(projectcss.all, sty.freeBox__ztj6X)}>
+                <AntdPopover
+                  data-plasmic-name={"popover27"}
+                  data-plasmic-override={overrides.popover27}
+                  arrow={true}
+                  className={classNames("__wab_instance", sty.popover27)}
+                  content={
+                    <React.Fragment>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__wybhi
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__yT331
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__ai5Ft
+                          )}
+                        >
+                          {"Project Manager"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox___4Kgnt
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__pZi
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__cnmob
+                          )}
+                        >
+                          {"Public Relations Specialist"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__xAvUo
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__rEpMz
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__riaPy
+                          )}
+                        >
+                          {"Content Strategist"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__hPj0M
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__vXpr
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__mIvLy
+                          )}
+                        >
+                          {"Digital Marketing Manager"}
+                        </div>
+                      </div>
+                    </React.Fragment>
+                  }
+                  contentText={"Popover contents"}
+                  defaultOpen={false}
+                  defaultStylesClassName={classNames(
+                    projectcss.root_reset,
+                    projectcss.plasmic_default_styles,
+                    projectcss.plasmic_mixins,
+                    styleTokensClassNames
                   )}
-                  color={"sand"}
-                  shape={"rounded"}
-                  size={"compact"}
+                  mouseEnterDelay={0}
+                  mouseLeaveDelay={0}
+                  onOpenChange={async (...eventArgs: any) => {
+                    generateStateOnChangeProp($state, [
+                      "popover27",
+                      "open"
+                    ]).apply(null, eventArgs);
+                  }}
+                  open={generateStateValueProp($state, ["popover27", "open"])}
+                  overlayClassName={classNames({
+                    [sty["pcls_ikNDZO7YSJ1Z"]]: true
+                  })}
+                  popoverScopeClassName={sty["popover27__popover"]}
+                  title={"Professionals:"}
                 >
-                  <div
+                  <LoginButton
                     className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__ewFqp
+                      "__wab_instance",
+                      sty.loginButton___7M0EI
                     )}
+                    color={"sand"}
+                    link={`/affiliate-homepage`}
+                    shape={"rounded"}
+                    size={"compact"}
                   >
-                    {"Performance Campaign Management Capabilities"}
-                  </div>
-                </LoginButton>
-              </AntdPopover>
-            </div>
-            <div className={classNames(projectcss.all, sty.freeBox__vbz2D)}>
-              <AntdPopover
-                data-plasmic-name={"popover9"}
-                data-plasmic-override={overrides.popover9}
-                arrow={true}
-                className={classNames("__wab_instance", sty.popover9)}
-                content={
-                  <React.Fragment>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__jGnnZ)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__tNmWv
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__tSaEj
-                        )}
-                      >
-                        {"Videographer"}
-                      </div>
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__wSyDn)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___2ZLu7
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__qTio
-                        )}
-                      >
-                        {"Creative Director"}
-                      </div>
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__hu8VE)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___8TsJa
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___0ZksF
-                        )}
-                      >
-                        {"Art Director"}
-                      </div>
-                    </div>
                     <div
                       className={classNames(
                         projectcss.all,
-                        sty.freeBox___5VnPb
+                        projectcss.__wab_text,
+                        sty.text___3HxJu
                       )}
                     >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__emZpd
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__nyBao
-                        )}
-                      >
-                        {"Copywriter"}
-                      </div>
+                      {"Event Production and Management Capabilities"}
                     </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__bLiFj)}
-                    >
+                  </LoginButton>
+                </AntdPopover>
+              </div>
+            ) : null}
+            {(() => {
+              try {
+                return $props.formData?.specialties?.includes(
+                  "Performance Campaign Management Capabilities"
+                );
+              } catch (e) {
+                if (
+                  e instanceof TypeError ||
+                  e?.plasmicType === "PlasmicUndefinedDataError"
+                ) {
+                  return true;
+                }
+                throw e;
+              }
+            })() ? (
+              <div className={classNames(projectcss.all, sty.freeBox__fqpk1)}>
+                <AntdPopover
+                  data-plasmic-name={"popover28"}
+                  data-plasmic-override={overrides.popover28}
+                  arrow={true}
+                  className={classNames("__wab_instance", sty.popover28)}
+                  content={
+                    <React.Fragment>
                       <div
                         className={classNames(
                           projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___29AEg
+                          sty.freeBox___5NQ3F
                         )}
                       >
-                        {"\u2611"}
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text___3JWi5
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__eeSz6
+                          )}
+                        >
+                          {"Digital Marketing Manager"}
+                        </div>
                       </div>
                       <div
                         className={classNames(
                           projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__hSpfv
+                          sty.freeBox___1C91J
                         )}
                       >
-                        {"Graphic Designer"}
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__tq4B1
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__dhIa3
+                          )}
+                        >
+                          {"PPC Specialist"}
+                        </div>
                       </div>
-                    </div>
-                  </React.Fragment>
-                }
-                contentText={"Popover contents"}
-                defaultOpen={false}
-                defaultStylesClassName={classNames(
-                  projectcss.root_reset,
-                  projectcss.plasmic_default_styles,
-                  projectcss.plasmic_mixins,
-                  styleTokensClassNames
-                )}
-                mouseEnterDelay={0}
-                mouseLeaveDelay={0}
-                onOpenChange={async (...eventArgs: any) => {
-                  generateStateOnChangeProp($state, ["popover9", "open"]).apply(
-                    null,
-                    eventArgs
-                  );
-                }}
-                open={generateStateValueProp($state, ["popover9", "open"])}
-                popoverScopeClassName={sty["popover9__popover"]}
-                title={
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__mdmpo
-                    )}
-                  >
-                    {"Professionals:"}
-                  </div>
-                }
-              >
-                <LoginButton
-                  className={classNames(
-                    "__wab_instance",
-                    sty.loginButton__yndDr
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__n4L2U
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__bc0P5
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__ibwMm
+                          )}
+                        >
+                          {"SEO Specialist"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__dvkd5
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__kxsRa
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__chg1W
+                          )}
+                        >
+                          {"Marketing Analyst"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__a8Bs4
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text___1Clys
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__ppNv8
+                          )}
+                        >
+                          {"Data Analyst"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__wiTyu
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__p7IQx
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__acjLt
+                          )}
+                        >
+                          {"Marketing Automation Specialist"}
+                        </div>
+                      </div>
+                    </React.Fragment>
+                  }
+                  contentText={"Popover contents"}
+                  defaultOpen={false}
+                  defaultStylesClassName={classNames(
+                    projectcss.root_reset,
+                    projectcss.plasmic_default_styles,
+                    projectcss.plasmic_mixins,
+                    styleTokensClassNames
                   )}
-                  color={"sand"}
-                  shape={"rounded"}
-                  size={"compact"}
+                  mouseEnterDelay={0}
+                  mouseLeaveDelay={0}
+                  onOpenChange={async (...eventArgs: any) => {
+                    generateStateOnChangeProp($state, [
+                      "popover28",
+                      "open"
+                    ]).apply(null, eventArgs);
+                  }}
+                  open={generateStateValueProp($state, ["popover28", "open"])}
+                  overlayClassName={classNames({
+                    [sty["pcls__O0g254dADF2"]]: true
+                  })}
+                  popoverScopeClassName={sty["popover28__popover"]}
+                  title={"Professionals:"}
                 >
-                  <div
+                  <LoginButton
                     className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__k5Vk5
+                      "__wab_instance",
+                      sty.loginButton__p3Inp
                     )}
+                    color={"sand"}
+                    link={`/affiliate-homepage`}
+                    shape={"rounded"}
+                    size={"compact"}
                   >
-                    {"Audiovisual Content Production"}
-                  </div>
-                </LoginButton>
-              </AntdPopover>
-            </div>
-            <div className={classNames(projectcss.all, sty.freeBox__kwyiP)}>
-              <AntdPopover
-                data-plasmic-name={"popover10"}
-                data-plasmic-override={overrides.popover10}
-                arrow={true}
-                className={classNames("__wab_instance", sty.popover10)}
-                content={
-                  <React.Fragment>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__njz9W)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__ogPjy
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__aOJzj
-                        )}
-                      >
-                        {"Content Strategist"}
-                      </div>
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__xzb0A)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___0P3Zp
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__cr0Wb
-                        )}
-                      >
-                        {"Copywriter"}
-                      </div>
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__qSiu)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__p5Wdc
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__f993V
-                        )}
-                      >
-                        {"SEO Specialist"}
-                      </div>
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__ofQyd)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__v2Kns
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___51Ju
-                        )}
-                      >
-                        {"Social Media Manager"}
-                      </div>
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__plCh5)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__xAePq
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__wyjHg
-                        )}
-                      >
-                        {"Graphic Designer"}
-                      </div>
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__sblK1)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__xtIz
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__f0Am
-                        )}
-                      >
-                        {"Marketing Coordinator"}
-                      </div>
-                    </div>
-                  </React.Fragment>
-                }
-                contentText={"Popover contents"}
-                defaultOpen={false}
-                defaultStylesClassName={classNames(
-                  projectcss.root_reset,
-                  projectcss.plasmic_default_styles,
-                  projectcss.plasmic_mixins,
-                  styleTokensClassNames
-                )}
-                mouseEnterDelay={0}
-                mouseLeaveDelay={0}
-                onOpenChange={async (...eventArgs: any) => {
-                  generateStateOnChangeProp($state, [
-                    "popover10",
-                    "open"
-                  ]).apply(null, eventArgs);
-                }}
-                open={generateStateValueProp($state, ["popover10", "open"])}
-                popoverScopeClassName={sty["popover10__popover"]}
-                title={
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__sr71R
-                    )}
-                  >
-                    {"Professionals:"}
-                  </div>
-                }
-              >
-                <LoginButton
-                  className={classNames(
-                    "__wab_instance",
-                    sty.loginButton___9HgJ0
-                  )}
-                  color={"sand"}
-                  shape={"rounded"}
-                  size={"compact"}
-                >
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text___0Ew0W
-                    )}
-                  >
-                    {"Content Marketing and Blogging"}
-                  </div>
-                </LoginButton>
-              </AntdPopover>
-            </div>
-            <div className={classNames(projectcss.all, sty.freeBox__yCdDm)}>
-              <AntdPopover
-                data-plasmic-name={"popover11"}
-                data-plasmic-override={overrides.popover11}
-                arrow={true}
-                className={classNames("__wab_instance", sty.popover11)}
-                content={
-                  <React.Fragment>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__v2PCm)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__fV1NY
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__t1Qo
-                        )}
-                      >
-                        {"Digital Marketing Manager"}
-                      </div>
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__gzwOq)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___2L9J
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__mrc4H
-                        )}
-                      >
-                        {"Business Development Manager"}
-                      </div>
-                    </div>
                     <div
                       className={classNames(
                         projectcss.all,
-                        sty.freeBox___9V36G
+                        projectcss.__wab_text,
+                        sty.text__zeSqp
                       )}
                     >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__lDtrq
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__wjAa
-                        )}
-                      >
-                        {"PPC Specialist"}
-                      </div>
+                      {"Performance Campaign Management Capabilities"}
                     </div>
+                  </LoginButton>
+                </AntdPopover>
+              </div>
+            ) : null}
+            {(() => {
+              try {
+                return $props.formData?.specialties?.includes(
+                  "Audiovisual Content Production"
+                );
+              } catch (e) {
+                if (
+                  e instanceof TypeError ||
+                  e?.plasmicType === "PlasmicUndefinedDataError"
+                ) {
+                  return true;
+                }
+                throw e;
+              }
+            })() ? (
+              <div className={classNames(projectcss.all, sty.freeBox___4Mxea)}>
+                <AntdPopover
+                  data-plasmic-name={"popover29"}
+                  data-plasmic-override={overrides.popover29}
+                  arrow={true}
+                  className={classNames("__wab_instance", sty.popover29)}
+                  content={
+                    <React.Fragment>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__vhoXb
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text___5ENau
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__hdSgp
+                          )}
+                        >
+                          {"Videographer"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__bzdHh
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__sKklC
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__wx2Q
+                          )}
+                        >
+                          {"Creative Director"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__nIp1Y
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__tpfiL
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__nBt7V
+                          )}
+                        >
+                          {"Art Director"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__lNy9I
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__bAxD
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text___15AHb
+                          )}
+                        >
+                          {"Copywriter"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__tx3I
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__uhYAq
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__xlFt3
+                          )}
+                        >
+                          {"Graphic Designer"}
+                        </div>
+                      </div>
+                    </React.Fragment>
+                  }
+                  contentText={"Popover contents"}
+                  defaultOpen={false}
+                  defaultStylesClassName={classNames(
+                    projectcss.root_reset,
+                    projectcss.plasmic_default_styles,
+                    projectcss.plasmic_mixins,
+                    styleTokensClassNames
+                  )}
+                  mouseEnterDelay={0}
+                  mouseLeaveDelay={0}
+                  onOpenChange={async (...eventArgs: any) => {
+                    generateStateOnChangeProp($state, [
+                      "popover29",
+                      "open"
+                    ]).apply(null, eventArgs);
+                  }}
+                  open={generateStateValueProp($state, ["popover29", "open"])}
+                  overlayClassName={classNames({
+                    [sty["pcls_5CCu4aS4uXVY"]]: true
+                  })}
+                  popoverScopeClassName={sty["popover29__popover"]}
+                  title={"Professionals:"}
+                >
+                  <LoginButton
+                    className={classNames(
+                      "__wab_instance",
+                      sty.loginButton__tJcZ
+                    )}
+                    color={"sand"}
+                    link={`/affiliate-homepage`}
+                    shape={"rounded"}
+                    size={"compact"}
+                  >
                     <div
                       className={classNames(
                         projectcss.all,
-                        sty.freeBox___2GsZy
+                        projectcss.__wab_text,
+                        sty.text__d9YPi
                       )}
                     >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__dHowl
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__kQzfq
-                        )}
-                      >
-                        {"Account Manager"}
-                      </div>
+                      {"Audiovisual Content Production"}
                     </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__kuJkc)}
-                    >
+                  </LoginButton>
+                </AntdPopover>
+              </div>
+            ) : null}
+            {(() => {
+              try {
+                return $props.formData?.specialties?.includes(
+                  "Content Marketing and Blogging"
+                );
+              } catch (e) {
+                if (
+                  e instanceof TypeError ||
+                  e?.plasmicType === "PlasmicUndefinedDataError"
+                ) {
+                  return true;
+                }
+                throw e;
+              }
+            })() ? (
+              <div className={classNames(projectcss.all, sty.freeBox__lGrhk)}>
+                <AntdPopover
+                  data-plasmic-name={"popover30"}
+                  data-plasmic-override={overrides.popover30}
+                  arrow={true}
+                  className={classNames("__wab_instance", sty.popover30)}
+                  content={
+                    <React.Fragment>
                       <div
                         className={classNames(
                           projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___7HGn2
+                          sty.freeBox___99Cjo
                         )}
                       >
-                        {"\u2611"}
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__wGupv
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__azAk9
+                          )}
+                        >
+                          {"Content Strategist"}
+                        </div>
                       </div>
                       <div
                         className={classNames(
                           projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__pPpKy
+                          sty.freeBox__uhbLl
                         )}
                       >
-                        {"Marketing Automation Specialist"}
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__iyt2T
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text___30MyV
+                          )}
+                        >
+                          {"Copywriter"}
+                        </div>
                       </div>
-                    </div>
-                  </React.Fragment>
-                }
-                contentText={"Popover contents"}
-                defaultOpen={false}
-                defaultStylesClassName={classNames(
-                  projectcss.root_reset,
-                  projectcss.plasmic_default_styles,
-                  projectcss.plasmic_mixins,
-                  styleTokensClassNames
-                )}
-                mouseEnterDelay={0}
-                mouseLeaveDelay={0}
-                onOpenChange={async (...eventArgs: any) => {
-                  generateStateOnChangeProp($state, [
-                    "popover11",
-                    "open"
-                  ]).apply(null, eventArgs);
-                }}
-                open={generateStateValueProp($state, ["popover11", "open"])}
-                popoverScopeClassName={sty["popover11__popover"]}
-                title={
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text___7Arr
-                    )}
-                  >
-                    {"Professionals:"}
-                  </div>
-                }
-              >
-                <LoginButton
-                  className={classNames(
-                    "__wab_instance",
-                    sty.loginButton__vUgz7
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__qh3Uj
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__h5LAp
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__iI9Yc
+                          )}
+                        >
+                          {"SEO Specialist"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__fMf68
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__bRt24
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__tKr6P
+                          )}
+                        >
+                          {"Social Media Manager"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox___5EhcQ
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__kdfGu
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text___3DnK
+                          )}
+                        >
+                          {"Graphic Designer"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__igZym
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__xRbm1
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__vdiNg
+                          )}
+                        >
+                          {"Marketing Coordinator"}
+                        </div>
+                      </div>
+                    </React.Fragment>
+                  }
+                  contentText={"Popover contents"}
+                  defaultOpen={false}
+                  defaultStylesClassName={classNames(
+                    projectcss.root_reset,
+                    projectcss.plasmic_default_styles,
+                    projectcss.plasmic_mixins,
+                    styleTokensClassNames
                   )}
-                  color={"sand"}
-                  shape={"rounded"}
-                  size={"compact"}
+                  mouseEnterDelay={0}
+                  mouseLeaveDelay={0}
+                  onOpenChange={async (...eventArgs: any) => {
+                    generateStateOnChangeProp($state, [
+                      "popover30",
+                      "open"
+                    ]).apply(null, eventArgs);
+                  }}
+                  open={generateStateValueProp($state, ["popover30", "open"])}
+                  overlayClassName={classNames({
+                    [sty["pcls_C6XyU7Xaz-Bl"]]: true
+                  })}
+                  popoverScopeClassName={sty["popover30__popover"]}
+                  title={"Professionals:"}
                 >
-                  <div
+                  <LoginButton
                     className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text___8BmjF
+                      "__wab_instance",
+                      sty.loginButton__wwXcm
                     )}
+                    color={"sand"}
+                    link={`/affiliate-homepage`}
+                    shape={"rounded"}
+                    size={"compact"}
                   >
-                    {"Lead Generation and Sales Funnel Strategies"}
-                  </div>
-                </LoginButton>
-              </AntdPopover>
-            </div>
-            <div className={classNames(projectcss.all, sty.freeBox__yJOh)}>
-              <AntdPopover
-                data-plasmic-name={"popover12"}
-                data-plasmic-override={overrides.popover12}
-                arrow={true}
-                className={classNames("__wab_instance", sty.popover12)}
-                content={
-                  <React.Fragment>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__yGzYa)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__nio95
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__tLsAj
-                        )}
-                      >
-                        {"UX/UI Designer"}
-                      </div>
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox___7E8S)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__eIn19
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___2XW3A
-                        )}
-                      >
-                        {"Creative Director"}
-                      </div>
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__yZfvu)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__vzOFu
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__aLrl
-                        )}
-                      >
-                        {"Project Manager"}
-                      </div>
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__orKxl)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__xuj6Y
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__sheWe
-                        )}
-                      >
-                        {"Content Strategist"}
-                      </div>
-                    </div>
-                  </React.Fragment>
-                }
-                contentText={"Popover contents"}
-                defaultOpen={false}
-                defaultStylesClassName={classNames(
-                  projectcss.root_reset,
-                  projectcss.plasmic_default_styles,
-                  projectcss.plasmic_mixins,
-                  styleTokensClassNames
-                )}
-                mouseEnterDelay={0}
-                mouseLeaveDelay={0}
-                onOpenChange={async (...eventArgs: any) => {
-                  generateStateOnChangeProp($state, [
-                    "popover12",
-                    "open"
-                  ]).apply(null, eventArgs);
-                }}
-                open={generateStateValueProp($state, ["popover12", "open"])}
-                popoverScopeClassName={sty["popover12__popover"]}
-                title={
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text___5UP
-                    )}
-                  >
-                    {"Professionals:"}
-                  </div>
-                }
-              >
-                <LoginButton
-                  className={classNames(
-                    "__wab_instance",
-                    sty.loginButton__hhqBq
-                  )}
-                  color={"sand"}
-                  shape={"rounded"}
-                  size={"compact"}
-                >
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__efeUq
-                    )}
-                  >
-                    {"Creation of Digital Experiences (UX/UI)"}
-                  </div>
-                </LoginButton>
-              </AntdPopover>
-            </div>
-            <div className={classNames(projectcss.all, sty.freeBox__rgPcY)}>
-              <AntdPopover
-                data-plasmic-name={"popover13"}
-                data-plasmic-override={overrides.popover13}
-                arrow={true}
-                className={classNames("__wab_instance", sty.popover13)}
-                content={
-                  <React.Fragment>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__omnUo)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__uMkPu
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__qGxD4
-                        )}
-                      >
-                        {"Social Media Manager"}
-                      </div>
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__pQtDq)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__t0KTn
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__xn5Te
-                        )}
-                      >
-                        {"Content Strategist"}
-                      </div>
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox___8Y0P)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__joGi
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__wDb2
-                        )}
-                      >
-                        {"Copywriter"}
-                      </div>
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__gFgBm)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___5Giic
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__o4NFt
-                        )}
-                      >
-                        {"Graphic Designer"}
-                      </div>
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__wKa4J)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__ehv8X
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___1K0Hm
-                        )}
-                      >
-                        {"Public Relations Specialist"}
-                      </div>
-                    </div>
-                  </React.Fragment>
-                }
-                contentText={"Popover contents"}
-                defaultOpen={false}
-                defaultStylesClassName={classNames(
-                  projectcss.root_reset,
-                  projectcss.plasmic_default_styles,
-                  projectcss.plasmic_mixins,
-                  styleTokensClassNames
-                )}
-                mouseEnterDelay={0}
-                mouseLeaveDelay={0}
-                onOpenChange={async (...eventArgs: any) => {
-                  generateStateOnChangeProp($state, [
-                    "popover13",
-                    "open"
-                  ]).apply(null, eventArgs);
-                }}
-                open={generateStateValueProp($state, ["popover13", "open"])}
-                popoverScopeClassName={sty["popover13__popover"]}
-                title={
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text___6Gtcy
-                    )}
-                  >
-                    {"Professionals:"}
-                  </div>
-                }
-              >
-                <LoginButton
-                  className={classNames(
-                    "__wab_instance",
-                    sty.loginButton__ggQyx
-                  )}
-                  color={"sand"}
-                  shape={"rounded"}
-                  size={"compact"}
-                >
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text___43Ya3
-                    )}
-                  >
-                    {"Social Media and Engagement Strategies"}
-                  </div>
-                </LoginButton>
-              </AntdPopover>
-            </div>
-            <div className={classNames(projectcss.all, sty.freeBox__r7KJo)}>
-              <AntdPopover
-                data-plasmic-name={"popover14"}
-                data-plasmic-override={overrides.popover14}
-                arrow={true}
-                className={classNames("__wab_instance", sty.popover14)}
-                content={
-                  <React.Fragment>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__foibg)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__xwsUe
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__opxau
-                        )}
-                      >
-                        {"Public Relations Specialist"}
-                      </div>
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__uEbun)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__revnf
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___6M97K
-                        )}
-                      >
-                        {"Social Media Manager"}
-                      </div>
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__yyJjw)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__dwdgk
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__hOQmn
-                        )}
-                      >
-                        {"Content Strategist"}
-                      </div>
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__w3YIm)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__nwVyY
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__beozo
-                        )}
-                      >
-                        {"Brand Strategist"}
-                      </div>
-                    </div>
-                  </React.Fragment>
-                }
-                contentText={"Popover contents"}
-                defaultOpen={false}
-                defaultStylesClassName={classNames(
-                  projectcss.root_reset,
-                  projectcss.plasmic_default_styles,
-                  projectcss.plasmic_mixins,
-                  styleTokensClassNames
-                )}
-                mouseEnterDelay={0}
-                mouseLeaveDelay={0}
-                onOpenChange={async (...eventArgs: any) => {
-                  generateStateOnChangeProp($state, [
-                    "popover14",
-                    "open"
-                  ]).apply(null, eventArgs);
-                }}
-                open={generateStateValueProp($state, ["popover14", "open"])}
-                popoverScopeClassName={sty["popover14__popover"]}
-                title={
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__kl128
-                    )}
-                  >
-                    {"Professionals:"}
-                  </div>
-                }
-              >
-                <LoginButton
-                  className={classNames(
-                    "__wab_instance",
-                    sty.loginButton__lIdeo
-                  )}
-                  color={"sand"}
-                  shape={"rounded"}
-                  size={"compact"}
-                >
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__ieeQw
-                    )}
-                  >
-                    {"Public Relations and Image Crisis Management"}
-                  </div>
-                </LoginButton>
-              </AntdPopover>
-            </div>
-            <div className={classNames(projectcss.all, sty.freeBox__z37T)}>
-              <AntdPopover
-                data-plasmic-name={"popover15"}
-                data-plasmic-override={overrides.popover15}
-                arrow={true}
-                className={classNames("__wab_instance", sty.popover15)}
-                content={
-                  <React.Fragment>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__lEmCr)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___9Z2YA
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__ncFiQ
-                        )}
-                      >
-                        {"Digital Marketing Manager"}
-                      </div>
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__eBfTu)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__t7JgZ
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__lGsGh
-                        )}
-                      >
-                        {"SEO Specialist"}
-                      </div>
-                    </div>
                     <div
                       className={classNames(
                         projectcss.all,
-                        sty.freeBox___08Gk2
+                        projectcss.__wab_text,
+                        sty.text__jd4Xt
                       )}
                     >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___6Awzf
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___7RQe8
-                        )}
-                      >
-                        {"PPC Specialist"}
-                      </div>
+                      {"Content Marketing and Blogging"}
                     </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__ldOZn)}
-                    >
+                  </LoginButton>
+                </AntdPopover>
+              </div>
+            ) : null}
+            {(() => {
+              try {
+                return $props.formData?.specialties?.includes(
+                  "Lead Generation and Sales Funnel Strategies"
+                );
+              } catch (e) {
+                if (
+                  e instanceof TypeError ||
+                  e?.plasmicType === "PlasmicUndefinedDataError"
+                ) {
+                  return true;
+                }
+                throw e;
+              }
+            })() ? (
+              <div className={classNames(projectcss.all, sty.freeBox__t40L)}>
+                <AntdPopover
+                  data-plasmic-name={"popover31"}
+                  data-plasmic-override={overrides.popover31}
+                  arrow={true}
+                  className={classNames("__wab_instance", sty.popover31)}
+                  content={
+                    <React.Fragment>
                       <div
                         className={classNames(
                           projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__svQFn
+                          sty.freeBox__cr6Mo
                         )}
                       >
-                        {"\u2611"}
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__uWay5
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__ntQ9I
+                          )}
+                        >
+                          {"Digital Marketing Manager"}
+                        </div>
                       </div>
                       <div
                         className={classNames(
                           projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__dkJlk
+                          sty.freeBox__eklOq
                         )}
                       >
-                        {"UX/UI Designer"}
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__urFAm
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__jg88
+                          )}
+                        >
+                          {"Business Development Manager"}
+                        </div>
                       </div>
-                    </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__yOhK8
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__yhRl
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__oV6Uv
+                          )}
+                        >
+                          {"PPC Specialist"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__agrpW
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__n7P84
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__f9Xuu
+                          )}
+                        >
+                          {"Account Manager"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox___0XUsb
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__qhUP
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__lCgP
+                          )}
+                        >
+                          {"Marketing Automation Specialist"}
+                        </div>
+                      </div>
+                    </React.Fragment>
+                  }
+                  contentText={"Popover contents"}
+                  defaultOpen={false}
+                  defaultStylesClassName={classNames(
+                    projectcss.root_reset,
+                    projectcss.plasmic_default_styles,
+                    projectcss.plasmic_mixins,
+                    styleTokensClassNames
+                  )}
+                  mouseEnterDelay={0}
+                  mouseLeaveDelay={0}
+                  onOpenChange={async (...eventArgs: any) => {
+                    generateStateOnChangeProp($state, [
+                      "popover31",
+                      "open"
+                    ]).apply(null, eventArgs);
+                  }}
+                  open={generateStateValueProp($state, ["popover31", "open"])}
+                  overlayClassName={classNames({
+                    [sty["pcls_wufMh-GppzSh"]]: true
+                  })}
+                  popoverScopeClassName={sty["popover31__popover"]}
+                  title={"Professionals:"}
+                >
+                  <LoginButton
+                    className={classNames(
+                      "__wab_instance",
+                      sty.loginButton__ymU4K
+                    )}
+                    color={"sand"}
+                    link={`/affiliate-homepage`}
+                    shape={"rounded"}
+                    size={"compact"}
+                  >
                     <div
                       className={classNames(
                         projectcss.all,
-                        sty.freeBox___2Gzb2
+                        projectcss.__wab_text,
+                        sty.text__p0WB8
                       )}
                     >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__l7Ppn
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__fXtd2
-                        )}
-                      >
-                        {"Data Analyst"}
-                      </div>
+                      {"Lead Generation and Sales Funnel Strategies"}
                     </div>
-                  </React.Fragment>
+                  </LoginButton>
+                </AntdPopover>
+              </div>
+            ) : null}
+            {(() => {
+              try {
+                return $props.formData?.specialties?.includes(
+                  "Creation of Digital Experiences (UI/UX)"
+                );
+              } catch (e) {
+                if (
+                  e instanceof TypeError ||
+                  e?.plasmicType === "PlasmicUndefinedDataError"
+                ) {
+                  return true;
                 }
-                contentText={"Popover contents"}
-                defaultOpen={false}
-                defaultStylesClassName={classNames(
-                  projectcss.root_reset,
-                  projectcss.plasmic_default_styles,
-                  projectcss.plasmic_mixins,
-                  styleTokensClassNames
-                )}
-                mouseEnterDelay={0}
-                mouseLeaveDelay={0}
-                onOpenChange={async (...eventArgs: any) => {
-                  generateStateOnChangeProp($state, [
-                    "popover15",
-                    "open"
-                  ]).apply(null, eventArgs);
-                }}
-                open={generateStateValueProp($state, ["popover15", "open"])}
-                popoverScopeClassName={sty["popover15__popover"]}
-                title={
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text___3JTpS
-                    )}
-                  >
-                    {"Professionals:"}
-                  </div>
-                }
-              >
-                <LoginButton
-                  className={classNames(
-                    "__wab_instance",
-                    sty.loginButton__gdkH4
+                throw e;
+              }
+            })() ? (
+              <div className={classNames(projectcss.all, sty.freeBox___9FP7)}>
+                <AntdPopover
+                  data-plasmic-name={"popover32"}
+                  data-plasmic-override={overrides.popover32}
+                  arrow={true}
+                  className={classNames("__wab_instance", sty.popover32)}
+                  content={
+                    <React.Fragment>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__w4Brl
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__cir5M
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__wrDo
+                          )}
+                        >
+                          {"UX/UI Designer"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__eeEr
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__evOBz
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text___46Nr3
+                          )}
+                        >
+                          {"Creative Director"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__j7AAm
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__m0Giu
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__vVdyj
+                          )}
+                        >
+                          {"Project Manager"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__nQ9Lx
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__e8EJj
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__nsK9C
+                          )}
+                        >
+                          {"Content Strategist"}
+                        </div>
+                      </div>
+                    </React.Fragment>
+                  }
+                  contentText={"Popover contents"}
+                  defaultOpen={false}
+                  defaultStylesClassName={classNames(
+                    projectcss.root_reset,
+                    projectcss.plasmic_default_styles,
+                    projectcss.plasmic_mixins,
+                    styleTokensClassNames
                   )}
-                  color={"sand"}
-                  shape={"rounded"}
-                  size={"compact"}
+                  mouseEnterDelay={0}
+                  mouseLeaveDelay={0}
+                  onOpenChange={async (...eventArgs: any) => {
+                    generateStateOnChangeProp($state, [
+                      "popover32",
+                      "open"
+                    ]).apply(null, eventArgs);
+                  }}
+                  open={generateStateValueProp($state, ["popover32", "open"])}
+                  overlayClassName={classNames({
+                    [sty["pcls_kZCBTJzPYuO5"]]: true
+                  })}
+                  popoverScopeClassName={sty["popover32__popover"]}
+                  title={"Professionals:"}
                 >
-                  <div
+                  <LoginButton
                     className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__m2Mv9
+                      "__wab_instance",
+                      sty.loginButton__uKpZq
                     )}
+                    color={"sand"}
+                    link={`/affiliate-homepage`}
+                    shape={"rounded"}
+                    size={"compact"}
                   >
-                    {"E-commerce Management and Optimization"}
-                  </div>
-                </LoginButton>
-              </AntdPopover>
-            </div>
-            <div className={classNames(projectcss.all, sty.freeBox__evLMy)}>
-              <AntdPopover
-                data-plasmic-name={"popover16"}
-                data-plasmic-override={overrides.popover16}
-                arrow={true}
-                className={classNames("__wab_instance", sty.popover16)}
-                content={
-                  <React.Fragment>
                     <div
                       className={classNames(
                         projectcss.all,
-                        sty.freeBox___6Dn3H
+                        projectcss.__wab_text,
+                        sty.text__tdjFn
                       )}
                     >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__lg08M
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__lH9H
-                        )}
-                      >
-                        {"Data Analyst"}
-                      </div>
+                      {"Creation of Digital Experiences (UX/UI)"}
                     </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__epu4J)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__usLc4
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__rVfAk
-                        )}
-                      >
-                        {"Marketing Analyst"}
-                      </div>
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__fuwpq)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__qd1X
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__weT9R
-                        )}
-                      >
-                        {"SEO Specialist"}
-                      </div>
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__xMx47)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__ymkQ7
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__umrNa
-                        )}
-                      >
-                        {"Digital Marketing Manager"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__eBnQo
-                        )}
-                      >
-                        {"PPC Specialist"}
-                      </div>
-                    </div>
-                  </React.Fragment>
+                  </LoginButton>
+                </AntdPopover>
+              </div>
+            ) : null}
+            {(() => {
+              try {
+                return $props.formData?.specialties?.includes(
+                  "Social Media and Engagement Strategies"
+                );
+              } catch (e) {
+                if (
+                  e instanceof TypeError ||
+                  e?.plasmicType === "PlasmicUndefinedDataError"
+                ) {
+                  return true;
                 }
-                contentText={"Popover contents"}
-                defaultOpen={false}
-                defaultStylesClassName={classNames(
-                  projectcss.root_reset,
-                  projectcss.plasmic_default_styles,
-                  projectcss.plasmic_mixins,
-                  styleTokensClassNames
-                )}
-                mouseEnterDelay={0}
-                mouseLeaveDelay={0}
-                onOpenChange={async (...eventArgs: any) => {
-                  generateStateOnChangeProp($state, [
-                    "popover16",
-                    "open"
-                  ]).apply(null, eventArgs);
-                }}
-                open={generateStateValueProp($state, ["popover16", "open"])}
-                popoverScopeClassName={sty["popover16__popover"]}
-                title={
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__jBtMr
-                    )}
-                  >
-                    {"Professionals:"}
-                  </div>
-                }
-              >
-                <LoginButton
-                  className={classNames(
-                    "__wab_instance",
-                    sty.loginButton__rQLbo
+                throw e;
+              }
+            })() ? (
+              <div className={classNames(projectcss.all, sty.freeBox__bX3Q)}>
+                <AntdPopover
+                  data-plasmic-name={"popover33"}
+                  data-plasmic-override={overrides.popover33}
+                  arrow={true}
+                  className={classNames("__wab_instance", sty.popover33)}
+                  content={
+                    <React.Fragment>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__tWoDi
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__zSoEq
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__fxYtV
+                          )}
+                        >
+                          {"Social Media Manager"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__tuNq2
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__jwSsy
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__oOlOm
+                          )}
+                        >
+                          {"Content Strategist"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__ngkY3
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__sqAah
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__gHbJz
+                          )}
+                        >
+                          {"Copywriter"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__pere
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__qzBax
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__k85H
+                          )}
+                        >
+                          {"Graphic Designer"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__oiXGz
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__vamKa
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__a6AbS
+                          )}
+                        >
+                          {"Public Relations Specialist"}
+                        </div>
+                      </div>
+                    </React.Fragment>
+                  }
+                  contentText={"Popover contents"}
+                  defaultOpen={false}
+                  defaultStylesClassName={classNames(
+                    projectcss.root_reset,
+                    projectcss.plasmic_default_styles,
+                    projectcss.plasmic_mixins,
+                    styleTokensClassNames
                   )}
-                  color={"sand"}
-                  shape={"rounded"}
-                  size={"compact"}
+                  mouseEnterDelay={0}
+                  mouseLeaveDelay={0}
+                  onOpenChange={async (...eventArgs: any) => {
+                    generateStateOnChangeProp($state, [
+                      "popover33",
+                      "open"
+                    ]).apply(null, eventArgs);
+                  }}
+                  open={generateStateValueProp($state, ["popover33", "open"])}
+                  overlayClassName={classNames({
+                    [sty["pcls_pIQCjanx-UkX"]]: true
+                  })}
+                  popoverScopeClassName={sty["popover33__popover"]}
+                  title={"Professionals:"}
                 >
-                  <div
+                  <LoginButton
                     className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__dQlCu
+                      "__wab_instance",
+                      sty.loginButton___23Jj
                     )}
+                    color={"sand"}
+                    link={`/affiliate-homepage`}
+                    shape={"rounded"}
+                    size={"compact"}
                   >
-                    {"Data Analysis and Marketing Metrics"}
-                  </div>
-                </LoginButton>
-              </AntdPopover>
-            </div>
-            <div className={classNames(projectcss.all, sty.freeBox__cjJm0)}>
-              <AntdPopover
-                data-plasmic-name={"popover17"}
-                data-plasmic-override={overrides.popover17}
-                arrow={true}
-                className={classNames("__wab_instance", sty.popover17)}
-                content={
-                  <React.Fragment>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__wHlwb)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__oPa0B
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__sFxCk
-                        )}
-                      >
-                        {"Content Strategist"}
-                      </div>
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__wJVm)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__jinS4
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__kfuIk
-                        )}
-                      >
-                        {"Social Media Manager"}
-                      </div>
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__suzSv)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__wb54I
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__spb43
-                        )}
-                      >
-                        {"PPC Specialist"}
-                      </div>
-                    </div>
                     <div
                       className={classNames(
                         projectcss.all,
-                        sty.freeBox___0UCjJ
+                        projectcss.__wab_text,
+                        sty.text__xl0Be
                       )}
                     >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__gLg
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__o5Ti0
-                        )}
-                      >
-                        {"Videographer"}
-                      </div>
+                      {"Social Media and Engagement Strategies"}
                     </div>
-                  </React.Fragment>
+                  </LoginButton>
+                </AntdPopover>
+              </div>
+            ) : null}
+            {(() => {
+              try {
+                return $props.formData?.specialties?.includes(
+                  "Public Relations and Image Crisis Management"
+                );
+              } catch (e) {
+                if (
+                  e instanceof TypeError ||
+                  e?.plasmicType === "PlasmicUndefinedDataError"
+                ) {
+                  return true;
                 }
-                contentText={"Popover contents"}
-                defaultOpen={false}
-                defaultStylesClassName={classNames(
-                  projectcss.root_reset,
-                  projectcss.plasmic_default_styles,
-                  projectcss.plasmic_mixins,
-                  styleTokensClassNames
-                )}
-                mouseEnterDelay={0}
-                mouseLeaveDelay={0}
-                onOpenChange={async (...eventArgs: any) => {
-                  generateStateOnChangeProp($state, [
-                    "popover17",
-                    "open"
-                  ]).apply(null, eventArgs);
-                }}
-                open={generateStateValueProp($state, ["popover17", "open"])}
-                popoverScopeClassName={sty["popover17__popover"]}
-                title={
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__dRQcw
-                    )}
-                  >
-                    {"Professionals:"}
-                  </div>
-                }
-              >
-                <LoginButton
-                  className={classNames(
-                    "__wab_instance",
-                    sty.loginButton__hlDvo
+                throw e;
+              }
+            })() ? (
+              <div className={classNames(projectcss.all, sty.freeBox___8Tx3K)}>
+                <AntdPopover
+                  data-plasmic-name={"popover34"}
+                  data-plasmic-override={overrides.popover34}
+                  arrow={true}
+                  className={classNames("__wab_instance", sty.popover34)}
+                  content={
+                    <React.Fragment>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__bCUdT
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__rx41X
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text___22Dig
+                          )}
+                        >
+                          {"Public Relations Specialist"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(projectcss.all, sty.freeBox__q8A)}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text___2FnBn
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__aBfdY
+                          )}
+                        >
+                          {"Social Media Manager"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__xNhmN
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__auM
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text___6Wmgn
+                          )}
+                        >
+                          {"Content Strategist"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__k0WiE
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__ctXTp
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__ikLnp
+                          )}
+                        >
+                          {"Brand Strategist"}
+                        </div>
+                      </div>
+                    </React.Fragment>
+                  }
+                  contentText={"Popover contents"}
+                  defaultOpen={false}
+                  defaultStylesClassName={classNames(
+                    projectcss.root_reset,
+                    projectcss.plasmic_default_styles,
+                    projectcss.plasmic_mixins,
+                    styleTokensClassNames
                   )}
-                  color={"sand"}
-                  shape={"rounded"}
-                  size={"compact"}
+                  mouseEnterDelay={0}
+                  mouseLeaveDelay={0}
+                  onOpenChange={async (...eventArgs: any) => {
+                    generateStateOnChangeProp($state, [
+                      "popover34",
+                      "open"
+                    ]).apply(null, eventArgs);
+                  }}
+                  open={generateStateValueProp($state, ["popover34", "open"])}
+                  overlayClassName={classNames({
+                    [sty["pcls_AB1E3NnT4U00"]]: true
+                  })}
+                  popoverScopeClassName={sty["popover34__popover"]}
+                  title={"Professionals:"}
                 >
-                  <div
+                  <LoginButton
                     className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text___9KvrR
+                      "__wab_instance",
+                      sty.loginButton___3AH0
                     )}
+                    color={"sand"}
+                    link={`/affiliate-homepage`}
+                    shape={"rounded"}
+                    size={"compact"}
                   >
-                    {"Digital Product Marketing"}
-                  </div>
-                </LoginButton>
-              </AntdPopover>
-            </div>
-            <div className={classNames(projectcss.all, sty.freeBox___8M32V)}>
-              <AntdPopover
-                data-plasmic-name={"popover18"}
-                data-plasmic-override={overrides.popover18}
-                arrow={true}
-                className={classNames("__wab_instance", sty.popover18)}
-                content={
-                  <React.Fragment>
                     <div
                       className={classNames(
                         projectcss.all,
-                        sty.freeBox___7Uq2A
+                        projectcss.__wab_text,
+                        sty.text__gCk5Y
                       )}
                     >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__ur6DB
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__r50HY
-                        )}
-                      >
-                        {"Copywriter"}
-                      </div>
+                      {"Public Relations and Image Crisis Management"}
                     </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__aG6GL)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__tkjM
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__sqJKe
-                        )}
-                      >
-                        {"Marketing Automation Specialist"}
-                      </div>
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__zxoWk)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__gzEPg
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___2QYxk
-                        )}
-                      >
-                        {"Data Analyst"}
-                      </div>
-                    </div>
-                  </React.Fragment>
+                  </LoginButton>
+                </AntdPopover>
+              </div>
+            ) : null}
+            {(() => {
+              try {
+                return $props.formData?.specialties?.includes(
+                  "E-commerce Management and Optimization"
+                );
+              } catch (e) {
+                if (
+                  e instanceof TypeError ||
+                  e?.plasmicType === "PlasmicUndefinedDataError"
+                ) {
+                  return true;
                 }
-                contentText={"Popover contents"}
-                defaultOpen={false}
-                defaultStylesClassName={classNames(
-                  projectcss.root_reset,
-                  projectcss.plasmic_default_styles,
-                  projectcss.plasmic_mixins,
-                  styleTokensClassNames
-                )}
-                mouseEnterDelay={0}
-                mouseLeaveDelay={0}
-                onOpenChange={async (...eventArgs: any) => {
-                  generateStateOnChangeProp($state, [
-                    "popover18",
-                    "open"
-                  ]).apply(null, eventArgs);
-                }}
-                open={generateStateValueProp($state, ["popover18", "open"])}
-                popoverScopeClassName={sty["popover18__popover"]}
-                title={
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__bqSRr
-                    )}
-                  >
-                    {"Professionals:"}
-                  </div>
-                }
-              >
-                <LoginButton
-                  className={classNames(
-                    "__wab_instance",
-                    sty.loginButton__roe6N
+                throw e;
+              }
+            })() ? (
+              <div className={classNames(projectcss.all, sty.freeBox__wn6I0)}>
+                <AntdPopover
+                  data-plasmic-name={"popover35"}
+                  data-plasmic-override={overrides.popover35}
+                  arrow={true}
+                  className={classNames("__wab_instance", sty.popover35)}
+                  content={
+                    <React.Fragment>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__ksRn2
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__oT2On
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text___18FeZ
+                          )}
+                        >
+                          {"Digital Marketing Manager"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__y0C0V
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__aioRv
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__ird1B
+                          )}
+                        >
+                          {"SEO Specialist"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__s4RCd
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__g6R9H
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__f962B
+                          )}
+                        >
+                          {"PPC Specialist"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(projectcss.all, sty.freeBox__jMl)}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text___2RcWw
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__tqacY
+                          )}
+                        >
+                          {"UX/UI Designer"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__aOxXv
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__tzqW9
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text___2IXSo
+                          )}
+                        >
+                          {"Data Analyst"}
+                        </div>
+                      </div>
+                    </React.Fragment>
+                  }
+                  contentText={"Popover contents"}
+                  defaultOpen={false}
+                  defaultStylesClassName={classNames(
+                    projectcss.root_reset,
+                    projectcss.plasmic_default_styles,
+                    projectcss.plasmic_mixins,
+                    styleTokensClassNames
                   )}
-                  color={"sand"}
-                  shape={"rounded"}
-                  size={"compact"}
+                  mouseEnterDelay={0}
+                  mouseLeaveDelay={0}
+                  onOpenChange={async (...eventArgs: any) => {
+                    generateStateOnChangeProp($state, [
+                      "popover35",
+                      "open"
+                    ]).apply(null, eventArgs);
+                  }}
+                  open={generateStateValueProp($state, ["popover35", "open"])}
+                  overlayClassName={classNames({
+                    [sty["pcls_rplxiIdgTkmV"]]: true
+                  })}
+                  popoverScopeClassName={sty["popover35__popover"]}
+                  title={"Professionals:"}
                 >
-                  <div
+                  <LoginButton
                     className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__jFdIi
+                      "__wab_instance",
+                      sty.loginButton__xWvgq
                     )}
+                    color={"sand"}
+                    link={`/affiliate-homepage`}
+                    shape={"rounded"}
+                    size={"compact"}
                   >
-                    {"Direct Marketing and Email Marketing"}
-                  </div>
-                </LoginButton>
-              </AntdPopover>
-            </div>
-            <div className={classNames(projectcss.all, sty.freeBox__xhgz)}>
-              <AntdPopover
-                data-plasmic-name={"popover19"}
-                data-plasmic-override={overrides.popover19}
-                arrow={true}
-                className={classNames("__wab_instance", sty.popover19)}
-                content={
-                  <React.Fragment>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__idt2F)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__fGlzD
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__suGpS
-                        )}
-                      >
-                        {"Account Manager"}
-                      </div>
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__h0YaT)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__cil9H
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__lcxcW
-                        )}
-                      >
-                        {"Marketing Automation Specialist"}
-                      </div>
-                    </div>
                     <div
                       className={classNames(
                         projectcss.all,
-                        sty.freeBox___9Blvt
+                        projectcss.__wab_text,
+                        sty.text___2Ylwr
                       )}
                     >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__uQYt
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__uLw4G
-                        )}
-                      >
-                        {"Content Strategist"}
-                      </div>
+                      {"E-commerce Management and Optimization"}
                     </div>
-                  </React.Fragment>
+                  </LoginButton>
+                </AntdPopover>
+              </div>
+            ) : null}
+            {(() => {
+              try {
+                return $props.formData?.specialties?.includes(
+                  "Data Analysis and Marketing Metrics"
+                );
+              } catch (e) {
+                if (
+                  e instanceof TypeError ||
+                  e?.plasmicType === "PlasmicUndefinedDataError"
+                ) {
+                  return true;
                 }
-                contentText={"Popover contents"}
-                defaultOpen={false}
-                defaultStylesClassName={classNames(
-                  projectcss.root_reset,
-                  projectcss.plasmic_default_styles,
-                  projectcss.plasmic_mixins,
-                  styleTokensClassNames
-                )}
-                mouseEnterDelay={0}
-                mouseLeaveDelay={0}
-                onOpenChange={async (...eventArgs: any) => {
-                  generateStateOnChangeProp($state, [
-                    "popover19",
-                    "open"
-                  ]).apply(null, eventArgs);
-                }}
-                open={generateStateValueProp($state, ["popover19", "open"])}
-                popoverScopeClassName={sty["popover19__popover"]}
-                title={
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__xv31R
-                    )}
-                  >
-                    {"Professionals:"}
-                  </div>
-                }
-              >
-                <LoginButton
-                  className={classNames(
-                    "__wab_instance",
-                    sty.loginButton__sPcQ
+                throw e;
+              }
+            })() ? (
+              <div className={classNames(projectcss.all, sty.freeBox__oqQcg)}>
+                <AntdPopover
+                  data-plasmic-name={"popover36"}
+                  data-plasmic-override={overrides.popover36}
+                  arrow={true}
+                  className={classNames("__wab_instance", sty.popover36)}
+                  content={
+                    <React.Fragment>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox___1Bl4O
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text___1Qk0K
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__kMFe
+                          )}
+                        >
+                          {"Data Analyst"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox___5SKv
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__o3OBx
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__e5HWj
+                          )}
+                        >
+                          {"Marketing Analyst"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__pPuUg
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__wDctx
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__okdwR
+                          )}
+                        >
+                          {"SEO Specialist"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__vy01X
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__mSjk3
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__zOna4
+                          )}
+                        >
+                          {"Digital Marketing Manager"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__xmcc6
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__tgSdb
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__p1RIi
+                          )}
+                        >
+                          {"PPC Specialist"}
+                        </div>
+                      </div>
+                    </React.Fragment>
+                  }
+                  contentText={"Popover contents"}
+                  defaultOpen={false}
+                  defaultStylesClassName={classNames(
+                    projectcss.root_reset,
+                    projectcss.plasmic_default_styles,
+                    projectcss.plasmic_mixins,
+                    styleTokensClassNames
                   )}
-                  color={"sand"}
-                  shape={"rounded"}
-                  size={"compact"}
+                  mouseEnterDelay={0}
+                  mouseLeaveDelay={0}
+                  onOpenChange={async (...eventArgs: any) => {
+                    generateStateOnChangeProp($state, [
+                      "popover36",
+                      "open"
+                    ]).apply(null, eventArgs);
+                  }}
+                  open={generateStateValueProp($state, ["popover36", "open"])}
+                  overlayClassName={classNames({
+                    [sty["pcls_0LyMNNm5SV7D"]]: true
+                  })}
+                  popoverScopeClassName={sty["popover36__popover"]}
+                  title={"Professionals:"}
                 >
-                  <div
+                  <LoginButton
                     className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__hh91H
+                      "__wab_instance",
+                      sty.loginButton__veq7N
                     )}
+                    color={"sand"}
+                    link={`/affiliate-homepage`}
+                    shape={"rounded"}
+                    size={"compact"}
                   >
-                    {"Loyalty Strategies Clients"}
-                  </div>
-                </LoginButton>
-              </AntdPopover>
-            </div>
-            <div className={classNames(projectcss.all, sty.freeBox__wSmAh)}>
-              <AntdPopover
-                data-plasmic-name={"popover20"}
-                data-plasmic-override={overrides.popover20}
-                arrow={true}
-                className={classNames("__wab_instance", sty.popover20)}
-                content={
-                  <React.Fragment>
                     <div
-                      className={classNames(projectcss.all, sty.freeBox__m4M3Y)}
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__uxKu
+                      )}
                     >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__wE0Uw
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__cMxHs
-                        )}
-                      >
-                        {"Content Strategist"}
-                      </div>
+                      {"Data Analysis and Marketing Metrics"}
                     </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__pmAgw)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__wuFmf
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__f2K2U
-                        )}
-                      >
-                        {"Copywriter"}
-                      </div>
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__f7Bx4)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__xiVvy
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___8FH1
-                        )}
-                      >
-                        {"Social Media Manager"}
-                      </div>
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__vgfwY)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___7XG22
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__an1Ei
-                        )}
-                      >
-                        {"Public Relations Specialist"}
-                      </div>
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__ju2H8)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___9LGeg
-                        )}
-                      >
-                        {"\u2611"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__koEgE
-                        )}
-                      >
-                        {"Project Manager"}
-                      </div>
-                    </div>
-                  </React.Fragment>
+                  </LoginButton>
+                </AntdPopover>
+              </div>
+            ) : null}
+            {(() => {
+              try {
+                return $props.formData?.specialties?.includes(
+                  "Digital Product Marketing"
+                );
+              } catch (e) {
+                if (
+                  e instanceof TypeError ||
+                  e?.plasmicType === "PlasmicUndefinedDataError"
+                ) {
+                  return true;
                 }
-                contentText={"Popover contents"}
-                defaultOpen={false}
-                defaultStylesClassName={classNames(
-                  projectcss.root_reset,
-                  projectcss.plasmic_default_styles,
-                  projectcss.plasmic_mixins,
-                  styleTokensClassNames
-                )}
-                mouseEnterDelay={0}
-                mouseLeaveDelay={0}
-                onOpenChange={async (...eventArgs: any) => {
-                  generateStateOnChangeProp($state, [
-                    "popover20",
-                    "open"
-                  ]).apply(null, eventArgs);
-                }}
-                open={generateStateValueProp($state, ["popover20", "open"])}
-                popoverScopeClassName={sty["popover20__popover"]}
-                title={
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__vqspp
-                    )}
-                  >
-                    {"Professionals:"}
-                  </div>
-                }
-              >
-                <LoginButton
-                  className={classNames(
-                    "__wab_instance",
-                    sty.loginButton__dyxwG
+                throw e;
+              }
+            })() ? (
+              <div className={classNames(projectcss.all, sty.freeBox__iccAn)}>
+                <AntdPopover
+                  data-plasmic-name={"popover37"}
+                  data-plasmic-override={overrides.popover37}
+                  arrow={true}
+                  className={classNames("__wab_instance", sty.popover37)}
+                  content={
+                    <React.Fragment>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__zw22D
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__lkKvh
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__pLz
+                          )}
+                        >
+                          {"Content Strategist"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__yAxT
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__gELsb
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__oxovR
+                          )}
+                        >
+                          {"Social Media Manager"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__ymtNn
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__cvbTz
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__d3XJu
+                          )}
+                        >
+                          {"PPC Specialist"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__sKqVx
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__gkdSn
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text___8J5U6
+                          )}
+                        >
+                          {"Videographer"}
+                        </div>
+                      </div>
+                    </React.Fragment>
+                  }
+                  contentText={"Popover contents"}
+                  defaultOpen={false}
+                  defaultStylesClassName={classNames(
+                    projectcss.root_reset,
+                    projectcss.plasmic_default_styles,
+                    projectcss.plasmic_mixins,
+                    styleTokensClassNames
                   )}
-                  color={"sand"}
-                  shape={"rounded"}
-                  size={"compact"}
+                  mouseEnterDelay={0}
+                  mouseLeaveDelay={0}
+                  onOpenChange={async (...eventArgs: any) => {
+                    generateStateOnChangeProp($state, [
+                      "popover37",
+                      "open"
+                    ]).apply(null, eventArgs);
+                  }}
+                  open={generateStateValueProp($state, ["popover37", "open"])}
+                  overlayClassName={classNames({
+                    [sty["pcls_qnbNbOTc5W16"]]: true
+                  })}
+                  popoverScopeClassName={sty["popover37__popover"]}
+                  title={"Professionals:"}
                 >
-                  <div
+                  <LoginButton
                     className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__xFiHn
+                      "__wab_instance",
+                      sty.loginButton__dBx0F
                     )}
+                    color={"sand"}
+                    link={`/affiliate-homepage`}
+                    shape={"rounded"}
+                    size={"compact"}
                   >
-                    {"Specialization in Podcasts"}
-                  </div>
-                </LoginButton>
-              </AntdPopover>
-            </div>
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__uckOa
+                      )}
+                    >
+                      {"Digital Product Marketing"}
+                    </div>
+                  </LoginButton>
+                </AntdPopover>
+              </div>
+            ) : null}
+            {(() => {
+              try {
+                return $props.formData?.specialties?.includes(
+                  "Direct Marketing and Email Marketing"
+                );
+              } catch (e) {
+                if (
+                  e instanceof TypeError ||
+                  e?.plasmicType === "PlasmicUndefinedDataError"
+                ) {
+                  return true;
+                }
+                throw e;
+              }
+            })() ? (
+              <div className={classNames(projectcss.all, sty.freeBox__bgbQj)}>
+                <AntdPopover
+                  data-plasmic-name={"popover38"}
+                  data-plasmic-override={overrides.popover38}
+                  arrow={true}
+                  className={classNames("__wab_instance", sty.popover38)}
+                  content={
+                    <React.Fragment>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__zBSm1
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__nX6Kd
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__imLEj
+                          )}
+                        >
+                          {"Copywriter"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__fzChl
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__ohoGy
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__hEv1
+                          )}
+                        >
+                          {"Marketing Automation Specialist"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__tEeF
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text___6PrkE
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__ztTjd
+                          )}
+                        >
+                          {"Data Analyst"}
+                        </div>
+                      </div>
+                    </React.Fragment>
+                  }
+                  contentText={"Popover contents"}
+                  defaultOpen={false}
+                  defaultStylesClassName={classNames(
+                    projectcss.root_reset,
+                    projectcss.plasmic_default_styles,
+                    projectcss.plasmic_mixins,
+                    styleTokensClassNames
+                  )}
+                  mouseEnterDelay={0}
+                  mouseLeaveDelay={0}
+                  onOpenChange={async (...eventArgs: any) => {
+                    generateStateOnChangeProp($state, [
+                      "popover38",
+                      "open"
+                    ]).apply(null, eventArgs);
+                  }}
+                  open={generateStateValueProp($state, ["popover38", "open"])}
+                  overlayClassName={classNames({
+                    [sty["pcls_qkkmKdUVgPu6"]]: true
+                  })}
+                  popoverScopeClassName={sty["popover38__popover"]}
+                  title={"Professionals:"}
+                >
+                  <LoginButton
+                    className={classNames(
+                      "__wab_instance",
+                      sty.loginButton__kb7Qc
+                    )}
+                    color={"sand"}
+                    link={`/affiliate-homepage`}
+                    shape={"rounded"}
+                    size={"compact"}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__pdkVb
+                      )}
+                    >
+                      {"Direct Marketing and Email Marketing"}
+                    </div>
+                  </LoginButton>
+                </AntdPopover>
+              </div>
+            ) : null}
+            {(() => {
+              try {
+                return $props.formData?.specialties?.includes(
+                  "Loyalty Strategies Clients"
+                );
+              } catch (e) {
+                if (
+                  e instanceof TypeError ||
+                  e?.plasmicType === "PlasmicUndefinedDataError"
+                ) {
+                  return true;
+                }
+                throw e;
+              }
+            })() ? (
+              <div className={classNames(projectcss.all, sty.freeBox__cdPiX)}>
+                <AntdPopover
+                  data-plasmic-name={"popover39"}
+                  data-plasmic-override={overrides.popover39}
+                  arrow={true}
+                  className={classNames("__wab_instance", sty.popover39)}
+                  content={
+                    <React.Fragment>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__yimbY
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text___2SsEg
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__xr9Mr
+                          )}
+                        >
+                          {"Account Manager"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__n8Qph
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__b7LaU
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text___9VTN
+                          )}
+                        >
+                          {"Marketing Automation Specialist"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__xb9B6
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__i6M7R
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__f9Jdb
+                          )}
+                        >
+                          {"Content Strategist"}
+                        </div>
+                      </div>
+                    </React.Fragment>
+                  }
+                  contentText={"Popover contents"}
+                  defaultOpen={false}
+                  defaultStylesClassName={classNames(
+                    projectcss.root_reset,
+                    projectcss.plasmic_default_styles,
+                    projectcss.plasmic_mixins,
+                    styleTokensClassNames
+                  )}
+                  mouseEnterDelay={0}
+                  mouseLeaveDelay={0}
+                  onOpenChange={async (...eventArgs: any) => {
+                    generateStateOnChangeProp($state, [
+                      "popover39",
+                      "open"
+                    ]).apply(null, eventArgs);
+                  }}
+                  open={generateStateValueProp($state, ["popover39", "open"])}
+                  overlayClassName={classNames({
+                    [sty["pcls_hr8f1LHFmQ8_"]]: true
+                  })}
+                  popoverScopeClassName={sty["popover39__popover"]}
+                  title={"Professionals:"}
+                >
+                  <LoginButton
+                    className={classNames(
+                      "__wab_instance",
+                      sty.loginButton__mYeSw
+                    )}
+                    color={"sand"}
+                    link={`/affiliate-homepage`}
+                    shape={"rounded"}
+                    size={"compact"}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__h9B16
+                      )}
+                    >
+                      {"Loyalty Strategies Clients"}
+                    </div>
+                  </LoginButton>
+                </AntdPopover>
+              </div>
+            ) : null}
+            {(() => {
+              try {
+                return $props.formData?.specialties?.includes(
+                  "Specialization in Podcasts"
+                );
+              } catch (e) {
+                if (
+                  e instanceof TypeError ||
+                  e?.plasmicType === "PlasmicUndefinedDataError"
+                ) {
+                  return true;
+                }
+                throw e;
+              }
+            })() ? (
+              <div className={classNames(projectcss.all, sty.freeBox__qdD4)}>
+                <AntdPopover
+                  data-plasmic-name={"popover40"}
+                  data-plasmic-override={overrides.popover40}
+                  arrow={true}
+                  className={classNames("__wab_instance", sty.popover40)}
+                  content={
+                    <React.Fragment>
+                      <div
+                        className={classNames(projectcss.all, sty.freeBox__sqU)}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__whV2
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__iczdp
+                          )}
+                        >
+                          {"Content Strategist"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox___7S1Yt
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__rsNjD
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__ljE2
+                          )}
+                        >
+                          {"Copywriter"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__qPmO1
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__rqB1
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__eCpxa
+                          )}
+                        >
+                          {"Social Media Manager"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__vYheG
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__aDhY
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text___7ZopF
+                          )}
+                        >
+                          {"Public Relations Specialist"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__sZoZe
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__hQ1K4
+                          )}
+                        >
+                          {"\u2611"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__bUyyq
+                          )}
+                        >
+                          {"Project Manager"}
+                        </div>
+                      </div>
+                    </React.Fragment>
+                  }
+                  contentText={"Popover contents"}
+                  defaultOpen={false}
+                  defaultStylesClassName={classNames(
+                    projectcss.root_reset,
+                    projectcss.plasmic_default_styles,
+                    projectcss.plasmic_mixins,
+                    styleTokensClassNames
+                  )}
+                  mouseEnterDelay={0}
+                  mouseLeaveDelay={0}
+                  onOpenChange={async (...eventArgs: any) => {
+                    generateStateOnChangeProp($state, [
+                      "popover40",
+                      "open"
+                    ]).apply(null, eventArgs);
+                  }}
+                  open={generateStateValueProp($state, ["popover40", "open"])}
+                  overlayClassName={classNames({
+                    [sty["pcls_yMZAoko3EbNH"]]: true
+                  })}
+                  popoverScopeClassName={sty["popover40__popover"]}
+                  title={"Professionals:"}
+                >
+                  <LoginButton
+                    className={classNames(
+                      "__wab_instance",
+                      sty.loginButton__f4DUt
+                    )}
+                    color={"sand"}
+                    link={`/affiliate-homepage`}
+                    shape={"rounded"}
+                    size={"compact"}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__bYeFg
+                      )}
+                    >
+                      {"Specialization in Podcasts"}
+                    </div>
+                  </LoginButton>
+                </AntdPopover>
+              </div>
+            ) : null}
           </div>
         </div>
         <div
-          data-plasmic-name={"container8"}
-          data-plasmic-override={overrides.container8}
-          className={classNames(projectcss.all, sty.container8)}
+          data-plasmic-name={"container11"}
+          data-plasmic-override={overrides.container11}
+          className={classNames(projectcss.all, sty.container11)}
         >
           <YouTube
-            data-plasmic-name={"youtubeVideo"}
-            data-plasmic-override={overrides.youtubeVideo}
-            className={classNames("__wab_instance", sty.youtubeVideo)}
-            videoId={"R6MeLqRQzYw"}
+            data-plasmic-name={"youtubeVideo2"}
+            data-plasmic-override={overrides.youtubeVideo2}
+            className={classNames("__wab_instance", sty.youtubeVideo2)}
+            videoId={
+              (
+                $props.formData?.["youtube_video"] ??
+                "/watch?v=R6MeLqRQzYw&t=1s"
+              )
+                .split("v=")[1]
+                ?.split("&")[0] ?? ""
+            }
           />
 
-          <div className={classNames(projectcss.all, sty.freeBox__xK8Jb)}>
+          <div className={classNames(projectcss.all, sty.freeBox___92DO7)}>
             <div
               className={classNames(
                 projectcss.all,
                 projectcss.__wab_text,
-                sty.text__ruT0P
+                sty.text__y4P4J
               )}
             >
               {"How we work"}
             </div>
             <div
-              data-plasmic-name={"about"}
-              data-plasmic-override={overrides.about}
+              data-plasmic-name={"about2"}
+              data-plasmic-override={overrides.about2}
               className={classNames(
                 projectcss.all,
                 projectcss.__wab_text,
-                sty.about
+                sty.about2
               )}
             >
-              {
-                "Our differential: Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-              }
+              <React.Fragment>
+                {(() => {
+                  try {
+                    return (
+                      $props.formData?.["about"] ??
+                      "Our differential: Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+                    );
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return "Our differential: Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.";
+                    }
+                    throw e;
+                  }
+                })()}
+              </React.Fragment>
             </div>
             <PlasmicLink__
-              data-plasmic-name={"website"}
-              data-plasmic-override={overrides.website}
+              data-plasmic-name={"website2"}
+              data-plasmic-override={overrides.website2}
               className={classNames(
                 projectcss.all,
                 projectcss.a,
                 projectcss.__wab_text,
-                sty.website
+                sty.website2
               )}
               component={Link}
-              href={"https://www.plasmic.app/"}
+              href={(() => {
+                try {
+                  return $props.formData?.["website"] ?? "";
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return "https://www.plasmic.app/";
+                  }
+                  throw e;
+                }
+              })()}
               legacyBehavior={false}
               platform={"nextjs"}
             >
@@ -4702,7 +5273,7 @@ function PlasmicAApplyToACommunity__RenderFunc(props: {
 const PlasmicDescendants = {
   root: [
     "root",
-    "topBar",
+    "topBarAuto",
     "navigationBar",
     "account",
     "button",
@@ -4710,10 +5281,10 @@ const PlasmicDescendants = {
     "communityLogo",
     "type",
     "communityName",
-    "sliderCarousel",
-    "member",
-    "office",
-    "profilePic",
+    "membersCarousel",
+    "member2",
+    "office2",
+    "profilePic2",
     "container2",
     "shortMessage",
     "inviteButon",
@@ -4723,37 +5294,37 @@ const PlasmicDescendants = {
     "company",
     "companyLogo",
     "companyName",
+    "container7",
+    "popover",
+    "popover3",
+    "popover4",
+    "popover2",
+    "popover5",
+    "popover6",
+    "popover27",
+    "popover28",
+    "popover29",
+    "popover30",
+    "popover31",
+    "popover32",
+    "popover33",
+    "popover34",
+    "popover35",
+    "popover36",
+    "popover37",
+    "popover38",
+    "popover39",
+    "popover40",
     "container11",
-    "popover21",
-    "popover22",
-    "popover23",
-    "popover24",
-    "popover25",
-    "popover26",
-    "popover7",
-    "popover8",
-    "popover9",
-    "popover10",
-    "popover11",
-    "popover12",
-    "popover13",
-    "popover14",
-    "popover15",
-    "popover16",
-    "popover17",
-    "popover18",
-    "popover19",
-    "popover20",
-    "container8",
-    "youtubeVideo",
-    "about",
-    "website",
+    "youtubeVideo2",
+    "about2",
+    "website2",
     "container9",
     "communityRate",
     "rateSum",
     "goalsSum"
   ],
-  topBar: ["topBar", "navigationBar", "account", "button"],
+  topBarAuto: ["topBarAuto", "navigationBar", "account", "button"],
   navigationBar: ["navigationBar"],
   account: ["account", "button"],
   button: ["button"],
@@ -4762,18 +5333,18 @@ const PlasmicDescendants = {
     "communityLogo",
     "type",
     "communityName",
-    "sliderCarousel",
-    "member",
-    "office",
-    "profilePic"
+    "membersCarousel",
+    "member2",
+    "office2",
+    "profilePic2"
   ],
   communityLogo: ["communityLogo"],
   type: ["type"],
   communityName: ["communityName"],
-  sliderCarousel: ["sliderCarousel", "member", "office", "profilePic"],
-  member: ["member", "office", "profilePic"],
-  office: ["office"],
-  profilePic: ["profilePic"],
+  membersCarousel: ["membersCarousel", "member2", "office2", "profilePic2"],
+  member2: ["member2", "office2", "profilePic2"],
+  office2: ["office2"],
+  profilePic2: ["profilePic2"],
   container2: ["container2", "shortMessage", "inviteButon"],
   shortMessage: ["shortMessage"],
   inviteButon: ["inviteButon"],
@@ -4801,53 +5372,53 @@ const PlasmicDescendants = {
   company: ["company", "companyLogo", "companyName"],
   companyLogo: ["companyLogo"],
   companyName: ["companyName"],
-  container11: [
-    "container11",
-    "popover21",
-    "popover22",
-    "popover23",
-    "popover24",
-    "popover25",
-    "popover26",
-    "popover7",
-    "popover8",
-    "popover9",
-    "popover10",
-    "popover11",
-    "popover12",
-    "popover13",
-    "popover14",
-    "popover15",
-    "popover16",
-    "popover17",
-    "popover18",
-    "popover19",
-    "popover20"
+  container7: [
+    "container7",
+    "popover",
+    "popover3",
+    "popover4",
+    "popover2",
+    "popover5",
+    "popover6",
+    "popover27",
+    "popover28",
+    "popover29",
+    "popover30",
+    "popover31",
+    "popover32",
+    "popover33",
+    "popover34",
+    "popover35",
+    "popover36",
+    "popover37",
+    "popover38",
+    "popover39",
+    "popover40"
   ],
-  popover21: ["popover21"],
-  popover22: ["popover22"],
-  popover23: ["popover23"],
-  popover24: ["popover24"],
-  popover25: ["popover25"],
-  popover26: ["popover26"],
-  popover7: ["popover7"],
-  popover8: ["popover8"],
-  popover9: ["popover9"],
-  popover10: ["popover10"],
-  popover11: ["popover11"],
-  popover12: ["popover12"],
-  popover13: ["popover13"],
-  popover14: ["popover14"],
-  popover15: ["popover15"],
-  popover16: ["popover16"],
-  popover17: ["popover17"],
-  popover18: ["popover18"],
-  popover19: ["popover19"],
-  popover20: ["popover20"],
-  container8: ["container8", "youtubeVideo", "about", "website"],
-  youtubeVideo: ["youtubeVideo"],
-  about: ["about"],
-  website: ["website"],
+  popover: ["popover"],
+  popover3: ["popover3"],
+  popover4: ["popover4"],
+  popover2: ["popover2"],
+  popover5: ["popover5"],
+  popover6: ["popover6"],
+  popover27: ["popover27"],
+  popover28: ["popover28"],
+  popover29: ["popover29"],
+  popover30: ["popover30"],
+  popover31: ["popover31"],
+  popover32: ["popover32"],
+  popover33: ["popover33"],
+  popover34: ["popover34"],
+  popover35: ["popover35"],
+  popover36: ["popover36"],
+  popover37: ["popover37"],
+  popover38: ["popover38"],
+  popover39: ["popover39"],
+  popover40: ["popover40"],
+  container11: ["container11", "youtubeVideo2", "about2", "website2"],
+  youtubeVideo2: ["youtubeVideo2"],
+  about2: ["about2"],
+  website2: ["website2"],
   container9: ["container9", "communityRate", "rateSum", "goalsSum"],
   communityRate: ["communityRate"],
   rateSum: ["rateSum"],
@@ -4858,7 +5429,7 @@ type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   root: "div";
-  topBar: "div";
+  topBarAuto: "div";
   navigationBar: typeof NavigationBar;
   account: typeof AntdDropdown;
   button: typeof AntdButton;
@@ -4866,10 +5437,10 @@ type NodeDefaultElementType = {
   communityLogo: typeof PlasmicImg__;
   type: "svg";
   communityName: "div";
-  sliderCarousel: typeof SliderWrapper;
-  member: "div";
-  office: "div";
-  profilePic: typeof PlasmicImg__;
+  membersCarousel: typeof SliderWrapper;
+  member2: "div";
+  office2: "div";
+  profilePic2: typeof PlasmicImg__;
   container2: "div";
   shortMessage: "textarea";
   inviteButon: typeof LoginButton;
@@ -4879,31 +5450,31 @@ type NodeDefaultElementType = {
   company: typeof LoginButton;
   companyLogo: typeof PlasmicImg__;
   companyName: "div";
+  container7: "div";
+  popover: typeof AntdPopover;
+  popover3: typeof AntdPopover;
+  popover4: typeof AntdPopover;
+  popover2: typeof AntdPopover;
+  popover5: typeof AntdPopover;
+  popover6: typeof AntdPopover;
+  popover27: typeof AntdPopover;
+  popover28: typeof AntdPopover;
+  popover29: typeof AntdPopover;
+  popover30: typeof AntdPopover;
+  popover31: typeof AntdPopover;
+  popover32: typeof AntdPopover;
+  popover33: typeof AntdPopover;
+  popover34: typeof AntdPopover;
+  popover35: typeof AntdPopover;
+  popover36: typeof AntdPopover;
+  popover37: typeof AntdPopover;
+  popover38: typeof AntdPopover;
+  popover39: typeof AntdPopover;
+  popover40: typeof AntdPopover;
   container11: "div";
-  popover21: typeof AntdPopover;
-  popover22: typeof AntdPopover;
-  popover23: typeof AntdPopover;
-  popover24: typeof AntdPopover;
-  popover25: typeof AntdPopover;
-  popover26: typeof AntdPopover;
-  popover7: typeof AntdPopover;
-  popover8: typeof AntdPopover;
-  popover9: typeof AntdPopover;
-  popover10: typeof AntdPopover;
-  popover11: typeof AntdPopover;
-  popover12: typeof AntdPopover;
-  popover13: typeof AntdPopover;
-  popover14: typeof AntdPopover;
-  popover15: typeof AntdPopover;
-  popover16: typeof AntdPopover;
-  popover17: typeof AntdPopover;
-  popover18: typeof AntdPopover;
-  popover19: typeof AntdPopover;
-  popover20: typeof AntdPopover;
-  container8: "div";
-  youtubeVideo: typeof YouTube;
-  about: "div";
-  website: "a";
+  youtubeVideo2: typeof YouTube;
+  about2: "div";
+  website2: "a";
   container9: "div";
   communityRate: typeof AntdRate;
   rateSum: "div";
@@ -4972,7 +5543,7 @@ export const PlasmicAApplyToACommunity = Object.assign(
   makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
-    topBar: makeNodeComponent("topBar"),
+    topBarAuto: makeNodeComponent("topBarAuto"),
     navigationBar: makeNodeComponent("navigationBar"),
     account: makeNodeComponent("account"),
     button: makeNodeComponent("button"),
@@ -4980,10 +5551,10 @@ export const PlasmicAApplyToACommunity = Object.assign(
     communityLogo: makeNodeComponent("communityLogo"),
     type: makeNodeComponent("type"),
     communityName: makeNodeComponent("communityName"),
-    sliderCarousel: makeNodeComponent("sliderCarousel"),
-    member: makeNodeComponent("member"),
-    office: makeNodeComponent("office"),
-    profilePic: makeNodeComponent("profilePic"),
+    membersCarousel: makeNodeComponent("membersCarousel"),
+    member2: makeNodeComponent("member2"),
+    office2: makeNodeComponent("office2"),
+    profilePic2: makeNodeComponent("profilePic2"),
     container2: makeNodeComponent("container2"),
     shortMessage: makeNodeComponent("shortMessage"),
     inviteButon: makeNodeComponent("inviteButon"),
@@ -4993,31 +5564,31 @@ export const PlasmicAApplyToACommunity = Object.assign(
     company: makeNodeComponent("company"),
     companyLogo: makeNodeComponent("companyLogo"),
     companyName: makeNodeComponent("companyName"),
+    container7: makeNodeComponent("container7"),
+    popover: makeNodeComponent("popover"),
+    popover3: makeNodeComponent("popover3"),
+    popover4: makeNodeComponent("popover4"),
+    popover2: makeNodeComponent("popover2"),
+    popover5: makeNodeComponent("popover5"),
+    popover6: makeNodeComponent("popover6"),
+    popover27: makeNodeComponent("popover27"),
+    popover28: makeNodeComponent("popover28"),
+    popover29: makeNodeComponent("popover29"),
+    popover30: makeNodeComponent("popover30"),
+    popover31: makeNodeComponent("popover31"),
+    popover32: makeNodeComponent("popover32"),
+    popover33: makeNodeComponent("popover33"),
+    popover34: makeNodeComponent("popover34"),
+    popover35: makeNodeComponent("popover35"),
+    popover36: makeNodeComponent("popover36"),
+    popover37: makeNodeComponent("popover37"),
+    popover38: makeNodeComponent("popover38"),
+    popover39: makeNodeComponent("popover39"),
+    popover40: makeNodeComponent("popover40"),
     container11: makeNodeComponent("container11"),
-    popover21: makeNodeComponent("popover21"),
-    popover22: makeNodeComponent("popover22"),
-    popover23: makeNodeComponent("popover23"),
-    popover24: makeNodeComponent("popover24"),
-    popover25: makeNodeComponent("popover25"),
-    popover26: makeNodeComponent("popover26"),
-    popover7: makeNodeComponent("popover7"),
-    popover8: makeNodeComponent("popover8"),
-    popover9: makeNodeComponent("popover9"),
-    popover10: makeNodeComponent("popover10"),
-    popover11: makeNodeComponent("popover11"),
-    popover12: makeNodeComponent("popover12"),
-    popover13: makeNodeComponent("popover13"),
-    popover14: makeNodeComponent("popover14"),
-    popover15: makeNodeComponent("popover15"),
-    popover16: makeNodeComponent("popover16"),
-    popover17: makeNodeComponent("popover17"),
-    popover18: makeNodeComponent("popover18"),
-    popover19: makeNodeComponent("popover19"),
-    popover20: makeNodeComponent("popover20"),
-    container8: makeNodeComponent("container8"),
-    youtubeVideo: makeNodeComponent("youtubeVideo"),
-    about: makeNodeComponent("about"),
-    website: makeNodeComponent("website"),
+    youtubeVideo2: makeNodeComponent("youtubeVideo2"),
+    about2: makeNodeComponent("about2"),
+    website2: makeNodeComponent("website2"),
     container9: makeNodeComponent("container9"),
     communityRate: makeNodeComponent("communityRate"),
     rateSum: makeNodeComponent("rateSum"),

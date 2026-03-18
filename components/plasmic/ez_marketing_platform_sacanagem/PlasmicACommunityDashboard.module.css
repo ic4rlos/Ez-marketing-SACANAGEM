@@ -25,7 +25,7 @@
     grid-column: 4;
   }
 }
-.topBarAuto {
+.topBarSacanagem {
   animation: none;
   display: flex;
   flex-direction: row;
@@ -41,7 +41,7 @@
   border-bottom: 1px solid #53535333;
 }
 @media (min-width: 0px) and (max-width: 768px) {
-  .topBarAuto {
+  .topBarSacanagem {
     animation: none;
     margin-bottom: 0px;
     padding: 0px;
@@ -266,7 +266,7 @@
 .root .link__xtciK:active {
   color: var(--token-kmgKuNT2vqAV);
 }
-.account2:global(.__wab_instance) {
+.account3:global(.__wab_instance) {
   animation: none;
   max-width: 100%;
   object-fit: cover;
@@ -283,12 +283,32 @@
   top: auto;
   flex-shrink: 0;
 }
-.menuItem__fs1T8:global(.__wab_instance) {
+.account3__dropdownMenu:global(.ant-dropdown-menu) {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  background: linear-gradient(90deg, #ffffff 55%, #e7e6e280 100%);
+  outline: none;
+}
+.account3__dropdownMenu:global(.ant-dropdown-menu)
+  :global(.ant-dropdown-menu-item) {
+  color: #000000;
+  font-family: "Inter", sans-serif;
+  font-weight: 300;
+  font-size: 12px;
+  outline: none;
+}
+.account3__dropdownMenu:global(.ant-dropdown-menu)
+  :global(.ant-dropdown-menu-item-active) {
+  background: #e7e6e2;
+  outline: none;
+}
+.menuItem__gyx7K:global(.__wab_instance) {
   animation: none;
   max-width: 100%;
   object-fit: cover;
 }
-.text__qvFuh {
+.text__oOkiq {
   animation: none;
   position: relative;
   width: 100%;
@@ -309,12 +329,12 @@
   text-overflow: clip !important;
   min-width: 0;
 }
-.menuItem__xFapz:global(.__wab_instance) {
+.menuItem__x42Di:global(.__wab_instance) {
   animation: none;
   max-width: 100%;
   object-fit: cover;
 }
-.text___2AjQi {
+.text__zz8J1 {
   animation: none;
   position: relative;
   width: 100%;
@@ -341,7 +361,7 @@
   object-fit: cover;
   border-width: 0px;
 }
-.img__mZis2 {
+.img__bD3Bc {
   animation: none;
   object-fit: cover;
   max-width: 100%;
@@ -352,7 +372,7 @@
   top: 0px;
   border-radius: 11px;
 }
-.img__mZis2 > picture > img {
+.img__bD3Bc > picture > img {
   object-fit: cover;
 }
 .container1 {
@@ -1176,20 +1196,19 @@
   display: flex;
   flex-direction: row;
   position: relative;
-  width: 100%;
+  width: auto;
   height: auto;
   max-width: 100%;
   justify-content: flex-start;
   align-items: center;
-  min-width: 0;
   padding: 8px;
 }
 .freeBox__iBgP0 {
   display: flex;
   flex-direction: column;
   position: relative;
-  align-items: center;
-  justify-content: flex-start;
+  align-items: flex-end;
+  justify-content: center;
   width: 200px;
   height: auto;
   max-width: 100%;
@@ -1200,19 +1219,19 @@
 }
 .profilePic {
   object-fit: cover;
-  max-width: 200px;
+  max-width: 150px;
   width: auto;
   height: auto;
-  min-height: 250px;
+  min-height: 200px;
   border-radius: 8px;
-  margin: 0px 0px -250px;
+  margin: 0px 0px -200px;
   border-width: 1px;
 }
 .profilePic > picture > img {
   object-fit: cover;
 }
 .text__iqqHs {
-  width: 150px;
+  width: 125px;
   height: auto;
   max-width: 100%;
   font-size: 14px;
@@ -1226,7 +1245,7 @@
   padding: 0px 0px 0px 10px;
 }
 .text__zwQ6 {
-  width: 100px;
+  width: 75px;
   height: auto;
   max-width: 100%;
   font-size: 12px;
@@ -1239,20 +1258,21 @@
   padding: 0px 0px 0px 10px;
 }
 .office {
-  position: absolute;
+  position: relative;
   width: 120px;
   height: auto;
   max-width: 100%;
-  transform: rotate3d(0, 0, 1, -90deg);
-  left: -20px;
-  top: 130px;
+  transform: rotate3d(0, 0, 1, 90deg) rotate3d(0, 0, 0, 90deg);
+  left: auto;
+  top: auto;
   font-size: 14px;
   color: #fafafa;
   background: #000000cc;
   min-height: 50px;
   padding-left: 10px;
+  align-self: flex-end;
   flex-shrink: 0;
-  margin: 0px;
+  margin: 50px 0px 0px -12px;
 }
 .container10 {
   display: flex;
@@ -7346,6 +7366,5 @@
   font-size: 12px;
   text-decoration-line: underline;
   text-align: left;
-  width: 100%;
-  min-width: 0;
+  width: auto;
 }

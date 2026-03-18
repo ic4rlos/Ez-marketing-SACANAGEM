@@ -136,7 +136,7 @@ export type PlasmicARatingMembers__OverridesType = {
   root?: Flex__<"div">;
   topBarAuto?: Flex__<"div">;
   navigationBar?: Flex__<typeof NavigationBar>;
-  account2?: Flex__<typeof AntdDropdown>;
+  account3?: Flex__<typeof AntdDropdown>;
   button?: Flex__<typeof AntdButton>;
   container1?: Flex__<"div">;
   profilePic?: Flex__<typeof PlasmicImg__>;
@@ -457,16 +457,22 @@ function PlasmicARatingMembers__RenderFunc(props: {
                 />
 
                 <AntdDropdown
-                  data-plasmic-name={"account2"}
-                  data-plasmic-override={overrides.account2}
-                  className={classNames("__wab_instance", sty.account2)}
-                  dropdownMenuScopeClassName={sty["account2__dropdownMenu"]}
+                  data-plasmic-name={"account3"}
+                  data-plasmic-override={overrides.account3}
+                  className={classNames("__wab_instance", sty.account3)}
+                  dropdownMenuScopeClassName={sty["account3__dropdownMenu"]}
+                  menuClassName={classNames({
+                    [sty["pcls_KC_teA7ebw0f"]]: true
+                  })}
+                  menuItemClassName={classNames({
+                    [sty["pcls_n_mzd4yqFbG8"]]: true
+                  })}
                   menuItems={() => (
                     <React.Fragment>
                       <AntdMenuItem
                         className={classNames(
                           "__wab_instance",
-                          sty.menuItem__s1BYq
+                          sty.menuItem__ksNlz
                         )}
                         key={"menu-item-1"}
                       >
@@ -474,7 +480,7 @@ function PlasmicARatingMembers__RenderFunc(props: {
                           className={classNames(
                             projectcss.all,
                             projectcss.__wab_text,
-                            sty.text__smOcv
+                            sty.text__fSg
                           )}
                         >
                           {"Menu item"}
@@ -483,7 +489,7 @@ function PlasmicARatingMembers__RenderFunc(props: {
                       <AntdMenuItem
                         className={classNames(
                           "__wab_instance",
-                          sty.menuItem__hZfEv
+                          sty.menuItem__jYqFq
                         )}
                         key={"menu-item-2"}
                       >
@@ -491,7 +497,7 @@ function PlasmicARatingMembers__RenderFunc(props: {
                           className={classNames(
                             projectcss.all,
                             projectcss.__wab_text,
-                            sty.text__rnwkP
+                            sty.text__sVkUi
                           )}
                         >
                           {"Menu item"}
@@ -524,7 +530,66 @@ function PlasmicARatingMembers__RenderFunc(props: {
                         { type: null }
                       ];
                       __composite["0"]["label"] = "Profile";
+                      __composite["0"]["onClick"] = async info => {
+                        const $steps = {};
+
+                        $steps["goToAProfile"] = true
+                          ? (() => {
+                              const actionArgs = { destination: `/a-profile` };
+                              return (({ destination }) => {
+                                if (
+                                  typeof destination === "string" &&
+                                  destination.startsWith("#")
+                                ) {
+                                  document
+                                    .getElementById(destination.substr(1))
+                                    .scrollIntoView({ behavior: "smooth" });
+                                } else {
+                                  __nextRouter?.push(destination);
+                                }
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["goToAProfile"] != null &&
+                          typeof $steps["goToAProfile"] === "object" &&
+                          typeof $steps["goToAProfile"].then === "function"
+                        ) {
+                          $steps["goToAProfile"] = await $steps["goToAProfile"];
+                        }
+                      };
                       __composite["1"]["label"] = "Edit profile";
+                      __composite["1"]["onClick"] = async info => {
+                        const $steps = {};
+
+                        $steps["goToAEditProfile"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                destination: `/a-edit-profile`
+                              };
+                              return (({ destination }) => {
+                                if (
+                                  typeof destination === "string" &&
+                                  destination.startsWith("#")
+                                ) {
+                                  document
+                                    .getElementById(destination.substr(1))
+                                    .scrollIntoView({ behavior: "smooth" });
+                                } else {
+                                  __nextRouter?.push(destination);
+                                }
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["goToAEditProfile"] != null &&
+                          typeof $steps["goToAEditProfile"] === "object" &&
+                          typeof $steps["goToAEditProfile"].then === "function"
+                        ) {
+                          $steps["goToAEditProfile"] =
+                            await $steps["goToAEditProfile"];
+                        }
+                      };
                       __composite["2"]["type"] = "divider";
                       return __composite;
                     })();
@@ -543,6 +608,29 @@ function PlasmicARatingMembers__RenderFunc(props: {
                     })();
                     __composite["2"]["type"] = "item";
                     __composite["2"]["label"] = "Sign out";
+                    __composite["2"]["onClick"] = async info => {
+                      const $steps = {};
+
+                      $steps["runCode"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              customFunction: async () => {
+                                return $props.onLogout?.();
+                              }
+                            };
+                            return (({ customFunction }) => {
+                              return customFunction();
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["runCode"] != null &&
+                        typeof $steps["runCode"] === "object" &&
+                        typeof $steps["runCode"].then === "function"
+                      ) {
+                        $steps["runCode"] = await $steps["runCode"];
+                      }
+                    };
                     return __composite;
                   })()}
                   trigger={"hover"}
@@ -556,7 +644,7 @@ function PlasmicARatingMembers__RenderFunc(props: {
                   >
                     <PlasmicImg__
                       alt={""}
-                      className={classNames(sty.img__iLpIl)}
+                      className={classNames(sty.img__rOpkz)}
                       displayHeight={"30px"}
                       displayMaxHeight={"none"}
                       displayMaxWidth={"100%"}
@@ -1843,7 +1931,7 @@ const PlasmicDescendants = {
     "root",
     "topBarAuto",
     "navigationBar",
-    "account2",
+    "account3",
     "button",
     "container1",
     "profilePic",
@@ -1872,9 +1960,9 @@ const PlasmicDescendants = {
     "technicalPerformance",
     "memberRated2"
   ],
-  topBarAuto: ["topBarAuto", "navigationBar", "account2", "button"],
+  topBarAuto: ["topBarAuto", "navigationBar", "account3", "button"],
   navigationBar: ["navigationBar"],
-  account2: ["account2", "button"],
+  account3: ["account3", "button"],
   button: ["button"],
   container1: [
     "container1",
@@ -1939,7 +2027,7 @@ type NodeDefaultElementType = {
   root: "div";
   topBarAuto: "div";
   navigationBar: typeof NavigationBar;
-  account2: typeof AntdDropdown;
+  account3: typeof AntdDropdown;
   button: typeof AntdButton;
   container1: "div";
   profilePic: typeof PlasmicImg__;
@@ -2033,7 +2121,7 @@ export const PlasmicARatingMembers = Object.assign(
     // Helper components rendering sub-elements
     topBarAuto: makeNodeComponent("topBarAuto"),
     navigationBar: makeNodeComponent("navigationBar"),
-    account2: makeNodeComponent("account2"),
+    account3: makeNodeComponent("account3"),
     button: makeNodeComponent("button"),
     container1: makeNodeComponent("container1"),
     profilePic: makeNodeComponent("profilePic"),

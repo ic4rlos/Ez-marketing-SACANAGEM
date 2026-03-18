@@ -35,14 +35,9 @@ export default function AApplyToACommunity() {
 
   useEffect(() => {
     async function loadUser() {
-      const { data, error } = await supabase.auth.getUser();
-
-      console.log("AUTH user:", data?.user?.id);
-      console.log("AUTH error:", error);
-
+      const { data } = await supabase.auth.getUser();
       setViewer(data?.user ?? null);
     }
-
     loadUser();
   }, []);
 
@@ -52,30 +47,23 @@ export default function AApplyToACommunity() {
 
   useEffect(() => {
 
-    if (!id) {
-      console.log("ABORT: no id yet");
-      return;
-    }
+    // 🔒 trava execução até ter tudo
+    if (!id || !viewer) return;
 
     async function loadAll() {
 
       try {
 
         const communityId = Number(id);
-        console.log("LOAD START communityId:", communityId);
 
         // COMMUNITY
-        const { data: communityData, error: communityError } = await supabase
+        const { data: communityData } = await supabase
           .from("Community")
           .select("*")
           .eq("id", communityId)
           .maybeSingle();
 
-        console.log("COMMUNITY data:", communityData);
-        console.log("COMMUNITY error:", communityError);
-
         if (!communityData) {
-          console.log("ABORT: community not found");
           setLoading(false);
           return;
         }
@@ -83,36 +71,22 @@ export default function AApplyToACommunity() {
         setCommunity(communityData);
 
         // MEMBERS
-        const { data: membersData, error: membersError } = await supabase
+        const { data: membersData } = await supabase
           .from("community_members")
           .select("*")
           .eq("community_id", communityId);
 
-        console.log("MEMBERS count:", membersData?.length);
-        console.log("MEMBERS error:", membersError);
-
         setMembers(membersData ?? []);
 
-        // CHECK USER MEMBERSHIP
-        if (viewer?.id) {
+        // MEMBERSHIP (SEM IF)
+        const { data: existing } = await supabase
+          .from("community_members")
+          .select("*")
+          .eq("user_id", viewer.id)
+          .eq("community_id", communityId)
+          .maybeSingle();
 
-          console.log("CHECK membership for user:", viewer.id);
-
-          const { data: existing, error: membershipError } = await supabase
-            .from("community_members")
-            .select("*")
-            .eq("user_id", viewer.id)
-            .eq("community_id", communityId)
-            .maybeSingle();
-
-          console.log("MEMBERSHIP data:", existing);
-          console.log("MEMBERSHIP error:", membershipError);
-
-          setMembership(existing ?? null);
-
-        } else {
-          console.log("SKIP membership check: no viewer");
-        }
+        setMembership(existing ?? null);
 
         // FORM DEFAULT
         setFormData({
@@ -121,11 +95,10 @@ export default function AApplyToACommunity() {
 
       } catch (err) {
 
-        console.error("LOAD exception:", err);
+        console.error("Load error:", err);
 
       }
 
-      console.log("LOAD END");
       setLoading(false);
 
     }
@@ -140,12 +113,9 @@ export default function AApplyToACommunity() {
 
   async function handleSave(data: any) {
 
-    console.log("SAVE TRIGGERED");
+    console.log("handleSave recebeu:", data);
 
-    if (!viewer || !id) {
-      console.log("ABORT SAVE:", { viewer: viewer?.id, id });
-      return;
-    }
+    if (!viewer || !id) return;
 
     try {
 
@@ -157,24 +127,27 @@ export default function AApplyToACommunity() {
         short_message: data?.short_message ?? ""
       };
 
-      console.log("PAYLOAD:", payload);
+      console.log("Payload:", payload);
 
-      const { data: upsertData, error } = await supabase
+      const { error } = await supabase
         .from("community_members")
         .upsert(payload, {
           onConflict: "user_id,community_id"
         });
 
-      console.log("UPSERT result:", upsertData);
-      console.log("UPSERT error:", error);
+      if (error) {
 
-      if (!error) {
-        console.log("APPLY SUCCESS");
+        console.error("Apply error:", error);
+
+      } else {
+
+        console.log("Apply success");
+
       }
 
     } catch (err) {
 
-      console.error("SAVE exception:", err);
+      console.error("Apply exception:", err);
 
     }
 

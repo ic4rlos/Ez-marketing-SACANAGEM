@@ -29,76 +29,67 @@ export default function AApplyToACommunity() {
   // =========================
   useEffect(() => {
     async function loadUser() {
-      const { data, error } = await supabase.auth.getUser();
-      console.log("LOG: AUTH user:", data?.user?.id, "error:", error);
+      const { data } = await supabase.auth.getUser();
       setViewer(data?.user ?? null);
     }
     loadUser();
   }, []);
 
   // =========================
-  // LOAD → formData (FLATTEN)
+  // LOAD DATA
   // =========================
   useEffect(() => {
-    if (!id || !viewer) {
-      console.log("LOG: WAITING id/viewer", { id, viewer });
-      return;
-    }
+    if (!id || !viewer) return;
 
     let mounted = true;
 
     async function loadAll() {
-      try {
-        const communityId = Number(id);
-        console.log("LOG: LOAD START", { communityId });
+      const communityId = Number(id);
 
-        // COMMUNITY
-        const { data: communityData, error: communityError } = await supabase
-          .from("Community")
-          .select("*")
-          .eq("id", communityId)
-          .maybeSingle();
+      // COMMUNITY
+      const { data: community } = await supabase
+        .from("Community")
+        .select("*")
+        .eq("id", communityId)
+        .maybeSingle();
 
-        console.log("LOG: COMMUNITY", communityData, communityError);
+      // MEMBERS
+      const { data: members } = await supabase
+        .from("community_members")
+        .select("*")
+        .eq("community_id", communityId);
 
-        // MEMBERS
-        const { data: membersData, error: membersError } = await supabase
-          .from("community_members")
-          .select("*")
-          .eq("community_id", communityId);
+      // MEMBERSHIP
+      const { data: membership } = await supabase
+        .from("community_members")
+        .select("*")
+        .eq("user_id", viewer.id)
+        .eq("community_id", communityId)
+        .maybeSingle();
 
-        console.log("LOG: MEMBERS", membersData, membersError);
+      // ✅ SPECIALTIES (LENDO DA TABELA)
+      const { data: specialtiesRaw } = await supabase
+        .from("Community specialties")
+        .select('"Professional specialty"')
+        .eq("community_id", communityId);
 
-        // MEMBERSHIP
-        const { data: membershipData, error: membershipError } = await supabase
-          .from("community_members")
-          .select("*")
-          .eq("user_id", viewer.id)
-          .eq("community_id", communityId)
-          .maybeSingle();
+      const specialties =
+        specialtiesRaw?.map(
+          (s:any) => s["Professional specialty"]
+        ) ?? [];
 
-        console.log("LOG: MEMBERSHIP", membershipData, membershipError);
+      const nextFormData = {
+        ...(community ?? {}),
+        members: members ?? [],
+        membership: membership ?? null,
+        specialties, // 🔥 vindo do banco
+        "Short message": ""
+      };
 
-        // 🔥 PADRÃO CORRETO (igual dashboard)
-        const nextFormData = {
-          ...(communityData ?? {}), // 🔥 flatten aqui resolve tudo
-          members: membersData ?? [],
-          membership: membershipData ?? null,
-          "Short message": ""
-        };
+      if (!mounted) return;
 
-        console.log("LOG: SET formData", nextFormData);
-
-        if (!mounted) return;
-
-        setFormData(nextFormData);
-
-      } catch (err) {
-        console.error("LOG: LOAD ERROR", err);
-      } finally {
-        if (mounted) setLoading(false);
-        console.log("LOG: LOAD END");
-      }
+      setFormData(nextFormData);
+      setLoading(false);
     }
 
     loadAll();
@@ -112,48 +103,23 @@ export default function AApplyToACommunity() {
   // SAVE
   // =========================
   async function handleSave(data: any) {
-    console.log("LOG: handleSave RECEIVED", data);
+    if (!viewer || !id) return;
 
-    if (!viewer || !id) {
-      console.log("LOG: ABORT SAVE", { viewer, id });
-      return;
-    }
-
-    try {
-      const payload = {
-        user_id: viewer.id,
-        community_id: Number(id),
-        role: "member",
-        status: "request",
-        short_message: data?.["Short message"] ?? ""
-      };
-
-      console.log("LOG: PAYLOAD", payload);
-
-      const { data: result, error } = await supabase
-        .from("community_members")
-        .upsert(payload, {
+    await supabase
+      .from("community_members")
+      .upsert(
+        {
+          user_id: viewer.id,
+          community_id: Number(id),
+          role: "member",
+          status: "request",
+          short_message: data?.["Short message"] ?? ""
+        },
+        {
           onConflict: "user_id,community_id"
-        });
-
-      console.log("LOG: UPSERT RESULT", result);
-      console.log("LOG: UPSERT ERROR", error);
-
-      if (!error) console.log("LOG: APPLY SUCCESS");
-
-    } catch (err) {
-      console.error("LOG: SAVE EXCEPTION", err);
-    }
+        }
+      );
   }
-
-  // =========================
-  // DEBUG GLOBAL
-  // =========================
-  useEffect(() => {
-    // @ts-ignore
-    window.__DEBUG_FORMDATA = formData;
-    console.log("LOG: WINDOW formData atualizado");
-  }, [formData]);
 
   if (loading) return null;
 

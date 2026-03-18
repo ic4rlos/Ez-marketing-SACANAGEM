@@ -240,20 +240,7 @@ function PlasmicAApplyToACommunity__RenderFunc(props: {
         path: "shortMessage.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
-          (() => {
-            try {
-              return (value = $props.formData?.short_message ?? "");
-            } catch (e) {
-              if (
-                e instanceof TypeError ||
-                e?.plasmicType === "PlasmicUndefinedDataError"
-              ) {
-                return undefined;
-              }
-              throw e;
-            }
-          })()
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "communityRate.value",
@@ -1075,62 +1062,32 @@ function PlasmicAApplyToACommunity__RenderFunc(props: {
             data-plasmic-override={overrides.container2}
             className={classNames(projectcss.all, sty.container2)}
           >
-            {(() => {
-              const child$Props = {
-                className: classNames(
-                  projectcss.all,
-                  projectcss.textarea,
-                  sty.shortMessage
-                ),
-                onChange: async (...eventArgs: any) => {
-                  (e => {
-                    generateStateOnChangeProp($state, [
-                      "shortMessage",
-                      "value"
-                    ])(e.target.value);
-                  }).apply(null, eventArgs);
-                },
-                placeholder:
-                  'If you are excited about working with this community, please enter a short message here and click "Invite"',
-                ref: ref => {
-                  $refs["shortMessage"] = ref;
-                },
-                value:
-                  generateStateValueProp($state, ["shortMessage", "value"]) ??
-                  ""
-              };
+            <textarea
+              data-plasmic-name={"shortMessage"}
+              data-plasmic-override={overrides.shortMessage}
+              className={classNames(
+                projectcss.all,
+                projectcss.textarea,
+                sty.shortMessage
+              )}
+              onChange={async (...eventArgs: any) => {
+                (e => {
+                  generateStateOnChangeProp($state, ["shortMessage", "value"])(
+                    e.target.value
+                  );
+                }).apply(null, eventArgs);
+              }}
+              placeholder={
+                'If you are excited about working with this community, please enter a short message here and click "Invite"'
+              }
+              ref={ref => {
+                $refs["shortMessage"] = ref;
+              }}
+              value={
+                generateStateValueProp($state, ["shortMessage", "value"]) ?? ""
+              }
+            />
 
-              initializePlasmicStates(
-                $state,
-                [
-                  {
-                    name: "shortMessage.value",
-                    initFunc: ({ $props, $state, $queries, $q }) =>
-                      (() => {
-                        try {
-                          return (value = $props.formData?.short_message ?? "");
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return undefined;
-                          }
-                          throw e;
-                        }
-                      })()
-                  }
-                ],
-                []
-              );
-              return (
-                <textarea
-                  data-plasmic-name={"shortMessage"}
-                  data-plasmic-override={overrides.shortMessage}
-                  {...child$Props}
-                />
-              );
-            })()}
             <LoginButton
               data-plasmic-name={"inviteButon"}
               data-plasmic-override={overrides.inviteButon}

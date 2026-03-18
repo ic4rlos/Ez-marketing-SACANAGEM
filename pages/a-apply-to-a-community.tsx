@@ -37,7 +37,7 @@ export default function AApplyToACommunity() {
   }, []);
 
   // =========================
-  // LOAD → formData CENTRAL
+  // LOAD → formData (FLATTEN)
   // =========================
   useEffect(() => {
     if (!id || !viewer) {
@@ -79,8 +79,9 @@ export default function AApplyToACommunity() {
 
         console.log("LOG: MEMBERSHIP", membershipData, membershipError);
 
+        // 🔥 PADRÃO CORRETO (igual dashboard)
         const nextFormData = {
-          community: communityData ?? {},
+          ...(communityData ?? {}), // 🔥 flatten aqui resolve tudo
           members: membersData ?? [],
           membership: membershipData ?? null,
           "Short message": ""
@@ -146,7 +147,7 @@ export default function AApplyToACommunity() {
   }
 
   // =========================
-  // DEBUG GLOBAL (sem Plasmic)
+  // DEBUG GLOBAL
   // =========================
   useEffect(() => {
     // @ts-ignore

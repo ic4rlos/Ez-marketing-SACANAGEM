@@ -844,7 +844,7 @@ function PlasmicAApplyToACommunity__RenderFunc(props: {
                 loading={"lazy"}
                 src={(() => {
                   try {
-                    return undefined;
+                    return $props.formData?.["community_logo"] ?? null;
                   } catch (e) {
                     if (
                       e instanceof TypeError ||
@@ -5218,7 +5218,21 @@ function PlasmicAApplyToACommunity__RenderFunc(props: {
                 sty.text__kteE9
               )}
             >
-              {"goals achieved"}
+              <React.Fragment>
+                {(() => {
+                  try {
+                    return JSON.stringify($props.formData);
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return "goals achieved";
+                    }
+                    throw e;
+                  }
+                })()}
+              </React.Fragment>
             </div>
           </div>
         </div>

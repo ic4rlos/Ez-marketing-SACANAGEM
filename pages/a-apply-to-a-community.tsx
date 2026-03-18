@@ -15,10 +15,8 @@ const PlasmicAApplyToACommunity = dynamic(
 );
 
 export default function AApplyToACommunity() {
-
   const router = useRouter();
   const supabase = getSupabaseA();
-
   const { id } = router.query;
 
   const [viewer, setViewer] = useState<any>(null);
@@ -32,93 +30,93 @@ export default function AApplyToACommunity() {
   // =========================
   // AUTH
   // =========================
-
   useEffect(() => {
     async function loadUser() {
-      const { data } = await supabase.auth.getUser();
+      const { data, error } = await supabase.auth.getUser();
+      console.log("LOG: AUTH user:", data?.user?.id, " error:", error ?? null);
       setViewer(data?.user ?? null);
     }
     loadUser();
   }, []);
 
   // =========================
-  // LOAD COMMUNITY + STATE
+  // LOAD COMMUNITY + STATE (aguarda viewer + id)
   // =========================
-
   useEffect(() => {
+    if (!id || !viewer) {
+      // mensagem curta e objetiva para confirmar que aguardamos ambos
+      console.log("LOG: loadAll postponed, id:", id ?? "no-id", " viewer:", viewer ? viewer.id : "no-viewer");
+      return;
+    }
 
-    // 🔒 trava execução até ter tudo
-    if (!id || !viewer) return;
+    let mounted = true;
 
     async function loadAll() {
-
       try {
-
         const communityId = Number(id);
+        console.log("LOG: LOAD START communityId:", communityId);
 
-        // COMMUNITY
-        const { data: communityData } = await supabase
+        const { data: communityData, error: communityError } = await supabase
           .from("Community")
           .select("*")
           .eq("id", communityId)
           .maybeSingle();
 
+        console.log("LOG: COMMUNITY data:", communityData ? "found" : null, " error:", communityError ?? null);
+        if (!mounted) return;
         if (!communityData) {
           setLoading(false);
           return;
         }
-
         setCommunity(communityData);
 
-        // MEMBERS
-        const { data: membersData } = await supabase
+        const { data: membersData, error: membersError } = await supabase
           .from("community_members")
           .select("*")
           .eq("community_id", communityId);
 
+        console.log("LOG: MEMBERS count:", membersData?.length ?? 0, " error:", membersError ?? null);
+        if (!mounted) return;
         setMembers(membersData ?? []);
 
-        // MEMBERSHIP (SEM IF)
-        const { data: existing } = await supabase
+        const { data: existing, error: membershipError } = await supabase
           .from("community_members")
           .select("*")
           .eq("user_id", viewer.id)
           .eq("community_id", communityId)
           .maybeSingle();
 
+        console.log("LOG: MEMBERSHIP data:", existing ? "found" : null, " error:", membershipError ?? null);
+        if (!mounted) return;
         setMembership(existing ?? null);
 
-        // FORM DEFAULT
-        setFormData({
-          short_message: ""
-        });
-
+        setFormData({ short_message: "" });
       } catch (err) {
-
-        console.error("Load error:", err);
-
+        console.error("LOG: LOAD exception:", err);
+      } finally {
+        if (mounted) setLoading(false);
+        console.log("LOG: LOAD END");
       }
-
-      setLoading(false);
-
     }
 
     loadAll();
 
+    return () => {
+      mounted = false;
+    };
   }, [id, viewer]);
 
   // =========================
-  // SAVE (APPLY)
+  // SAVE (APPLY) - core handler
   // =========================
-
   async function handleSave(data: any) {
-
-    console.log("handleSave recebeu:", data);
-
-    if (!viewer || !id) return;
+    console.log("LOG: handleSave called with:", data);
+    if (!viewer || !id) {
+      console.log("LOG: ABORT SAVE missing viewer or id", { viewer: viewer?.id ?? null, id: id ?? null });
+      return;
+    }
 
     try {
-
       const payload = {
         user_id: viewer.id,
         community_id: Number(id),
@@ -127,31 +125,47 @@ export default function AApplyToACommunity() {
         short_message: data?.short_message ?? ""
       };
 
-      console.log("Payload:", payload);
-
-      const { error } = await supabase
+      console.log("LOG: INSERT PAYLOAD:", payload);
+      const { data: upsertData, error } = await supabase
         .from("community_members")
-        .upsert(payload, {
-          onConflict: "user_id,community_id"
-        });
+        .upsert(payload, { onConflict: "user_id,community_id" });
 
-      if (error) {
-
-        console.error("Apply error:", error);
-
-      } else {
-
-        console.log("Apply success");
-
-      }
-
+      console.log("LOG: UPSERT result:", upsertData ?? null, " error:", error ?? null);
+      if (error) console.error("LOG: APPLY ERROR:", error);
+      else console.log("LOG: APPLY SUCCESS");
     } catch (err) {
-
-      console.error("Apply exception:", err);
-
+      console.error("LOG: SAVE exception:", err);
     }
-
   }
+
+  // =========================
+  // WRAPPER para interceptar chamadas do Plasmic
+  // =========================
+  // wrappedOnSave é a função passada ao Plasmic. Se o Plasmic chamar onSave,
+  // você verá esse log IMEDIATAMENTE aqui no Next. Não precisa tocar no Plasmic.
+  function wrappedOnSave(data: any) {
+    const t = new Date().toISOString();
+    console.log(`LOG: WRAPPER onSave invoked @ ${t}`, data ?? null);
+    try {
+      // forward para handler real
+      void handleSave(data);
+    } catch (e) {
+      console.error("LOG: WRAPPER error:", e);
+    }
+  }
+
+  // exposição no window para testes manuais (sem Plasmic)
+  useEffect(() => {
+    // @ts-ignore
+    window.__A_APPLY_INVOKE = (payload: any) => {
+      console.log("LOG: __A_APPLY_INVOKE called", payload ?? null);
+      void handleSave(payload);
+    };
+    return () => {
+      // @ts-ignore
+      try { delete window.__A_APPLY_INVOKE; } catch {}
+    };
+  }, [viewer, id]);
 
   if (loading) return null;
 
@@ -164,10 +178,10 @@ export default function AApplyToACommunity() {
         setFormData,
         avatarFiles,
         onAvatarFilesChange: setAvatarFiles,
-        onSave: handleSave,
+        // aqui passamos o wrapper — Plasmic chama onSave e CAI MOS logs aqui
+        onSave: wrappedOnSave,
         membership
       }}
     />
   );
-
 }

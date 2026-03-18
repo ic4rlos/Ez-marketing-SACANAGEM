@@ -53,11 +53,46 @@ export default function AApplyToACommunity() {
         .eq("id", communityId)
         .maybeSingle();
 
-      // MEMBERS
-      const { data: members } = await supabase
+      // =========================
+      // MEMBERS (FORMATO DASHBOARD)
+      // =========================
+      const { data: membersDb } = await supabase
         .from("community_members")
-        .select("*")
-        .eq("community_id", communityId);
+        .select("user_id")
+        .eq("community_id", communityId)
+        .eq("status", "connected");
+
+      let members: any[] = [];
+
+      if (membersDb?.length) {
+        members = (
+          await Promise.all(
+            membersDb.map(async (m: any) => {
+              const { data: profile } = await supabase
+                .from("User profile")
+                .select('id, "Profile pic", user_id')
+                .eq("user_id", m.user_id)
+                .maybeSingle();
+
+              if (!profile) return null;
+
+              const { data: offices } = await supabase
+                .from("Multicharge")
+                .select("Office")
+                .eq("User profile_id", profile.id);
+
+              if (!offices) return null;
+
+              return offices.map((o: any) => ({
+                "Profile pic": profile["Profile pic"],
+                Office: o.Office
+              }));
+            })
+          )
+        )
+          .flat()
+          .filter(Boolean);
+      }
 
       // MEMBERSHIP
       const { data: membership } = await supabase
@@ -67,7 +102,9 @@ export default function AApplyToACommunity() {
         .eq("community_id", communityId)
         .maybeSingle();
 
-      // ✅ SPECIALTIES (LENDO DA TABELA)
+      // =========================
+      // SPECIALTIES (READ ONLY)
+      // =========================
       const { data: specialtiesRaw } = await supabase
         .from("Community specialties")
         .select('"Professional specialty"')
@@ -75,14 +112,14 @@ export default function AApplyToACommunity() {
 
       const specialties =
         specialtiesRaw?.map(
-          (s:any) => s["Professional specialty"]
+          (s: any) => s["Professional specialty"]
         ) ?? [];
 
       const nextFormData = {
         ...(community ?? {}),
-        members: members ?? [],
+        members,
         membership: membership ?? null,
-        specialties, // 🔥 vindo do banco
+        specialties,
         "Short message": ""
       };
 
@@ -113,7 +150,10 @@ export default function AApplyToACommunity() {
           community_id: Number(id),
           role: "member",
           status: "request",
-          short_message: data?.["Short message"] ?? ""
+          short_message:
+            data?.["Short message"] ??
+            data?.short_message ??
+            ""
         },
         {
           onConflict: "user_id,community_id"

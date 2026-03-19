@@ -1042,7 +1042,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                         !_par ? [] : Array.isArray(_par) ? _par : [_par])(
                         (() => {
                           try {
-                            return $props.connectedAgencies || [1];
+                            return $props.company?.connected_agencies || [1];
                           } catch (e) {
                             if (
                               e instanceof TypeError ||
@@ -1521,8 +1521,9 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                                             ? (() => {
                                                 const actionArgs = {
                                                   customFunction: async () => {
-                                                    return $props.onDisconnect(
+                                                    return $props.company?._actions?.connection(
                                                       currentItem.id,
+                                                      "disconnect",
                                                       $state.selectedWhy
                                                     );
                                                   }
@@ -1920,7 +1921,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                         !_par ? [] : Array.isArray(_par) ? _par : [_par])(
                         (() => {
                           try {
-                            return $props.agencyRequests || [1];
+                            return $props.company?.agency_requests || [1];
                           } catch (e) {
                             if (
                               e instanceof TypeError ||
@@ -2555,8 +2556,9 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                                             ? (() => {
                                                 const actionArgs = {
                                                   customFunction: async () => {
-                                                    return $props.onConfirmConnection(
-                                                      currentItem.id
+                                                    return $props.company?._actions?.connection(
+                                                      currentItem.id,
+                                                      "accept"
                                                     );
                                                   }
                                                 };
@@ -2656,8 +2658,9 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                                             ? (() => {
                                                 const actionArgs = {
                                                   customFunction: async () => {
-                                                    return $props.onCancelRequest(
-                                                      currentItem.id
+                                                    return $props.company?._actions?.connection(
+                                                      currentItem.id,
+                                                      "reject"
                                                     );
                                                   }
                                                 };

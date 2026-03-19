@@ -65,7 +65,9 @@ import { AntdMenuItem } from "@plasmicpkgs/antd5/skinny/registerMenu";
 import { AntdButton } from "@plasmicpkgs/antd5/skinny/registerButton";
 import { SliderWrapper } from "@plasmicpkgs/react-slick";
 import { sliderHelpers as SliderWrapper_Helpers } from "@plasmicpkgs/react-slick";
+import Modal from "../../Modal"; // plasmic-import: 2mIwXeE-_Psc/component
 import LoginButton from "../../LoginButton"; // plasmic-import: DYHdsjcJLpSq/component
+import Button2 from "../../Button2"; // plasmic-import: t1SFzVEz5RlV/component
 import { AntdPopover } from "@plasmicpkgs/antd5/skinny/registerPopover";
 import YouTube from "@plasmicpkgs/react-youtube";
 import { AntdRate } from "@plasmicpkgs/antd5/skinny/registerRate";
@@ -81,6 +83,8 @@ import sty from "./PlasmicAApplyToACommunity.module.css"; // plasmic-import: cme
 import SemTitulo2SvgIcon from "./icons/PlasmicIcon__SemTitulo2Svg"; // plasmic-import: Nb_GErn1yi4Z/icon
 import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: 2MH9wfBMgppQ/icon
 import Icon38Icon from "./icons/PlasmicIcon__Icon38"; // plasmic-import: _eklczUQ9Bdt/icon
+import CircleIcon from "./icons/PlasmicIcon__Circle"; // plasmic-import: l4RREmL1A-vM/icon
+import ChevronDownIcon from "./icons/PlasmicIcon__ChevronDown"; // plasmic-import: qJDdQLGS2RlC/icon
 
 const emptyProxy: any = new Proxy(() => "", {
   get(_, prop) {
@@ -146,7 +150,10 @@ export type PlasmicAApplyToACommunity__OverridesType = {
   profilePic2?: Flex__<typeof PlasmicImg__>;
   container2?: Flex__<"div">;
   shortMessage?: Flex__<"textarea">;
-  inviteButon?: Flex__<typeof LoginButton>;
+  apply?: Flex__<typeof Modal>;
+  h3?: Flex__<"h3">;
+  confirm?: Flex__<typeof Button2>;
+  button2?: Flex__<typeof Button2>;
   container10?: Flex__<"div">;
   sliderCarousel2?: Flex__<typeof SliderWrapper>;
   connectedCompany?: Flex__<"div">;
@@ -376,6 +383,12 @@ function PlasmicAApplyToACommunity__RenderFunc(props: {
 
         refName: "membersCarousel",
         onMutate: generateOnMutateForSpec("currentSlide", SliderWrapper_Helpers)
+      },
+      {
+        path: "apply.isOpen",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       }
     ],
     [$props, $ctx, $refs]
@@ -920,6 +933,7 @@ function PlasmicAApplyToACommunity__RenderFunc(props: {
                   centerMode: true,
                   className: classNames("__wab_instance", sty.membersCarousel),
                   dots: true,
+                  draggable: true,
                   focusOnSelect: true,
                   initialSlide: generateStateValueProp($state, [
                     "membersCarousel",
@@ -928,6 +942,7 @@ function PlasmicAApplyToACommunity__RenderFunc(props: {
                   ref: ref => {
                     $refs["membersCarousel"] = ref;
                   },
+                  rows: 1,
                   sliderScopeClassName: sty["membersCarousel__slider"],
                   slidesPerRow: 3
                 };
@@ -1088,46 +1103,128 @@ function PlasmicAApplyToACommunity__RenderFunc(props: {
               }
             />
 
-            <LoginButton
-              data-plasmic-name={"inviteButon"}
-              data-plasmic-override={overrides.inviteButon}
-              className={classNames("__wab_instance", sty.inviteButon)}
-              onClick={async event => {
-                const $steps = {};
+            <Modal
+              data-plasmic-name={"apply"}
+              data-plasmic-override={overrides.apply}
+              className={classNames("__wab_instance", sty.apply)}
+              content={
+                <h3
+                  data-plasmic-name={"h3"}
+                  data-plasmic-override={overrides.h3}
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.h3,
+                    projectcss.__wab_text,
+                    sty.h3
+                  )}
+                >
+                  {"Apply for partnership"}
+                </h3>
+              }
+              footer={
+                <div className={classNames(projectcss.all, sty.freeBox__rE0Ha)}>
+                  <Button2
+                    data-plasmic-name={"confirm"}
+                    data-plasmic-override={overrides.confirm}
+                    color={"muted"}
+                    label={
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__pTov4
+                        )}
+                      >
+                        {"Confirm"}
+                      </div>
+                    }
+                    onClick={async event => {
+                      const $steps = {};
 
-                $steps["runCode"] = true
-                  ? (() => {
-                      const actionArgs = {
-                        customFunction: async () => {
-                          return $props.onSave({
-                            short_message: $state.shortMessage?.value ?? ""
-                          });
-                        }
-                      };
-                      return (({ customFunction }) => {
-                        return customFunction();
-                      })?.apply(null, [actionArgs]);
-                    })()
-                  : undefined;
+                      $steps["runCode"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              customFunction: async () => {
+                                return $props.onSave({
+                                  short_message:
+                                    $state.shortMessage?.value ?? ""
+                                });
+                              }
+                            };
+                            return (({ customFunction }) => {
+                              return customFunction();
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["runCode"] != null &&
+                        typeof $steps["runCode"] === "object" &&
+                        typeof $steps["runCode"].then === "function"
+                      ) {
+                        $steps["runCode"] = await $steps["runCode"];
+                      }
+                    }}
+                    size={"extraSmall"}
+                    type={"soft"}
+                  />
+
+                  <Button2
+                    data-plasmic-name={"button2"}
+                    data-plasmic-override={overrides.button2}
+                    color={"muted"}
+                    label={
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__iH4W4
+                        )}
+                      >
+                        {"Cancel"}
+                      </div>
+                    }
+                    size={"extraSmall"}
+                    type={"soft"}
+                  />
+                </div>
+              }
+              heading={null}
+              isOpen={generateStateValueProp($state, ["apply", "isOpen"])}
+              onOpenChange={async (...eventArgs: any) => {
+                generateStateOnChangeProp($state, ["apply", "isOpen"]).apply(
+                  null,
+                  eventArgs
+                );
+
                 if (
-                  $steps["runCode"] != null &&
-                  typeof $steps["runCode"] === "object" &&
-                  typeof $steps["runCode"].then === "function"
+                  eventArgs.length > 1 &&
+                  eventArgs[1] &&
+                  eventArgs[1]._plasmic_state_init_
                 ) {
-                  $steps["runCode"] = await $steps["runCode"];
+                  return;
                 }
               }}
-            >
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__ePl3U
-                )}
-              >
-                {"Invite"}
-              </div>
-            </LoginButton>
+              showHeader={false}
+              trigger={
+                <LoginButton
+                  className={classNames(
+                    "__wab_instance",
+                    sty.loginButton___7S0Zu
+                  )}
+                >
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text___0YmJj
+                    )}
+                  >
+                    {"Apply"}
+                  </div>
+                </LoginButton>
+              }
+            />
+
             <PlasmicLink__
               className={classNames(
                 projectcss.all,
@@ -5218,21 +5315,7 @@ function PlasmicAApplyToACommunity__RenderFunc(props: {
                 sty.text__kteE9
               )}
             >
-              <React.Fragment>
-                {(() => {
-                  try {
-                    return JSON.stringify($props.formData);
-                  } catch (e) {
-                    if (
-                      e instanceof TypeError ||
-                      e?.plasmicType === "PlasmicUndefinedDataError"
-                    ) {
-                      return "goals achieved";
-                    }
-                    throw e;
-                  }
-                })()}
-              </React.Fragment>
+              {"goals achieved"}
             </div>
           </div>
         </div>
@@ -5258,7 +5341,10 @@ const PlasmicDescendants = {
     "profilePic2",
     "container2",
     "shortMessage",
-    "inviteButon",
+    "apply",
+    "h3",
+    "confirm",
+    "button2",
     "container10",
     "sliderCarousel2",
     "connectedCompany",
@@ -5316,9 +5402,19 @@ const PlasmicDescendants = {
   member2: ["member2", "office2", "profilePic2"],
   office2: ["office2"],
   profilePic2: ["profilePic2"],
-  container2: ["container2", "shortMessage", "inviteButon"],
+  container2: [
+    "container2",
+    "shortMessage",
+    "apply",
+    "h3",
+    "confirm",
+    "button2"
+  ],
   shortMessage: ["shortMessage"],
-  inviteButon: ["inviteButon"],
+  apply: ["apply", "h3", "confirm", "button2"],
+  h3: ["h3"],
+  confirm: ["confirm"],
+  button2: ["button2"],
   container10: [
     "container10",
     "sliderCarousel2",
@@ -5414,7 +5510,10 @@ type NodeDefaultElementType = {
   profilePic2: typeof PlasmicImg__;
   container2: "div";
   shortMessage: "textarea";
-  inviteButon: typeof LoginButton;
+  apply: typeof Modal;
+  h3: "h3";
+  confirm: typeof Button2;
+  button2: typeof Button2;
   container10: "div";
   sliderCarousel2: typeof SliderWrapper;
   connectedCompany: "div";
@@ -5528,7 +5627,10 @@ export const PlasmicAApplyToACommunity = Object.assign(
     profilePic2: makeNodeComponent("profilePic2"),
     container2: makeNodeComponent("container2"),
     shortMessage: makeNodeComponent("shortMessage"),
-    inviteButon: makeNodeComponent("inviteButon"),
+    apply: makeNodeComponent("apply"),
+    h3: makeNodeComponent("h3"),
+    confirm: makeNodeComponent("confirm"),
+    button2: makeNodeComponent("button2"),
     container10: makeNodeComponent("container10"),
     sliderCarousel2: makeNodeComponent("sliderCarousel2"),
     connectedCompany: makeNodeComponent("connectedCompany"),

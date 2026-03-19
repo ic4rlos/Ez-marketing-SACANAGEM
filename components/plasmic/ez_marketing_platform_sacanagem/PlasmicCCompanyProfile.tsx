@@ -282,10 +282,9 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
         onMutate: generateOnMutateForSpec("currentSlide", SliderWrapper_Helpers)
       },
       {
-        path: "averageRate2.value",
+        path: "averageRate2[].value",
         type: "private",
-        variableType: "number",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
+        variableType: "number"
       },
       {
         path: "averageRate.value",
@@ -294,10 +293,9 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
-        path: "disconnect.isOpen",
+        path: "disconnect[].isOpen",
         type: "private",
-        variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
+        variableType: "boolean"
       },
       {
         path: "linkedAgencies.isOpen",
@@ -306,22 +304,19 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
-        path: "requestInf.isOpen",
+        path: "requestInf[].isOpen",
         type: "private",
-        variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
+        variableType: "boolean"
       },
       {
-        path: "averageRate3.value",
+        path: "averageRate3[].value",
         type: "private",
-        variableType: "number",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
+        variableType: "number"
       },
       {
-        path: "averageRate4.value",
+        path: "averageRate4[].value",
         type: "private",
-        variableType: "number",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 3.5
+        variableType: "number"
       },
       {
         path: "rating.value",
@@ -1043,997 +1038,712 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                   className={classNames("__wab_instance", sty.linkedAgencies)}
                   content={
                     <React.Fragment>
-                      <div
-                        data-plasmic-name={"connectedAgencies"}
-                        data-plasmic-override={overrides.connectedAgencies}
-                        className={classNames(
-                          projectcss.all,
-                          sty.connectedAgencies
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__ivofn
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__lcDdb
-                            )}
-                          >
-                            <PlasmicImg__
-                              data-plasmic-name={"communityLogo2"}
-                              data-plasmic-override={overrides.communityLogo2}
-                              alt={""}
-                              className={classNames(sty.communityLogo2)}
-                              displayHeight={"30px"}
-                              displayMaxHeight={"none"}
-                              displayMaxWidth={"100%"}
-                              displayMinHeight={"0"}
-                              displayMinWidth={"0"}
-                              displayWidth={"30px"}
-                              loading={"lazy"}
-                            />
-
-                            <PlasmicLink__
-                              data-plasmic-name={"communityName3"}
-                              data-plasmic-override={overrides.communityName3}
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.a,
-                                projectcss.__wab_text,
-                                sty.communityName3
-                              )}
-                              component={Link}
-                              href={`/c-rate-community`}
-                              legacyBehavior={false}
-                              platform={"nextjs"}
-                            >
-                              {"Community"}
-                            </PlasmicLink__>
-                          </div>
-                          <div
-                            data-plasmic-name={"membersSum"}
-                            data-plasmic-override={overrides.membersSum}
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.membersSum
-                            )}
-                          >
-                            {"30"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__q1MMy
-                            )}
-                          >
-                            {"members"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__aWruW
-                            )}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox__tiLng
-                              )}
-                            >
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__fprvJ
-                                )}
-                              >
-                                {"Speciality"}
-                              </div>
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox__aJeTa
-                              )}
-                            >
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__z8U5
-                                )}
-                              >
-                                {"Speciality"}
-                              </div>
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox__sH7S8
-                              )}
-                            >
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__q8Cun
-                                )}
-                              >
-                                {"Speciality"}
-                              </div>
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox__i9QZu
-                              )}
-                            >
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__isp93
-                                )}
-                              >
-                                {"Speciality"}
-                              </div>
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox___24JZu
-                              )}
-                            >
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__xPcU1
-                                )}
-                              >
-                                {"Speciality"}
-                              </div>
-                            </div>
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__wZffY
-                            )}
-                          >
-                            <div
-                              data-plasmic-name={"goalsSum2"}
-                              data-plasmic-override={overrides.goalsSum2}
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.goalsSum2
-                              )}
-                            >
-                              {"80"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__ldyA
-                              )}
-                            >
-                              {"goals achieved"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__pEsO3
-                              )}
-                            >
-                              {"20"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__dDVgr
-                              )}
-                            >
-                              {"trouble with address"}
-                            </div>
-                          </div>
-                          <Modal
-                            data-plasmic-name={"disconnect"}
-                            data-plasmic-override={overrides.disconnect}
-                            className={classNames(
-                              "__wab_instance",
-                              sty.disconnect
-                            )}
-                            content={
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  sty.freeBox__zckgF
-                                )}
-                              >
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__zLgF2
-                                  )}
-                                >
-                                  {"Why do you want to leave this agency?"}
-                                </div>
-                                <LoginButton
-                                  data-plasmic-name={"why1"}
-                                  data-plasmic-override={overrides.why1}
-                                  className={classNames(
-                                    "__wab_instance",
-                                    sty.why1
-                                  )}
-                                  color={"softRed"}
-                                  shape={"rounded"}
-                                  size={"minimal"}
-                                >
-                                  <div
-                                    className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
-                                      sty.text__lxC3A
-                                    )}
-                                  >
-                                    <React.Fragment>
-                                      <span
-                                        className={
-                                          "plasmic_default__all plasmic_default__span"
-                                        }
-                                        style={{ color: "#000000" }}
-                                      >
-                                        {
-                                          "Another platform better meets my needs."
-                                        }
-                                      </span>
-                                    </React.Fragment>
-                                  </div>
-                                </LoginButton>
-                                <LoginButton
-                                  data-plasmic-name={"why2"}
-                                  data-plasmic-override={overrides.why2}
-                                  className={classNames(
-                                    "__wab_instance",
-                                    sty.why2
-                                  )}
-                                  color={"softRed"}
-                                  shape={"rounded"}
-                                  size={"minimal"}
-                                >
-                                  <div
-                                    className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
-                                      sty.text__cbeFg
-                                    )}
-                                  >
-                                    <React.Fragment>
-                                      <span
-                                        className={
-                                          "plasmic_default__all plasmic_default__span"
-                                        }
-                                        style={{ color: "#000000" }}
-                                      >
-                                        {"I like to spend money on marketing."}
-                                      </span>
-                                    </React.Fragment>
-                                  </div>
-                                </LoginButton>
-                                <LoginButton
-                                  data-plasmic-name={"why3"}
-                                  data-plasmic-override={overrides.why3}
-                                  className={classNames(
-                                    "__wab_instance",
-                                    sty.why3
-                                  )}
-                                  color={"softRed"}
-                                  shape={"rounded"}
-                                  size={"minimal"}
-                                >
-                                  <div
-                                    className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
-                                      sty.text__fCvb
-                                    )}
-                                  >
-                                    <React.Fragment>
-                                      <span
-                                        className={
-                                          "plasmic_default__all plasmic_default__span"
-                                        }
-                                        style={{ color: "#000000" }}
-                                      >
-                                        {
-                                          "I prefer to acquire customers myself."
-                                        }
-                                      </span>
-                                    </React.Fragment>
-                                  </div>
-                                </LoginButton>
-                                <LoginButton
-                                  data-plasmic-name={"why4"}
-                                  data-plasmic-override={overrides.why4}
-                                  className={classNames(
-                                    "__wab_instance",
-                                    sty.why4
-                                  )}
-                                  color={"softRed"}
-                                  shape={"rounded"}
-                                  size={"minimal"}
-                                >
-                                  <div
-                                    className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
-                                      sty.text__zmEUn
-                                    )}
-                                  >
-                                    <React.Fragment>
-                                      <span
-                                        className={
-                                          "plasmic_default__all plasmic_default__span"
-                                        }
-                                        style={{ color: "#000000" }}
-                                      >
-                                        {"I have other marketing sources."}
-                                      </span>
-                                    </React.Fragment>
-                                  </div>
-                                </LoginButton>
-                              </div>
+                      {(_par =>
+                        !_par ? [] : Array.isArray(_par) ? _par : [_par])(
+                        (() => {
+                          try {
+                            return $props.connectedAgencies || [1];
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return [];
                             }
-                            footer={
+                            throw e;
+                          }
+                        })()
+                      ).map((__plasmic_item_0, __plasmic_idx_0) => {
+                        const currentItem = __plasmic_item_0;
+                        const currentIndex = __plasmic_idx_0;
+                        return (
+                          <div
+                            data-plasmic-name={"connectedAgencies"}
+                            data-plasmic-override={overrides.connectedAgencies}
+                            className={classNames(
+                              projectcss.all,
+                              sty.connectedAgencies
+                            )}
+                            key={currentIndex}
+                          >
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                sty.freeBox__ivofn
+                              )}
+                            >
                               <div
                                 className={classNames(
                                   projectcss.all,
-                                  sty.freeBox__d1Vrc
+                                  sty.freeBox__lcDdb
                                 )}
                               >
-                                <Button2
-                                  data-plasmic-name={"confirmDisconnect"}
+                                <PlasmicImg__
+                                  data-plasmic-name={"communityLogo2"}
                                   data-plasmic-override={
-                                    overrides.confirmDisconnect
+                                    overrides.communityLogo2
                                   }
-                                  color={"muted"}
-                                  label={
-                                    <div
-                                      className={classNames(
-                                        projectcss.all,
-                                        projectcss.__wab_text,
-                                        sty.text__ps3Kv
-                                      )}
-                                    >
-                                      {"Confirm"}
-                                    </div>
-                                  }
-                                  onClick={async event => {
-                                    const $steps = {};
-
-                                    $steps["updateModalIsOpen"] = true
-                                      ? (() => {
-                                          const actionArgs = {
-                                            variable: {
-                                              objRoot: $state,
-                                              variablePath: [
-                                                "disconnect",
-                                                "isOpen"
-                                              ]
-                                            },
-                                            operation: 0,
-                                            value: false
-                                          };
-                                          return (({
-                                            variable,
-                                            value,
-                                            startIndex,
-                                            deleteCount
-                                          }) => {
-                                            if (!variable) {
-                                              return;
-                                            }
-                                            const { objRoot, variablePath } =
-                                              variable;
-
-                                            $stateSet(
-                                              objRoot,
-                                              variablePath,
-                                              value
-                                            );
-                                            return value;
-                                          })?.apply(null, [actionArgs]);
-                                        })()
-                                      : undefined;
-                                    if (
-                                      $steps["updateModalIsOpen"] != null &&
-                                      typeof $steps["updateModalIsOpen"] ===
-                                        "object" &&
-                                      typeof $steps["updateModalIsOpen"]
-                                        .then === "function"
-                                    ) {
-                                      $steps["updateModalIsOpen"] =
-                                        await $steps["updateModalIsOpen"];
+                                  alt={""}
+                                  className={classNames(sty.communityLogo2)}
+                                  displayHeight={"30px"}
+                                  displayMaxHeight={"none"}
+                                  displayMaxWidth={"100%"}
+                                  displayMinHeight={"0"}
+                                  displayMinWidth={"0"}
+                                  displayWidth={"30px"}
+                                  loading={"lazy"}
+                                  src={(() => {
+                                    try {
+                                      return currentItem["community_logo"];
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return undefined;
+                                      }
+                                      throw e;
                                     }
-                                  }}
-                                  size={"extraSmall"}
-                                  type={"soft"}
+                                  })()}
                                 />
 
-                                <Button2
-                                  color={"muted"}
-                                  label={
-                                    <div
-                                      className={classNames(
-                                        projectcss.all,
-                                        projectcss.__wab_text,
-                                        sty.text__hBltq
-                                      )}
-                                    >
-                                      {"Cancel"}
-                                    </div>
+                                <PlasmicLink__
+                                  data-plasmic-name={"communityName3"}
+                                  data-plasmic-override={
+                                    overrides.communityName3
                                   }
-                                  onClick={async event => {
-                                    const $steps = {};
-
-                                    $steps["updateModalIsOpen"] = true
-                                      ? (() => {
-                                          const actionArgs = {
-                                            variable: {
-                                              objRoot: $state,
-                                              variablePath: [
-                                                "disconnect",
-                                                "isOpen"
-                                              ]
-                                            },
-                                            operation: 0,
-                                            value: false
-                                          };
-                                          return (({
-                                            variable,
-                                            value,
-                                            startIndex,
-                                            deleteCount
-                                          }) => {
-                                            if (!variable) {
-                                              return;
-                                            }
-                                            const { objRoot, variablePath } =
-                                              variable;
-
-                                            $stateSet(
-                                              objRoot,
-                                              variablePath,
-                                              value
-                                            );
-                                            return value;
-                                          })?.apply(null, [actionArgs]);
-                                        })()
-                                      : undefined;
-                                    if (
-                                      $steps["updateModalIsOpen"] != null &&
-                                      typeof $steps["updateModalIsOpen"] ===
-                                        "object" &&
-                                      typeof $steps["updateModalIsOpen"]
-                                        .then === "function"
-                                    ) {
-                                      $steps["updateModalIsOpen"] =
-                                        await $steps["updateModalIsOpen"];
-                                    }
-                                  }}
-                                  size={"extraSmall"}
-                                  type={"soft"}
-                                />
-                              </div>
-                            }
-                            heading={
-                              <h3
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.h3,
-                                  projectcss.__wab_text,
-                                  sty.h3__goRd
-                                )}
-                              >
-                                {"disconnect"}
-                              </h3>
-                            }
-                            isOpen={generateStateValueProp($state, [
-                              "disconnect",
-                              "isOpen"
-                            ])}
-                            onOpenChange={async (...eventArgs: any) => {
-                              generateStateOnChangeProp($state, [
-                                "disconnect",
-                                "isOpen"
-                              ]).apply(null, eventArgs);
-
-                              if (
-                                eventArgs.length > 1 &&
-                                eventArgs[1] &&
-                                eventArgs[1]._plasmic_state_init_
-                              ) {
-                                return;
-                              }
-                            }}
-                            trigger={
-                              <LoginButton
-                                className={classNames(
-                                  "__wab_instance",
-                                  sty.loginButton__kFs9
-                                )}
-                                color={"link"}
-                                size={"minimal"}
-                              >
-                                <ReportSvgrepoComSvgIcon
                                   className={classNames(
                                     projectcss.all,
-                                    sty.svg__aU63
+                                    projectcss.a,
+                                    projectcss.__wab_text,
+                                    sty.communityName3
                                   )}
-                                  role={"img"}
-                                />
-                              </LoginButton>
-                            }
-                          />
-
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__d9G9Q
-                            )}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__jUkR
-                              )}
-                            >
-                              {"Bacharel"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__hJ25J
-                              )}
-                            >
-                              {"Gold"}
-                            </div>
-                            <AntdRate
-                              data-plasmic-name={"averageRate2"}
-                              data-plasmic-override={overrides.averageRate2}
-                              allowHalf={true}
-                              className={classNames(
-                                "__wab_instance",
-                                sty.averageRate2
-                              )}
-                              defaultValue={5}
-                              disabled={false}
-                              multiCharacter={false}
-                              onChange={async (...eventArgs: any) => {
-                                generateStateOnChangeProp($state, [
-                                  "averageRate2",
-                                  "value"
-                                ]).apply(null, eventArgs);
-
-                                (async value => {
-                                  const $steps = {};
-
-                                  $steps["goToCContactACommunitie"] = true
-                                    ? (() => {
-                                        const actionArgs = {
-                                          destination: `/c-rate-community`
-                                        };
-                                        return (({ destination }) => {
-                                          if (
-                                            typeof destination === "string" &&
-                                            destination.startsWith("#")
-                                          ) {
-                                            document
-                                              .getElementById(
-                                                destination.substr(1)
-                                              )
-                                              .scrollIntoView({
-                                                behavior: "smooth"
-                                              });
-                                          } else {
-                                            __nextRouter?.push(destination);
-                                          }
-                                        })?.apply(null, [actionArgs]);
-                                      })()
-                                    : undefined;
-                                  if (
-                                    $steps["goToCContactACommunitie"] != null &&
-                                    typeof $steps["goToCContactACommunitie"] ===
-                                      "object" &&
-                                    typeof $steps["goToCContactACommunitie"]
-                                      .then === "function"
-                                  ) {
-                                    $steps["goToCContactACommunitie"] =
-                                      await $steps["goToCContactACommunitie"];
-                                  }
-                                }).apply(null, eventArgs);
-                              }}
-                              symbols={
+                                  component={Link}
+                                  legacyBehavior={false}
+                                  platform={"nextjs"}
+                                >
+                                  <React.Fragment>
+                                    {(() => {
+                                      try {
+                                        return currentItem["community_name"];
+                                      } catch (e) {
+                                        if (
+                                          e instanceof TypeError ||
+                                          e?.plasmicType ===
+                                            "PlasmicUndefinedDataError"
+                                        ) {
+                                          return "Community";
+                                        }
+                                        throw e;
+                                      }
+                                    })()}
+                                  </React.Fragment>
+                                </PlasmicLink__>
+                              </div>
+                              <div
+                                data-plasmic-name={"membersSum"}
+                                data-plasmic-override={overrides.membersSum}
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.__wab_text,
+                                  sty.membersSum
+                                )}
+                              >
                                 <React.Fragment>
-                                  <div
-                                    className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
-                                      sty.text__qAv7H
-                                    )}
-                                  >
-                                    {"1"}
-                                  </div>
-                                  <div
-                                    className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
-                                      sty.text___8R1M2
-                                    )}
-                                  >
-                                    {"2"}
-                                  </div>
-                                  <div
-                                    className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
-                                      sty.text__gJe4Y
-                                    )}
-                                  >
-                                    {"3"}
-                                  </div>
-                                  <div
-                                    className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
-                                      sty.text__fwgeg
-                                    )}
-                                  >
-                                    {"4"}
-                                  </div>
-                                  <div
-                                    className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
-                                      sty.text__sXtR
-                                    )}
-                                  >
-                                    {"5"}
-                                  </div>
+                                  {(() => {
+                                    try {
+                                      return currentItem["members"];
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return "30";
+                                      }
+                                      throw e;
+                                    }
+                                  })()}
                                 </React.Fragment>
-                              }
-                              value={generateStateValueProp($state, [
-                                "averageRate2",
-                                "value"
-                              ])}
-                            />
+                              </div>
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.__wab_text,
+                                  sty.text__q1MMy
+                                )}
+                              >
+                                {"members"}
+                              </div>
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox__aWruW
+                                )}
+                              >
+                                {(_par =>
+                                  !_par
+                                    ? []
+                                    : Array.isArray(_par)
+                                      ? _par
+                                      : [_par])(
+                                  (() => {
+                                    try {
+                                      return currentItem["specialties"] || [1];
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return [];
+                                      }
+                                      throw e;
+                                    }
+                                  })()
+                                ).map((__plasmic_item_1, __plasmic_idx_1) => {
+                                  const currentItem = __plasmic_item_1;
+                                  const currentIndex = __plasmic_idx_1;
+                                  return (
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        sty.freeBox__tiLng
+                                      )}
+                                      key={currentIndex}
+                                    >
+                                      <div
+                                        className={classNames(
+                                          projectcss.all,
+                                          projectcss.__wab_text,
+                                          sty.text__fprvJ
+                                        )}
+                                      >
+                                        <React.Fragment>
+                                          {(() => {
+                                            try {
+                                              return currentItem ?? "";
+                                            } catch (e) {
+                                              if (
+                                                e instanceof TypeError ||
+                                                e?.plasmicType ===
+                                                  "PlasmicUndefinedDataError"
+                                              ) {
+                                                return "Speciality";
+                                              }
+                                              throw e;
+                                            }
+                                          })()}
+                                        </React.Fragment>
+                                      </div>
+                                    </div>
+                                  );
+                                })}
+                              </div>
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox__wZffY
+                                )}
+                              >
+                                <div
+                                  data-plasmic-name={"goalsSum2"}
+                                  data-plasmic-override={overrides.goalsSum2}
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.goalsSum2
+                                  )}
+                                >
+                                  {"80"}
+                                </div>
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__ldyA
+                                  )}
+                                >
+                                  {"goals achieved"}
+                                </div>
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__pEsO3
+                                  )}
+                                >
+                                  {"20"}
+                                </div>
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__dDVgr
+                                  )}
+                                >
+                                  {"trouble with address"}
+                                </div>
+                              </div>
+                              {(() => {
+                                const child$Props = {
+                                  className: classNames(
+                                    "__wab_instance",
+                                    sty.disconnect
+                                  ),
+                                  content: (
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        sty.freeBox__zckgF
+                                      )}
+                                    >
+                                      <div
+                                        className={classNames(
+                                          projectcss.all,
+                                          projectcss.__wab_text,
+                                          sty.text__zLgF2
+                                        )}
+                                      >
+                                        {
+                                          "Why do you want to leave this agency?"
+                                        }
+                                      </div>
+                                      <LoginButton
+                                        data-plasmic-name={"why1"}
+                                        data-plasmic-override={overrides.why1}
+                                        className={classNames(
+                                          "__wab_instance",
+                                          sty.why1
+                                        )}
+                                        color={"softRed"}
+                                        shape={"rounded"}
+                                        size={"minimal"}
+                                      >
+                                        <div
+                                          className={classNames(
+                                            projectcss.all,
+                                            projectcss.__wab_text,
+                                            sty.text__lxC3A
+                                          )}
+                                        >
+                                          <React.Fragment>
+                                            <span
+                                              className={
+                                                "plasmic_default__all plasmic_default__span"
+                                              }
+                                              style={{ color: "#000000" }}
+                                            >
+                                              {
+                                                "Another platform better meets my needs."
+                                              }
+                                            </span>
+                                          </React.Fragment>
+                                        </div>
+                                      </LoginButton>
+                                      <LoginButton
+                                        data-plasmic-name={"why2"}
+                                        data-plasmic-override={overrides.why2}
+                                        className={classNames(
+                                          "__wab_instance",
+                                          sty.why2
+                                        )}
+                                        color={"softRed"}
+                                        shape={"rounded"}
+                                        size={"minimal"}
+                                      >
+                                        <div
+                                          className={classNames(
+                                            projectcss.all,
+                                            projectcss.__wab_text,
+                                            sty.text__cbeFg
+                                          )}
+                                        >
+                                          <React.Fragment>
+                                            <span
+                                              className={
+                                                "plasmic_default__all plasmic_default__span"
+                                              }
+                                              style={{ color: "#000000" }}
+                                            >
+                                              {
+                                                "I like to spend money on marketing."
+                                              }
+                                            </span>
+                                          </React.Fragment>
+                                        </div>
+                                      </LoginButton>
+                                      <LoginButton
+                                        data-plasmic-name={"why3"}
+                                        data-plasmic-override={overrides.why3}
+                                        className={classNames(
+                                          "__wab_instance",
+                                          sty.why3
+                                        )}
+                                        color={"softRed"}
+                                        shape={"rounded"}
+                                        size={"minimal"}
+                                      >
+                                        <div
+                                          className={classNames(
+                                            projectcss.all,
+                                            projectcss.__wab_text,
+                                            sty.text__fCvb
+                                          )}
+                                        >
+                                          <React.Fragment>
+                                            <span
+                                              className={
+                                                "plasmic_default__all plasmic_default__span"
+                                              }
+                                              style={{ color: "#000000" }}
+                                            >
+                                              {
+                                                "I prefer to acquire customers myself."
+                                              }
+                                            </span>
+                                          </React.Fragment>
+                                        </div>
+                                      </LoginButton>
+                                      <LoginButton
+                                        data-plasmic-name={"why4"}
+                                        data-plasmic-override={overrides.why4}
+                                        className={classNames(
+                                          "__wab_instance",
+                                          sty.why4
+                                        )}
+                                        color={"softRed"}
+                                        shape={"rounded"}
+                                        size={"minimal"}
+                                      >
+                                        <div
+                                          className={classNames(
+                                            projectcss.all,
+                                            projectcss.__wab_text,
+                                            sty.text__zmEUn
+                                          )}
+                                        >
+                                          <React.Fragment>
+                                            <span
+                                              className={
+                                                "plasmic_default__all plasmic_default__span"
+                                              }
+                                              style={{ color: "#000000" }}
+                                            >
+                                              {
+                                                "I have other marketing sources."
+                                              }
+                                            </span>
+                                          </React.Fragment>
+                                        </div>
+                                      </LoginButton>
+                                    </div>
+                                  ),
+                                  footer: (
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        sty.freeBox__d1Vrc
+                                      )}
+                                    >
+                                      <Button2
+                                        data-plasmic-name={"confirmDisconnect"}
+                                        data-plasmic-override={
+                                          overrides.confirmDisconnect
+                                        }
+                                        color={"muted"}
+                                        label={
+                                          <div
+                                            className={classNames(
+                                              projectcss.all,
+                                              projectcss.__wab_text,
+                                              sty.text__ps3Kv
+                                            )}
+                                          >
+                                            {"Confirm"}
+                                          </div>
+                                        }
+                                        onClick={async event => {
+                                          const $steps = {};
 
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox__v1E8D
-                              )}
-                            >
-                              <div
-                                data-plasmic-name={"rateSum2"}
-                                data-plasmic-override={overrides.rateSum2}
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.rateSum2
-                                )}
-                              >
-                                {"50"}
-                              </div>
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__bLcY7
-                                )}
-                              >
-                                {" reviews"}
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <h3
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.h3,
-                          projectcss.__wab_text,
-                          sty.h3___9RiPd
-                        )}
-                      >
-                        {"Connection requests"}
-                      </h3>
-                      <div
-                        data-plasmic-name={"requestAgency"}
-                        data-plasmic-override={overrides.requestAgency}
-                        className={classNames(
-                          projectcss.all,
-                          sty.requestAgency
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__eqhUt
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__gwSsX
-                            )}
-                          >
-                            <PlasmicImg__
-                              data-plasmic-name={"communityLogo3"}
-                              data-plasmic-override={overrides.communityLogo3}
-                              alt={""}
-                              className={classNames(sty.communityLogo3)}
-                              displayHeight={"30px"}
-                              displayMaxHeight={"none"}
-                              displayMaxWidth={"100%"}
-                              displayMinHeight={"0"}
-                              displayMinWidth={"0"}
-                              displayWidth={"30px"}
-                              loading={"lazy"}
-                            />
+                                          $steps["updateModalIsOpen"] = true
+                                            ? (() => {
+                                                const actionArgs = {
+                                                  variable: {
+                                                    objRoot: $state,
+                                                    variablePath: [
+                                                      "disconnect",
+                                                      "0",
+                                                      "isOpen"
+                                                    ]
+                                                  },
+                                                  operation: 0,
+                                                  value: false
+                                                };
+                                                return (({
+                                                  variable,
+                                                  value,
+                                                  startIndex,
+                                                  deleteCount
+                                                }) => {
+                                                  if (!variable) {
+                                                    return;
+                                                  }
+                                                  const {
+                                                    objRoot,
+                                                    variablePath
+                                                  } = variable;
 
-                            <PlasmicLink__
-                              data-plasmic-name={"communityName4"}
-                              data-plasmic-override={overrides.communityName4}
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.a,
-                                projectcss.__wab_text,
-                                sty.communityName4
-                              )}
-                              component={Link}
-                              href={`/c-rate-community`}
-                              legacyBehavior={false}
-                              platform={"nextjs"}
-                            >
-                              {"Community"}
-                            </PlasmicLink__>
-                          </div>
-                          <div
-                            data-plasmic-name={"membersSum2"}
-                            data-plasmic-override={overrides.membersSum2}
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.membersSum2
-                            )}
-                          >
-                            {"30"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__o9As
-                            )}
-                          >
-                            {"members"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__wDXc
-                            )}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox___7FL2
-                              )}
-                            >
+                                                  $stateSet(
+                                                    objRoot,
+                                                    variablePath,
+                                                    value
+                                                  );
+                                                  return value;
+                                                })?.apply(null, [actionArgs]);
+                                              })()
+                                            : undefined;
+                                          if (
+                                            $steps["updateModalIsOpen"] !=
+                                              null &&
+                                            typeof $steps[
+                                              "updateModalIsOpen"
+                                            ] === "object" &&
+                                            typeof $steps["updateModalIsOpen"]
+                                              .then === "function"
+                                          ) {
+                                            $steps["updateModalIsOpen"] =
+                                              await $steps["updateModalIsOpen"];
+                                          }
+
+                                          $steps["runCode"] = true
+                                            ? (() => {
+                                                const actionArgs = {
+                                                  customFunction: async () => {
+                                                    return $props.onDisconnect(
+                                                      currentItem.id,
+                                                      $state.selectedWhy
+                                                    );
+                                                  }
+                                                };
+                                                return (({
+                                                  customFunction
+                                                }) => {
+                                                  return customFunction();
+                                                })?.apply(null, [actionArgs]);
+                                              })()
+                                            : undefined;
+                                          if (
+                                            $steps["runCode"] != null &&
+                                            typeof $steps["runCode"] ===
+                                              "object" &&
+                                            typeof $steps["runCode"].then ===
+                                              "function"
+                                          ) {
+                                            $steps["runCode"] =
+                                              await $steps["runCode"];
+                                          }
+                                        }}
+                                        size={"extraSmall"}
+                                        type={"soft"}
+                                      />
+
+                                      <Button2
+                                        color={"muted"}
+                                        label={
+                                          <div
+                                            className={classNames(
+                                              projectcss.all,
+                                              projectcss.__wab_text,
+                                              sty.text__hBltq
+                                            )}
+                                          >
+                                            {"Cancel"}
+                                          </div>
+                                        }
+                                        onClick={async event => {
+                                          const $steps = {};
+
+                                          $steps["updateModalIsOpen"] = true
+                                            ? (() => {
+                                                const actionArgs = {
+                                                  variable: {
+                                                    objRoot: $state,
+                                                    variablePath: [
+                                                      "disconnect",
+                                                      "0",
+                                                      "isOpen"
+                                                    ]
+                                                  },
+                                                  operation: 0,
+                                                  value: false
+                                                };
+                                                return (({
+                                                  variable,
+                                                  value,
+                                                  startIndex,
+                                                  deleteCount
+                                                }) => {
+                                                  if (!variable) {
+                                                    return;
+                                                  }
+                                                  const {
+                                                    objRoot,
+                                                    variablePath
+                                                  } = variable;
+
+                                                  $stateSet(
+                                                    objRoot,
+                                                    variablePath,
+                                                    value
+                                                  );
+                                                  return value;
+                                                })?.apply(null, [actionArgs]);
+                                              })()
+                                            : undefined;
+                                          if (
+                                            $steps["updateModalIsOpen"] !=
+                                              null &&
+                                            typeof $steps[
+                                              "updateModalIsOpen"
+                                            ] === "object" &&
+                                            typeof $steps["updateModalIsOpen"]
+                                              .then === "function"
+                                          ) {
+                                            $steps["updateModalIsOpen"] =
+                                              await $steps["updateModalIsOpen"];
+                                          }
+                                        }}
+                                        size={"extraSmall"}
+                                        type={"soft"}
+                                      />
+                                    </div>
+                                  ),
+                                  heading: (
+                                    <h3
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.h3,
+                                        projectcss.__wab_text,
+                                        sty.h3__goRd
+                                      )}
+                                    >
+                                      {"disconnect"}
+                                    </h3>
+                                  ),
+                                  isOpen: generateStateValueProp($state, [
+                                    "disconnect",
+                                    __plasmic_idx_0,
+                                    "isOpen"
+                                  ]),
+                                  onOpenChange: async (...eventArgs: any) => {
+                                    generateStateOnChangeProp($state, [
+                                      "disconnect",
+                                      __plasmic_idx_0,
+                                      "isOpen"
+                                    ]).apply(null, eventArgs);
+
+                                    if (
+                                      eventArgs.length > 1 &&
+                                      eventArgs[1] &&
+                                      eventArgs[1]._plasmic_state_init_
+                                    ) {
+                                      return;
+                                    }
+                                  },
+                                  trigger: (
+                                    <LoginButton
+                                      className={classNames(
+                                        "__wab_instance",
+                                        sty.loginButton__kFs9
+                                      )}
+                                      color={"link"}
+                                      size={"minimal"}
+                                    >
+                                      <ReportSvgrepoComSvgIcon
+                                        className={classNames(
+                                          projectcss.all,
+                                          sty.svg__aU63
+                                        )}
+                                        role={"img"}
+                                      />
+                                    </LoginButton>
+                                  )
+                                };
+
+                                initializePlasmicStates(
+                                  $state,
+                                  [
+                                    {
+                                      name: "disconnect[].isOpen",
+                                      initFunc: ({
+                                        $props,
+                                        $state,
+                                        $queries,
+                                        $q
+                                      }) => false
+                                    }
+                                  ],
+                                  [__plasmic_idx_0]
+                                );
+                                return (
+                                  <Modal
+                                    data-plasmic-name={"disconnect"}
+                                    data-plasmic-override={overrides.disconnect}
+                                    {...child$Props}
+                                  />
+                                );
+                              })()}
                               <div
                                 className={classNames(
                                   projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__pGhZq
-                                )}
-                              >
-                                {"Speciality"}
-                              </div>
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox__thTh9
-                              )}
-                            >
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__g4Yk4
-                                )}
-                              >
-                                {"Speciality"}
-                              </div>
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox__sWmvX
-                              )}
-                            >
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__g1PqY
-                                )}
-                              >
-                                {"Speciality"}
-                              </div>
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox__usywQ
-                              )}
-                            >
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text___9Iurn
-                                )}
-                              >
-                                {"Speciality"}
-                              </div>
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox__fbAb
-                              )}
-                            >
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__cTmu9
-                                )}
-                              >
-                                {"Speciality"}
-                              </div>
-                            </div>
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox___2JhrI
-                            )}
-                          >
-                            <div
-                              data-plasmic-name={"goalsSum3"}
-                              data-plasmic-override={overrides.goalsSum3}
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.goalsSum3
-                              )}
-                            >
-                              {"80"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__iM1Ad
-                              )}
-                            >
-                              {"goals achieved"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__xemB
-                              )}
-                            >
-                              {"20"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__gcLde
-                              )}
-                            >
-                              {"trouble with address"}
-                            </div>
-                          </div>
-                          <Modal
-                            data-plasmic-name={"requestInf"}
-                            data-plasmic-override={overrides.requestInf}
-                            className={classNames(
-                              "__wab_instance",
-                              sty.requestInf
-                            )}
-                            content={
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  sty.freeBox__n9XJ
+                                  sty.freeBox__d9G9Q
                                 )}
                               >
                                 <div
                                   className={classNames(
                                     projectcss.all,
                                     projectcss.__wab_text,
-                                    sty.text__wQimu
+                                    sty.text__jUkR
                                   )}
                                 >
-                                  {"This agency is requesting partnership"}
+                                  {"Bacharel"}
                                 </div>
                                 <div
                                   className={classNames(
                                     projectcss.all,
-                                    sty.freeBox__l1Bgw
+                                    projectcss.__wab_text,
+                                    sty.text__hJ25J
                                   )}
                                 >
-                                  <div
-                                    className={classNames(
-                                      projectcss.all,
-                                      sty.freeBox__nX2Od
-                                    )}
-                                  >
-                                    <PlasmicImg__
-                                      data-plasmic-name={"communityLogo4"}
-                                      data-plasmic-override={
-                                        overrides.communityLogo4
-                                      }
-                                      alt={""}
-                                      className={classNames(sty.communityLogo4)}
-                                      displayHeight={"30px"}
-                                      displayMaxHeight={"none"}
-                                      displayMaxWidth={"100%"}
-                                      displayMinHeight={"0"}
-                                      displayMinWidth={"0"}
-                                      displayWidth={"30px"}
-                                      loading={"lazy"}
-                                    />
+                                  {"Gold"}
+                                </div>
+                                {(() => {
+                                  const child$Props = {
+                                    allowHalf: true,
+                                    className: classNames(
+                                      "__wab_instance",
+                                      sty.averageRate2
+                                    ),
+                                    defaultValue: 5,
+                                    disabled: false,
+                                    multiCharacter: false,
+                                    onChange: async (...eventArgs: any) => {
+                                      generateStateOnChangeProp($state, [
+                                        "averageRate2",
+                                        __plasmic_idx_0,
+                                        "value"
+                                      ]).apply(null, eventArgs);
 
-                                    <PlasmicLink__
-                                      data-plasmic-name={"communityName5"}
-                                      data-plasmic-override={
-                                        overrides.communityName5
-                                      }
-                                      className={classNames(
-                                        projectcss.all,
-                                        projectcss.a,
-                                        projectcss.__wab_text,
-                                        sty.communityName5
-                                      )}
-                                      component={Link}
-                                      legacyBehavior={false}
-                                      onClick={async event => {
+                                      (async value => {
                                         const $steps = {};
 
-                                        $steps["goToPage"] = true
+                                        $steps["goToCContactACommunitie"] = true
                                           ? (() => {
-                                              const actionArgs = {};
+                                              const actionArgs = {
+                                                destination: `/c-rate-community`
+                                              };
                                               return (({ destination }) => {
                                                 if (
                                                   typeof destination ===
@@ -2056,55 +1766,29 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                                             })()
                                           : undefined;
                                         if (
-                                          $steps["goToPage"] != null &&
-                                          typeof $steps["goToPage"] ===
-                                            "object" &&
-                                          typeof $steps["goToPage"].then ===
-                                            "function"
+                                          $steps["goToCContactACommunitie"] !=
+                                            null &&
+                                          typeof $steps[
+                                            "goToCContactACommunitie"
+                                          ] === "object" &&
+                                          typeof $steps[
+                                            "goToCContactACommunitie"
+                                          ].then === "function"
                                         ) {
-                                          $steps["goToPage"] =
-                                            await $steps["goToPage"];
+                                          $steps["goToCContactACommunitie"] =
+                                            await $steps[
+                                              "goToCContactACommunitie"
+                                            ];
                                         }
-                                      }}
-                                      platform={"nextjs"}
-                                    >
-                                      {"Community"}
-                                    </PlasmicLink__>
-                                    <div
-                                      className={classNames(
-                                        projectcss.all,
-                                        projectcss.__wab_text,
-                                        sty.text__kIa9M
-                                      )}
-                                    >
-                                      {"request connection"}
-                                    </div>
-                                  </div>
-                                  <AntdRate
-                                    data-plasmic-name={"averageRate4"}
-                                    data-plasmic-override={
-                                      overrides.averageRate4
-                                    }
-                                    allowHalf={true}
-                                    className={classNames(
-                                      "__wab_instance",
-                                      sty.averageRate4
-                                    )}
-                                    defaultValue={3.5}
-                                    disabled={true}
-                                    onChange={async (...eventArgs: any) => {
-                                      generateStateOnChangeProp($state, [
-                                        "averageRate4",
-                                        "value"
-                                      ]).apply(null, eventArgs);
-                                    }}
-                                    symbols={
+                                      }).apply(null, eventArgs);
+                                    },
+                                    symbols: (
                                       <React.Fragment>
                                         <div
                                           className={classNames(
                                             projectcss.all,
                                             projectcss.__wab_text,
-                                            sty.text__xqRlv
+                                            sty.text__qAv7H
                                           )}
                                         >
                                           {"1"}
@@ -2113,7 +1797,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                                           className={classNames(
                                             projectcss.all,
                                             projectcss.__wab_text,
-                                            sty.text__utic8
+                                            sty.text___8R1M2
                                           )}
                                         >
                                           {"2"}
@@ -2122,7 +1806,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                                           className={classNames(
                                             projectcss.all,
                                             projectcss.__wab_text,
-                                            sty.text__zZpTv
+                                            sty.text__gJe4Y
                                           )}
                                         >
                                           {"3"}
@@ -2131,7 +1815,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                                           className={classNames(
                                             projectcss.all,
                                             projectcss.__wab_text,
-                                            sty.text___3O3Tx
+                                            sty.text__fwgeg
                                           )}
                                         >
                                           {"4"}
@@ -2140,397 +1824,1152 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                                           className={classNames(
                                             projectcss.all,
                                             projectcss.__wab_text,
-                                            sty.text__syjxJ
+                                            sty.text__sXtR
                                           )}
                                         >
                                           {"5"}
                                         </div>
                                       </React.Fragment>
-                                    }
-                                    value={generateStateValueProp($state, [
-                                      "averageRate4",
+                                    ),
+                                    value: generateStateValueProp($state, [
+                                      "averageRate2",
+                                      __plasmic_idx_0,
                                       "value"
-                                    ])}
-                                  />
-
+                                    ])
+                                  };
+                                  initializeCodeComponentStates(
+                                    $state,
+                                    [
+                                      {
+                                        name: "value",
+                                        plasmicStateName: "averageRate2[].value"
+                                      }
+                                    ],
+                                    [__plasmic_idx_0],
+                                    undefined ?? {},
+                                    child$Props
+                                  );
+                                  initializePlasmicStates(
+                                    $state,
+                                    [
+                                      {
+                                        name: "averageRate2[].value",
+                                        initFunc: ({
+                                          $props,
+                                          $state,
+                                          $queries,
+                                          $q
+                                        }) => 5
+                                      }
+                                    ],
+                                    [__plasmic_idx_0]
+                                  );
+                                  return (
+                                    <AntdRate
+                                      data-plasmic-name={"averageRate2"}
+                                      data-plasmic-override={
+                                        overrides.averageRate2
+                                      }
+                                      {...child$Props}
+                                    />
+                                  );
+                                })()}
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.freeBox__v1E8D
+                                  )}
+                                >
                                   <div
-                                    data-plasmic-name={"shortMessage"}
-                                    data-plasmic-override={
-                                      overrides.shortMessage
-                                    }
+                                    data-plasmic-name={"rateSum2"}
+                                    data-plasmic-override={overrides.rateSum2}
                                     className={classNames(
                                       projectcss.all,
                                       projectcss.__wab_text,
-                                      sty.shortMessage
+                                      sty.rateSum2
                                     )}
                                   >
-                                    {
-                                      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-                                    }
+                                    {"50"}
+                                  </div>
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text__bLcY7
+                                    )}
+                                  >
+                                    {" reviews"}
                                   </div>
                                 </div>
                               </div>
+                            </div>
+                          </div>
+                        );
+                      })}
+                      <h3
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.h3,
+                          projectcss.__wab_text,
+                          sty.h3___9RiPd
+                        )}
+                      >
+                        {"Connection requests"}
+                      </h3>
+                      {(_par =>
+                        !_par ? [] : Array.isArray(_par) ? _par : [_par])(
+                        (() => {
+                          try {
+                            return $props.agencyRequests || [1];
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return [];
                             }
-                            footer={
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  sty.freeBox__ptdps
-                                )}
-                              >
-                                <Button2
-                                  data-plasmic-name={"confirmConnection"}
-                                  data-plasmic-override={
-                                    overrides.confirmConnection
-                                  }
-                                  color={"muted"}
-                                  label={
-                                    <div
-                                      className={classNames(
-                                        projectcss.all,
-                                        projectcss.__wab_text,
-                                        sty.text__ywp4E
-                                      )}
-                                    >
-                                      {"Confirm"}
-                                    </div>
-                                  }
-                                  onClick={async event => {
-                                    const $steps = {};
-
-                                    $steps["updateModalIsOpen"] = true
-                                      ? (() => {
-                                          const actionArgs = {
-                                            variable: {
-                                              objRoot: $state,
-                                              variablePath: [
-                                                "requestInf",
-                                                "isOpen"
-                                              ]
-                                            },
-                                            operation: 0,
-                                            value: false
-                                          };
-                                          return (({
-                                            variable,
-                                            value,
-                                            startIndex,
-                                            deleteCount
-                                          }) => {
-                                            if (!variable) {
-                                              return;
-                                            }
-                                            const { objRoot, variablePath } =
-                                              variable;
-
-                                            $stateSet(
-                                              objRoot,
-                                              variablePath,
-                                              value
-                                            );
-                                            return value;
-                                          })?.apply(null, [actionArgs]);
-                                        })()
-                                      : undefined;
-                                    if (
-                                      $steps["updateModalIsOpen"] != null &&
-                                      typeof $steps["updateModalIsOpen"] ===
-                                        "object" &&
-                                      typeof $steps["updateModalIsOpen"]
-                                        .then === "function"
-                                    ) {
-                                      $steps["updateModalIsOpen"] =
-                                        await $steps["updateModalIsOpen"];
-                                    }
-                                  }}
-                                  size={"extraSmall"}
-                                  type={"soft"}
-                                />
-
-                                <Button2
-                                  data-plasmic-name={"cancelConnection"}
-                                  data-plasmic-override={
-                                    overrides.cancelConnection
-                                  }
-                                  color={"muted"}
-                                  label={
-                                    <div
-                                      className={classNames(
-                                        projectcss.all,
-                                        projectcss.__wab_text,
-                                        sty.text__k4Rpr
-                                      )}
-                                    >
-                                      {"Cancel"}
-                                    </div>
-                                  }
-                                  onClick={async event => {
-                                    const $steps = {};
-
-                                    $steps["updateModalIsOpen"] = true
-                                      ? (() => {
-                                          const actionArgs = {
-                                            variable: {
-                                              objRoot: $state,
-                                              variablePath: [
-                                                "requestInf",
-                                                "isOpen"
-                                              ]
-                                            },
-                                            operation: 0,
-                                            value: false
-                                          };
-                                          return (({
-                                            variable,
-                                            value,
-                                            startIndex,
-                                            deleteCount
-                                          }) => {
-                                            if (!variable) {
-                                              return;
-                                            }
-                                            const { objRoot, variablePath } =
-                                              variable;
-
-                                            $stateSet(
-                                              objRoot,
-                                              variablePath,
-                                              value
-                                            );
-                                            return value;
-                                          })?.apply(null, [actionArgs]);
-                                        })()
-                                      : undefined;
-                                    if (
-                                      $steps["updateModalIsOpen"] != null &&
-                                      typeof $steps["updateModalIsOpen"] ===
-                                        "object" &&
-                                      typeof $steps["updateModalIsOpen"]
-                                        .then === "function"
-                                    ) {
-                                      $steps["updateModalIsOpen"] =
-                                        await $steps["updateModalIsOpen"];
-                                    }
-                                  }}
-                                  size={"extraSmall"}
-                                  type={"soft"}
-                                />
-                              </div>
-                            }
-                            heading={
-                              <h3
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.h3,
-                                  projectcss.__wab_text,
-                                  sty.h3__xwSPr
-                                )}
-                              >
-                                {"new connection"}
-                              </h3>
-                            }
-                            isOpen={generateStateValueProp($state, [
-                              "requestInf",
-                              "isOpen"
-                            ])}
-                            onOpenChange={async (...eventArgs: any) => {
-                              generateStateOnChangeProp($state, [
-                                "requestInf",
-                                "isOpen"
-                              ]).apply(null, eventArgs);
-
-                              if (
-                                eventArgs.length > 1 &&
-                                eventArgs[1] &&
-                                eventArgs[1]._plasmic_state_init_
-                              ) {
-                                return;
-                              }
-                            }}
-                            trigger={
-                              <LoginButton
-                                className={classNames(
-                                  "__wab_instance",
-                                  sty.loginButton__edJj0
-                                )}
-                                color={"link"}
-                                size={"minimal"}
-                              >
-                                <Icon12Icon
-                                  className={classNames(
-                                    projectcss.all,
-                                    sty.svg__vciZf
-                                  )}
-                                  role={"img"}
-                                />
-                              </LoginButton>
-                            }
-                          />
-
+                            throw e;
+                          }
+                        })()
+                      ).map((__plasmic_item_0, __plasmic_idx_0) => {
+                        const currentItem = __plasmic_item_0;
+                        const currentIndex = __plasmic_idx_0;
+                        return (
                           <div
+                            data-plasmic-name={"requestAgency"}
+                            data-plasmic-override={overrides.requestAgency}
                             className={classNames(
                               projectcss.all,
-                              sty.freeBox__mb93Y
+                              sty.requestAgency
                             )}
+                            key={currentIndex}
                           >
                             <div
                               className={classNames(
                                 projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__wQ8OU
-                              )}
-                            >
-                              {"Bacharel"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__uoveB
-                              )}
-                            >
-                              {"Gold"}
-                            </div>
-                            <AntdRate
-                              data-plasmic-name={"averageRate3"}
-                              data-plasmic-override={overrides.averageRate3}
-                              allowHalf={true}
-                              className={classNames(
-                                "__wab_instance",
-                                sty.averageRate3
-                              )}
-                              defaultValue={5}
-                              disabled={false}
-                              multiCharacter={false}
-                              onChange={async (...eventArgs: any) => {
-                                generateStateOnChangeProp($state, [
-                                  "averageRate3",
-                                  "value"
-                                ]).apply(null, eventArgs);
-
-                                (async value => {
-                                  const $steps = {};
-
-                                  $steps["goToCContactACommunitie"] = true
-                                    ? (() => {
-                                        const actionArgs = {
-                                          destination: `/c-rate-community`
-                                        };
-                                        return (({ destination }) => {
-                                          if (
-                                            typeof destination === "string" &&
-                                            destination.startsWith("#")
-                                          ) {
-                                            document
-                                              .getElementById(
-                                                destination.substr(1)
-                                              )
-                                              .scrollIntoView({
-                                                behavior: "smooth"
-                                              });
-                                          } else {
-                                            __nextRouter?.push(destination);
-                                          }
-                                        })?.apply(null, [actionArgs]);
-                                      })()
-                                    : undefined;
-                                  if (
-                                    $steps["goToCContactACommunitie"] != null &&
-                                    typeof $steps["goToCContactACommunitie"] ===
-                                      "object" &&
-                                    typeof $steps["goToCContactACommunitie"]
-                                      .then === "function"
-                                  ) {
-                                    $steps["goToCContactACommunitie"] =
-                                      await $steps["goToCContactACommunitie"];
-                                  }
-                                }).apply(null, eventArgs);
-                              }}
-                              symbols={
-                                <React.Fragment>
-                                  <div
-                                    className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
-                                      sty.text__vr1C0
-                                    )}
-                                  >
-                                    {"1"}
-                                  </div>
-                                  <div
-                                    className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
-                                      sty.text___4YhOm
-                                    )}
-                                  >
-                                    {"2"}
-                                  </div>
-                                  <div
-                                    className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
-                                      sty.text__emLbv
-                                    )}
-                                  >
-                                    {"3"}
-                                  </div>
-                                  <div
-                                    className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
-                                      sty.text__hg0Ni
-                                    )}
-                                  >
-                                    {"4"}
-                                  </div>
-                                  <div
-                                    className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
-                                      sty.text__kthz7
-                                    )}
-                                  >
-                                    {"5"}
-                                  </div>
-                                </React.Fragment>
-                              }
-                              value={generateStateValueProp($state, [
-                                "averageRate3",
-                                "value"
-                              ])}
-                            />
-
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox__zoMNq
+                                sty.freeBox__eqhUt
                               )}
                             >
                               <div
-                                data-plasmic-name={"rateSum3"}
-                                data-plasmic-override={overrides.rateSum3}
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox__gwSsX
+                                )}
+                              >
+                                <PlasmicImg__
+                                  data-plasmic-name={"communityLogo3"}
+                                  data-plasmic-override={
+                                    overrides.communityLogo3
+                                  }
+                                  alt={""}
+                                  className={classNames(sty.communityLogo3)}
+                                  displayHeight={"30px"}
+                                  displayMaxHeight={"none"}
+                                  displayMaxWidth={"100%"}
+                                  displayMinHeight={"0"}
+                                  displayMinWidth={"0"}
+                                  displayWidth={"30px"}
+                                  loading={"lazy"}
+                                  src={(() => {
+                                    try {
+                                      return currentItem["community_logo"];
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return undefined;
+                                      }
+                                      throw e;
+                                    }
+                                  })()}
+                                />
+
+                                <PlasmicLink__
+                                  data-plasmic-name={"communityName4"}
+                                  data-plasmic-override={
+                                    overrides.communityName4
+                                  }
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.a,
+                                    projectcss.__wab_text,
+                                    sty.communityName4
+                                  )}
+                                  component={Link}
+                                  legacyBehavior={false}
+                                  platform={"nextjs"}
+                                >
+                                  <React.Fragment>
+                                    {(() => {
+                                      try {
+                                        return currentItem["community_name"];
+                                      } catch (e) {
+                                        if (
+                                          e instanceof TypeError ||
+                                          e?.plasmicType ===
+                                            "PlasmicUndefinedDataError"
+                                        ) {
+                                          return "Community";
+                                        }
+                                        throw e;
+                                      }
+                                    })()}
+                                  </React.Fragment>
+                                </PlasmicLink__>
+                              </div>
+                              <div
+                                data-plasmic-name={"membersSum2"}
+                                data-plasmic-override={overrides.membersSum2}
                                 className={classNames(
                                   projectcss.all,
                                   projectcss.__wab_text,
-                                  sty.rateSum3
+                                  sty.membersSum2
                                 )}
                               >
-                                {"50"}
+                                <React.Fragment>
+                                  {(() => {
+                                    try {
+                                      return currentItem["members"];
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return "30";
+                                      }
+                                      throw e;
+                                    }
+                                  })()}
+                                </React.Fragment>
                               </div>
                               <div
                                 className={classNames(
                                   projectcss.all,
                                   projectcss.__wab_text,
-                                  sty.text__k8A7C
+                                  sty.text__o9As
                                 )}
                               >
-                                {" reviews"}
+                                {"members"}
+                              </div>
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox__wDXc
+                                )}
+                              >
+                                {(_par =>
+                                  !_par
+                                    ? []
+                                    : Array.isArray(_par)
+                                      ? _par
+                                      : [_par])(
+                                  (() => {
+                                    try {
+                                      return currentItem["specialties"] || [1];
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return [];
+                                      }
+                                      throw e;
+                                    }
+                                  })()
+                                ).map((__plasmic_item_1, __plasmic_idx_1) => {
+                                  const currentItem = __plasmic_item_1;
+                                  const currentIndex = __plasmic_idx_1;
+                                  return (
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        sty.freeBox__nu6Qj
+                                      )}
+                                      key={currentIndex}
+                                    >
+                                      <div
+                                        className={classNames(
+                                          projectcss.all,
+                                          projectcss.__wab_text,
+                                          sty.text__b3Zk
+                                        )}
+                                      >
+                                        <React.Fragment>
+                                          {(() => {
+                                            try {
+                                              return currentItem ?? "";
+                                            } catch (e) {
+                                              if (
+                                                e instanceof TypeError ||
+                                                e?.plasmicType ===
+                                                  "PlasmicUndefinedDataError"
+                                              ) {
+                                                return "Speciality";
+                                              }
+                                              throw e;
+                                            }
+                                          })()}
+                                        </React.Fragment>
+                                      </div>
+                                    </div>
+                                  );
+                                })}
+                              </div>
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox___2JhrI
+                                )}
+                              >
+                                <div
+                                  data-plasmic-name={"goalsSum3"}
+                                  data-plasmic-override={overrides.goalsSum3}
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.goalsSum3
+                                  )}
+                                >
+                                  {"80"}
+                                </div>
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__iM1Ad
+                                  )}
+                                >
+                                  {"goals achieved"}
+                                </div>
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__xemB
+                                  )}
+                                >
+                                  {"20"}
+                                </div>
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__gcLde
+                                  )}
+                                >
+                                  {"trouble with address"}
+                                </div>
+                              </div>
+                              {(() => {
+                                const child$Props = {
+                                  className: classNames(
+                                    "__wab_instance",
+                                    sty.requestInf
+                                  ),
+                                  content: (
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        sty.freeBox__n9XJ
+                                      )}
+                                    >
+                                      <div
+                                        className={classNames(
+                                          projectcss.all,
+                                          projectcss.__wab_text,
+                                          sty.text__wQimu
+                                        )}
+                                      >
+                                        {
+                                          "This agency is requesting partnership"
+                                        }
+                                      </div>
+                                      <div
+                                        className={classNames(
+                                          projectcss.all,
+                                          sty.freeBox__l1Bgw
+                                        )}
+                                      >
+                                        <div
+                                          className={classNames(
+                                            projectcss.all,
+                                            sty.freeBox__nX2Od
+                                          )}
+                                        >
+                                          <PlasmicImg__
+                                            data-plasmic-name={"communityLogo4"}
+                                            data-plasmic-override={
+                                              overrides.communityLogo4
+                                            }
+                                            alt={""}
+                                            className={classNames(
+                                              sty.communityLogo4
+                                            )}
+                                            displayHeight={"30px"}
+                                            displayMaxHeight={"none"}
+                                            displayMaxWidth={"100%"}
+                                            displayMinHeight={"0"}
+                                            displayMinWidth={"0"}
+                                            displayWidth={"30px"}
+                                            loading={"lazy"}
+                                            src={(() => {
+                                              try {
+                                                return currentItem[
+                                                  "community_name"
+                                                ];
+                                              } catch (e) {
+                                                if (
+                                                  e instanceof TypeError ||
+                                                  e?.plasmicType ===
+                                                    "PlasmicUndefinedDataError"
+                                                ) {
+                                                  return undefined;
+                                                }
+                                                throw e;
+                                              }
+                                            })()}
+                                          />
+
+                                          <PlasmicLink__
+                                            data-plasmic-name={"communityName5"}
+                                            data-plasmic-override={
+                                              overrides.communityName5
+                                            }
+                                            className={classNames(
+                                              projectcss.all,
+                                              projectcss.a,
+                                              projectcss.__wab_text,
+                                              sty.communityName5
+                                            )}
+                                            component={Link}
+                                            legacyBehavior={false}
+                                            onClick={async event => {
+                                              const $steps = {};
+
+                                              $steps["goToPage"] = true
+                                                ? (() => {
+                                                    const actionArgs = {};
+                                                    return (({
+                                                      destination
+                                                    }) => {
+                                                      if (
+                                                        typeof destination ===
+                                                          "string" &&
+                                                        destination.startsWith(
+                                                          "#"
+                                                        )
+                                                      ) {
+                                                        document
+                                                          .getElementById(
+                                                            destination.substr(
+                                                              1
+                                                            )
+                                                          )
+                                                          .scrollIntoView({
+                                                            behavior: "smooth"
+                                                          });
+                                                      } else {
+                                                        __nextRouter?.push(
+                                                          destination
+                                                        );
+                                                      }
+                                                    })?.apply(null, [
+                                                      actionArgs
+                                                    ]);
+                                                  })()
+                                                : undefined;
+                                              if (
+                                                $steps["goToPage"] != null &&
+                                                typeof $steps["goToPage"] ===
+                                                  "object" &&
+                                                typeof $steps["goToPage"]
+                                                  .then === "function"
+                                              ) {
+                                                $steps["goToPage"] =
+                                                  await $steps["goToPage"];
+                                              }
+                                            }}
+                                            platform={"nextjs"}
+                                          >
+                                            <React.Fragment>
+                                              {(() => {
+                                                try {
+                                                  return currentItem[
+                                                    "community_name"
+                                                  ];
+                                                } catch (e) {
+                                                  if (
+                                                    e instanceof TypeError ||
+                                                    e?.plasmicType ===
+                                                      "PlasmicUndefinedDataError"
+                                                  ) {
+                                                    return "Community";
+                                                  }
+                                                  throw e;
+                                                }
+                                              })()}
+                                            </React.Fragment>
+                                          </PlasmicLink__>
+                                          <div
+                                            className={classNames(
+                                              projectcss.all,
+                                              projectcss.__wab_text,
+                                              sty.text__kIa9M
+                                            )}
+                                          >
+                                            {"request connection"}
+                                          </div>
+                                        </div>
+                                        {(() => {
+                                          const child$Props = {
+                                            allowHalf: true,
+                                            className: classNames(
+                                              "__wab_instance",
+                                              sty.averageRate4
+                                            ),
+                                            defaultValue: 3.5,
+                                            disabled: true,
+                                            onChange: async (
+                                              ...eventArgs: any
+                                            ) => {
+                                              generateStateOnChangeProp(
+                                                $state,
+                                                [
+                                                  "averageRate4",
+                                                  __plasmic_idx_0,
+                                                  "value"
+                                                ]
+                                              ).apply(null, eventArgs);
+                                            },
+                                            symbols: (
+                                              <React.Fragment>
+                                                <div
+                                                  className={classNames(
+                                                    projectcss.all,
+                                                    projectcss.__wab_text,
+                                                    sty.text__xqRlv
+                                                  )}
+                                                >
+                                                  {"1"}
+                                                </div>
+                                                <div
+                                                  className={classNames(
+                                                    projectcss.all,
+                                                    projectcss.__wab_text,
+                                                    sty.text__utic8
+                                                  )}
+                                                >
+                                                  {"2"}
+                                                </div>
+                                                <div
+                                                  className={classNames(
+                                                    projectcss.all,
+                                                    projectcss.__wab_text,
+                                                    sty.text__zZpTv
+                                                  )}
+                                                >
+                                                  {"3"}
+                                                </div>
+                                                <div
+                                                  className={classNames(
+                                                    projectcss.all,
+                                                    projectcss.__wab_text,
+                                                    sty.text___3O3Tx
+                                                  )}
+                                                >
+                                                  {"4"}
+                                                </div>
+                                                <div
+                                                  className={classNames(
+                                                    projectcss.all,
+                                                    projectcss.__wab_text,
+                                                    sty.text__syjxJ
+                                                  )}
+                                                >
+                                                  {"5"}
+                                                </div>
+                                              </React.Fragment>
+                                            ),
+                                            value: generateStateValueProp(
+                                              $state,
+                                              [
+                                                "averageRate4",
+                                                __plasmic_idx_0,
+                                                "value"
+                                              ]
+                                            )
+                                          };
+                                          initializeCodeComponentStates(
+                                            $state,
+                                            [
+                                              {
+                                                name: "value",
+                                                plasmicStateName:
+                                                  "averageRate4[].value"
+                                              }
+                                            ],
+                                            [__plasmic_idx_0],
+                                            undefined ?? {},
+                                            child$Props
+                                          );
+                                          initializePlasmicStates(
+                                            $state,
+                                            [
+                                              {
+                                                name: "averageRate4[].value",
+                                                initFunc: ({
+                                                  $props,
+                                                  $state,
+                                                  $queries,
+                                                  $q
+                                                }) => 3.5
+                                              }
+                                            ],
+                                            [__plasmic_idx_0]
+                                          );
+                                          return (
+                                            <AntdRate
+                                              data-plasmic-name={"averageRate4"}
+                                              data-plasmic-override={
+                                                overrides.averageRate4
+                                              }
+                                              {...child$Props}
+                                            />
+                                          );
+                                        })()}
+                                        <div
+                                          data-plasmic-name={"shortMessage"}
+                                          data-plasmic-override={
+                                            overrides.shortMessage
+                                          }
+                                          className={classNames(
+                                            projectcss.all,
+                                            projectcss.__wab_text,
+                                            sty.shortMessage
+                                          )}
+                                        >
+                                          <React.Fragment>
+                                            {(() => {
+                                              try {
+                                                return currentItem[
+                                                  "short_message"
+                                                ];
+                                              } catch (e) {
+                                                if (
+                                                  e instanceof TypeError ||
+                                                  e?.plasmicType ===
+                                                    "PlasmicUndefinedDataError"
+                                                ) {
+                                                  return "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.";
+                                                }
+                                                throw e;
+                                              }
+                                            })()}
+                                          </React.Fragment>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  ),
+                                  footer: (
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        sty.freeBox__ptdps
+                                      )}
+                                    >
+                                      <Button2
+                                        data-plasmic-name={"confirmConnection"}
+                                        data-plasmic-override={
+                                          overrides.confirmConnection
+                                        }
+                                        color={"muted"}
+                                        label={
+                                          <div
+                                            className={classNames(
+                                              projectcss.all,
+                                              projectcss.__wab_text,
+                                              sty.text__ywp4E
+                                            )}
+                                          >
+                                            {"Confirm"}
+                                          </div>
+                                        }
+                                        onClick={async event => {
+                                          const $steps = {};
+
+                                          $steps["updateModalIsOpen"] = true
+                                            ? (() => {
+                                                const actionArgs = {
+                                                  variable: {
+                                                    objRoot: $state,
+                                                    variablePath: [
+                                                      "requestInf",
+                                                      "0",
+                                                      "isOpen"
+                                                    ]
+                                                  },
+                                                  operation: 0,
+                                                  value: false
+                                                };
+                                                return (({
+                                                  variable,
+                                                  value,
+                                                  startIndex,
+                                                  deleteCount
+                                                }) => {
+                                                  if (!variable) {
+                                                    return;
+                                                  }
+                                                  const {
+                                                    objRoot,
+                                                    variablePath
+                                                  } = variable;
+
+                                                  $stateSet(
+                                                    objRoot,
+                                                    variablePath,
+                                                    value
+                                                  );
+                                                  return value;
+                                                })?.apply(null, [actionArgs]);
+                                              })()
+                                            : undefined;
+                                          if (
+                                            $steps["updateModalIsOpen"] !=
+                                              null &&
+                                            typeof $steps[
+                                              "updateModalIsOpen"
+                                            ] === "object" &&
+                                            typeof $steps["updateModalIsOpen"]
+                                              .then === "function"
+                                          ) {
+                                            $steps["updateModalIsOpen"] =
+                                              await $steps["updateModalIsOpen"];
+                                          }
+
+                                          $steps["runCode"] = true
+                                            ? (() => {
+                                                const actionArgs = {
+                                                  customFunction: async () => {
+                                                    return $props.onConfirmConnection(
+                                                      currentItem.id
+                                                    );
+                                                  }
+                                                };
+                                                return (({
+                                                  customFunction
+                                                }) => {
+                                                  return customFunction();
+                                                })?.apply(null, [actionArgs]);
+                                              })()
+                                            : undefined;
+                                          if (
+                                            $steps["runCode"] != null &&
+                                            typeof $steps["runCode"] ===
+                                              "object" &&
+                                            typeof $steps["runCode"].then ===
+                                              "function"
+                                          ) {
+                                            $steps["runCode"] =
+                                              await $steps["runCode"];
+                                          }
+                                        }}
+                                        size={"extraSmall"}
+                                        type={"soft"}
+                                      />
+
+                                      <Button2
+                                        data-plasmic-name={"cancelConnection"}
+                                        data-plasmic-override={
+                                          overrides.cancelConnection
+                                        }
+                                        color={"muted"}
+                                        label={
+                                          <div
+                                            className={classNames(
+                                              projectcss.all,
+                                              projectcss.__wab_text,
+                                              sty.text__k4Rpr
+                                            )}
+                                          >
+                                            {"Cancel"}
+                                          </div>
+                                        }
+                                        onClick={async event => {
+                                          const $steps = {};
+
+                                          $steps["updateModalIsOpen"] = true
+                                            ? (() => {
+                                                const actionArgs = {
+                                                  variable: {
+                                                    objRoot: $state,
+                                                    variablePath: [
+                                                      "requestInf",
+                                                      "0",
+                                                      "isOpen"
+                                                    ]
+                                                  },
+                                                  operation: 0,
+                                                  value: false
+                                                };
+                                                return (({
+                                                  variable,
+                                                  value,
+                                                  startIndex,
+                                                  deleteCount
+                                                }) => {
+                                                  if (!variable) {
+                                                    return;
+                                                  }
+                                                  const {
+                                                    objRoot,
+                                                    variablePath
+                                                  } = variable;
+
+                                                  $stateSet(
+                                                    objRoot,
+                                                    variablePath,
+                                                    value
+                                                  );
+                                                  return value;
+                                                })?.apply(null, [actionArgs]);
+                                              })()
+                                            : undefined;
+                                          if (
+                                            $steps["updateModalIsOpen"] !=
+                                              null &&
+                                            typeof $steps[
+                                              "updateModalIsOpen"
+                                            ] === "object" &&
+                                            typeof $steps["updateModalIsOpen"]
+                                              .then === "function"
+                                          ) {
+                                            $steps["updateModalIsOpen"] =
+                                              await $steps["updateModalIsOpen"];
+                                          }
+
+                                          $steps["runCode"] = true
+                                            ? (() => {
+                                                const actionArgs = {
+                                                  customFunction: async () => {
+                                                    return $props.onCancelRequest(
+                                                      currentItem.id
+                                                    );
+                                                  }
+                                                };
+                                                return (({
+                                                  customFunction
+                                                }) => {
+                                                  return customFunction();
+                                                })?.apply(null, [actionArgs]);
+                                              })()
+                                            : undefined;
+                                          if (
+                                            $steps["runCode"] != null &&
+                                            typeof $steps["runCode"] ===
+                                              "object" &&
+                                            typeof $steps["runCode"].then ===
+                                              "function"
+                                          ) {
+                                            $steps["runCode"] =
+                                              await $steps["runCode"];
+                                          }
+                                        }}
+                                        size={"extraSmall"}
+                                        type={"soft"}
+                                      />
+                                    </div>
+                                  ),
+                                  heading: (
+                                    <h3
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.h3,
+                                        projectcss.__wab_text,
+                                        sty.h3__xwSPr
+                                      )}
+                                    >
+                                      {"new connection"}
+                                    </h3>
+                                  ),
+                                  isOpen: generateStateValueProp($state, [
+                                    "requestInf",
+                                    __plasmic_idx_0,
+                                    "isOpen"
+                                  ]),
+                                  onOpenChange: async (...eventArgs: any) => {
+                                    generateStateOnChangeProp($state, [
+                                      "requestInf",
+                                      __plasmic_idx_0,
+                                      "isOpen"
+                                    ]).apply(null, eventArgs);
+
+                                    if (
+                                      eventArgs.length > 1 &&
+                                      eventArgs[1] &&
+                                      eventArgs[1]._plasmic_state_init_
+                                    ) {
+                                      return;
+                                    }
+                                  },
+                                  trigger: (
+                                    <LoginButton
+                                      className={classNames(
+                                        "__wab_instance",
+                                        sty.loginButton__edJj0
+                                      )}
+                                      color={"link"}
+                                      size={"minimal"}
+                                    >
+                                      <Icon12Icon
+                                        className={classNames(
+                                          projectcss.all,
+                                          sty.svg__vciZf
+                                        )}
+                                        role={"img"}
+                                      />
+                                    </LoginButton>
+                                  )
+                                };
+
+                                initializePlasmicStates(
+                                  $state,
+                                  [
+                                    {
+                                      name: "requestInf[].isOpen",
+                                      initFunc: ({
+                                        $props,
+                                        $state,
+                                        $queries,
+                                        $q
+                                      }) => false
+                                    }
+                                  ],
+                                  [__plasmic_idx_0]
+                                );
+                                return (
+                                  <Modal
+                                    data-plasmic-name={"requestInf"}
+                                    data-plasmic-override={overrides.requestInf}
+                                    {...child$Props}
+                                  />
+                                );
+                              })()}
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox__mb93Y
+                                )}
+                              >
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__wQ8OU
+                                  )}
+                                >
+                                  {"Bacharel"}
+                                </div>
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__uoveB
+                                  )}
+                                >
+                                  {"Gold"}
+                                </div>
+                                {(() => {
+                                  const child$Props = {
+                                    allowHalf: true,
+                                    className: classNames(
+                                      "__wab_instance",
+                                      sty.averageRate3
+                                    ),
+                                    defaultValue: 5,
+                                    disabled: false,
+                                    multiCharacter: false,
+                                    onChange: async (...eventArgs: any) => {
+                                      generateStateOnChangeProp($state, [
+                                        "averageRate3",
+                                        __plasmic_idx_0,
+                                        "value"
+                                      ]).apply(null, eventArgs);
+
+                                      (async value => {
+                                        const $steps = {};
+
+                                        $steps["goToCContactACommunitie"] = true
+                                          ? (() => {
+                                              const actionArgs = {
+                                                destination: `/c-rate-community`
+                                              };
+                                              return (({ destination }) => {
+                                                if (
+                                                  typeof destination ===
+                                                    "string" &&
+                                                  destination.startsWith("#")
+                                                ) {
+                                                  document
+                                                    .getElementById(
+                                                      destination.substr(1)
+                                                    )
+                                                    .scrollIntoView({
+                                                      behavior: "smooth"
+                                                    });
+                                                } else {
+                                                  __nextRouter?.push(
+                                                    destination
+                                                  );
+                                                }
+                                              })?.apply(null, [actionArgs]);
+                                            })()
+                                          : undefined;
+                                        if (
+                                          $steps["goToCContactACommunitie"] !=
+                                            null &&
+                                          typeof $steps[
+                                            "goToCContactACommunitie"
+                                          ] === "object" &&
+                                          typeof $steps[
+                                            "goToCContactACommunitie"
+                                          ].then === "function"
+                                        ) {
+                                          $steps["goToCContactACommunitie"] =
+                                            await $steps[
+                                              "goToCContactACommunitie"
+                                            ];
+                                        }
+                                      }).apply(null, eventArgs);
+                                    },
+                                    symbols: (
+                                      <React.Fragment>
+                                        <div
+                                          className={classNames(
+                                            projectcss.all,
+                                            projectcss.__wab_text,
+                                            sty.text__vr1C0
+                                          )}
+                                        >
+                                          {"1"}
+                                        </div>
+                                        <div
+                                          className={classNames(
+                                            projectcss.all,
+                                            projectcss.__wab_text,
+                                            sty.text___4YhOm
+                                          )}
+                                        >
+                                          {"2"}
+                                        </div>
+                                        <div
+                                          className={classNames(
+                                            projectcss.all,
+                                            projectcss.__wab_text,
+                                            sty.text__emLbv
+                                          )}
+                                        >
+                                          {"3"}
+                                        </div>
+                                        <div
+                                          className={classNames(
+                                            projectcss.all,
+                                            projectcss.__wab_text,
+                                            sty.text__hg0Ni
+                                          )}
+                                        >
+                                          {"4"}
+                                        </div>
+                                        <div
+                                          className={classNames(
+                                            projectcss.all,
+                                            projectcss.__wab_text,
+                                            sty.text__kthz7
+                                          )}
+                                        >
+                                          {"5"}
+                                        </div>
+                                      </React.Fragment>
+                                    ),
+                                    value: generateStateValueProp($state, [
+                                      "averageRate3",
+                                      __plasmic_idx_0,
+                                      "value"
+                                    ])
+                                  };
+                                  initializeCodeComponentStates(
+                                    $state,
+                                    [
+                                      {
+                                        name: "value",
+                                        plasmicStateName: "averageRate3[].value"
+                                      }
+                                    ],
+                                    [__plasmic_idx_0],
+                                    undefined ?? {},
+                                    child$Props
+                                  );
+                                  initializePlasmicStates(
+                                    $state,
+                                    [
+                                      {
+                                        name: "averageRate3[].value",
+                                        initFunc: ({
+                                          $props,
+                                          $state,
+                                          $queries,
+                                          $q
+                                        }) => 5
+                                      }
+                                    ],
+                                    [__plasmic_idx_0]
+                                  );
+                                  return (
+                                    <AntdRate
+                                      data-plasmic-name={"averageRate3"}
+                                      data-plasmic-override={
+                                        overrides.averageRate3
+                                      }
+                                      {...child$Props}
+                                    />
+                                  );
+                                })()}
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.freeBox__zoMNq
+                                  )}
+                                >
+                                  <div
+                                    data-plasmic-name={"rateSum3"}
+                                    data-plasmic-override={overrides.rateSum3}
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.rateSum3
+                                    )}
+                                  >
+                                    {"50"}
+                                  </div>
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text__k8A7C
+                                    )}
+                                  >
+                                    {" reviews"}
+                                  </div>
+                                </div>
                               </div>
                             </div>
                           </div>
-                        </div>
-                      </div>
+                        );
+                      })}
                     </React.Fragment>
                   }
                   footer={

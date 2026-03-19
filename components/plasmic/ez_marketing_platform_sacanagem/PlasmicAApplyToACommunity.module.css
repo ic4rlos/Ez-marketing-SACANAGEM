@@ -462,19 +462,18 @@
     100% repeat;
   color: #ffffff;
   border-bottom-left-radius: 5px;
-  margin-bottom: -18px;
   padding: 0px 0px 0px 10px;
+  margin: 0px;
 }
 .membersCarousel:global(.__wab_instance) {
   animation: none;
-  width: 100%;
-  max-width: 100%;
-  flex-direction: column;
+  display: block;
+  height: auto;
   object-fit: cover;
-  height: 100%;
-  overflow: hidden;
+  max-width: 100%;
+  width: 100%;
+  white-space: pre;
   min-width: 0;
-  min-height: 0;
 }
 .member2 {
   animation: none;
@@ -496,9 +495,10 @@
   position: relative;
   align-items: center;
   justify-content: center;
-  width: auto;
+  width: 100%;
   height: auto;
   max-width: 100%;
+  min-width: 0;
   padding: 0px;
   margin: 0px;
   border-width: 2px;
@@ -557,7 +557,7 @@
   flex-direction: column;
   position: relative;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   width: 245px;
   height: 300px;
   max-width: 100%;
@@ -577,26 +577,133 @@
   min-height: 0;
   border-radius: 8px;
 }
-.inviteButon:global(.__wab_instance) {
+.apply:global(.__wab_instance):global(.__wab_instance) {
+  animation: none;
   max-width: 100%;
-  margin-top: 10px;
-  width: auto;
-  height: 20px;
-  flex-shrink: 0;
+  z-index: 9999;
 }
-.svg__zAaGn {
+.loginButton___7S0Zu:global(.__wab_instance) {
+  animation: none;
+  max-width: 100%;
+  width: 50px;
+  height: 10px;
+  opacity: 0.9;
+  position: relative;
+  left: auto;
+  top: auto;
+  align-self: flex-end;
+}
+.svg___98Idx {
   position: relative;
   object-fit: cover;
   width: auto;
   height: 1em;
 }
-.text__ePl3U {
+.text___0YmJj {
+  animation: none;
   font-size: 12px;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  color: #ededec;
+  text-align: left;
+  text-transform: none;
+  line-height: 1.5;
+  letter-spacing: normal;
+  white-space: pre;
+  user-select: text;
+  text-decoration-line: none !important;
+  text-overflow: clip !important;
 }
-.svg__oc4ES {
+.svg__xtkAo {
   position: relative;
   object-fit: cover;
   width: auto;
+  height: 1em;
+}
+.h3 {
+  animation: none;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  font-weight: 700;
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-style: normal;
+  color: #000000;
+  text-align: left;
+  line-height: 1.2;
+  white-space: pre-wrap;
+  user-select: text;
+  text-decoration-line: none !important;
+  text-overflow: clip !important;
+  font-size: var(--token-7SM9U0aJu1sz);
+  min-width: 0;
+  padding: var(--token-UT0HlXJtiX6p);
+}
+.freeBox__rE0Ha {
+  animation: none;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  min-width: 0;
+}
+.confirm:global(.__wab_instance):global(.__wab_instance) {
+  animation: none;
+}
+.svg__jqEhp {
+  position: relative;
+  height: 1em;
+}
+.text__pTov4 {
+  animation: none;
+  font-size: 12px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #535353;
+  text-align: left;
+  text-transform: none;
+  line-height: 1.5;
+  letter-spacing: normal;
+  white-space: pre-wrap;
+  user-select: text;
+  text-decoration-line: none !important;
+  text-overflow: clip !important;
+}
+.svg__ppQr {
+  position: relative;
+  height: 1em;
+}
+.button2:global(.__wab_instance):global(.__wab_instance) {
+  animation: none;
+}
+.svg__eTe4I {
+  position: relative;
+  height: 1em;
+}
+.text__iH4W4 {
+  animation: none;
+  font-size: 12px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #535353;
+  text-align: left;
+  text-transform: none;
+  line-height: 1.5;
+  letter-spacing: normal;
+  white-space: pre-wrap;
+  user-select: text;
+  text-decoration-line: none !important;
+  text-overflow: clip !important;
+}
+.svg__jjJtv {
+  position: relative;
   height: 1em;
 }
 .link___1E1P7 {

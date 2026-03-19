@@ -154,6 +154,23 @@ export default function CCompanyProfile() {
               (memberCountMap[m.community_id] || 0) + 1;
           });
 
+          // 🔥 SPECIALTIES
+          const { data: specialties } = await supabaseA
+            .from("community speciallties")
+            .select("*");
+
+          const specialtiesMap: any = {};
+
+          specialties?.forEach((s: any) => {
+            if (!specialtiesMap[s.community_id]) {
+              specialtiesMap[s.community_id] = [];
+            }
+
+            specialtiesMap[s.community_id].push(
+              s["Specialty"] ?? ""
+            );
+          });
+
           const format = (list: any[]) =>
             list.map((conn: any) => {
               const community = communities?.find(
@@ -169,6 +186,9 @@ export default function CCompanyProfile() {
                 community_logo: community?.["Community logo"] ?? "",
 
                 members: memberCountMap[conn.agency_id] ?? 0,
+
+                // 🔥 NEW
+                specialties: specialtiesMap[conn.agency_id] ?? [],
               };
             });
 

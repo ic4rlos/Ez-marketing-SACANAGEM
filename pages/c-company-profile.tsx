@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
-import supabase from "../lib/c-supabaseClient";
+import { getSupabaseA } from "../lib/a-supabaseClient";
+import { getSupabaseC } from "../lib/c-supabaseClient";
 
 export const dynamic_config = "force-dynamic";
 export const runtime = "nodejs";
@@ -17,14 +18,25 @@ const PlasmicCCompanyProfile = dynamic(
 export default function CCompanyProfile() {
   const router = useRouter();
 
+  const supabaseA = getSupabaseA(); // agencies
+  const supabaseC = getSupabaseC(); // companies
+
   const [user, setUser] = useState<any>(undefined);
   const [company, setCompany] = useState<any>(null);
   const [solutions, setSolutions] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
+  // 🔥 NEW
+  const [connectedAgencies, setConnectedAgencies] = useState<any[]>([]);
+  const [agencyRequests, setAgencyRequests] = useState<any[]>([]);
+
+  // =========================
+  // AUTH
+  // =========================
+
   useEffect(() => {
     async function loadUser() {
-      const { data } = await supabase.auth.getUser();
+      const { data } = await supabaseC.auth.getUser();
       setUser(data?.user ?? null);
     }
     loadUser();
@@ -38,6 +50,10 @@ export default function CCompanyProfile() {
     }
   }, [user, loading, router]);
 
+  // =========================
+  // LOAD COMPANY + CONNECTIONS
+  // =========================
+
   useEffect(() => {
     if (!user) return;
 
@@ -45,7 +61,8 @@ export default function CCompanyProfile() {
       try {
         setLoading(true);
 
-        const { data: companyData } = await supabase
+        // 🔹 COMPANY
+        const { data: companyData } = await supabaseC
           .from("companies")
           .select("*")
           .eq("user_id", user.id)
@@ -54,13 +71,16 @@ export default function CCompanyProfile() {
         if (!companyData) {
           setCompany(null);
           setSolutions([]);
+          setConnectedAgencies([]);
+          setAgencyRequests([]);
           setLoading(false);
           return;
         }
 
         setCompany(companyData);
 
-        const { data: solutionsData } = await supabase
+        // 🔹 SOLUTIONS
+        const { data: solutionsData } = await supabaseC
           .from("solutions")
           .select(`
             id,
@@ -95,6 +115,66 @@ export default function CCompanyProfile() {
           })) ?? [];
 
         setSolutions(structuredSolutions);
+
+        // 🔥 CONNECTIONS (AGENCIES DB)
+        const { data: connections } = await supabaseA
+          .from("CONNECTIONS")
+          .select("*")
+          .eq("company_id", companyData.id);
+
+        if (!connections || connections.length === 0) {
+          setConnectedAgencies([]);
+          setAgencyRequests([]);
+        } else {
+          const connected = connections.filter(
+            (c: any) => c.status === "connected"
+          );
+
+          const requests = connections.filter(
+            (c: any) => c.status === "agency request"
+          );
+
+          const agencyIds = connections.map((c: any) => c.agency_id);
+
+          // 🔹 COMMUNITY
+          const { data: communities } = await supabaseA
+            .from("Community")
+            .select("*")
+            .in("id", agencyIds);
+
+          // 🔹 MEMBERS
+          const { data: members } = await supabaseA
+            .from("community_members")
+            .select("community_id");
+
+          const memberCountMap: any = {};
+
+          members?.forEach((m: any) => {
+            memberCountMap[m.community_id] =
+              (memberCountMap[m.community_id] || 0) + 1;
+          });
+
+          const format = (list: any[]) =>
+            list.map((conn: any) => {
+              const community = communities?.find(
+                (c: any) => c.id === conn.agency_id
+              );
+
+              return {
+                id: conn.id,
+                agency_id: conn.agency_id,
+                short_message: conn.short_message ?? "",
+
+                community_name: community?.["Community name"] ?? "",
+                community_logo: community?.["Community logo"] ?? "",
+
+                members: memberCountMap[conn.agency_id] ?? 0,
+              };
+            });
+
+          setConnectedAgencies(format(connected));
+          setAgencyRequests(format(requests));
+        }
       } catch (err) {
         console.error("Load error:", err);
       }
@@ -105,10 +185,18 @@ export default function CCompanyProfile() {
     loadAll();
   }, [user]);
 
+  // =========================
+  // LOGOUT
+  // =========================
+
   async function handleLogout() {
-    await supabase.auth.signOut();
+    await supabaseC.auth.signOut();
     router.replace("/");
   }
+
+  // =========================
+  // RENDER
+  // =========================
 
   if (user === undefined) return null;
   if (loading) return null;
@@ -119,6 +207,11 @@ export default function CCompanyProfile() {
         company: company ?? {},
         formData: solutions ?? [],
         solutions: solutions ?? [],
+
+        // 🔥 NEW
+        connectedAgencies: connectedAgencies ?? [],
+        agencyRequests: agencyRequests ?? [],
+
         onLogout: handleLogout,
       }}
     />

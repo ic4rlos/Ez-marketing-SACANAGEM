@@ -142,7 +142,7 @@ export default function CCompanyProfile() {
             specialtiesMap[key] = [];
           }
 
-          specialtiesMap[key].push(s["Specialty"]);
+          specialtiesMap[key].push(s["Community specialties"]);
         });
 
         console.log("🧩 SPECIALTIES MAP:", specialtiesMap);

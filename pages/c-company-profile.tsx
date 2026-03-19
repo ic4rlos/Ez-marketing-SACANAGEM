@@ -128,8 +128,8 @@ export default function CCompanyProfile() {
             return {
               id: conn.id,
               short_message: conn.short_message ?? "",
-              community_name: community?.["Community name"] ?? "",
-              community_logo: community?.["Community logo"] ?? "",
+              community_name: community?.["community_name"] ?? "",
+              community_logo: community?.["community_logo"] ?? "",
               members: memberCountMap[conn.agency_id] ?? 0,
               specialties: specialtiesMap[conn.agency_id] ?? [],
             };

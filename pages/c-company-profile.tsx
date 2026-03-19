@@ -26,9 +26,6 @@ export default function CCompanyProfile() {
   const [solutions, setSolutions] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
-  const [connectedAgencies, setConnectedAgencies] = useState<any[]>([]);
-  const [agencyRequests, setAgencyRequests] = useState<any[]>([]);
-
   // =========================
   // AUTH
   // =========================
@@ -38,7 +35,6 @@ export default function CCompanyProfile() {
       const { data } = await supabaseC.auth.getUser();
       setUser(data?.user ?? null);
     }
-
     loadUser();
   }, []);
 
@@ -65,85 +61,127 @@ export default function CCompanyProfile() {
         .maybeSingle();
 
       if (!companyData) {
-        setConnectedAgencies([]);
-        setAgencyRequests([]);
+        setCompany(null);
         setLoading(false);
         return;
       }
 
-      setCompany(companyData);
-
+      // 🔥 CONNECTIONS
       const { data: connections } = await supabaseA
         .from("CONNECTIONS")
         .select("*")
         .eq("company_id", companyData.id);
 
-      if (!connections || connections.length === 0) {
-        setConnectedAgencies([]);
-        setAgencyRequests([]);
-        setLoading(false);
-        return;
-      }
+      let connectedAgencies: any[] = [];
+      let agencyRequests: any[] = [];
 
-      const connected = connections.filter(
-        (c: any) => c.status === "connected"
-      );
+      if (connections && connections.length > 0) {
+        const connected = connections.filter(
+          (c: any) => c.status === "connected"
+        );
 
-      const requests = connections.filter(
-        (c: any) => c.status === "agency request"
-      );
+        const requests = connections.filter(
+          (c: any) => c.status === "agency request"
+        );
 
-      const agencyIds = connections.map((c: any) => c.agency_id);
+        const agencyIds = connections.map((c: any) => c.agency_id);
 
-      const { data: communities } = await supabaseA
-        .from("Community")
-        .select("*")
-        .in("id", agencyIds);
+        const { data: communities } = await supabaseA
+          .from("Community")
+          .select("*")
+          .in("id", agencyIds);
 
-      const { data: members } = await supabaseA
-        .from("community_members")
-        .select("community_id");
+        const { data: members } = await supabaseA
+          .from("community_members")
+          .select("community_id");
 
-      const memberCountMap: any = {};
+        const memberCountMap: any = {};
 
-      members?.forEach((m: any) => {
-        memberCountMap[m.community_id] =
-          (memberCountMap[m.community_id] || 0) + 1;
-      });
-
-      const { data: specialties } = await supabaseA
-        .from("Community specialties")
-        .select("*");
-
-      const specialtiesMap: any = {};
-
-      specialties?.forEach((s: any) => {
-        if (!specialtiesMap[s.community_id]) {
-          specialtiesMap[s.community_id] = [];
-        }
-
-        specialtiesMap[s.community_id].push(s["Specialty"]);
-      });
-
-      const format = (list: any[]) =>
-        list.map((conn: any) => {
-          const community = communities?.find(
-            (c: any) => String(c.id) === String(conn.agency_id)
-          );
-
-          return {
-            id: conn.id,
-            agency_id: conn.agency_id,
-            short_message: conn.short_message ?? "",
-            community_name: community?.["Community name"] ?? "",
-            community_logo: community?.["Community logo"] ?? "",
-            members: memberCountMap[conn.agency_id] ?? 0,
-            specialties: specialtiesMap[conn.agency_id] ?? [],
-          };
+        members?.forEach((m: any) => {
+          memberCountMap[m.community_id] =
+            (memberCountMap[m.community_id] || 0) + 1;
         });
 
-      setConnectedAgencies(format(connected));
-      setAgencyRequests(format(requests));
+        const { data: specialties } = await supabaseA
+          .from("Community specialties")
+          .select("*");
+
+        const specialtiesMap: any = {};
+
+        specialties?.forEach((s: any) => {
+          if (!specialtiesMap[s.community_id]) {
+            specialtiesMap[s.community_id] = [];
+          }
+
+          specialtiesMap[s.community_id].push(s["Specialty"]);
+        });
+
+        const format = (list: any[]) =>
+          list.map((conn: any) => {
+            const community = communities?.find(
+              (c: any) => String(c.id) === String(conn.agency_id)
+            );
+
+            return {
+              id: conn.id,
+              short_message: conn.short_message ?? "",
+              community_name: community?.["Community name"] ?? "",
+              community_logo: community?.["Community logo"] ?? "",
+              members: memberCountMap[conn.agency_id] ?? 0,
+              specialties: specialtiesMap[conn.agency_id] ?? [],
+            };
+          });
+
+        connectedAgencies = format(connected);
+        agencyRequests = format(requests);
+      }
+
+      // 🔥 INJEÇÃO DENTRO DO COMPANY (REGRA RESPEITADA)
+      const enrichedCompany = {
+        ...companyData,
+        connected_agencies: connectedAgencies,
+        agency_requests: agencyRequests,
+      };
+
+      setCompany(enrichedCompany);
+
+      // 🔹 SOLUTIONS (mantido igual)
+      const { data: solutionsData } = await supabaseC
+        .from("solutions")
+        .select(`
+          id,
+          Title,
+          Description,
+          Price,
+          solutions_steps (
+            id,
+            step_text,
+            Step_order
+          )
+        `)
+        .eq("Company_id", companyData.id)
+        .order("id", { ascending: true });
+
+      const structuredSolutions =
+        solutionsData?.map((sol: any) => ({
+          id: sol.id,
+          title: sol.Title ?? "",
+          description: sol.Description ?? "",
+          price: sol.Price ?? "",
+          steps:
+            sol.solutions_steps
+              ?.sort(
+                (a: any, b: any) =>
+                  (a.Step_order ?? 0) - (b.Step_order ?? 0)
+              )
+              .map((s: any) => ({
+                id: s.id,
+                step_text: s.step_text ?? "",
+              })) ?? [],
+        })) ?? [];
+
+      setSolutions(structuredSolutions);
+
     } catch (err) {
       console.error("Load error:", err);
     }
@@ -154,40 +192,6 @@ export default function CCompanyProfile() {
   useEffect(() => {
     loadAll();
   }, [user]);
-
-  // =========================
-  // ACTIONS
-  // =========================
-
-  async function handleConfirmConnection(connectionId: string) {
-    await supabaseA
-      .from("CONNECTIONS")
-      .update({ status: "connected" })
-      .eq("id", connectionId);
-
-    loadAll();
-  }
-
-  async function handleCancelRequest(connectionId: string) {
-    await supabaseA
-      .from("CONNECTIONS")
-      .delete()
-      .eq("id", connectionId);
-
-    loadAll();
-  }
-
-  async function handleDisconnect(connectionId: string, reason: string) {
-    await supabaseA
-      .from("CONNECTIONS")
-      .update({
-        status: "company disconnected",
-        short_message: reason,
-      })
-      .eq("id", connectionId);
-
-    loadAll();
-  }
 
   // =========================
   // LOGOUT
@@ -211,14 +215,6 @@ export default function CCompanyProfile() {
         company: company ?? {},
         formData: solutions ?? [],
         solutions: solutions ?? [],
-
-        connectedAgencies: connectedAgencies ?? [],
-        agencyRequests: agencyRequests ?? [],
-
-        onConfirmConnection: handleConfirmConnection,
-        onCancelRequest: handleCancelRequest,
-        onDisconnect: handleDisconnect,
-
         onLogout: handleLogout,
       }}
     />

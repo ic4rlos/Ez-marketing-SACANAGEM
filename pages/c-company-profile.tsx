@@ -66,7 +66,10 @@ export default function CCompanyProfile() {
         return;
       }
 
-      // 🔥 CONNECTIONS
+      // =========================
+      // CONNECTIONS
+      // =========================
+
       const { data: connections } = await supabaseA
         .from("CONNECTIONS")
         .select("*")
@@ -136,16 +139,63 @@ export default function CCompanyProfile() {
         agencyRequests = format(requests);
       }
 
-      // 🔥 INJEÇÃO DENTRO DO COMPANY (REGRA RESPEITADA)
+      // =========================
+      // ACTIONS (SEM PROPS ❗)
+      // =========================
+
+      async function handleConnectionAction(
+        connectionId: string,
+        action: "accept" | "reject" | "disconnect",
+        reason?: string
+      ) {
+        if (action === "accept") {
+          await supabaseA
+            .from("CONNECTIONS")
+            .update({ status: "connected" })
+            .eq("id", connectionId);
+        }
+
+        if (action === "reject") {
+          await supabaseA
+            .from("CONNECTIONS")
+            .delete()
+            .eq("id", connectionId);
+        }
+
+        if (action === "disconnect") {
+          await supabaseA
+            .from("CONNECTIONS")
+            .update({
+              status: "company disconnected",
+              short_message: reason ?? "",
+            })
+            .eq("id", connectionId);
+        }
+
+        loadAll();
+      }
+
+      // =========================
+      // INJEÇÃO FINAL
+      // =========================
+
       const enrichedCompany = {
         ...companyData,
+
         connected_agencies: connectedAgencies,
         agency_requests: agencyRequests,
+
+        _actions: {
+          connection: handleConnectionAction,
+        },
       };
 
       setCompany(enrichedCompany);
 
-      // 🔹 SOLUTIONS (mantido igual)
+      // =========================
+      // SOLUTIONS
+      // =========================
+
       const { data: solutionsData } = await supabaseC
         .from("solutions")
         .select(`

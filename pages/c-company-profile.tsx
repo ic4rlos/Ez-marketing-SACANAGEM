@@ -188,7 +188,7 @@ export default function CCompanyProfile() {
       // =========================
 
       const { data: specialties } = await supabaseA
-        .from("community speciallties")
+        .from("Community speciallties")
         .select("*");
 
       const specialtiesMap: any = {};

@@ -24,107 +24,87 @@ export default function AApplyToACommunity() {
   const [avatarFiles, setAvatarFiles] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
-  // =========================
   // AUTH
-  // =========================
   useEffect(() => {
     async function loadUser() {
-      const { data, error } = await supabase.auth.getUser();
-      console.log("LOG AUTH:", data?.user?.id, error);
+      const { data } = await supabase.auth.getUser();
       setViewer(data?.user ?? null);
     }
     loadUser();
   }, []);
 
-  // =========================
-  // LOAD DATA
-  // =========================
+  // LOAD
   useEffect(() => {
-    if (!id || !viewer) {
-      console.log("LOG WAIT:", { id, viewer });
-      return;
-    }
+    if (!id || !viewer) return;
 
     let mounted = true;
 
     async function loadAll() {
       const communityId = Number(id);
-      console.log("LOG LOAD START:", communityId);
 
       // COMMUNITY
-      const { data: community, error: communityError } = await supabase
+      const { data: community } = await supabase
         .from("Community")
         .select("*")
         .eq("id", communityId)
         .maybeSingle();
 
-      console.log("LOG COMMUNITY:", community, communityError);
-
-      // =========================
-      // MEMBERS DEBUG
-      // =========================
-      const { data: membersDb, error: membersDbError } = await supabase
+      // MEMBERS (resiliente a RLS)
+      const { data: membersDb } = await supabase
         .from("community_members")
-        .select("*")
-        .eq("community_id", communityId);
-
-      console.log("LOG MEMBERS RAW:", membersDb, membersDbError);
-
-      const connectedOnly = membersDb?.filter(
-        (m: any) => m.status === "connected"
-      );
-
-      console.log("LOG MEMBERS CONNECTED:", connectedOnly);
+        .select("user_id, status")
+        .eq("community_id", communityId)
+        .eq("status", "connected");
 
       let members: any[] = [];
 
-      if (connectedOnly?.length) {
+      if (membersDb?.length) {
         members = (
           await Promise.all(
-            connectedOnly.map(async (m: any) => {
-              console.log("LOG MEMBER LOOP:", m.user_id);
-
+            membersDb.map(async (m: any) => {
+              // tenta pegar profile (pode falhar por RLS)
               const { data: profile } = await supabase
                 .from("User profile")
-                .select('id, "Profile pic", user_id')
+                .select('id, "Profile pic"')
                 .eq("user_id", m.user_id)
                 .maybeSingle();
 
-              console.log("LOG PROFILE:", profile);
+              // tenta pegar offices (só se profile existir)
+              let offices: any[] = [];
 
-              if (!profile) return null;
+              if (profile?.id) {
+                const { data } = await supabase
+                  .from("Multicharge")
+                  .select("Office")
+                  .eq("User profile_id", profile.id);
 
-              const { data: offices } = await supabase
-                .from("Multicharge")
-                .select("Office")
-                .eq("User profile_id", profile.id);
+                offices = data ?? [];
+              }
 
-              console.log("LOG OFFICES:", offices);
-
-              if (!offices) return null;
+              // fallback robusto
+              if (!offices.length) {
+                return [{
+                  "Profile pic": profile?.["Profile pic"] ?? null,
+                  Office: "Member"
+                }];
+              }
 
               return offices.map((o: any) => ({
-                "Profile pic": profile["Profile pic"],
+                "Profile pic": profile?.["Profile pic"] ?? null,
                 Office: o.Office
               }));
             })
           )
-        )
-          .flat()
-          .filter(Boolean);
+        ).flat().filter(Boolean);
       }
 
-      console.log("LOG MEMBERS FINAL:", members);
-
       // MEMBERSHIP
-      const { data: membership, error: membershipError } = await supabase
+      const { data: membership } = await supabase
         .from("community_members")
         .select("*")
         .eq("user_id", viewer.id)
         .eq("community_id", communityId)
         .maybeSingle();
-
-      console.log("LOG MEMBERSHIP:", membership, membershipError);
 
       // SPECIALTIES
       const { data: specialtiesRaw } = await supabase
@@ -137,8 +117,6 @@ export default function AApplyToACommunity() {
           (s: any) => s["Professional specialty"]
         ) ?? [];
 
-      console.log("LOG SPECIALTIES:", specialties);
-
       const nextFormData = {
         ...(community ?? {}),
         members,
@@ -147,14 +125,10 @@ export default function AApplyToACommunity() {
         "Short message": ""
       };
 
-      console.log("LOG FORM DATA FINAL:", nextFormData);
-
       if (!mounted) return;
 
       setFormData(nextFormData);
       setLoading(false);
-
-      console.log("LOG LOAD END");
     }
 
     loadAll();
@@ -164,48 +138,23 @@ export default function AApplyToACommunity() {
     };
   }, [id, viewer]);
 
-  // =========================
-  // SAVE DEBUG
-  // =========================
+  // SAVE (sem upsert bugado)
   async function handleSave(data: any) {
-    console.log("LOG SAVE CALLED:", data);
+    if (!viewer || !id) return;
 
-    if (!viewer || !id) {
-      console.log("LOG SAVE ABORT:", { viewer, id });
-      return;
-    }
-
-    const payload = {
-      user_id: viewer.id,
-      community_id: Number(id),
-      role: "member",
-      status: "request",
-      short_message:
-        data?.["Short message"] ??
-        data?.short_message ??
-        ""
-    };
-
-    console.log("LOG PAYLOAD:", payload);
-
-    const { data: result, error } = await supabase
+    await supabase
       .from("community_members")
-      .upsert(payload, {
-        onConflict: "user_id,community_id"
+      .insert({
+        user_id: viewer.id,
+        community_id: Number(id),
+        role: "member",
+        status: "request",
+        short_message:
+          data?.["Short message"] ??
+          data?.short_message ??
+          ""
       });
-
-    console.log("LOG UPSERT RESULT:", result);
-    console.log("LOG UPSERT ERROR:", error);
   }
-
-  // =========================
-  // GLOBAL DEBUG
-  // =========================
-  useEffect(() => {
-    // @ts-ignore
-    window.__FORMDATA = formData;
-    console.log("LOG WINDOW FORMDATA UPDATED");
-  }, [formData]);
 
   if (loading) return null;
 

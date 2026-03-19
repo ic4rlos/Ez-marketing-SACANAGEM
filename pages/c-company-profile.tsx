@@ -143,11 +143,11 @@ export default function CCompanyProfile() {
       // ACTIONS (SEM PROPS ❗)
       // =========================
 
-      async function handleConnectionAction(
-        connectionId: string,
-        action: "accept" | "reject" | "disconnect",
-        reason?: string
-      ) {
+     const handleConnectionAction = async (
+  connectionId: string,
+  action: "accept" | "reject" | "disconnect",
+  reason?: string
+) => {
         if (action === "accept") {
           await supabaseA
             .from("CONNECTIONS")

@@ -35,112 +35,110 @@ export default function CCompanyProfile() {
 
   useEffect(() => {
     async function loadUser() {
-      console.log("🔐 LOAD USER...");
+      console.log("🔐 AUTH START");
+
       const { data, error } = await supabaseC.auth.getUser();
 
-      console.log("👤 USER DATA:", data);
-      console.log("❌ USER ERROR:", error);
+      console.log("👤 USER:", data?.user);
+      console.log("❌ AUTH ERROR:", error);
 
       setUser(data?.user ?? null);
     }
+
     loadUser();
   }, []);
 
   useEffect(() => {
     if (user === null && !loading) {
-      console.log("🚪 USER NULL → REDIRECT");
+      console.log("🚪 REDIRECT TRIGGERED");
       router.replace("/");
     }
-  }, [user, loading, router]);
+  }, [user, loading]);
 
   // =========================
-  // LOAD ALL (DEBUG MODE)
+  // LOAD ALL
   // =========================
 
   async function loadAll() {
-    if (!user) return;
+    if (!user) {
+      console.log("⛔ LOAD BLOCKED — NO USER");
+      return;
+    }
+
+    console.log("=================================");
+    console.log("🚀 LOAD ALL START");
+    console.log("🆔 USER ID:", user.id);
 
     try {
-      console.log("=================================");
-      console.log("🚀 LOAD ALL START");
-
       setLoading(true);
 
+      // =========================
       // COMPANY
+      // =========================
+
       const { data: companyData, error: companyError } = await supabaseC
         .from("companies")
         .select("*")
         .eq("user_id", user.id)
         .maybeSingle();
 
-      console.log("🏢 COMPANY:", companyData);
+      console.log("🏢 COMPANY DATA:", companyData);
       console.log("❌ COMPANY ERROR:", companyError);
 
       if (!companyData) {
         console.log("⚠️ NO COMPANY FOUND");
+
         setConnectedAgencies([]);
         setAgencyRequests([]);
         setLoading(false);
         return;
       }
 
+      console.log("🆔 COMPANY ID:", companyData.id);
+
       setCompany(companyData);
 
-      // SOLUTIONS
-      const { data: solutionsData } = await supabaseC
-        .from("solutions")
-        .select(`
-          id,
-          Title,
-          Description,
-          Price,
-          solutions_steps (
-            id,
-            step_text,
-            Step_order
-          )
-        `)
-        .eq("Company_id", companyData.id);
+      // =========================
+      // 🔥 TEST CONNECTIONS (SEM FILTRO)
+      // =========================
 
-      console.log("🧩 SOLUTIONS RAW:", solutionsData);
+      const { data: allConnections } = await supabaseA
+        .from("CONNECTIONS")
+        .select("*");
 
-      const structuredSolutions =
-        solutionsData?.map((sol: any) => ({
-          id: sol.id,
-          title: sol.Title ?? "",
-          description: sol.Description ?? "",
-          price: sol.Price ?? "",
-          steps:
-            sol.solutions_steps
-              ?.sort((a: any, b: any) => (a.Step_order ?? 0) - (b.Step_order ?? 0))
-              .map((s: any) => ({
-                id: s.id,
-                step_text: s.step_text ?? "",
-              })) ?? [],
-        })) ?? [];
+      console.log("🌐 ALL CONNECTIONS (NO FILTER):", allConnections);
 
-      console.log("🧩 SOLUTIONS STRUCTURED:", structuredSolutions);
+      // =========================
+      // 🔥 CONNECTIONS FILTRADAS
+      // =========================
 
-      setSolutions(structuredSolutions);
-
-      // CONNECTIONS
       const { data: connections, error: connError } = await supabaseA
         .from("CONNECTIONS")
         .select("*")
         .eq("company_id", companyData.id);
 
-      console.log("🔗 CONNECTIONS RAW:", connections);
+      console.log("🔗 FILTERED CONNECTIONS:", connections);
       console.log("❌ CONNECTION ERROR:", connError);
 
       if (!connections || connections.length === 0) {
-        console.log("⚠️ NO CONNECTIONS");
+        console.log("🚨 NO CONNECTIONS FOR THIS COMPANY");
+
+        // 🔥 DEBUG EXTRA
+        console.log("🔍 POSSIBLE COMPANY IDs IN DB:");
+        allConnections?.forEach((c: any) => {
+          console.log("→ connection company_id:", c.company_id);
+        });
+
         setConnectedAgencies([]);
         setAgencyRequests([]);
         setLoading(false);
         return;
       }
 
+      // =========================
       // FILTER
+      // =========================
+
       const connected = connections.filter(
         (c: any) => c.status === "connected"
       );
@@ -149,28 +147,35 @@ export default function CCompanyProfile() {
         (c: any) => c.status === "agency request"
       );
 
-      console.log("✅ CONNECTED FILTER:", connected);
-      console.log("📩 REQUEST FILTER:", requests);
+      console.log("✅ CONNECTED:", connected);
+      console.log("📩 REQUESTS:", requests);
 
       const agencyIds = connections.map((c: any) => c.agency_id);
 
       console.log("🆔 AGENCY IDS:", agencyIds);
 
+      // =========================
       // COMMUNITIES
+      // =========================
+
       const { data: communities, error: commError } = await supabaseA
         .from("Community")
         .select("*")
         .in("id", agencyIds);
 
       console.log("🏘️ COMMUNITIES:", communities);
-      console.log("❌ COMMUNITIES ERROR:", commError);
+      console.log("❌ COMMUNITY ERROR:", commError);
 
+      // =========================
       // MEMBERS
+      // =========================
+
       const { data: members } = await supabaseA
         .from("community_members")
         .select("community_id");
 
       const memberCountMap: any = {};
+
       members?.forEach((m: any) => {
         memberCountMap[m.community_id] =
           (memberCountMap[m.community_id] || 0) + 1;
@@ -178,31 +183,39 @@ export default function CCompanyProfile() {
 
       console.log("👥 MEMBER MAP:", memberCountMap);
 
+      // =========================
       // SPECIALTIES
+      // =========================
+
       const { data: specialties } = await supabaseA
         .from("community speciallties")
         .select("*");
 
       const specialtiesMap: any = {};
+
       specialties?.forEach((s: any) => {
         if (!specialtiesMap[s.community_id]) {
           specialtiesMap[s.community_id] = [];
         }
+
         specialtiesMap[s.community_id].push(s["Specialty"]);
       });
 
       console.log("🧠 SPECIALTIES MAP:", specialtiesMap);
 
+      // =========================
       // FORMAT
+      // =========================
+
       const format = (list: any[], label: string) =>
         list.map((conn: any) => {
           const community = communities?.find(
             (c: any) => c.id === conn.agency_id
           );
 
-          console.log(`🔎 MATCH ${label}`, {
+          console.log(`🔎 ${label} MATCH`, {
             connection: conn,
-            communityFound: community,
+            foundCommunity: community,
           });
 
           return {
@@ -224,11 +237,12 @@ export default function CCompanyProfile() {
 
       setConnectedAgencies(finalConnected);
       setAgencyRequests(finalRequests);
-
-      console.log("=================================");
     } catch (err) {
       console.error("💥 LOAD ERROR:", err);
     }
+
+    console.log("🏁 LOAD ALL END");
+    console.log("=================================");
 
     setLoading(false);
   }
@@ -238,7 +252,7 @@ export default function CCompanyProfile() {
   }, [user]);
 
   // =========================
-  // ACTIONS (DEBUG)
+  // ACTIONS (LOGS)
   // =========================
 
   async function handleConfirmConnection(connectionId: string) {
@@ -268,10 +282,7 @@ export default function CCompanyProfile() {
   }
 
   async function handleDisconnect(connectionId: string, reason: string) {
-    console.log("🔌 DISCONNECT CLICK:", {
-      connectionId,
-      reason,
-    });
+    console.log("🔌 DISCONNECT:", { connectionId, reason });
 
     const { error } = await supabaseA
       .from("CONNECTIONS")
@@ -291,7 +302,7 @@ export default function CCompanyProfile() {
   // =========================
 
   async function handleLogout() {
-    console.log("🚪 LOGOUT");
+    console.log("🚪 LOGOUT CLICK");
     await supabaseC.auth.signOut();
     router.replace("/");
   }
@@ -303,7 +314,7 @@ export default function CCompanyProfile() {
   if (user === undefined) return null;
   if (loading) return null;
 
-  console.log("🎨 RENDER DATA:", {
+  console.log("🎨 FINAL RENDER DATA:", {
     connectedAgencies,
     agencyRequests,
   });

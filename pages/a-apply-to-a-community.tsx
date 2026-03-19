@@ -29,7 +29,8 @@ export default function AApplyToACommunity() {
   // =========================
   useEffect(() => {
     async function loadUser() {
-      const { data } = await supabase.auth.getUser();
+      const { data, error } = await supabase.auth.getUser();
+      console.log("LOG AUTH:", data?.user?.id, error);
       setViewer(data?.user ?? null);
     }
     loadUser();
@@ -39,40 +40,57 @@ export default function AApplyToACommunity() {
   // LOAD DATA
   // =========================
   useEffect(() => {
-    if (!id || !viewer) return;
+    if (!id || !viewer) {
+      console.log("LOG WAIT:", { id, viewer });
+      return;
+    }
 
     let mounted = true;
 
     async function loadAll() {
       const communityId = Number(id);
+      console.log("LOG LOAD START:", communityId);
 
       // COMMUNITY
-      const { data: community } = await supabase
+      const { data: community, error: communityError } = await supabase
         .from("Community")
         .select("*")
         .eq("id", communityId)
         .maybeSingle();
 
+      console.log("LOG COMMUNITY:", community, communityError);
+
       // =========================
-      // MEMBERS (FORMATO DASHBOARD)
+      // MEMBERS DEBUG
       // =========================
-      const { data: membersDb } = await supabase
+      const { data: membersDb, error: membersDbError } = await supabase
         .from("community_members")
-        .select("user_id")
-        .eq("community_id", communityId)
-        .eq("status", "connected");
+        .select("*")
+        .eq("community_id", communityId);
+
+      console.log("LOG MEMBERS RAW:", membersDb, membersDbError);
+
+      const connectedOnly = membersDb?.filter(
+        (m: any) => m.status === "connected"
+      );
+
+      console.log("LOG MEMBERS CONNECTED:", connectedOnly);
 
       let members: any[] = [];
 
-      if (membersDb?.length) {
+      if (connectedOnly?.length) {
         members = (
           await Promise.all(
-            membersDb.map(async (m: any) => {
+            connectedOnly.map(async (m: any) => {
+              console.log("LOG MEMBER LOOP:", m.user_id);
+
               const { data: profile } = await supabase
                 .from("User profile")
                 .select('id, "Profile pic", user_id')
                 .eq("user_id", m.user_id)
                 .maybeSingle();
+
+              console.log("LOG PROFILE:", profile);
 
               if (!profile) return null;
 
@@ -80,6 +98,8 @@ export default function AApplyToACommunity() {
                 .from("Multicharge")
                 .select("Office")
                 .eq("User profile_id", profile.id);
+
+              console.log("LOG OFFICES:", offices);
 
               if (!offices) return null;
 
@@ -94,17 +114,19 @@ export default function AApplyToACommunity() {
           .filter(Boolean);
       }
 
+      console.log("LOG MEMBERS FINAL:", members);
+
       // MEMBERSHIP
-      const { data: membership } = await supabase
+      const { data: membership, error: membershipError } = await supabase
         .from("community_members")
         .select("*")
         .eq("user_id", viewer.id)
         .eq("community_id", communityId)
         .maybeSingle();
 
-      // =========================
-      // SPECIALTIES (READ ONLY)
-      // =========================
+      console.log("LOG MEMBERSHIP:", membership, membershipError);
+
+      // SPECIALTIES
       const { data: specialtiesRaw } = await supabase
         .from("Community specialties")
         .select('"Professional specialty"')
@@ -115,6 +137,8 @@ export default function AApplyToACommunity() {
           (s: any) => s["Professional specialty"]
         ) ?? [];
 
+      console.log("LOG SPECIALTIES:", specialties);
+
       const nextFormData = {
         ...(community ?? {}),
         members,
@@ -123,10 +147,14 @@ export default function AApplyToACommunity() {
         "Short message": ""
       };
 
+      console.log("LOG FORM DATA FINAL:", nextFormData);
+
       if (!mounted) return;
 
       setFormData(nextFormData);
       setLoading(false);
+
+      console.log("LOG LOAD END");
     }
 
     loadAll();
@@ -137,29 +165,47 @@ export default function AApplyToACommunity() {
   }, [id, viewer]);
 
   // =========================
-  // SAVE
+  // SAVE DEBUG
   // =========================
   async function handleSave(data: any) {
-    if (!viewer || !id) return;
+    console.log("LOG SAVE CALLED:", data);
 
-    await supabase
+    if (!viewer || !id) {
+      console.log("LOG SAVE ABORT:", { viewer, id });
+      return;
+    }
+
+    const payload = {
+      user_id: viewer.id,
+      community_id: Number(id),
+      role: "member",
+      status: "request",
+      short_message:
+        data?.["Short message"] ??
+        data?.short_message ??
+        ""
+    };
+
+    console.log("LOG PAYLOAD:", payload);
+
+    const { data: result, error } = await supabase
       .from("community_members")
-      .upsert(
-        {
-          user_id: viewer.id,
-          community_id: Number(id),
-          role: "member",
-          status: "request",
-          short_message:
-            data?.["Short message"] ??
-            data?.short_message ??
-            ""
-        },
-        {
-          onConflict: "user_id,community_id"
-        }
-      );
+      .upsert(payload, {
+        onConflict: "user_id,community_id"
+      });
+
+    console.log("LOG UPSERT RESULT:", result);
+    console.log("LOG UPSERT ERROR:", error);
   }
+
+  // =========================
+  // GLOBAL DEBUG
+  // =========================
+  useEffect(() => {
+    // @ts-ignore
+    window.__FORMDATA = formData;
+    console.log("LOG WINDOW FORMDATA UPDATED");
+  }, [formData]);
 
   if (loading) return null;
 

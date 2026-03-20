@@ -87,7 +87,7 @@ export default function CCompanyProfile() {
         console.log("📩 REQUESTS:", requests);
 
         const agencyIds = connections.map((c: any) =>
-          Number(c.agency_id)
+         String(c.agency_id)
         );
 
         console.log("🧠 AGENCY IDS:", agencyIds);

@@ -1471,11 +1471,12 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                                             ? (() => {
                                                 const actionArgs = {
                                                   customFunction: async () => {
-                                                    return $props.company?._actions?.connection(
-                                                      currentItem.id,
-                                                      "disconnect",
-                                                      $state.selectedWhy
-                                                    );
+                                                    return $props.onSave({
+                                                      action: "disconnect",
+                                                      connectionId:
+                                                        currentItem.id,
+                                                      reason: $state.selectedWhy
+                                                    });
                                                   }
                                                 };
                                                 return (({
@@ -2506,10 +2507,11 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                                             ? (() => {
                                                 const actionArgs = {
                                                   customFunction: async () => {
-                                                    return $props.company?._actions?.connection(
-                                                      currentItem.id,
-                                                      "accept"
-                                                    );
+                                                    return $props.onSave({
+                                                      action: "accept",
+                                                      connectionId:
+                                                        currentItem.id
+                                                    });
                                                   }
                                                 };
                                                 return (({
@@ -2608,10 +2610,11 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                                             ? (() => {
                                                 const actionArgs = {
                                                   customFunction: async () => {
-                                                    return $props.company?._actions?.connection(
-                                                      currentItem.id,
-                                                      "reject"
-                                                    );
+                                                    return $props.onSave({
+                                                      action: "reject",
+                                                      connectionId:
+                                                        currentItem.id
+                                                    });
                                                   }
                                                 };
                                                 return (({

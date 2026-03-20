@@ -33,7 +33,6 @@ export default function CCompanyProfile() {
   useEffect(() => {
     async function loadUser() {
       const { data } = await supabaseC.auth.getUser();
-      console.log("👤 USER:", data?.user);
       setUser(data?.user ?? null);
     }
     loadUser();
@@ -41,7 +40,6 @@ export default function CCompanyProfile() {
 
   useEffect(() => {
     if (user === null && !loading) {
-      console.log("🚪 Redirecting (no user)");
       router.replace("/");
     }
   }, [user, loading, router]);
@@ -53,9 +51,6 @@ export default function CCompanyProfile() {
   async function loadAll() {
     if (!user) return;
 
-    console.log("=================================");
-    console.log("🚀 LOAD ALL START");
-
     try {
       setLoading(true);
 
@@ -65,24 +60,16 @@ export default function CCompanyProfile() {
         .eq("user_id", user.id)
         .maybeSingle();
 
-      console.log("🏢 COMPANY:", companyData);
-
       if (!companyData) {
         setCompany(null);
         setLoading(false);
         return;
       }
 
-      // =========================
-      // CONNECTIONS
-      // =========================
-
       const { data: connections } = await supabaseA
         .from("CONNECTIONS")
         .select("*")
         .eq("company_id", companyData.id);
-
-      console.log("🔗 CONNECTIONS:", connections);
 
       let connectedAgencies: any[] = [];
       let agencyRequests: any[] = [];
@@ -96,15 +83,8 @@ export default function CCompanyProfile() {
           (c: any) => c.status === "agency request"
         );
 
-        // 🔥 FORÇANDO NUMBER (CRÍTICO)
         const agencyIds = connections.map((c: any) =>
           Number(c.agency_id)
-        );
-
-        console.log("🧠 AGENCY IDS:", agencyIds);
-        console.log(
-          "🧠 AGENCY IDS TYPES:",
-          agencyIds.map((id) => typeof id)
         );
 
         const { data: communities } = await supabaseA
@@ -112,53 +92,19 @@ export default function CCompanyProfile() {
           .select("*")
           .in("id", agencyIds);
 
-        console.log("🏘️ COMMUNITIES:", communities);
-
-        // =========================
-        // 🔥 MEMBERS DEBUG ZONA CRÍTICA
-        // =========================
-
-        console.log("🔥 MEMBERS QUERY START");
-
-        const { data: members, error: membersError } =
-          await supabaseA
-            .from("community_members")
-            .select("community_id");
-
-        console.log("👥 MEMBERS ERROR:", membersError);
-        console.log("👥 MEMBERS RAW:", members);
-
-        if (members && members.length > 0) {
-          console.log("👥 SAMPLE MEMBER:", members[0]);
-          console.log(
-            "👥 MEMBER TYPES:",
-            typeof members[0].community_id
-          );
-        } else {
-          console.log("⚠️ MEMBERS EMPTY — POSSÍVEL RLS OU SEM DADOS");
-        }
-
-        // 🔥 TESTE DIRETO COM FILTER
-        const { data: membersFiltered } = await supabaseA
+        // ✅ SOMENTE MEMBROS CONNECTED
+        const { data: members } = await supabaseA
           .from("community_members")
           .select("community_id")
+          .eq("status", "connected")
           .in("community_id", agencyIds);
-
-        console.log("🎯 MEMBERS FILTERED:", membersFiltered);
 
         const memberCountMap: any = {};
 
         members?.forEach((m: any) => {
           const key = Number(m.community_id);
-
           memberCountMap[key] = (memberCountMap[key] || 0) + 1;
         });
-
-        console.log("📊 MEMBER COUNT MAP:", memberCountMap);
-
-        // =========================
-        // SPECIALTIES
-        // =========================
 
         const { data: specialties } = await supabaseA
           .from("Community specialties")
@@ -176,23 +122,11 @@ export default function CCompanyProfile() {
           specialtiesMap[key].push(s["Professional specialty"]);
         });
 
-        console.log("🎯 SPECIALTIES MAP:", specialtiesMap);
-
         const format = (list: any[]) =>
           list.map((conn: any) => {
-            console.log("----------");
-            console.log("🔎 PROCESSING CONNECTION:", conn);
-
             const community = communities?.find(
               (c: any) =>
                 Number(c.id) === Number(conn.agency_id)
-            );
-
-            console.log("🏷️ COMMUNITY FOUND:", community);
-
-            console.log(
-              "👥 MEMBERS COUNT:",
-              memberCountMap[Number(conn.agency_id)]
             );
 
             return {
@@ -217,13 +151,7 @@ export default function CCompanyProfile() {
         agency_requests: agencyRequests,
       };
 
-      console.log("🏁 FINAL COMPANY:", enrichedCompany);
-
       setCompany(enrichedCompany);
-
-      // =========================
-      // SOLUTIONS
-      // =========================
 
       const { data: solutionsData } = await supabaseC
         .from("solutions")
@@ -262,7 +190,7 @@ export default function CCompanyProfile() {
       setSolutions(structuredSolutions);
 
     } catch (err) {
-      console.error("❌ LOAD ERROR:", err);
+      console.error("Load error:", err);
     }
 
     setLoading(false);
@@ -273,11 +201,46 @@ export default function CCompanyProfile() {
   }, [user]);
 
   // =========================
+  // ACTION VIA onSave
+  // =========================
+
+  async function handleSave(payload: any) {
+    const { action, connectionId, reason } = payload;
+
+    if (!connectionId) return;
+
+    if (action === "accept") {
+      await supabaseA
+        .from("CONNECTIONS")
+        .update({ status: "connected" })
+        .eq("id", connectionId);
+    }
+
+    if (action === "reject") {
+      await supabaseA
+        .from("CONNECTIONS")
+        .delete()
+        .eq("id", connectionId);
+    }
+
+    if (action === "disconnect") {
+      await supabaseA
+        .from("CONNECTIONS")
+        .update({
+          status: "company disconnected",
+          short_message: reason ?? "",
+        })
+        .eq("id", connectionId);
+    }
+
+    loadAll();
+  }
+
+  // =========================
   // LOGOUT
   // =========================
 
   async function handleLogout() {
-    console.log("🚪 LOGOUT");
     await supabaseC.auth.signOut();
     router.replace("/");
   }
@@ -295,6 +258,7 @@ export default function CCompanyProfile() {
         company: company ?? {},
         formData: solutions ?? [],
         solutions: solutions ?? [],
+        onSave: handleSave,
         onLogout: handleLogout,
       }}
     />

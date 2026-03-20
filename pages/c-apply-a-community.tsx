@@ -11,7 +11,7 @@ const PlasmicCApplyACommunity = dynamic(
   () =>
     import(
       "../components/plasmic/ez_marketing_platform_sacanagem/PlasmicCApplyToACommunity"
-    ).then((m) => m.PlasmicCApplyACommunity),
+    ).then((m) => m.PlasmicCApplyToACommunity),
   { ssr: false }
 );
 

@@ -7,7 +7,7 @@ import { getSupabaseC } from "../lib/c-supabaseClient";
 export const dynamic_config = "force-dynamic";
 export const runtime = "nodejs";
 
-const PlasmicCCompanyProfile = dynamic(
+const PlasmicCCompanyProfile = 
   () =>
     import(
       "../components/plasmic/ez_marketing_platform_sacanagem/PlasmicCCompanyProfile"
@@ -87,7 +87,7 @@ export default function CCompanyProfile() {
         console.log("📩 REQUESTS:", requests);
 
         const agencyIds = connections.map((c: any) =>
-          String(c.agency_id)
+          Number(c.agency_id)
         );
 
         console.log("🧠 AGENCY IDS:", agencyIds);

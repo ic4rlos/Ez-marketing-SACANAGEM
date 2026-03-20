@@ -135,9 +135,9 @@ export const PlasmicCRateACommunitie__ArgProps = new Array<ArgPropType>();
 
 export type PlasmicCRateACommunitie__OverridesType = {
   root?: Flex__<"div">;
-  topBar?: Flex__<"div">;
+  topBarAuto?: Flex__<"div">;
   navigationBar?: Flex__<typeof NavigationBar>;
-  account?: Flex__<typeof AntdDropdown>;
+  account2?: Flex__<typeof AntdDropdown>;
   button?: Flex__<typeof AntdButton>;
   container3?: Flex__<"div">;
   communityLogo?: Flex__<typeof PlasmicImg__>;
@@ -206,6 +206,8 @@ function PlasmicCRateACommunitie__RenderFunc(props: {
   const $ctx = useDataEnv?.() || {};
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
+
+  const $globalActions = useGlobalActions?.();
 
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
@@ -320,12 +322,12 @@ function PlasmicCRateACommunitie__RenderFunc(props: {
         )}
       >
         <div
-          data-plasmic-name={"topBar"}
-          data-plasmic-override={overrides.topBar}
-          className={classNames(projectcss.all, sty.topBar)}
+          data-plasmic-name={"topBarAuto"}
+          data-plasmic-override={overrides.topBarAuto}
+          className={classNames(projectcss.all, sty.topBarAuto)}
         >
-          <div className={classNames(projectcss.all, sty.freeBox__skQv)}>
-            <div className={classNames(projectcss.all, sty.freeBox___8P5Z)}>
+          <div className={classNames(projectcss.all, sty.freeBox___2WZiJ)}>
+            <div className={classNames(projectcss.all, sty.freeBox___81UPp)}>
               <NavigationBar
                 data-plasmic-name={"navigationBar"}
                 data-plasmic-override={overrides.navigationBar}
@@ -334,16 +336,15 @@ function PlasmicCRateACommunitie__RenderFunc(props: {
                     className={classNames(
                       projectcss.all,
                       projectcss.a,
-                      sty.link__naiH9
+                      sty.link___5D8Or
                     )}
                     component={Link}
-                    href={`/c-corporative-page`}
                     legacyBehavior={false}
                     platform={"nextjs"}
                   >
                     <PlasmicImg__
                       alt={""}
-                      className={classNames(sty.img___5D6T)}
+                      className={classNames(sty.img__ekXnw)}
                       displayHeight={"30px"}
                       displayMaxHeight={"none"}
                       displayMaxWidth={"none"}
@@ -363,7 +364,7 @@ function PlasmicCRateACommunitie__RenderFunc(props: {
                 closeButton={
                   <PlasmicImg__
                     alt={""}
-                    className={classNames(sty.img__voQcX)}
+                    className={classNames(sty.img___6YT2R)}
                     displayHeight={"auto"}
                     displayMaxHeight={"none"}
                     displayMaxWidth={"none"}
@@ -381,21 +382,21 @@ function PlasmicCRateACommunitie__RenderFunc(props: {
                         projectcss.all,
                         projectcss.a,
                         projectcss.__wab_text,
-                        sty.link__xpo5Q
+                        sty.link__kNpqn
                       )}
                       component={Link}
                       href={`/c-company-profile`}
                       legacyBehavior={false}
                       platform={"nextjs"}
                     >
-                      {"Company\nprofile"}
+                      {"Company \nProfile"}
                     </PlasmicLink__>
                     <PlasmicLink__
                       className={classNames(
                         projectcss.all,
                         projectcss.a,
                         projectcss.__wab_text,
-                        sty.link___8V84C
+                        sty.link__aj40X
                       )}
                       component={Link}
                       href={`/c-services-dashboard`}
@@ -409,7 +410,7 @@ function PlasmicCRateACommunitie__RenderFunc(props: {
                         projectcss.all,
                         projectcss.a,
                         projectcss.__wab_text,
-                        sty.link__r8Tds
+                        sty.link__m1UYf
                       )}
                       component={Link}
                       legacyBehavior={false}
@@ -422,7 +423,7 @@ function PlasmicCRateACommunitie__RenderFunc(props: {
                         projectcss.all,
                         projectcss.a,
                         projectcss.__wab_text,
-                        sty.link___9L71V
+                        sty.link__rAhia
                       )}
                       component={Link}
                       href={`/c-find-a-affiliate`}
@@ -436,7 +437,7 @@ function PlasmicCRateACommunitie__RenderFunc(props: {
                 openButton={
                   <PlasmicImg__
                     alt={""}
-                    className={classNames(sty.img__fLyJ5)}
+                    className={classNames(sty.img__gw1IK)}
                     displayHeight={"auto"}
                     displayMaxHeight={"none"}
                     displayMaxWidth={"none"}
@@ -452,16 +453,20 @@ function PlasmicCRateACommunitie__RenderFunc(props: {
               />
 
               <AntdDropdown
-                data-plasmic-name={"account"}
-                data-plasmic-override={overrides.account}
-                className={classNames("__wab_instance", sty.account)}
-                dropdownMenuScopeClassName={sty["account__dropdownMenu"]}
+                data-plasmic-name={"account2"}
+                data-plasmic-override={overrides.account2}
+                className={classNames("__wab_instance", sty.account2)}
+                dropdownMenuScopeClassName={sty["account2__dropdownMenu"]}
+                menuClassName={classNames({ [sty["pcls_zfK0dg96L-Hk"]]: true })}
+                menuItemClassName={classNames({
+                  [sty["pcls_w_OWUPt1-JB-"]]: true
+                })}
                 menuItems={() => (
                   <React.Fragment>
                     <AntdMenuItem
                       className={classNames(
                         "__wab_instance",
-                        sty.menuItem__wFeQk
+                        sty.menuItem__q4LlZ
                       )}
                       key={"menu-item-1"}
                     >
@@ -469,7 +474,7 @@ function PlasmicCRateACommunitie__RenderFunc(props: {
                         className={classNames(
                           projectcss.all,
                           projectcss.__wab_text,
-                          sty.text__oXvOv
+                          sty.text__wuQnd
                         )}
                       >
                         {"Menu item"}
@@ -478,7 +483,7 @@ function PlasmicCRateACommunitie__RenderFunc(props: {
                     <AntdMenuItem
                       className={classNames(
                         "__wab_instance",
-                        sty.menuItem___7Vt8C
+                        sty.menuItem__mksvu
                       )}
                       key={"menu-item-2"}
                     >
@@ -486,7 +491,7 @@ function PlasmicCRateACommunitie__RenderFunc(props: {
                         className={classNames(
                           projectcss.all,
                           projectcss.__wab_text,
-                          sty.text___8UYmM
+                          sty.text__wEnIb
                         )}
                       >
                         {"Menu item"}
@@ -519,12 +524,89 @@ function PlasmicCRateACommunitie__RenderFunc(props: {
                       { type: null }
                     ];
                     __composite["0"]["label"] = "Settings & Privacy";
+                    __composite["0"]["onClick"] = async info => {
+                      const $steps = {};
+
+                      $steps["goToALogin"] = true
+                        ? (() => {
+                            const actionArgs = { destination: `/a-login` };
+                            return (({ destination }) => {
+                              if (
+                                typeof destination === "string" &&
+                                destination.startsWith("#")
+                              ) {
+                                document
+                                  .getElementById(destination.substr(1))
+                                  .scrollIntoView({ behavior: "smooth" });
+                              } else {
+                                __nextRouter?.push(destination);
+                              }
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["goToALogin"] != null &&
+                        typeof $steps["goToALogin"] === "object" &&
+                        typeof $steps["goToALogin"].then === "function"
+                      ) {
+                        $steps["goToALogin"] = await $steps["goToALogin"];
+                      }
+                    };
                     __composite["1"]["label"] = "Help";
+                    __composite["1"]["onClick"] = async info => {
+                      const $steps = {};
+
+                      $steps["invokeGlobalAction"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              args: [
+                                undefined,
+                                "aaaaaaaaaaaaaaaa",
+                                "sssssssssssssssss"
+                              ]
+                            };
+                            return $globalActions[
+                              "plasmic-antd5-config-provider.showNotification"
+                            ]?.apply(null, [...actionArgs.args]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["invokeGlobalAction"] != null &&
+                        typeof $steps["invokeGlobalAction"] === "object" &&
+                        typeof $steps["invokeGlobalAction"].then === "function"
+                      ) {
+                        $steps["invokeGlobalAction"] =
+                          await $steps["invokeGlobalAction"];
+                      }
+                    };
                     __composite["2"]["type"] = "divider";
                     return __composite;
                   })();
                   __composite["1"]["type"] = "item";
                   __composite["1"]["label"] = "Sign out";
+                  __composite["1"]["onClick"] = async info => {
+                    const $steps = {};
+
+                    $steps["runCode"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            customFunction: async () => {
+                              return $props.onLogout?.();
+                            }
+                          };
+                          return (({ customFunction }) => {
+                            return customFunction();
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["runCode"] != null &&
+                      typeof $steps["runCode"] === "object" &&
+                      typeof $steps["runCode"].then === "function"
+                    ) {
+                      $steps["runCode"] = await $steps["runCode"];
+                    }
+                  };
                   return __composite;
                 })()}
                 trigger={"hover"}
@@ -538,7 +620,7 @@ function PlasmicCRateACommunitie__RenderFunc(props: {
                 >
                   <PlasmicImg__
                     alt={""}
-                    className={classNames(sty.img__mtoet)}
+                    className={classNames(sty.img__a0Oxu)}
                     displayHeight={"30px"}
                     displayMaxHeight={"none"}
                     displayMaxWidth={"100%"}
@@ -1438,9 +1520,9 @@ function PlasmicCRateACommunitie__RenderFunc(props: {
 const PlasmicDescendants = {
   root: [
     "root",
-    "topBar",
+    "topBarAuto",
     "navigationBar",
-    "account",
+    "account2",
     "button",
     "container3",
     "communityLogo",
@@ -1468,9 +1550,9 @@ const PlasmicDescendants = {
     "agencyRate",
     "averageRatingReceived"
   ],
-  topBar: ["topBar", "navigationBar", "account", "button"],
+  topBarAuto: ["topBarAuto", "navigationBar", "account2", "button"],
   navigationBar: ["navigationBar"],
-  account: ["account", "button"],
+  account2: ["account2", "button"],
   button: ["button"],
   container3: [
     "container3",
@@ -1531,9 +1613,9 @@ type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   root: "div";
-  topBar: "div";
+  topBarAuto: "div";
   navigationBar: typeof NavigationBar;
-  account: typeof AntdDropdown;
+  account2: typeof AntdDropdown;
   button: typeof AntdButton;
   container3: "div";
   communityLogo: typeof PlasmicImg__;
@@ -1624,9 +1706,9 @@ export const PlasmicCRateACommunitie = Object.assign(
   makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
-    topBar: makeNodeComponent("topBar"),
+    topBarAuto: makeNodeComponent("topBarAuto"),
     navigationBar: makeNodeComponent("navigationBar"),
-    account: makeNodeComponent("account"),
+    account2: makeNodeComponent("account2"),
     button: makeNodeComponent("button"),
     container3: makeNodeComponent("container3"),
     communityLogo: makeNodeComponent("communityLogo"),

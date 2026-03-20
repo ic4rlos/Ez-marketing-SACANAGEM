@@ -59,13 +59,6 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
-import { usePlasmicDataSourceContext } from "@plasmicapp/data-sources-context";
-import {
-  executePlasmicDataOp,
-  usePlasmicDataOp,
-  usePlasmicInvalidate
-} from "@plasmicapp/react-web/lib/data-sources";
-
 import { NavigationBar } from "@plasmicpkgs/plasmic-nav";
 import { AntdDropdown } from "@plasmicpkgs/antd5/skinny/registerDropdown";
 import { AntdMenuItem } from "@plasmicpkgs/antd5/skinny/registerMenu";
@@ -135,9 +128,9 @@ export const PlasmicCFindAffiliate__ArgProps = new Array<ArgPropType>();
 
 export type PlasmicCFindAffiliate__OverridesType = {
   testeDoCarlos?: Flex__<"div">;
-  topBar?: Flex__<"div">;
+  topBarAuto?: Flex__<"div">;
   navigationBar?: Flex__<typeof NavigationBar>;
-  account?: Flex__<typeof AntdDropdown>;
+  account2?: Flex__<typeof AntdDropdown>;
   button?: Flex__<typeof AntdButton>;
   countainer1?: Flex__<"div">;
   dialog?: Flex__<typeof Dialog>;
@@ -382,6 +375,8 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
   const $ctx = useDataEnv?.() || {};
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
+
+  const $globalActions = useGlobalActions?.();
 
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
@@ -1635,8 +1630,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
     $q: {},
     $refs
   });
-  const dataSourcesCtx = usePlasmicDataSourceContext();
-  const plasmicInvalidate = usePlasmicInvalidate();
 
   const pageMetadata = generateDynamicMetadata(
     wrapQueriesWithLoadingProxy({}),
@@ -1679,12 +1672,12 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
         )}
       >
         <div
-          data-plasmic-name={"topBar"}
-          data-plasmic-override={overrides.topBar}
-          className={classNames(projectcss.all, sty.topBar)}
+          data-plasmic-name={"topBarAuto"}
+          data-plasmic-override={overrides.topBarAuto}
+          className={classNames(projectcss.all, sty.topBarAuto)}
         >
-          <div className={classNames(projectcss.all, sty.freeBox__llodY)}>
-            <div className={classNames(projectcss.all, sty.freeBox__yHmhU)}>
+          <div className={classNames(projectcss.all, sty.freeBox___42Vm)}>
+            <div className={classNames(projectcss.all, sty.freeBox___3Yumo)}>
               <NavigationBar
                 data-plasmic-name={"navigationBar"}
                 data-plasmic-override={overrides.navigationBar}
@@ -1693,39 +1686,15 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                     className={classNames(
                       projectcss.all,
                       projectcss.a,
-                      sty.link__huGj9
+                      sty.link__j5CSt
                     )}
                     component={Link}
                     legacyBehavior={false}
-                    onClick={async event => {
-                      const $steps = {};
-
-                      $steps["refreshData"] = true
-                        ? (() => {
-                            const actionArgs = {
-                              queryInvalidation: ["plasmic_refresh_all"]
-                            };
-                            return (async ({ queryInvalidation }) => {
-                              if (!queryInvalidation) {
-                                return;
-                              }
-                              await plasmicInvalidate(queryInvalidation);
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
-                      if (
-                        $steps["refreshData"] != null &&
-                        typeof $steps["refreshData"] === "object" &&
-                        typeof $steps["refreshData"].then === "function"
-                      ) {
-                        $steps["refreshData"] = await $steps["refreshData"];
-                      }
-                    }}
                     platform={"nextjs"}
                   >
                     <PlasmicImg__
                       alt={""}
-                      className={classNames(sty.img__hxSe5)}
+                      className={classNames(sty.img__leobk)}
                       displayHeight={"30px"}
                       displayMaxHeight={"none"}
                       displayMaxWidth={"none"}
@@ -1745,7 +1714,7 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                 closeButton={
                   <PlasmicImg__
                     alt={""}
-                    className={classNames(sty.img__aE8Og)}
+                    className={classNames(sty.img__cgmpP)}
                     displayHeight={"auto"}
                     displayMaxHeight={"none"}
                     displayMaxWidth={"none"}
@@ -1763,21 +1732,21 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                         projectcss.all,
                         projectcss.a,
                         projectcss.__wab_text,
-                        sty.link__dDe4C
+                        sty.link___81Zcp
                       )}
                       component={Link}
                       href={`/c-company-profile`}
                       legacyBehavior={false}
                       platform={"nextjs"}
                     >
-                      {"Company\nprofile"}
+                      {"Company \nProfile"}
                     </PlasmicLink__>
                     <PlasmicLink__
                       className={classNames(
                         projectcss.all,
                         projectcss.a,
                         projectcss.__wab_text,
-                        sty.link__fkdQw
+                        sty.link__ypsrp
                       )}
                       component={Link}
                       href={`/c-services-dashboard`}
@@ -1791,7 +1760,7 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                         projectcss.all,
                         projectcss.a,
                         projectcss.__wab_text,
-                        sty.link__yccOd
+                        sty.link___0UEkt
                       )}
                       component={Link}
                       legacyBehavior={false}
@@ -1818,7 +1787,7 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                 openButton={
                   <PlasmicImg__
                     alt={""}
-                    className={classNames(sty.img__z9NMx)}
+                    className={classNames(sty.img__q1VWs)}
                     displayHeight={"auto"}
                     displayMaxHeight={"none"}
                     displayMaxWidth={"none"}
@@ -1834,20 +1803,20 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
               />
 
               <AntdDropdown
-                data-plasmic-name={"account"}
-                data-plasmic-override={overrides.account}
-                className={classNames("__wab_instance", sty.account)}
-                dropdownMenuScopeClassName={sty["account__dropdownMenu"]}
-                menuClassName={classNames({ [sty["pcls_e06jVytcirjQ"]]: true })}
+                data-plasmic-name={"account2"}
+                data-plasmic-override={overrides.account2}
+                className={classNames("__wab_instance", sty.account2)}
+                dropdownMenuScopeClassName={sty["account2__dropdownMenu"]}
+                menuClassName={classNames({ [sty["pcls_8ENWDYUxQ9m4"]]: true })}
                 menuItemClassName={classNames({
-                  [sty["pcls_K38iKjgs6PNU"]]: true
+                  [sty["pcls_6TPPTLgsn_bg"]]: true
                 })}
                 menuItems={() => (
                   <React.Fragment>
                     <AntdMenuItem
                       className={classNames(
                         "__wab_instance",
-                        sty.menuItem___0Wg5W
+                        sty.menuItem__rs4P2
                       )}
                       key={"menu-item-1"}
                     >
@@ -1855,7 +1824,7 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                         className={classNames(
                           projectcss.all,
                           projectcss.__wab_text,
-                          sty.text__luq7C
+                          sty.text__mOp56
                         )}
                       >
                         {"Menu item"}
@@ -1864,7 +1833,7 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                     <AntdMenuItem
                       className={classNames(
                         "__wab_instance",
-                        sty.menuItem__xKIxu
+                        sty.menuItem__d0M4U
                       )}
                       key={"menu-item-2"}
                     >
@@ -1872,7 +1841,7 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                         className={classNames(
                           projectcss.all,
                           projectcss.__wab_text,
-                          sty.text__yQ6Bp
+                          sty.text__ohMVf
                         )}
                       >
                         {"Menu item"}
@@ -1937,29 +1906,27 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                     __composite["1"]["onClick"] = async info => {
                       const $steps = {};
 
-                      $steps["goToALogin"] = true
+                      $steps["invokeGlobalAction"] = true
                         ? (() => {
-                            const actionArgs = { destination: `/a-login` };
-                            return (({ destination }) => {
-                              if (
-                                typeof destination === "string" &&
-                                destination.startsWith("#")
-                              ) {
-                                document
-                                  .getElementById(destination.substr(1))
-                                  .scrollIntoView({ behavior: "smooth" });
-                              } else {
-                                __nextRouter?.push(destination);
-                              }
-                            })?.apply(null, [actionArgs]);
+                            const actionArgs = {
+                              args: [
+                                undefined,
+                                "aaaaaaaaaaaaaaaa",
+                                "sssssssssssssssss"
+                              ]
+                            };
+                            return $globalActions[
+                              "plasmic-antd5-config-provider.showNotification"
+                            ]?.apply(null, [...actionArgs.args]);
                           })()
                         : undefined;
                       if (
-                        $steps["goToALogin"] != null &&
-                        typeof $steps["goToALogin"] === "object" &&
-                        typeof $steps["goToALogin"].then === "function"
+                        $steps["invokeGlobalAction"] != null &&
+                        typeof $steps["invokeGlobalAction"] === "object" &&
+                        typeof $steps["invokeGlobalAction"].then === "function"
                       ) {
-                        $steps["goToALogin"] = await $steps["goToALogin"];
+                        $steps["invokeGlobalAction"] =
+                          await $steps["invokeGlobalAction"];
                       }
                     };
                     __composite["2"]["type"] = "divider";
@@ -1970,29 +1937,24 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                   __composite["1"]["onClick"] = async info => {
                     const $steps = {};
 
-                    $steps["goToALogin"] = true
+                    $steps["runCode"] = true
                       ? (() => {
-                          const actionArgs = { destination: `/c-login` };
-                          return (({ destination }) => {
-                            if (
-                              typeof destination === "string" &&
-                              destination.startsWith("#")
-                            ) {
-                              document
-                                .getElementById(destination.substr(1))
-                                .scrollIntoView({ behavior: "smooth" });
-                            } else {
-                              __nextRouter?.push(destination);
+                          const actionArgs = {
+                            customFunction: async () => {
+                              return $props.onLogout?.();
                             }
+                          };
+                          return (({ customFunction }) => {
+                            return customFunction();
                           })?.apply(null, [actionArgs]);
                         })()
                       : undefined;
                     if (
-                      $steps["goToALogin"] != null &&
-                      typeof $steps["goToALogin"] === "object" &&
-                      typeof $steps["goToALogin"].then === "function"
+                      $steps["runCode"] != null &&
+                      typeof $steps["runCode"] === "object" &&
+                      typeof $steps["runCode"].then === "function"
                     ) {
-                      $steps["goToALogin"] = await $steps["goToALogin"];
+                      $steps["runCode"] = await $steps["runCode"];
                     }
                   };
                   return __composite;
@@ -2008,7 +1970,7 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                 >
                   <PlasmicImg__
                     alt={""}
-                    className={classNames(sty.img___3WKaf)}
+                    className={classNames(sty.img__xBgF)}
                     displayHeight={"30px"}
                     displayMaxHeight={"none"}
                     displayMaxWidth={"100%"}
@@ -2080,7 +2042,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link___3P1Cn
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -2375,7 +2336,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link__fuBxh
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -2670,7 +2630,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link__ca4Ed
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -2965,7 +2924,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link___8C4X0
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -3399,7 +3357,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link__thzdy
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -3694,7 +3651,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link__fbZvb
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -3989,7 +3945,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link__ipYs9
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -4284,7 +4239,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link__cn95S
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -4721,7 +4675,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link__o7Ayn
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -5016,7 +4969,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link__foiZv
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -5311,7 +5263,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link__iYbf
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -5606,7 +5557,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link__pKjSc
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -6043,7 +5993,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link__qz7Wy
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -6338,7 +6287,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link__krR4F
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -6633,7 +6581,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link__uzdWk
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -6925,7 +6872,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link__ixyYm
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -7362,7 +7308,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link__nk5We
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -7657,7 +7602,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link__i7Zyv
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -7952,7 +7896,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link__abp7S
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -8247,7 +8190,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link__uaaL4
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -8684,7 +8626,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link__u0LW5
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -8979,7 +8920,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link__kBh
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -9274,7 +9214,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link__dtG8
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -9569,7 +9508,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link__rjimJ
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -10006,7 +9944,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link___2Pp4T
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -10301,7 +10238,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link__y7Ftj
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -10596,7 +10532,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link__bh2D4
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -10891,7 +10826,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link__bwfs
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -11328,7 +11262,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link__wGbZx
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -11623,7 +11556,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link___4SQgd
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -11918,7 +11850,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link__wbDXi
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -12213,7 +12144,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link__l8USu
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -12650,7 +12580,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link__ysY5
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -12945,7 +12874,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link__kOg5I
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -13240,7 +13168,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link___8JvoV
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -13535,7 +13462,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link__yWjmi
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -13972,7 +13898,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link__oqFf1
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -14267,7 +14192,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link__vaPo0
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -14562,7 +14486,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link__shYJi
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -14857,7 +14780,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link__wStQb
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -15294,7 +15216,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link__lmU2E
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -15589,7 +15510,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link__b7Wu
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -15884,7 +15804,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link__sFfnY
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -16179,7 +16098,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link__wFZjh
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -16616,7 +16534,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link__r5Azp
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -16911,7 +16828,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link__lsGm
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -17206,7 +17122,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link___3FXfM
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -17501,7 +17416,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link__uh8Ih
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -17938,7 +17852,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link__bC0Xc
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -18233,7 +18146,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link__drgi
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -18528,7 +18440,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link__zVgh
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -18823,7 +18734,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link__d3LTi
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -19257,7 +19167,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link__luZpl
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -19552,7 +19461,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link__in4Gg
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -19847,7 +19755,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link__vpCwy
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -20142,7 +20049,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link__pTa8
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -20579,7 +20485,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link__h5Z32
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -20874,7 +20779,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link___52FN8
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -21169,7 +21073,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link__vKw2L
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -21464,7 +21367,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link__mgUpl
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -21901,7 +21803,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link__tAyk4
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -22196,7 +22097,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link__tkE6Z
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -22491,7 +22391,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link___6My3U
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -22786,7 +22685,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link___8X4Wf
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -23223,7 +23121,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link__uIetk
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -23518,7 +23415,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link__od9KW
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -23813,7 +23709,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link__pn8X
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -24108,7 +24003,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link__ycRuh
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -24545,7 +24439,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link__mxRQz
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -24840,7 +24733,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link__myRwP
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -25135,7 +25027,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link__gbmAf
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -25430,7 +25321,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link___1EWqt
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -25867,7 +25757,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link___2XOy2
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -26162,7 +26051,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link__sswGa
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -26457,7 +26345,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link___0MOv8
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -26752,7 +26639,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link__gvMFj
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -27189,7 +27075,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link___2TBcl
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -27484,7 +27369,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link__lzIi
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -27779,7 +27663,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link__dviLk
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -28074,7 +27957,6 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
                               sty.link___5GDhn
                             )}
                             component={Link}
-                            href={`/c-apply-a-community`}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -28478,9 +28360,9 @@ function PlasmicCFindAffiliate__RenderFunc(props: {
 const PlasmicDescendants = {
   testeDoCarlos: [
     "testeDoCarlos",
-    "topBar",
+    "topBarAuto",
     "navigationBar",
-    "account",
+    "account2",
     "button",
     "countainer1",
     "dialog",
@@ -28684,9 +28566,9 @@ const PlasmicDescendants = {
     "rate80",
     "pagination20"
   ],
-  topBar: ["topBar", "navigationBar", "account", "button"],
+  topBarAuto: ["topBarAuto", "navigationBar", "account2", "button"],
   navigationBar: ["navigationBar"],
-  account: ["account", "button"],
+  account2: ["account2", "button"],
   button: ["button"],
   countainer1: [
     "countainer1",
@@ -29317,9 +29199,9 @@ type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   testeDoCarlos: "div";
-  topBar: "div";
+  topBarAuto: "div";
   navigationBar: typeof NavigationBar;
-  account: typeof AntdDropdown;
+  account2: typeof AntdDropdown;
   button: typeof AntdButton;
   countainer1: "div";
   dialog: typeof Dialog;
@@ -29586,9 +29468,9 @@ export const PlasmicCFindAffiliate = Object.assign(
   makeNodeComponent("testeDoCarlos"),
   {
     // Helper components rendering sub-elements
-    topBar: makeNodeComponent("topBar"),
+    topBarAuto: makeNodeComponent("topBarAuto"),
     navigationBar: makeNodeComponent("navigationBar"),
-    account: makeNodeComponent("account"),
+    account2: makeNodeComponent("account2"),
     button: makeNodeComponent("button"),
     countainer1: makeNodeComponent("countainer1"),
     dialog: makeNodeComponent("dialog"),

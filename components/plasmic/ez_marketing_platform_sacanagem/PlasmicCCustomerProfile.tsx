@@ -59,13 +59,6 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
-import { usePlasmicDataSourceContext } from "@plasmicapp/data-sources-context";
-import {
-  executePlasmicDataOp,
-  usePlasmicDataOp,
-  usePlasmicInvalidate
-} from "@plasmicapp/react-web/lib/data-sources";
-
 import { NavigationBar } from "@plasmicpkgs/plasmic-nav";
 import { AntdDropdown } from "@plasmicpkgs/antd5/skinny/registerDropdown";
 import { AntdMenuItem } from "@plasmicpkgs/antd5/skinny/registerMenu";
@@ -129,9 +122,9 @@ export const PlasmicCCustomerProfile__ArgProps = new Array<ArgPropType>();
 
 export type PlasmicCCustomerProfile__OverridesType = {
   testeDoCarlos?: Flex__<"div">;
-  topBar?: Flex__<"div">;
+  topBarAuto?: Flex__<"div">;
   navigationBar?: Flex__<typeof NavigationBar>;
-  account?: Flex__<typeof AntdDropdown>;
+  account2?: Flex__<typeof AntdDropdown>;
   button?: Flex__<typeof AntdButton>;
   countainer1?: Flex__<"div">;
   rate?: Flex__<typeof AntdRate>;
@@ -185,6 +178,8 @@ function PlasmicCCustomerProfile__RenderFunc(props: {
   const $ctx = useDataEnv?.() || {};
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
+
+  const $globalActions = useGlobalActions?.();
 
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
@@ -252,8 +247,6 @@ function PlasmicCCustomerProfile__RenderFunc(props: {
     $q: {},
     $refs
   });
-  const dataSourcesCtx = usePlasmicDataSourceContext();
-  const plasmicInvalidate = usePlasmicInvalidate();
 
   const pageMetadata = generateDynamicMetadata(
     wrapQueriesWithLoadingProxy({}),
@@ -296,12 +289,12 @@ function PlasmicCCustomerProfile__RenderFunc(props: {
         )}
       >
         <div
-          data-plasmic-name={"topBar"}
-          data-plasmic-override={overrides.topBar}
-          className={classNames(projectcss.all, sty.topBar)}
+          data-plasmic-name={"topBarAuto"}
+          data-plasmic-override={overrides.topBarAuto}
+          className={classNames(projectcss.all, sty.topBarAuto)}
         >
-          <div className={classNames(projectcss.all, sty.freeBox__zonKt)}>
-            <div className={classNames(projectcss.all, sty.freeBox__pNndi)}>
+          <div className={classNames(projectcss.all, sty.freeBox__lQ8Od)}>
+            <div className={classNames(projectcss.all, sty.freeBox__pB9)}>
               <NavigationBar
                 data-plasmic-name={"navigationBar"}
                 data-plasmic-override={overrides.navigationBar}
@@ -310,40 +303,15 @@ function PlasmicCCustomerProfile__RenderFunc(props: {
                     className={classNames(
                       projectcss.all,
                       projectcss.a,
-                      sty.link__sT1H
+                      sty.link__oPnRq
                     )}
                     component={Link}
-                    href={`/c-corporative-page`}
                     legacyBehavior={false}
-                    onClick={async event => {
-                      const $steps = {};
-
-                      $steps["refreshData"] = true
-                        ? (() => {
-                            const actionArgs = {
-                              queryInvalidation: ["plasmic_refresh_all"]
-                            };
-                            return (async ({ queryInvalidation }) => {
-                              if (!queryInvalidation) {
-                                return;
-                              }
-                              await plasmicInvalidate(queryInvalidation);
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
-                      if (
-                        $steps["refreshData"] != null &&
-                        typeof $steps["refreshData"] === "object" &&
-                        typeof $steps["refreshData"].then === "function"
-                      ) {
-                        $steps["refreshData"] = await $steps["refreshData"];
-                      }
-                    }}
                     platform={"nextjs"}
                   >
                     <PlasmicImg__
                       alt={""}
-                      className={classNames(sty.img__mIfBo)}
+                      className={classNames(sty.img___4Trk)}
                       displayHeight={"30px"}
                       displayMaxHeight={"none"}
                       displayMaxWidth={"none"}
@@ -363,7 +331,7 @@ function PlasmicCCustomerProfile__RenderFunc(props: {
                 closeButton={
                   <PlasmicImg__
                     alt={""}
-                    className={classNames(sty.img__rgsTq)}
+                    className={classNames(sty.img__wx1E)}
                     displayHeight={"auto"}
                     displayMaxHeight={"none"}
                     displayMaxWidth={"none"}
@@ -381,21 +349,21 @@ function PlasmicCCustomerProfile__RenderFunc(props: {
                         projectcss.all,
                         projectcss.a,
                         projectcss.__wab_text,
-                        sty.link__j5Hx
+                        sty.link__zWes1
                       )}
                       component={Link}
                       href={`/c-company-profile`}
                       legacyBehavior={false}
                       platform={"nextjs"}
                     >
-                      {"Company\nprofile"}
+                      {"Company \nProfile"}
                     </PlasmicLink__>
                     <PlasmicLink__
                       className={classNames(
                         projectcss.all,
                         projectcss.a,
                         projectcss.__wab_text,
-                        sty.link___9TD0C
+                        sty.link__hxQou
                       )}
                       component={Link}
                       href={`/c-services-dashboard`}
@@ -409,7 +377,7 @@ function PlasmicCCustomerProfile__RenderFunc(props: {
                         projectcss.all,
                         projectcss.a,
                         projectcss.__wab_text,
-                        sty.link__uhU4J
+                        sty.link__ihC1K
                       )}
                       component={Link}
                       legacyBehavior={false}
@@ -422,7 +390,7 @@ function PlasmicCCustomerProfile__RenderFunc(props: {
                         projectcss.all,
                         projectcss.a,
                         projectcss.__wab_text,
-                        sty.link__pEl3
+                        sty.link___2PlP
                       )}
                       component={Link}
                       href={`/c-find-a-affiliate`}
@@ -436,7 +404,7 @@ function PlasmicCCustomerProfile__RenderFunc(props: {
                 openButton={
                   <PlasmicImg__
                     alt={""}
-                    className={classNames(sty.img__mctR)}
+                    className={classNames(sty.img__uiRAj)}
                     displayHeight={"auto"}
                     displayMaxHeight={"none"}
                     displayMaxWidth={"none"}
@@ -452,20 +420,20 @@ function PlasmicCCustomerProfile__RenderFunc(props: {
               />
 
               <AntdDropdown
-                data-plasmic-name={"account"}
-                data-plasmic-override={overrides.account}
-                className={classNames("__wab_instance", sty.account)}
-                dropdownMenuScopeClassName={sty["account__dropdownMenu"]}
-                menuClassName={classNames({ [sty["pcls_d-9T2gw7OfRE"]]: true })}
+                data-plasmic-name={"account2"}
+                data-plasmic-override={overrides.account2}
+                className={classNames("__wab_instance", sty.account2)}
+                dropdownMenuScopeClassName={sty["account2__dropdownMenu"]}
+                menuClassName={classNames({ [sty["pcls_3ze_HEeomwgq"]]: true })}
                 menuItemClassName={classNames({
-                  [sty["pcls_0LlXSH1rbhul"]]: true
+                  [sty["pcls_QeGzk3NpNAdQ"]]: true
                 })}
                 menuItems={() => (
                   <React.Fragment>
                     <AntdMenuItem
                       className={classNames(
                         "__wab_instance",
-                        sty.menuItem__zxcD
+                        sty.menuItem___48L3K
                       )}
                       key={"menu-item-1"}
                     >
@@ -473,7 +441,7 @@ function PlasmicCCustomerProfile__RenderFunc(props: {
                         className={classNames(
                           projectcss.all,
                           projectcss.__wab_text,
-                          sty.text__biyfx
+                          sty.text__xoC4Z
                         )}
                       >
                         {"Menu item"}
@@ -482,7 +450,7 @@ function PlasmicCCustomerProfile__RenderFunc(props: {
                     <AntdMenuItem
                       className={classNames(
                         "__wab_instance",
-                        sty.menuItem___3HG1
+                        sty.menuItem__qTnN
                       )}
                       key={"menu-item-2"}
                     >
@@ -490,7 +458,7 @@ function PlasmicCCustomerProfile__RenderFunc(props: {
                         className={classNames(
                           projectcss.all,
                           projectcss.__wab_text,
-                          sty.text___2B8C
+                          sty.text__hfyuy
                         )}
                       >
                         {"Menu item"}
@@ -555,29 +523,27 @@ function PlasmicCCustomerProfile__RenderFunc(props: {
                     __composite["1"]["onClick"] = async info => {
                       const $steps = {};
 
-                      $steps["goToALogin"] = true
+                      $steps["invokeGlobalAction"] = true
                         ? (() => {
-                            const actionArgs = { destination: `/a-login` };
-                            return (({ destination }) => {
-                              if (
-                                typeof destination === "string" &&
-                                destination.startsWith("#")
-                              ) {
-                                document
-                                  .getElementById(destination.substr(1))
-                                  .scrollIntoView({ behavior: "smooth" });
-                              } else {
-                                __nextRouter?.push(destination);
-                              }
-                            })?.apply(null, [actionArgs]);
+                            const actionArgs = {
+                              args: [
+                                undefined,
+                                "aaaaaaaaaaaaaaaa",
+                                "sssssssssssssssss"
+                              ]
+                            };
+                            return $globalActions[
+                              "plasmic-antd5-config-provider.showNotification"
+                            ]?.apply(null, [...actionArgs.args]);
                           })()
                         : undefined;
                       if (
-                        $steps["goToALogin"] != null &&
-                        typeof $steps["goToALogin"] === "object" &&
-                        typeof $steps["goToALogin"].then === "function"
+                        $steps["invokeGlobalAction"] != null &&
+                        typeof $steps["invokeGlobalAction"] === "object" &&
+                        typeof $steps["invokeGlobalAction"].then === "function"
                       ) {
-                        $steps["goToALogin"] = await $steps["goToALogin"];
+                        $steps["invokeGlobalAction"] =
+                          await $steps["invokeGlobalAction"];
                       }
                     };
                     __composite["2"]["type"] = "divider";
@@ -588,29 +554,24 @@ function PlasmicCCustomerProfile__RenderFunc(props: {
                   __composite["1"]["onClick"] = async info => {
                     const $steps = {};
 
-                    $steps["goToALogin"] = true
+                    $steps["runCode"] = true
                       ? (() => {
-                          const actionArgs = { destination: `/c-login` };
-                          return (({ destination }) => {
-                            if (
-                              typeof destination === "string" &&
-                              destination.startsWith("#")
-                            ) {
-                              document
-                                .getElementById(destination.substr(1))
-                                .scrollIntoView({ behavior: "smooth" });
-                            } else {
-                              __nextRouter?.push(destination);
+                          const actionArgs = {
+                            customFunction: async () => {
+                              return $props.onLogout?.();
                             }
+                          };
+                          return (({ customFunction }) => {
+                            return customFunction();
                           })?.apply(null, [actionArgs]);
                         })()
                       : undefined;
                     if (
-                      $steps["goToALogin"] != null &&
-                      typeof $steps["goToALogin"] === "object" &&
-                      typeof $steps["goToALogin"].then === "function"
+                      $steps["runCode"] != null &&
+                      typeof $steps["runCode"] === "object" &&
+                      typeof $steps["runCode"].then === "function"
                     ) {
-                      $steps["goToALogin"] = await $steps["goToALogin"];
+                      $steps["runCode"] = await $steps["runCode"];
                     }
                   };
                   return __composite;
@@ -626,7 +587,7 @@ function PlasmicCCustomerProfile__RenderFunc(props: {
                 >
                   <PlasmicImg__
                     alt={""}
-                    className={classNames(sty.img__xAg)}
+                    className={classNames(sty.img__n1TwJ)}
                     displayHeight={"30px"}
                     displayMaxHeight={"none"}
                     displayMaxWidth={"100%"}
@@ -1841,9 +1802,9 @@ function PlasmicCCustomerProfile__RenderFunc(props: {
 const PlasmicDescendants = {
   testeDoCarlos: [
     "testeDoCarlos",
-    "topBar",
+    "topBarAuto",
     "navigationBar",
-    "account",
+    "account2",
     "button",
     "countainer1",
     "rate",
@@ -1856,9 +1817,9 @@ const PlasmicDescendants = {
     "rate12",
     "rate44"
   ],
-  topBar: ["topBar", "navigationBar", "account", "button"],
+  topBarAuto: ["topBarAuto", "navigationBar", "account2", "button"],
   navigationBar: ["navigationBar"],
-  account: ["account", "button"],
+  account2: ["account2", "button"],
   button: ["button"],
   countainer1: ["countainer1", "rate"],
   rate: ["rate"],
@@ -1876,9 +1837,9 @@ type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   testeDoCarlos: "div";
-  topBar: "div";
+  topBarAuto: "div";
   navigationBar: typeof NavigationBar;
-  account: typeof AntdDropdown;
+  account2: typeof AntdDropdown;
   button: typeof AntdButton;
   countainer1: "div";
   rate: typeof AntdRate;
@@ -1954,9 +1915,9 @@ export const PlasmicCCustomerProfile = Object.assign(
   makeNodeComponent("testeDoCarlos"),
   {
     // Helper components rendering sub-elements
-    topBar: makeNodeComponent("topBar"),
+    topBarAuto: makeNodeComponent("topBarAuto"),
     navigationBar: makeNodeComponent("navigationBar"),
-    account: makeNodeComponent("account"),
+    account2: makeNodeComponent("account2"),
     button: makeNodeComponent("button"),
     countainer1: makeNodeComponent("countainer1"),
     rate: makeNodeComponent("rate"),

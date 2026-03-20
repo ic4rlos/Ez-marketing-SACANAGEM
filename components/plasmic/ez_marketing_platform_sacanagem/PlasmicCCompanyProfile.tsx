@@ -59,13 +59,6 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
-import { usePlasmicDataSourceContext } from "@plasmicapp/data-sources-context";
-import {
-  executePlasmicDataOp,
-  usePlasmicDataOp,
-  usePlasmicInvalidate
-} from "@plasmicapp/react-web/lib/data-sources";
-
 import { NavigationBar } from "@plasmicpkgs/plasmic-nav";
 import { AntdDropdown } from "@plasmicpkgs/antd5/skinny/registerDropdown";
 import { AntdMenuItem } from "@plasmicpkgs/antd5/skinny/registerMenu";
@@ -148,9 +141,9 @@ export const PlasmicCCompanyProfile__ArgProps = new Array<ArgPropType>();
 
 export type PlasmicCCompanyProfile__OverridesType = {
   root?: Flex__<"div">;
-  topBar?: Flex__<"div">;
+  topBarAuto?: Flex__<"div">;
   navigationBar?: Flex__<typeof NavigationBar>;
-  account?: Flex__<typeof AntdDropdown>;
+  account2?: Flex__<typeof AntdDropdown>;
   button?: Flex__<typeof AntdButton>;
   countainer1?: Flex__<"div">;
   companyLogo?: Flex__<typeof PlasmicImg__>;
@@ -349,8 +342,6 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
     $q: {},
     $refs
   });
-  const dataSourcesCtx = usePlasmicDataSourceContext();
-  const plasmicInvalidate = usePlasmicInvalidate();
 
   const pageMetadata = generateDynamicMetadata(
     wrapQueriesWithLoadingProxy({}),
@@ -393,12 +384,12 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
         )}
       >
         <div
-          data-plasmic-name={"topBar"}
-          data-plasmic-override={overrides.topBar}
-          className={classNames(projectcss.all, sty.topBar)}
+          data-plasmic-name={"topBarAuto"}
+          data-plasmic-override={overrides.topBarAuto}
+          className={classNames(projectcss.all, sty.topBarAuto)}
         >
-          <div className={classNames(projectcss.all, sty.freeBox__uuWks)}>
-            <div className={classNames(projectcss.all, sty.freeBox__qIb8)}>
+          <div className={classNames(projectcss.all, sty.freeBox__xcJ0)}>
+            <div className={classNames(projectcss.all, sty.freeBox__qcwLg)}>
               <NavigationBar
                 data-plasmic-name={"navigationBar"}
                 data-plasmic-override={overrides.navigationBar}
@@ -407,39 +398,15 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                     className={classNames(
                       projectcss.all,
                       projectcss.a,
-                      sty.link__exfiW
+                      sty.link__dRcwv
                     )}
                     component={Link}
                     legacyBehavior={false}
-                    onClick={async event => {
-                      const $steps = {};
-
-                      $steps["refreshData"] = true
-                        ? (() => {
-                            const actionArgs = {
-                              queryInvalidation: ["plasmic_refresh_all"]
-                            };
-                            return (async ({ queryInvalidation }) => {
-                              if (!queryInvalidation) {
-                                return;
-                              }
-                              await plasmicInvalidate(queryInvalidation);
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
-                      if (
-                        $steps["refreshData"] != null &&
-                        typeof $steps["refreshData"] === "object" &&
-                        typeof $steps["refreshData"].then === "function"
-                      ) {
-                        $steps["refreshData"] = await $steps["refreshData"];
-                      }
-                    }}
                     platform={"nextjs"}
                   >
                     <PlasmicImg__
                       alt={""}
-                      className={classNames(sty.img__wwUlp)}
+                      className={classNames(sty.img__obkM0)}
                       displayHeight={"30px"}
                       displayMaxHeight={"none"}
                       displayMaxWidth={"none"}
@@ -459,7 +426,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                 closeButton={
                   <PlasmicImg__
                     alt={""}
-                    className={classNames(sty.img__bUH)}
+                    className={classNames(sty.img__dHJqC)}
                     displayHeight={"auto"}
                     displayMaxHeight={"none"}
                     displayMaxWidth={"none"}
@@ -491,7 +458,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                         projectcss.all,
                         projectcss.a,
                         projectcss.__wab_text,
-                        sty.link__eZbY
+                        sty.link__kpvK3
                       )}
                       component={Link}
                       href={`/c-services-dashboard`}
@@ -505,7 +472,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                         projectcss.all,
                         projectcss.a,
                         projectcss.__wab_text,
-                        sty.link__c3Cr
+                        sty.link__gaziW
                       )}
                       component={Link}
                       legacyBehavior={false}
@@ -518,7 +485,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                         projectcss.all,
                         projectcss.a,
                         projectcss.__wab_text,
-                        sty.link__p0FlT
+                        sty.link__yeoL
                       )}
                       component={Link}
                       href={`/c-find-a-affiliate`}
@@ -532,7 +499,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                 openButton={
                   <PlasmicImg__
                     alt={""}
-                    className={classNames(sty.img___0X2RL)}
+                    className={classNames(sty.img__eImqR)}
                     displayHeight={"auto"}
                     displayMaxHeight={"none"}
                     displayMaxWidth={"none"}
@@ -548,20 +515,20 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
               />
 
               <AntdDropdown
-                data-plasmic-name={"account"}
-                data-plasmic-override={overrides.account}
-                className={classNames("__wab_instance", sty.account)}
-                dropdownMenuScopeClassName={sty["account__dropdownMenu"]}
-                menuClassName={classNames({ [sty["pcls_mJslfutOGxmV"]]: true })}
+                data-plasmic-name={"account2"}
+                data-plasmic-override={overrides.account2}
+                className={classNames("__wab_instance", sty.account2)}
+                dropdownMenuScopeClassName={sty["account2__dropdownMenu"]}
+                menuClassName={classNames({ [sty["pcls_8q7xz800A6sL"]]: true })}
                 menuItemClassName={classNames({
-                  [sty["pcls_ctjs4QCl_yGZ"]]: true
+                  [sty["pcls_8tmb_sK98PCW"]]: true
                 })}
                 menuItems={() => (
                   <React.Fragment>
                     <AntdMenuItem
                       className={classNames(
                         "__wab_instance",
-                        sty.menuItem__jtUbI
+                        sty.menuItem___02R0F
                       )}
                       key={"menu-item-1"}
                     >
@@ -569,7 +536,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                         className={classNames(
                           projectcss.all,
                           projectcss.__wab_text,
-                          sty.text__kjptf
+                          sty.text___5K9No
                         )}
                       >
                         {"Menu item"}
@@ -578,7 +545,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                     <AntdMenuItem
                       className={classNames(
                         "__wab_instance",
-                        sty.menuItem__rjJF
+                        sty.menuItem__gefR
                       )}
                       key={"menu-item-2"}
                     >
@@ -586,7 +553,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                         className={classNames(
                           projectcss.all,
                           projectcss.__wab_text,
-                          sty.text__s1Sm8
+                          sty.text__ldVKl
                         )}
                       >
                         {"Menu item"}
@@ -715,7 +682,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                 >
                   <PlasmicImg__
                     alt={""}
-                    className={classNames(sty.img__g3VhE)}
+                    className={classNames(sty.img__niCVe)}
                     displayHeight={"30px"}
                     displayMaxHeight={"none"}
                     displayMaxWidth={"100%"}
@@ -1733,7 +1700,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                                       sty.averageRate2
                                     ),
                                     defaultValue: 5,
-                                    disabled: false,
+                                    disabled: true,
                                     multiCharacter: false,
                                     onChange: async (...eventArgs: any) => {
                                       generateStateOnChangeProp($state, [
@@ -1741,52 +1708,6 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                                         __plasmic_idx_0,
                                         "value"
                                       ]).apply(null, eventArgs);
-
-                                      (async value => {
-                                        const $steps = {};
-
-                                        $steps["goToCContactACommunitie"] = true
-                                          ? (() => {
-                                              const actionArgs = {
-                                                destination: `/c-rate-community`
-                                              };
-                                              return (({ destination }) => {
-                                                if (
-                                                  typeof destination ===
-                                                    "string" &&
-                                                  destination.startsWith("#")
-                                                ) {
-                                                  document
-                                                    .getElementById(
-                                                      destination.substr(1)
-                                                    )
-                                                    .scrollIntoView({
-                                                      behavior: "smooth"
-                                                    });
-                                                } else {
-                                                  __nextRouter?.push(
-                                                    destination
-                                                  );
-                                                }
-                                              })?.apply(null, [actionArgs]);
-                                            })()
-                                          : undefined;
-                                        if (
-                                          $steps["goToCContactACommunitie"] !=
-                                            null &&
-                                          typeof $steps[
-                                            "goToCContactACommunitie"
-                                          ] === "object" &&
-                                          typeof $steps[
-                                            "goToCContactACommunitie"
-                                          ].then === "function"
-                                        ) {
-                                          $steps["goToCContactACommunitie"] =
-                                            await $steps[
-                                              "goToCContactACommunitie"
-                                            ];
-                                        }
-                                      }).apply(null, eventArgs);
                                     },
                                     symbols: (
                                       <React.Fragment>
@@ -2809,7 +2730,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                                       sty.averageRate3
                                     ),
                                     defaultValue: 5,
-                                    disabled: false,
+                                    disabled: true,
                                     multiCharacter: false,
                                     onChange: async (...eventArgs: any) => {
                                       generateStateOnChangeProp($state, [
@@ -4719,9 +4640,9 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
 const PlasmicDescendants = {
   root: [
     "root",
-    "topBar",
+    "topBarAuto",
     "navigationBar",
-    "account",
+    "account2",
     "button",
     "countainer1",
     "companyLogo",
@@ -4797,9 +4718,9 @@ const PlasmicDescendants = {
     "countainer6",
     "sliderCarousel4"
   ],
-  topBar: ["topBar", "navigationBar", "account", "button"],
+  topBarAuto: ["topBarAuto", "navigationBar", "account2", "button"],
   navigationBar: ["navigationBar"],
-  account: ["account", "button"],
+  account2: ["account2", "button"],
   button: ["button"],
   countainer1: [
     "countainer1",
@@ -5051,9 +4972,9 @@ type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   root: "div";
-  topBar: "div";
+  topBarAuto: "div";
   navigationBar: typeof NavigationBar;
-  account: typeof AntdDropdown;
+  account2: typeof AntdDropdown;
   button: typeof AntdButton;
   countainer1: "div";
   companyLogo: typeof PlasmicImg__;
@@ -5192,9 +5113,9 @@ export const PlasmicCCompanyProfile = Object.assign(
   makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
-    topBar: makeNodeComponent("topBar"),
+    topBarAuto: makeNodeComponent("topBarAuto"),
     navigationBar: makeNodeComponent("navigationBar"),
-    account: makeNodeComponent("account"),
+    account2: makeNodeComponent("account2"),
     button: makeNodeComponent("button"),
     countainer1: makeNodeComponent("countainer1"),
     companyLogo: makeNodeComponent("companyLogo"),

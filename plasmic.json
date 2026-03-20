@@ -2120,20 +2120,6 @@
           "componentType": "component"
         },
         {
-          "id": "gQC9DuZ225W7",
-          "name": "CApplyACommunitie",
-          "type": "managed",
-          "projectId": "5uU4LbmmcY9V8oBke7M62e",
-          "renderModuleFilePath": "plasmic/ez_marketing_platform_sacanagem/PlasmicCApplyACommunitie.tsx",
-          "importSpec": {
-            "modulePath": "../pages/c-apply-a-community.tsx"
-          },
-          "cssFilePath": "plasmic/ez_marketing_platform_sacanagem/PlasmicCApplyACommunitie.module.css",
-          "scheme": "blackbox",
-          "componentType": "page",
-          "path": "/apply-a-community"
-        },
-        {
           "id": "xQZWvA2ScZNb",
           "name": "ALandingPage",
           "type": "managed",
@@ -3023,6 +3009,20 @@
           "cssFilePath": "plasmic/ez_marketing_platform_sacanagem/PlasmicRoteadorDeProps.module.css",
           "scheme": "blackbox",
           "componentType": "component"
+        },
+        {
+          "id": "-WzV6XG5_ALe",
+          "name": "CApplyToACommunity",
+          "type": "managed",
+          "projectId": "5uU4LbmmcY9V8oBke7M62e",
+          "renderModuleFilePath": "plasmic/ez_marketing_platform_sacanagem/PlasmicCApplyToACommunity.tsx",
+          "importSpec": {
+            "modulePath": "../pages/c-apply-a-community.tsx"
+          },
+          "cssFilePath": "plasmic/ez_marketing_platform_sacanagem/PlasmicCApplyToACommunity.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/c-apply-a-community"
         }
       ],
       "icons": [

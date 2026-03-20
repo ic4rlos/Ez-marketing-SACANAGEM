@@ -59,13 +59,6 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
-import { usePlasmicDataSourceContext } from "@plasmicapp/data-sources-context";
-import {
-  executePlasmicDataOp,
-  usePlasmicDataOp,
-  usePlasmicInvalidate
-} from "@plasmicapp/react-web/lib/data-sources";
-
 import { NavigationBar } from "@plasmicpkgs/plasmic-nav";
 import { AntdDropdown } from "@plasmicpkgs/antd5/skinny/registerDropdown";
 import { AntdMenuItem } from "@plasmicpkgs/antd5/skinny/registerMenu";
@@ -152,9 +145,9 @@ export const PlasmicCServiceDashboard__ArgProps = new Array<ArgPropType>();
 
 export type PlasmicCServiceDashboard__OverridesType = {
   testeDoCarlos?: Flex__<"div">;
-  topBar?: Flex__<"div">;
+  topBarAuto?: Flex__<"div">;
   navigationBar?: Flex__<typeof NavigationBar>;
-  account?: Flex__<typeof AntdDropdown>;
+  account2?: Flex__<typeof AntdDropdown>;
   button?: Flex__<typeof AntdButton>;
   countainer1?: Flex__<"div">;
   _7Days?: Flex__<typeof LoginButton>;
@@ -351,6 +344,8 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
   const $ctx = useDataEnv?.() || {};
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
+
+  const $globalActions = useGlobalActions?.();
 
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
@@ -1090,8 +1085,6 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
     $q: {},
     $refs
   });
-  const dataSourcesCtx = usePlasmicDataSourceContext();
-  const plasmicInvalidate = usePlasmicInvalidate();
 
   const pageMetadata = generateDynamicMetadata(
     wrapQueriesWithLoadingProxy({}),
@@ -1134,12 +1127,12 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
         )}
       >
         <div
-          data-plasmic-name={"topBar"}
-          data-plasmic-override={overrides.topBar}
-          className={classNames(projectcss.all, sty.topBar)}
+          data-plasmic-name={"topBarAuto"}
+          data-plasmic-override={overrides.topBarAuto}
+          className={classNames(projectcss.all, sty.topBarAuto)}
         >
-          <div className={classNames(projectcss.all, sty.freeBox__ymI1G)}>
-            <div className={classNames(projectcss.all, sty.freeBox__kBHr)}>
+          <div className={classNames(projectcss.all, sty.freeBox___0DZt3)}>
+            <div className={classNames(projectcss.all, sty.freeBox__b1UOw)}>
               <NavigationBar
                 data-plasmic-name={"navigationBar"}
                 data-plasmic-override={overrides.navigationBar}
@@ -1148,39 +1141,15 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
                     className={classNames(
                       projectcss.all,
                       projectcss.a,
-                      sty.link__i9RaM
+                      sty.link__nm956
                     )}
                     component={Link}
                     legacyBehavior={false}
-                    onClick={async event => {
-                      const $steps = {};
-
-                      $steps["refreshData"] = true
-                        ? (() => {
-                            const actionArgs = {
-                              queryInvalidation: ["plasmic_refresh_all"]
-                            };
-                            return (async ({ queryInvalidation }) => {
-                              if (!queryInvalidation) {
-                                return;
-                              }
-                              await plasmicInvalidate(queryInvalidation);
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
-                      if (
-                        $steps["refreshData"] != null &&
-                        typeof $steps["refreshData"] === "object" &&
-                        typeof $steps["refreshData"].then === "function"
-                      ) {
-                        $steps["refreshData"] = await $steps["refreshData"];
-                      }
-                    }}
                     platform={"nextjs"}
                   >
                     <PlasmicImg__
                       alt={""}
-                      className={classNames(sty.img__f7NRh)}
+                      className={classNames(sty.img__pzdYf)}
                       displayHeight={"30px"}
                       displayMaxHeight={"none"}
                       displayMaxWidth={"none"}
@@ -1200,7 +1169,7 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
                 closeButton={
                   <PlasmicImg__
                     alt={""}
-                    className={classNames(sty.img__el41Q)}
+                    className={classNames(sty.img__ouyKr)}
                     displayHeight={"auto"}
                     displayMaxHeight={"none"}
                     displayMaxWidth={"none"}
@@ -1218,14 +1187,14 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
                         projectcss.all,
                         projectcss.a,
                         projectcss.__wab_text,
-                        sty.link__fMFqu
+                        sty.link__wl2X
                       )}
                       component={Link}
                       href={`/c-company-profile`}
                       legacyBehavior={false}
                       platform={"nextjs"}
                     >
-                      {"Company\nprofile"}
+                      {"Company \nProfile"}
                     </PlasmicLink__>
                     <PlasmicLink__
                       className={classNames(
@@ -1246,7 +1215,7 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
                         projectcss.all,
                         projectcss.a,
                         projectcss.__wab_text,
-                        sty.link__dvzi8
+                        sty.link__t5FNx
                       )}
                       component={Link}
                       legacyBehavior={false}
@@ -1259,7 +1228,7 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
                         projectcss.all,
                         projectcss.a,
                         projectcss.__wab_text,
-                        sty.link__onN26
+                        sty.link___1OVhv
                       )}
                       component={Link}
                       href={`/c-find-a-affiliate`}
@@ -1273,7 +1242,7 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
                 openButton={
                   <PlasmicImg__
                     alt={""}
-                    className={classNames(sty.img__fam9V)}
+                    className={classNames(sty.img__zxM6C)}
                     displayHeight={"auto"}
                     displayMaxHeight={"none"}
                     displayMaxWidth={"none"}
@@ -1289,20 +1258,20 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
               />
 
               <AntdDropdown
-                data-plasmic-name={"account"}
-                data-plasmic-override={overrides.account}
-                className={classNames("__wab_instance", sty.account)}
-                dropdownMenuScopeClassName={sty["account__dropdownMenu"]}
-                menuClassName={classNames({ [sty["pcls_vgPZWiMJEiFS"]]: true })}
+                data-plasmic-name={"account2"}
+                data-plasmic-override={overrides.account2}
+                className={classNames("__wab_instance", sty.account2)}
+                dropdownMenuScopeClassName={sty["account2__dropdownMenu"]}
+                menuClassName={classNames({ [sty["pcls_71dJYx_rMcRk"]]: true })}
                 menuItemClassName={classNames({
-                  [sty["pcls_eKGBz_RedKvP"]]: true
+                  [sty["pcls_vlx-xHYPNY-E"]]: true
                 })}
                 menuItems={() => (
                   <React.Fragment>
                     <AntdMenuItem
                       className={classNames(
                         "__wab_instance",
-                        sty.menuItem__fNkl
+                        sty.menuItem__rdShb
                       )}
                       key={"menu-item-1"}
                     >
@@ -1310,7 +1279,7 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
                         className={classNames(
                           projectcss.all,
                           projectcss.__wab_text,
-                          sty.text__dGtZo
+                          sty.text__ofUoe
                         )}
                       >
                         {"Menu item"}
@@ -1319,7 +1288,7 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
                     <AntdMenuItem
                       className={classNames(
                         "__wab_instance",
-                        sty.menuItem__ppNm
+                        sty.menuItem__yrxZd
                       )}
                       key={"menu-item-2"}
                     >
@@ -1327,7 +1296,7 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
                         className={classNames(
                           projectcss.all,
                           projectcss.__wab_text,
-                          sty.text__wNdpZ
+                          sty.text__hU5L
                         )}
                       >
                         {"Menu item"}
@@ -1392,29 +1361,27 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
                     __composite["1"]["onClick"] = async info => {
                       const $steps = {};
 
-                      $steps["goToALogin"] = true
+                      $steps["invokeGlobalAction"] = true
                         ? (() => {
-                            const actionArgs = { destination: `/a-login` };
-                            return (({ destination }) => {
-                              if (
-                                typeof destination === "string" &&
-                                destination.startsWith("#")
-                              ) {
-                                document
-                                  .getElementById(destination.substr(1))
-                                  .scrollIntoView({ behavior: "smooth" });
-                              } else {
-                                __nextRouter?.push(destination);
-                              }
-                            })?.apply(null, [actionArgs]);
+                            const actionArgs = {
+                              args: [
+                                undefined,
+                                "aaaaaaaaaaaaaaaa",
+                                "sssssssssssssssss"
+                              ]
+                            };
+                            return $globalActions[
+                              "plasmic-antd5-config-provider.showNotification"
+                            ]?.apply(null, [...actionArgs.args]);
                           })()
                         : undefined;
                       if (
-                        $steps["goToALogin"] != null &&
-                        typeof $steps["goToALogin"] === "object" &&
-                        typeof $steps["goToALogin"].then === "function"
+                        $steps["invokeGlobalAction"] != null &&
+                        typeof $steps["invokeGlobalAction"] === "object" &&
+                        typeof $steps["invokeGlobalAction"].then === "function"
                       ) {
-                        $steps["goToALogin"] = await $steps["goToALogin"];
+                        $steps["invokeGlobalAction"] =
+                          await $steps["invokeGlobalAction"];
                       }
                     };
                     __composite["2"]["type"] = "divider";
@@ -1425,29 +1392,24 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
                   __composite["1"]["onClick"] = async info => {
                     const $steps = {};
 
-                    $steps["goToALogin"] = true
+                    $steps["runCode"] = true
                       ? (() => {
-                          const actionArgs = { destination: `/c-login` };
-                          return (({ destination }) => {
-                            if (
-                              typeof destination === "string" &&
-                              destination.startsWith("#")
-                            ) {
-                              document
-                                .getElementById(destination.substr(1))
-                                .scrollIntoView({ behavior: "smooth" });
-                            } else {
-                              __nextRouter?.push(destination);
+                          const actionArgs = {
+                            customFunction: async () => {
+                              return $props.onLogout?.();
                             }
+                          };
+                          return (({ customFunction }) => {
+                            return customFunction();
                           })?.apply(null, [actionArgs]);
                         })()
                       : undefined;
                     if (
-                      $steps["goToALogin"] != null &&
-                      typeof $steps["goToALogin"] === "object" &&
-                      typeof $steps["goToALogin"].then === "function"
+                      $steps["runCode"] != null &&
+                      typeof $steps["runCode"] === "object" &&
+                      typeof $steps["runCode"].then === "function"
                     ) {
-                      $steps["goToALogin"] = await $steps["goToALogin"];
+                      $steps["runCode"] = await $steps["runCode"];
                     }
                   };
                   return __composite;
@@ -1463,7 +1425,7 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
                 >
                   <PlasmicImg__
                     alt={""}
-                    className={classNames(sty.img__cuJcq)}
+                    className={classNames(sty.img__wk2N4)}
                     displayHeight={"30px"}
                     displayMaxHeight={"none"}
                     displayMaxWidth={"100%"}
@@ -15168,9 +15130,9 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
 const PlasmicDescendants = {
   testeDoCarlos: [
     "testeDoCarlos",
-    "topBar",
+    "topBarAuto",
     "navigationBar",
-    "account",
+    "account2",
     "button",
     "countainer1",
     "_7Days",
@@ -15326,9 +15288,9 @@ const PlasmicDescendants = {
     "radioGroup24",
     "rate24"
   ],
-  topBar: ["topBar", "navigationBar", "account", "button"],
+  topBarAuto: ["topBarAuto", "navigationBar", "account2", "button"],
   navigationBar: ["navigationBar"],
-  account: ["account", "button"],
+  account2: ["account2", "button"],
   button: ["button"],
   countainer1: [
     "countainer1",
@@ -15809,9 +15771,9 @@ type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   testeDoCarlos: "div";
-  topBar: "div";
+  topBarAuto: "div";
   navigationBar: typeof NavigationBar;
-  account: typeof AntdDropdown;
+  account2: typeof AntdDropdown;
   button: typeof AntdButton;
   countainer1: "div";
   _7Days: typeof LoginButton;
@@ -16030,9 +15992,9 @@ export const PlasmicCServiceDashboard = Object.assign(
   makeNodeComponent("testeDoCarlos"),
   {
     // Helper components rendering sub-elements
-    topBar: makeNodeComponent("topBar"),
+    topBarAuto: makeNodeComponent("topBarAuto"),
     navigationBar: makeNodeComponent("navigationBar"),
-    account: makeNodeComponent("account"),
+    account2: makeNodeComponent("account2"),
     button: makeNodeComponent("button"),
     countainer1: makeNodeComponent("countainer1"),
     _7Days: makeNodeComponent("_7Days"),

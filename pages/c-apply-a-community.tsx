@@ -4,24 +4,24 @@ import * as React from "react";
 import { PageParamsProvider as PageParamsProvider__ } from "@plasmicapp/react-web/lib/host";
 import GlobalContextsProvider from "../components/plasmic/ez_marketing_platform_sacanagem/PlasmicGlobalContextsProvider";
 
-import { PlasmicCApplyACommunitie } from "../components/plasmic/ez_marketing_platform_sacanagem/PlasmicCApplyACommunitie";
+import { PlasmicCApplyToACommunity } from "../components/plasmic/ez_marketing_platform_sacanagem/PlasmicCApplyToACommunity";
 import { useRouter } from "next/router";
 import { PlasmicQueryDataProvider } from "@plasmicapp/react-web/lib/query";
 
-function CApplyACommunitie() {
-  // Use PlasmicCApplyACommunitie to render this component as it was
+function CApplyToACommunity() {
+  // Use PlasmicCApplyToACommunity to render this component as it was
   // designed in Plasmic, by activating the appropriate variants,
   // attaching the appropriate event handlers, etc.  You
   // can also install whatever React hooks you need here to manage state or
   // fetch data.
   //
-  // Props you can pass into PlasmicCApplyACommunitie are:
+  // Props you can pass into PlasmicCApplyToACommunity are:
   // 1. Variants you want to activate,
   // 2. Contents for slots you want to fill,
   // 3. Overrides for any named node in the component to attach behavior and data,
   // 4. Props to set on the root node.
   //
-  // By default, PlasmicCApplyACommunitie is wrapped by your project's global
+  // By default, PlasmicCApplyToACommunity is wrapped by your project's global
   // variant context providers. These wrappers may be moved to
   // Next.js Custom App component
   // (https://nextjs.org/docs/advanced-features/custom-app).
@@ -34,11 +34,11 @@ function CApplyACommunitie() {
           params={useRouter()?.query}
           query={useRouter()?.query}
         >
-          <PlasmicCApplyACommunitie />
+          <PlasmicCApplyToACommunity />
         </PageParamsProvider__>
       </PlasmicQueryDataProvider>
     </GlobalContextsProvider>
   );
 }
 
-export default CApplyACommunitie;
+export default CApplyToACommunity;

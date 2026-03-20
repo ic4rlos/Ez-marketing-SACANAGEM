@@ -92,7 +92,7 @@ export default function CCompanyProfile() {
           .select("*")
           .in("id", agencyIds);
 
-        // ✅ SOMENTE MEMBROS CONNECTED
+        // ✅ SOMENTE MEMBERS CONNECTED
         const { data: members } = await supabaseA
           .from("community_members")
           .select("community_id")
@@ -131,6 +131,7 @@ export default function CCompanyProfile() {
 
             return {
               id: conn.id,
+              agency_id: conn.agency_id, // 🔥 necessário pro link
               short_message: conn.short_message ?? "",
               community_name: community?.["community_name"] ?? "",
               community_logo: community?.["community_logo"] ?? "",
@@ -226,10 +227,7 @@ export default function CCompanyProfile() {
     if (action === "disconnect") {
       await supabaseA
         .from("CONNECTIONS")
-        .update({
-          status: "company disconnected",
-          short_message: reason ?? "",
-        })
+        .delete()
         .eq("id", connectionId);
     }
 

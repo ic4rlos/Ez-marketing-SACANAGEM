@@ -1120,6 +1120,10 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                                     sty.communityName3
                                   )}
                                   component={Link}
+                                  href={
+                                    "/c-rate-community?id=" +
+                                    currentItem.agency_id
+                                  }
                                   legacyBehavior={false}
                                   platform={"nextjs"}
                                 >
@@ -2000,6 +2004,10 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                                     sty.communityName4
                                   )}
                                   component={Link}
+                                  href={
+                                    "/c-apply-a-community?id=" +
+                                    currentItem.agency_id
+                                  }
                                   legacyBehavior={false}
                                   platform={"nextjs"}
                                 >
@@ -2248,6 +2256,10 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                                               sty.communityName5
                                             )}
                                             component={Link}
+                                            href={
+                                              "/c-apply-a-community?id=" +
+                                              currentItem.agency_id
+                                            }
                                             legacyBehavior={false}
                                             onClick={async event => {
                                               const $steps = {};

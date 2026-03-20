@@ -507,6 +507,7 @@ function PlasmicCApplyToACommunity__RenderFunc(props: {
                         sty.link___6Fs7W
                       )}
                       component={Link}
+                      href={`/c-company-profile`}
                       legacyBehavior={false}
                       platform={"nextjs"}
                     >
@@ -520,6 +521,7 @@ function PlasmicCApplyToACommunity__RenderFunc(props: {
                         sty.link__pf0As
                       )}
                       component={Link}
+                      href={`/c-services-dashboard`}
                       legacyBehavior={false}
                       platform={"nextjs"}
                     >
@@ -546,6 +548,7 @@ function PlasmicCApplyToACommunity__RenderFunc(props: {
                         sty.link___9Ouf7
                       )}
                       component={Link}
+                      href={`/c-find-a-affiliate`}
                       legacyBehavior={false}
                       platform={"nextjs"}
                     >
@@ -839,6 +842,7 @@ function PlasmicCApplyToACommunity__RenderFunc(props: {
               </div>
               {(() => {
                 const child$Props = {
+                  arrows: false,
                   beforeChange: async (...eventArgs: any) => {
                     generateStateOnChangePropForCodeComponents(
                       $state,
@@ -849,7 +853,7 @@ function PlasmicCApplyToACommunity__RenderFunc(props: {
                   },
                   centerMode: true,
                   className: classNames("__wab_instance", sty.membersCarousel),
-                  dots: true,
+                  dots: false,
                   draggable: true,
                   focusOnSelect: true,
                   initialSlide: generateStateValueProp($state, [
@@ -1080,6 +1084,58 @@ function PlasmicCApplyToACommunity__RenderFunc(props: {
                       ) {
                         $steps["runCode"] = await $steps["runCode"];
                       }
+
+                      $steps["invokeGlobalAction"] = true
+                        ? (() => {
+                            const actionArgs = { args: ["success", "Send"] };
+                            return $globalActions[
+                              "plasmic-antd5-config-provider.showNotification"
+                            ]?.apply(null, [...actionArgs.args]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["invokeGlobalAction"] != null &&
+                        typeof $steps["invokeGlobalAction"] === "object" &&
+                        typeof $steps["invokeGlobalAction"].then === "function"
+                      ) {
+                        $steps["invokeGlobalAction"] =
+                          await $steps["invokeGlobalAction"];
+                      }
+
+                      $steps["updateApplyIsOpen"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              variable: {
+                                objRoot: $state,
+                                variablePath: ["apply", "isOpen"]
+                              },
+                              operation: 0,
+                              value: false
+                            };
+                            return (({
+                              variable,
+                              value,
+                              startIndex,
+                              deleteCount
+                            }) => {
+                              if (!variable) {
+                                return;
+                              }
+                              const { objRoot, variablePath } = variable;
+
+                              $stateSet(objRoot, variablePath, value);
+                              return value;
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["updateApplyIsOpen"] != null &&
+                        typeof $steps["updateApplyIsOpen"] === "object" &&
+                        typeof $steps["updateApplyIsOpen"].then === "function"
+                      ) {
+                        $steps["updateApplyIsOpen"] =
+                          await $steps["updateApplyIsOpen"];
+                      }
                     }}
                     size={"extraSmall"}
                     type={"soft"}
@@ -1100,6 +1156,44 @@ function PlasmicCApplyToACommunity__RenderFunc(props: {
                         {"Cancel"}
                       </div>
                     }
+                    onClick={async event => {
+                      const $steps = {};
+
+                      $steps["updateApplyIsOpen"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              variable: {
+                                objRoot: $state,
+                                variablePath: ["apply", "isOpen"]
+                              },
+                              operation: 0,
+                              value: false
+                            };
+                            return (({
+                              variable,
+                              value,
+                              startIndex,
+                              deleteCount
+                            }) => {
+                              if (!variable) {
+                                return;
+                              }
+                              const { objRoot, variablePath } = variable;
+
+                              $stateSet(objRoot, variablePath, value);
+                              return value;
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["updateApplyIsOpen"] != null &&
+                        typeof $steps["updateApplyIsOpen"] === "object" &&
+                        typeof $steps["updateApplyIsOpen"].then === "function"
+                      ) {
+                        $steps["updateApplyIsOpen"] =
+                          await $steps["updateApplyIsOpen"];
+                      }
+                    }}
                     size={"extraSmall"}
                     type={"soft"}
                   />
@@ -1141,21 +1235,6 @@ function PlasmicCApplyToACommunity__RenderFunc(props: {
                 </LoginButton>
               }
             />
-
-            <PlasmicLink__
-              className={classNames(
-                projectcss.all,
-                projectcss.a,
-                projectcss.__wab_text,
-                sty.link__mYHxM
-              )}
-              component={Link}
-              href={`/a-create-community`}
-              legacyBehavior={false}
-              platform={"nextjs"}
-            >
-              {"Create a Community"}
-            </PlasmicLink__>
           </div>
         </div>
         <div

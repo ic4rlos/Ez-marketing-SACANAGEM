@@ -232,6 +232,8 @@ function PlasmicAApplyToACommunity__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
+  const $globalActions = useGlobalActions?.();
+
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
       {
@@ -922,6 +924,7 @@ function PlasmicAApplyToACommunity__RenderFunc(props: {
               </div>
               {(() => {
                 const child$Props = {
+                  arrows: false,
                   beforeChange: async (...eventArgs: any) => {
                     generateStateOnChangePropForCodeComponents(
                       $state,
@@ -932,7 +935,7 @@ function PlasmicAApplyToACommunity__RenderFunc(props: {
                   },
                   centerMode: true,
                   className: classNames("__wab_instance", sty.membersCarousel),
-                  dots: true,
+                  dots: false,
                   draggable: true,
                   focusOnSelect: true,
                   initialSlide: generateStateValueProp($state, [
@@ -1163,6 +1166,58 @@ function PlasmicAApplyToACommunity__RenderFunc(props: {
                       ) {
                         $steps["runCode"] = await $steps["runCode"];
                       }
+
+                      $steps["invokeGlobalAction"] = true
+                        ? (() => {
+                            const actionArgs = { args: ["success", "Send"] };
+                            return $globalActions[
+                              "plasmic-antd5-config-provider.showNotification"
+                            ]?.apply(null, [...actionArgs.args]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["invokeGlobalAction"] != null &&
+                        typeof $steps["invokeGlobalAction"] === "object" &&
+                        typeof $steps["invokeGlobalAction"].then === "function"
+                      ) {
+                        $steps["invokeGlobalAction"] =
+                          await $steps["invokeGlobalAction"];
+                      }
+
+                      $steps["updateApplyIsOpen"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              variable: {
+                                objRoot: $state,
+                                variablePath: ["apply", "isOpen"]
+                              },
+                              operation: 0,
+                              value: false
+                            };
+                            return (({
+                              variable,
+                              value,
+                              startIndex,
+                              deleteCount
+                            }) => {
+                              if (!variable) {
+                                return;
+                              }
+                              const { objRoot, variablePath } = variable;
+
+                              $stateSet(objRoot, variablePath, value);
+                              return value;
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["updateApplyIsOpen"] != null &&
+                        typeof $steps["updateApplyIsOpen"] === "object" &&
+                        typeof $steps["updateApplyIsOpen"].then === "function"
+                      ) {
+                        $steps["updateApplyIsOpen"] =
+                          await $steps["updateApplyIsOpen"];
+                      }
                     }}
                     size={"extraSmall"}
                     type={"soft"}
@@ -1183,6 +1238,44 @@ function PlasmicAApplyToACommunity__RenderFunc(props: {
                         {"Cancel"}
                       </div>
                     }
+                    onClick={async event => {
+                      const $steps = {};
+
+                      $steps["updateApplyIsOpen"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              variable: {
+                                objRoot: $state,
+                                variablePath: ["apply", "isOpen"]
+                              },
+                              operation: 0,
+                              value: false
+                            };
+                            return (({
+                              variable,
+                              value,
+                              startIndex,
+                              deleteCount
+                            }) => {
+                              if (!variable) {
+                                return;
+                              }
+                              const { objRoot, variablePath } = variable;
+
+                              $stateSet(objRoot, variablePath, value);
+                              return value;
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["updateApplyIsOpen"] != null &&
+                        typeof $steps["updateApplyIsOpen"] === "object" &&
+                        typeof $steps["updateApplyIsOpen"].then === "function"
+                      ) {
+                        $steps["updateApplyIsOpen"] =
+                          await $steps["updateApplyIsOpen"];
+                      }
+                    }}
                     size={"extraSmall"}
                     type={"soft"}
                   />

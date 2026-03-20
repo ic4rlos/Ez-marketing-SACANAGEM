@@ -708,23 +708,6 @@
   position: relative;
   height: 1em;
 }
-.link__mYHxM {
-  font-size: 12px;
-  width: 245px;
-  text-align: center;
-  color: #000000;
-  background: #e7e6e21a;
-  margin: 0px;
-}
-.root .link__mYHxM:hover {
-  background: #e7e6e2;
-  color: #228b22;
-  text-decoration-line: underline;
-}
-.root .link__mYHxM:active {
-  background: #e7e6e2;
-  font-weight: 700;
-}
 .container10 {
   display: flex;
   flex-direction: column;

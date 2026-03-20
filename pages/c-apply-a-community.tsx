@@ -10,7 +10,7 @@ export const runtime = "nodejs";
 const PlasmicCApplyACommunity = dynamic(
   () =>
     import(
-      "../components/plasmic/ez_marketing_platform_sacanagem/PlasmicCApplyACommunity"
+      "../components/plasmic/ez_marketing_platform_sacanagem/PlasmicCApplyToACommunity"
     ).then((m) => m.PlasmicCApplyACommunity),
   { ssr: false }
 );

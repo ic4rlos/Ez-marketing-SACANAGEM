@@ -1467,6 +1467,35 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                                         onClick={async event => {
                                           const $steps = {};
 
+                                          $steps["runCode"] = true
+                                            ? (() => {
+                                                const actionArgs = {
+                                                  customFunction: async () => {
+                                                    return $props.company?._actions?.connection(
+                                                      currentItem.id,
+                                                      "disconnect",
+                                                      $state.selectedWhy
+                                                    );
+                                                  }
+                                                };
+                                                return (({
+                                                  customFunction
+                                                }) => {
+                                                  return customFunction();
+                                                })?.apply(null, [actionArgs]);
+                                              })()
+                                            : undefined;
+                                          if (
+                                            $steps["runCode"] != null &&
+                                            typeof $steps["runCode"] ===
+                                              "object" &&
+                                            typeof $steps["runCode"].then ===
+                                              "function"
+                                          ) {
+                                            $steps["runCode"] =
+                                              await $steps["runCode"];
+                                          }
+
                                           $steps["updateModalIsOpen"] = true
                                             ? (() => {
                                                 const actionArgs = {
@@ -1515,35 +1544,6 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                                           ) {
                                             $steps["updateModalIsOpen"] =
                                               await $steps["updateModalIsOpen"];
-                                          }
-
-                                          $steps["runCode"] = true
-                                            ? (() => {
-                                                const actionArgs = {
-                                                  customFunction: async () => {
-                                                    return $props.company?._actions?.connection(
-                                                      currentItem.id,
-                                                      "disconnect",
-                                                      $state.selectedWhy
-                                                    );
-                                                  }
-                                                };
-                                                return (({
-                                                  customFunction
-                                                }) => {
-                                                  return customFunction();
-                                                })?.apply(null, [actionArgs]);
-                                              })()
-                                            : undefined;
-                                          if (
-                                            $steps["runCode"] != null &&
-                                            typeof $steps["runCode"] ===
-                                              "object" &&
-                                            typeof $steps["runCode"].then ===
-                                              "function"
-                                          ) {
-                                            $steps["runCode"] =
-                                              await $steps["runCode"];
                                           }
                                         }}
                                         size={"extraSmall"}
@@ -2220,7 +2220,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                                             src={(() => {
                                               try {
                                                 return currentItem[
-                                                  "community_name"
+                                                  "community_logo"
                                                 ];
                                               } catch (e) {
                                                 if (
@@ -2502,56 +2502,6 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                                         onClick={async event => {
                                           const $steps = {};
 
-                                          $steps["updateModalIsOpen"] = true
-                                            ? (() => {
-                                                const actionArgs = {
-                                                  variable: {
-                                                    objRoot: $state,
-                                                    variablePath: [
-                                                      "requestInf",
-                                                      "0",
-                                                      "isOpen"
-                                                    ]
-                                                  },
-                                                  operation: 0,
-                                                  value: false
-                                                };
-                                                return (({
-                                                  variable,
-                                                  value,
-                                                  startIndex,
-                                                  deleteCount
-                                                }) => {
-                                                  if (!variable) {
-                                                    return;
-                                                  }
-                                                  const {
-                                                    objRoot,
-                                                    variablePath
-                                                  } = variable;
-
-                                                  $stateSet(
-                                                    objRoot,
-                                                    variablePath,
-                                                    value
-                                                  );
-                                                  return value;
-                                                })?.apply(null, [actionArgs]);
-                                              })()
-                                            : undefined;
-                                          if (
-                                            $steps["updateModalIsOpen"] !=
-                                              null &&
-                                            typeof $steps[
-                                              "updateModalIsOpen"
-                                            ] === "object" &&
-                                            typeof $steps["updateModalIsOpen"]
-                                              .then === "function"
-                                          ) {
-                                            $steps["updateModalIsOpen"] =
-                                              await $steps["updateModalIsOpen"];
-                                          }
-
                                           $steps["runCode"] = true
                                             ? (() => {
                                                 const actionArgs = {
@@ -2579,30 +2529,6 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                                             $steps["runCode"] =
                                               await $steps["runCode"];
                                           }
-                                        }}
-                                        size={"extraSmall"}
-                                        type={"soft"}
-                                      />
-
-                                      <Button2
-                                        data-plasmic-name={"cancelConnection"}
-                                        data-plasmic-override={
-                                          overrides.cancelConnection
-                                        }
-                                        color={"muted"}
-                                        label={
-                                          <div
-                                            className={classNames(
-                                              projectcss.all,
-                                              projectcss.__wab_text,
-                                              sty.text__k4Rpr
-                                            )}
-                                          >
-                                            {"Cancel"}
-                                          </div>
-                                        }
-                                        onClick={async event => {
-                                          const $steps = {};
 
                                           $steps["updateModalIsOpen"] = true
                                             ? (() => {
@@ -2653,6 +2579,30 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                                             $steps["updateModalIsOpen"] =
                                               await $steps["updateModalIsOpen"];
                                           }
+                                        }}
+                                        size={"extraSmall"}
+                                        type={"soft"}
+                                      />
+
+                                      <Button2
+                                        data-plasmic-name={"cancelConnection"}
+                                        data-plasmic-override={
+                                          overrides.cancelConnection
+                                        }
+                                        color={"muted"}
+                                        label={
+                                          <div
+                                            className={classNames(
+                                              projectcss.all,
+                                              projectcss.__wab_text,
+                                              sty.text__k4Rpr
+                                            )}
+                                          >
+                                            {"Cancel"}
+                                          </div>
+                                        }
+                                        onClick={async event => {
+                                          const $steps = {};
 
                                           $steps["runCode"] = true
                                             ? (() => {
@@ -2680,6 +2630,56 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                                           ) {
                                             $steps["runCode"] =
                                               await $steps["runCode"];
+                                          }
+
+                                          $steps["updateModalIsOpen"] = true
+                                            ? (() => {
+                                                const actionArgs = {
+                                                  variable: {
+                                                    objRoot: $state,
+                                                    variablePath: [
+                                                      "requestInf",
+                                                      "0",
+                                                      "isOpen"
+                                                    ]
+                                                  },
+                                                  operation: 0,
+                                                  value: false
+                                                };
+                                                return (({
+                                                  variable,
+                                                  value,
+                                                  startIndex,
+                                                  deleteCount
+                                                }) => {
+                                                  if (!variable) {
+                                                    return;
+                                                  }
+                                                  const {
+                                                    objRoot,
+                                                    variablePath
+                                                  } = variable;
+
+                                                  $stateSet(
+                                                    objRoot,
+                                                    variablePath,
+                                                    value
+                                                  );
+                                                  return value;
+                                                })?.apply(null, [actionArgs]);
+                                              })()
+                                            : undefined;
+                                          if (
+                                            $steps["updateModalIsOpen"] !=
+                                              null &&
+                                            typeof $steps[
+                                              "updateModalIsOpen"
+                                            ] === "object" &&
+                                            typeof $steps["updateModalIsOpen"]
+                                              .then === "function"
+                                          ) {
+                                            $steps["updateModalIsOpen"] =
+                                              await $steps["updateModalIsOpen"];
                                           }
                                         }}
                                         size={"extraSmall"}

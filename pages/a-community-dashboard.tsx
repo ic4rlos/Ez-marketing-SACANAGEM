@@ -116,12 +116,11 @@ export default function ACommunityDashboard() {
 
       const { data: member } = await supabase
         .from("community_members")
-        .select("community_id, role")
+        .select("community_id, role, status")
         .eq("user_id", user.id)
-        .eq("status", "connected")
         .maybeSingle();
 
-      if (!member) {
+      if (!member || member.status !== "connected") {
         setLoading(false);
         return;
       }
@@ -162,7 +161,7 @@ export default function ACommunityDashboard() {
               short_message: conn.short_message ?? "",
               "Company Logo": company?.["Company Logo"] ?? "",
               "Company name": company?.["Company name"] ?? "",
-              "Company type": company?.["Company type"] ?? "" // 👈 ADICIONE ISSO
+              "Company type": company?.["Company type"] ?? ""
             };
           });
 
@@ -171,48 +170,52 @@ export default function ACommunityDashboard() {
       }
 
       // =========================
-      // 🔥 CONNECTIONS (MEMBERS)
+      // 🔥 MEMBERS (CORRIGIDO)
       // =========================
-      const { data: memberConnections } = await supabase
-        .from("CONNECTIONS_MEMBERS")
-        .select("*")
+      const { data: membersRaw } = await supabase
+        .from("community_members")
+        .select("id, user_id, status")
         .eq("community_id", communityId);
 
       let connectedMembers:any[] = [];
       let memberRequests:any[] = [];
 
-      if (memberConnections?.length) {
+      if (membersRaw?.length) {
 
-        const connected = memberConnections.filter((m:any)=>m.status === "connected");
-        const requests = memberConnections.filter((m:any)=>m.status === "member request");
-
-        const userIds = Array.from(
-          new Set(memberConnections.map((m:any)=>m.user_id))
-        );
+        const userIds = membersRaw.map(m => m.user_id);
 
         const { data: profiles } = await supabase
           .from("User profile")
-          .select('id, "Profile pic", "First name", user_id')
+          .select(`
+            id,
+            user_id,
+            "Profile pic",
+            "First name",
+            "Last name",
+            Birthday
+          `)
           .in("user_id", userIds);
 
         const format = (list:any[]) =>
-          list.map((conn:any)=>{
-            const profile = profiles?.find((p:any)=>p.user_id === conn.user_id);
+          list.map((m:any)=>{
+            const profile = profiles?.find(p => p.user_id === m.user_id);
             return {
-              id: conn.id,
-              user_id: conn.user_id,
-              short_message: conn.short_message ?? "",
+              id: m.id,
+              user_id: m.user_id,
+              status: m.status,
               "Profile pic": profile?.["Profile pic"] ?? "",
-              "First name": profile?.["First name"] ?? ""
+              "First name": profile?.["First name"] ?? "",
+              "Last name": profile?.["Last name"] ?? "",
+              Birthday: profile?.Birthday ?? ""
             };
           });
 
-        connectedMembers = format(connected);
-        memberRequests = format(requests);
+        connectedMembers = format(membersRaw.filter(m => m.status === "connected"));
+        memberRequests = format(membersRaw.filter(m => m.status !== "connected"));
       }
 
       // =========================
-      // 🔹 COMMUNITY CORE (SEM ALTERAR)
+      // 🔹 COMMUNITY CORE
       // =========================
       const { data: community } = await supabase
         .from("Community")
@@ -321,7 +324,6 @@ export default function ACommunityDashboard() {
         ).flat().filter(Boolean);
       }
 
-      // ✅ FINAL DATA COMPLETO (NADA PERDIDO)
       const finalData = {
         ...community,
         members,
@@ -329,11 +331,9 @@ export default function ACommunityDashboard() {
         specialties: specialtiesList,
         "Profile pic": myProfile?.["Profile pic"] ?? null,
 
-        // companies
         connected_companies: connectedCompanies,
         company_requests: companyRequests,
 
-        // members (NOVO)
         connected_members: connectedMembers,
         member_requests: memberRequests,
 

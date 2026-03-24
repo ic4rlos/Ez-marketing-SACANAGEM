@@ -174,7 +174,7 @@ export default function ACommunityDashboard() {
       // =========================
       const { data: membersRaw } = await supabase
         .from("community_members")
-        .select("id, user_id, status")
+  .select("id, user_id, status, short_message")
         .eq("community_id", communityId);
 
       let connectedMembers:any[] = [];

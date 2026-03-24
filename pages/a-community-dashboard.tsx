@@ -161,7 +161,8 @@ export default function ACommunityDashboard() {
               company_id: conn.company_id,
               short_message: conn.short_message ?? "",
               "Company Logo": company?.["Company Logo"] ?? "",
-              "Company name": company?.["Company name"] ?? ""
+              "Company name": company?.["Company name"] ?? "",
+              "Company type": company?.["Company type"] ?? "" // 👈 ADICIONE ISSO
             };
           });
 

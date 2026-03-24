@@ -1182,20 +1182,19 @@
   border-radius: 8px;
   padding: 0px;
 }
-.membersCarousel:global(.__wab_instance) {
-  width: auto;
+.sliderCarousel:global(.__wab_instance) {
+  width: 100%;
   max-width: 100%;
+  flex-direction: column;
   object-fit: cover;
-  height: auto;
-  display: block;
-  align-self: auto;
+  min-width: 0;
 }
 .member {
   display: flex;
   flex-direction: row;
   position: relative;
   width: auto;
-  height: auto;
+  height: 225px;
   max-width: 100%;
   justify-content: flex-start;
   align-items: center;
@@ -1256,252 +1255,6 @@
   padding: 0px 0px 0px 10px;
 }
 .office {
-  position: relative;
-  width: 120px;
-  height: auto;
-  max-width: 100%;
-  transform: rotate3d(0, 0, 1, 90deg) rotate3d(0, 0, 0, 90deg);
-  left: auto;
-  top: auto;
-  font-size: 14px;
-  color: #fafafa;
-  background: #000000cc;
-  min-height: 50px;
-  padding-left: 10px;
-  align-self: flex-end;
-  flex-shrink: 0;
-  margin: 50px 0px 0px -12px;
-}
-.member2 {
-  display: flex;
-  flex-direction: row;
-  position: relative;
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  justify-content: flex-start;
-  align-items: center;
-  padding: 8px;
-}
-.freeBox___9HbFs {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  align-items: flex-end;
-  justify-content: center;
-  width: 200px;
-  height: auto;
-  max-width: 100%;
-  flex-shrink: 0;
-  padding: 0px;
-  margin: 0px;
-  border-width: 2px;
-}
-.profilePic6 {
-  object-fit: cover;
-  max-width: 150px;
-  width: auto;
-  height: auto;
-  min-height: 200px;
-  border-radius: 8px;
-  margin: 0px 0px -200px;
-  border-width: 1px;
-}
-.profilePic6 > picture > img {
-  object-fit: cover;
-}
-.text___842Q7 {
-  width: 125px;
-  height: auto;
-  max-width: 100%;
-  font-size: 14px;
-  font-weight: 600;
-  text-align: left;
-  background: linear-gradient(180deg, #a5e612 0%, #0a390a 33%) 0% 0% / 100% 100%
-    repeat;
-  color: #ffffff;
-  border-bottom-left-radius: 5px;
-  align-self: flex-end;
-  padding: 0px 0px 0px 10px;
-}
-.text__b8Zfa {
-  width: 75px;
-  height: auto;
-  max-width: 100%;
-  font-size: 12px;
-  font-weight: 400;
-  background: linear-gradient(270deg, #e5d19c 0%, #988250 100%) 0% 0% / 100%
-    100% repeat;
-  color: #ffffff;
-  border-bottom-left-radius: 5px;
-  align-self: flex-end;
-  padding: 0px 0px 0px 10px;
-}
-.office4 {
-  position: relative;
-  width: 120px;
-  height: auto;
-  max-width: 100%;
-  transform: rotate3d(0, 0, 1, 90deg) rotate3d(0, 0, 0, 90deg);
-  left: auto;
-  top: auto;
-  font-size: 14px;
-  color: #fafafa;
-  background: #000000cc;
-  min-height: 50px;
-  padding-left: 10px;
-  align-self: flex-end;
-  flex-shrink: 0;
-  margin: 50px 0px 0px -12px;
-}
-.member3 {
-  display: flex;
-  flex-direction: row;
-  position: relative;
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  justify-content: flex-start;
-  align-items: center;
-  padding: 8px;
-}
-.freeBox__pC02 {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  align-items: flex-end;
-  justify-content: center;
-  width: 200px;
-  height: auto;
-  max-width: 100%;
-  flex-shrink: 0;
-  padding: 0px;
-  margin: 0px;
-  border-width: 2px;
-}
-.profilePic7 {
-  object-fit: cover;
-  max-width: 150px;
-  width: auto;
-  height: auto;
-  min-height: 200px;
-  border-radius: 8px;
-  margin: 0px 0px -200px;
-  border-width: 1px;
-}
-.profilePic7 > picture > img {
-  object-fit: cover;
-}
-.text__qTpoY {
-  width: 125px;
-  height: auto;
-  max-width: 100%;
-  font-size: 14px;
-  font-weight: 600;
-  text-align: left;
-  background: linear-gradient(180deg, #a5e612 0%, #0a390a 33%) 0% 0% / 100% 100%
-    repeat;
-  color: #ffffff;
-  border-bottom-left-radius: 5px;
-  align-self: flex-end;
-  padding: 0px 0px 0px 10px;
-}
-.text__elrrL {
-  width: 75px;
-  height: auto;
-  max-width: 100%;
-  font-size: 12px;
-  font-weight: 400;
-  background: linear-gradient(270deg, #e5d19c 0%, #988250 100%) 0% 0% / 100%
-    100% repeat;
-  color: #ffffff;
-  border-bottom-left-radius: 5px;
-  align-self: flex-end;
-  padding: 0px 0px 0px 10px;
-}
-.office5 {
-  position: relative;
-  width: 120px;
-  height: auto;
-  max-width: 100%;
-  transform: rotate3d(0, 0, 1, 90deg) rotate3d(0, 0, 0, 90deg);
-  left: auto;
-  top: auto;
-  font-size: 14px;
-  color: #fafafa;
-  background: #000000cc;
-  min-height: 50px;
-  padding-left: 10px;
-  align-self: flex-end;
-  flex-shrink: 0;
-  margin: 50px 0px 0px -12px;
-}
-.member4 {
-  display: flex;
-  flex-direction: row;
-  position: relative;
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  justify-content: flex-start;
-  align-items: center;
-  padding: 8px;
-}
-.freeBox__ymEn8 {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  align-items: flex-end;
-  justify-content: center;
-  width: 200px;
-  height: auto;
-  max-width: 100%;
-  flex-shrink: 0;
-  padding: 0px;
-  margin: 0px;
-  border-width: 2px;
-}
-.profilePic8 {
-  object-fit: cover;
-  max-width: 150px;
-  width: auto;
-  height: auto;
-  min-height: 200px;
-  border-radius: 8px;
-  margin: 0px 0px -200px;
-  border-width: 1px;
-}
-.profilePic8 > picture > img {
-  object-fit: cover;
-}
-.text__yResc {
-  width: 125px;
-  height: auto;
-  max-width: 100%;
-  font-size: 14px;
-  font-weight: 600;
-  text-align: left;
-  background: linear-gradient(180deg, #a5e612 0%, #0a390a 33%) 0% 0% / 100% 100%
-    repeat;
-  color: #ffffff;
-  border-bottom-left-radius: 5px;
-  align-self: flex-end;
-  padding: 0px 0px 0px 10px;
-}
-.text__j6GoO {
-  width: 75px;
-  height: auto;
-  max-width: 100%;
-  font-size: 12px;
-  font-weight: 400;
-  background: linear-gradient(270deg, #e5d19c 0%, #988250 100%) 0% 0% / 100%
-    100% repeat;
-  color: #ffffff;
-  border-bottom-left-radius: 5px;
-  align-self: flex-end;
-  padding: 0px 0px 0px 10px;
-}
-.office6 {
   position: relative;
   width: 120px;
   height: auto;
@@ -1651,7 +1404,7 @@
   font-weight: 600;
   font-family: "Inter", sans-serif;
   font-style: normal;
-  text-align: left;
+  text-align: center;
   text-transform: none;
   line-height: 1.5;
   letter-spacing: normal;
@@ -1702,7 +1455,7 @@
   text-transform: none;
   line-height: 1.5;
   letter-spacing: normal;
-  white-space: pre-wrap;
+  white-space: pre;
   user-select: text;
   text-decoration-line: none;
   text-overflow: clip;
@@ -2336,7 +2089,7 @@
   font-weight: 600;
   font-family: "Inter", sans-serif;
   font-style: normal;
-  text-align: left;
+  text-align: center;
   text-transform: none;
   line-height: 1.5;
   letter-spacing: normal;

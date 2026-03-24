@@ -168,19 +168,10 @@ export type PlasmicACommunityDashboard__OverridesType = {
   confirmCommunityRate2?: Flex__<typeof Button2>;
   rateSum?: Flex__<"div">;
   container3?: Flex__<"div">;
-  membersCarousel?: Flex__<typeof SliderWrapper>;
+  sliderCarousel?: Flex__<typeof SliderWrapper>;
   member?: Flex__<"div">;
   profilePic?: Flex__<typeof PlasmicImg__>;
   office?: Flex__<"div">;
-  member2?: Flex__<"div">;
-  profilePic6?: Flex__<typeof PlasmicImg__>;
-  office4?: Flex__<"div">;
-  member3?: Flex__<"div">;
-  profilePic7?: Flex__<typeof PlasmicImg__>;
-  office5?: Flex__<"div">;
-  member4?: Flex__<"div">;
-  profilePic8?: Flex__<typeof PlasmicImg__>;
-  office6?: Flex__<"div">;
   container10?: Flex__<"div">;
   linkedCompanies?: Flex__<typeof Modal>;
   connectedCompany?: Flex__<"div">;
@@ -344,15 +335,6 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
 
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
-      {
-        path: "membersCarousel.currentSlide",
-        type: "private",
-        variableType: "number",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 0,
-
-        refName: "membersCarousel",
-        onMutate: generateOnMutateForSpec("currentSlide", SliderWrapper_Helpers)
-      },
       {
         path: "sliderCarousel3.currentSlide",
         type: "private",
@@ -596,6 +578,15 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
         path: "averageRate4[].value",
         type: "private",
         variableType: "number"
+      },
+      {
+        path: "sliderCarousel.currentSlide",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 0,
+
+        refName: "sliderCarousel",
+        onMutate: generateOnMutateForSpec("currentSlide", SliderWrapper_Helpers)
       }
     ],
     [$props, $ctx, $refs]
@@ -1858,30 +1849,27 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                 generateStateOnChangePropForCodeComponents(
                   $state,
                   "currentSlide",
-                  ["membersCarousel", "currentSlide"],
+                  ["sliderCarousel", "currentSlide"],
                   SliderWrapper_Helpers
                 ).apply(null, eventArgs);
               },
-              centerMode: true,
-              className: classNames("__wab_instance", sty.membersCarousel),
-              dots: true,
-              focusOnSelect: true,
+              className: classNames("__wab_instance", sty.sliderCarousel),
               initialSlide: generateStateValueProp($state, [
-                "membersCarousel",
+                "sliderCarousel",
                 "currentSlide"
               ]),
               ref: ref => {
-                $refs["membersCarousel"] = ref;
+                $refs["sliderCarousel"] = ref;
               },
-              sliderScopeClassName: sty["membersCarousel__slider"],
-              slidesPerRow: 3
+              sliderScopeClassName: sty["sliderCarousel__slider"],
+              slidesPerRow: 4
             };
             initializeCodeComponentStates(
               $state,
               [
                 {
                   name: "currentSlide",
-                  plasmicStateName: "membersCarousel.currentSlide"
+                  plasmicStateName: "sliderCarousel.currentSlide"
                 }
               ],
               [],
@@ -1891,8 +1879,8 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
 
             return (
               <SliderWrapper
-                data-plasmic-name={"membersCarousel"}
-                data-plasmic-override={overrides.membersCarousel}
+                data-plasmic-name={"sliderCarousel"}
+                data-plasmic-override={overrides.sliderCarousel}
                 {...child$Props}
               >
                 {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
@@ -2003,180 +1991,6 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                     </div>
                   );
                 })}
-                <div
-                  data-plasmic-name={"member2"}
-                  data-plasmic-override={overrides.member2}
-                  className={classNames(projectcss.all, sty.member2)}
-                >
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox___9HbFs)}
-                  >
-                    <PlasmicImg__
-                      data-plasmic-name={"profilePic6"}
-                      data-plasmic-override={overrides.profilePic6}
-                      alt={""}
-                      className={classNames(sty.profilePic6)}
-                      displayHeight={"auto"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"150px"}
-                      displayMinHeight={"200px"}
-                      displayMinWidth={"0"}
-                      displayWidth={"auto"}
-                      src={{
-                        src: "/plasmic/ez_marketing_platform_sacanagem/images/vecteezyUserAccountIconForYourDesignOnly21079672Png.png",
-                        fullWidth: 2551,
-                        fullHeight: 2551,
-                        aspectRatio: undefined
-                      }}
-                    />
-
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text___842Q7
-                      )}
-                    >
-                      {"Bacharel"}
-                    </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__b8Zfa
-                      )}
-                    >
-                      {"Gold"}
-                    </div>
-                  </div>
-                  <div
-                    data-plasmic-name={"office4"}
-                    data-plasmic-override={overrides.office4}
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.office4
-                    )}
-                  >
-                    {"Data Analyst"}
-                  </div>
-                </div>
-                <div
-                  data-plasmic-name={"member3"}
-                  data-plasmic-override={overrides.member3}
-                  className={classNames(projectcss.all, sty.member3)}
-                >
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__pC02)}
-                  >
-                    <PlasmicImg__
-                      data-plasmic-name={"profilePic7"}
-                      data-plasmic-override={overrides.profilePic7}
-                      alt={""}
-                      className={classNames(sty.profilePic7)}
-                      displayHeight={"auto"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"150px"}
-                      displayMinHeight={"200px"}
-                      displayMinWidth={"0"}
-                      displayWidth={"auto"}
-                      src={{
-                        src: "/plasmic/ez_marketing_platform_sacanagem/images/vecteezyUserAccountIconForYourDesignOnly21079672Png.png",
-                        fullWidth: 2551,
-                        fullHeight: 2551,
-                        aspectRatio: undefined
-                      }}
-                    />
-
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__qTpoY
-                      )}
-                    >
-                      {"Bacharel"}
-                    </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__elrrL
-                      )}
-                    >
-                      {"Gold"}
-                    </div>
-                  </div>
-                  <div
-                    data-plasmic-name={"office5"}
-                    data-plasmic-override={overrides.office5}
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.office5
-                    )}
-                  >
-                    {"Data Analyst"}
-                  </div>
-                </div>
-                <div
-                  data-plasmic-name={"member4"}
-                  data-plasmic-override={overrides.member4}
-                  className={classNames(projectcss.all, sty.member4)}
-                >
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__ymEn8)}
-                  >
-                    <PlasmicImg__
-                      data-plasmic-name={"profilePic8"}
-                      data-plasmic-override={overrides.profilePic8}
-                      alt={""}
-                      className={classNames(sty.profilePic8)}
-                      displayHeight={"auto"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"150px"}
-                      displayMinHeight={"200px"}
-                      displayMinWidth={"0"}
-                      displayWidth={"auto"}
-                      src={{
-                        src: "/plasmic/ez_marketing_platform_sacanagem/images/vecteezyUserAccountIconForYourDesignOnly21079672Png.png",
-                        fullWidth: 2551,
-                        fullHeight: 2551,
-                        aspectRatio: undefined
-                      }}
-                    />
-
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__yResc
-                      )}
-                    >
-                      {"Bacharel"}
-                    </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__j6GoO
-                      )}
-                    >
-                      {"Gold"}
-                    </div>
-                  </div>
-                  <div
-                    data-plasmic-name={"office6"}
-                    data-plasmic-override={overrides.office6}
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.office6
-                    )}
-                  >
-                    {"Data Analyst"}
-                  </div>
-                </div>
               </SliderWrapper>
             );
           })()}
@@ -3168,7 +2982,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                             )}
                             component={Link}
                             href={
-                              "/c-company-profile?id=" + currentItem.company_id
+                              "/a-company-profile?id=" + currentItem.company_id
                             }
                             legacyBehavior={false}
                             platform={"nextjs"}
@@ -3621,7 +3435,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                                         )}
                                         component={Link}
                                         href={
-                                          "/c-company-profile?id=" +
+                                          "/a-company-profile?id=" +
                                           currentItem.company_id
                                         }
                                         legacyBehavior={false}
@@ -9930,19 +9744,10 @@ const PlasmicDescendants = {
     "confirmCommunityRate2",
     "rateSum",
     "container3",
-    "membersCarousel",
+    "sliderCarousel",
     "member",
     "profilePic",
     "office",
-    "member2",
-    "profilePic6",
-    "office4",
-    "member3",
-    "profilePic7",
-    "office5",
-    "member4",
-    "profilePic8",
-    "office6",
     "container10",
     "linkedCompanies",
     "connectedCompany",
@@ -10100,47 +9905,15 @@ const PlasmicDescendants = {
   rateSum: ["rateSum"],
   container3: [
     "container3",
-    "membersCarousel",
+    "sliderCarousel",
     "member",
     "profilePic",
-    "office",
-    "member2",
-    "profilePic6",
-    "office4",
-    "member3",
-    "profilePic7",
-    "office5",
-    "member4",
-    "profilePic8",
-    "office6"
+    "office"
   ],
-  membersCarousel: [
-    "membersCarousel",
-    "member",
-    "profilePic",
-    "office",
-    "member2",
-    "profilePic6",
-    "office4",
-    "member3",
-    "profilePic7",
-    "office5",
-    "member4",
-    "profilePic8",
-    "office6"
-  ],
+  sliderCarousel: ["sliderCarousel", "member", "profilePic", "office"],
   member: ["member", "profilePic", "office"],
   profilePic: ["profilePic"],
   office: ["office"],
-  member2: ["member2", "profilePic6", "office4"],
-  profilePic6: ["profilePic6"],
-  office4: ["office4"],
-  member3: ["member3", "profilePic7", "office5"],
-  profilePic7: ["profilePic7"],
-  office5: ["office5"],
-  member4: ["member4", "profilePic8", "office6"],
-  profilePic8: ["profilePic8"],
-  office6: ["office6"],
   container10: [
     "container10",
     "linkedCompanies",
@@ -10612,19 +10385,10 @@ type NodeDefaultElementType = {
   confirmCommunityRate2: typeof Button2;
   rateSum: "div";
   container3: "div";
-  membersCarousel: typeof SliderWrapper;
+  sliderCarousel: typeof SliderWrapper;
   member: "div";
   profilePic: typeof PlasmicImg__;
   office: "div";
-  member2: "div";
-  profilePic6: typeof PlasmicImg__;
-  office4: "div";
-  member3: "div";
-  profilePic7: typeof PlasmicImg__;
-  office5: "div";
-  member4: "div";
-  profilePic8: typeof PlasmicImg__;
-  office6: "div";
   container10: "div";
   linkedCompanies: typeof Modal;
   connectedCompany: "div";
@@ -10831,19 +10595,10 @@ export const PlasmicACommunityDashboard = Object.assign(
     confirmCommunityRate2: makeNodeComponent("confirmCommunityRate2"),
     rateSum: makeNodeComponent("rateSum"),
     container3: makeNodeComponent("container3"),
-    membersCarousel: makeNodeComponent("membersCarousel"),
+    sliderCarousel: makeNodeComponent("sliderCarousel"),
     member: makeNodeComponent("member"),
     profilePic: makeNodeComponent("profilePic"),
     office: makeNodeComponent("office"),
-    member2: makeNodeComponent("member2"),
-    profilePic6: makeNodeComponent("profilePic6"),
-    office4: makeNodeComponent("office4"),
-    member3: makeNodeComponent("member3"),
-    profilePic7: makeNodeComponent("profilePic7"),
-    office5: makeNodeComponent("office5"),
-    member4: makeNodeComponent("member4"),
-    profilePic8: makeNodeComponent("profilePic8"),
-    office6: makeNodeComponent("office6"),
     container10: makeNodeComponent("container10"),
     linkedCompanies: makeNodeComponent("linkedCompanies"),
     connectedCompany: makeNodeComponent("connectedCompany"),

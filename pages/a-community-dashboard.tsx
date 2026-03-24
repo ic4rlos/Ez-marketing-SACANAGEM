@@ -152,7 +152,7 @@ export default function ACommunityDashboard() {
       const communityId = member.community_id;
 
       // =========================
-      // 🔥 CONNECTIONS (NOVO BLOCO)
+      // 🔥 CONNECTIONS (COMPANIES)
       // =========================
       const { data: connections } = await supabase
         .from("CONNECTIONS")
@@ -168,8 +168,8 @@ export default function ACommunityDashboard() {
         const requests = connections.filter((c:any)=>c.status === "company request");
 
         const companyIds = Array.from(
-  new Set(connections.map((c:any)=>Number(c.company_id)))
-);
+          new Set(connections.map((c:any)=>Number(c.company_id)))
+        );
 
         const { data: companies } = await supabaseC
           .from("companies")
@@ -202,10 +202,6 @@ export default function ACommunityDashboard() {
               short_message: conn.short_message ?? "",
               "Company Logo": company?.["Company Logo"] ?? "",
               "Company name": company?.["Company name"] ?? "",
-              "Company type": company?.["Company type"] ?? "",
-              Area: company?.Area ?? "",
-              "Sub area": company?.["Sub area"] ?? "",
-              Location: company?.Location ?? "",
               rate_avg: stats.count ? stats.sum / stats.count : 0,
               rate_count: stats.count
             };
@@ -216,123 +212,64 @@ export default function ACommunityDashboard() {
       }
 
       // =========================
-      // 🔹 COMMUNITY
+      // 🔥 LINKED MEMBERS (NOVO)
       // =========================
-      const { data: community } = await supabase
-        .from("Community")
-        .select("*")
-        .eq("id", communityId)
-        .maybeSingle();
-
-      const { data: membersDb } = await supabase
+      const { data: memberConnections } = await supabase
         .from("community_members")
-        .select("user_id")
-        .eq("community_id", communityId)
-        .eq("status", "connected");
-
-      let members:any[] = [];
-
-      if (membersDb?.length) {
-        members = (
-          await Promise.all(
-            membersDb.map(async (m:any)=>{
-              const { data: profile } = await supabase
-                .from("User profile")
-                .select('id, "Profile pic", user_id')
-                .eq("user_id", m.user_id)
-                .maybeSingle();
-
-              if (!profile) return null;
-
-              const { data: offices } = await supabase
-                .from("Multicharge")
-                .select("Office")
-                .eq("User profile_id", profile.id);
-
-              if (!offices) return null;
-
-              return offices.map((o:any)=>({
-                "Profile pic": profile["Profile pic"],
-                Office: o.Office
-              }));
-            })
-          )
-        ).flat().filter(Boolean);
-      }
-
-      const offices = members.map(m=>m.Office);
-
-      const detected:string[] = [];
-
-      for (const name in SPECIALIZATIONS){
-        const roles = SPECIALIZATIONS[name];
-        if (roles.every((r:string)=>offices.includes(r))){
-          detected.push(name);
-        }
-      }
-
-      await supabase.from("Community specialties").delete().eq("community_id", communityId);
-
-      for (const s of detected){
-        await supabase.from("Community specialties").insert({
-          community_id: communityId,
-          "Professional specialty": s
-        });
-      }
-
-      const { data: specialties } = await supabase
-        .from("Community specialties")
-        .select('"Professional specialty"')
+        .select("id, user_id, status")
         .eq("community_id", communityId);
 
-      const specialtiesList =
-        specialties?.map((s:any)=>s["Professional specialty"]) ?? [];
+      let linkedMembers:any[] = [];
+      let memberRequests:any[] = [];
 
-      const today = new Date().toISOString().split("T")[0];
+      if (memberConnections?.length) {
 
-      let trainings:any[] = [];
+        const connected = memberConnections.filter((m:any)=>m.status === "connected");
+        const requests = memberConnections.filter((m:any)=>m.status === "pending");
 
-      if (membersDb?.length) {
-        trainings = (
-          await Promise.all(
-            membersDb.map(async (m:any)=>{
-              const { data: profile } = await supabase
-                .from("User profile")
-                .select('id, "Profile pic", "First name", user_id')
-                .eq("user_id", m.user_id)
-                .maybeSingle();
+        const userIds = memberConnections.map((m:any)=>m.user_id);
 
-              if (!profile) return null;
+        const { data: profiles } = await supabase
+          .from("User profile")
+          .select('id, user_id, "Profile pic", "First name"')
+          .in("user_id", userIds);
 
-              const { data: educationsRaw } = await supabase
-                .from("Education")
-                .select('University, "Graduation year", "User profile_id"')
-                .eq("User profile_id", profile.id);
+        const { data: offices } = await supabase
+          .from("Multicharge")
+          .select('"User profile_id", Office');
 
-              const educations =
-                educationsRaw?.filter((ed:any)=>ed["Graduation year"] > today) ?? [];
+        const officeMap:any = {};
 
-              if (!educations.length) return null;
+        offices?.forEach((o:any)=>{
+          const key = o["User profile_id"];
+          if (!officeMap[key]) officeMap[key] = [];
+          officeMap[key].push(o.Office);
+        });
 
-              return educations.map((ed:any)=>({
-                "Profile pic": profile["Profile pic"],
-                "First name": profile["First name"],
-                University: ed.University,
-                "Graduation year": ed["Graduation year"]
-              }));
-            })
-          )
-        ).flat().filter(Boolean);
+        const format = (list:any[]) =>
+          list.map((conn:any)=>{
+            const profile = profiles?.find((p:any)=>p.user_id === conn.user_id);
+
+            return {
+              id: conn.id,
+              user_id: conn.user_id,
+              "Profile pic": profile?.["Profile pic"] ?? "",
+              "First name": profile?.["First name"] ?? "",
+              offices: profile ? officeMap[profile.id] ?? [] : []
+            };
+          });
+
+        linkedMembers = format(connected);
+        memberRequests = format(requests);
       }
 
       const finalData = {
-        ...community,
-        members,
-        trainings,
-        specialties: specialtiesList,
-        "Profile pic": myProfile?.["Profile pic"] ?? null,
+        ...member,
         connected_companies: connectedCompanies,
         company_requests: companyRequests,
+        linked_members: linkedMembers,
+        member_requests: memberRequests,
+        "Profile pic": myProfile?.["Profile pic"] ?? null,
         isAdmin: member.role === "admin"
       };
 
@@ -359,14 +296,23 @@ export default function ACommunityDashboard() {
         .eq("id", connectionId);
     }
 
-    if (action === "accept"){
-      await supabase.from("CONNECTIONS")
+    if (action === "disconnect_member"){
+      await supabase
+        .from("community_members")
+        .delete()
+        .eq("id", connectionId);
+    }
+
+    if (action === "accept_member"){
+      await supabase
+        .from("community_members")
         .update({ status: "connected" })
         .eq("id", connectionId);
     }
 
-    if (action === "reject"){
-      await supabase.from("CONNECTIONS")
+    if (action === "reject_member"){
+      await supabase
+        .from("community_members")
         .delete()
         .eq("id", connectionId);
     }

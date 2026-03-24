@@ -177,7 +177,6 @@ export type PlasmicACommunityDashboard__OverridesType = {
   connectedCompany?: Flex__<"div">;
   companyLogo?: Flex__<typeof PlasmicImg__>;
   companyName?: Flex__<"a"> & Partial<LinkProps>;
-  companyName2?: Flex__<"div">;
   companyType?: Flex__<"div">;
   averageRate?: Flex__<typeof AntdRate>;
   rateSum2?: Flex__<"div">;
@@ -195,7 +194,6 @@ export type PlasmicACommunityDashboard__OverridesType = {
   requestCompany2?: Flex__<"div">;
   companyLogo6?: Flex__<typeof PlasmicImg__>;
   companyName9?: Flex__<"a"> & Partial<LinkProps>;
-  companyName10?: Flex__<"div">;
   companyType3?: Flex__<"div">;
   averageRate4?: Flex__<typeof AntdRate>;
   rateSum4?: Flex__<"div">;
@@ -214,8 +212,6 @@ export type PlasmicACommunityDashboard__OverridesType = {
   connectedMembers?: Flex__<"div">;
   profilePic2?: Flex__<typeof PlasmicImg__>;
   firstName?: Flex__<"a"> & Partial<LinkProps>;
-  firstName2?: Flex__<"div">;
-  lastName?: Flex__<"div">;
   age?: Flex__<"div">;
   location3?: Flex__<"div">;
   office2?: Flex__<"div">;
@@ -226,12 +222,10 @@ export type PlasmicACommunityDashboard__OverridesType = {
   why9?: Flex__<typeof LoginButton>;
   confirmDisconnection?: Flex__<typeof Button2>;
   requestMember?: Flex__<"div">;
-  profilePic3?: Flex__<typeof PlasmicImg__>;
-  firstName3?: Flex__<"a"> & Partial<LinkProps>;
-  firstName4?: Flex__<"div">;
-  lastName2?: Flex__<"div">;
-  age2?: Flex__<"div">;
-  location4?: Flex__<"div">;
+  profilePic6?: Flex__<typeof PlasmicImg__>;
+  firstName2?: Flex__<"a"> & Partial<LinkProps>;
+  age3?: Flex__<"div">;
+  location6?: Flex__<"div">;
   office3?: Flex__<"div">;
   requestInf2?: Flex__<typeof Modal>;
   profilePic4?: Flex__<typeof PlasmicImg__>;
@@ -440,16 +434,14 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
-        path: "disconnectCompany4.isOpen",
+        path: "disconnectCompany4[].isOpen",
         type: "private",
-        variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
+        variableType: "boolean"
       },
       {
-        path: "requestInf2.isOpen",
+        path: "requestInf2[].isOpen",
         type: "private",
-        variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
+        variableType: "boolean"
       },
       {
         path: "popover7.open",
@@ -2114,32 +2106,6 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                             )}
                           >
                             <div
-                              data-plasmic-name={"companyName2"}
-                              data-plasmic-override={overrides.companyName2}
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.companyName2
-                              )}
-                            >
-                              <React.Fragment>
-                                {(() => {
-                                  try {
-                                    return currentItem["Company name"];
-                                  } catch (e) {
-                                    if (
-                                      e instanceof TypeError ||
-                                      e?.plasmicType ===
-                                        "PlasmicUndefinedDataError"
-                                    ) {
-                                      return "Company";
-                                    }
-                                    throw e;
-                                  }
-                                })()}
-                              </React.Fragment>
-                            </div>
-                            <div
                               data-plasmic-name={"companyType"}
                               data-plasmic-override={overrides.companyType}
                               className={classNames(
@@ -3017,32 +2983,6 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                               sty.freeBox___7J58O
                             )}
                           >
-                            <div
-                              data-plasmic-name={"companyName10"}
-                              data-plasmic-override={overrides.companyName10}
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.companyName10
-                              )}
-                            >
-                              <React.Fragment>
-                                {(() => {
-                                  try {
-                                    return currentItem["Company name"];
-                                  } catch (e) {
-                                    if (
-                                      e instanceof TypeError ||
-                                      e?.plasmicType ===
-                                        "PlasmicUndefinedDataError"
-                                    ) {
-                                      return "Company";
-                                    }
-                                    throw e;
-                                  }
-                                })()}
-                              </React.Fragment>
-                            </div>
                             <div
                               data-plasmic-name={"companyType3"}
                               data-plasmic-override={overrides.companyType3}
@@ -4040,562 +3980,701 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
               className={classNames("__wab_instance", sty.linkedMembers)}
               content={
                 <React.Fragment>
-                  <div
-                    data-plasmic-name={"connectedMembers"}
-                    data-plasmic-override={overrides.connectedMembers}
-                    className={classNames(projectcss.all, sty.connectedMembers)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        sty.freeBox___2KlKe
-                      )}
-                    >
-                      <PlasmicImg__
-                        data-plasmic-name={"profilePic2"}
-                        data-plasmic-override={overrides.profilePic2}
-                        alt={""}
-                        className={classNames(sty.profilePic2)}
-                        displayHeight={"30px"}
-                        displayMaxHeight={"none"}
-                        displayMaxWidth={"100%"}
-                        displayMinHeight={"0"}
-                        displayMinWidth={"0"}
-                        displayWidth={"30px"}
-                        loading={"lazy"}
-                      />
+                  {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
+                    (() => {
+                      try {
+                        return $props.formData?.connected_members || [1];
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return [];
+                        }
+                        throw e;
+                      }
+                    })()
+                  ).map((__plasmic_item_0, __plasmic_idx_0) => {
+                    const currentItem = __plasmic_item_0;
+                    const currentIndex = __plasmic_idx_0;
+                    return (
+                      <div
+                        data-plasmic-name={"connectedMembers"}
+                        data-plasmic-override={overrides.connectedMembers}
+                        className={classNames(
+                          projectcss.all,
+                          sty.connectedMembers
+                        )}
+                        key={currentIndex}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox___2KlKe
+                          )}
+                        >
+                          <PlasmicImg__
+                            data-plasmic-name={"profilePic2"}
+                            data-plasmic-override={overrides.profilePic2}
+                            alt={""}
+                            className={classNames(sty.profilePic2)}
+                            displayHeight={"30px"}
+                            displayMaxHeight={"none"}
+                            displayMaxWidth={"100%"}
+                            displayMinHeight={"0"}
+                            displayMinWidth={"0"}
+                            displayWidth={"30px"}
+                            loading={"lazy"}
+                            src={(() => {
+                              try {
+                                return currentItem["Profile pic"];
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return undefined;
+                                }
+                                throw e;
+                              }
+                            })()}
+                          />
 
-                      <PlasmicLink__
-                        data-plasmic-name={"firstName"}
-                        data-plasmic-override={overrides.firstName}
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.a,
-                          projectcss.__wab_text,
-                          sty.firstName
-                        )}
-                        component={Link}
-                        href={`/a-rating-members`}
-                        legacyBehavior={false}
-                        platform={"nextjs"}
-                      >
-                        {"Member"}
-                      </PlasmicLink__>
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__nDamR)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__lElef
-                        )}
-                      >
-                        <div
-                          data-plasmic-name={"firstName2"}
-                          data-plasmic-override={overrides.firstName2}
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.firstName2
-                          )}
-                        >
-                          {"Name"}
-                        </div>
-                        <div
-                          data-plasmic-name={"lastName"}
-                          data-plasmic-override={overrides.lastName}
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.lastName
-                          )}
-                        >
-                          {"Last Name"}
-                        </div>
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__y64Jz
-                        )}
-                      >
-                        <div
-                          data-plasmic-name={"age"}
-                          data-plasmic-override={overrides.age}
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.age
-                          )}
-                        >
-                          {"28"}
+                          <PlasmicLink__
+                            data-plasmic-name={"firstName"}
+                            data-plasmic-override={overrides.firstName}
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.a,
+                              projectcss.__wab_text,
+                              sty.firstName
+                            )}
+                            component={Link}
+                            legacyBehavior={false}
+                            platform={"nextjs"}
+                          >
+                            <React.Fragment>
+                              {(() => {
+                                try {
+                                  return currentItem["First name"];
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return "Member";
+                                  }
+                                  throw e;
+                                }
+                              })()}
+                            </React.Fragment>
+                          </PlasmicLink__>
                         </div>
                         <div
                           className={classNames(
                             projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__nEUE
+                            sty.freeBox__nDamR
                           )}
                         >
-                          {"years"}
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              sty.freeBox__y64Jz
+                            )}
+                          >
+                            <div
+                              data-plasmic-name={"age"}
+                              data-plasmic-override={overrides.age}
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.age
+                              )}
+                            >
+                              <React.Fragment>
+                                {(() => {
+                                  try {
+                                    return currentItem["Birthday"];
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return "28";
+                                    }
+                                    throw e;
+                                  }
+                                })()}
+                              </React.Fragment>
+                            </div>
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__nEUE
+                              )}
+                            >
+                              {"years"}
+                            </div>
+                          </div>
+                          <div
+                            data-plasmic-name={"location3"}
+                            data-plasmic-override={overrides.location3}
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.location3
+                            )}
+                          >
+                            <React.Fragment>
+                              {(() => {
+                                try {
+                                  return currentItem["Location"];
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return "New York";
+                                  }
+                                  throw e;
+                                }
+                              })()}
+                            </React.Fragment>
+                          </div>
                         </div>
-                      </div>
-                      <div
-                        data-plasmic-name={"location3"}
-                        data-plasmic-override={overrides.location3}
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.location3
-                        )}
-                      >
-                        {"New York"}
-                      </div>
-                    </div>
-                    <div
-                      data-plasmic-name={"office2"}
-                      data-plasmic-override={overrides.office2}
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.office2
-                      )}
-                    >
-                      {"Charge"}
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__tsDhu)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__qhyO
-                        )}
-                      >
                         <div
+                          data-plasmic-name={"office2"}
+                          data-plasmic-override={overrides.office2}
                           className={classNames(
                             projectcss.all,
                             projectcss.__wab_text,
-                            sty.text__a0MVo
+                            sty.office2
                           )}
                         >
-                          {"Speciality"}
+                          {"Charge"}
                         </div>
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__zWaya
-                        )}
-                      >
                         <div
                           className={classNames(
                             projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__iUlqr
+                            sty.freeBox__tsDhu
                           )}
                         >
-                          {"Speciality"}
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              sty.freeBox__qhyO
+                            )}
+                          >
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__a0MVo
+                              )}
+                            >
+                              {"Speciality"}
+                            </div>
+                          </div>
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              sty.freeBox__zWaya
+                            )}
+                          >
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__iUlqr
+                              )}
+                            >
+                              {"Speciality"}
+                            </div>
+                          </div>
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              sty.freeBox__xZmHb
+                            )}
+                          >
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__jvgBb
+                              )}
+                            >
+                              {"Speciality"}
+                            </div>
+                          </div>
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              sty.freeBox___7Cx0W
+                            )}
+                          >
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__a7P3
+                              )}
+                            >
+                              {"Speciality"}
+                            </div>
+                          </div>
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              sty.freeBox__n8Wql
+                            )}
+                          >
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__oAuwr
+                              )}
+                            >
+                              {"Speciality"}
+                            </div>
+                          </div>
                         </div>
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__xZmHb
-                        )}
-                      >
+                        {(() => {
+                          const child$Props = {
+                            className: classNames(
+                              "__wab_instance",
+                              sty.disconnectCompany4
+                            ),
+                            content: (
+                              <React.Fragment>
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__ndEoZ
+                                  )}
+                                >
+                                  {"Why do you want to disconnect this member?"}
+                                </div>
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.freeBox___7PVd7
+                                  )}
+                                >
+                                  <LoginButton
+                                    data-plasmic-name={"why6"}
+                                    data-plasmic-override={overrides.why6}
+                                    className={classNames(
+                                      "__wab_instance",
+                                      sty.why6
+                                    )}
+                                    color={"softRed"}
+                                    shape={"rounded"}
+                                    size={"minimal"}
+                                  >
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.__wab_text,
+                                        sty.text__dMid5
+                                      )}
+                                    >
+                                      <React.Fragment>
+                                        <span
+                                          className={
+                                            "plasmic_default__all plasmic_default__span"
+                                          }
+                                          style={{ color: "#000000" }}
+                                        >
+                                          {"Unmet performance expectations"}
+                                        </span>
+                                      </React.Fragment>
+                                    </div>
+                                  </LoginButton>
+                                  <LoginButton
+                                    data-plasmic-name={"why7"}
+                                    data-plasmic-override={overrides.why7}
+                                    className={classNames(
+                                      "__wab_instance",
+                                      sty.why7
+                                    )}
+                                    color={"softRed"}
+                                    shape={"rounded"}
+                                    size={"minimal"}
+                                  >
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.__wab_text,
+                                        sty.text__nNp3
+                                      )}
+                                    >
+                                      <React.Fragment>
+                                        <span
+                                          className={
+                                            "plasmic_default__all plasmic_default__span"
+                                          }
+                                          style={{ color: "#000000" }}
+                                        >
+                                          {"Lack of collaboration or teamwork"}
+                                        </span>
+                                      </React.Fragment>
+                                    </div>
+                                  </LoginButton>
+                                  <LoginButton
+                                    data-plasmic-name={"why8"}
+                                    data-plasmic-override={overrides.why8}
+                                    className={classNames(
+                                      "__wab_instance",
+                                      sty.why8
+                                    )}
+                                    color={"softRed"}
+                                    shape={"rounded"}
+                                    size={"minimal"}
+                                  >
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.__wab_text,
+                                        sty.text__xg6Ww
+                                      )}
+                                    >
+                                      <React.Fragment>
+                                        <span
+                                          className={
+                                            "plasmic_default__all plasmic_default__span"
+                                          }
+                                          style={{ color: "#000000" }}
+                                        >
+                                          {
+                                            "Failure to meet deadlines or community goals"
+                                          }
+                                        </span>
+                                      </React.Fragment>
+                                    </div>
+                                  </LoginButton>
+                                  <LoginButton
+                                    data-plasmic-name={"why9"}
+                                    data-plasmic-override={overrides.why9}
+                                    className={classNames(
+                                      "__wab_instance",
+                                      sty.why9
+                                    )}
+                                    color={"softRed"}
+                                    shape={"rounded"}
+                                    size={"minimal"}
+                                  >
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.__wab_text,
+                                        sty.text__wYdUj
+                                      )}
+                                    >
+                                      <React.Fragment>
+                                        <span
+                                          className={
+                                            "plasmic_default__all plasmic_default__span"
+                                          }
+                                          style={{ color: "#000000" }}
+                                        >
+                                          {
+                                            "Loss of trust or ethical misalignment"
+                                          }
+                                        </span>
+                                      </React.Fragment>
+                                    </div>
+                                  </LoginButton>
+                                </div>
+                              </React.Fragment>
+                            ),
+                            footer: (
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox__jvGmh
+                                )}
+                              >
+                                <Button2
+                                  data-plasmic-name={"confirmDisconnection"}
+                                  data-plasmic-override={
+                                    overrides.confirmDisconnection
+                                  }
+                                  color={"muted"}
+                                  label={
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.__wab_text,
+                                        sty.text___0Je6V
+                                      )}
+                                    >
+                                      {"Confirm"}
+                                    </div>
+                                  }
+                                  onClick={async event => {
+                                    const $steps = {};
+
+                                    $steps["runCode"] = true
+                                      ? (() => {
+                                          const actionArgs = {
+                                            customFunction: async () => {
+                                              return $props.onSave({
+                                                action: "disconnect_member",
+                                                connectionId: currentItem.id,
+                                                reason: $state.selectedWhy
+                                              });
+                                            }
+                                          };
+                                          return (({ customFunction }) => {
+                                            return customFunction();
+                                          })?.apply(null, [actionArgs]);
+                                        })()
+                                      : undefined;
+                                    if (
+                                      $steps["runCode"] != null &&
+                                      typeof $steps["runCode"] === "object" &&
+                                      typeof $steps["runCode"].then ===
+                                        "function"
+                                    ) {
+                                      $steps["runCode"] =
+                                        await $steps["runCode"];
+                                    }
+
+                                    $steps["updateDisconnectCompanyIsOpen"] =
+                                      true
+                                        ? (() => {
+                                            const actionArgs = {
+                                              variable: {
+                                                objRoot: $state,
+                                                variablePath: [
+                                                  "disconnectCompany4",
+                                                  "isOpen"
+                                                ]
+                                              },
+                                              operation: 0,
+                                              value: false
+                                            };
+                                            return (({
+                                              variable,
+                                              value,
+                                              startIndex,
+                                              deleteCount
+                                            }) => {
+                                              if (!variable) {
+                                                return;
+                                              }
+                                              const { objRoot, variablePath } =
+                                                variable;
+
+                                              $stateSet(
+                                                objRoot,
+                                                variablePath,
+                                                value
+                                              );
+                                              return value;
+                                            })?.apply(null, [actionArgs]);
+                                          })()
+                                        : undefined;
+                                    if (
+                                      $steps["updateDisconnectCompanyIsOpen"] !=
+                                        null &&
+                                      typeof $steps[
+                                        "updateDisconnectCompanyIsOpen"
+                                      ] === "object" &&
+                                      typeof $steps[
+                                        "updateDisconnectCompanyIsOpen"
+                                      ].then === "function"
+                                    ) {
+                                      $steps["updateDisconnectCompanyIsOpen"] =
+                                        await $steps[
+                                          "updateDisconnectCompanyIsOpen"
+                                        ];
+                                    }
+                                  }}
+                                  size={"extraSmall"}
+                                  type={"soft"}
+                                />
+
+                                <Button2
+                                  color={"muted"}
+                                  label={
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.__wab_text,
+                                        sty.text__f02I
+                                      )}
+                                    >
+                                      {"Cancel"}
+                                    </div>
+                                  }
+                                  onClick={async event => {
+                                    const $steps = {};
+
+                                    $steps["updateDisconnectCompanyIsOpen"] =
+                                      true
+                                        ? (() => {
+                                            const actionArgs = {
+                                              variable: {
+                                                objRoot: $state,
+                                                variablePath: [
+                                                  "disconnectCompany4",
+                                                  "isOpen"
+                                                ]
+                                              },
+                                              operation: 0,
+                                              value: false
+                                            };
+                                            return (({
+                                              variable,
+                                              value,
+                                              startIndex,
+                                              deleteCount
+                                            }) => {
+                                              if (!variable) {
+                                                return;
+                                              }
+                                              const { objRoot, variablePath } =
+                                                variable;
+
+                                              $stateSet(
+                                                objRoot,
+                                                variablePath,
+                                                value
+                                              );
+                                              return value;
+                                            })?.apply(null, [actionArgs]);
+                                          })()
+                                        : undefined;
+                                    if (
+                                      $steps["updateDisconnectCompanyIsOpen"] !=
+                                        null &&
+                                      typeof $steps[
+                                        "updateDisconnectCompanyIsOpen"
+                                      ] === "object" &&
+                                      typeof $steps[
+                                        "updateDisconnectCompanyIsOpen"
+                                      ].then === "function"
+                                    ) {
+                                      $steps["updateDisconnectCompanyIsOpen"] =
+                                        await $steps[
+                                          "updateDisconnectCompanyIsOpen"
+                                        ];
+                                    }
+                                  }}
+                                  size={"extraSmall"}
+                                  type={"soft"}
+                                />
+                              </div>
+                            ),
+                            heading: (
+                              <h3
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.h3,
+                                  projectcss.__wab_text,
+                                  sty.h3__s5Noe
+                                )}
+                              >
+                                {"disconnect"}
+                              </h3>
+                            ),
+                            isOpen: generateStateValueProp($state, [
+                              "disconnectCompany4",
+                              __plasmic_idx_0,
+                              "isOpen"
+                            ]),
+                            onOpenChange: async (...eventArgs: any) => {
+                              generateStateOnChangeProp($state, [
+                                "disconnectCompany4",
+                                __plasmic_idx_0,
+                                "isOpen"
+                              ]).apply(null, eventArgs);
+
+                              if (
+                                eventArgs.length > 1 &&
+                                eventArgs[1] &&
+                                eventArgs[1]._plasmic_state_init_
+                              ) {
+                                return;
+                              }
+                            },
+                            trigger: (
+                              <LoginButton
+                                className={classNames(
+                                  "__wab_instance",
+                                  sty.loginButton__lttqt
+                                )}
+                                color={"link"}
+                                size={"minimal"}
+                              >
+                                <ReportSvgrepoComSvgIcon
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.svg___4Qbsn
+                                  )}
+                                  role={"img"}
+                                />
+                              </LoginButton>
+                            )
+                          };
+
+                          initializePlasmicStates(
+                            $state,
+                            [
+                              {
+                                name: "disconnectCompany4[].isOpen",
+                                initFunc: ({ $props, $state, $queries, $q }) =>
+                                  false
+                              }
+                            ],
+                            [__plasmic_idx_0]
+                          );
+                          return (
+                            <Modal
+                              data-plasmic-name={"disconnectCompany4"}
+                              data-plasmic-override={
+                                overrides.disconnectCompany4
+                              }
+                              {...child$Props}
+                            />
+                          );
+                        })()}
                         <div
                           className={classNames(
                             projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__jvgBb
+                            sty.freeBox__b5FOy
                           )}
                         >
-                          {"Speciality"}
-                        </div>
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox___7Cx0W
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__a7P3
-                          )}
-                        >
-                          {"Speciality"}
-                        </div>
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__n8Wql
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__oAuwr
-                          )}
-                        >
-                          {"Speciality"}
-                        </div>
-                      </div>
-                    </div>
-                    <Modal
-                      data-plasmic-name={"disconnectCompany4"}
-                      data-plasmic-override={overrides.disconnectCompany4}
-                      className={classNames(
-                        "__wab_instance",
-                        sty.disconnectCompany4
-                      )}
-                      content={
-                        <React.Fragment>
                           <div
                             className={classNames(
                               projectcss.all,
                               projectcss.__wab_text,
-                              sty.text__ndEoZ
+                              sty.text__hccNx
                             )}
                           >
-                            {"Why do you want to disconnect this member?"}
+                            {"Bacharel"}
                           </div>
                           <div
                             className={classNames(
                               projectcss.all,
-                              sty.freeBox___7PVd7
+                              projectcss.__wab_text,
+                              sty.text__aot9G
                             )}
                           >
-                            <LoginButton
-                              data-plasmic-name={"why6"}
-                              data-plasmic-override={overrides.why6}
-                              className={classNames("__wab_instance", sty.why6)}
-                              color={"softRed"}
-                              shape={"rounded"}
-                              size={"minimal"}
-                            >
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__dMid5
-                                )}
-                              >
-                                <React.Fragment>
-                                  <span
-                                    className={
-                                      "plasmic_default__all plasmic_default__span"
-                                    }
-                                    style={{ color: "#000000" }}
-                                  >
-                                    {"Unmet performance expectations"}
-                                  </span>
-                                </React.Fragment>
-                              </div>
-                            </LoginButton>
-                            <LoginButton
-                              data-plasmic-name={"why7"}
-                              data-plasmic-override={overrides.why7}
-                              className={classNames("__wab_instance", sty.why7)}
-                              color={"softRed"}
-                              shape={"rounded"}
-                              size={"minimal"}
-                            >
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__nNp3
-                                )}
-                              >
-                                <React.Fragment>
-                                  <span
-                                    className={
-                                      "plasmic_default__all plasmic_default__span"
-                                    }
-                                    style={{ color: "#000000" }}
-                                  >
-                                    {"Lack of collaboration or teamwork"}
-                                  </span>
-                                </React.Fragment>
-                              </div>
-                            </LoginButton>
-                            <LoginButton
-                              data-plasmic-name={"why8"}
-                              data-plasmic-override={overrides.why8}
-                              className={classNames("__wab_instance", sty.why8)}
-                              color={"softRed"}
-                              shape={"rounded"}
-                              size={"minimal"}
-                            >
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__xg6Ww
-                                )}
-                              >
-                                <React.Fragment>
-                                  <span
-                                    className={
-                                      "plasmic_default__all plasmic_default__span"
-                                    }
-                                    style={{ color: "#000000" }}
-                                  >
-                                    {
-                                      "Failure to meet deadlines or community goals"
-                                    }
-                                  </span>
-                                </React.Fragment>
-                              </div>
-                            </LoginButton>
-                            <LoginButton
-                              data-plasmic-name={"why9"}
-                              data-plasmic-override={overrides.why9}
-                              className={classNames("__wab_instance", sty.why9)}
-                              color={"softRed"}
-                              shape={"rounded"}
-                              size={"minimal"}
-                            >
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__wYdUj
-                                )}
-                              >
-                                <React.Fragment>
-                                  <span
-                                    className={
-                                      "plasmic_default__all plasmic_default__span"
-                                    }
-                                    style={{ color: "#000000" }}
-                                  >
-                                    {"Loss of trust or ethical misalignment"}
-                                  </span>
-                                </React.Fragment>
-                              </div>
-                            </LoginButton>
+                            {"Gold"}
                           </div>
-                        </React.Fragment>
-                      }
-                      footer={
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__jvGmh
-                          )}
-                        >
-                          <Button2
-                            data-plasmic-name={"confirmDisconnection"}
-                            data-plasmic-override={
-                              overrides.confirmDisconnection
-                            }
-                            color={"muted"}
-                            label={
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text___0Je6V
-                                )}
-                              >
-                                {"Confirm"}
-                              </div>
-                            }
-                            onClick={async event => {
-                              const $steps = {};
-
-                              $steps["updateDisconnectCompanyIsOpen"] = true
-                                ? (() => {
-                                    const actionArgs = {
-                                      variable: {
-                                        objRoot: $state,
-                                        variablePath: [
-                                          "disconnectCompany4",
-                                          "isOpen"
-                                        ]
-                                      },
-                                      operation: 0,
-                                      value: false
-                                    };
-                                    return (({
-                                      variable,
-                                      value,
-                                      startIndex,
-                                      deleteCount
-                                    }) => {
-                                      if (!variable) {
-                                        return;
-                                      }
-                                      const { objRoot, variablePath } =
-                                        variable;
-
-                                      $stateSet(objRoot, variablePath, value);
-                                      return value;
-                                    })?.apply(null, [actionArgs]);
-                                  })()
-                                : undefined;
-                              if (
-                                $steps["updateDisconnectCompanyIsOpen"] !=
-                                  null &&
-                                typeof $steps[
-                                  "updateDisconnectCompanyIsOpen"
-                                ] === "object" &&
-                                typeof $steps["updateDisconnectCompanyIsOpen"]
-                                  .then === "function"
-                              ) {
-                                $steps["updateDisconnectCompanyIsOpen"] =
-                                  await $steps["updateDisconnectCompanyIsOpen"];
-                              }
-                            }}
-                            size={"extraSmall"}
-                            type={"soft"}
-                          />
-
-                          <Button2
-                            color={"muted"}
-                            label={
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__f02I
-                                )}
-                              >
-                                {"Cancel"}
-                              </div>
-                            }
-                            onClick={async event => {
-                              const $steps = {};
-
-                              $steps["updateDisconnectCompanyIsOpen"] = true
-                                ? (() => {
-                                    const actionArgs = {
-                                      variable: {
-                                        objRoot: $state,
-                                        variablePath: [
-                                          "disconnectCompany4",
-                                          "isOpen"
-                                        ]
-                                      },
-                                      operation: 0,
-                                      value: false
-                                    };
-                                    return (({
-                                      variable,
-                                      value,
-                                      startIndex,
-                                      deleteCount
-                                    }) => {
-                                      if (!variable) {
-                                        return;
-                                      }
-                                      const { objRoot, variablePath } =
-                                        variable;
-
-                                      $stateSet(objRoot, variablePath, value);
-                                      return value;
-                                    })?.apply(null, [actionArgs]);
-                                  })()
-                                : undefined;
-                              if (
-                                $steps["updateDisconnectCompanyIsOpen"] !=
-                                  null &&
-                                typeof $steps[
-                                  "updateDisconnectCompanyIsOpen"
-                                ] === "object" &&
-                                typeof $steps["updateDisconnectCompanyIsOpen"]
-                                  .then === "function"
-                              ) {
-                                $steps["updateDisconnectCompanyIsOpen"] =
-                                  await $steps["updateDisconnectCompanyIsOpen"];
-                              }
-                            }}
-                            size={"extraSmall"}
-                            type={"soft"}
-                          />
                         </div>
-                      }
-                      heading={
-                        <h3
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.h3,
-                            projectcss.__wab_text,
-                            sty.h3__s5Noe
-                          )}
-                        >
-                          {"disconnect"}
-                        </h3>
-                      }
-                      isOpen={generateStateValueProp($state, [
-                        "disconnectCompany4",
-                        "isOpen"
-                      ])}
-                      onOpenChange={async (...eventArgs: any) => {
-                        generateStateOnChangeProp($state, [
-                          "disconnectCompany4",
-                          "isOpen"
-                        ]).apply(null, eventArgs);
-
-                        if (
-                          eventArgs.length > 1 &&
-                          eventArgs[1] &&
-                          eventArgs[1]._plasmic_state_init_
-                        ) {
-                          return;
-                        }
-                      }}
-                      trigger={
-                        <LoginButton
-                          className={classNames(
-                            "__wab_instance",
-                            sty.loginButton__lttqt
-                          )}
-                          color={"link"}
-                          size={"minimal"}
-                        >
-                          <ReportSvgrepoComSvgIcon
-                            className={classNames(
-                              projectcss.all,
-                              sty.svg___4Qbsn
-                            )}
-                            role={"img"}
-                          />
-                        </LoginButton>
-                      }
-                    />
-
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__b5FOy)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__hccNx
-                        )}
-                      >
-                        {"Bacharel"}
                       </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__aot9G
-                        )}
-                      >
-                        {"Gold"}
-                      </div>
-                    </div>
-                  </div>
+                    );
+                  })}
                   <h3
                     className={classNames(
                       projectcss.all,
@@ -4606,499 +4685,664 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                   >
                     {"Connection requests"}
                   </h3>
-                  <div
-                    data-plasmic-name={"requestMember"}
-                    data-plasmic-override={overrides.requestMember}
-                    className={classNames(projectcss.all, sty.requestMember)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__rdJYa)}
-                    >
-                      <PlasmicImg__
-                        data-plasmic-name={"profilePic3"}
-                        data-plasmic-override={overrides.profilePic3}
-                        alt={""}
-                        className={classNames(sty.profilePic3)}
-                        displayHeight={"30px"}
-                        displayMaxHeight={"none"}
-                        displayMaxWidth={"100%"}
-                        displayMinHeight={"0"}
-                        displayMinWidth={"0"}
-                        displayWidth={"30px"}
-                        loading={"lazy"}
-                      />
+                  {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
+                    (() => {
+                      try {
+                        return $props.formData?.member_requests || [1];
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return [];
+                        }
+                        throw e;
+                      }
+                    })()
+                  ).map((__plasmic_item_0, __plasmic_idx_0) => {
+                    const currentItem = __plasmic_item_0;
+                    const currentIndex = __plasmic_idx_0;
+                    return (
+                      <div
+                        data-plasmic-name={"requestMember"}
+                        data-plasmic-override={overrides.requestMember}
+                        className={classNames(
+                          projectcss.all,
+                          sty.requestMember
+                        )}
+                        key={currentIndex}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox__bH9Ou
+                          )}
+                        >
+                          <PlasmicImg__
+                            data-plasmic-name={"profilePic6"}
+                            data-plasmic-override={overrides.profilePic6}
+                            alt={""}
+                            className={classNames(sty.profilePic6)}
+                            displayHeight={"30px"}
+                            displayMaxHeight={"none"}
+                            displayMaxWidth={"100%"}
+                            displayMinHeight={"0"}
+                            displayMinWidth={"0"}
+                            displayWidth={"30px"}
+                            loading={"lazy"}
+                            src={(() => {
+                              try {
+                                return currentItem["Profile pic"];
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return undefined;
+                                }
+                                throw e;
+                              }
+                            })()}
+                          />
 
-                      <PlasmicLink__
-                        data-plasmic-name={"firstName3"}
-                        data-plasmic-override={overrides.firstName3}
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.a,
-                          projectcss.__wab_text,
-                          sty.firstName3
-                        )}
-                        component={Link}
-                        href={`/a-rating-members`}
-                        legacyBehavior={false}
-                        platform={"nextjs"}
-                      >
-                        {"Member"}
-                      </PlasmicLink__>
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox___4Rj1)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__bcTVb
-                        )}
-                      >
-                        <div
-                          data-plasmic-name={"firstName4"}
-                          data-plasmic-override={overrides.firstName4}
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.firstName4
-                          )}
-                        >
-                          {"Name"}
-                        </div>
-                        <div
-                          data-plasmic-name={"lastName2"}
-                          data-plasmic-override={overrides.lastName2}
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.lastName2
-                          )}
-                        >
-                          {"Last Name"}
-                        </div>
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__dRVf
-                        )}
-                      >
-                        <div
-                          data-plasmic-name={"age2"}
-                          data-plasmic-override={overrides.age2}
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.age2
-                          )}
-                        >
-                          {"28"}
+                          <PlasmicLink__
+                            data-plasmic-name={"firstName2"}
+                            data-plasmic-override={overrides.firstName2}
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.a,
+                              projectcss.__wab_text,
+                              sty.firstName2
+                            )}
+                            component={Link}
+                            legacyBehavior={false}
+                            platform={"nextjs"}
+                          >
+                            <React.Fragment>
+                              {(() => {
+                                try {
+                                  return currentItem["First name"];
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return "Member";
+                                  }
+                                  throw e;
+                                }
+                              })()}
+                            </React.Fragment>
+                          </PlasmicLink__>
                         </div>
                         <div
                           className={classNames(
                             projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__mrM8A
+                            sty.freeBox__eAj7L
                           )}
                         >
-                          {"years"}
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              sty.freeBox__hqw5N
+                            )}
+                          >
+                            <div
+                              data-plasmic-name={"age3"}
+                              data-plasmic-override={overrides.age3}
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.age3
+                              )}
+                            >
+                              <React.Fragment>
+                                {(() => {
+                                  try {
+                                    return currentItem["Birthday"];
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return "28";
+                                    }
+                                    throw e;
+                                  }
+                                })()}
+                              </React.Fragment>
+                            </div>
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__tRwGo
+                              )}
+                            >
+                              {"years"}
+                            </div>
+                          </div>
+                          <div
+                            data-plasmic-name={"location6"}
+                            data-plasmic-override={overrides.location6}
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.location6
+                            )}
+                          >
+                            <React.Fragment>
+                              {(() => {
+                                try {
+                                  return currentItem["Location"];
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return "New York";
+                                  }
+                                  throw e;
+                                }
+                              })()}
+                            </React.Fragment>
+                          </div>
                         </div>
-                      </div>
-                      <div
-                        data-plasmic-name={"location4"}
-                        data-plasmic-override={overrides.location4}
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.location4
-                        )}
-                      >
-                        {"New York"}
-                      </div>
-                    </div>
-                    <div
-                      data-plasmic-name={"office3"}
-                      data-plasmic-override={overrides.office3}
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.office3
-                      )}
-                    >
-                      {"Charge"}
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__hr8Vl)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__b7Lx
-                        )}
-                      >
                         <div
+                          data-plasmic-name={"office3"}
+                          data-plasmic-override={overrides.office3}
                           className={classNames(
                             projectcss.all,
                             projectcss.__wab_text,
-                            sty.text___3DJvv
+                            sty.office3
                           )}
                         >
-                          {"Speciality"}
+                          {"Charge"}
                         </div>
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__aVq55
-                        )}
-                      >
                         <div
                           className={classNames(
                             projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text___8Te2W
+                            sty.freeBox__hr8Vl
                           )}
                         >
-                          {"Speciality"}
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              sty.freeBox__b7Lx
+                            )}
+                          >
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text___3DJvv
+                              )}
+                            >
+                              {"Speciality"}
+                            </div>
+                          </div>
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              sty.freeBox__aVq55
+                            )}
+                          >
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text___8Te2W
+                              )}
+                            >
+                              {"Speciality"}
+                            </div>
+                          </div>
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              sty.freeBox__z89Bt
+                            )}
+                          >
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__xsJil
+                              )}
+                            >
+                              {"Speciality"}
+                            </div>
+                          </div>
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              sty.freeBox__psS1
+                            )}
+                          >
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__zRnvk
+                              )}
+                            >
+                              {"Speciality"}
+                            </div>
+                          </div>
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              sty.freeBox__eWQkQ
+                            )}
+                          >
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__rhCjq
+                              )}
+                            >
+                              {"Speciality"}
+                            </div>
+                          </div>
                         </div>
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__z89Bt
-                        )}
-                      >
+                        {(() => {
+                          const child$Props = {
+                            className: classNames(
+                              "__wab_instance",
+                              sty.requestInf2
+                            ),
+                            content: (
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox__et25K
+                                )}
+                              >
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__pk5Be
+                                  )}
+                                >
+                                  {"This member is requesting partnership"}
+                                </div>
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.freeBox__tcDhb
+                                  )}
+                                >
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      sty.freeBox__kwy65
+                                    )}
+                                  >
+                                    <PlasmicImg__
+                                      data-plasmic-name={"profilePic4"}
+                                      data-plasmic-override={
+                                        overrides.profilePic4
+                                      }
+                                      alt={""}
+                                      className={classNames(sty.profilePic4)}
+                                      displayHeight={"30px"}
+                                      displayMaxHeight={"none"}
+                                      displayMaxWidth={"100%"}
+                                      displayMinHeight={"0"}
+                                      displayMinWidth={"0"}
+                                      displayWidth={"30px"}
+                                      loading={"lazy"}
+                                    />
+
+                                    <PlasmicLink__
+                                      data-plasmic-name={"firstName5"}
+                                      data-plasmic-override={
+                                        overrides.firstName5
+                                      }
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.a,
+                                        projectcss.__wab_text,
+                                        sty.firstName5
+                                      )}
+                                      component={Link}
+                                      legacyBehavior={false}
+                                      platform={"nextjs"}
+                                    >
+                                      {"Member"}
+                                    </PlasmicLink__>
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.__wab_text,
+                                        sty.text___8GkhW
+                                      )}
+                                    >
+                                      {"request connection"}
+                                    </div>
+                                  </div>
+                                  <div
+                                    data-plasmic-name={"shortMessage2"}
+                                    data-plasmic-override={
+                                      overrides.shortMessage2
+                                    }
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.shortMessage2
+                                    )}
+                                  >
+                                    {
+                                      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+                                    }
+                                  </div>
+                                </div>
+                              </div>
+                            ),
+                            footer: (
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox__jWoai
+                                )}
+                              >
+                                <Button2
+                                  data-plasmic-name={"confirmConnection2"}
+                                  data-plasmic-override={
+                                    overrides.confirmConnection2
+                                  }
+                                  color={"muted"}
+                                  label={
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.__wab_text,
+                                        sty.text__s5A9D
+                                      )}
+                                    >
+                                      {"Confirm"}
+                                    </div>
+                                  }
+                                  onClick={async event => {
+                                    const $steps = {};
+
+                                    $steps["runCode"] = true
+                                      ? (() => {
+                                          const actionArgs = {
+                                            customFunction: async () => {
+                                              return $props.onSave({
+                                                action: "accept_member",
+                                                connectionId: currentItem.id
+                                              });
+                                            }
+                                          };
+                                          return (({ customFunction }) => {
+                                            return customFunction();
+                                          })?.apply(null, [actionArgs]);
+                                        })()
+                                      : undefined;
+                                    if (
+                                      $steps["runCode"] != null &&
+                                      typeof $steps["runCode"] === "object" &&
+                                      typeof $steps["runCode"].then ===
+                                        "function"
+                                    ) {
+                                      $steps["runCode"] =
+                                        await $steps["runCode"];
+                                    }
+
+                                    $steps["updateRequestInfIsOpen"] = true
+                                      ? (() => {
+                                          const actionArgs = {
+                                            variable: {
+                                              objRoot: $state,
+                                              variablePath: [
+                                                "requestInf2",
+                                                "isOpen"
+                                              ]
+                                            },
+                                            operation: 0,
+                                            value: false
+                                          };
+                                          return (({
+                                            variable,
+                                            value,
+                                            startIndex,
+                                            deleteCount
+                                          }) => {
+                                            if (!variable) {
+                                              return;
+                                            }
+                                            const { objRoot, variablePath } =
+                                              variable;
+
+                                            $stateSet(
+                                              objRoot,
+                                              variablePath,
+                                              value
+                                            );
+                                            return value;
+                                          })?.apply(null, [actionArgs]);
+                                        })()
+                                      : undefined;
+                                    if (
+                                      $steps["updateRequestInfIsOpen"] !=
+                                        null &&
+                                      typeof $steps[
+                                        "updateRequestInfIsOpen"
+                                      ] === "object" &&
+                                      typeof $steps["updateRequestInfIsOpen"]
+                                        .then === "function"
+                                    ) {
+                                      $steps["updateRequestInfIsOpen"] =
+                                        await $steps["updateRequestInfIsOpen"];
+                                    }
+                                  }}
+                                  size={"extraSmall"}
+                                  type={"soft"}
+                                />
+
+                                <Button2
+                                  data-plasmic-name={"cancelConnection2"}
+                                  data-plasmic-override={
+                                    overrides.cancelConnection2
+                                  }
+                                  color={"muted"}
+                                  label={
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.__wab_text,
+                                        sty.text__yi1Tw
+                                      )}
+                                    >
+                                      {"Cancel"}
+                                    </div>
+                                  }
+                                  onClick={async event => {
+                                    const $steps = {};
+
+                                    $steps["runCode"] = true
+                                      ? (() => {
+                                          const actionArgs = {
+                                            customFunction: async () => {
+                                              return $props.onSave({
+                                                action: "reject_member",
+                                                connectionId: currentItem.id
+                                              });
+                                            }
+                                          };
+                                          return (({ customFunction }) => {
+                                            return customFunction();
+                                          })?.apply(null, [actionArgs]);
+                                        })()
+                                      : undefined;
+                                    if (
+                                      $steps["runCode"] != null &&
+                                      typeof $steps["runCode"] === "object" &&
+                                      typeof $steps["runCode"].then ===
+                                        "function"
+                                    ) {
+                                      $steps["runCode"] =
+                                        await $steps["runCode"];
+                                    }
+
+                                    $steps["updateRequestInfIsOpen"] = true
+                                      ? (() => {
+                                          const actionArgs = {
+                                            variable: {
+                                              objRoot: $state,
+                                              variablePath: [
+                                                "requestInf2",
+                                                "isOpen"
+                                              ]
+                                            },
+                                            operation: 0,
+                                            value: false
+                                          };
+                                          return (({
+                                            variable,
+                                            value,
+                                            startIndex,
+                                            deleteCount
+                                          }) => {
+                                            if (!variable) {
+                                              return;
+                                            }
+                                            const { objRoot, variablePath } =
+                                              variable;
+
+                                            $stateSet(
+                                              objRoot,
+                                              variablePath,
+                                              value
+                                            );
+                                            return value;
+                                          })?.apply(null, [actionArgs]);
+                                        })()
+                                      : undefined;
+                                    if (
+                                      $steps["updateRequestInfIsOpen"] !=
+                                        null &&
+                                      typeof $steps[
+                                        "updateRequestInfIsOpen"
+                                      ] === "object" &&
+                                      typeof $steps["updateRequestInfIsOpen"]
+                                        .then === "function"
+                                    ) {
+                                      $steps["updateRequestInfIsOpen"] =
+                                        await $steps["updateRequestInfIsOpen"];
+                                    }
+                                  }}
+                                  size={"extraSmall"}
+                                  type={"soft"}
+                                />
+                              </div>
+                            ),
+                            heading: (
+                              <h3
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.h3,
+                                  projectcss.__wab_text,
+                                  sty.h3___12G
+                                )}
+                              >
+                                {"new connection"}
+                              </h3>
+                            ),
+                            isOpen: generateStateValueProp($state, [
+                              "requestInf2",
+                              __plasmic_idx_0,
+                              "isOpen"
+                            ]),
+                            onOpenChange: async (...eventArgs: any) => {
+                              generateStateOnChangeProp($state, [
+                                "requestInf2",
+                                __plasmic_idx_0,
+                                "isOpen"
+                              ]).apply(null, eventArgs);
+
+                              if (
+                                eventArgs.length > 1 &&
+                                eventArgs[1] &&
+                                eventArgs[1]._plasmic_state_init_
+                              ) {
+                                return;
+                              }
+                            },
+                            trigger: (
+                              <LoginButton
+                                className={classNames(
+                                  "__wab_instance",
+                                  sty.loginButton__kkRej
+                                )}
+                                color={"link"}
+                                size={"minimal"}
+                              >
+                                <Icon12Icon
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.svg___9GmK9
+                                  )}
+                                  role={"img"}
+                                />
+                              </LoginButton>
+                            )
+                          };
+
+                          initializePlasmicStates(
+                            $state,
+                            [
+                              {
+                                name: "requestInf2[].isOpen",
+                                initFunc: ({ $props, $state, $queries, $q }) =>
+                                  false
+                              }
+                            ],
+                            [__plasmic_idx_0]
+                          );
+                          return (
+                            <Modal
+                              data-plasmic-name={"requestInf2"}
+                              data-plasmic-override={overrides.requestInf2}
+                              {...child$Props}
+                            />
+                          );
+                        })()}
                         <div
                           className={classNames(
                             projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__xsJil
-                          )}
-                        >
-                          {"Speciality"}
-                        </div>
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__psS1
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__zRnvk
-                          )}
-                        >
-                          {"Speciality"}
-                        </div>
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__eWQkQ
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__rhCjq
-                          )}
-                        >
-                          {"Speciality"}
-                        </div>
-                      </div>
-                    </div>
-                    <Modal
-                      data-plasmic-name={"requestInf2"}
-                      data-plasmic-override={overrides.requestInf2}
-                      className={classNames("__wab_instance", sty.requestInf2)}
-                      content={
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__et25K
+                            sty.freeBox__oInq9
                           )}
                         >
                           <div
                             className={classNames(
                               projectcss.all,
                               projectcss.__wab_text,
-                              sty.text__pk5Be
+                              sty.text__lyFvt
                             )}
                           >
-                            {"This member is requesting partnership"}
+                            {"Bacharel"}
                           </div>
                           <div
                             className={classNames(
                               projectcss.all,
-                              sty.freeBox__tcDhb
+                              projectcss.__wab_text,
+                              sty.text__tEd9D
                             )}
                           >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox__kwy65
-                              )}
-                            >
-                              <PlasmicImg__
-                                data-plasmic-name={"profilePic4"}
-                                data-plasmic-override={overrides.profilePic4}
-                                alt={""}
-                                className={classNames(sty.profilePic4)}
-                                displayHeight={"30px"}
-                                displayMaxHeight={"none"}
-                                displayMaxWidth={"100%"}
-                                displayMinHeight={"0"}
-                                displayMinWidth={"0"}
-                                displayWidth={"30px"}
-                                loading={"lazy"}
-                              />
-
-                              <PlasmicLink__
-                                data-plasmic-name={"firstName5"}
-                                data-plasmic-override={overrides.firstName5}
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.a,
-                                  projectcss.__wab_text,
-                                  sty.firstName5
-                                )}
-                                component={Link}
-                                legacyBehavior={false}
-                                platform={"nextjs"}
-                              >
-                                {"Member"}
-                              </PlasmicLink__>
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text___8GkhW
-                                )}
-                              >
-                                {"request connection"}
-                              </div>
-                            </div>
-                            <div
-                              data-plasmic-name={"shortMessage2"}
-                              data-plasmic-override={overrides.shortMessage2}
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.shortMessage2
-                              )}
-                            >
-                              {
-                                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-                              }
-                            </div>
+                            {"Gold"}
                           </div>
                         </div>
-                      }
-                      footer={
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__jWoai
-                          )}
-                        >
-                          <Button2
-                            data-plasmic-name={"confirmConnection2"}
-                            data-plasmic-override={overrides.confirmConnection2}
-                            color={"muted"}
-                            label={
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__s5A9D
-                                )}
-                              >
-                                {"Confirm"}
-                              </div>
-                            }
-                            onClick={async event => {
-                              const $steps = {};
-
-                              $steps["updateRequestInfIsOpen"] = true
-                                ? (() => {
-                                    const actionArgs = {
-                                      variable: {
-                                        objRoot: $state,
-                                        variablePath: ["requestInf2", "isOpen"]
-                                      },
-                                      operation: 0,
-                                      value: false
-                                    };
-                                    return (({
-                                      variable,
-                                      value,
-                                      startIndex,
-                                      deleteCount
-                                    }) => {
-                                      if (!variable) {
-                                        return;
-                                      }
-                                      const { objRoot, variablePath } =
-                                        variable;
-
-                                      $stateSet(objRoot, variablePath, value);
-                                      return value;
-                                    })?.apply(null, [actionArgs]);
-                                  })()
-                                : undefined;
-                              if (
-                                $steps["updateRequestInfIsOpen"] != null &&
-                                typeof $steps["updateRequestInfIsOpen"] ===
-                                  "object" &&
-                                typeof $steps["updateRequestInfIsOpen"].then ===
-                                  "function"
-                              ) {
-                                $steps["updateRequestInfIsOpen"] =
-                                  await $steps["updateRequestInfIsOpen"];
-                              }
-                            }}
-                            size={"extraSmall"}
-                            type={"soft"}
-                          />
-
-                          <Button2
-                            data-plasmic-name={"cancelConnection2"}
-                            data-plasmic-override={overrides.cancelConnection2}
-                            color={"muted"}
-                            label={
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__yi1Tw
-                                )}
-                              >
-                                {"Cancel"}
-                              </div>
-                            }
-                            onClick={async event => {
-                              const $steps = {};
-
-                              $steps["updateRequestInfIsOpen"] = true
-                                ? (() => {
-                                    const actionArgs = {
-                                      variable: {
-                                        objRoot: $state,
-                                        variablePath: ["requestInf2", "isOpen"]
-                                      },
-                                      operation: 0,
-                                      value: false
-                                    };
-                                    return (({
-                                      variable,
-                                      value,
-                                      startIndex,
-                                      deleteCount
-                                    }) => {
-                                      if (!variable) {
-                                        return;
-                                      }
-                                      const { objRoot, variablePath } =
-                                        variable;
-
-                                      $stateSet(objRoot, variablePath, value);
-                                      return value;
-                                    })?.apply(null, [actionArgs]);
-                                  })()
-                                : undefined;
-                              if (
-                                $steps["updateRequestInfIsOpen"] != null &&
-                                typeof $steps["updateRequestInfIsOpen"] ===
-                                  "object" &&
-                                typeof $steps["updateRequestInfIsOpen"].then ===
-                                  "function"
-                              ) {
-                                $steps["updateRequestInfIsOpen"] =
-                                  await $steps["updateRequestInfIsOpen"];
-                              }
-                            }}
-                            size={"extraSmall"}
-                            type={"soft"}
-                          />
-                        </div>
-                      }
-                      heading={
-                        <h3
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.h3,
-                            projectcss.__wab_text,
-                            sty.h3___12G
-                          )}
-                        >
-                          {"new connection"}
-                        </h3>
-                      }
-                      isOpen={generateStateValueProp($state, [
-                        "requestInf2",
-                        "isOpen"
-                      ])}
-                      onOpenChange={async (...eventArgs: any) => {
-                        generateStateOnChangeProp($state, [
-                          "requestInf2",
-                          "isOpen"
-                        ]).apply(null, eventArgs);
-
-                        if (
-                          eventArgs.length > 1 &&
-                          eventArgs[1] &&
-                          eventArgs[1]._plasmic_state_init_
-                        ) {
-                          return;
-                        }
-                      }}
-                      trigger={
-                        <LoginButton
-                          className={classNames(
-                            "__wab_instance",
-                            sty.loginButton__kkRej
-                          )}
-                          color={"link"}
-                          size={"minimal"}
-                        >
-                          <Icon12Icon
-                            className={classNames(
-                              projectcss.all,
-                              sty.svg___9GmK9
-                            )}
-                            role={"img"}
-                          />
-                        </LoginButton>
-                      }
-                    />
-
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__oInq9)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__lyFvt
-                        )}
-                      >
-                        {"Bacharel"}
                       </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__tEd9D
-                        )}
-                      >
-                        {"Gold"}
-                      </div>
-                    </div>
-                  </div>
+                    );
+                  })}
                 </React.Fragment>
               }
               footer={
@@ -9753,7 +9997,6 @@ const PlasmicDescendants = {
     "connectedCompany",
     "companyLogo",
     "companyName",
-    "companyName2",
     "companyType",
     "averageRate",
     "rateSum2",
@@ -9771,7 +10014,6 @@ const PlasmicDescendants = {
     "requestCompany2",
     "companyLogo6",
     "companyName9",
-    "companyName10",
     "companyType3",
     "averageRate4",
     "rateSum4",
@@ -9790,8 +10032,6 @@ const PlasmicDescendants = {
     "connectedMembers",
     "profilePic2",
     "firstName",
-    "firstName2",
-    "lastName",
     "age",
     "location3",
     "office2",
@@ -9802,12 +10042,10 @@ const PlasmicDescendants = {
     "why9",
     "confirmDisconnection",
     "requestMember",
-    "profilePic3",
-    "firstName3",
-    "firstName4",
-    "lastName2",
-    "age2",
-    "location4",
+    "profilePic6",
+    "firstName2",
+    "age3",
+    "location6",
     "office3",
     "requestInf2",
     "profilePic4",
@@ -9920,7 +10158,6 @@ const PlasmicDescendants = {
     "connectedCompany",
     "companyLogo",
     "companyName",
-    "companyName2",
     "companyType",
     "averageRate",
     "rateSum2",
@@ -9938,7 +10175,6 @@ const PlasmicDescendants = {
     "requestCompany2",
     "companyLogo6",
     "companyName9",
-    "companyName10",
     "companyType3",
     "averageRate4",
     "rateSum4",
@@ -9957,8 +10193,6 @@ const PlasmicDescendants = {
     "connectedMembers",
     "profilePic2",
     "firstName",
-    "firstName2",
-    "lastName",
     "age",
     "location3",
     "office2",
@@ -9969,12 +10203,10 @@ const PlasmicDescendants = {
     "why9",
     "confirmDisconnection",
     "requestMember",
-    "profilePic3",
-    "firstName3",
-    "firstName4",
-    "lastName2",
-    "age2",
-    "location4",
+    "profilePic6",
+    "firstName2",
+    "age3",
+    "location6",
     "office3",
     "requestInf2",
     "profilePic4",
@@ -9993,7 +10225,6 @@ const PlasmicDescendants = {
     "connectedCompany",
     "companyLogo",
     "companyName",
-    "companyName2",
     "companyType",
     "averageRate",
     "rateSum2",
@@ -10011,7 +10242,6 @@ const PlasmicDescendants = {
     "requestCompany2",
     "companyLogo6",
     "companyName9",
-    "companyName10",
     "companyType3",
     "averageRate4",
     "rateSum4",
@@ -10031,7 +10261,6 @@ const PlasmicDescendants = {
     "connectedCompany",
     "companyLogo",
     "companyName",
-    "companyName2",
     "companyType",
     "averageRate",
     "rateSum2",
@@ -10049,7 +10278,6 @@ const PlasmicDescendants = {
   ],
   companyLogo: ["companyLogo"],
   companyName: ["companyName"],
-  companyName2: ["companyName2"],
   companyType: ["companyType"],
   averageRate: ["averageRate"],
   rateSum2: ["rateSum2"],
@@ -10076,7 +10304,6 @@ const PlasmicDescendants = {
     "requestCompany2",
     "companyLogo6",
     "companyName9",
-    "companyName10",
     "companyType3",
     "averageRate4",
     "rateSum4",
@@ -10094,7 +10321,6 @@ const PlasmicDescendants = {
   ],
   companyLogo6: ["companyLogo6"],
   companyName9: ["companyName9"],
-  companyName10: ["companyName10"],
   companyType3: ["companyType3"],
   averageRate4: ["averageRate4"],
   rateSum4: ["rateSum4"],
@@ -10122,8 +10348,6 @@ const PlasmicDescendants = {
     "connectedMembers",
     "profilePic2",
     "firstName",
-    "firstName2",
-    "lastName",
     "age",
     "location3",
     "office2",
@@ -10134,12 +10358,10 @@ const PlasmicDescendants = {
     "why9",
     "confirmDisconnection",
     "requestMember",
-    "profilePic3",
-    "firstName3",
-    "firstName4",
-    "lastName2",
-    "age2",
-    "location4",
+    "profilePic6",
+    "firstName2",
+    "age3",
+    "location6",
     "office3",
     "requestInf2",
     "profilePic4",
@@ -10152,8 +10374,6 @@ const PlasmicDescendants = {
     "connectedMembers",
     "profilePic2",
     "firstName",
-    "firstName2",
-    "lastName",
     "age",
     "location3",
     "office2",
@@ -10166,8 +10386,6 @@ const PlasmicDescendants = {
   ],
   profilePic2: ["profilePic2"],
   firstName: ["firstName"],
-  firstName2: ["firstName2"],
-  lastName: ["lastName"],
   age: ["age"],
   location3: ["location3"],
   office2: ["office2"],
@@ -10186,12 +10404,10 @@ const PlasmicDescendants = {
   confirmDisconnection: ["confirmDisconnection"],
   requestMember: [
     "requestMember",
-    "profilePic3",
-    "firstName3",
-    "firstName4",
-    "lastName2",
-    "age2",
-    "location4",
+    "profilePic6",
+    "firstName2",
+    "age3",
+    "location6",
     "office3",
     "requestInf2",
     "profilePic4",
@@ -10200,12 +10416,10 @@ const PlasmicDescendants = {
     "confirmConnection2",
     "cancelConnection2"
   ],
-  profilePic3: ["profilePic3"],
-  firstName3: ["firstName3"],
-  firstName4: ["firstName4"],
-  lastName2: ["lastName2"],
-  age2: ["age2"],
-  location4: ["location4"],
+  profilePic6: ["profilePic6"],
+  firstName2: ["firstName2"],
+  age3: ["age3"],
+  location6: ["location6"],
   office3: ["office3"],
   requestInf2: [
     "requestInf2",
@@ -10394,7 +10608,6 @@ type NodeDefaultElementType = {
   connectedCompany: "div";
   companyLogo: typeof PlasmicImg__;
   companyName: "a";
-  companyName2: "div";
   companyType: "div";
   averageRate: typeof AntdRate;
   rateSum2: "div";
@@ -10412,7 +10625,6 @@ type NodeDefaultElementType = {
   requestCompany2: "div";
   companyLogo6: typeof PlasmicImg__;
   companyName9: "a";
-  companyName10: "div";
   companyType3: "div";
   averageRate4: typeof AntdRate;
   rateSum4: "div";
@@ -10431,8 +10643,6 @@ type NodeDefaultElementType = {
   connectedMembers: "div";
   profilePic2: typeof PlasmicImg__;
   firstName: "a";
-  firstName2: "div";
-  lastName: "div";
   age: "div";
   location3: "div";
   office2: "div";
@@ -10443,12 +10653,10 @@ type NodeDefaultElementType = {
   why9: typeof LoginButton;
   confirmDisconnection: typeof Button2;
   requestMember: "div";
-  profilePic3: typeof PlasmicImg__;
-  firstName3: "a";
-  firstName4: "div";
-  lastName2: "div";
-  age2: "div";
-  location4: "div";
+  profilePic6: typeof PlasmicImg__;
+  firstName2: "a";
+  age3: "div";
+  location6: "div";
   office3: "div";
   requestInf2: typeof Modal;
   profilePic4: typeof PlasmicImg__;
@@ -10604,7 +10812,6 @@ export const PlasmicACommunityDashboard = Object.assign(
     connectedCompany: makeNodeComponent("connectedCompany"),
     companyLogo: makeNodeComponent("companyLogo"),
     companyName: makeNodeComponent("companyName"),
-    companyName2: makeNodeComponent("companyName2"),
     companyType: makeNodeComponent("companyType"),
     averageRate: makeNodeComponent("averageRate"),
     rateSum2: makeNodeComponent("rateSum2"),
@@ -10622,7 +10829,6 @@ export const PlasmicACommunityDashboard = Object.assign(
     requestCompany2: makeNodeComponent("requestCompany2"),
     companyLogo6: makeNodeComponent("companyLogo6"),
     companyName9: makeNodeComponent("companyName9"),
-    companyName10: makeNodeComponent("companyName10"),
     companyType3: makeNodeComponent("companyType3"),
     averageRate4: makeNodeComponent("averageRate4"),
     rateSum4: makeNodeComponent("rateSum4"),
@@ -10641,8 +10847,6 @@ export const PlasmicACommunityDashboard = Object.assign(
     connectedMembers: makeNodeComponent("connectedMembers"),
     profilePic2: makeNodeComponent("profilePic2"),
     firstName: makeNodeComponent("firstName"),
-    firstName2: makeNodeComponent("firstName2"),
-    lastName: makeNodeComponent("lastName"),
     age: makeNodeComponent("age"),
     location3: makeNodeComponent("location3"),
     office2: makeNodeComponent("office2"),
@@ -10653,12 +10857,10 @@ export const PlasmicACommunityDashboard = Object.assign(
     why9: makeNodeComponent("why9"),
     confirmDisconnection: makeNodeComponent("confirmDisconnection"),
     requestMember: makeNodeComponent("requestMember"),
-    profilePic3: makeNodeComponent("profilePic3"),
-    firstName3: makeNodeComponent("firstName3"),
-    firstName4: makeNodeComponent("firstName4"),
-    lastName2: makeNodeComponent("lastName2"),
-    age2: makeNodeComponent("age2"),
-    location4: makeNodeComponent("location4"),
+    profilePic6: makeNodeComponent("profilePic6"),
+    firstName2: makeNodeComponent("firstName2"),
+    age3: makeNodeComponent("age3"),
+    location6: makeNodeComponent("location6"),
     office3: makeNodeComponent("office3"),
     requestInf2: makeNodeComponent("requestInf2"),
     profilePic4: makeNodeComponent("profilePic4"),

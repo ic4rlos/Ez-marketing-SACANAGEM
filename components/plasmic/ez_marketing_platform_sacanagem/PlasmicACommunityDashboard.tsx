@@ -4997,6 +4997,20 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                                       displayMinWidth={"0"}
                                       displayWidth={"30px"}
                                       loading={"lazy"}
+                                      src={(() => {
+                                        try {
+                                          return currentItem["Profile pic"];
+                                        } catch (e) {
+                                          if (
+                                            e instanceof TypeError ||
+                                            e?.plasmicType ===
+                                              "PlasmicUndefinedDataError"
+                                          ) {
+                                            return undefined;
+                                          }
+                                          throw e;
+                                        }
+                                      })()}
                                     />
 
                                     <PlasmicLink__
@@ -5014,7 +5028,22 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                                       legacyBehavior={false}
                                       platform={"nextjs"}
                                     >
-                                      {"Member"}
+                                      <React.Fragment>
+                                        {(() => {
+                                          try {
+                                            return currentItem["First name"];
+                                          } catch (e) {
+                                            if (
+                                              e instanceof TypeError ||
+                                              e?.plasmicType ===
+                                                "PlasmicUndefinedDataError"
+                                            ) {
+                                              return "Member";
+                                            }
+                                            throw e;
+                                          }
+                                        })()}
+                                      </React.Fragment>
                                     </PlasmicLink__>
                                     <div
                                       className={classNames(
@@ -5037,9 +5066,22 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                                       sty.shortMessage2
                                     )}
                                   >
-                                    {
-                                      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-                                    }
+                                    <React.Fragment>
+                                      {(() => {
+                                        try {
+                                          return currentItem["short_message"];
+                                        } catch (e) {
+                                          if (
+                                            e instanceof TypeError ||
+                                            e?.plasmicType ===
+                                              "PlasmicUndefinedDataError"
+                                          ) {
+                                            return "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.";
+                                          }
+                                          throw e;
+                                        }
+                                      })()}
+                                    </React.Fragment>
                                   </div>
                                 </div>
                               </div>

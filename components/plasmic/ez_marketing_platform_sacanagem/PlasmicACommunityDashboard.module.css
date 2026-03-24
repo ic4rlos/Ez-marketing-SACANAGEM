@@ -1185,11 +1185,8 @@
 .sliderCarousel:global(.__wab_instance) {
   width: 100%;
   max-width: 100%;
-  flex-direction: row;
   object-fit: cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: block;
   min-width: 0;
 }
 .member {

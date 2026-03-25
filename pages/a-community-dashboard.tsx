@@ -186,6 +186,12 @@ export default function ACommunityDashboard() {
 
         const { data: profiles } = await supabase
           .from("User profile")
+          const profileIds = profiles?.map((p:any)=>p.id) || [];
+
+const { data: offices } = await supabase
+  .from("Multicharge")
+  .select("Office, User profile_id")
+  .in("User profile_id", profileIds);
           .select(`
             id,
             user_id,
@@ -208,6 +214,9 @@ export default function ACommunityDashboard() {
               "First name": profile?.["First name"] ?? "",
               "Last name": profile?.["Last name"] ?? "",
               Birthday: profile?.Birthday ?? ""
+
+                   // 🔥 NOVO
+      offices: userOffices 
             };
           });
 

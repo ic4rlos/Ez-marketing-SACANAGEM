@@ -188,19 +188,25 @@ export default function ACommunityDashboard() {
           .from("User profile")
           const profileIds = profiles?.map((p:any)=>p.id) || [];
 
+const { data: profiles } = await supabase
+  .from("User profile")
+  .select(`
+    id,
+    user_id,
+    "Profile pic",
+    "First name",
+    "Last name",
+    Birthday
+  `)
+  .in("user_id", userIds);
+
+// 👇 NOVO BLOCO (separado)
+const profileIds = profiles?.map((p:any)=>p.id) || [];
+
 const { data: offices } = await supabase
   .from("Multicharge")
   .select("Office, User profile_id")
   .in("User profile_id", profileIds);
-          .select(`
-            id,
-            user_id,
-            "Profile pic",
-            "First name",
-            "Last name",
-            Birthday
-          `)
-          .in("user_id", userIds);
 
         const format = (list:any[]) =>
           list.map((m:any)=>{

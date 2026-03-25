@@ -169,66 +169,73 @@ export default function ACommunityDashboard() {
         companyRequests = format(requests);
       }
 
-      // =========================
-      // 🔥 MEMBERS (CORRIGIDO)
-      // =========================
-      const { data: membersRaw } = await supabase
-        .from("community_members")
+// =========================
+// 🔥 MEMBERS (CORRIGIDO)
+// =========================
+const { data: membersRaw } = await supabase
+  .from("community_members")
   .select("id, user_id, status, short_message")
-        .eq("community_id", communityId);
+  .eq("community_id", communityId);
 
-      let connectedMembers:any[] = [];
-      let memberRequests:any[] = [];
+let connectedMembers:any[] = [];
+let memberRequests:any[] = [];
 
-      if (membersRaw?.length) {
+if (membersRaw?.length) {
 
-        const userIds = membersRaw.map(m => m.user_id);
+  const userIds = membersRaw.map(m => m.user_id);
 
-        const { data: profiles } = await supabase
-          .from("User profile")
-          const profileIds = profiles?.map((p:any)=>p.id) || [];
+  const { data: memberProfiles } = await supabase
+    .from("User profile")
+    .select(`
+      id,
+      user_id,
+      "Profile pic",
+      "First name",
+      "Last name",
+      Birthday
+    `)
+    .in("user_id", userIds);
 
-const { data: profiles } = await supabase
-  .from("User profile")
-  .select(`
-    id,
-    user_id,
-    "Profile pic",
-    "First name",
-    "Last name",
-    Birthday
-  `)
-  .in("user_id", userIds);
+  const profileIds = memberProfiles?.map((p:any)=>p.id) || [];
 
-// 👇 NOVO BLOCO (separado)
-const profileIds = profiles?.map((p:any)=>p.id) || [];
+  const { data: offices } = await supabase
+    .from("Multicharge")
+    .select("Office, User profile_id")
+    .in("User profile_id", profileIds);
 
-const { data: offices } = await supabase
-  .from("Multicharge")
-  .select("Office, User profile_id")
-  .in("User profile_id", profileIds);
+  const officesMap:any = {};
 
-        const format = (list:any[]) =>
-          list.map((m:any)=>{
-            const profile = profiles?.find(p => p.user_id === m.user_id);
-            return {
-              id: m.id,
-              user_id: m.user_id,
+  offices?.forEach((o:any)=>{
+    const key = o["User profile_id"];
+    if (!officesMap[key]) officesMap[key] = [];
+    officesMap[key].push(o.Office);
+  });
+
+  const format = (list:any[]) =>
+    list.map((m:any)=>{
+      const profile = memberProfiles?.find(p => p.user_id === m.user_id);
+
+      return {
+        id: m.id,
+        user_id: m.user_id,
         short_message: m.short_message ?? "",
-              status: m.status,
-              "Profile pic": profile?.["Profile pic"] ?? "",
-              "First name": profile?.["First name"] ?? "",
-              "Last name": profile?.["Last name"] ?? "",
-              Birthday: profile?.Birthday ?? ""
+        status: m.status,
+        "Profile pic": profile?.["Profile pic"] ?? "",
+        "First name": profile?.["First name"] ?? "",
+        "Last name": profile?.["Last name"] ?? "",
+        Birthday: profile?.Birthday ?? "",
+        offices: officesMap[profile?.id] || []
+      };
+    });
 
-                   // 🔥 NOVO
-      offices: userOffices 
-            };
-          });
+  connectedMembers = format(
+    membersRaw.filter(m => m.status === "connected")
+  );
 
-        connectedMembers = format(membersRaw.filter(m => m.status === "connected"));
-        memberRequests = format(membersRaw.filter(m => m.status !== "connected"));
-      }
+  memberRequests = format(
+    membersRaw.filter(m => m.status !== "connected")
+  );
+}
 
       // =========================
       // 🔹 COMMUNITY CORE

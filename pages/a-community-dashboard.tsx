@@ -200,7 +200,7 @@ if (membersRaw?.length) {
 
   const { data: offices } = await supabase
     .from("Multicharge")
-    .select("Office, User profile_id")
+.select('Office, "User profile_id"')
     .in("User profile_id", profileIds);
 
   const officesMap:any = {};

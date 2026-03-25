@@ -206,7 +206,7 @@ if (membersRaw?.length) {
   const officesMap:any = {};
 
   offices?.forEach((o:any)=>{
-    const key = o["User profile_id"];
+const key = Number(o["User profile_id"]);
     if (!officesMap[key]) officesMap[key] = [];
     officesMap[key].push(o.Office);
   });
@@ -224,7 +224,7 @@ if (membersRaw?.length) {
         "First name": profile?.["First name"] ?? "",
         "Last name": profile?.["Last name"] ?? "",
         Birthday: profile?.Birthday ?? "",
-        offices: officesMap[profile?.id] || []
+offices: officesMap[Number(profile?.id)] ?? []
       };
     });
 

@@ -214,7 +214,6 @@ export type PlasmicACommunityDashboard__OverridesType = {
   firstName?: Flex__<"a"> & Partial<LinkProps>;
   age?: Flex__<"div">;
   location3?: Flex__<"div">;
-  office2?: Flex__<"div">;
   disconnectCompany4?: Flex__<typeof Modal>;
   why6?: Flex__<typeof LoginButton>;
   why7?: Flex__<typeof LoginButton>;
@@ -226,7 +225,6 @@ export type PlasmicACommunityDashboard__OverridesType = {
   firstName2?: Flex__<"a"> & Partial<LinkProps>;
   age3?: Flex__<"div">;
   location6?: Flex__<"div">;
-  office3?: Flex__<"div">;
   requestInf2?: Flex__<typeof Modal>;
   profilePic4?: Flex__<typeof PlasmicImg__>;
   firstName5?: Flex__<"a"> & Partial<LinkProps>;
@@ -4050,6 +4048,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                               sty.firstName
                             )}
                             component={Link}
+                            href={"/a-rating-members?id=" + currentItem.user_id}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -4147,102 +4146,64 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                           </div>
                         </div>
                         <div
-                          data-plasmic-name={"office2"}
-                          data-plasmic-override={overrides.office2}
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.office2
-                          )}
-                        >
-                          {"Charge"}
-                        </div>
-                        <div
                           className={classNames(
                             projectcss.all,
                             sty.freeBox__tsDhu
                           )}
                         >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__qhyO
-                            )}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__a0MVo
-                              )}
-                            >
-                              {"Speciality"}
-                            </div>
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__zWaya
-                            )}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__iUlqr
-                              )}
-                            >
-                              {"Speciality"}
-                            </div>
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__xZmHb
-                            )}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__jvgBb
-                              )}
-                            >
-                              {"Speciality"}
-                            </div>
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox___7Cx0W
-                            )}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__a7P3
-                              )}
-                            >
-                              {"Speciality"}
-                            </div>
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__n8Wql
-                            )}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__oAuwr
-                              )}
-                            >
-                              {"Speciality"}
-                            </div>
-                          </div>
+                          {(_par =>
+                            !_par ? [] : Array.isArray(_par) ? _par : [_par])(
+                            (() => {
+                              try {
+                                return currentItem["offices"] || [1];
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return [];
+                                }
+                                throw e;
+                              }
+                            })()
+                          ).map((__plasmic_item_1, __plasmic_idx_1) => {
+                            const currentItem = __plasmic_item_1;
+                            const currentIndex = __plasmic_idx_1;
+                            return (
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox__qhyO
+                                )}
+                                key={currentIndex}
+                              >
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__a0MVo
+                                  )}
+                                >
+                                  <React.Fragment>
+                                    {(() => {
+                                      try {
+                                        return currentItem ?? "";
+                                      } catch (e) {
+                                        if (
+                                          e instanceof TypeError ||
+                                          e?.plasmicType ===
+                                            "PlasmicUndefinedDataError"
+                                        ) {
+                                          return "Speciality";
+                                        }
+                                        throw e;
+                                      }
+                                    })()}
+                                  </React.Fragment>
+                                </div>
+                              </div>
+                            );
+                          })}
                         </div>
                         {(() => {
                           const child$Props = {
@@ -4755,6 +4716,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                               sty.firstName2
                             )}
                             component={Link}
+                            href={"/a-profile?id=" + currentItem.user_id}
                             legacyBehavior={false}
                             platform={"nextjs"}
                           >
@@ -4852,102 +4814,64 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                           </div>
                         </div>
                         <div
-                          data-plasmic-name={"office3"}
-                          data-plasmic-override={overrides.office3}
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.office3
-                          )}
-                        >
-                          {"Charge"}
-                        </div>
-                        <div
                           className={classNames(
                             projectcss.all,
                             sty.freeBox__hr8Vl
                           )}
                         >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__b7Lx
-                            )}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text___3DJvv
-                              )}
-                            >
-                              {"Speciality"}
-                            </div>
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__aVq55
-                            )}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text___8Te2W
-                              )}
-                            >
-                              {"Speciality"}
-                            </div>
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__z89Bt
-                            )}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__xsJil
-                              )}
-                            >
-                              {"Speciality"}
-                            </div>
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__psS1
-                            )}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__zRnvk
-                              )}
-                            >
-                              {"Speciality"}
-                            </div>
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__eWQkQ
-                            )}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__rhCjq
-                              )}
-                            >
-                              {"Speciality"}
-                            </div>
-                          </div>
+                          {(_par =>
+                            !_par ? [] : Array.isArray(_par) ? _par : [_par])(
+                            (() => {
+                              try {
+                                return currentItem["offices"] || [1];
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return [];
+                                }
+                                throw e;
+                              }
+                            })()
+                          ).map((__plasmic_item_1, __plasmic_idx_1) => {
+                            const currentItem = __plasmic_item_1;
+                            const currentIndex = __plasmic_idx_1;
+                            return (
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox__b7Lx
+                                )}
+                                key={currentIndex}
+                              >
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text___3DJvv
+                                  )}
+                                >
+                                  <React.Fragment>
+                                    {(() => {
+                                      try {
+                                        return currentItem ?? "";
+                                      } catch (e) {
+                                        if (
+                                          e instanceof TypeError ||
+                                          e?.plasmicType ===
+                                            "PlasmicUndefinedDataError"
+                                        ) {
+                                          return "Speciality";
+                                        }
+                                        throw e;
+                                      }
+                                    })()}
+                                  </React.Fragment>
+                                </div>
+                              </div>
+                            );
+                          })}
                         </div>
                         {(() => {
                           const child$Props = {
@@ -5025,6 +4949,9 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                                         sty.firstName5
                                       )}
                                       component={Link}
+                                      href={
+                                        "/a-profile?id=" + currentItem.user_id
+                                      }
                                       legacyBehavior={false}
                                       platform={"nextjs"}
                                     >
@@ -10076,7 +10003,6 @@ const PlasmicDescendants = {
     "firstName",
     "age",
     "location3",
-    "office2",
     "disconnectCompany4",
     "why6",
     "why7",
@@ -10088,7 +10014,6 @@ const PlasmicDescendants = {
     "firstName2",
     "age3",
     "location6",
-    "office3",
     "requestInf2",
     "profilePic4",
     "firstName5",
@@ -10237,7 +10162,6 @@ const PlasmicDescendants = {
     "firstName",
     "age",
     "location3",
-    "office2",
     "disconnectCompany4",
     "why6",
     "why7",
@@ -10249,7 +10173,6 @@ const PlasmicDescendants = {
     "firstName2",
     "age3",
     "location6",
-    "office3",
     "requestInf2",
     "profilePic4",
     "firstName5",
@@ -10392,7 +10315,6 @@ const PlasmicDescendants = {
     "firstName",
     "age",
     "location3",
-    "office2",
     "disconnectCompany4",
     "why6",
     "why7",
@@ -10404,7 +10326,6 @@ const PlasmicDescendants = {
     "firstName2",
     "age3",
     "location6",
-    "office3",
     "requestInf2",
     "profilePic4",
     "firstName5",
@@ -10418,7 +10339,6 @@ const PlasmicDescendants = {
     "firstName",
     "age",
     "location3",
-    "office2",
     "disconnectCompany4",
     "why6",
     "why7",
@@ -10430,7 +10350,6 @@ const PlasmicDescendants = {
   firstName: ["firstName"],
   age: ["age"],
   location3: ["location3"],
-  office2: ["office2"],
   disconnectCompany4: [
     "disconnectCompany4",
     "why6",
@@ -10450,7 +10369,6 @@ const PlasmicDescendants = {
     "firstName2",
     "age3",
     "location6",
-    "office3",
     "requestInf2",
     "profilePic4",
     "firstName5",
@@ -10462,7 +10380,6 @@ const PlasmicDescendants = {
   firstName2: ["firstName2"],
   age3: ["age3"],
   location6: ["location6"],
-  office3: ["office3"],
   requestInf2: [
     "requestInf2",
     "profilePic4",
@@ -10687,7 +10604,6 @@ type NodeDefaultElementType = {
   firstName: "a";
   age: "div";
   location3: "div";
-  office2: "div";
   disconnectCompany4: typeof Modal;
   why6: typeof LoginButton;
   why7: typeof LoginButton;
@@ -10699,7 +10615,6 @@ type NodeDefaultElementType = {
   firstName2: "a";
   age3: "div";
   location6: "div";
-  office3: "div";
   requestInf2: typeof Modal;
   profilePic4: typeof PlasmicImg__;
   firstName5: "a";
@@ -10891,7 +10806,6 @@ export const PlasmicACommunityDashboard = Object.assign(
     firstName: makeNodeComponent("firstName"),
     age: makeNodeComponent("age"),
     location3: makeNodeComponent("location3"),
-    office2: makeNodeComponent("office2"),
     disconnectCompany4: makeNodeComponent("disconnectCompany4"),
     why6: makeNodeComponent("why6"),
     why7: makeNodeComponent("why7"),
@@ -10903,7 +10817,6 @@ export const PlasmicACommunityDashboard = Object.assign(
     firstName2: makeNodeComponent("firstName2"),
     age3: makeNodeComponent("age3"),
     location6: makeNodeComponent("location6"),
-    office3: makeNodeComponent("office3"),
     requestInf2: makeNodeComponent("requestInf2"),
     profilePic4: makeNodeComponent("profilePic4"),
     firstName5: makeNodeComponent("firstName5"),

@@ -2826,7 +2826,7 @@
   font-weight: 600;
   font-family: "Inter", sans-serif;
   font-style: normal;
-  text-align: left;
+  text-align: center;
   text-transform: none;
   line-height: 1.5;
   letter-spacing: normal;
@@ -2919,25 +2919,6 @@
   text-decoration-line: none;
   text-overflow: clip;
 }
-.office2 {
-  animation: none;
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  font-weight: 600;
-  font-size: 12px;
-  font-family: "Inter", sans-serif;
-  font-style: normal;
-  color: #535353;
-  text-align: left;
-  text-transform: none;
-  line-height: 1.5;
-  letter-spacing: normal;
-  white-space: pre-wrap;
-  user-select: text;
-  text-decoration-line: none;
-  text-overflow: clip;
-}
 .freeBox__tsDhu {
   animation: none;
   display: grid;
@@ -2983,151 +2964,7 @@
   font-family: "Inter", sans-serif;
   font-weight: 400;
   font-style: normal;
-  text-align: left;
-  text-transform: none;
-  line-height: 1.5;
-  letter-spacing: normal;
-  white-space: pre-wrap;
-  user-select: text;
-  text-decoration-line: none;
-  text-overflow: clip;
-}
-.freeBox__zWaya {
-  animation: none;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  position: relative;
-  left: auto;
-  top: auto;
-  border-radius: 8px;
-  padding: 4px;
-  border: 1px solid #228b2266;
-}
-.text__iUlqr {
-  animation: none;
-  position: relative;
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  font-size: 11px;
-  color: #228b22;
-  font-family: "Inter", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  text-align: left;
-  text-transform: none;
-  line-height: 1.5;
-  letter-spacing: normal;
-  white-space: pre-wrap;
-  user-select: text;
-  text-decoration-line: none;
-  text-overflow: clip;
-}
-.freeBox__xZmHb {
-  animation: none;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  position: relative;
-  left: auto;
-  top: auto;
-  border-radius: 8px;
-  padding: 4px;
-  border: 1px solid #228b2266;
-}
-.text__jvgBb {
-  animation: none;
-  position: relative;
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  font-size: 11px;
-  color: #228b22;
-  font-family: "Inter", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  text-align: left;
-  text-transform: none;
-  line-height: 1.5;
-  letter-spacing: normal;
-  white-space: pre-wrap;
-  user-select: text;
-  text-decoration-line: none;
-  text-overflow: clip;
-}
-.freeBox___7Cx0W {
-  animation: none;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  position: relative;
-  left: auto;
-  top: auto;
-  border-radius: 8px;
-  padding: 4px;
-  border: 1px solid #228b2266;
-}
-.text__a7P3 {
-  animation: none;
-  position: relative;
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  font-size: 11px;
-  color: #228b22;
-  font-family: "Inter", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  text-align: left;
-  text-transform: none;
-  line-height: 1.5;
-  letter-spacing: normal;
-  white-space: pre-wrap;
-  user-select: text;
-  text-decoration-line: none;
-  text-overflow: clip;
-}
-.freeBox__n8Wql {
-  animation: none;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  position: relative;
-  left: auto;
-  top: auto;
-  border-radius: 8px;
-  padding: 4px;
-  border: 1px solid #228b2266;
-}
-.text__oAuwr {
-  animation: none;
-  position: relative;
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  font-size: 11px;
-  color: #228b22;
-  font-family: "Inter", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  text-align: left;
+  text-align: center;
   text-transform: none;
   line-height: 1.5;
   letter-spacing: normal;
@@ -3601,25 +3438,6 @@
   text-decoration-line: none;
   text-overflow: clip;
 }
-.office3 {
-  animation: none;
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  font-weight: 600;
-  font-size: 12px;
-  font-family: "Inter", sans-serif;
-  font-style: normal;
-  color: #535353;
-  text-align: left;
-  text-transform: none;
-  line-height: 1.5;
-  letter-spacing: normal;
-  white-space: pre-wrap;
-  user-select: text;
-  text-decoration-line: none;
-  text-overflow: clip;
-}
 .freeBox__hr8Vl {
   animation: none;
   display: grid;
@@ -3665,151 +3483,7 @@
   font-family: "Inter", sans-serif;
   font-weight: 400;
   font-style: normal;
-  text-align: left;
-  text-transform: none;
-  line-height: 1.5;
-  letter-spacing: normal;
-  white-space: pre-wrap;
-  user-select: text;
-  text-decoration-line: none;
-  text-overflow: clip;
-}
-.freeBox__aVq55 {
-  animation: none;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  position: relative;
-  left: auto;
-  top: auto;
-  border-radius: 8px;
-  padding: 4px;
-  border: 1px solid #228b2266;
-}
-.text___8Te2W {
-  animation: none;
-  position: relative;
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  font-size: 11px;
-  color: #228b22;
-  font-family: "Inter", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  text-align: left;
-  text-transform: none;
-  line-height: 1.5;
-  letter-spacing: normal;
-  white-space: pre-wrap;
-  user-select: text;
-  text-decoration-line: none;
-  text-overflow: clip;
-}
-.freeBox__z89Bt {
-  animation: none;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  position: relative;
-  left: auto;
-  top: auto;
-  border-radius: 8px;
-  padding: 4px;
-  border: 1px solid #228b2266;
-}
-.text__xsJil {
-  animation: none;
-  position: relative;
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  font-size: 11px;
-  color: #228b22;
-  font-family: "Inter", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  text-align: left;
-  text-transform: none;
-  line-height: 1.5;
-  letter-spacing: normal;
-  white-space: pre-wrap;
-  user-select: text;
-  text-decoration-line: none;
-  text-overflow: clip;
-}
-.freeBox__psS1 {
-  animation: none;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  position: relative;
-  left: auto;
-  top: auto;
-  border-radius: 8px;
-  padding: 4px;
-  border: 1px solid #228b2266;
-}
-.text__zRnvk {
-  animation: none;
-  position: relative;
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  font-size: 11px;
-  color: #228b22;
-  font-family: "Inter", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  text-align: left;
-  text-transform: none;
-  line-height: 1.5;
-  letter-spacing: normal;
-  white-space: pre-wrap;
-  user-select: text;
-  text-decoration-line: none;
-  text-overflow: clip;
-}
-.freeBox__eWQkQ {
-  animation: none;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  position: relative;
-  left: auto;
-  top: auto;
-  border-radius: 8px;
-  padding: 4px;
-  border: 1px solid #228b2266;
-}
-.text__rhCjq {
-  animation: none;
-  position: relative;
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  font-size: 11px;
-  color: #228b22;
-  font-family: "Inter", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  text-align: left;
+  text-align: center;
   text-transform: none;
   line-height: 1.5;
   letter-spacing: normal;

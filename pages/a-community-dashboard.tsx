@@ -202,6 +202,7 @@ export default function ACommunityDashboard() {
             return {
               id: m.id,
               user_id: m.user_id,
+        short_message: m.short_message ?? "",
               status: m.status,
               "Profile pic": profile?.["Profile pic"] ?? "",
               "First name": profile?.["First name"] ?? "",

@@ -26,6 +26,7 @@ export default function ARatingCompanies() {
   const [company, setCompany] = useState<any>(null);
   const [reports, setReports] = useState<any[]>([]);
   const [actualData, setActualData] = useState("");
+  const [periodRange, setPeriodRange] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
   // =========================
@@ -50,16 +51,19 @@ export default function ARatingCompanies() {
         setLoading(true);
 
         // =========================
-        // 🔥 ACTUAL DATA (MÊS ATUAL)
+        // 🔥 PERÍODO TRIMESTRAL
         // =========================
         const now = new Date();
-        const firstDay = new Date(now.getFullYear(), now.getMonth(), 1);
-        const lastDay = new Date(now.getFullYear(), now.getMonth() + 1, 0);
+        const quarter = Math.floor(now.getMonth() / 3);
+
+        const firstDay = new Date(now.getFullYear(), quarter * 3, 1);
+        const lastDay = new Date(now.getFullYear(), quarter * 3 + 3, 0);
 
         const format = (date: Date) =>
           date.toLocaleDateString("pt-BR");
 
         setActualData(`${format(firstDay)} - ${format(lastDay)}`);
+        setPeriodRange({ firstDay, lastDay });
 
         // =========================
         // COMPANY
@@ -97,9 +101,20 @@ export default function ARatingCompanies() {
           .eq("company_id", companyData.id);
 
         // =========================
+        // ÚLTIMA AVALIAÇÃO DO USER
+        // =========================
+        const { data: lastReview } = await supabaseA
+          .from("community_reviews")
+          .select("*")
+          .eq("company_id", companyData.id)
+          .eq("author_user_id", user?.id)
+          .order("created_at", { ascending: false })
+          .limit(1)
+          .maybeSingle();
+
+        // =========================
         // AGREGAÇÕES
         // =========================
-
         const filterBy = (type: string) =>
           reviews?.filter((r: any) => r.author_type === type) ?? [];
 
@@ -132,14 +147,15 @@ export default function ARatingCompanies() {
 
           customer_rated: avg(customerReviews),
           rate_sum_3: count(customerReviews),
+
+          last_user_rating: lastReview?.rating ?? 0, // 🔥 NOVO
         };
 
         setCompany(enrichedCompany);
 
         // =========================
-        // 📊 REPORTS (POR MÊS COM DATA CORRETA)
+        // REPORTS
         // =========================
-
         const grouped: any = {};
 
         reviews?.forEach((r: any) => {
@@ -178,7 +194,7 @@ export default function ARatingCompanies() {
           );
 
           return {
-            date: `${format(first)} - ${format(last)}`, // 🔥 CORRIGIDO
+            date: `${format(first)} - ${format(last)}`,
             company_rate: avg(community),
             customer_instruction: avg(company),
             average_rating_received: avg(customer),
@@ -197,12 +213,29 @@ export default function ARatingCompanies() {
   }, [user, id]);
 
   // =========================
-  // ACTION
+  // ACTION (COM BLOQUEIO)
   // =========================
   async function handleSave(payload: any) {
     const { rating, comment } = payload;
 
-    if (!rating || !user || !company) return;
+    if (!rating || !user || !company || !periodRange) return;
+
+    const { firstDay, lastDay } = periodRange;
+
+    // 🚨 BLOQUEIO POR PERÍODO
+    const { data: existing } = await supabaseA
+      .from("community_reviews")
+      .select("id")
+      .eq("company_id", company.id)
+      .eq("author_user_id", user.id)
+      .gte("created_at", firstDay.toISOString())
+      .lte("created_at", lastDay.toISOString())
+      .maybeSingle();
+
+    if (existing) {
+      console.log("⚠️ Já avaliou nesse período");
+      return;
+    }
 
     const { data: member } = await supabaseA
       .from("community_members")
@@ -211,8 +244,8 @@ export default function ARatingCompanies() {
       .maybeSingle();
 
     await supabaseA.from("community_reviews").insert({
-      rating,
-      comment,
+      rating: Number(rating), // 🔥 CORREÇÃO
+      comment: comment ?? "",
       company_id: company.id,
       community_id: member?.community_id ?? null,
       author_user_id: user.id,

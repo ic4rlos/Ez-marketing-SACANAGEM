@@ -415,14 +415,14 @@ async function handleSave(payload:any){
       await supabase
         .from("community_members")
         .update({ status: "connected" })
-        .eq("user_id", userId);
+        .eq("user_id", connectionId);
     }
 
     if (action === "reject_member" || action === "disconnect_member"){
       await supabase
         .from("community_members")
         .delete()
-        .eq("user_id", userId);
+        .eq("user_id", connectionId);
     }
   }
 

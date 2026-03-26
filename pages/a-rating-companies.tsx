@@ -104,6 +104,37 @@ export default function ARatingCompanies() {
           .eq("company_id", companyData.id);
 
         // =========================
+        // 🔥 FILTRO POR PERÍODO ATUAL
+        // =========================
+        const reviewsThisPeriod =
+          reviews?.filter((r: any) => r.period_key === currentPeriodKey) ?? [];
+
+        // =========================
+        // AGREGAÇÕES ATUAIS
+        // =========================
+        const avg = (list: any[]) =>
+          list.length === 0
+            ? 0
+            : list.reduce((acc, r) => acc + (r.rating ?? 0), 0) /
+              list.length;
+
+        const count = (list: any[]) => list.length;
+
+        const communityReviews = reviewsThisPeriod.filter(
+          (r: any) => r.author_type === "community"
+        );
+
+        const companyReviews = reviewsThisPeriod.filter(
+          (r: any) => r.author_type === "company"
+        );
+
+        const customerReviews = reviewsThisPeriod.filter(
+          (r: any) =>
+            r.author_type === "customer" &&
+            (!communityId || r.community_id === communityId)
+        );
+
+        // =========================
         // ÚLTIMA AVALIAÇÃO
         // =========================
         const { data: lastReview } = await supabaseA
@@ -114,30 +145,6 @@ export default function ARatingCompanies() {
           .order("created_at", { ascending: false })
           .limit(1)
           .maybeSingle();
-
-        // =========================
-        // AGREGAÇÕES
-        // =========================
-        const filterBy = (type: string) =>
-          reviews?.filter((r: any) => r.author_type === type) ?? [];
-
-        const avg = (list: any[]) =>
-          list.length === 0
-            ? 0
-            : list.reduce((acc, r) => acc + (r.rating ?? 0), 0) /
-              list.length;
-
-        const count = (list: any[]) => list.length;
-
-        const communityReviews = filterBy("community");
-        const companyReviews = filterBy("company");
-
-        const customerReviews =
-          reviews?.filter(
-            (r: any) =>
-              r.author_type === "customer" &&
-              (!communityId || r.community_id === communityId)
-          ) ?? [];
 
         const enrichedCompany = {
           ...companyData,
@@ -157,34 +164,19 @@ export default function ARatingCompanies() {
         setCompany(enrichedCompany);
 
         // =========================
-        // REPORTS
+        // 🔥 REPORTS POR TRIMESTRE
         // =========================
         const grouped: any = {};
 
         reviews?.forEach((r: any) => {
-          const date = new Date(r.created_at);
-          const key = `${date.getFullYear()}-${date.getMonth()}`;
+          if (!r.period_key) return;
 
-          if (!grouped[key]) grouped[key] = [];
-          grouped[key].push(r);
+          if (!grouped[r.period_key]) grouped[r.period_key] = [];
+          grouped[r.period_key].push(r);
         });
 
-        const monthlyReports = Object.keys(grouped).map((key) => {
+        const reportsFormatted = Object.keys(grouped).map((key) => {
           const list = grouped[key];
-
-          const sampleDate = new Date(list[0].created_at);
-
-          const first = new Date(
-            sampleDate.getFullYear(),
-            sampleDate.getMonth(),
-            1
-          );
-
-          const last = new Date(
-            sampleDate.getFullYear(),
-            sampleDate.getMonth() + 1,
-            0
-          );
 
           const community = list.filter(
             (r: any) => r.author_type === "community"
@@ -197,14 +189,14 @@ export default function ARatingCompanies() {
           );
 
           return {
-            date: `${format(first)} - ${format(last)}`,
+            date: key,
             company_rate: avg(community),
             customer_instruction: avg(company),
             average_rating_received: avg(customer),
           };
         });
 
-        setReports(monthlyReports);
+        setReports(reportsFormatted);
       } catch (err) {
         console.error("Load error:", err);
       }
@@ -223,7 +215,6 @@ export default function ARatingCompanies() {
 
     if (!rating || !user || !company || !periodKey) return;
 
-    // 🚨 BLOQUEIO POR PERIOD_KEY
     const { data: existing } = await supabaseA
       .from("community_reviews")
       .select("id")
@@ -243,15 +234,21 @@ export default function ARatingCompanies() {
       .eq("user_id", user.id)
       .maybeSingle();
 
-    await supabaseA.from("community_reviews").insert({
+    const { error } = await supabaseA.from("community_reviews").insert({
       rating: Number(rating),
       comment: comment ?? "",
       company_id: company.id,
       community_id: member?.community_id ?? null,
       author_user_id: user.id,
       author_type: "community",
-      period_key: periodKey, // 🔥 ESSENCIAL
+      period_key: periodKey,
     });
+
+    if (error) {
+      alert("Error saving your rating.");
+      console.error(error);
+      return;
+    }
 
     router.replace(router.asPath);
   }

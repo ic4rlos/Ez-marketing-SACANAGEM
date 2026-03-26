@@ -1187,6 +1187,7 @@
   max-width: 100%;
   object-fit: cover;
   display: block;
+  height: auto;
   min-width: 0;
 }
 .member {
@@ -1277,7 +1278,7 @@
   align-items: center;
   justify-content: flex-start;
   width: 1064px;
-  height: 72px;
+  height: auto;
   max-width: 100%;
   background: none;
   position: relative;
@@ -2722,6 +2723,7 @@
 }
 .linkedMembers:global(.__wab_instance):global(.__wab_instance) {
   max-width: 100%;
+  width: auto;
 }
 .loginButton__o4AJb:global(.__wab_instance) {
   max-width: 100%;
@@ -3807,8 +3809,10 @@
 .sliderCarousel2:global(.__wab_instance) {
   width: 100%;
   max-width: 100%;
-  flex-direction: column;
+  flex-direction: row;
   object-fit: cover;
+  display: flex;
+  justify-content: center;
   min-width: 0;
 }
 .connectedCompany2 {
@@ -3838,9 +3842,22 @@
 .companyLogo4 > picture > img {
   object-fit: cover;
 }
-.companyName6 {
+.companyName2 {
   font-size: 14px;
-  color: #1b1b18;
+  margin-left: 3px;
+  margin-right: 3px;
+  color: #545454;
+  font-weight: 400;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  text-align: center;
+  text-transform: none;
+  line-height: 1.5;
+  letter-spacing: normal;
+  white-space: pre-wrap;
+  user-select: text;
+  text-decoration-line: none !important;
+  text-overflow: clip !important;
 }
 .svg__mrKn8 {
   position: relative;

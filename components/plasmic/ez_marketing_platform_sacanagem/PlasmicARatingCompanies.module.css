@@ -448,19 +448,16 @@
   min-width: 0;
   padding: 0px;
 }
-.companyName {
+.companyName9 {
   animation: none;
-  width: auto;
-  height: auto;
-  max-width: 100%;
   font-size: 14px;
-  font-weight: 700;
-  margin-right: 3px;
   margin-left: 3px;
+  margin-right: 3px;
+  color: #545454;
+  font-weight: 700;
   font-family: "Inter", sans-serif;
   font-style: normal;
-  color: #535353;
-  text-align: left;
+  text-align: center;
   text-transform: none;
   line-height: 1.5;
   letter-spacing: normal;
@@ -468,7 +465,6 @@
   user-select: text;
   text-decoration-line: none;
   text-overflow: clip;
-  padding: 0px;
 }
 .companyType {
   animation: none;
@@ -711,10 +707,9 @@
   position: relative;
   align-items: center;
   justify-content: center;
-  width: 138px;
+  width: auto;
   height: auto;
   max-width: 100%;
-  flex-shrink: 0;
   padding: 0px;
 }
 .text__oc0P {
@@ -738,7 +733,7 @@
   text-overflow: clip;
   min-width: 0;
 }
-.foundationDate {
+.foundationDate2 {
   animation: none;
   width: auto;
   height: auto;
@@ -747,16 +742,16 @@
   font-weight: 600;
   font-family: "Montserrat", sans-serif;
   letter-spacing: 2px;
+  white-space: pre;
   font-style: normal;
   color: #535353;
   text-align: left;
   text-transform: none;
   line-height: 1.5;
-  white-space: pre-wrap;
   user-select: text;
   text-decoration-line: none;
   text-overflow: clip;
-  padding: 0px;
+  padding: 0px 0px 0px 8px;
 }
 .freeBox__jUicy {
   animation: none;

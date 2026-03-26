@@ -409,7 +409,7 @@ async function handleSave(payload:any){
   // =========================
   if (type === "member") {
 
-    if (!userId) return;
+    if (!connectionId) return;
 
     if (action === "accept_member"){
       await supabase

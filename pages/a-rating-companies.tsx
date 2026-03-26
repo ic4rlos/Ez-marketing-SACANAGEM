@@ -233,7 +233,7 @@ export default function ARatingCompanies() {
       .maybeSingle();
 
     if (existing) {
-      alert("Você já avaliou essa empresa neste período.");
+      alert("You have already rated this company during this period.");
       return;
     }
 

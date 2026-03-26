@@ -26,7 +26,7 @@ export default function ARatingCompanies() {
   const [company, setCompany] = useState<any>(null);
   const [reports, setReports] = useState<any[]>([]);
   const [actualData, setActualData] = useState("");
-  const [periodRange, setPeriodRange] = useState<any>(null);
+  const [periodKey, setPeriodKey] = useState("");
   const [loading, setLoading] = useState(true);
 
   // =========================
@@ -51,19 +51,22 @@ export default function ARatingCompanies() {
         setLoading(true);
 
         // =========================
-        // 🔥 PERÍODO TRIMESTRAL
+        // 🔥 PERÍODO TRIMESTRAL + KEY
         // =========================
         const now = new Date();
         const quarter = Math.floor(now.getMonth() / 3);
+        const year = now.getFullYear();
 
-        const firstDay = new Date(now.getFullYear(), quarter * 3, 1);
-        const lastDay = new Date(now.getFullYear(), quarter * 3 + 3, 0);
+        const firstDay = new Date(year, quarter * 3, 1);
+        const lastDay = new Date(year, quarter * 3 + 3, 0);
 
         const format = (date: Date) =>
           date.toLocaleDateString("pt-BR");
 
         setActualData(`${format(firstDay)} - ${format(lastDay)}`);
-        setPeriodRange({ firstDay, lastDay });
+
+        const currentPeriodKey = `${year}-Q${quarter + 1}`;
+        setPeriodKey(currentPeriodKey);
 
         // =========================
         // COMPANY
@@ -101,7 +104,7 @@ export default function ARatingCompanies() {
           .eq("company_id", companyData.id);
 
         // =========================
-        // ÚLTIMA AVALIAÇÃO DO USER
+        // ÚLTIMA AVALIAÇÃO
         // =========================
         const { data: lastReview } = await supabaseA
           .from("community_reviews")
@@ -148,7 +151,7 @@ export default function ARatingCompanies() {
           customer_rated: avg(customerReviews),
           rate_sum_3: count(customerReviews),
 
-          last_user_rating: lastReview?.rating ?? 0, // 🔥 NOVO
+          last_user_rating: lastReview?.rating ?? 0,
         };
 
         setCompany(enrichedCompany);
@@ -213,27 +216,24 @@ export default function ARatingCompanies() {
   }, [user, id]);
 
   // =========================
-  // ACTION (COM BLOQUEIO)
+  // ACTION (COM BLOQUEIO REAL)
   // =========================
   async function handleSave(payload: any) {
     const { rating, comment } = payload;
 
-    if (!rating || !user || !company || !periodRange) return;
+    if (!rating || !user || !company || !periodKey) return;
 
-    const { firstDay, lastDay } = periodRange;
-
-    // 🚨 BLOQUEIO POR PERÍODO
+    // 🚨 BLOQUEIO POR PERIOD_KEY
     const { data: existing } = await supabaseA
       .from("community_reviews")
       .select("id")
       .eq("company_id", company.id)
       .eq("author_user_id", user.id)
-      .gte("created_at", firstDay.toISOString())
-      .lte("created_at", lastDay.toISOString())
+      .eq("period_key", periodKey)
       .maybeSingle();
 
     if (existing) {
-      console.log("⚠️ Já avaliou nesse período");
+      alert("Você já avaliou essa empresa neste período.");
       return;
     }
 
@@ -244,12 +244,13 @@ export default function ARatingCompanies() {
       .maybeSingle();
 
     await supabaseA.from("community_reviews").insert({
-      rating: Number(rating), // 🔥 CORREÇÃO
+      rating: Number(rating),
       comment: comment ?? "",
       company_id: company.id,
       community_id: member?.community_id ?? null,
       author_user_id: user.id,
       author_type: "community",
+      period_key: periodKey, // 🔥 ESSENCIAL
     });
 
     router.replace(router.asPath);

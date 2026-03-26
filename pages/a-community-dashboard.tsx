@@ -407,24 +407,24 @@ async function handleSave(payload:any){
   // =========================
   // 🔴 MEMBERS
   // =========================
-  if (type === "member") {
+if (type === "member") {
 
-    if (!connectionId) return;
+  if (!connectionId) return;
 
-    if (action === "accept_member"){
-      await supabase
-        .from("community_members")
-        .update({ status: "connected" })
-        .eq("user_id", connectionId);
-    }
-
-    if (action === "reject_member" || action === "disconnect_member"){
-      await supabase
-        .from("community_members")
-        .delete()
-        .eq("user_id", connectionId);
-    }
+  if (action === "accept_member"){
+    await supabase
+      .from("community_members")
+      .update({ status: "connected" })
+      .eq("id", connectionId); // ✅ CORRETO
   }
+
+  if (action === "reject_member" || action === "disconnect_member"){
+    await supabase
+      .from("community_members")
+      .delete()
+      .eq("id", connectionId); // ✅ CORRETO
+  }
+}
 
   location.reload();
 }

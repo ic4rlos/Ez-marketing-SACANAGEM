@@ -371,9 +371,14 @@ offices: officesMap[Number(profile?.id)] ?? []
 
   }, [user]);
 
-  async function handleSave(payload:any){
+async function handleSave(payload:any){
 
-    const { action, connectionId, reason } = payload;
+  const { action, connectionId, userId, reason, type } = payload;
+
+  // =========================
+  // 🔵 COMPANIES
+  // =========================
+  if (type === "company") {
 
     if (!connectionId) return;
 
@@ -397,9 +402,32 @@ offices: officesMap[Number(profile?.id)] ?? []
         .delete()
         .eq("id", connectionId);
     }
-
-    location.reload();
   }
+
+  // =========================
+  // 🔴 MEMBERS
+  // =========================
+  if (type === "member") {
+
+    if (!userId) return;
+
+    if (action === "accept"){
+      await supabase
+        .from("community_members")
+        .update({ status: "connected" })
+        .eq("user_id", userId);
+    }
+
+    if (action === "reject" || action === "disconnect"){
+      await supabase
+        .from("community_members")
+        .delete()
+        .eq("user_id", userId);
+    }
+  }
+
+  location.reload();
+}
 
   if (loading) return null;
 

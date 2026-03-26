@@ -418,7 +418,7 @@ async function handleSave(payload:any){
         .eq("user_id", userId);
     }
 
-    if (action === "reject_member"" || action === "disconnect_member"){
+    if (action === "reject_member" || action === "disconnect_member"){
       await supabase
         .from("community_members")
         .delete()

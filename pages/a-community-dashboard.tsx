@@ -30,23 +30,30 @@ export default function ACommunityDashboard() {
   // =========================
   useEffect(() => {
     async function loadUser() {
-      const { data } = await supabase.auth.getUser();
+      console.log("🔐 LOADING USER...");
+      const { data, error } = await supabase.auth.getUser();
+      console.log("👤 USER:", data?.user);
+      console.log("❌ USER ERROR:", error);
       setUser(data?.user ?? null);
     }
     loadUser();
   }, []);
 
   // =========================
-  // 🔹 COMMUNITY
+  // 🔹 COMMUNITY LOAD
   // =========================
   useEffect(() => {
 
     if (!user) {
+      console.warn("⚠️ NO USER");
       setLoading(false);
       return;
     }
 
     async function loadCommunity() {
+
+      console.log("=================================");
+      console.log("🏗️ LOADING COMMUNITY");
 
       const { data: myProfile } = await supabase
         .from("User profile")
@@ -54,26 +61,34 @@ export default function ACommunityDashboard() {
         .eq("user_id", user.id)
         .maybeSingle();
 
+      console.log("👤 myProfile:", myProfile);
+
       const { data: member } = await supabase
         .from("community_members")
         .select("community_id, role, status")
         .eq("user_id", user.id)
         .maybeSingle();
 
+      console.log("🏷️ MEMBER RECORD:", member);
+
       if (!member || member.status !== "connected") {
+        console.warn("❌ USER NOT CONNECTED");
         setLoading(false);
         return;
       }
 
       const communityId = member.community_id;
+      console.log("🏢 communityId:", communityId);
 
       // =========================
-      // 🔵 COMPANIES
+      // 🔵 COMPANIES DEBUG
       // =========================
       const { data: connections } = await supabase
         .from("CONNECTIONS")
         .select("*")
         .eq("agency_id", communityId);
+
+      console.log("🔵 CONNECTIONS RAW:", connections);
 
       let connectedCompanies:any[] = [];
       let companyRequests:any[] = [];
@@ -81,13 +96,17 @@ export default function ACommunityDashboard() {
       if (connections?.length) {
 
         const companyIds = Array.from(
-  new Set(connections.map((c:any)=>Number(c.company_id)))
-);
+          new Set(connections.map((c:any)=>Number(c.company_id)))
+        );
+
+        console.log("🏢 companyIds:", companyIds);
 
         const { data: companies } = await supabaseC
           .from("companies")
           .select("*")
           .in("id", companyIds);
+
+        console.log("🏢 companies:", companies);
 
         const format = (list:any[]) =>
           list.map((conn:any)=>{
@@ -107,28 +126,55 @@ export default function ACommunityDashboard() {
       }
 
       // =========================
-      // 🔴 MEMBERS
+      // 🔴 MEMBERS DEBUG EXTREMO
       // =========================
-      const { data: membersRaw } = await supabase
+      console.log("=================================");
+      console.log("🔴 LOADING MEMBERS");
+
+      const { data: membersRaw, error: membersError } = await supabase
         .from("community_members")
         .select("id, user_id, status, short_message")
         .eq("community_id", communityId);
+
+      console.log("📦 membersRaw:", membersRaw);
+      console.log("❌ membersError:", membersError);
 
       let connectedMembers:any[] = [];
       let memberRequests:any[] = [];
 
       if (membersRaw?.length) {
 
+        console.log("📊 TOTAL MEMBERS:", membersRaw.length);
+
+        membersRaw.forEach((m:any, i:number)=>{
+          console.log(`👤 MEMBER[${i}]`, {
+            id: m.id,
+            user_id: m.user_id,
+            status: m.status,
+            id_type: typeof m.id,
+            user_id_type: typeof m.user_id
+          });
+        });
+
         const userIds = membersRaw.map(m => m.user_id);
+        console.log("🧠 userIds:", userIds);
 
         const { data: memberProfiles } = await supabase
           .from("User profile")
           .select(`id, user_id, "Profile pic", "First name", "Last name"`)
           .in("user_id", userIds);
 
+        console.log("📦 memberProfiles:", memberProfiles);
+
         const format = (list:any[]) =>
           list.map((m:any)=>{
             const profile = memberProfiles?.find(p => p.user_id === m.user_id);
+
+            console.log("🔗 MATCH:", {
+              member_id: m.id,
+              user_id: m.user_id,
+              profile_found: !!profile
+            });
 
             return {
               id: m.id,
@@ -141,8 +187,16 @@ export default function ACommunityDashboard() {
             };
           });
 
-        connectedMembers = format(membersRaw.filter(m => m.status === "connected"));
-        memberRequests = format(membersRaw.filter(m => m.status !== "connected"));
+        connectedMembers = format(
+          membersRaw.filter(m => m.status === "connected")
+        );
+
+        memberRequests = format(
+          membersRaw.filter(m => m.status !== "connected")
+        );
+
+        console.log("✅ connectedMembers:", connectedMembers);
+        console.log("🟡 memberRequests:", memberRequests);
       }
 
       // =========================
@@ -167,6 +221,8 @@ export default function ACommunityDashboard() {
         isAdmin: member.role === "admin"
       };
 
+      console.log("📦 FINAL DATA:", finalData);
+
       setFormData(finalData);
       setLoading(false);
     }
@@ -176,47 +232,73 @@ export default function ACommunityDashboard() {
   }, [user]);
 
   // =========================
-  // 🔹 ACTIONS
+  // 🔥 HANDLE SAVE DEBUG
   // =========================
   async function handleSave(payload:any){
 
-    console.log("🔥 HANDLE SAVE:", payload);
+    console.log("=================================");
+    console.log("🔥 HANDLE SAVE");
+    console.log("📦 PAYLOAD:", payload);
 
     const { action, connectionId, reason } = payload;
+
+    console.log("🧠 PARSED:", { action, connectionId, reason, type: typeof connectionId });
 
     if (!connectionId) {
       console.warn("❌ NO connectionId");
       return;
     }
 
-    if (action === "disconnect"){
-      const res = await supabase.from("CONNECTIONS")
-        .update({
-          status: "agency disconnected",
-          short_message: reason
-        })
-        .eq("id", connectionId)
-        .select();
+    // 🔍 CHECK BEFORE
+    const before = await supabase
+      .from("community_members")
+      .select("*")
+      .eq("id", connectionId);
 
-      console.log("DISCONNECT RES:", res);
-    }
+    console.log("🔍 BEFORE:", before);
 
-    if (action === "accept"){
-      const res = await supabase.from("CONNECTIONS")
-        .update({ status: "connected" })
-        .eq("id", connectionId)
-        .select();
+    if (action === "reject_member" || action === "disconnect_member"){
 
-      console.log("ACCEPT RES:", res);
-    }
+      console.log("➡️ DELETE MEMBER");
 
-    if (action === "reject"){
-      const res = await supabase.from("CONNECTIONS")
+      const res = await supabase
+        .from("community_members")
         .delete()
         .eq("id", connectionId)
         .select();
 
-      console.log("DELETE RES:", res);
+      console.log("📡 DELETE RESPONSE:", res);
+
+      const after = await supabase
+        .from("community_members")
+        .select("*")
+        .eq("id", connectionId);
+
+      console.log("🔍 AFTER:", after);
+    }
+
+    if (action === "accept_member"){
+
+      console.log("➡️ ACCEPT MEMBER");
+
+      const res = await supabase
+        .from("community_members")
+        .update({ status: "connected" })
+        .eq("id", connectionId)
+        .select();
+
+      console.log("📡 UPDATE RESPONSE:", res);
+    }
+
+    // 🔵 COMPANY DEBUG
+    if (action === "reject"){
+      const res = await supabase
+        .from("CONNECTIONS")
+        .delete()
+        .eq("id", connectionId)
+        .select();
+
+      console.log("🔵 COMPANY DELETE:", res);
     }
 
     location.reload();

@@ -104,13 +104,13 @@ export default function ARatingCompanies() {
           .eq("company_id", companyData.id);
 
         // =========================
-        // 🔥 FILTRO POR PERÍODO ATUAL
+        // 🔥 FILTRO PERÍODO ATUAL
         // =========================
         const reviewsThisPeriod =
           reviews?.filter((r: any) => r.period_key === currentPeriodKey) ?? [];
 
         // =========================
-        // AGREGAÇÕES ATUAIS
+        // AGREGAÇÕES
         // =========================
         const avg = (list: any[]) =>
           list.length === 0
@@ -164,7 +164,7 @@ export default function ARatingCompanies() {
         setCompany(enrichedCompany);
 
         // =========================
-        // 🔥 REPORTS POR TRIMESTRE
+        // 🔥 REPORTS FORMATADOS
         // =========================
         const grouped: any = {};
 
@@ -188,8 +188,16 @@ export default function ARatingCompanies() {
             (r: any) => r.author_type === "customer"
           );
 
+          // 🔥 CONVERTE Q → DATA BONITA
+          const [yearStr, quarterStr] = key.split("-Q");
+          const yearNum = Number(yearStr);
+          const quarterNum = Number(quarterStr) - 1;
+
+          const first = new Date(yearNum, quarterNum * 3, 1);
+          const last = new Date(yearNum, quarterNum * 3 + 3, 0);
+
           return {
-            date: key,
+            date: `${format(first)} - ${format(last)}`,
             company_rate: avg(community),
             customer_instruction: avg(company),
             average_rating_received: avg(customer),
@@ -208,7 +216,7 @@ export default function ARatingCompanies() {
   }, [user, id]);
 
   // =========================
-  // ACTION (COM BLOQUEIO REAL)
+  // ACTION
   // =========================
   async function handleSave(payload: any) {
     const { rating, comment } = payload;

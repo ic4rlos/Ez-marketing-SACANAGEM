@@ -373,71 +373,105 @@ offices: officesMap[Number(profile?.id)] ?? []
 
 async function handleSave(payload:any){
 
+  console.log("=================================");
+  console.log("🔥 HANDLE SAVE TRIGGERED");
+  console.log("📦 FULL PAYLOAD:", payload);
+
   const { action, connectionId, userId, reason, type } = payload;
+
+  console.log("🧠 PARSED:");
+  console.log("action:", action);
+  console.log("type:", type);
+  console.log("connectionId:", connectionId, "typeof:", typeof connectionId);
+  console.log("userId:", userId, "typeof:", typeof userId);
+  console.log("reason:", reason);
 
   // =========================
   // 🔵 COMPANIES
   // =========================
   if (type === "company") {
 
-    if (!connectionId) return;
+    console.log("🔵 ENTERED COMPANY BLOCK");
+
+    if (!connectionId){
+      console.warn("❌ NO connectionId (company)");
+      return;
+    }
 
     if (action === "disconnect"){
-      await supabase.from("CONNECTIONS")
+      console.log("➡️ COMPANY DISCONNECT");
+
+      const res = await supabase.from("CONNECTIONS")
         .update({
           status: "agency disconnected",
           short_message: reason
         })
-        .eq("id", connectionId);
+        .eq("id", connectionId)
+        .select();
+
+      console.log("📡 RESPONSE:", res);
     }
 
     if (action === "accept"){
-      await supabase.from("CONNECTIONS")
+      console.log("➡️ COMPANY ACCEPT");
+
+      const res = await supabase.from("CONNECTIONS")
         .update({ status: "connected" })
-        .eq("id", connectionId);
+        .eq("id", connectionId)
+        .select();
+
+      console.log("📡 RESPONSE:", res);
     }
 
     if (action === "reject"){
-      await supabase.from("CONNECTIONS")
+      console.log("➡️ COMPANY DELETE");
+
+      const res = await supabase.from("CONNECTIONS")
         .delete()
-        .eq("id", connectionId);
+        .eq("id", connectionId)
+        .select();
+
+      console.log("📡 RESPONSE:", res);
     }
   }
 
   // =========================
   // 🔴 MEMBERS
   // =========================
-if (type === "member") {
+  if (type === "member") {
 
-  if (!connectionId) return;
+    console.log("🔴 ENTERED MEMBER BLOCK");
 
-  if (action === "accept_member"){
-    await supabase
-      .from("community_members")
-      .update({ status: "connected" })
-      .eq("id", connectionId); // ✅ CORRETO
+    if (!connectionId){
+      console.warn("❌ NO connectionId (member)");
+      return;
+    }
+
+    if (action === "accept_member"){
+      console.log("➡️ MEMBER ACCEPT");
+
+      const res = await supabase
+        .from("community_members")
+        .update({ status: "connected" })
+        .eq("id", connectionId)
+        .select();
+
+      console.log("📡 RESPONSE:", res);
+    }
+
+    if (action === "reject_member" || action === "disconnect_member"){
+      console.log("➡️ MEMBER DELETE");
+
+      const res = await supabase
+        .from("community_members")
+        .delete()
+        .eq("id", connectionId)
+        .select();
+
+      console.log("📡 RESPONSE:", res);
+    }
   }
 
-  if (action === "reject_member" || action === "disconnect_member"){
-    await supabase
-      .from("community_members")
-      .delete()
-      .eq("id", connectionId); // ✅ CORRETO
-  }
-}
-
+  console.log("🔄 RELOADING PAGE");
   location.reload();
-}
-
-  if (loading) return null;
-
-  return (
-    <PlasmicACommunityDashboard
-      args={{
-        formData: formData,
-        setFormData: setFormData,
-        onSave: handleSave
-      }}
-    />
-  );
 }

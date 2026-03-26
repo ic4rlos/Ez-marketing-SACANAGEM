@@ -411,14 +411,14 @@ async function handleSave(payload:any){
 
     if (!userId) return;
 
-    if (action === "accept"){
+    if (action === "accept_member","){
       await supabase
         .from("community_members")
         .update({ status: "connected" })
         .eq("user_id", userId);
     }
 
-    if (action === "reject" || action === "disconnect"){
+    if (action === "reject_member"" || action === "disconnect_member"){
       await supabase
         .from("community_members")
         .delete()

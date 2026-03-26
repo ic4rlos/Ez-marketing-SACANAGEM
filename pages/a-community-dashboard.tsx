@@ -196,12 +196,18 @@ if (membersRaw?.length) {
     `)
     .in("user_id", userIds);
 
-  const profileIds = memberProfiles?.map((p:any)=>p.id) || [];
+let offices:any[] = [];
 
-  const { data: offices } = await supabase
+if (memberProfiles?.length) {
+  const profileIds = memberProfiles.map((p:any)=>p.id);
+
+  const res = await supabase
     .from("Multicharge")
-.select('Office, "User profile_id"')
+    .select('Office, "User profile_id"')
     .in("User profile_id", profileIds);
+
+  offices = res.data || [];
+}
 
   const officesMap:any = {};
 

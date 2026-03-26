@@ -17,7 +17,7 @@ const PlasmicARatingCompanies = dynamic(
 
 export default function ARatingCompanies() {
   const router = useRouter();
-  const { id } = router.query; // 🔥 IDENTIDADE
+  const { id } = router.query;
 
   const supabaseA = getSupabaseA();
   const supabaseC = getSupabaseC();
@@ -25,6 +25,7 @@ export default function ARatingCompanies() {
   const [user, setUser] = useState<any>(undefined);
   const [company, setCompany] = useState<any>(null);
   const [reports, setReports] = useState<any[]>([]);
+  const [actualData, setActualData] = useState("");
   const [loading, setLoading] = useState(true);
 
   // =========================
@@ -48,13 +49,27 @@ export default function ARatingCompanies() {
       try {
         setLoading(true);
 
-        // 🔥 QUAL EMPRESA CARREGAR
+        // =========================
+        // 🔥 ACTUAL DATA (MÊS ATUAL)
+        // =========================
+        const now = new Date();
+        const firstDay = new Date(now.getFullYear(), now.getMonth(), 1);
+        const lastDay = new Date(now.getFullYear(), now.getMonth() + 1, 0);
+
+        const format = (date: Date) =>
+          date.toLocaleDateString("pt-BR");
+
+        setActualData(`${format(firstDay)} - ${format(lastDay)}`);
+
+        // =========================
+        // COMPANY
+        // =========================
         let companyQuery = supabaseC.from("companies").select("*");
 
         if (id) {
           companyQuery = companyQuery.eq("id", id);
         } else {
-          companyQuery = companyQuery.limit(1); // fallback beta
+          companyQuery = companyQuery.limit(1);
         }
 
         const { data: companyData } = await companyQuery.maybeSingle();
@@ -65,7 +80,7 @@ export default function ARatingCompanies() {
           return;
         }
 
-        // 🔹 COMMUNITY DO USER
+        // COMMUNITY
         const { data: member } = await supabaseA
           .from("community_members")
           .select("*")
@@ -75,14 +90,14 @@ export default function ARatingCompanies() {
 
         const communityId = member?.community_id ?? null;
 
-        // 🔹 REVIEWS
+        // REVIEWS
         const { data: reviews } = await supabaseA
           .from("community_reviews")
           .select("*")
           .eq("company_id", companyData.id);
 
         // =========================
-        // 🔥 AGREGAÇÕES
+        // AGREGAÇÕES
         // =========================
 
         const filterBy = (type: string) =>
@@ -122,7 +137,7 @@ export default function ARatingCompanies() {
         setCompany(enrichedCompany);
 
         // =========================
-        // 📊 REPORTS (POR MÊS)
+        // 📊 REPORTS (POR MÊS COM DATA CORRETA)
         // =========================
 
         const grouped: any = {};
@@ -138,6 +153,20 @@ export default function ARatingCompanies() {
         const monthlyReports = Object.keys(grouped).map((key) => {
           const list = grouped[key];
 
+          const sampleDate = new Date(list[0].created_at);
+
+          const first = new Date(
+            sampleDate.getFullYear(),
+            sampleDate.getMonth(),
+            1
+          );
+
+          const last = new Date(
+            sampleDate.getFullYear(),
+            sampleDate.getMonth() + 1,
+            0
+          );
+
           const community = list.filter(
             (r: any) => r.author_type === "community"
           );
@@ -149,7 +178,7 @@ export default function ARatingCompanies() {
           );
 
           return {
-            date: key,
+            date: `${format(first)} - ${format(last)}`, // 🔥 CORRIGIDO
             company_rate: avg(community),
             customer_instruction: avg(company),
             average_rating_received: avg(customer),
@@ -168,7 +197,7 @@ export default function ARatingCompanies() {
   }, [user, id]);
 
   // =========================
-  // ACTION (CRIAR REVIEW)
+  // ACTION
   // =========================
   async function handleSave(payload: any) {
     const { rating, comment } = payload;
@@ -190,7 +219,6 @@ export default function ARatingCompanies() {
       author_type: "community",
     });
 
-    // 🔥 reload com mesma identidade
     router.replace(router.asPath);
   }
 
@@ -210,6 +238,7 @@ export default function ARatingCompanies() {
       args={{
         company: company ?? {},
         reports: reports ?? [],
+        actualData: actualData,
         onSave: handleSave,
         onLogout: handleLogout,
       }}

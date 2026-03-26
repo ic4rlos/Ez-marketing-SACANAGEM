@@ -411,7 +411,7 @@ async function handleSave(payload:any){
 
     if (!userId) return;
 
-    if (action === "accept_member","){
+    if (action === "accept_member"){
       await supabase
         .from("community_members")
         .update({ status: "connected" })

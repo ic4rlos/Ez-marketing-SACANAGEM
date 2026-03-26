@@ -263,7 +263,8 @@ function PlasmicARatingCompanies__RenderFunc(props: {
         path: "rating.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
+          $props.company?.last_user_rating ?? 0
       },
       {
         path: "comment.value",
@@ -1486,6 +1487,7 @@ function PlasmicARatingCompanies__RenderFunc(props: {
                       data-plasmic-override={overrides.rating}
                       allowHalf={true}
                       className={classNames("__wab_instance", sty.rating)}
+                      defaultValue={$props.company?.last_user_rating ?? 0}
                       onChange={async (...eventArgs: any) => {
                         generateStateOnChangeProp($state, [
                           "rating",
@@ -1800,7 +1802,7 @@ function PlasmicARatingCompanies__RenderFunc(props: {
                   sty.text__zd7Wh
                 )}
               >
-                {"Enter some text"}
+                {"Previous reviews"}
               </div>
               <div className={classNames(projectcss.all, sty.freeBox__ecaYu)}>
                 <div

@@ -1668,7 +1668,7 @@ function PlasmicARatingMembers__RenderFunc(props: {
                   sty.text__sfqy
                 )}
               >
-                {"Enter some text"}
+                {"Previous reviews"}
               </div>
               <div className={classNames(projectcss.all, sty.freeBox__qeqRh)}>
                 <div

@@ -145,7 +145,6 @@ export type PlasmicARatingMembers__OverridesType = {
   lastName?: Flex__<"div">;
   age?: Flex__<"div">;
   location?: Flex__<"div">;
-  charge?: Flex__<"div">;
   linkedIn?: Flex__<"a"> & Partial<LinkProps>;
   instagram?: Flex__<"a"> & Partial<LinkProps>;
   x?: Flex__<"a"> & Partial<LinkProps>;
@@ -207,25 +206,24 @@ function PlasmicARatingMembers__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
+  const $globalActions = useGlobalActions?.();
+
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
       {
-        path: "ethics.value",
+        path: "ethics[].value",
         type: "private",
-        variableType: "number",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
+        variableType: "number"
       },
       {
-        path: "technicalPerformance.value",
+        path: "technicalPerformance[].value",
         type: "private",
-        variableType: "number",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
+        variableType: "number"
       },
       {
-        path: "memberRated2.value",
+        path: "memberRated2[].value",
         type: "private",
-        variableType: "number",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
+        variableType: "number"
       },
       {
         path: "rate.isOpen",
@@ -237,7 +235,8 @@ function PlasmicARatingMembers__RenderFunc(props: {
         path: "rating.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
+          $props.formData?.ethics_rate ?? 0
       },
       {
         path: "comment.value",
@@ -251,7 +250,8 @@ function PlasmicARatingMembers__RenderFunc(props: {
         path: "memberRated.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
+          $props.formData?.technical_rate ?? 0
       },
       {
         path: "rate2.isOpen",
@@ -263,7 +263,8 @@ function PlasmicARatingMembers__RenderFunc(props: {
         path: "rateTechnical.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
+          $props.formData?.technical_rate ?? 0
       },
       {
         path: "comment2.value",
@@ -690,6 +691,19 @@ function PlasmicARatingMembers__RenderFunc(props: {
                   displayMinWidth={"0"}
                   displayWidth={"100px"}
                   loading={"lazy"}
+                  src={(() => {
+                    try {
+                      return $props.formData?.["Profile pic"] ?? null;
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return undefined;
+                      }
+                      throw e;
+                    }
+                  })()}
                 />
 
                 <PlasmicImg__
@@ -704,12 +718,24 @@ function PlasmicARatingMembers__RenderFunc(props: {
                   displayMinWidth={"0"}
                   displayWidth={"50px"}
                   loading={"lazy"}
-                  src={{
-                    src: "/plasmic/ez_marketing_platform_sacanagem/images/semTitulo2Jpg3.jpg",
-                    fullWidth: 1014,
-                    fullHeight: 1014,
-                    aspectRatio: undefined
-                  }}
+                  src={(() => {
+                    try {
+                      return $props.formData?.["community_logo"] ?? null;
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return {
+                          src: "/plasmic/ez_marketing_platform_sacanagem/images/semTitulo2Jpg3.jpg",
+                          fullWidth: 1014,
+                          fullHeight: 1014,
+                          aspectRatio: undefined
+                        };
+                      }
+                      throw e;
+                    }
+                  })()}
                 />
               </div>
               <div className={classNames(projectcss.all, sty.freeBox__rxQph)}>
@@ -723,7 +749,21 @@ function PlasmicARatingMembers__RenderFunc(props: {
                       sty.firstName
                     )}
                   >
-                    {"Name"}
+                    <React.Fragment>
+                      {(() => {
+                        try {
+                          return $props.formData?.["First name"] ?? "Name";
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return "Name";
+                          }
+                          throw e;
+                        }
+                      })()}
+                    </React.Fragment>
                   </div>
                   <div
                     data-plasmic-name={"lastName"}
@@ -734,7 +774,21 @@ function PlasmicARatingMembers__RenderFunc(props: {
                       sty.lastName
                     )}
                   >
-                    {"Last Name"}
+                    <React.Fragment>
+                      {(() => {
+                        try {
+                          return $props.formData?.["Last name"] ?? "Last name";
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return "Last Name";
+                          }
+                          throw e;
+                        }
+                      })()}
+                    </React.Fragment>
                   </div>
                 </div>
                 <div
@@ -749,7 +803,21 @@ function PlasmicARatingMembers__RenderFunc(props: {
                       sty.age
                     )}
                   >
-                    {"28"}
+                    <React.Fragment>
+                      {(() => {
+                        try {
+                          return $props.formData?.["Birthday"] ?? "";
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return "28";
+                          }
+                          throw e;
+                        }
+                      })()}
+                    </React.Fragment>
                   </div>
                   <div
                     className={classNames(
@@ -770,65 +838,72 @@ function PlasmicARatingMembers__RenderFunc(props: {
                     sty.location
                   )}
                 >
-                  {"New York"}
+                  <React.Fragment>
+                    {(() => {
+                      try {
+                        return $props.formData?.["Location"] ?? "";
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return "New York";
+                        }
+                        throw e;
+                      }
+                    })()}
+                  </React.Fragment>
                 </div>
               </div>
               <div className={classNames(projectcss.all, sty.freeBox___3GrDu)}>
-                <div className={classNames(projectcss.all, sty.freeBox__ygidJ)}>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__arrNd
-                    )}
-                  >
-                    {"Speciality"}
-                  </div>
-                </div>
-                <div className={classNames(projectcss.all, sty.freeBox__ftc6Q)}>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__nqpsw
-                    )}
-                  >
-                    {"Speciality"}
-                  </div>
-                </div>
-                <div className={classNames(projectcss.all, sty.freeBox__slkFd)}>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__kpPmb
-                    )}
-                  >
-                    {"Speciality"}
-                  </div>
-                </div>
-                <div className={classNames(projectcss.all, sty.freeBox__wMnmk)}>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__het3J
-                    )}
-                  >
-                    {"Speciality"}
-                  </div>
-                </div>
-                <div className={classNames(projectcss.all, sty.freeBox__vg2H)}>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__b0Npj
-                    )}
-                  >
-                    {"Speciality"}
-                  </div>
-                </div>
+                {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
+                  (() => {
+                    try {
+                      return $props.formData?.offices || [1];
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return [];
+                      }
+                      throw e;
+                    }
+                  })()
+                ).map((__plasmic_item_0, __plasmic_idx_0) => {
+                  const currentItem = __plasmic_item_0;
+                  const currentIndex = __plasmic_idx_0;
+                  return (
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__ygidJ)}
+                      key={currentIndex}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__arrNd
+                        )}
+                      >
+                        <React.Fragment>
+                          {(() => {
+                            try {
+                              return currentItem?.Offices ?? "1";
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return "Speciality";
+                              }
+                              throw e;
+                            }
+                          })()}
+                        </React.Fragment>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
               <div className={classNames(projectcss.all, sty.freeBox__g8Zmt)}>
                 <div className={classNames(projectcss.all, sty.freeBox__aW6Ek)}>
@@ -851,17 +926,6 @@ function PlasmicARatingMembers__RenderFunc(props: {
                     {"Gold"}
                   </div>
                 </div>
-                <div
-                  data-plasmic-name={"charge"}
-                  data-plasmic-override={overrides.charge}
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.charge
-                  )}
-                >
-                  {"Charge"}
-                </div>
               </div>
             </div>
             <div className={classNames(projectcss.all, sty.freeBox__guiX)}>
@@ -881,7 +945,7 @@ function PlasmicARatingMembers__RenderFunc(props: {
                     sty.linkedIn
                   )}
                   component={Link}
-                  href={"https://www.plasmic.app/"}
+                  href={$props.formData?.["LinkedIn"] ?? ""}
                   legacyBehavior={false}
                   platform={"nextjs"}
                 >
@@ -904,7 +968,7 @@ function PlasmicARatingMembers__RenderFunc(props: {
                     sty.instagram
                   )}
                   component={Link}
-                  href={"https://www.plasmic.app/"}
+                  href={$props.formData?.["Instagram"] ?? ""}
                   legacyBehavior={false}
                   platform={"nextjs"}
                 >
@@ -927,7 +991,7 @@ function PlasmicARatingMembers__RenderFunc(props: {
                     sty.x
                   )}
                   component={Link}
-                  href={"https://www.plasmic.app/"}
+                  href={$props.formData?.["X"] ?? ""}
                   legacyBehavior={false}
                   platform={"nextjs"}
                 >
@@ -957,7 +1021,21 @@ function PlasmicARatingMembers__RenderFunc(props: {
                 sty.text__sqQcT
               )}
             >
-              {"07/2025 - 10/2025"}
+              <React.Fragment>
+                {(() => {
+                  try {
+                    return $props.actualData ?? "";
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return "07/2025 - 10/2025";
+                    }
+                    throw e;
+                  }
+                })()}
+              </React.Fragment>
             </div>
             <div className={classNames(projectcss.all, sty.freeBox__xg27G)}>
               <div className={classNames(projectcss.all, sty.freeBox__vIyaE)}>
@@ -1068,6 +1146,50 @@ function PlasmicARatingMembers__RenderFunc(props: {
                         }
                         onClick={async event => {
                           const $steps = {};
+
+                          $steps["invokeGlobalAction"] = true
+                            ? (() => {
+                                const actionArgs = {
+                                  args: ["success", "Send"]
+                                };
+                                return $globalActions[
+                                  "plasmic-antd5-config-provider.showNotification"
+                                ]?.apply(null, [...actionArgs.args]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["invokeGlobalAction"] != null &&
+                            typeof $steps["invokeGlobalAction"] === "object" &&
+                            typeof $steps["invokeGlobalAction"].then ===
+                              "function"
+                          ) {
+                            $steps["invokeGlobalAction"] =
+                              await $steps["invokeGlobalAction"];
+                          }
+
+                          $steps["runCode"] = true
+                            ? (() => {
+                                const actionArgs = {
+                                  customFunction: async () => {
+                                    return $props.onSave({
+                                      rating: $state.rating?.value,
+                                      comment: $state.comment?.value,
+                                      type: "community ethics"
+                                    });
+                                  }
+                                };
+                                return (({ customFunction }) => {
+                                  return customFunction();
+                                })?.apply(null, [actionArgs]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["runCode"] != null &&
+                            typeof $steps["runCode"] === "object" &&
+                            typeof $steps["runCode"].then === "function"
+                          ) {
+                            $steps["runCode"] = await $steps["runCode"];
+                          }
 
                           $steps["updateModalIsOpen"] = true
                             ? (() => {
@@ -1199,6 +1321,7 @@ function PlasmicARatingMembers__RenderFunc(props: {
                       data-plasmic-override={overrides.rating}
                       allowHalf={true}
                       className={classNames("__wab_instance", sty.rating)}
+                      defaultValue={$props.formData?.ethics_rate ?? 0}
                       onChange={async (...eventArgs: any) => {
                         generateStateOnChangeProp($state, [
                           "rating",
@@ -1368,6 +1491,50 @@ function PlasmicARatingMembers__RenderFunc(props: {
                         onClick={async event => {
                           const $steps = {};
 
+                          $steps["invokeGlobalAction"] = true
+                            ? (() => {
+                                const actionArgs = {
+                                  args: ["success", undefined, "Send"]
+                                };
+                                return $globalActions[
+                                  "plasmic-antd5-config-provider.showNotification"
+                                ]?.apply(null, [...actionArgs.args]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["invokeGlobalAction"] != null &&
+                            typeof $steps["invokeGlobalAction"] === "object" &&
+                            typeof $steps["invokeGlobalAction"].then ===
+                              "function"
+                          ) {
+                            $steps["invokeGlobalAction"] =
+                              await $steps["invokeGlobalAction"];
+                          }
+
+                          $steps["runCode"] = true
+                            ? (() => {
+                                const actionArgs = {
+                                  customFunction: async () => {
+                                    return $props.onSave({
+                                      rating: $state.ratingTechnical?.value,
+                                      comment: $state.comment2?.value,
+                                      type: "community technical"
+                                    });
+                                  }
+                                };
+                                return (({ customFunction }) => {
+                                  return customFunction();
+                                })?.apply(null, [actionArgs]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["runCode"] != null &&
+                            typeof $steps["runCode"] === "object" &&
+                            typeof $steps["runCode"].then === "function"
+                          ) {
+                            $steps["runCode"] = await $steps["runCode"];
+                          }
+
                           $steps["updateModalIsOpen"] = true
                             ? (() => {
                                 const actionArgs = {
@@ -1501,6 +1668,7 @@ function PlasmicARatingMembers__RenderFunc(props: {
                         "__wab_instance",
                         sty.rateTechnical
                       )}
+                      defaultValue={$props.formData?.technical_rate ?? 0}
                       onChange={async (...eventArgs: any) => {
                         generateStateOnChangeProp($state, [
                           "rateTechnical",
@@ -1595,6 +1763,7 @@ function PlasmicARatingMembers__RenderFunc(props: {
                   data-plasmic-override={overrides.memberRated}
                   allowHalf={true}
                   className={classNames("__wab_instance", sty.memberRated)}
+                  defaultValue={$props.formData?.technical_rate ?? 0}
                   disabled={true}
                   onChange={async (...eventArgs: any) => {
                     generateStateOnChangeProp($state, [
@@ -1700,225 +1869,368 @@ function PlasmicARatingMembers__RenderFunc(props: {
                 </div>
               </div>
             </div>
-            <div
-              data-plasmic-name={"reportRate"}
-              data-plasmic-override={overrides.reportRate}
-              className={classNames(projectcss.all, sty.reportRate)}
-            >
-              <div
-                data-plasmic-name={"reportDate"}
-                data-plasmic-override={overrides.reportDate}
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.reportDate
-                )}
-              >
-                {"07/2025 - 10/2025"}
-              </div>
-              <div className={classNames(projectcss.all, sty.freeBox__ihZl0)}>
-                <AntdRate
-                  data-plasmic-name={"ethics"}
-                  data-plasmic-override={overrides.ethics}
-                  allowHalf={true}
-                  className={classNames("__wab_instance", sty.ethics)}
-                  disabled={true}
-                  onChange={async (...eventArgs: any) => {
-                    generateStateOnChangeProp($state, [
-                      "ethics",
-                      "value"
-                    ]).apply(null, eventArgs);
-                  }}
-                  symbols={
-                    <React.Fragment>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__hIOt7
-                        )}
-                      >
-                        {"1"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___0I1Bx
-                        )}
-                      >
-                        {"2"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__q1MrV
-                        )}
-                      >
-                        {"3"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__ecRzq
-                        )}
-                      >
-                        {"4"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___974Yq
-                        )}
-                      >
-                        {"5"}
-                      </div>
-                    </React.Fragment>
+            {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
+              (() => {
+                try {
+                  return $props.reports || [1];
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return [];
                   }
-                  value={generateStateValueProp($state, ["ethics", "value"])}
-                />
+                  throw e;
+                }
+              })()
+            ).map((__plasmic_item_0, __plasmic_idx_0) => {
+              const currentItem = __plasmic_item_0;
+              const currentIndex = __plasmic_idx_0;
+              return (
+                <div
+                  data-plasmic-name={"reportRate"}
+                  data-plasmic-override={overrides.reportRate}
+                  className={classNames(projectcss.all, sty.reportRate)}
+                  key={currentIndex}
+                >
+                  <div
+                    data-plasmic-name={"reportDate"}
+                    data-plasmic-override={overrides.reportDate}
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.reportDate
+                    )}
+                  >
+                    <React.Fragment>
+                      {(() => {
+                        try {
+                          return currentItem?.date ?? "";
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return "07/2025 - 10/2025";
+                          }
+                          throw e;
+                        }
+                      })()}
+                    </React.Fragment>
+                  </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__ihZl0)}
+                  >
+                    {(() => {
+                      const child$Props = {
+                        allowHalf: true,
+                        className: classNames("__wab_instance", sty.ethics),
+                        defaultValue: currentItem.ethics,
 
-                <AntdRate
-                  data-plasmic-name={"technicalPerformance"}
-                  data-plasmic-override={overrides.technicalPerformance}
-                  allowHalf={true}
-                  className={classNames(
-                    "__wab_instance",
-                    sty.technicalPerformance
-                  )}
-                  disabled={true}
-                  onChange={async (...eventArgs: any) => {
-                    generateStateOnChangeProp($state, [
-                      "technicalPerformance",
-                      "value"
-                    ]).apply(null, eventArgs);
-                  }}
-                  symbols={
-                    <React.Fragment>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___9WAh4
-                        )}
-                      >
-                        {"1"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___6Jre7
-                        )}
-                      >
-                        {"2"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__uVjmo
-                        )}
-                      >
-                        {"3"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__jCuXt
-                        )}
-                      >
-                        {"4"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__ibKkn
-                        )}
-                      >
-                        {"5"}
-                      </div>
-                    </React.Fragment>
-                  }
-                  value={generateStateValueProp($state, [
-                    "technicalPerformance",
-                    "value"
-                  ])}
-                />
+                        disabled: true,
+                        onChange: async (...eventArgs: any) => {
+                          generateStateOnChangeProp($state, [
+                            "ethics",
+                            __plasmic_idx_0,
+                            "value"
+                          ]).apply(null, eventArgs);
+                        },
+                        symbols: (
+                          <React.Fragment>
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__hIOt7
+                              )}
+                            >
+                              {"1"}
+                            </div>
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text___0I1Bx
+                              )}
+                            >
+                              {"2"}
+                            </div>
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__q1MrV
+                              )}
+                            >
+                              {"3"}
+                            </div>
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__ecRzq
+                              )}
+                            >
+                              {"4"}
+                            </div>
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text___974Yq
+                              )}
+                            >
+                              {"5"}
+                            </div>
+                          </React.Fragment>
+                        ),
+                        value: generateStateValueProp($state, [
+                          "ethics",
+                          __plasmic_idx_0,
+                          "value"
+                        ])
+                      };
+                      initializeCodeComponentStates(
+                        $state,
+                        [
+                          {
+                            name: "value",
+                            plasmicStateName: "ethics[].value"
+                          }
+                        ],
+                        [__plasmic_idx_0],
+                        undefined ?? {},
+                        child$Props
+                      );
+                      initializePlasmicStates(
+                        $state,
+                        [
+                          {
+                            name: "ethics[].value",
+                            initFunc: ({ $props, $state, $queries, $q }) =>
+                              currentItem.ethics
+                          }
+                        ],
+                        [__plasmic_idx_0]
+                      );
+                      return (
+                        <AntdRate
+                          data-plasmic-name={"ethics"}
+                          data-plasmic-override={overrides.ethics}
+                          {...child$Props}
+                        />
+                      );
+                    })()}
+                    {(() => {
+                      const child$Props = {
+                        allowHalf: true,
+                        className: classNames(
+                          "__wab_instance",
+                          sty.technicalPerformance
+                        ),
+                        defaultValue: currentItem.technical,
 
-                <AntdRate
-                  data-plasmic-name={"memberRated2"}
-                  data-plasmic-override={overrides.memberRated2}
-                  allowHalf={true}
-                  className={classNames("__wab_instance", sty.memberRated2)}
-                  disabled={true}
-                  onChange={async (...eventArgs: any) => {
-                    generateStateOnChangeProp($state, [
-                      "memberRated2",
-                      "value"
-                    ]).apply(null, eventArgs);
-                  }}
-                  symbols={
-                    <React.Fragment>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__yF0Yx
-                        )}
-                      >
-                        {"1"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__ayawh
-                        )}
-                      >
-                        {"2"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__sEy2T
-                        )}
-                      >
-                        {"3"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___8LIss
-                        )}
-                      >
-                        {"4"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__qu2OE
-                        )}
-                      >
-                        {"5"}
-                      </div>
-                    </React.Fragment>
-                  }
-                  value={generateStateValueProp($state, [
-                    "memberRated2",
-                    "value"
-                  ])}
-                />
-              </div>
-            </div>
+                        disabled: true,
+                        onChange: async (...eventArgs: any) => {
+                          generateStateOnChangeProp($state, [
+                            "technicalPerformance",
+                            __plasmic_idx_0,
+                            "value"
+                          ]).apply(null, eventArgs);
+                        },
+                        symbols: (
+                          <React.Fragment>
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text___9WAh4
+                              )}
+                            >
+                              {"1"}
+                            </div>
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text___6Jre7
+                              )}
+                            >
+                              {"2"}
+                            </div>
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__uVjmo
+                              )}
+                            >
+                              {"3"}
+                            </div>
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__jCuXt
+                              )}
+                            >
+                              {"4"}
+                            </div>
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__ibKkn
+                              )}
+                            >
+                              {"5"}
+                            </div>
+                          </React.Fragment>
+                        ),
+                        value: generateStateValueProp($state, [
+                          "technicalPerformance",
+                          __plasmic_idx_0,
+                          "value"
+                        ])
+                      };
+                      initializeCodeComponentStates(
+                        $state,
+                        [
+                          {
+                            name: "value",
+                            plasmicStateName: "technicalPerformance[].value"
+                          }
+                        ],
+                        [__plasmic_idx_0],
+                        undefined ?? {},
+                        child$Props
+                      );
+                      initializePlasmicStates(
+                        $state,
+                        [
+                          {
+                            name: "technicalPerformance[].value",
+                            initFunc: ({ $props, $state, $queries, $q }) =>
+                              currentItem.technical
+                          }
+                        ],
+                        [__plasmic_idx_0]
+                      );
+                      return (
+                        <AntdRate
+                          data-plasmic-name={"technicalPerformance"}
+                          data-plasmic-override={overrides.technicalPerformance}
+                          {...child$Props}
+                        />
+                      );
+                    })()}
+                    {(() => {
+                      const child$Props = {
+                        allowHalf: true,
+                        className: classNames(
+                          "__wab_instance",
+                          sty.memberRated2
+                        ),
+                        defaultValue: currentItem.member,
+
+                        disabled: true,
+                        onChange: async (...eventArgs: any) => {
+                          generateStateOnChangeProp($state, [
+                            "memberRated2",
+                            __plasmic_idx_0,
+                            "value"
+                          ]).apply(null, eventArgs);
+                        },
+                        symbols: (
+                          <React.Fragment>
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__yF0Yx
+                              )}
+                            >
+                              {"1"}
+                            </div>
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__ayawh
+                              )}
+                            >
+                              {"2"}
+                            </div>
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__sEy2T
+                              )}
+                            >
+                              {"3"}
+                            </div>
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text___8LIss
+                              )}
+                            >
+                              {"4"}
+                            </div>
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__qu2OE
+                              )}
+                            >
+                              {"5"}
+                            </div>
+                          </React.Fragment>
+                        ),
+                        value: generateStateValueProp($state, [
+                          "memberRated2",
+                          __plasmic_idx_0,
+                          "value"
+                        ])
+                      };
+                      initializeCodeComponentStates(
+                        $state,
+                        [
+                          {
+                            name: "value",
+                            plasmicStateName: "memberRated2[].value"
+                          }
+                        ],
+                        [__plasmic_idx_0],
+                        undefined ?? {},
+                        child$Props
+                      );
+                      initializePlasmicStates(
+                        $state,
+                        [
+                          {
+                            name: "memberRated2[].value",
+                            initFunc: ({ $props, $state, $queries, $q }) =>
+                              currentItem.member
+                          }
+                        ],
+                        [__plasmic_idx_0]
+                      );
+                      return (
+                        <AntdRate
+                          data-plasmic-name={"memberRated2"}
+                          data-plasmic-override={overrides.memberRated2}
+                          {...child$Props}
+                        />
+                      );
+                    })()}
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
@@ -1940,7 +2252,6 @@ const PlasmicDescendants = {
     "lastName",
     "age",
     "location",
-    "charge",
     "linkedIn",
     "instagram",
     "x",
@@ -1972,7 +2283,6 @@ const PlasmicDescendants = {
     "lastName",
     "age",
     "location",
-    "charge",
     "linkedIn",
     "instagram",
     "x"
@@ -1983,7 +2293,6 @@ const PlasmicDescendants = {
   lastName: ["lastName"],
   age: ["age"],
   location: ["location"],
-  charge: ["charge"],
   linkedIn: ["linkedIn"],
   instagram: ["instagram"],
   x: ["x"],
@@ -2036,7 +2345,6 @@ type NodeDefaultElementType = {
   lastName: "div";
   age: "div";
   location: "div";
-  charge: "div";
   linkedIn: "a";
   instagram: "a";
   x: "a";
@@ -2130,7 +2438,6 @@ export const PlasmicARatingMembers = Object.assign(
     lastName: makeNodeComponent("lastName"),
     age: makeNodeComponent("age"),
     location: makeNodeComponent("location"),
-    charge: makeNodeComponent("charge"),
     linkedIn: makeNodeComponent("linkedIn"),
     instagram: makeNodeComponent("instagram"),
     x: makeNodeComponent("x"),

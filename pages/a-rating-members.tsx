@@ -21,7 +21,7 @@ export default function ARatingMembers() {
   const supabase = getSupabaseA();
 
   const [user, setUser] = useState<any>(undefined);
-  const [member, setMember] = useState<any>(null);
+  const [formData, setFormData] = useState<any>(null);
   const [reports, setReports] = useState<any[]>([]);
   const [actualData, setActualData] = useState("");
   const [periodKey, setPeriodKey] = useState("");
@@ -44,6 +44,7 @@ export default function ARatingMembers() {
   useEffect(() => {
     async function loadAll() {
       if (user === undefined) return;
+      if (!id) return; // 🔥 ESSENCIAL
 
       try {
         setLoading(true);
@@ -66,22 +67,26 @@ export default function ARatingMembers() {
         setPeriodKey(currentPeriodKey);
 
         // =========================
-        // MEMBER PROFILE
+        // PROFILE
         // =========================
-        const { data: profile } = await supabase
+        const { data: profile, error: profileError } = await supabase
           .from("User profile")
           .select("*")
           .eq("user_id", id)
           .maybeSingle();
 
+        if (profileError) {
+          console.error("PROFILE ERROR:", profileError);
+        }
+
         if (!profile) {
-          setMember(null);
+          setFormData(null);
           setLoading(false);
           return;
         }
 
         // =========================
-        // COMMUNITY DO USER LOGADO
+        // COMMUNITY
         // =========================
         const { data: memberConn } = await supabase
           .from("community_members")
@@ -95,14 +100,15 @@ export default function ARatingMembers() {
         // =========================
         // REVIEWS
         // =========================
-        const { data: reviews } = await supabase
+        const { data: reviews, error: reviewsError } = await supabase
           .from("community_reviews")
           .select("*")
           .eq("member_id", profile.id);
 
-        // =========================
-        // 🔥 FILTRO PERÍODO ATUAL
-        // =========================
+        if (reviewsError) {
+          console.error("REVIEWS ERROR:", reviewsError);
+        }
+
         const reviewsThisPeriod =
           reviews?.filter((r: any) => r.period_key === currentPeriodKey) ?? [];
 
@@ -126,7 +132,10 @@ export default function ARatingMembers() {
           (r: any) => r.author_type === "member"
         );
 
-        const enrichedMember = {
+        // =========================
+        // 🔥 FORM DATA FINAL
+        // =========================
+        const enriched = {
           ...profile,
 
           ethics_rate: avg(ethics),
@@ -138,10 +147,10 @@ export default function ARatingMembers() {
           member_rated: avg(memberRated),
         };
 
-        setMember(enrichedMember);
+        setFormData(enriched);
 
         // =========================
-        // 🔥 REPORTS POR TRIMESTRE
+        // REPORTS
         // =========================
         const grouped: any = {};
 
@@ -155,7 +164,6 @@ export default function ARatingMembers() {
         const reportsFormatted = Object.keys(grouped).map((key) => {
           const list = grouped[key];
 
-          const sample = list[0];
           const [y, q] = key.split("-Q");
           const qIndex = Number(q) - 1;
 
@@ -184,7 +192,7 @@ export default function ARatingMembers() {
 
         setReports(reportsFormatted);
       } catch (err) {
-        console.error("Load error:", err);
+        console.error("LOAD ERROR:", err);
       }
 
       setLoading(false);
@@ -194,24 +202,24 @@ export default function ARatingMembers() {
   }, [user, id]);
 
   // =========================
-  // ACTION (COM BLOQUEIO)
+  // ACTION
   // =========================
   async function handleSave(payload: any) {
     const { rating, comment, type } = payload;
 
-    if (!rating || !user || !member || !periodKey) return;
+    if (!rating || !user || !formData || !periodKey) return;
 
     const { data: existing } = await supabase
       .from("community_reviews")
       .select("id")
-      .eq("member_id", member.id)
+      .eq("member_id", formData.id)
       .eq("author_user_id", user.id)
       .eq("author_type", type)
       .eq("period_key", periodKey)
       .maybeSingle();
 
     if (existing) {
-      alert("You already rated this member in this period.");
+      alert("You already rated this category in this period.");
       return;
     }
 
@@ -224,7 +232,7 @@ export default function ARatingMembers() {
     const { error } = await supabase.from("community_reviews").insert({
       rating: Number(rating),
       comment: comment ?? "",
-      member_id: member.id,
+      member_id: formData.id,
       community_id: memberConn?.community_id ?? null,
       author_user_id: user.id,
       author_type: type,
@@ -254,7 +262,7 @@ export default function ARatingMembers() {
   return (
     <PlasmicARatingMembers
       args={{
-        member: member ?? {},
+        formData: formData ?? {}, // 🔥 CORRETO
         reports: reports ?? [],
         actualData: actualData,
         onSave: handleSave,

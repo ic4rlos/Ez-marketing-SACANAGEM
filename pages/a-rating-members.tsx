@@ -44,7 +44,7 @@ export default function ARatingMembers() {
   useEffect(() => {
     async function loadAll() {
       if (user === undefined) return;
-      if (!id) return; // 🔥 ESSENCIAL
+      if (!id) return;
 
       try {
         setLoading(true);
@@ -69,15 +69,11 @@ export default function ARatingMembers() {
         // =========================
         // PROFILE
         // =========================
-        const { data: profile, error: profileError } = await supabase
+        const { data: profile } = await supabase
           .from("User profile")
           .select("*")
           .eq("user_id", id)
           .maybeSingle();
-
-        if (profileError) {
-          console.error("PROFILE ERROR:", profileError);
-        }
 
         if (!profile) {
           setFormData(null);
@@ -86,28 +82,47 @@ export default function ARatingMembers() {
         }
 
         // =========================
-        // COMMUNITY
+        // 🔥 MULTICHARGE (OFFICES)
+        // =========================
+        const { data: officesDb } = await supabase
+          .from("Multicharge")
+          .select("*")
+          .eq("User profile_id", profile.id);
+
+        const offices =
+          officesDb?.map((o: any) => ({
+            Offices: o.Office,
+          })) ?? [];
+
+        // =========================
+        // COMMUNITY (CORRIGIDO)
         // =========================
         const { data: memberConn } = await supabase
           .from("community_members")
           .select("*")
-          .eq("user_id", user?.id)
+          .eq("user_id", id) // ✅ CORRETO
           .eq("status", "connected")
           .maybeSingle();
 
-        const communityId = memberConn?.community_id ?? null;
+        let communityLogo = null;
+
+        if (memberConn?.community_id) {
+          const { data: community } = await supabase
+            .from("Community")
+            .select("*")
+            .eq("id", memberConn.community_id)
+            .maybeSingle();
+
+          communityLogo = community?.community_logo ?? null;
+        }
 
         // =========================
         // REVIEWS
         // =========================
-        const { data: reviews, error: reviewsError } = await supabase
+        const { data: reviews } = await supabase
           .from("community_reviews")
           .select("*")
           .eq("member_id", profile.id);
-
-        if (reviewsError) {
-          console.error("REVIEWS ERROR:", reviewsError);
-        }
 
         const reviewsThisPeriod =
           reviews?.filter((r: any) => r.period_key === currentPeriodKey) ?? [];
@@ -133,10 +148,14 @@ export default function ARatingMembers() {
         );
 
         // =========================
-        // 🔥 FORM DATA FINAL
+        // FORM DATA FINAL
         // =========================
         const enriched = {
           ...profile,
+
+          community_logo: communityLogo,
+
+          offices, // ✅ ADICIONADO
 
           ethics_rate: avg(ethics),
           ethics_count: count(ethics),
@@ -205,16 +224,20 @@ export default function ARatingMembers() {
   // ACTION
   // =========================
   async function handleSave(payload: any) {
-    const { rating, comment, type } = payload;
+    let { rating, comment, type } = payload;
 
-    if (!rating || !user || !formData || !periodKey) return;
+    // 🔥 CORREÇÃO CRÍTICA
+    if (rating === undefined || rating === null) return;
+    if (!user || !formData || !periodKey) return;
+
+    const safeType = type?.trim();
 
     const { data: existing } = await supabase
       .from("community_reviews")
       .select("id")
       .eq("member_id", formData.id)
       .eq("author_user_id", user.id)
-      .eq("author_type", type)
+      .eq("author_type", safeType)
       .eq("period_key", periodKey)
       .maybeSingle();
 
@@ -235,7 +258,7 @@ export default function ARatingMembers() {
       member_id: formData.id,
       community_id: memberConn?.community_id ?? null,
       author_user_id: user.id,
-      author_type: type,
+      author_type: safeType,
       period_key: periodKey,
     });
 
@@ -262,7 +285,7 @@ export default function ARatingMembers() {
   return (
     <PlasmicARatingMembers
       args={{
-        formData: formData ?? {}, // 🔥 CORRETO
+        formData: formData ?? {},
         reports: reports ?? [],
         actualData: actualData,
         onSave: handleSave,

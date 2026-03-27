@@ -366,13 +366,13 @@
   padding: 0px;
   border: 1px solid #53535333;
 }
-.freeBox__avIqQ {
+.freeBox__n1Ndr {
   animation: none;
   display: flex;
   flex-direction: column;
   position: relative;
-  align-items: stretch;
-  justify-content: flex-start;
+  align-items: center;
+  justify-content: center;
   width: auto;
   height: auto;
   max-width: 100%;
@@ -380,7 +380,7 @@
   left: auto;
   padding: 8px;
 }
-.communityLogo {
+.communityLogo2 {
   animation: none;
   object-fit: cover;
   max-width: 100%;
@@ -391,11 +391,11 @@
   border-radius: 300px;
   border-width: 1px;
 }
-.communityLogo > picture > img {
+.communityLogo2 > picture > img {
   object-fit: cover;
   object-position: 50% 50%;
 }
-.type {
+.type2 {
   animation: none;
   object-fit: cover;
   max-width: 100%;
@@ -406,14 +406,14 @@
   color: #545454;
   flex-shrink: 0;
 }
-.communityName {
+.communityName2 {
   animation: none;
   position: relative;
   width: 100%;
   height: auto;
   max-width: 100%;
   text-align: center;
-  font-size: 18px;
+  font-size: 14px;
   font-family: "Inter", sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -427,19 +427,23 @@
   text-overflow: clip;
   min-width: 0;
 }
-.freeBox__nGNsb {
+.freeBox__eKPlz {
+  animation: none;
   display: flex;
   flex-direction: column;
   position: relative;
   align-items: flex-end;
   justify-content: flex-start;
   width: 100%;
-  height: auto;
+  height: 100%;
   max-width: 100%;
+  align-self: flex-start;
   min-width: 0;
+  min-height: 0;
   padding: 0px;
 }
-.text__fXrXc {
+.text__ufHmP {
+  animation: none;
   width: 150px;
   height: auto;
   max-width: 100%;
@@ -449,20 +453,30 @@
     100% repeat;
   color: #ffffff;
   border-bottom-left-radius: 5px;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  text-align: left;
+  text-transform: none;
+  line-height: 1.5;
+  letter-spacing: normal;
+  white-space: pre-wrap;
+  user-select: text;
+  text-decoration-line: none;
+  text-overflow: clip;
   padding: 0px 0px 0px 10px;
+  margin: 0px;
 }
-.sliderCarousel2:global(.__wab_instance) {
+.membersCarousel:global(.__wab_instance) {
   animation: none;
-  width: 100%;
-  max-width: 100%;
-  flex-direction: column;
+  display: block;
+  height: auto;
   object-fit: cover;
-  height: 100%;
+  max-width: 100%;
+  width: 100%;
+  white-space: pre;
   min-width: 0;
-  min-height: 0;
-  padding: 0px;
 }
-.freeBox__hhp1L {
+.member2 {
   animation: none;
   display: flex;
   flex-direction: row;
@@ -470,39 +484,40 @@
   width: 50px;
   height: auto;
   max-width: 100%;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   padding: 0px;
+  margin: 4px;
 }
-.member {
+.freeBox__jgmxT {
   animation: none;
   display: flex;
   flex-direction: row;
   position: relative;
   align-items: center;
-  justify-content: flex-end;
-  width: 150px;
+  justify-content: center;
+  width: 100%;
   height: auto;
   max-width: 100%;
-  flex-shrink: 0;
+  min-width: 0;
   padding: 0px;
   margin: 0px;
   border-width: 2px;
 }
-.office {
+.office2 {
   animation: none;
   position: relative;
   width: 100px;
-  height: 35px;
+  height: auto;
   max-width: 100%;
-  transform: rotate3d(0, 0, 1, -90deg);
+  transform: rotate3d(0, 0, 1, 90deg);
   left: auto;
   top: auto;
-  padding-left: 10px;
   font-size: 11px;
   color: #fafafa;
   background: #000000cc;
-  align-self: auto;
+  min-height: 35px;
+  padding-left: 10px;
   font-family: "Inter", sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -515,22 +530,24 @@
   text-decoration-line: none;
   text-overflow: clip;
   flex-shrink: 0;
+  margin: 0px;
 }
-.profilePic {
+.profilePic2 {
   animation: none;
-  object-fit: contain;
-  max-width: 100%;
+  object-fit: cover;
+  max-width: 120px;
   width: 120px;
-  height: 150px;
-  margin-right: -60px;
-  margin-left: -48px;
+  height: auto;
+  min-height: 150px;
+  margin-left: -31px;
   flex-shrink: 0;
+  border-radius: 8px;
   border-width: 1px;
 }
-.profilePic > picture > img {
-  object-fit: contain;
+.profilePic2 > picture > img {
+  object-fit: cover;
 }
-.text__dlIvH {
+.text___7N2Ne {
   animation: none;
   width: 60px;
   height: auto;
@@ -542,10 +559,8 @@
   color: #ffffff;
   border-bottom-left-radius: 5px;
   align-self: auto;
-  position: relative;
-  left: auto;
-  top: auto;
   margin-top: -131px;
+  margin-left: -60px;
   font-family: "Inter", sans-serif;
   font-style: normal;
   text-align: left;
@@ -557,6 +572,7 @@
   text-decoration-line: none;
   text-overflow: clip;
   flex-shrink: 0;
+  padding: 0px 0px 0px 10px;
 }
 .rateThisAgency {
   display: flex;

@@ -80,9 +80,9 @@ import Icon4Icon from "./icons/PlasmicIcon__Icon4"; // plasmic-import: 6guEK3lWt
 import Icon6Icon from "./icons/PlasmicIcon__Icon6"; // plasmic-import: y4E8J3i62sTp/icon
 import IlustrgatuSvgIcon from "./icons/PlasmicIcon__IlustrgatuSvg"; // plasmic-import: 0rpJDt-WBeXQ/icon
 import PoliteSvgIcon from "./icons/PlasmicIcon__PoliteSvg"; // plasmic-import: f0PNUwY-Sl9R/icon
+import SkillSvgIcon from "./icons/PlasmicIcon__SkillSvg"; // plasmic-import: 9JUauDy9mxmq/icon
 import CircleIcon from "./icons/PlasmicIcon__Circle"; // plasmic-import: l4RREmL1A-vM/icon
 import ChevronDownIcon from "./icons/PlasmicIcon__ChevronDown"; // plasmic-import: qJDdQLGS2RlC/icon
-import SkillSvgIcon from "./icons/PlasmicIcon__SkillSvg"; // plasmic-import: 9JUauDy9mxmq/icon
 import CustomerRatesSvgIcon from "./icons/PlasmicIcon__CustomerRatesSvg"; // plasmic-import: ayP013CUNl9_/icon
 
 const emptyProxy: any = new Proxy(() => "", {
@@ -149,14 +149,12 @@ export type PlasmicARatingMembers__OverridesType = {
   instagram?: Flex__<"a"> & Partial<LinkProps>;
   x?: Flex__<"a"> & Partial<LinkProps>;
   rateThisMember?: Flex__<"div">;
-  rate?: Flex__<typeof Modal>;
-  rating?: Flex__<typeof AntdRate>;
-  comment?: Flex__<typeof AntdTextArea>;
-  confirmRate?: Flex__<typeof Button2>;
   rate2?: Flex__<typeof Modal>;
   rateTechnical?: Flex__<typeof AntdRate>;
+  h3?: Flex__<"h3">;
   comment2?: Flex__<typeof AntdTextArea>;
   confirmRate2?: Flex__<typeof Button2>;
+  button2?: Flex__<typeof Button2>;
   memberRated?: Flex__<typeof AntdRate>;
   reportRate?: Flex__<"div">;
   reportDate?: Flex__<"div">;
@@ -226,32 +224,11 @@ function PlasmicARatingMembers__RenderFunc(props: {
         variableType: "number"
       },
       {
-        path: "rate.isOpen",
-        type: "private",
-        variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
-      },
-      {
-        path: "rating.value",
-        type: "private",
-        variableType: "number",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
-          $props.formData?.ethics_rate ?? 0
-      },
-      {
-        path: "comment.value",
-        type: "private",
-        variableType: "text",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
-
-        onMutate: generateOnMutateForSpec("value", AntdTextArea_Helpers)
-      },
-      {
         path: "memberRated.value",
         type: "private",
         variableType: "number",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
-          $props.formData?.technical_rate ?? 0
+          $props.formData?.member_rated ?? 0
       },
       {
         path: "rate2.isOpen",
@@ -1064,326 +1041,6 @@ function PlasmicARatingMembers__RenderFunc(props: {
                     "Meeting deadlines and commitments\r\n\r\nCollaborative attitude\r\n\r\nRespectful and professional communication\r\n\r\nTransparency in deliveries\r"
                   }
                 </div>
-                <Modal
-                  data-plasmic-name={"rate"}
-                  data-plasmic-override={overrides.rate}
-                  className={classNames("__wab_instance", sty.rate)}
-                  content={
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        sty.freeBox___1Ar1T
-                      )}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__ljylu
-                        )}
-                      >
-                        {
-                          "Leave a comment, try to share your experience and your expectations or disappointments."
-                        }
-                      </div>
-                      {(() => {
-                        const child$Props = {
-                          className: classNames("__wab_instance", sty.comment),
-                          onChange: async (...eventArgs: any) => {
-                            generateStateOnChangePropForCodeComponents(
-                              $state,
-                              "value",
-                              ["comment", "value"],
-                              AntdTextArea_Helpers
-                            ).apply(null, eventArgs);
-                          },
-                          value: generateStateValueProp($state, [
-                            "comment",
-                            "value"
-                          ])
-                        };
-                        initializeCodeComponentStates(
-                          $state,
-                          [
-                            {
-                              name: "value",
-                              plasmicStateName: "comment.value"
-                            }
-                          ],
-                          [],
-                          AntdTextArea_Helpers ?? {},
-                          child$Props
-                        );
-
-                        return (
-                          <AntdTextArea
-                            data-plasmic-name={"comment"}
-                            data-plasmic-override={overrides.comment}
-                            {...child$Props}
-                          />
-                        );
-                      })()}
-                    </div>
-                  }
-                  footer={
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__x04ND)}
-                    >
-                      <Button2
-                        data-plasmic-name={"confirmRate"}
-                        data-plasmic-override={overrides.confirmRate}
-                        color={"muted"}
-                        label={
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__lVxXy
-                            )}
-                          >
-                            {"Confirm"}
-                          </div>
-                        }
-                        onClick={async event => {
-                          const $steps = {};
-
-                          $steps["invokeGlobalAction"] = true
-                            ? (() => {
-                                const actionArgs = {
-                                  args: ["success", "Send"]
-                                };
-                                return $globalActions[
-                                  "plasmic-antd5-config-provider.showNotification"
-                                ]?.apply(null, [...actionArgs.args]);
-                              })()
-                            : undefined;
-                          if (
-                            $steps["invokeGlobalAction"] != null &&
-                            typeof $steps["invokeGlobalAction"] === "object" &&
-                            typeof $steps["invokeGlobalAction"].then ===
-                              "function"
-                          ) {
-                            $steps["invokeGlobalAction"] =
-                              await $steps["invokeGlobalAction"];
-                          }
-
-                          $steps["runCode"] = true
-                            ? (() => {
-                                const actionArgs = {
-                                  customFunction: async () => {
-                                    return $props.onSave({
-                                      rating: $state.rating?.value,
-                                      comment: $state.comment?.value,
-                                      type: "community ethics"
-                                    });
-                                  }
-                                };
-                                return (({ customFunction }) => {
-                                  return customFunction();
-                                })?.apply(null, [actionArgs]);
-                              })()
-                            : undefined;
-                          if (
-                            $steps["runCode"] != null &&
-                            typeof $steps["runCode"] === "object" &&
-                            typeof $steps["runCode"].then === "function"
-                          ) {
-                            $steps["runCode"] = await $steps["runCode"];
-                          }
-
-                          $steps["updateModalIsOpen"] = true
-                            ? (() => {
-                                const actionArgs = {
-                                  variable: {
-                                    objRoot: $state,
-                                    variablePath: ["rate", "isOpen"]
-                                  },
-                                  operation: 0,
-                                  value: false
-                                };
-                                return (({
-                                  variable,
-                                  value,
-                                  startIndex,
-                                  deleteCount
-                                }) => {
-                                  if (!variable) {
-                                    return;
-                                  }
-                                  const { objRoot, variablePath } = variable;
-
-                                  $stateSet(objRoot, variablePath, value);
-                                  return value;
-                                })?.apply(null, [actionArgs]);
-                              })()
-                            : undefined;
-                          if (
-                            $steps["updateModalIsOpen"] != null &&
-                            typeof $steps["updateModalIsOpen"] === "object" &&
-                            typeof $steps["updateModalIsOpen"].then ===
-                              "function"
-                          ) {
-                            $steps["updateModalIsOpen"] =
-                              await $steps["updateModalIsOpen"];
-                          }
-                        }}
-                        size={"extraSmall"}
-                        type={"soft"}
-                      />
-
-                      <Button2
-                        color={"muted"}
-                        label={
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__iwA6
-                            )}
-                          >
-                            {"Cancel"}
-                          </div>
-                        }
-                        onClick={async event => {
-                          const $steps = {};
-
-                          $steps["updateModalIsOpen"] = true
-                            ? (() => {
-                                const actionArgs = {
-                                  variable: {
-                                    objRoot: $state,
-                                    variablePath: ["rate", "isOpen"]
-                                  },
-                                  operation: 0,
-                                  value: false
-                                };
-                                return (({
-                                  variable,
-                                  value,
-                                  startIndex,
-                                  deleteCount
-                                }) => {
-                                  if (!variable) {
-                                    return;
-                                  }
-                                  const { objRoot, variablePath } = variable;
-
-                                  $stateSet(objRoot, variablePath, value);
-                                  return value;
-                                })?.apply(null, [actionArgs]);
-                              })()
-                            : undefined;
-                          if (
-                            $steps["updateModalIsOpen"] != null &&
-                            typeof $steps["updateModalIsOpen"] === "object" &&
-                            typeof $steps["updateModalIsOpen"].then ===
-                              "function"
-                          ) {
-                            $steps["updateModalIsOpen"] =
-                              await $steps["updateModalIsOpen"];
-                          }
-                        }}
-                        size={"extraSmall"}
-                        type={"soft"}
-                      />
-                    </div>
-                  }
-                  heading={
-                    <h3
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.h3,
-                        projectcss.__wab_text,
-                        sty.h3__zStnQ
-                      )}
-                    >
-                      {"Rating"}
-                    </h3>
-                  }
-                  isOpen={generateStateValueProp($state, ["rate", "isOpen"])}
-                  onOpenChange={async (...eventArgs: any) => {
-                    generateStateOnChangeProp($state, ["rate", "isOpen"]).apply(
-                      null,
-                      eventArgs
-                    );
-
-                    if (
-                      eventArgs.length > 1 &&
-                      eventArgs[1] &&
-                      eventArgs[1]._plasmic_state_init_
-                    ) {
-                      return;
-                    }
-                  }}
-                  trigger={
-                    <AntdRate
-                      data-plasmic-name={"rating"}
-                      data-plasmic-override={overrides.rating}
-                      allowHalf={true}
-                      className={classNames("__wab_instance", sty.rating)}
-                      defaultValue={$props.formData?.ethics_rate ?? 0}
-                      onChange={async (...eventArgs: any) => {
-                        generateStateOnChangeProp($state, [
-                          "rating",
-                          "value"
-                        ]).apply(null, eventArgs);
-                      }}
-                      symbols={
-                        <React.Fragment>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text___4UPFs
-                            )}
-                          >
-                            {"1"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__zuY1
-                            )}
-                          >
-                            {"2"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__znRp
-                            )}
-                          >
-                            {"3"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text___5NCgn
-                            )}
-                          >
-                            {"4"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__fJdwB
-                            )}
-                          >
-                            {"5"}
-                          </div>
-                        </React.Fragment>
-                      }
-                      value={generateStateValueProp($state, [
-                        "rating",
-                        "value"
-                      ])}
-                    />
-                  }
-                />
               </div>
               <div className={classNames(projectcss.all, sty.freeBox__tManG)}>
                 <SkillSvgIcon
@@ -1576,6 +1233,8 @@ function PlasmicARatingMembers__RenderFunc(props: {
                       />
 
                       <Button2
+                        data-plasmic-name={"button2"}
+                        data-plasmic-override={overrides.button2}
                         color={"muted"}
                         label={
                           <div
@@ -1634,11 +1293,13 @@ function PlasmicARatingMembers__RenderFunc(props: {
                   }
                   heading={
                     <h3
+                      data-plasmic-name={"h3"}
+                      data-plasmic-override={overrides.h3}
                       className={classNames(
                         projectcss.all,
                         projectcss.h3,
                         projectcss.__wab_text,
-                        sty.h3___2Qe19
+                        sty.h3
                       )}
                     >
                       {"Rating"}
@@ -1763,7 +1424,7 @@ function PlasmicARatingMembers__RenderFunc(props: {
                   data-plasmic-override={overrides.memberRated}
                   allowHalf={true}
                   className={classNames("__wab_instance", sty.memberRated)}
-                  defaultValue={$props.formData?.technical_rate ?? 0}
+                  defaultValue={$props.formData?.member_rated ?? 0}
                   disabled={true}
                   onChange={async (...eventArgs: any) => {
                     generateStateOnChangeProp($state, [
@@ -2256,14 +1917,12 @@ const PlasmicDescendants = {
     "instagram",
     "x",
     "rateThisMember",
-    "rate",
-    "rating",
-    "comment",
-    "confirmRate",
     "rate2",
     "rateTechnical",
+    "h3",
     "comment2",
     "confirmRate2",
+    "button2",
     "memberRated",
     "reportRate",
     "reportDate",
@@ -2298,24 +1957,27 @@ const PlasmicDescendants = {
   x: ["x"],
   rateThisMember: [
     "rateThisMember",
-    "rate",
-    "rating",
-    "comment",
-    "confirmRate",
     "rate2",
     "rateTechnical",
+    "h3",
     "comment2",
     "confirmRate2",
+    "button2",
     "memberRated"
   ],
-  rate: ["rate", "rating", "comment", "confirmRate"],
-  rating: ["rating"],
-  comment: ["comment"],
-  confirmRate: ["confirmRate"],
-  rate2: ["rate2", "rateTechnical", "comment2", "confirmRate2"],
+  rate2: [
+    "rate2",
+    "rateTechnical",
+    "h3",
+    "comment2",
+    "confirmRate2",
+    "button2"
+  ],
   rateTechnical: ["rateTechnical"],
+  h3: ["h3"],
   comment2: ["comment2"],
   confirmRate2: ["confirmRate2"],
+  button2: ["button2"],
   memberRated: ["memberRated"],
   reportRate: [
     "reportRate",
@@ -2349,14 +2011,12 @@ type NodeDefaultElementType = {
   instagram: "a";
   x: "a";
   rateThisMember: "div";
-  rate: typeof Modal;
-  rating: typeof AntdRate;
-  comment: typeof AntdTextArea;
-  confirmRate: typeof Button2;
   rate2: typeof Modal;
   rateTechnical: typeof AntdRate;
+  h3: "h3";
   comment2: typeof AntdTextArea;
   confirmRate2: typeof Button2;
+  button2: typeof Button2;
   memberRated: typeof AntdRate;
   reportRate: "div";
   reportDate: "div";
@@ -2442,14 +2102,12 @@ export const PlasmicARatingMembers = Object.assign(
     instagram: makeNodeComponent("instagram"),
     x: makeNodeComponent("x"),
     rateThisMember: makeNodeComponent("rateThisMember"),
-    rate: makeNodeComponent("rate"),
-    rating: makeNodeComponent("rating"),
-    comment: makeNodeComponent("comment"),
-    confirmRate: makeNodeComponent("confirmRate"),
     rate2: makeNodeComponent("rate2"),
     rateTechnical: makeNodeComponent("rateTechnical"),
+    h3: makeNodeComponent("h3"),
     comment2: makeNodeComponent("comment2"),
     confirmRate2: makeNodeComponent("confirmRate2"),
+    button2: makeNodeComponent("button2"),
     memberRated: makeNodeComponent("memberRated"),
     reportRate: makeNodeComponent("reportRate"),
     reportDate: makeNodeComponent("reportDate"),

@@ -24,9 +24,10 @@ export default function CRateACommunitie() {
 
   const [companyUser, setCompanyUser] = useState<any>(undefined);
   const [company, setCompany] = useState<any>(null);
-  const [community, setCommunity] = useState<any>(null);
 
+  const [formData, setFormData] = useState<any>({});
   const [reports, setReports] = useState<any[]>([]);
+
   const [actualData, setActualData] = useState("");
   const [periodKey, setPeriodKey] = useState("");
 
@@ -56,9 +57,7 @@ export default function CRateACommunitie() {
 
         const communityId = Number(id);
 
-        // =========================
         // 🔥 PERÍODO
-        // =========================
         const now = new Date();
         const quarter = Math.floor(now.getMonth() / 3);
         const year = now.getFullYear();
@@ -99,10 +98,8 @@ export default function CRateACommunitie() {
           .eq("id", communityId)
           .maybeSingle();
 
-        setCommunity(communityData ?? null);
-
         // =========================
-        // 🔥 CONNECTION VALIDATION
+        // CONNECTION CHECK
         // =========================
         const { data: connection } = await supabaseA
           .from("CONNECTIONS")
@@ -144,10 +141,10 @@ export default function CRateACommunitie() {
         );
 
         // =========================
-        // ENRICH COMMUNITY
+        // 🔥 FORM DATA FINAL (PADRÃO CORRETO)
         // =========================
         const enriched = {
-          ...communityData,
+          ...(communityData ?? {}),
 
           company_rate: avg(companyReviews),
           company_count: count(companyReviews),
@@ -156,7 +153,7 @@ export default function CRateACommunitie() {
           member_count: count(memberReviews),
         };
 
-        setCommunity(enriched);
+        setFormData(enriched);
 
         // =========================
         // REPORTS
@@ -212,7 +209,7 @@ export default function CRateACommunitie() {
 
     if (!rating || !companyUser || !company || !periodKey) return;
 
-    // 🔥 CONNECTION CHECK
+    // CONNECTION CHECK
     const { data: connection } = await supabaseA
       .from("CONNECTIONS")
       .select("*")
@@ -226,7 +223,7 @@ export default function CRateACommunitie() {
       return;
     }
 
-    // 🔥 DUPLICATE CHECK
+    // DUPLICATE CHECK
     const { data: existing } = await supabaseA
       .from("community_reviews")
       .select("id")
@@ -241,7 +238,6 @@ export default function CRateACommunitie() {
       return;
     }
 
-    // 🔥 INSERT
     const { error } = await supabaseA
       .from("community_reviews")
       .insert({
@@ -277,7 +273,7 @@ export default function CRateACommunitie() {
   return (
     <PlasmicCRateACommunitie
       args={{
-        community: community ?? {},
+        formData: formData ?? {}, // ✅ CORRETO
         reports: reports ?? [],
         actualData: actualData,
         onSave: handleSave,

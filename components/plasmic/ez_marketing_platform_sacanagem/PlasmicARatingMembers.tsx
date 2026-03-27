@@ -1516,7 +1516,7 @@ function PlasmicARatingMembers__RenderFunc(props: {
                                 const actionArgs = {
                                   customFunction: async () => {
                                     return $props.onSave({
-                                      rating: $state.ratingTechnical?.value,
+                                      rating: $state.rateTechnical?.value,
                                       comment: $state.comment2?.value,
                                       type: "community technical"
                                     });

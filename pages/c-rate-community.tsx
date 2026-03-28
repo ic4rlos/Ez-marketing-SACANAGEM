@@ -74,7 +74,7 @@ export default function CRateACommunitie() {
         setPeriodKey(currentKey);
 
         // =========================
-        // COMPANY (C)
+        // COMPANY
         // =========================
         const { data: companyData } = await supabaseC
           .from("companies")
@@ -90,7 +90,7 @@ export default function CRateACommunitie() {
         setCompany(companyData);
 
         // =========================
-        // COMMUNITY (A)
+        // COMMUNITY
         // =========================
         const { data: communityData } = await supabaseA
           .from("Community")
@@ -114,12 +114,13 @@ export default function CRateACommunitie() {
         }
 
         // =========================
-        // REVIEWS
+        // REVIEWS (🔥 CORREÇÃO AQUI)
         // =========================
         const { data: reviews } = await supabaseA
           .from("community_reviews")
           .select("*")
-          .eq("community_id", communityId);
+          .eq("community_id", communityId)
+          .eq("company_id", companyData.id); // 🔥 ESSENCIAL
 
         const reviewsThisPeriod =
           reviews?.filter((r: any) => r.period_key === currentKey) ?? [];
@@ -132,8 +133,13 @@ export default function CRateACommunitie() {
 
         const count = (list: any[]) => list.length;
 
+        // 🔥 TIPOS CORRETOS
         const companyReviews = reviewsThisPeriod.filter(
           (r: any) => r.author_type === "company"
+        );
+
+        const agencyReviews = reviewsThisPeriod.filter(
+          (r: any) => r.author_type === "community"
         );
 
         const memberReviews = reviewsThisPeriod.filter(
@@ -141,13 +147,16 @@ export default function CRateACommunitie() {
         );
 
         // =========================
-        // 🔥 FORM DATA FINAL (PADRÃO CORRETO)
+        // FORM DATA FINAL
         // =========================
         const enriched = {
           ...(communityData ?? {}),
 
           company_rate: avg(companyReviews),
           company_count: count(companyReviews),
+
+          agency_rate: avg(agencyReviews), // ✅ AGORA FUNCIONA
+          agency_count: count(agencyReviews),
 
           member_rate: avg(memberReviews),
           member_count: count(memberReviews),
@@ -179,6 +188,10 @@ export default function CRateACommunitie() {
             (r: any) => r.author_type === "company"
           );
 
+          const agencyList = list.filter(
+            (r: any) => r.author_type === "community"
+          );
+
           const memberList = list.filter(
             (r: any) => r.author_type === "member"
           );
@@ -186,6 +199,7 @@ export default function CRateACommunitie() {
           return {
             date: `${format(first)} - ${format(last)}`,
             company: avg(companyList),
+            agency: avg(agencyList), // ✅ NOVO
             member: avg(memberList),
           };
         });
@@ -202,14 +216,13 @@ export default function CRateACommunitie() {
   }, [companyUser, id]);
 
   // =========================
-  // SAVE
+  // SAVE (INALTERADO)
   // =========================
   async function handleSave(payload: any) {
     const { rating, comment, type } = payload;
 
     if (!rating || !companyUser || !company || !periodKey) return;
 
-    // CONNECTION CHECK
     const { data: connection } = await supabaseA
       .from("CONNECTIONS")
       .select("*")
@@ -223,7 +236,6 @@ export default function CRateACommunitie() {
       return;
     }
 
-    // DUPLICATE CHECK
     const { data: existing } = await supabaseA
       .from("community_reviews")
       .select("id")
@@ -259,9 +271,6 @@ export default function CRateACommunitie() {
     router.replace(router.asPath);
   }
 
-  // =========================
-  // LOGOUT
-  // =========================
   async function handleLogout() {
     await supabaseC.auth.signOut();
     router.replace("/");
@@ -273,7 +282,7 @@ export default function CRateACommunitie() {
   return (
     <PlasmicCRateACommunitie
       args={{
-        formData: formData ?? {}, // ✅ CORRETO
+        formData: formData ?? {},
         reports: reports ?? [],
         actualData: actualData,
         onSave: handleSave,

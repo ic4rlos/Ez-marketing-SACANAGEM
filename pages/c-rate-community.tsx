@@ -57,7 +57,9 @@ export default function CRateACommunitie() {
 
         const communityId = Number(id);
 
-        // 🔥 PERÍODO
+        // =========================
+        // 🔥 PERÍODO TRIMESTRAL
+        // =========================
         const now = new Date();
         const quarter = Math.floor(now.getMonth() / 3);
         const year = now.getFullYear();
@@ -74,7 +76,7 @@ export default function CRateACommunitie() {
         setPeriodKey(currentKey);
 
         // =========================
-        // COMPANY
+        // COMPANY (C)
         // =========================
         const { data: companyData } = await supabaseC
           .from("companies")
@@ -90,13 +92,65 @@ export default function CRateACommunitie() {
         setCompany(companyData);
 
         // =========================
-        // COMMUNITY
+        // COMMUNITY (A)
         // =========================
         const { data: communityData } = await supabaseA
           .from("Community")
           .select("*")
           .eq("id", communityId)
           .maybeSingle();
+
+        // =========================
+        // 🔥 MEMBERS (IGUAL APPLY)
+        // =========================
+        const { data: membersDb } = await supabaseA
+          .from("community_members")
+          .select("user_id, status")
+          .eq("community_id", communityId)
+          .eq("status", "connected");
+
+        let members: any[] = [];
+
+        if (membersDb?.length) {
+          members = (
+            await Promise.all(
+              membersDb.map(async (m: any) => {
+                const { data: profile } = await supabaseA
+                  .from("User profile")
+                  .select('id, "Profile pic"')
+                  .eq("user_id", m.user_id)
+                  .maybeSingle();
+
+                let offices: any[] = [];
+
+                if (profile?.id) {
+                  const { data } = await supabaseA
+                    .from("Multicharge")
+                    .select("Office")
+                    .eq("User profile_id", profile.id);
+
+                  offices = data ?? [];
+                }
+
+                if (!offices.length) {
+                  return [
+                    {
+                      "Profile pic": profile?.["Profile pic"] ?? null,
+                      Office: "Member",
+                    },
+                  ];
+                }
+
+                return offices.map((o: any) => ({
+                  "Profile pic": profile?.["Profile pic"] ?? null,
+                  Office: o.Office,
+                }));
+              })
+            )
+          )
+            .flat()
+            .filter(Boolean);
+        }
 
         // =========================
         // CONNECTION CHECK
@@ -114,13 +168,12 @@ export default function CRateACommunitie() {
         }
 
         // =========================
-        // REVIEWS (🔥 CORREÇÃO AQUI)
+        // REVIEWS
         // =========================
         const { data: reviews } = await supabaseA
           .from("community_reviews")
           .select("*")
-          .eq("community_id", communityId)
-          .eq("company_id", companyData.id); // 🔥 ESSENCIAL
+          .eq("community_id", communityId);
 
         const reviewsThisPeriod =
           reviews?.filter((r: any) => r.period_key === currentKey) ?? [];
@@ -133,15 +186,19 @@ export default function CRateACommunitie() {
 
         const count = (list: any[]) => list.length;
 
-        // 🔥 TIPOS CORRETOS
+        // 🔥 COMPANY → comunidade
         const companyReviews = reviewsThisPeriod.filter(
           (r: any) => r.author_type === "company"
         );
 
+        // 🔥 COMMUNITY → empresa (AGENCY RATE)
         const agencyReviews = reviewsThisPeriod.filter(
-          (r: any) => r.author_type === "community"
+          (r: any) =>
+            r.author_type === "community" &&
+            r.company_id === companyData.id
         );
 
+        // 🔥 MEMBERS → comunidade
         const memberReviews = reviewsThisPeriod.filter(
           (r: any) => r.author_type === "member"
         );
@@ -152,10 +209,12 @@ export default function CRateACommunitie() {
         const enriched = {
           ...(communityData ?? {}),
 
+          members,
+
           company_rate: avg(companyReviews),
           company_count: count(companyReviews),
 
-          agency_rate: avg(agencyReviews), // ✅ AGORA FUNCIONA
+          agency_rate: avg(agencyReviews),
           agency_count: count(agencyReviews),
 
           member_rate: avg(memberReviews),
@@ -189,7 +248,9 @@ export default function CRateACommunitie() {
           );
 
           const agencyList = list.filter(
-            (r: any) => r.author_type === "community"
+            (r: any) =>
+              r.author_type === "community" &&
+              r.company_id === companyData.id
           );
 
           const memberList = list.filter(
@@ -199,7 +260,7 @@ export default function CRateACommunitie() {
           return {
             date: `${format(first)} - ${format(last)}`,
             company: avg(companyList),
-            agency: avg(agencyList), // ✅ NOVO
+            agency: avg(agencyList),
             member: avg(memberList),
           };
         });
@@ -216,7 +277,7 @@ export default function CRateACommunitie() {
   }, [companyUser, id]);
 
   // =========================
-  // SAVE (INALTERADO)
+  // SAVE
   // =========================
   async function handleSave(payload: any) {
     const { rating, comment, type } = payload;
@@ -271,6 +332,9 @@ export default function CRateACommunitie() {
     router.replace(router.asPath);
   }
 
+  // =========================
+  // LOGOUT
+  // =========================
   async function handleLogout() {
     await supabaseC.auth.signOut();
     router.replace("/");

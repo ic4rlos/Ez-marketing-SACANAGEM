@@ -86,7 +86,8 @@ export default function ACommunityDashboard() {
   const [user, setUser] = useState<any>(null);
   const [formData, setFormData] = useState<any>({
     members: [],
-    trainings: []
+    trainings: [],
+    reviews: []
   });
   const [loading, setLoading] = useState(true);
 
@@ -142,9 +143,9 @@ export default function ACommunityDashboard() {
 
       if (connections?.length) {
 
-      const companyIds = Array.from(
-  new Set(connections.map((c:any) => Number(c.company_id)))
-);
+        const companyIds = Array.from(
+          new Set(connections.map((c:any) => Number(c.company_id)))
+        );
 
         const { data: companies } = await supabaseC
           .from("companies")
@@ -313,6 +314,43 @@ export default function ACommunityDashboard() {
         ).flat().filter(Boolean);
       }
 
+      // =========================
+      // 🔥 REVIEWS + REPLIES
+      // =========================
+      const { data: reviewsRaw } = await supabase
+        .from("community_reviews")
+        .select("*")
+        .eq("community_id", communityId)
+        .order("created_at", { ascending: false });
+
+      const { data: repliesRaw } = await supabase
+        .from("community_replies")
+        .select("*")
+        .eq("community_id", communityId)
+        .order("created_at", { ascending: true });
+
+      const repliesMap:any = {};
+
+      repliesRaw?.forEach((r:any)=>{
+        if (!repliesMap[r.review_id]) repliesMap[r.review_id] = [];
+        repliesMap[r.review_id].push({
+          id: r.id,
+          reply: r.reply,
+          author_user_id: r.author_user_id,
+          created_at: r.created_at
+        });
+      });
+
+      const reviews = reviewsRaw?.map((r:any)=>({
+        id: r.id,
+        rating: r.rating,
+        comment: r.comment,
+        author_type: r.author_type,
+        author_user_id: r.author_user_id,
+        created_at: r.created_at,
+        replies: repliesMap[r.id] ?? []
+      })) ?? [];
+
       // COMMUNITY
       const { data: community } = await supabase
         .from("Community")
@@ -334,6 +372,8 @@ export default function ACommunityDashboard() {
         trainings,
         specialties: specialtiesList,
 
+        reviews,
+
         isAdmin: member.role === "admin"
       };
 
@@ -347,8 +387,60 @@ export default function ACommunityDashboard() {
 
   async function handleSave(payload:any){
 
-    const { action, connectionId, reason } = payload;
+    const { action, connectionId, reason, rating, comment, reviewId } = payload;
 
+    // =========================
+    // 🔥 CREATE REVIEW
+    // =========================
+    if (action === "create_review"){
+
+      if (!rating || !user) return;
+
+      const { data: member } = await supabase
+        .from("community_members")
+        .select("*")
+        .eq("user_id", user.id)
+        .maybeSingle();
+
+      await supabase.from("community_reviews").insert({
+        rating: Number(rating),
+        comment: comment ?? "",
+        community_id: member?.community_id,
+        author_user_id: user.id,
+        author_type: "community"
+      });
+
+      location.reload();
+      return;
+    }
+
+    // =========================
+    // 🔥 CREATE REPLY
+    // =========================
+    if (action === "create_reply"){
+
+      if (!reviewId || !comment || !user) return;
+
+      const { data: member } = await supabase
+        .from("community_members")
+        .select("*")
+        .eq("user_id", user.id)
+        .maybeSingle();
+
+      await supabase.from("community_replies").insert({
+        review_id: reviewId,
+        reply: comment,
+        community_id: member?.community_id,
+        author_user_id: user.id
+      });
+
+      location.reload();
+      return;
+    }
+
+    // =========================
+    // EXISTENTE (SEM ALTERAÇÃO)
+    // =========================
     if (!connectionId) return;
 
     if (action === "accept_member"){

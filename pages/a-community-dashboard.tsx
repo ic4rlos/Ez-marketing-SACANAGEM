@@ -88,7 +88,9 @@ export default function ACommunityDashboard() {
     members: [],
     trainings: [],
     community_reviews: [],
-    community_replies: []
+    community_replies: [],
+    community_membersreviews: [],
+    community_membersreplies: []
   });
   const [loading, setLoading] = useState(true);
 
@@ -169,7 +171,7 @@ export default function ACommunityDashboard() {
       }
 
       // =========================
-      // MEMBERS + TRAININGS + SPECIALTIES
+      // MEMBERS / TRAININGS / SPECIALTIES
       // =========================
       const { data: membersRaw } = await supabase
         .from("community_members")
@@ -178,10 +180,11 @@ export default function ACommunityDashboard() {
 
       let connectedMembers:any[] = [];
       let memberRequests:any[] = [];
-
       let members:any[] = [];
       let trainings:any[] = [];
       let specialtiesList:string[] = [];
+
+      let profileMap:any = {};
 
       if (membersRaw?.length) {
 
@@ -192,7 +195,6 @@ export default function ACommunityDashboard() {
           .select(`id, user_id, "Profile pic", "First name", "Last name", "Birthday"`)
           .in("user_id", userIds);
 
-        const profileMap:any = {};
         memberProfiles?.forEach(p=>{
           profileMap[String(p.user_id)] = p;
         });
@@ -308,20 +310,39 @@ export default function ACommunityDashboard() {
       }
 
       // =========================
-      // 🔥 REVIEWS + REPLIES CORRETOS
+      // REVIEWS / REPLIES
       // =========================
       const { data: reviewsRaw } = await supabase
         .from("community_reviews")
         .select("*")
-        .eq("community_id", communityId)
-        .eq("author_type", "company");
+        .eq("community_id", communityId);
 
       const { data: repliesRaw } = await supabase
         .from("community_replies")
         .select("*")
-        .eq("community_id", communityId)
-        .eq("author_type", "community");
+        .eq("community_id", communityId);
 
+      // PERFIS EXTRA (garante pegar quem comentou)
+      const extraUserIds = Array.from(new Set([
+        ...(reviewsRaw ?? []).map((r:any)=>r.author_user_id),
+        ...(repliesRaw ?? []).map((r:any)=>r.author_user_id)
+      ]));
+
+      if (extraUserIds.length){
+        const { data: extraProfiles } = await supabase
+          .from("User profile")
+          .select(`id, user_id, "Profile pic", "First name"`)
+          .in("user_id", extraUserIds);
+
+        extraProfiles?.forEach(p=>{
+          profileMap[String(p.user_id)] = {
+            ...(profileMap[String(p.user_id)] ?? {}),
+            ...p
+          };
+        });
+      }
+
+      // COMPANY DATA
       const companyIds = Array.from(new Set([
         ...(reviewsRaw ?? []).map((r:any)=>Number(r.company_id)),
         ...(repliesRaw ?? []).map((r:any)=>Number(r.company_id))
@@ -332,31 +353,70 @@ export default function ACommunityDashboard() {
         .select("*")
         .in("id", companyIds);
 
-      const community_reviews = (reviewsRaw ?? []).map((r:any)=>{
-        const company = companies?.find(c=>Number(c.id)===Number(r.company_id));
-        return {
-          id: r.id,
-          company_id: r.company_id,
-          "Company Logo": company?.["Company Logo"] ?? "",
-          "Company name": company?.["Company name"] ?? "",
-          community_name: "",
-          comment: r.comment ?? "",
-          rating: r.rating ?? 0
-        };
+      const companyMap:any = {};
+      companies?.forEach(c=>{
+        companyMap[Number(c.id)] = c;
       });
 
-      const community_replies = (repliesRaw ?? []).map((r:any)=>{
-        const company = companies?.find(c=>Number(c.id)===Number(r.company_id));
-        return {
-          id: r.id,
-          company_id: r.company_id,
-          "Company Logo": company?.["Company Logo"] ?? "",
-          "Company name": company?.["Company name"] ?? "",
-          community_name: "",
-          comment: r.comment ?? "",
-          rating: r.rating ?? 0
-        };
-      });
+      // COMPANY REVIEWS
+      const community_reviews = (reviewsRaw ?? [])
+        .filter((r:any)=>r.author_type === "company")
+        .map((r:any)=>{
+          const company = companyMap[Number(r.company_id)];
+          return {
+            id: r.id,
+            "Company Logo": company?.["Company Logo"] ?? "",
+            "Company name": company?.["Company name"] ?? "",
+            community_name: "",
+            comment: r.comment ?? "",
+            rating: r.rating ?? 0
+          };
+        });
+
+      // COMPANY REPLIES
+      const community_replies = (repliesRaw ?? [])
+        .filter((r:any)=>r.author_type === "community")
+        .map((r:any)=>{
+          const company = companyMap[Number(r.company_id)];
+          return {
+            id: r.id,
+            "Company Logo": company?.["Company Logo"] ?? "",
+            "Company name": company?.["Company name"] ?? "",
+            community_name: "",
+            comment: r.comment ?? "",
+            rating: r.rating ?? 0
+          };
+        });
+
+      // MEMBER REVIEWS
+      const community_membersreviews = (reviewsRaw ?? [])
+        .filter((r:any)=>r.author_type === "member")
+        .map((r:any)=>{
+          const profile = profileMap[String(r.author_user_id)];
+          return {
+            id: r.id,
+            "Profile pic": profile?.["Profile pic"] ?? "",
+            "First name": profile?.["First name"] ?? "",
+            community_name: "",
+            comment: r.comment ?? "",
+            rating: r.rating ?? 0
+          };
+        });
+
+      // MEMBER REPLIES
+      const community_membersreplies = (repliesRaw ?? [])
+        .filter((r:any)=>r.author_type === "community")
+        .map((r:any)=>{
+          const profile = profileMap[String(r.author_user_id)];
+          return {
+            id: r.id,
+            "Profile pic": profile?.["Profile pic"] ?? "",
+            "First name": profile?.["First name"] ?? "",
+            community_name: "",
+            comment: r.comment ?? "",
+            rating: r.rating ?? 0
+          };
+        });
 
       const { data: community } = await supabase
         .from("Community")
@@ -380,6 +440,8 @@ export default function ACommunityDashboard() {
 
         community_reviews,
         community_replies,
+        community_membersreviews,
+        community_membersreplies,
 
         isAdmin: member.role === "admin"
       };
@@ -394,87 +456,23 @@ export default function ACommunityDashboard() {
 
   async function handleSave(payload:any){
 
-    const { action, connectionId, reason, rating, comment, company_id } = payload;
+    const { rating, comment } = payload;
 
-    if (action === "create_review"){
+    if (!rating || !user) return;
 
-      if (!rating || !user) return;
+    const { data: member } = await supabase
+      .from("community_members")
+      .select("*")
+      .eq("user_id", user.id)
+      .maybeSingle();
 
-      const { data: member } = await supabase
-        .from("community_members")
-        .select("*")
-        .eq("user_id", user.id)
-        .maybeSingle();
-
-      await supabase.from("community_reviews").insert({
-        rating: Number(rating),
-        comment: comment ?? "",
-        community_id: member?.community_id,
-        author_user_id: user.id,
-        author_type: "member"
-      });
-
-      location.reload();
-      return;
-    }
-
-    if (action === "create_reply"){
-
-      if (!comment || !company_id || !user) return;
-
-      const { data: member } = await supabase
-        .from("community_members")
-        .select("*")
-        .eq("user_id", user.id)
-        .maybeSingle();
-
-      await supabase.from("community_replies").insert({
-        comment: comment,
-        rating: Number(rating ?? 0),
-        community_id: member?.community_id,
-        company_id: company_id,
-        author_user_id: user.id,
-        author_type: "community"
-      });
-
-      location.reload();
-      return;
-    }
-
-    if (!connectionId) return;
-
-    if (action === "accept_member"){
-      await supabase.from("community_members")
-        .update({ status: "connected" })
-        .eq("id", connectionId);
-    }
-
-    if (action === "reject_member" || action === "disconnect_member"){
-      await supabase.from("community_members")
-        .delete()
-        .eq("id", connectionId);
-    }
-
-    if (action === "accept"){
-      await supabase.from("CONNECTIONS")
-        .update({ status: "connected" })
-        .eq("id", connectionId);
-    }
-
-    if (action === "reject"){
-      await supabase.from("CONNECTIONS")
-        .delete()
-        .eq("id", connectionId);
-    }
-
-    if (action === "disconnect"){
-      await supabase.from("CONNECTIONS")
-        .update({
-          status: "agency disconnected",
-          short_message: reason
-        })
-        .eq("id", connectionId);
-    }
+    await supabase.from("community_reviews").insert({
+      rating: Number(rating),
+      comment: comment ?? "",
+      community_id: member?.community_id,
+      author_user_id: user.id,
+      author_type: "member"
+    });
 
     location.reload();
   }

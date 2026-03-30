@@ -87,7 +87,8 @@ export default function ACommunityDashboard() {
   const [formData, setFormData] = useState<any>({
     members: [],
     trainings: [],
-    reviews: []
+    community_reviews: [],
+    community_replies: []
   });
   const [loading, setLoading] = useState(true);
 
@@ -109,14 +110,12 @@ export default function ACommunityDashboard() {
 
     async function loadCommunity() {
 
-      // PROFILE
       const { data: myProfile } = await supabase
         .from("User profile")
         .select('"Profile pic"')
         .eq("user_id", user.id)
         .maybeSingle();
 
-      // MEMBER RECORD
       const { data: member } = await supabase
         .from("community_members")
         .select("community_id, role, status")
@@ -131,7 +130,7 @@ export default function ACommunityDashboard() {
       const communityId = member.community_id;
 
       // =========================
-      // 🔵 COMPANIES
+      // COMPANIES
       // =========================
       const { data: connections } = await supabase
         .from("CONNECTIONS")
@@ -170,7 +169,7 @@ export default function ACommunityDashboard() {
       }
 
       // =========================
-      // 🔴 MEMBERS CORE
+      // MEMBERS + TRAININGS + SPECIALTIES
       // =========================
       const { data: membersRaw } = await supabase
         .from("community_members")
@@ -198,7 +197,6 @@ export default function ACommunityDashboard() {
           profileMap[String(p.user_id)] = p;
         });
 
-        // OFFICES
         let officesMap:any = {};
 
         if (memberProfiles?.length) {
@@ -237,9 +235,6 @@ export default function ACommunityDashboard() {
         connectedMembers = format(membersRaw.filter(m=>m.status==="connected"));
         memberRequests = format(membersRaw.filter(m=>m.status!=="connected"));
 
-        // =========================
-        // 🧠 AGGREGATION
-        // =========================
         const membersDb = membersRaw.filter(m=>m.status==="connected");
 
         const officesFlat:string[] = [];
@@ -258,7 +253,6 @@ export default function ACommunityDashboard() {
           }));
         }).flat().filter(Boolean);
 
-        // SPECIALTIES
         const detected:string[] = [];
 
         for (const name in SPECIALIZATIONS){
@@ -284,7 +278,6 @@ export default function ACommunityDashboard() {
 
         specialtiesList = detected;
 
-        // TRAININGS
         const today = new Date().toISOString().split("T")[0];
 
         trainings = (
@@ -315,43 +308,56 @@ export default function ACommunityDashboard() {
       }
 
       // =========================
-      // 🔥 REVIEWS + REPLIES
+      // 🔥 REVIEWS + REPLIES CORRETOS
       // =========================
       const { data: reviewsRaw } = await supabase
         .from("community_reviews")
         .select("*")
         .eq("community_id", communityId)
-        .order("created_at", { ascending: false });
+        .eq("author_type", "company");
 
       const { data: repliesRaw } = await supabase
         .from("community_replies")
         .select("*")
         .eq("community_id", communityId)
-        .order("created_at", { ascending: true });
+        .eq("author_type", "community");
 
-      const repliesMap:any = {};
+      const companyIds = Array.from(new Set([
+        ...(reviewsRaw ?? []).map((r:any)=>Number(r.company_id)),
+        ...(repliesRaw ?? []).map((r:any)=>Number(r.company_id))
+      ]));
 
-      repliesRaw?.forEach((r:any)=>{
-        if (!repliesMap[r.review_id]) repliesMap[r.review_id] = [];
-        repliesMap[r.review_id].push({
+      const { data: companies } = await supabaseC
+        .from("companies")
+        .select("*")
+        .in("id", companyIds);
+
+      const community_reviews = (reviewsRaw ?? []).map((r:any)=>{
+        const company = companies?.find(c=>Number(c.id)===Number(r.company_id));
+        return {
           id: r.id,
-          reply: r.reply,
-          author_user_id: r.author_user_id,
-          created_at: r.created_at
-        });
+          company_id: r.company_id,
+          "Company Logo": company?.["Company Logo"] ?? "",
+          "Company name": company?.["Company name"] ?? "",
+          community_name: "",
+          comment: r.comment ?? "",
+          rating: r.rating ?? 0
+        };
       });
 
-      const reviews = reviewsRaw?.map((r:any)=>({
-        id: r.id,
-        rating: r.rating,
-        comment: r.comment,
-        author_type: r.author_type,
-        author_user_id: r.author_user_id,
-        created_at: r.created_at,
-        replies: repliesMap[r.id] ?? []
-      })) ?? [];
+      const community_replies = (repliesRaw ?? []).map((r:any)=>{
+        const company = companies?.find(c=>Number(c.id)===Number(r.company_id));
+        return {
+          id: r.id,
+          company_id: r.company_id,
+          "Company Logo": company?.["Company Logo"] ?? "",
+          "Company name": company?.["Company name"] ?? "",
+          community_name: "",
+          comment: r.comment ?? "",
+          rating: r.rating ?? 0
+        };
+      });
 
-      // COMMUNITY
       const { data: community } = await supabase
         .from("Community")
         .select("*")
@@ -372,7 +378,8 @@ export default function ACommunityDashboard() {
         trainings,
         specialties: specialtiesList,
 
-        reviews,
+        community_reviews,
+        community_replies,
 
         isAdmin: member.role === "admin"
       };
@@ -387,11 +394,8 @@ export default function ACommunityDashboard() {
 
   async function handleSave(payload:any){
 
-    const { action, connectionId, reason, rating, comment, reviewId } = payload;
+    const { action, connectionId, reason, rating, comment, company_id } = payload;
 
-    // =========================
-    // 🔥 CREATE REVIEW
-    // =========================
     if (action === "create_review"){
 
       if (!rating || !user) return;
@@ -407,19 +411,16 @@ export default function ACommunityDashboard() {
         comment: comment ?? "",
         community_id: member?.community_id,
         author_user_id: user.id,
-        author_type: "community"
+        author_type: "member"
       });
 
       location.reload();
       return;
     }
 
-    // =========================
-    // 🔥 CREATE REPLY
-    // =========================
     if (action === "create_reply"){
 
-      if (!reviewId || !comment || !user) return;
+      if (!comment || !company_id || !user) return;
 
       const { data: member } = await supabase
         .from("community_members")
@@ -428,19 +429,18 @@ export default function ACommunityDashboard() {
         .maybeSingle();
 
       await supabase.from("community_replies").insert({
-        review_id: reviewId,
-        reply: comment,
+        comment: comment,
+        rating: Number(rating ?? 0),
         community_id: member?.community_id,
-        author_user_id: user.id
+        company_id: company_id,
+        author_user_id: user.id,
+        author_type: "community"
       });
 
       location.reload();
       return;
     }
 
-    // =========================
-    // EXISTENTE (SEM ALTERAÇÃO)
-    // =========================
     if (!connectionId) return;
 
     if (action === "accept_member"){

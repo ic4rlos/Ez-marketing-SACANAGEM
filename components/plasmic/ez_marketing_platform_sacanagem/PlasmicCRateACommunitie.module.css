@@ -1060,25 +1060,6 @@
   text-decoration-line: none !important;
   text-overflow: clip !important;
 }
-.rateSum {
-  animation: none;
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  font-size: 12px;
-  font-family: "Inter", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  color: #535353;
-  text-align: left;
-  text-transform: none;
-  line-height: 1.5;
-  letter-spacing: normal;
-  white-space: pre-wrap;
-  user-select: text;
-  text-decoration-line: none;
-  text-overflow: clip;
-}
 .freeBox__oFf9F {
   animation: none;
   display: flex;
@@ -1226,25 +1207,6 @@
   user-select: text;
   text-decoration-line: none !important;
   text-overflow: clip !important;
-}
-.rateSum2 {
-  animation: none;
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  font-size: 12px;
-  font-family: "Inter", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  color: #535353;
-  text-align: left;
-  text-transform: none;
-  line-height: 1.5;
-  letter-spacing: normal;
-  white-space: pre-wrap;
-  user-select: text;
-  text-decoration-line: none;
-  text-overflow: clip;
 }
 .freeBox__jGjhu {
   animation: none;

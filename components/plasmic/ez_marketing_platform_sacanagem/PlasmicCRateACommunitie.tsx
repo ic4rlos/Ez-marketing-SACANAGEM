@@ -156,9 +156,7 @@ export type PlasmicCRateACommunitie__OverridesType = {
   confirmRate?: Flex__<typeof Button2>;
   button2?: Flex__<typeof Button2>;
   agencysRate?: Flex__<typeof AntdRate>;
-  rateSum?: Flex__<"div">;
   customerRated?: Flex__<typeof AntdRate>;
-  rateSum2?: Flex__<"div">;
   reportRate?: Flex__<"div">;
   reportData?: Flex__<"div">;
   customerInstruction?: Flex__<typeof AntdRate>;
@@ -1341,18 +1339,6 @@ function PlasmicCRateACommunitie__RenderFunc(props: {
                 }
                 value={generateStateValueProp($state, ["agencysRate", "value"])}
               />
-
-              <div
-                data-plasmic-name={"rateSum"}
-                data-plasmic-override={overrides.rateSum}
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.rateSum
-                )}
-              >
-                {"(50)"}
-              </div>
             </div>
             <div className={classNames(projectcss.all, sty.freeBox__oFf9F)}>
               <CustomerRatesSvgIcon
@@ -1447,18 +1433,6 @@ function PlasmicCRateACommunitie__RenderFunc(props: {
                   "value"
                 ])}
               />
-
-              <div
-                data-plasmic-name={"rateSum2"}
-                data-plasmic-override={overrides.rateSum2}
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.rateSum2
-                )}
-              >
-                {"(50)"}
-              </div>
             </div>
           </div>
         </div>
@@ -1893,9 +1867,7 @@ const PlasmicDescendants = {
     "confirmRate",
     "button2",
     "agencysRate",
-    "rateSum",
     "customerRated",
-    "rateSum2",
     "reportRate",
     "reportData",
     "customerInstruction",
@@ -1933,9 +1905,7 @@ const PlasmicDescendants = {
     "confirmRate",
     "button2",
     "agencysRate",
-    "rateSum",
-    "customerRated",
-    "rateSum2"
+    "customerRated"
   ],
   actualData: ["actualData"],
   rate: ["rate", "rating", "h3", "comment", "confirmRate", "button2"],
@@ -1945,9 +1915,7 @@ const PlasmicDescendants = {
   confirmRate: ["confirmRate"],
   button2: ["button2"],
   agencysRate: ["agencysRate"],
-  rateSum: ["rateSum"],
   customerRated: ["customerRated"],
-  rateSum2: ["rateSum2"],
   reportRate: [
     "reportRate",
     "reportData",
@@ -1986,9 +1954,7 @@ type NodeDefaultElementType = {
   confirmRate: typeof Button2;
   button2: typeof Button2;
   agencysRate: typeof AntdRate;
-  rateSum: "div";
   customerRated: typeof AntdRate;
-  rateSum2: "div";
   reportRate: "div";
   reportData: "div";
   customerInstruction: typeof AntdRate;
@@ -2079,9 +2045,7 @@ export const PlasmicCRateACommunitie = Object.assign(
     confirmRate: makeNodeComponent("confirmRate"),
     button2: makeNodeComponent("button2"),
     agencysRate: makeNodeComponent("agencysRate"),
-    rateSum: makeNodeComponent("rateSum"),
     customerRated: makeNodeComponent("customerRated"),
-    rateSum2: makeNodeComponent("rateSum2"),
     reportRate: makeNodeComponent("reportRate"),
     reportData: makeNodeComponent("reportData"),
     customerInstruction: makeNodeComponent("customerInstruction"),

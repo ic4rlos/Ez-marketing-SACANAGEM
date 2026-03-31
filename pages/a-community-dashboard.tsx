@@ -187,7 +187,7 @@ export default function ACommunityDashboard() {
 
         const { data: memberProfiles } = await supabase
           .from("User profile")
-          .select('id, user_id, "Profile pic", "First name", "Last name", "Birthday")
+          .select('id, user_id, "Profile pic", "First name", "Last name", "Birthday"')
           .in("user_id", userIds);
 
         memberProfiles?.forEach(p => {
@@ -326,7 +326,7 @@ export default function ACommunityDashboard() {
       if (extraUserIds.length) {
         const { data: extraProfiles } = await supabase
           .from("User profile")
-          .select(id, user_id, "Profile pic", "First name")
+          .select('id, user_id, "Profile pic", "First name"')
           .in("user_id", extraUserIds);
 
         extraProfiles?.forEach(p => {

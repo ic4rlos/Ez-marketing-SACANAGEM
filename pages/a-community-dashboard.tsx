@@ -381,59 +381,47 @@ companiesReviews?.forEach((c:any)=>{
 // =========================
 // BUILD DATA (CORRIGIDO)
 // =========================
-const community_reviews = (allReviews ?? [])
-  .filter((r:any)=>
-    r.author_type === "company" &&
-    (r.parent_review_id === null || r.parent_review_id === undefined)
-  )
-  .map((r:any)=>{
-    const company = companyMap[Number(r.company_id)];
-    return {
-      id: r.id,
-      "Company Logo": company?.["Company Logo"] ?? "",
-      "Company name": company?.["Company name"] ?? "",
-      comment: r.comment ?? "",
-      rating: r.rating ?? 0
-    };
-  });
+const community_reviews: any[] = [];
+const community_membersreviews: any[] = [];
+const community_replies: any[] = [];
+const community_membersreplies: any[] = [];
 
-const community_membersreviews = (allReviews ?? [])
-  .filter((r:any)=>
-    r.author_type === "member" &&
-    (r.parent_review_id === null || r.parent_review_id === undefined)
-  )
-  .map((r:any)=>{
-    const profile = profileMap[String(r.author_user_id)];
-    return {
-      id: r.id,
-      "Profile pic": profile?.["Profile pic"] ?? "",
-      "First name": profile?.["First name"] ?? "",
-      comment: r.comment ?? "",
-      rating: r.rating ?? 0
-    };
-  });
+(allReviews ?? []).forEach((r: any) => {
+  const profile = profileMap[String(r.author_user_id)];
+  const company = companyMap[Number(r.company_id)];
 
-const community_replies = (allReviews ?? [])
-  .filter((r:any)=>
-    r.author_type === "community" &&
-    r.company_id !== null &&
-    r.company_id !== undefined
-  )
-  .map((r:any)=>{
-    const company = companyMap[Number(r.company_id)];
-    return {
-      id: r.id,
-      "Company Logo": company?.["Company Logo"] ?? "",
-      "Company name": company?.["Company name"] ?? "",
-      comment: r.comment ?? ""
-    };
-  });
+  const base = {
+    id: r.id,
+    rating: r.rating,
+    comment: r.comment,
 
-const community_membersreplies = (allReviews ?? [])
-  .filter((r:any)=>
-    ["community ethics","community technical"].includes(r.author_type) &&
-    (r.company_id === null || r.company_id === undefined)
-  )
+    "First name": profile?.["First name"] ?? "",
+    "Profile pic": profile?.["Profile pic"] ?? "",
+
+    "Company name": company?.["Company name"] ?? "",
+    "Company Logo": company?.["Company Logo"] ?? "",
+  };
+
+  // 🔥 CLASSIFICAÇÃO CORRETA
+  if (r.author_type === "company") {
+    community_reviews.push(base);
+  }
+
+  if (r.author_type === "member") {
+    community_membersreviews.push(base);
+  }
+
+  if (r.author_type === "community") {
+    community_replies.push(base);
+  }
+
+  if (
+    r.author_type === "community ethics" ||
+    r.author_type === "community technical"
+  ) {
+    community_membersreplies.push(base);
+  }
+});
   .map((r:any)=>{
     const profile = profileMap[String(r.author_user_id)];
     return {

@@ -308,93 +308,72 @@ export default function ACommunityDashboard() {
         ).flat().filter(Boolean);
       }
 
-      const { data: allReviews } = await supabase
-        .from("community_reviews")
-        .select("*")
-        .eq("community_id", communityId);
+// =========================
+// 🔥 REVIEWS / REPLIES (REMÉDIO CORRETO)
+// =========================
+const { data: allReviews } = await supabase
+  .from("community_reviews")
+  .select("*")
+  .eq("community_id", communityId);
 
-      const userIdsReviews: any[] = [];
+// USERS
+const userIds: any[] = [];
 
-      (allReviews ?? []).forEach((r: any) => {
-        if (r.author_user_id && !userIdsReviews.includes(r.author_user_id)) {
-          userIdsReviews.push(r.author_user_id);
-        }
-      });
+(allReviews ?? []).forEach((r: any) => {
+  if (r.author_user_id && !userIds.includes(r.author_user_id)) {
+    userIds.push(r.author_user_id);
+  }
+});
 
-      if (userIdsReviews.length){
-        const { data: extraProfiles } = await supabase
-          .from("User profile")
-          .select(`user_id, "Profile pic", "First name"`)
-          .in("user_id", userIdsReviews);
+if (userIds.length){
+  const { data: extraProfiles } = await supabase
+    .from("User profile")
+    .select(`user_id, "Profile pic", "First name"`)
+    .in("user_id", userIds);
 
-        extraProfiles?.forEach((p:any)=>{
-          profileMap[String(p.user_id)] = {
-            ...(profileMap[String(p.user_id)] ?? {}),
-            ...p
-          };
-        });
-      }
+  extraProfiles?.forEach((p:any)=>{
+    profileMap[String(p.user_id)] = {
+      ...(profileMap[String(p.user_id)] ?? {}),
+      ...p
+    };
+  });
+}
 
-      const companyIdsReviews: any[] = [];
+// COMPANIES
+const companyIds: any[] = [];
 
-      (allReviews ?? []).forEach((r: any) => {
-        if (
-          r.company_id !== null &&
-          r.company_id !== undefined &&
-          !companyIdsReviews.includes(r.company_id)
-        ) {
-          companyIdsReviews.push(Number(r.company_id));
-        }
-      });
+(allReviews ?? []).forEach((r: any) => {
+  if (
+    r.company_id !== null &&
+    r.company_id !== undefined &&
+    !companyIds.includes(r.company_id)
+  ) {
+    companyIds.push(Number(r.company_id));
+  }
+});
 
-      const { data: companiesReviews } = await supabaseC
-        .from("companies")
-        .select("*")
-        .in("id", companyIdsReviews);
+const { data: companiesReviews } = await supabaseC
+  .from("companies")
+  .select("*")
+  .in("id", companyIds);
 
-      const companyMap: any = {};
-      companiesReviews?.forEach((c:any)=>{
-        companyMap[Number(c.id)] = c;
-      });
+const companyMap: any = {};
+companiesReviews?.forEach((c:any)=>{
+  companyMap[Number(c.id)] = c;
+});
 
-      const community_reviews: any[] = [];
-      const community_membersreviews: any[] = [];
-      const community_replies: any[] = [];
-      const community_membersreplies: any[] = [];
+// CLASSIFICAÇÃO IGUAL AO CÓDIGO QUE FUNCIONOU
+const community_reviews = (allReviews ?? [])
+  .filter((r:any)=>r.author_type === "company");
 
-      (allReviews ?? []).forEach((r: any) => {
-        const profile = profileMap[String(r.author_user_id)];
-        const company = companyMap[Number(r.company_id)];
+const community_membersreviews = (allReviews ?? [])
+  .filter((r:any)=>r.author_type === "member");
 
-        const base = {
-          id: r.id,
-          rating: r.rating,
-          comment: r.comment,
+const community_replies = (allReviews ?? [])
+  .filter((r:any)=>r.author_type?.startsWith("community") && r.company_id);
 
-          "First name": profile?.["First name"] ?? "",
-          "Profile pic": profile?.["Profile pic"] ?? "",
-
-          "Company name": company?.["Company name"] ?? "",
-          "Company Logo": company?.["Company Logo"] ?? "",
-        };
-
-        if (r.author_type === "company") {
-          community_reviews.push(base);
-        }
-
-        if (r.author_type === "member") {
-          community_membersreviews.push(base);
-        }
-
-        // 🔥 CORREÇÃO APLICADA AQUI
-        if (r.author_type?.startsWith("community") && r.company_id) {
-          community_replies.push(base);
-        }
-
-        if (r.author_type?.startsWith("community") && !r.company_id) {
-          community_membersreplies.push(base);
-        }
-      });
+const community_membersreplies = (allReviews ?? [])
+  .filter((r:any)=>r.author_type?.startsWith("community") && !r.company_id);
 
       const finalData = {
         ...community,

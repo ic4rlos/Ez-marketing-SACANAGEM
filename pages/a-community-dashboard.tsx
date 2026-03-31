@@ -1,3 +1,5 @@
+// 🔥 DEBUG VERSION - MAX LOGS (REVIEWS / REPLIES FOCUSED)
+
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
@@ -60,7 +62,7 @@ export default function ACommunityDashboard() {
 
       console.log("👤 MEMBER:", member);
 
-      if (!member || member.status !== "connected") {
+      if (!member?.community_id) {
         setLoading(false);
         return;
       }
@@ -76,26 +78,30 @@ export default function ACommunityDashboard() {
         .eq("community_id", communityId);
 
       console.log("📦 ALL REVIEWS:", allReviews);
-      console.log("❌ ERROR REVIEWS:", error);
+      console.log("❌ ERROR:", error);
+
+      if (!allReviews?.length) {
+        console.log("⚠️ NO REVIEWS FOUND");
+      }
 
       // =========================
-      // USER IDS
+      // 🔥 AUTHOR IDS
       // =========================
       const userIds = Array.from(new Set(
-        (allReviews ?? []).map((r:any)=>r.author_user_id)
+        allReviews.map((r:any)=>r.author_user_id).filter(Boolean)
       ));
 
-      console.log("👤 USER IDS:", userIds);
+      console.log("👤 AUTHOR USER IDS:", userIds);
 
       // =========================
-      // PROFILES
+      // 🔥 PROFILES FETCH
       // =========================
       const { data: profiles } = await supabase
         .from("User profile")
         .select(`user_id, "Profile pic", "First name"`)
         .in("user_id", userIds);
 
-      console.log("👤 PROFILES:", profiles);
+      console.log("👤 PROFILES RAW:", profiles);
 
       const profileMap:any = {};
       profiles?.forEach(p=>{
@@ -104,15 +110,20 @@ export default function ACommunityDashboard() {
 
       console.log("🧠 PROFILE MAP:", profileMap);
 
-      // 🚨 DETECTAR FALTANTES
-      const missingProfiles = userIds.filter(id => !profileMap[String(id)]);
+      // =========================
+      // 🔥 DETECT MISSING PROFILES
+      // =========================
+      const missingProfiles = userIds.filter(
+        id => !profileMap[String(id)]
+      );
+
       console.log("🚨 MISSING PROFILES:", missingProfiles);
 
       // =========================
-      // COMPANIES
+      // 🔥 COMPANY MAP
       // =========================
       const companyIds = Array.from(new Set(
-        (allReviews ?? []).map((r:any)=>Number(r.company_id))
+        allReviews.map((r:any)=>Number(r.company_id)).filter(Boolean)
       ));
 
       console.log("🏢 COMPANY IDS:", companyIds);
@@ -122,8 +133,6 @@ export default function ACommunityDashboard() {
         .select("*")
         .in("id", companyIds);
 
-      console.log("🏢 COMPANIES:", companies);
-
       const companyMap:any = {};
       companies?.forEach(c=>{
         companyMap[Number(c.id)] = c;
@@ -132,63 +141,78 @@ export default function ACommunityDashboard() {
       console.log("🧠 COMPANY MAP:", companyMap);
 
       // =========================
-      // FILTERS
+      // 🔥 BUILD ARRAYS
       // =========================
-      const community_reviews = (allReviews ?? [])
-        .filter((r:any)=>r.author_type === "company")
-        .map((r:any)=>{
-          const company = companyMap[Number(r.company_id)];
-          return {
+
+      const community_reviews:any[] = [];
+      const community_membersreviews:any[] = [];
+      const community_replies:any[] = [];
+      const community_membersreplies:any[] = [];
+
+      allReviews.forEach((r:any)=>{
+
+        console.log("➡️ REVIEW ITEM:", r);
+
+        const profile = profileMap[String(r.author_user_id)];
+        const company = companyMap[Number(r.company_id)];
+
+        console.log("🔍 MATCH PROFILE:", r.author_user_id, profile);
+        console.log("🔍 MATCH COMPANY:", r.company_id, company);
+
+        // =========================
+        // COMPANY REVIEW
+        // =========================
+        if (r.author_type === "company") {
+          community_reviews.push({
             id: r.id,
-            "Company Logo": company?.["Company Logo"] ?? "/default-company.png",
-            "Company name": company?.["Company name"] ?? "Empresa",
+            "Company Logo": company?.["Company Logo"] ?? "",
+            "Company name": company?.["Company name"] ?? "",
             comment: r.comment ?? "",
             rating: r.rating ?? 0
-          };
-        });
+          });
+        }
 
-      const community_membersreviews = (allReviews ?? [])
-        .filter((r:any)=>r.author_type === "member")
-        .map((r:any)=>{
-          const profile = profileMap[String(r.author_user_id)];
-
-          console.log("🔍 MEMBER REVIEW PROFILE:", r.author_user_id, profile);
-
-          return {
+        // =========================
+        // MEMBER REVIEW
+        // =========================
+        if (r.author_type === "member") {
+          community_membersreviews.push({
             id: r.id,
-            "Profile pic": profile?.["Profile pic"] ?? "/default-user.png",
-            "First name": profile?.["First name"] ?? "Usuário",
+            "Profile pic": profile?.["Profile pic"] ?? "❌ NO PIC",
+            "First name": profile?.["First name"] ?? "❌ NO NAME",
             comment: r.comment ?? "",
             rating: r.rating ?? 0
-          };
-        });
+          });
+        }
 
-      const community_replies = (allReviews ?? [])
-        .filter((r:any)=>r.author_type === "community" && r.company_id)
-        .map((r:any)=>{
-          const company = companyMap[Number(r.company_id)];
-          return {
+        // =========================
+        // COMMUNITY → COMPANY
+        // =========================
+        if (r.author_type === "community" && r.company_id) {
+          community_replies.push({
             id: r.id,
-            "Company Logo": company?.["Company Logo"] ?? "/default-company.png",
-            "Company name": company?.["Company name"] ?? "Empresa",
+            "Company Logo": company?.["Company Logo"] ?? "",
+            "Company name": company?.["Company name"] ?? "",
             comment: r.comment ?? ""
-          };
-        });
+          });
+        }
 
-      const community_membersreplies = (allReviews ?? [])
-        .filter((r:any)=>["community ethics","community technical"].includes(r.author_type))
-        .map((r:any)=>{
-          const profile = profileMap[String(r.author_user_id)];
-
-          console.log("🔍 MEMBER REPLY PROFILE:", r.author_user_id, profile);
-
-          return {
+        // =========================
+        // COMMUNITY → MEMBER
+        // =========================
+        if (
+          ["community ethics", "community technical"].includes(r.author_type) &&
+          !r.company_id
+        ) {
+          community_membersreplies.push({
             id: r.id,
-            "Profile pic": profile?.["Profile pic"] ?? "/default-user.png",
-            "First name": profile?.["First name"] ?? "Usuário",
+            "Profile pic": profile?.["Profile pic"] ?? "❌ NO PIC",
+            "First name": profile?.["First name"] ?? "❌ NO NAME",
             comment: r.comment ?? ""
-          };
-        });
+          });
+        }
+
+      });
 
       console.log("📊 FINAL COUNTS:");
       console.log("community_reviews:", community_reviews.length);
@@ -198,12 +222,13 @@ export default function ACommunityDashboard() {
 
       const finalData = {
         community_reviews,
-        community_replies,
         community_membersreviews,
-        community_membersreplies
+        community_replies,
+        community_membersreplies,
+        isAdmin: member.role === "admin"
       };
 
-      console.log("📦 FORM DATA FINAL:", finalData);
+      console.log("📦 FINAL DATA:", finalData);
 
       setFormData(finalData);
       setLoading(false);
@@ -212,29 +237,6 @@ export default function ACommunityDashboard() {
     loadCommunity();
 
   }, [user]);
-
-  async function handleSave(payload:any){
-
-    const { rating, comment } = payload;
-
-    if (!rating || !user) return;
-
-    const { data: member } = await supabase
-      .from("community_members")
-      .select("community_id")
-      .eq("user_id", user.id)
-      .maybeSingle();
-
-    await supabase.from("community_reviews").insert({
-      rating: Number(rating),
-      comment: comment ?? "",
-      community_id: member?.community_id,
-      author_user_id: user.id,
-      author_type: "member"
-    });
-
-    location.reload();
-  }
 
   if (loading) return null;
 
@@ -245,7 +247,6 @@ export default function ACommunityDashboard() {
       args={{
         formData,
         setFormData,
-        onSave: handleSave
       }}
     />
   );

@@ -281,121 +281,127 @@ export default function ACommunityDashboard() {
       }
 
       // =========================
-      // REVIEWS + REPLIES (FIXED)
-      // =========================
-      const { data: reviewsRaw } = await supabase
-        .from("community_reviews")
-        .select("*")
-        .eq("community_id", communityId);
+// REVIEWS + REPLIES (FIXED)
+// =========================
+const { data: reviewsRaw } = await supabase
+  .from("community_reviews")
+  .select("*")
+  .eq("community_id", communityId);
 
-      const { data: repliesRaw } = await supabase
-        .from("community_replies")
-        .select("*")
-        .eq("community_id", communityId);
+const { data: repliesRaw } = await supabase
+  .from("community_replies")
+  .select("*")
+  .eq("community_id", communityId);
 
-      const safeReviews = reviewsRaw ?? [];
-      const safeReplies = repliesRaw ?? [];
+const safeReviews = reviewsRaw ?? [];
+const safeReplies = repliesRaw ?? [];
 
-      const companyIds = Array.from(new Set([
-        ...safeReviews.map((r:any)=>Number(r.company_id)).filter(Boolean),
-        ...safeReplies.map((r:any)=>Number(r.company_id)).filter(Boolean)
-      ]));
+// =========================
+// 🔵 COMPANIES MAP
+// =========================
+const companyIds = Array.from(new Set([
+  ...safeReviews.map((r:any)=>Number(r.company_id)).filter(Boolean),
+  ...safeReplies.map((r:any)=>Number(r.company_id)).filter(Boolean)
+]));
 
-      const { data: companies } = await supabaseC
-        .from("companies")
-        .select("*")
-        .in("id", companyIds);
+const { data: companies } = await supabaseC
+  .from("companies")
+  .select("*")
+  .in("id", companyIds);
 
-      const companyMap:any = {};
-      companies?.forEach(c=>{
-        companyMap[Number(c.id)] = c;
-      });
+const companyMap:any = {};
+companies?.forEach(c=>{
+  companyMap[Number(c.id)] = c;
+});
 
-      const community_reviews = safeReviews
-        .filter(r=>r.author_type==="company")
-        .map(r=>{
-          const c = companyMap[Number(r.company_id)];
-          return {
-            id: r.id,
-            "Company Logo": c?.["Company Logo"] ?? "",
-            "Company name": c?.["Company name"] ?? "",
-            community_name: c?.["Company name"] ?? "Company",
-            comment: r.comment ?? "",
-            rating: r.rating ?? 0
-          };
-        });
+// =========================
+// 🟣 USERS MAP (CRÍTICO)
+// =========================
+const userIds = Array.from(new Set([
+  ...safeReviews.map((r:any)=>r.author_user_id),
+  ...safeReplies.map((r:any)=>r.author_user_id)
+].filter(Boolean)));
 
-      const community_replies = safeReplies
-        .filter(r=>r.author_type==="company")
-        .map(r=>{
-          const c = companyMap[Number(r.company_id)];
-          return {
-            id: r.id,
-            "Company Logo": c?.["Company Logo"] ?? "",
-            "Company name": c?.["Company name"] ?? "",
-            community_name: c?.["Company name"] ?? "Company",
-            comment: r.comment ?? "",
-            rating: r.rating ?? 0
-          };
-        });
+let usersMap:any = {};
 
-      const community_membersreviews = safeReviews
-        .filter(r=>r.author_type==="member")
-        .map(r=>{
-          const p = profileMap[String(r.author_user_id)];
-          return {
-            id: r.id,
-            "Profile pic": p?.["Profile pic"] ?? "",
-            "First name": p?.["First name"] ?? "",
-            community_name: p?.["First name"] ?? "Member",
-            comment: r.comment ?? "",
-            rating: r.rating ?? 0
-          };
-        });
+if (userIds.length){
+  const { data: users } = await supabase
+    .from("User profile")
+    .select(`user_id, "Profile pic", "First name"`)
+    .in("user_id", userIds);
 
-      const community_membersreplies = safeReplies
-        .filter(r=>r.author_type==="member")
-        .map(r=>{
-          const p = profileMap[String(r.author_user_id)];
-          return {
-            id: r.id,
-            "Profile pic": p?.["Profile pic"] ?? "",
-            "First name": p?.["First name"] ?? "",
-            community_name: p?.["First name"] ?? "Member",
-            comment: r.comment ?? "",
-            rating: r.rating ?? 0
-          };
-        });
+  users?.forEach(u=>{
+    usersMap[String(u.user_id)] = u;
+  });
+}
 
-      // COMMUNITY
-      const { data: community } = await supabase
-        .from("Community")
-        .select("*")
-        .eq("id", communityId)
-        .maybeSingle();
+// =========================
+// 🟢 COMMUNITY REVIEWS (EMPRESAS)
+// =========================
+const community_reviews = safeReviews
+  .filter(r => r.author_type === "company")
+  .map(r => {
+    const c = companyMap[Number(r.company_id)];
+    return {
+      id: r.id,
+      "Company Logo": c?.["Company Logo"] ?? "",
+      "Company name": c?.["Company name"] ?? "",
+      community_name: c?.["Company name"] ?? "Company",
+      comment: r.comment ?? "",
+      rating: r.rating ?? 0
+    };
+  });
 
-      setFormData({
-        ...community,
-        "Profile pic": myProfile?.["Profile pic"] ?? null,
-        connected_companies: connectedCompanies,
-        company_requests: companyRequests,
-        members,
-        trainings,
-        specialties: specialtiesList,
-        community_reviews,
-        community_replies,
-        community_membersreviews,
-        community_membersreplies,
-        isAdmin: member.role === "admin"
-      });
+// =========================
+// 🟢 COMMUNITY MEMBERS REVIEWS (MEMBROS)
+// =========================
+const community_membersreviews = safeReviews
+  .filter(r => r.author_type === "member")
+  .map(r => {
+    const u = usersMap[String(r.author_user_id)];
+    return {
+      id: r.id,
+      "Profile pic": u?.["Profile pic"] ?? "",
+      "First name": u?.["First name"] ?? "",
+      community_name: u?.["First name"] ?? "Member",
+      comment: r.comment ?? "",
+      rating: r.rating ?? 0
+    };
+  });
 
-      setLoading(false);
-    }
+// =========================
+// 🔴 COMMUNITY REPLIES (COMUNIDADE → EMPRESA)
+// =========================
+const community_replies = safeReplies
+  .filter(r => r.author_type === "community" && r.company_id)
+  .map(r => {
+    const c = companyMap[Number(r.company_id)];
+    return {
+      id: r.id,
+      "Company Logo": c?.["Company Logo"] ?? "",
+      "Company name": c?.["Company name"] ?? "",
+      community_name: "Community",
+      comment: r.comment ?? "",
+      rating: r.rating ?? 0
+    };
+  });
 
-    loadCommunity();
-
-  }, [user]);
-
+// =========================
+// 🔴 COMMUNITY MEMBERS REPLIES (COMUNIDADE → MEMBRO)
+// =========================
+const community_membersreplies = safeReplies
+  .filter(r => r.author_type === "community" && r.member_id)
+  .map(r => {
+    const u = usersMap[String(r.member_id)];
+    return {
+      id: r.id,
+      "Profile pic": u?.["Profile pic"] ?? "",
+      "First name": u?.["First name"] ?? "",
+      community_name: "Community",
+      comment: r.comment ?? "",
+      rating: r.rating ?? 0
+    };
+  });
   // =========================
   // ADMIN ACTIONS + SAVE
   // =========================

@@ -94,9 +94,6 @@ export default function ACommunityDashboard() {
   });
   const [loading, setLoading] = useState(true);
 
-  // =========================
-  // USER
-  // =========================
   useEffect(() => {
     async function loadUser() {
       const { data } = await supabase.auth.getUser();
@@ -133,18 +130,12 @@ export default function ACommunityDashboard() {
 
       const communityId = member.community_id;
 
-      // =========================
-      // COMMUNITY
-      // =========================
       const { data: community } = await supabase
         .from("Community")
         .select("*")
         .eq("id", communityId)
         .maybeSingle();
 
-      // =========================
-      // COMPANIES
-      // =========================
       const { data: connections } = await supabase
         .from("CONNECTIONS")
         .select("*")
@@ -181,9 +172,6 @@ export default function ACommunityDashboard() {
         companyRequests = format(connections.filter(c=>c.status==="company request"));
       }
 
-      // =========================
-      // MEMBERS / TRAININGS / SPECIALTIES
-      // =========================
       const { data: membersRaw } = await supabase
         .from("community_members")
         .select("id, user_id, status, short_message")
@@ -320,109 +308,93 @@ export default function ACommunityDashboard() {
         ).flat().filter(Boolean);
       }
 
-// =========================
-// 🔥 REVIEWS / REPLIES FINAL FIX
-// =========================
-const { data: allReviews } = await supabase
-  .from("community_reviews")
-  .select("*")
-  .eq("community_id", communityId);
+      const { data: allReviews } = await supabase
+        .from("community_reviews")
+        .select("*")
+        .eq("community_id", communityId);
 
-// =========================
-// USERS (SEM SET)
-// =========================
-const userIds: any[] = [];
+      const userIdsReviews: any[] = [];
 
-(allReviews ?? []).forEach((r: any) => {
-  if (r.author_user_id && !userIds.includes(r.author_user_id)) {
-    userIds.push(r.author_user_id);
-  }
-});
+      (allReviews ?? []).forEach((r: any) => {
+        if (r.author_user_id && !userIdsReviews.includes(r.author_user_id)) {
+          userIdsReviews.push(r.author_user_id);
+        }
+      });
 
-if (userIds.length){
-  const { data: extraProfiles } = await supabase
-    .from("User profile")
-    .select(`user_id, "Profile pic", "First name"`)
-    .in("user_id", userIds);
+      if (userIdsReviews.length){
+        const { data: extraProfiles } = await supabase
+          .from("User profile")
+          .select(`user_id, "Profile pic", "First name"`)
+          .in("user_id", userIdsReviews);
 
-  extraProfiles?.forEach((p:any)=>{
-    profileMap[String(p.user_id)] = {
-      ...(profileMap[String(p.user_id)] ?? {}),
-      ...p
-    };
-  });
-}
+        extraProfiles?.forEach((p:any)=>{
+          profileMap[String(p.user_id)] = {
+            ...(profileMap[String(p.user_id)] ?? {}),
+            ...p
+          };
+        });
+      }
 
-// =========================
-// COMPANIES (SEM SET)
-// =========================
-const companyIds: any[] = [];
+      const companyIdsReviews: any[] = [];
 
-(allReviews ?? []).forEach((r: any) => {
-  if (
-    r.company_id !== null &&
-    r.company_id !== undefined &&
-    !companyIds.includes(r.company_id)
-  ) {
-    companyIds.push(Number(r.company_id));
-  }
-});
+      (allReviews ?? []).forEach((r: any) => {
+        if (
+          r.company_id !== null &&
+          r.company_id !== undefined &&
+          !companyIdsReviews.includes(r.company_id)
+        ) {
+          companyIdsReviews.push(Number(r.company_id));
+        }
+      });
 
-const { data: companiesReviews } = await supabaseC
-  .from("companies")
-  .select("*")
-  .in("id", companyIds);
+      const { data: companiesReviews } = await supabaseC
+        .from("companies")
+        .select("*")
+        .in("id", companyIdsReviews);
 
-const companyMap: any = {};
-companiesReviews?.forEach((c:any)=>{
-  companyMap[Number(c.id)] = c;
-});
+      const companyMap: any = {};
+      companiesReviews?.forEach((c:any)=>{
+        companyMap[Number(c.id)] = c;
+      });
 
-// =========================
-// BUILD DATA (CORRIGIDO)
-// =========================
-const community_reviews: any[] = [];
-const community_membersreviews: any[] = [];
-const community_replies: any[] = [];
-const community_membersreplies: any[] = [];
+      const community_reviews: any[] = [];
+      const community_membersreviews: any[] = [];
+      const community_replies: any[] = [];
+      const community_membersreplies: any[] = [];
 
-(allReviews ?? []).forEach((r: any) => {
-  const profile = profileMap[String(r.author_user_id)];
-  const company = companyMap[Number(r.company_id)];
+      (allReviews ?? []).forEach((r: any) => {
+        const profile = profileMap[String(r.author_user_id)];
+        const company = companyMap[Number(r.company_id)];
 
-  const base = {
-    id: r.id,
-    rating: r.rating,
-    comment: r.comment,
+        const base = {
+          id: r.id,
+          rating: r.rating,
+          comment: r.comment,
 
-    "First name": profile?.["First name"] ?? "",
-    "Profile pic": profile?.["Profile pic"] ?? "",
+          "First name": profile?.["First name"] ?? "",
+          "Profile pic": profile?.["Profile pic"] ?? "",
 
-    "Company name": company?.["Company name"] ?? "",
-    "Company Logo": company?.["Company Logo"] ?? "",
-  };
+          "Company name": company?.["Company name"] ?? "",
+          "Company Logo": company?.["Company Logo"] ?? "",
+        };
 
-  // 🔥 CLASSIFICAÇÃO CORRETA
-  if (r.author_type === "company") {
-    community_reviews.push(base);
-  }
+        if (r.author_type === "company") {
+          community_reviews.push(base);
+        }
 
-  if (r.author_type === "member") {
-    community_membersreviews.push(base);
-  }
+        if (r.author_type === "member") {
+          community_membersreviews.push(base);
+        }
 
-  if (r.author_type === "community") {
-    community_replies.push(base);
-  }
+        // 🔥 CORREÇÃO APLICADA AQUI
+        if (r.author_type?.startsWith("community") && r.company_id) {
+          community_replies.push(base);
+        }
 
-  if (
-    r.author_type === "community ethics" ||
-    r.author_type === "community technical"
-  ) {
-    community_membersreplies.push(base);
-  }
-});
-
+        if (r.author_type?.startsWith("community") && !r.company_id) {
+          community_membersreplies.push(base);
+        }
+      });
 
       const finalData = {
         ...community,

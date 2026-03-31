@@ -187,7 +187,7 @@ export default function ACommunityDashboard() {
 
         const { data: memberProfiles } = await supabase
           .from("User profile")
-          .select(id, user_id, "Profile pic", "First name", "Last name", "Birthday")
+          .select('id, user_id, "Profile pic", "First name", "Last name", "Birthday")
           .in("user_id", userIds);
 
         memberProfiles?.forEach(p => {

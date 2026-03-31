@@ -46,9 +46,7 @@ export default function ACommunityDashboard() {
       try {
         setLoading(true);
 
-        // =========================
         // COMMUNITY
-        // =========================
         const { data: member } = await supabaseA
           .from("community_members")
           .select("*")
@@ -66,9 +64,7 @@ export default function ACommunityDashboard() {
 
         const communityId = member.community_id;
 
-        // =========================
         // REVIEWS
-        // =========================
         const { data: reviews, error } = await supabaseA
           .from("community_reviews")
           .select("*")
@@ -84,11 +80,15 @@ export default function ACommunityDashboard() {
         }
 
         // =========================
-        // USERS (PROFILES)
+        // USERS (SEM SET ❌)
         // =========================
-        const userIds = [
-          ...new Set(reviews.map((r: any) => r.author_user_id).filter(Boolean)),
-        ];
+        const userIds: any[] = [];
+
+        reviews.forEach((r: any) => {
+          if (r.author_user_id && !userIds.includes(r.author_user_id)) {
+            userIds.push(r.author_user_id);
+          }
+        });
 
         console.log("👤 AUTHOR USER IDS:", userIds);
 
@@ -107,11 +107,17 @@ export default function ACommunityDashboard() {
         console.log("🧠 PROFILE MAP:", profileMap);
 
         // =========================
-        // COMPANIES
+        // COMPANIES (SEM SET ❌)
         // =========================
-        const companyIds = [
-          ...new Set(reviews.map((r: any) => r.company_id).filter(Boolean)),
-        ];
+        const companyIds: any[] = [];
+
+        reviews.forEach((r: any) => {
+          if (r.company_id && !companyIds.includes(r.company_id)) {
+            companyIds.push(r.company_id);
+          }
+        });
+
+        console.log("🏢 COMPANY IDS:", companyIds);
 
         const { data: companies } = await supabaseC
           .from("companies")
@@ -142,22 +148,17 @@ export default function ACommunityDashboard() {
             rating: r.rating,
             comment: r.comment,
 
-            // 🔥 PROFILE (COM FALLBACK)
             "First name": profile?.["First name"] ?? "Unknown",
             "Profile pic":
               profile?.["Profile pic"] ??
               "https://via.placeholder.com/40",
 
-            // 🔥 COMPANY
             "Company name": company?.["Company name"] ?? "",
             "Company Logo": company?.["Company Logo"] ?? "",
           };
 
           console.log("➡️ ITEM:", base);
 
-          // =========================
-          // CLASSIFICAÇÃO
-          // =========================
           if (r.author_type === "community") {
             community_reviews.push(base);
           }
@@ -209,7 +210,7 @@ export default function ACommunityDashboard() {
   }, [user]);
 
   // =========================
-  // RENDER GUARD (CRÍTICO)
+  // RENDER GUARD
   // =========================
   if (user === undefined) return null;
   if (loading) return null;
@@ -232,7 +233,7 @@ export default function ACommunityDashboard() {
 
   return (
     <PlasmicACommunityDashboard
-      key={JSON.stringify(formData)} // 🔥 força re-render
+      key={JSON.stringify(formData)}
       args={{
         ...formData,
       }}

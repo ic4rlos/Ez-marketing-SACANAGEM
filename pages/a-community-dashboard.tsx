@@ -314,27 +314,68 @@ export default function ACommunityDashboard() {
         ).flat().filter(Boolean);
       }
 
-      // REVIEWS (REMÉDIO FUNCIONANDO)
+      // REVIEWS (AGORA ENRIQUECIDAS)
       const { data: allReviews } = await supabase
         .from("community_reviews")
         .select("*")
         .eq("community_id", communityId);
 
+      const companyIds = Array.from(new Set(
+        (allReviews ?? []).map((r:any)=>Number(r.company_id)).filter(Boolean)
+      ));
+
+      const userIdsReviews = Array.from(new Set(
+        (allReviews ?? []).map((r:any)=>r.author_user_id)
+      ));
+
+      const { data: companiesReviews } = await supabaseC
+        .from("companies")
+        .select(`id, "Company Logo", "Company name"`)
+        .in("id", companyIds);
+
+      const companyMap:any = {};
+      companiesReviews?.forEach(c=>{
+        companyMap[Number(c.id)] = c;
+      });
+
+      const { data: profilesReviews } = await supabase
+        .from("User profile")
+        .select(`user_id, "Profile pic", "First name"`)
+        .in("user_id", userIdsReviews);
+
+      const profileMapReviews:any = {};
+      profilesReviews?.forEach(p=>{
+        profileMapReviews[String(p.user_id)] = p;
+      });
+
+      const enrich = (r:any)=>{
+        const company = companyMap[Number(r.company_id)];
+        const profile = profileMapReviews[String(r.author_user_id)];
+        return {
+          ...r,
+          "Company Logo": company?.["Company Logo"] ?? null,
+          "Company name": company?.["Company name"] ?? null,
+          community_name: company?.["Company name"] ?? null,
+          "Profile pic": profile?.["Profile pic"] ?? null,
+          "First name": profile?.["First name"] ?? null
+        };
+      };
+
       const community_reviews = (allReviews ?? [])
-        .filter((r:any)=>r.author_type === "company");
+        .filter((r:any)=>r.author_type === "company")
+        .map(enrich);
 
       const community_membersreviews = (allReviews ?? [])
-        .filter((r:any)=>r.author_type === "member");
+        .filter((r:any)=>r.author_type === "member")
+        .map(enrich);
 
       const community_replies = (allReviews ?? [])
-        .filter((r:any)=>
-          r.author_type?.startsWith("community") && r.company_id
-        );
+        .filter((r:any)=>r.author_type?.startsWith("community") && r.company_id)
+        .map(enrich);
 
       const community_membersreplies = (allReviews ?? [])
-        .filter((r:any)=>
-          r.author_type?.startsWith("community") && !r.company_id
-        );
+        .filter((r:any)=>r.author_type?.startsWith("community") && !r.company_id)
+        .map(enrich);
 
       const finalData = {
         ...community,

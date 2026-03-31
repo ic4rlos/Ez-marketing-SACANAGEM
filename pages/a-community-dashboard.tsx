@@ -422,15 +422,7 @@ const community_membersreplies: any[] = [];
     community_membersreplies.push(base);
   }
 });
-  .map((r:any)=>{
-    const profile = profileMap[String(r.author_user_id)];
-    return {
-      id: r.id,
-      "Profile pic": profile?.["Profile pic"] ?? "",
-      "First name": profile?.["First name"] ?? "",
-      comment: r.comment ?? ""
-    };
-  });
+
 
       const finalData = {
         ...community,

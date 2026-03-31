@@ -7,69 +7,66 @@ import { getSupabaseC } from "../lib/c-supabaseClient";
 export const dynamic_config = "force-dynamic";
 export const runtime = "nodejs";
 
-// =========================
-// SPECIALIZATIONS (ATIVO)
-// =========================
-const SPECIALIZATIONS:any = {
-  "Service Scheduling and Management Capabilities":[
-    "Account Manager","Client Services Director","Project Manager","Marketing Automation Specialist"
+const SPECIALIZATIONS: any = {
+  "Service Scheduling and Management Capabilities": [
+    "Account Manager", "Client Services Director", "Project Manager", "Marketing Automation Specialist"
   ],
-  "Influencer and Content Creator Presence":[
-    "Social Media Manager","Content Strategist","Copywriter","Videographer","Public Relations Specialist","Influencer Talent Scout"
+  "Influencer and Content Creator Presence": [
+    "Social Media Manager", "Content Strategist", "Copywriter", "Videographer", "Public Relations Specialist", "Influencer Talent Scout"
   ],
-  "Commercial Production Capabilities":[
-    "Creative Director","Art Director","Graphic Designer","Copywriter","Videographer"
+  "Commercial Production Capabilities": [
+    "Creative Director", "Art Director", "Graphic Designer", "Copywriter", "Videographer"
   ],
-  "Online Customer Service":[
-    "Account Manager","Client Services Director"
+  "Online Customer Service": [
+    "Account Manager", "Client Services Director"
   ],
-  "Specialization in Vertical Sectors":[
-    "Brand Strategist","Marketing Analyst","SEO Specialist","PPC Specialist","Business Development Manager","Marketing Coordinator"
+  "Specialization in Vertical Sectors": [
+    "Brand Strategist", "Marketing Analyst", "SEO Specialist", "PPC Specialist", "Business Development Manager", "Marketing Coordinator"
   ],
-  "Brand Development and Visual Identity Capabilities":[
-    "Brand Strategist","Creative Director","Art Director","Graphic Designer","UX/UI Designer","Copywriter"
+  "Brand Development and Visual Identity Capabilities": [
+    "Brand Strategist", "Creative Director", "Art Director", "Graphic Designer", "UX/UI Designer", "Copywriter"
   ],
-  "Event Production and Management Capabilities":[
-    "Project Manager","Public Relations Specialist","Content Strategist","Digital Marketing Manager"
+  "Event Production and Management Capabilities": [
+    "Project Manager", "Public Relations Specialist", "Content Strategist", "Digital Marketing Manager"
   ],
-  "Performance Campaign Management Capabilities":[
-    "Digital Marketing Manager","PPC Specialist","SEO Specialist","Marketing Analyst","Data Analyst","Marketing Automation Specialist"
+  "Performance Campaign Management Capabilities": [
+    "Digital Marketing Manager", "PPC Specialist", "SEO Specialist", "Marketing Analyst", "Data Analyst", "Marketing Automation Specialist"
   ],
-  "Audiovisual Content Production":[
-    "Videographer","Creative Director","Art Director","Copywriter","Graphic Designer"
+  "Audiovisual Content Production": [
+    "Videographer", "Creative Director", "Art Director", "Copywriter", "Graphic Designer"
   ],
-  "Content Marketing and Blogging":[
-    "Content Strategist","Copywriter","SEO Specialist","Social Media Manager","Graphic Designer","Marketing Coordinator"
+  "Content Marketing and Blogging": [
+    "Content Strategist", "Copywriter", "SEO Specialist", "Social Media Manager", "Graphic Designer", "Marketing Coordinator"
   ],
-  "Lead Generation and Sales Funnel Strategies":[
-    "Digital Marketing Manager","Business Development Manager","PPC Specialist","Account Manager","Marketing Automation Specialist"
+  "Lead Generation and Sales Funnel Strategies": [
+    "Digital Marketing Manager", "Business Development Manager", "PPC Specialist", "Account Manager", "Marketing Automation Specialist"
   ],
-  "Creation of Digital Experiences (UX/UI)":[
-    "UX/UI Designer","Creative Director","Project Manager","Content Strategist"
+  "Creation of Digital Experiences (UX/UI)": [
+    "UX/UI Designer", "Creative Director", "Project Manager", "Content Strategist"
   ],
-  "Social Media and Engagement Strategies":[
-    "Social Media Manager","Content Strategist","Copywriter","Graphic Designer","Public Relations Specialist"
+  "Social Media and Engagement Strategies": [
+    "Social Media Manager", "Content Strategist", "Copywriter", "Graphic Designer", "Public Relations Specialist"
   ],
-  "Public Relations and Image Crisis Management":[
-    "Public Relations Specialist","Social Media Manager","Content Strategist","Brand Strategist"
+  "Public Relations and Image Crisis Management": [
+    "Public Relations Specialist", "Social Media Manager", "Content Strategist", "Brand Strategist"
   ],
-  "E-commerce Management and Optimization":[
-    "Digital Marketing Manager","SEO Specialist","PPC Specialist","UX/UI Designer","Data Analyst"
+  "E-commerce Management and Optimization": [
+    "Digital Marketing Manager", "SEO Specialist", "PPC Specialist", "UX/UI Designer", "Data Analyst"
   ],
-  "Data Analysis and Marketing Metrics":[
-    "Data Analyst","Marketing Analyst","SEO Specialist","PPC Specialist"
+  "Data Analysis and Marketing Metrics": [
+    "Data Analyst", "Marketing Analyst", "SEO Specialist", "PPC Specialist"
   ],
-  "Digital Product Marketing":[
-    "Content Strategist","PPC Specialist","Social Media Manager","Videographer"
+  "Digital Product Marketing": [
+    "Content Strategist", "PPC Specialist", "Social Media Manager", "Videographer"
   ],
-  "Direct Marketing and Email Marketing":[
-    "Copywriter","Marketing Automation Specialist","Data Analyst"
+  "Direct Marketing and Email Marketing": [
+    "Copywriter", "Marketing Automation Specialist", "Data Analyst"
   ],
-  "Loyalty Strategies Clients":[
-    "Account Manager","Marketing Automation Specialist","Content Strategist"
+  "Loyalty Strategies Clients": [
+    "Account Manager", "Marketing Automation Specialist", "Content Strategist"
   ],
-  "Specialization in Podcasts":[
-    "Content Strategist","Copywriter","Social Media Manager","Public Relations Specialist","Project Manager"
+  "Specialization in Podcasts": [
+    "Content Strategist", "Copywriter", "Social Media Manager", "Public Relations Specialist", "Project Manager"
   ]
 };
 
@@ -81,7 +78,6 @@ const PlasmicACommunityDashboard = dynamic(
 );
 
 export default function ACommunityDashboard() {
-
   const router = useRouter();
   const supabase = getSupabaseA();
   const supabaseC = getSupabaseC();
@@ -97,9 +93,7 @@ export default function ACommunityDashboard() {
   });
   const [loading, setLoading] = useState(true);
 
-  // =========================
-  // AUTH
-  // =========================
+  // USER
   useEffect(() => {
     async function loadUser() {
       const { data } = await supabase.auth.getUser();
@@ -108,26 +102,19 @@ export default function ACommunityDashboard() {
     loadUser();
   }, []);
 
-  // =========================
-  // MAIN LOAD
-  // =========================
   useEffect(() => {
-
     if (!user) {
       setLoading(false);
       return;
     }
 
     async function loadCommunity() {
-
-      // PROFILE
       const { data: myProfile } = await supabase
         .from("User profile")
         .select('"Profile pic"')
         .eq("user_id", user.id)
         .maybeSingle();
 
-      // MEMBER
       const { data: member } = await supabase
         .from("community_members")
         .select("community_id, role, status")
@@ -142,20 +129,19 @@ export default function ACommunityDashboard() {
       const communityId = member.community_id;
 
       // =========================
-      // CONNECTIONS
+      // COMPANIES
       // =========================
       const { data: connections } = await supabase
         .from("CONNECTIONS")
         .select("*")
         .eq("agency_id", communityId);
 
-      let connectedCompanies:any[] = [];
-      let companyRequests:any[] = [];
+      let connectedCompanies: any[] = [];
+      let companyRequests: any[] = [];
 
       if (connections?.length) {
-
         const companyIds = Array.from(
-          new Set(connections.map((c:any) => Number(c.company_id)))
+          new Set(connections.map((c: any) => Number(c.company_id)))
         );
 
         const { data: companies } = await supabaseC
@@ -163,8 +149,8 @@ export default function ACommunityDashboard() {
           .select("*")
           .in("id", companyIds);
 
-        const format = (list:any[]) =>
-          list.map(conn=>{
+        const format = (list: any[]) =>
+          list.map(conn => {
             const company = companies?.find(c => Number(c.id) === Number(conn.company_id));
             return {
               id: conn.id,
@@ -176,76 +162,109 @@ export default function ACommunityDashboard() {
             };
           });
 
-        connectedCompanies = format(connections.filter(c=>c.status==="connected"));
-        companyRequests = format(connections.filter(c=>c.status==="company request"));
+        connectedCompanies = format(connections.filter(c => c.status === "connected"));
+        companyRequests = format(connections.filter(c => c.status === "company request"));
       }
 
       // =========================
-      // MEMBERS + OFFICES + TRAININGS + SPECIALTIES
+      // MEMBERS / TRAININGS / SPECIALTIES
       // =========================
       const { data: membersRaw } = await supabase
         .from("community_members")
         .select("id, user_id, status, short_message")
         .eq("community_id", communityId);
 
-      let profileMap:any = {};
-      let officesMap:any = {};
-      let members:any[] = [];
-      let trainings:any[] = [];
-      let specialtiesList:string[] = [];
+      let connectedMembers: any[] = [];
+      let memberRequests: any[] = [];
+      let members: any[] = [];
+      let trainings: any[] = [];
+      let specialtiesList: string[] = [];
+
+      let profileMap: any = {};
 
       if (membersRaw?.length) {
-
         const userIds = membersRaw.map(m => m.user_id);
 
         const { data: memberProfiles } = await supabase
           .from("User profile")
-          .select(`id, user_id, "Profile pic", "First name"`)
+          .select(id, user_id, "Profile pic", "First name", "Last name", "Birthday")
           .in("user_id", userIds);
 
-        memberProfiles?.forEach(p=>{
+        memberProfiles?.forEach(p => {
           profileMap[String(p.user_id)] = p;
         });
 
-        const profileIds = memberProfiles?.map(p=>p.id) ?? [];
+        let officesMap: any = {};
 
-        const { data: offices } = await supabase
-          .from("Multicharge")
-          .select('Office, "User profile_id"')
-          .in("User profile_id", profileIds);
+        if (memberProfiles?.length) {
+          const profileIds = memberProfiles.map(p => p.id);
 
-        offices?.forEach(o=>{
-          const key = Number(o["User profile_id"]);
-          if (!officesMap[key]) officesMap[key] = [];
-          officesMap[key].push(o.Office);
-        });
+          const { data: offices } = await supabase
+            .from("Multicharge")
+            .select('Office, "User profile_id"')
+            .in("User profile_id", profileIds);
 
-        const officesFlat:string[] = [];
+          offices?.forEach(o => {
+            const key = Number(o["User profile_id"]);
+            if (!officesMap[key]) officesMap[key] = [];
+            officesMap[key].push(o.Office);
+          });
+        }
 
-        members = memberProfiles?.map(p=>{
-          const offices = officesMap[Number(p.id)] ?? [];
-          offices.forEach(o=>officesFlat.push(o));
-          return offices.map(o=>({
-            "Profile pic": p["Profile pic"],
+        const format = (list: any[]) =>
+          list.map(m => {
+            const profile = profileMap[String(m.user_id)];
+            return {
+              id: m.id,
+              user_id: m.user_id,
+              status: m.status,
+              short_message: m.short_message ?? "",
+              "Profile pic": profile?.["Profile pic"] ?? "",
+              "First name": profile?.["First name"] ?? "",
+              "Last name": profile?.["Last name"] ?? "",
+              Birthday: profile?.Birthday ?? "",
+              offices: profile?.id
+                ? officesMap[Number(profile.id)] ?? []
+                : []
+            };
+          });
+
+        connectedMembers = format(membersRaw.filter(m => m.status === "connected"));
+        memberRequests = format(membersRaw.filter(m => m.status !== "connected"));
+
+        const membersDb = membersRaw.filter(m => m.status === "connected");
+
+        const officesFlat: string[] = [];
+
+        members = membersDb.map(m => {
+          const profile = profileMap[String(m.user_id)];
+          if (!profile) return null;
+
+          const offices = officesMap[Number(profile.id)] ?? [];
+
+          offices.forEach(o => officesFlat.push(o));
+
+          return offices.map(o => ({
+            "Profile pic": profile["Profile pic"],
             Office: o
           }));
         }).flat().filter(Boolean);
 
-        // SPECIALTIES
-        const detected:string[] = [];
+        const detected: string[] = [];
 
-        for (const name in SPECIALIZATIONS){
+        for (const name in SPECIALIZATIONS) {
           const roles = SPECIALIZATIONS[name];
-          if (roles.every(r => officesFlat.includes(r))){
+          if (roles.every(r => officesFlat.includes(r))) {
             detected.push(name);
           }
         }
 
-        await supabase.from("Community specialties")
+        await supabase
+          .from("Community specialties")
           .delete()
           .eq("community_id", communityId);
 
-        if (detected.length){
+        if (detected.length) {
           await supabase.from("Community specialties").insert(
             detected.map(s => ({
               community_id: communityId,
@@ -256,177 +275,197 @@ export default function ACommunityDashboard() {
 
         specialtiesList = detected;
 
-        // TRAININGS
         const today = new Date().toISOString().split("T")[0];
 
         trainings = (
           await Promise.all(
-            memberProfiles.map(async (p:any)=>{
-              const { data: edu } = await supabase
+            membersDb.map(async (m: any) => {
+              const profile = profileMap[String(m.user_id)];
+              if (!profile) return null;
+
+              const { data: educationsRaw } = await supabase
                 .from("Education")
                 .select('University, "Graduation year"')
-                .eq("User profile_id", p.id);
+                .eq("User profile_id", profile.id);
 
-              const valid = edu?.filter(e=>e["Graduation year"] > today) ?? [];
+              const valid =
+                educationsRaw?.filter(ed => ed["Graduation year"] > today) ?? [];
 
-              return valid.map(e=>({
-                "Profile pic": p["Profile pic"],
-                "First name": p["First name"],
-                University: e.University,
-                "Graduation year": e["Graduation year"]
+              if (!valid.length) return null;
+
+              return valid.map(ed => ({
+                "Profile pic": profile["Profile pic"],
+                "First name": profile["First name"],
+                University: ed.University,
+                "Graduation year": ed["Graduation year"]
               }));
             })
           )
         ).flat().filter(Boolean);
       }
 
-// =========================
-// REVIEWS (SEM replies)
-// =========================
-const { data: reviewsRaw } = await supabase
-  .from("community_reviews")
-  .select("*")
-  .eq("community_id", communityId);
+      // =========================
+      // REVIEWS / REPLIES
+      // =========================
+      const { data: reviewsRaw } = await supabase
+        .from("community_reviews")
+        .select("*")
+        .eq("community_id", communityId);
 
-const safeReviews = reviewsRaw ?? [];
+      const { data: repliesRaw } = await supabase
+        .from("community_replies")
+        .select("*")
+        .eq("community_id", communityId);
 
-const companyIds = Array.from(new Set(
-  safeReviews.map((r:any)=>Number(r.company_id)).filter(Boolean)
-));
+      // PERFIS EXTRA (garante pegar quem comentou)
+      const extraUserIds = Array.from(new Set([
+        ...(reviewsRaw ?? []).map((r: any) => r.author_user_id),
+        ...(repliesRaw ?? []).map((r: any) => r.author_user_id)
+      ]));
 
-const { data: companies } = await supabaseC
-  .from("companies")
-  .select("*")
-  .in("id", companyIds);
+      if (extraUserIds.length) {
+        const { data: extraProfiles } = await supabase
+          .from("User profile")
+          .select(id, user_id, "Profile pic", "First name")
+          .in("user_id", extraUserIds);
 
-const companyMap:any = {};
-companies?.forEach(c=>{
-  companyMap[Number(c.id)] = c;
-});
+        extraProfiles?.forEach(p => {
+          profileMap[String(p.user_id)] = {
+            ...(profileMap[String(p.user_id)] ?? {}),
+            ...p
+          };
+        });
+      }
 
-// empresa → avaliando comunidade
-const community_reviews = safeReviews
-  .filter(r => r.author_type === "company")
-  .map(r => {
-    const c = companyMap[Number(r.company_id)];
-    return {
-      id: r.id,
-      "Company Logo": c?.["Company Logo"] ?? "",
-      "Company name": c?.["Company name"] ?? "",
-      community_name: c?.["Company name"] ?? "Company",
-      comment: r.comment ?? "",
-      rating: r.rating ?? 0
-    };
-  });
+      // COMPANY DATA
+      const companyIds = Array.from(new Set([
+        ...(reviewsRaw ?? []).map((r: any) => Number(r.company_id)),
+        ...(repliesRaw ?? []).map((r: any) => Number(r.company_id))
+      ]));
 
-// membro → avaliando comunidade
-const community_membersreviews = safeReviews
-  .filter(r => r.author_type === "member")
-  .map(r => {
-    const p = profileMap[String(r.author_user_id)];
-    return {
-      id: r.id,
-      "Profile pic": p?.["Profile pic"] ?? "",
-      "First name": p?.["First name"] ?? "",
-      community_name: p?.["First name"] ?? "Member",
-      comment: r.comment ?? "",
-      rating: r.rating ?? 0
-    };
-  });
+      const { data: companies } = await supabaseC
+        .from("companies")
+        .select("*")
+        .in("id", companyIds);
 
-// comunidade respondendo empresa
-const community_replies = safeReviews
-  .filter(r => r.author_type === "community" && r.company_id)
-  .map(r => {
-    const c = companyMap[Number(r.company_id)];
-    return {
-      id: r.id,
-      "Company Logo": c?.["Company Logo"] ?? "",
-      "Company name": c?.["Company name"] ?? "",
-      community_name: "Community",
-      comment: r.comment ?? "",
-      rating: r.rating ?? 0
-    };
-  });
+      const companyMap: any = {};
+      companies?.forEach(c => {
+        companyMap[Number(c.id)] = c;
+      });
 
-// comunidade respondendo membro
-const community_membersreplies = safeReviews
-  .filter(r => r.author_type === "community" && r.author_user_id)
-  .map(r => {
-    const p = profileMap[String(r.author_user_id)];
-    return {
-      id: r.id,
-      "Profile pic": p?.["Profile pic"] ?? "",
-      "First name": p?.["First name"] ?? "",
-      community_name: "Community",
-      comment: r.comment ?? "",
-      rating: r.rating ?? 0
-    };
-  });
+      // COMPANY REVIEWS
+      const community_reviews = (reviewsRaw ?? [])
+        .filter((r: any) => r.author_type === "company")
+        .map((r: any) => {
+          const company = companyMap[Number(r.company_id)];
+          return {
+            id: r.id,
+            "Company Logo": company?.["Company Logo"] ?? "",
+            "Company name": company?.["Company name"] ?? "",
+            community_name: "",
+            comment: r.comment ?? "",
+            rating: r.rating ?? 0
+          };
+        });
 
-      // COMMUNITY
+      // COMPANY REPLIES
+      const community_replies = (repliesRaw ?? [])
+        .filter((r: any) => r.author_type === "community")
+        .map((r: any) => {
+          const company = companyMap[Number(r.company_id)];
+          return {
+            id: r.id,
+            "Company Logo": company?.["Company Logo"] ?? "",
+            "Company name": company?.["Company name"] ?? "",
+            community_name: "",
+            comment: r.comment ?? "",
+            rating: r.rating ?? 0
+          };
+        });
+
+      // MEMBER REVIEWS
+      const community_membersreviews = (reviewsRaw ?? [])
+        .filter((r: any) => r.author_type === "member")
+        .map((r: any) => {
+          const profile = profileMap[String(r.author_user_id)];
+          return {
+            id: r.id,
+            "Profile pic": profile?.["Profile pic"] ?? "",
+            "First name": profile?.["First name"] ?? "",
+            community_name: "",
+            comment: r.comment ?? "",
+            rating: r.rating ?? 0
+          };
+        });
+
+      // MEMBER REPLIES
+      const community_membersreplies = (repliesRaw ?? [])
+        .filter((r: any) => r.author_type === "community")
+        .map((r: any) => {
+          const profile = profileMap[String(r.author_user_id)];
+          return {
+            id: r.id,
+            "Profile pic": profile?.["Profile pic"] ?? "",
+            "First name": profile?.["First name"] ?? "",
+            community_name: "",
+            comment: r.comment ?? "",
+            rating: r.rating ?? 0
+          };
+        });
+
       const { data: community } = await supabase
         .from("Community")
         .select("*")
         .eq("id", communityId)
         .maybeSingle();
 
-      setFormData({
+      const finalData = {
         ...community,
         "Profile pic": myProfile?.["Profile pic"] ?? null,
+
         connected_companies: connectedCompanies,
         company_requests: companyRequests,
+
+        connected_members: connectedMembers,
+        member_requests: memberRequests,
+
         members,
         trainings,
         specialties: specialtiesList,
+
         community_reviews,
         community_replies,
         community_membersreviews,
         community_membersreplies,
-        isAdmin: member.role === "admin"
-      });
 
+        isAdmin: member.role === "admin"
+      };
+
+      setFormData(finalData);
       setLoading(false);
     }
 
     loadCommunity();
-
   }, [user]);
 
-  // =========================
-  // ADMIN ACTIONS + SAVE
-  // =========================
-  async function handleSave(payload:any){
+  async function handleSave(payload: any) {
+    const { rating, comment } = payload;
 
-    const { action, connectionId, rating, comment } = payload;
+    if (!rating || !user) return;
 
-    if (action === "accept_company"){
-      await supabase.from("CONNECTIONS")
-        .update({ status: "connected" })
-        .eq("id", connectionId);
-    }
+    const { data: member } = await supabase
+      .from("community_members")
+      .select("*")
+      .eq("user_id", user.id)
+      .maybeSingle();
 
-    if (action === "reject_company"){
-      await supabase.from("CONNECTIONS")
-        .delete()
-        .eq("id", connectionId);
-    }
-
-    if (rating){
-      const { data: member } = await supabase
-        .from("community_members")
-        .select("*")
-        .eq("user_id", user.id)
-        .maybeSingle();
-
-      await supabase.from("community_reviews").insert({
-        rating: Number(rating),
-        comment: comment ?? "",
-        community_id: member?.community_id,
-        author_user_id: user.id,
-        author_type: "member"
-      });
-    }
+    await supabase.from("community_reviews").insert({
+      rating: Number(rating),
+      comment: comment ?? "",
+      community_id: member?.community_id,
+      author_user_id: user.id,
+      author_type: "member"
+    });
 
     location.reload();
   }

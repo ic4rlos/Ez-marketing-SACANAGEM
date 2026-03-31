@@ -345,7 +345,7 @@ export default function ACommunityDashboard() {
       // 🟡 NOVO: REPLIES
       // =========================
       const { data: repliesRaw } = await supabase
-        .from("community_replies")
+        .from("community_reviews")
         .select("*")
         .eq("community_id", communityId);
 

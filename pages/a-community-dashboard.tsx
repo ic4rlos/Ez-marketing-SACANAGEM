@@ -97,6 +97,9 @@ export default function ACommunityDashboard() {
   });
   const [loading, setLoading] = useState(true);
 
+  // =========================
+  // AUTH
+  // =========================
   useEffect(() => {
     async function loadUser() {
       const { data } = await supabase.auth.getUser();
@@ -105,6 +108,9 @@ export default function ACommunityDashboard() {
     loadUser();
   }, []);
 
+  // =========================
+  // MAIN LOAD
+  // =========================
   useEffect(() => {
 
     if (!user) {
@@ -114,12 +120,14 @@ export default function ACommunityDashboard() {
 
     async function loadCommunity() {
 
+      // PROFILE
       const { data: myProfile } = await supabase
         .from("User profile")
         .select('"Profile pic"')
         .eq("user_id", user.id)
         .maybeSingle();
 
+      // MEMBER
       const { data: member } = await supabase
         .from("community_members")
         .select("community_id, role, status")
@@ -133,6 +141,9 @@ export default function ACommunityDashboard() {
 
       const communityId = member.community_id;
 
+      // =========================
+      // CONNECTIONS
+      // =========================
       const { data: connections } = await supabase
         .from("CONNECTIONS")
         .select("*")
@@ -169,6 +180,9 @@ export default function ACommunityDashboard() {
         companyRequests = format(connections.filter(c=>c.status==="company request"));
       }
 
+      // =========================
+      // MEMBERS + OFFICES + TRAININGS + SPECIALTIES
+      // =========================
       const { data: membersRaw } = await supabase
         .from("community_members")
         .select("id, user_id, status, short_message")
@@ -217,6 +231,7 @@ export default function ACommunityDashboard() {
           }));
         }).flat().filter(Boolean);
 
+        // SPECIALTIES
         const detected:string[] = [];
 
         for (const name in SPECIALIZATIONS){
@@ -241,6 +256,7 @@ export default function ACommunityDashboard() {
 
         specialtiesList = detected;
 
+        // TRAININGS
         const today = new Date().toISOString().split("T")[0];
 
         trainings = (
@@ -264,104 +280,91 @@ export default function ACommunityDashboard() {
         ).flat().filter(Boolean);
       }
 
-      // 🔥 BLOCO CORRIGIDO AQUI (já aplicado)
-      const { data: reviewsRaw } = await supabase
-        .from("community_reviews")
-        .select("*")
-        .eq("community_id", communityId);
+// =========================
+// REVIEWS (SEM replies)
+// =========================
+const { data: reviewsRaw } = await supabase
+  .from("community_reviews")
+  .select("*")
+  .eq("community_id", communityId);
 
-// NÃO EXISTE community_replies → usar só reviews
-const safeReplies:any[] = [];
-      const safeReviews = reviewsRaw ?? [];
+const safeReviews = reviewsRaw ?? [];
 
-      const companyIds = Array.from(new Set([
-        ...safeReviews.map((r:any)=>Number(r.company_id)).filter(Boolean),
-        ...safeReplies.map((r:any)=>Number(r.company_id)).filter(Boolean)
-      ]));
-
-      const { data: companies } = await supabaseC
-        .from("companies")
-        .select("*")
-        .in("id", companyIds);
-
-      const companyMap:any = {};
-      companies?.forEach(c=>{
-        companyMap[Number(c.id)] = c;
-      });
-
-const userIds = Array.from(new Set(
-  safeReviews.map((r:any)=>r.author_user_id).filter(Boolean)
+const companyIds = Array.from(new Set(
+  safeReviews.map((r:any)=>Number(r.company_id)).filter(Boolean)
 ));
 
-      let usersMap:any = {};
+const { data: companies } = await supabaseC
+  .from("companies")
+  .select("*")
+  .in("id", companyIds);
 
-      if (userIds.length){
-        const { data: users } = await supabase
-          .from("User profile")
-          .select(`user_id, "Profile pic", "First name"`)
-          .in("user_id", userIds);
+const companyMap:any = {};
+companies?.forEach(c=>{
+  companyMap[Number(c.id)] = c;
+});
 
-        users?.forEach(u=>{
-          usersMap[String(u.user_id)] = u;
-        });
-      }
+// empresa → avaliando comunidade
+const community_reviews = safeReviews
+  .filter(r => r.author_type === "company")
+  .map(r => {
+    const c = companyMap[Number(r.company_id)];
+    return {
+      id: r.id,
+      "Company Logo": c?.["Company Logo"] ?? "",
+      "Company name": c?.["Company name"] ?? "",
+      community_name: c?.["Company name"] ?? "Company",
+      comment: r.comment ?? "",
+      rating: r.rating ?? 0
+    };
+  });
 
-      const community_reviews = safeReviews
-        .filter(r => r.author_type === "company")
-        .map(r => {
-          const c = companyMap[Number(r.company_id)];
-          return {
-            id: r.id,
-            "Company Logo": c?.["Company Logo"] ?? "",
-            "Company name": c?.["Company name"] ?? "",
-            community_name: c?.["Company name"] ?? "Company",
-            comment: r.comment ?? "",
-            rating: r.rating ?? 0
-          };
-        });
+// membro → avaliando comunidade
+const community_membersreviews = safeReviews
+  .filter(r => r.author_type === "member")
+  .map(r => {
+    const p = profileMap[String(r.author_user_id)];
+    return {
+      id: r.id,
+      "Profile pic": p?.["Profile pic"] ?? "",
+      "First name": p?.["First name"] ?? "",
+      community_name: p?.["First name"] ?? "Member",
+      comment: r.comment ?? "",
+      rating: r.rating ?? 0
+    };
+  });
 
-      const community_membersreviews = safeReviews
-        .filter(r => r.author_type === "member")
-        .map(r => {
-          const u = usersMap[String(r.author_user_id)];
-          return {
-            id: r.id,
-            "Profile pic": u?.["Profile pic"] ?? "",
-            "First name": u?.["First name"] ?? "",
-            community_name: u?.["First name"] ?? "Member",
-            comment: r.comment ?? "",
-            rating: r.rating ?? 0
-          };
-        });
+// comunidade respondendo empresa
+const community_replies = safeReviews
+  .filter(r => r.author_type === "community" && r.company_id)
+  .map(r => {
+    const c = companyMap[Number(r.company_id)];
+    return {
+      id: r.id,
+      "Company Logo": c?.["Company Logo"] ?? "",
+      "Company name": c?.["Company name"] ?? "",
+      community_name: "Community",
+      comment: r.comment ?? "",
+      rating: r.rating ?? 0
+    };
+  });
 
-      const community_replies = safeReplies
-        .filter(r => r.author_type === "community" && r.company_id)
-        .map(r => {
-          const c = companyMap[Number(r.company_id)];
-          return {
-            id: r.id,
-            "Company Logo": c?.["Company Logo"] ?? "",
-            "Company name": c?.["Company name"] ?? "",
-            community_name: "Community",
-            comment: r.comment ?? "",
-            rating: r.rating ?? 0
-          };
-        });
+// comunidade respondendo membro
+const community_membersreplies = safeReviews
+  .filter(r => r.author_type === "community" && r.author_user_id)
+  .map(r => {
+    const p = profileMap[String(r.author_user_id)];
+    return {
+      id: r.id,
+      "Profile pic": p?.["Profile pic"] ?? "",
+      "First name": p?.["First name"] ?? "",
+      community_name: "Community",
+      comment: r.comment ?? "",
+      rating: r.rating ?? 0
+    };
+  });
 
-      const community_membersreplies = safeReplies
-        .filter(r => r.author_type === "community" && r.member_id)
-        .map(r => {
-          const u = usersMap[String(r.member_id)];
-          return {
-            id: r.id,
-            "Profile pic": u?.["Profile pic"] ?? "",
-            "First name": u?.["First name"] ?? "",
-            community_name: "Community",
-            comment: r.comment ?? "",
-            rating: r.rating ?? 0
-          };
-        });
-
+      // COMMUNITY
       const { data: community } = await supabase
         .from("Community")
         .select("*")
@@ -390,6 +393,9 @@ const userIds = Array.from(new Set(
 
   }, [user]);
 
+  // =========================
+  // ADMIN ACTIONS + SAVE
+  // =========================
   async function handleSave(payload:any){
 
     const { action, connectionId, rating, comment } = payload;

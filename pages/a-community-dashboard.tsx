@@ -270,13 +270,9 @@ export default function ACommunityDashboard() {
         .select("*")
         .eq("community_id", communityId);
 
-      const { data: repliesRaw } = await supabase
-        .from("community_replies")
-        .select("*")
-        .eq("community_id", communityId);
-
+// NÃO EXISTE community_replies → usar só reviews
+const safeReplies:any[] = [];
       const safeReviews = reviewsRaw ?? [];
-      const safeReplies = repliesRaw ?? [];
 
       const companyIds = Array.from(new Set([
         ...safeReviews.map((r:any)=>Number(r.company_id)).filter(Boolean),
@@ -293,10 +289,9 @@ export default function ACommunityDashboard() {
         companyMap[Number(c.id)] = c;
       });
 
-      const userIds = Array.from(new Set([
-        ...safeReviews.map((r:any)=>r.author_user_id),
-        ...safeReplies.map((r:any)=>r.author_user_id)
-      ].filter(Boolean)));
+const userIds = Array.from(new Set(
+  safeReviews.map((r:any)=>r.author_user_id).filter(Boolean)
+));
 
       let usersMap:any = {};
 

@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
-import { useRouter } from "next/router";
 import { getSupabaseA } from "../lib/a-supabaseClient";
 import { getSupabaseC } from "../lib/c-supabaseClient";
 
@@ -16,7 +15,6 @@ const PlasmicACommunityDashboard = dynamic(
 
 export default function ACommunityDashboard() {
 
-  const router = useRouter();
   const supabase = getSupabaseA();
   const supabaseC = getSupabaseC();
 
@@ -29,7 +27,9 @@ export default function ACommunityDashboard() {
   });
   const [loading, setLoading] = useState(true);
 
+  // =========================
   // USER
+  // =========================
   useEffect(() => {
     async function loadUser() {
       const { data } = await supabase.auth.getUser();
@@ -48,7 +48,7 @@ export default function ACommunityDashboard() {
 
     async function loadCommunity() {
 
-      console.log("========== 🚀 LOAD COMMUNITY START ==========");
+      console.log("========== 🚀 LOAD COMMUNITY ==========");
 
       const { data: member } = await supabase
         .from("community_members")
@@ -65,44 +65,31 @@ export default function ACommunityDashboard() {
       }
 
       const communityId = member.community_id;
-      console.log("🏢 COMMUNITY ID:", communityId);
 
       // =========================
-      // 🔥 FETCH ALL REVIEWS
+      // FETCH REVIEWS
       // =========================
-      const { data: allReviews, error } = await supabase
+      const { data: allReviews } = await supabase
         .from("community_reviews")
         .select("*")
         .eq("community_id", communityId);
 
       console.log("📦 ALL REVIEWS:", allReviews);
-      console.log("❌ ERROR REVIEWS:", error);
-      console.log("📊 TOTAL:", allReviews?.length);
-
-      // TIPOS
-      const types = {};
-      (allReviews ?? []).forEach((r:any)=>{
-        types[r.author_type] = (types[r.author_type] || 0) + 1;
-      });
-      console.log("📊 TYPES:", types);
 
       // =========================
-      // 👤 PROFILE MAP
+      // PROFILE MAP
       // =========================
+      const profileMap:any = {};
+
       const userIds = Array.from(new Set(
         (allReviews ?? []).map((r:any)=>r.author_user_id)
       ));
-
-      console.log("👤 USER IDS:", userIds);
 
       const { data: profiles } = await supabase
         .from("User profile")
         .select(`user_id, "Profile pic", "First name"`)
         .in("user_id", userIds);
 
-      console.log("👤 PROFILES:", profiles);
-
-      const profileMap:any = {};
       profiles?.forEach(p=>{
         profileMap[String(p.user_id)] = p;
       });
@@ -110,7 +97,7 @@ export default function ACommunityDashboard() {
       console.log("🧠 PROFILE MAP:", profileMap);
 
       // =========================
-      // 🏢 COMPANY MAP
+      // COMPANY MAP
       // =========================
       const companyIds = Array.from(new Set(
         (allReviews ?? [])
@@ -118,14 +105,10 @@ export default function ACommunityDashboard() {
           .filter(Boolean)
       ));
 
-      console.log("🏢 COMPANY IDS:", companyIds);
-
       const { data: companies } = await supabaseC
         .from("companies")
         .select("*")
         .in("id", companyIds);
-
-      console.log("🏢 COMPANIES:", companies);
 
       const companyMap:any = {};
       companies?.forEach(c=>{
@@ -135,108 +118,43 @@ export default function ACommunityDashboard() {
       console.log("🧠 COMPANY MAP:", companyMap);
 
       // =========================
-      // 🔵 COMPANY REVIEWS
+      // BUILD ARRAYS
       // =========================
       const community_reviews = (allReviews ?? [])
         .filter((r:any)=>r.author_type === "company");
 
-      console.log("🔵 COMPANY REVIEWS RAW:", community_reviews);
-
-      const community_reviews_final = community_reviews.map((r:any)=>{
-        const company = companyMap[Number(r.company_id)];
-        const item = {
-          id: r.id,
-          "Company Logo": company?.["Company Logo"] ?? "",
-          "Company name": company?.["Company name"] ?? "",
-          comment: r.comment ?? "",
-          rating: r.rating ?? 0
-        };
-        console.log("➡️ COMPANY REVIEW ITEM:", item);
-        return item;
-      });
-
-      console.log("✅ COMPANY REVIEWS FINAL:", community_reviews_final);
-
-      // =========================
-      // 🟢 MEMBER REVIEWS
-      // =========================
-      const memberReviews = (allReviews ?? [])
+      const community_membersreviews = (allReviews ?? [])
         .filter((r:any)=>r.author_type === "member");
 
-      console.log("🟢 MEMBER REVIEWS RAW:", memberReviews);
-
-      const community_membersreviews = memberReviews.map((r:any)=>{
-        const profile = profileMap[String(r.author_user_id)];
-        const item = {
-          id: r.id,
-          "Profile pic": profile?.["Profile pic"] ?? "",
-          "First name": profile?.["First name"] ?? "",
-          comment: r.comment ?? "",
-          rating: r.rating ?? 0
-        };
-        console.log("➡️ MEMBER REVIEW ITEM:", item);
-        return item;
-      });
-
-      console.log("✅ MEMBER REVIEWS FINAL:", community_membersreviews);
-
-      // =========================
-      // 🟡 COMMUNITY → COMPANY
-      // =========================
-      const companyRepliesRaw = (allReviews ?? [])
+      const community_replies = (allReviews ?? [])
         .filter((r:any)=>
           r.author_type?.startsWith("community") && r.company_id
         );
 
-      console.log("🟡 COMPANY REPLIES RAW:", companyRepliesRaw);
-
-      const community_replies = companyRepliesRaw.map((r:any)=>{
-        const company = companyMap[Number(r.company_id)];
-        const item = {
-          id: r.id,
-          "Company Logo": company?.["Company Logo"] ?? "",
-          "Company name": company?.["Company name"] ?? "",
-          comment: r.comment ?? ""
-        };
-        console.log("➡️ COMPANY REPLY ITEM:", item);
-        return item;
-      });
-
-      console.log("✅ COMPANY REPLIES FINAL:", community_replies);
-
-      // =========================
-      // 🟣 COMMUNITY → MEMBER
-      // =========================
-      const memberRepliesRaw = (allReviews ?? [])
+      const community_membersreplies = (allReviews ?? [])
         .filter((r:any)=>
           r.author_type?.startsWith("community") && !r.company_id
         );
 
-      console.log("🟣 MEMBER REPLIES RAW:", memberRepliesRaw);
+      console.log("📊 FINAL COUNTS:");
+      console.log("community_reviews:", community_reviews.length);
+      console.log("community_membersreviews:", community_membersreviews.length);
+      console.log("community_replies:", community_replies.length);
+      console.log("community_membersreplies:", community_membersreplies.length);
 
-      const community_membersreplies = memberRepliesRaw.map((r:any)=>{
-        const profile = profileMap[String(r.author_user_id)];
-        const item = {
-          id: r.id,
-          "Profile pic": profile?.["Profile pic"] ?? "",
-          "First name": profile?.["First name"] ?? "",
-          comment: r.comment ?? ""
-        };
-        console.log("➡️ MEMBER REPLY ITEM:", item);
-        return item;
-      });
-
-      console.log("✅ MEMBER REPLIES FINAL:", community_membersreplies);
-
-      console.log("========== 🧨 END DEBUG ==========");
-
-      setFormData({
-        community_reviews: community_reviews_final,
-        community_replies,
+      // =========================
+      // SET FORM DATA
+      // =========================
+      const finalData = {
+        community_reviews,
         community_membersreviews,
+        community_replies,
         community_membersreplies
-      });
+      };
 
+      console.log("📦 FORM DATA FINAL:", finalData);
+
+      setFormData(finalData);
       setLoading(false);
     }
 
@@ -246,11 +164,18 @@ export default function ACommunityDashboard() {
 
   if (loading) return null;
 
+  // =========================
+  // 🔥 LOG CRÍTICO (ANTES DO RENDER)
+  // =========================
+  console.log("🚨 PROPS SEND TO PLASMIC:");
+  console.log("formData:", formData);
+  console.log("SPREAD:", { ...formData });
+
   return (
     <PlasmicACommunityDashboard
       args={{
         formData,
-        setFormData
+        ...formData // 🔥 TESTE CRÍTICO
       }}
     />
   );

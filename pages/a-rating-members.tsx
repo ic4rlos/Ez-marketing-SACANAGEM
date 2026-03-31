@@ -1,252 +1,295 @@
-// 🔥 DEBUG VERSION - MAX LOGS (REVIEWS / REPLIES FOCUSED)
-
 import { useEffect, useState } from "react";
-import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
+import dynamic from "next/dynamic";
 import { getSupabaseA } from "../lib/a-supabaseClient";
-import { getSupabaseC } from "../lib/c-supabaseClient";
 
 export const dynamic_config = "force-dynamic";
 export const runtime = "nodejs";
 
-const PlasmicACommunityDashboard = dynamic(
+const PlasmicARatingMembers = dynamic(
   () =>
-    import("../components/plasmic/ez_marketing_platform_sacanagem/PlasmicACommunityDashboard")
-      .then((m) => m.PlasmicACommunityDashboard),
+    import(
+      "../components/plasmic/ez_marketing_platform_sacanagem/PlasmicARatingMembers"
+    ).then((m) => m.PlasmicARatingMembers),
   { ssr: false }
 );
 
-export default function ACommunityDashboard() {
-
+export default function ARatingMembers() {
   const router = useRouter();
-  const supabase = getSupabaseA();
-  const supabaseC = getSupabaseC();
+  const { id } = router.query;
 
-  const [user, setUser] = useState<any>(null);
-  const [formData, setFormData] = useState<any>({
-    community_reviews: [],
-    community_replies: [],
-    community_membersreviews: [],
-    community_membersreplies: []
-  });
+  const supabase = getSupabaseA();
+
+  const [user, setUser] = useState<any>(undefined);
+  const [formData, setFormData] = useState<any>(null);
+  const [reports, setReports] = useState<any[]>([]);
+  const [actualData, setActualData] = useState("");
+  const [periodKey, setPeriodKey] = useState("");
   const [loading, setLoading] = useState(true);
 
   // =========================
-  // USER
+  // AUTH
   // =========================
   useEffect(() => {
     async function loadUser() {
       const { data } = await supabase.auth.getUser();
-      console.log("👤 USER:", data?.user);
       setUser(data?.user ?? null);
     }
     loadUser();
   }, []);
 
+  // =========================
+  // LOAD ALL
+  // =========================
   useEffect(() => {
+    async function loadAll() {
+      if (user === undefined) return;
+      if (!id) return;
 
-    if (!user) {
+      try {
+        setLoading(true);
+
+        // =========================
+        // 🔥 PERÍODO TRIMESTRAL
+        // =========================
+        const now = new Date();
+        const quarter = Math.floor(now.getMonth() / 3);
+        const year = now.getFullYear();
+
+        const firstDay = new Date(year, quarter * 3, 1);
+        const lastDay = new Date(year, quarter * 3 + 3, 0);
+
+        const format = (d: Date) => d.toLocaleDateString("pt-BR");
+
+        setActualData(`${format(firstDay)} - ${format(lastDay)}`);
+
+        const currentPeriodKey = `${year}-Q${quarter + 1}`;
+        setPeriodKey(currentPeriodKey);
+
+        // =========================
+        // PROFILE
+        // =========================
+        const { data: profile } = await supabase
+          .from("User profile")
+          .select("*")
+          .eq("user_id", id)
+          .maybeSingle();
+
+        if (!profile) {
+          setFormData(null);
+          setLoading(false);
+          return;
+        }
+
+        // =========================
+        // 🔥 MULTICHARGE (OFFICES)
+        // =========================
+        const { data: officesDb } = await supabase
+          .from("Multicharge")
+          .select("*")
+          .eq("User profile_id", profile.id);
+
+        const offices =
+          officesDb?.map((o: any) => ({
+            Offices: o.Office,
+          })) ?? [];
+
+        // =========================
+        // COMMUNITY (CORRIGIDO)
+        // =========================
+        const { data: memberConn } = await supabase
+          .from("community_members")
+          .select("*")
+          .eq("user_id", id) // ✅ CORRETO
+          .eq("status", "connected")
+          .maybeSingle();
+
+        let communityLogo = null;
+
+        if (memberConn?.community_id) {
+          const { data: community } = await supabase
+            .from("Community")
+            .select("*")
+            .eq("id", memberConn.community_id)
+            .maybeSingle();
+
+          communityLogo = community?.community_logo ?? null;
+        }
+
+        // =========================
+        // REVIEWS
+        // =========================
+        const { data: reviews } = await supabase
+          .from("community_reviews")
+          .select("*")
+          .eq("member_id", profile.id);
+
+        const reviewsThisPeriod =
+          reviews?.filter((r: any) => r.period_key === currentPeriodKey) ?? [];
+
+        const avg = (list: any[]) =>
+          list.length === 0
+            ? 0
+            : list.reduce((acc, r) => acc + (r.rating ?? 0), 0) /
+              list.length;
+
+        const count = (list: any[]) => list.length;
+
+        const ethics = reviewsThisPeriod.filter(
+          (r: any) => r.author_type === "community ethics"
+        );
+
+        const technical = reviewsThisPeriod.filter(
+          (r: any) => r.author_type === "community technical"
+        );
+
+        const memberRated = reviewsThisPeriod.filter(
+          (r: any) => r.author_type === "member"
+        );
+
+        // =========================
+        // FORM DATA FINAL
+        // =========================
+        const enriched = {
+          ...profile,
+
+          community_logo: communityLogo,
+
+          offices, // ✅ ADICIONADO
+
+          ethics_rate: avg(ethics),
+          ethics_count: count(ethics),
+
+          technical_rate: avg(technical),
+          technical_count: count(technical),
+
+          member_rated: avg(memberRated),
+        };
+
+        setFormData(enriched);
+
+        // =========================
+        // REPORTS
+        // =========================
+        const grouped: any = {};
+
+        reviews?.forEach((r: any) => {
+          if (!r.period_key) return;
+
+          if (!grouped[r.period_key]) grouped[r.period_key] = [];
+          grouped[r.period_key].push(r);
+        });
+
+        const reportsFormatted = Object.keys(grouped).map((key) => {
+          const list = grouped[key];
+
+          const [y, q] = key.split("-Q");
+          const qIndex = Number(q) - 1;
+
+          const first = new Date(Number(y), qIndex * 3, 1);
+          const last = new Date(Number(y), qIndex * 3 + 3, 0);
+
+          const ethics = list.filter(
+            (r: any) => r.author_type === "community ethics"
+          );
+
+          const technical = list.filter(
+            (r: any) => r.author_type === "community technical"
+          );
+
+          const memberRated = list.filter(
+            (r: any) => r.author_type === "member"
+          );
+
+          return {
+            date: `${format(first)} - ${format(last)}`,
+            ethics: avg(ethics),
+            technical: avg(technical),
+            member: avg(memberRated),
+          };
+        });
+
+        setReports(reportsFormatted);
+      } catch (err) {
+        console.error("LOAD ERROR:", err);
+      }
+
       setLoading(false);
+    }
+
+    loadAll();
+  }, [user, id]);
+
+  // =========================
+  // ACTION
+  // =========================
+  async function handleSave(payload: any) {
+    let { rating, comment, type } = payload;
+
+    // 🔥 CORREÇÃO CRÍTICA
+    if (rating === undefined || rating === null) return;
+    if (!user || !formData || !periodKey) return;
+
+    const safeType = type?.trim();
+
+    const { data: existing } = await supabase
+      .from("community_reviews")
+      .select("id")
+      .eq("member_id", formData.id)
+      .eq("author_user_id", user.id)
+      .eq("author_type", safeType)
+      .eq("period_key", periodKey)
+      .maybeSingle();
+
+    if (existing) {
+      alert("You already rated this category in this period.");
       return;
     }
 
-    async function loadCommunity() {
+    const { data: memberConn } = await supabase
+      .from("community_members")
+      .select("*")
+      .eq("user_id", user.id)
+      .maybeSingle();
 
-      console.log("========== 🚀 LOAD COMMUNITY ==========");
+    const { error } = await supabase.from("community_reviews").insert({
+      rating: Number(rating),
+      comment: comment ?? "",
+      member_id: formData.id,
+      community_id: memberConn?.community_id ?? null,
+      author_user_id: user.id,
+      author_type: safeType,
+      period_key: periodKey,
+    });
 
-      const { data: member } = await supabase
-        .from("community_members")
-        .select("community_id, role, status")
-        .eq("user_id", user.id)
-        .maybeSingle();
-
-      console.log("👤 MEMBER:", member);
-
-      if (!member?.community_id) {
-        setLoading(false);
-        return;
-      }
-
-      const communityId = member.community_id;
-
-      // =========================
-      // 🔥 REVIEWS
-      // =========================
-      const { data: allReviews, error } = await supabase
-        .from("community_reviews")
-        .select("*")
-        .eq("community_id", communityId);
-
-      console.log("📦 ALL REVIEWS:", allReviews);
-      console.log("❌ ERROR:", error);
-
-      if (!allReviews?.length) {
-        console.log("⚠️ NO REVIEWS FOUND");
-      }
-
-      // =========================
-      // 🔥 AUTHOR IDS
-      // =========================
-      const userIds = Array.from(new Set(
-        allReviews.map((r:any)=>r.author_user_id).filter(Boolean)
-      ));
-
-      console.log("👤 AUTHOR USER IDS:", userIds);
-
-      // =========================
-      // 🔥 PROFILES FETCH
-      // =========================
-      const { data: profiles } = await supabase
-        .from("User profile")
-        .select(`user_id, "Profile pic", "First name"`)
-        .in("user_id", userIds);
-
-      console.log("👤 PROFILES RAW:", profiles);
-
-      const profileMap:any = {};
-      profiles?.forEach(p=>{
-        profileMap[String(p.user_id)] = p;
-      });
-
-      console.log("🧠 PROFILE MAP:", profileMap);
-
-      // =========================
-      // 🔥 DETECT MISSING PROFILES
-      // =========================
-      const missingProfiles = userIds.filter(
-        id => !profileMap[String(id)]
-      );
-
-      console.log("🚨 MISSING PROFILES:", missingProfiles);
-
-      // =========================
-      // 🔥 COMPANY MAP
-      // =========================
-      const companyIds = Array.from(new Set(
-        allReviews.map((r:any)=>Number(r.company_id)).filter(Boolean)
-      ));
-
-      console.log("🏢 COMPANY IDS:", companyIds);
-
-      const { data: companies } = await supabaseC
-        .from("companies")
-        .select("*")
-        .in("id", companyIds);
-
-      const companyMap:any = {};
-      companies?.forEach(c=>{
-        companyMap[Number(c.id)] = c;
-      });
-
-      console.log("🧠 COMPANY MAP:", companyMap);
-
-      // =========================
-      // 🔥 BUILD ARRAYS
-      // =========================
-
-      const community_reviews:any[] = [];
-      const community_membersreviews:any[] = [];
-      const community_replies:any[] = [];
-      const community_membersreplies:any[] = [];
-
-      allReviews.forEach((r:any)=>{
-
-        console.log("➡️ REVIEW ITEM:", r);
-
-        const profile = profileMap[String(r.author_user_id)];
-        const company = companyMap[Number(r.company_id)];
-
-        console.log("🔍 MATCH PROFILE:", r.author_user_id, profile);
-        console.log("🔍 MATCH COMPANY:", r.company_id, company);
-
-        // =========================
-        // COMPANY REVIEW
-        // =========================
-        if (r.author_type === "company") {
-          community_reviews.push({
-            id: r.id,
-            "Company Logo": company?.["Company Logo"] ?? "",
-            "Company name": company?.["Company name"] ?? "",
-            comment: r.comment ?? "",
-            rating: r.rating ?? 0
-          });
-        }
-
-        // =========================
-        // MEMBER REVIEW
-        // =========================
-        if (r.author_type === "member") {
-          community_membersreviews.push({
-            id: r.id,
-            "Profile pic": profile?.["Profile pic"] ?? "❌ NO PIC",
-            "First name": profile?.["First name"] ?? "❌ NO NAME",
-            comment: r.comment ?? "",
-            rating: r.rating ?? 0
-          });
-        }
-
-        // =========================
-        // COMMUNITY → COMPANY
-        // =========================
-        if (r.author_type === "community" && r.company_id) {
-          community_replies.push({
-            id: r.id,
-            "Company Logo": company?.["Company Logo"] ?? "",
-            "Company name": company?.["Company name"] ?? "",
-            comment: r.comment ?? ""
-          });
-        }
-
-        // =========================
-        // COMMUNITY → MEMBER
-        // =========================
-        if (
-          ["community ethics", "community technical"].includes(r.author_type) &&
-          !r.company_id
-        ) {
-          community_membersreplies.push({
-            id: r.id,
-            "Profile pic": profile?.["Profile pic"] ?? "❌ NO PIC",
-            "First name": profile?.["First name"] ?? "❌ NO NAME",
-            comment: r.comment ?? ""
-          });
-        }
-
-      });
-
-      console.log("📊 FINAL COUNTS:");
-      console.log("community_reviews:", community_reviews.length);
-      console.log("community_membersreviews:", community_membersreviews.length);
-      console.log("community_replies:", community_replies.length);
-      console.log("community_membersreplies:", community_membersreplies.length);
-
-      const finalData = {
-        community_reviews,
-        community_membersreviews,
-        community_replies,
-        community_membersreplies,
-        isAdmin: member.role === "admin"
-      };
-
-      console.log("📦 FINAL DATA:", finalData);
-
-      setFormData(finalData);
-      setLoading(false);
+    if (error) {
+      alert("Error saving rating.");
+      console.error(error);
+      return;
     }
 
-    loadCommunity();
+    router.replace(router.asPath);
+  }
 
-  }, [user]);
+  // =========================
+  // LOGOUT
+  // =========================
+  async function handleLogout() {
+    await supabase.auth.signOut();
+    router.replace("/");
+  }
 
+  if (user === undefined) return null;
   if (loading) return null;
 
-  console.log("🚨 PROPS SEND TO PLASMIC:", formData);
-
   return (
-    <PlasmicACommunityDashboard
+    <PlasmicARatingMembers
       args={{
-        formData,
-        setFormData,
+        formData: formData ?? {},
+        reports: reports ?? [],
+        actualData: actualData,
+        onSave: handleSave,
+        onLogout: handleLogout,
       }}
     />
   );

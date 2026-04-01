@@ -443,9 +443,9 @@ export default function ACommunityDashboard() {
 <PlasmicACommunityDashboard
   args={{
     formData,
-    ...formData
+    ...formData,
+    onSave: onSave // ✅ aqui dentro
   }}
-  onSave={onSave}
 />
   );
 }

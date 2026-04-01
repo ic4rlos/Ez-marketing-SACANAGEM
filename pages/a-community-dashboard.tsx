@@ -267,7 +267,13 @@ export default function ACommunityDashboard() {
         .select("*")
         .eq("community_id", communityId);
 
-      const companyIdsReviews = [...new Set((allReviews ?? []).map((r:any)=>Number(r.company_id)).filter(Boolean))];
+      const companyIdsReviews = Array.from(
+  new Set(
+    (allReviews ?? [])
+      .map((r:any)=>Number(r.company_id))
+      .filter(Boolean)
+  )
+);
 
       const { data: companiesReviews } = await supabaseC
         .from("companies")

@@ -440,12 +440,12 @@ export default function ACommunityDashboard() {
   if (loading) return null;
 
   return (
-    <PlasmicACommunityDashboard
-      args={{
-        formData,
-        ...formData
-      }}
-      onSave={onSave}
-    />
+<PlasmicACommunityDashboard
+  args={{
+    formData,
+    ...formData
+  }}
+  onSave={onSave}
+/>
   );
 }

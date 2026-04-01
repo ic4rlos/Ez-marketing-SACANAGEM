@@ -87,9 +87,7 @@ export default function ACommunityDashboard() {
   const [formData, setFormData] = useState<any>({});
   const [loading, setLoading] = useState(true);
 
-  // =========================
   // AUTH
-  // =========================
   useEffect(() => {
     async function loadUser() {
       const { data } = await supabase.auth.getUser();
@@ -99,7 +97,7 @@ export default function ACommunityDashboard() {
   }, []);
 
   // =========================
-  // SAVE (FIXED)
+  // SAVE (CORRIGIDO COMPLETO)
   // =========================
   async function onSave(data:any){
 
@@ -110,14 +108,42 @@ export default function ACommunityDashboard() {
       const year = now.getFullYear();
       const periodKey = `${year}-Q${quarter + 1}`;
 
+      const rating = data?.rating?.value ?? data?.rating;
+      const comment = data?.comment?.value ?? data?.comment ?? "";
+
+      if (!rating) return;
+
+      // 🔒 bloqueio duplicado
+      const { data: existing } = await supabase
+        .from("community_reviews")
+        .select("id")
+        .eq("community_id", formData.id)
+        .eq("author_user_id", user.id)
+        .eq("author_type", "member")
+        .eq("period_key", periodKey)
+        .maybeSingle();
+
+      if (existing){
+        alert("Você já avaliou neste período");
+        return;
+      }
+
+      // 🔥 profile (member_id real)
+      const { data: profile } = await supabase
+        .from("User profile")
+        .select("id")
+        .eq("user_id", user.id)
+        .maybeSingle();
+
       const { error } = await supabase
         .from("community_reviews")
         .insert({
           community_id: formData.id,
-          author_user_id: user?.id,
+          author_user_id: user.id,
+          member_id: profile?.id,
           author_type: "member",
-          rating: Number(data.rating),
-          comment: data.comment ?? "",
+          rating: Number(rating),
+          comment: comment,
           period_key: periodKey
         });
 
@@ -132,7 +158,7 @@ export default function ACommunityDashboard() {
   }
 
   // =========================
-  // LOAD ALL
+  // LOAD ALL (COMPLETO)
   // =========================
   useEffect(() => {
 
@@ -143,14 +169,12 @@ export default function ACommunityDashboard() {
 
     async function loadCommunity(){
 
-      // PROFILE
       const { data: myProfile } = await supabase
         .from("User profile")
         .select('"Profile pic"')
         .eq("user_id", user.id)
         .maybeSingle();
 
-      // MEMBER
       const { data: member } = await supabase
         .from("community_members")
         .select("community_id, role, status")
@@ -164,7 +188,6 @@ export default function ACommunityDashboard() {
 
       const communityId = member.community_id;
 
-      // COMMUNITY
       const { data: community } = await supabase
         .from("Community")
         .select("*")
@@ -178,7 +201,7 @@ export default function ACommunityDashboard() {
         null;
 
       // =========================
-      // COMPANIES
+      // CONNECTIONS / COMPANIES
       // =========================
       const { data: connections } = await supabase
         .from("CONNECTIONS")
@@ -190,9 +213,7 @@ export default function ACommunityDashboard() {
 
       if (connections?.length){
 
-        const companyIds = Array.from(
-          new Set(connections.map((c:any)=>Number(c.company_id)))
-        );
+        const companyIds = [...new Set(connections.map((c:any)=>Number(c.company_id)))];
 
         const { data: companies } = await supabaseC
           .from("companies")
@@ -201,9 +222,7 @@ export default function ACommunityDashboard() {
 
         const format = (list:any[]) =>
           list.map(conn=>{
-            const company = companies?.find(
-              c=>Number(c.id) === Number(conn.company_id)
-            );
+            const company = companies?.find(c=>Number(c.id) === Number(conn.company_id));
             return {
               id: conn.id,
               company_id: conn.company_id,
@@ -219,169 +238,34 @@ export default function ACommunityDashboard() {
       }
 
       // =========================
-      // MEMBERS + OFFICES + SPECIALTIES + TRAININGS
+      // MEMBERS + PROFILES
       // =========================
       const { data: membersRaw } = await supabase
         .from("community_members")
         .select("id, user_id, status, short_message")
         .eq("community_id", communityId);
 
-      let connectedMembers:any[] = [];
-      let memberRequests:any[] = [];
-      let members:any[] = [];
-      let trainings:any[] = [];
-      let specialtiesList:string[] = [];
+      const userIds = membersRaw?.map(m=>m.user_id) ?? [];
 
-      let profileMap:any = {};
-      let officesMap:any = {};
+      const { data: memberProfiles } = await supabase
+        .from("User profile")
+        .select('id, user_id, "Profile pic", "First name", "Last name"')
+        .in("user_id", userIds);
 
-      if (membersRaw?.length){
-
-        const userIds = membersRaw.map(m=>m.user_id);
-
-        const { data: memberProfiles } = await supabase
-          .from("User profile")
-          .select('id, user_id, "Profile pic", "First name", "Last name", "Birthday"')
-          .in("user_id", userIds);
-
-        memberProfiles?.forEach(p=>{
-          profileMap[String(p.user_id)] = p;
-        });
-
-        const profileIds = memberProfiles?.map(p=>p.id) ?? [];
-
-        const { data: offices } = await supabase
-          .from("Multicharge")
-          .select('Office, "User profile_id"')
-          .in("User profile_id", profileIds);
-
-        offices?.forEach(o=>{
-          const key = Number(o["User profile_id"]);
-          if (!officesMap[key]) officesMap[key] = [];
-          officesMap[key].push(o.Office);
-        });
-
-        const format = (list:any[]) =>
-          list.map(m=>{
-            const profile = profileMap[String(m.user_id)];
-            return {
-              id: m.id,
-              user_id: m.user_id,
-              status: m.status,
-              short_message: m.short_message ?? "",
-              "Profile pic": profile?.["Profile pic"] ?? "",
-              "First name": profile?.["First name"] ?? "",
-              "Last name": profile?.["Last name"] ?? "",
-              Birthday: profile?.Birthday ?? "",
-              offices: profile?.id ? officesMap[Number(profile.id)] ?? [] : []
-            };
-          });
-
-        connectedMembers = format(membersRaw.filter(m=>m.status==="connected"));
-        memberRequests = format(membersRaw.filter(m=>m.status!=="connected"));
-
-        const membersDb = membersRaw.filter(m=>m.status==="connected");
-
-        const officesFlat:string[] = [];
-
-        members = membersDb
-          .map(m=>{
-            const profile = profileMap[String(m.user_id)];
-            if (!profile) return null;
-
-            const offices = officesMap[Number(profile.id)] ?? [];
-
-            offices.forEach(o=>officesFlat.push(o));
-
-            return offices.map(o=>({
-              "Profile pic": profile["Profile pic"],
-              Office: o
-            }));
-          })
-          .flat()
-          .filter(Boolean);
-
-        // SPECIALTIES DETECTION
-        const detected:string[] = [];
-
-        for (const name in SPECIALIZATIONS){
-          const roles = SPECIALIZATIONS[name];
-          if (roles.every(r=>officesFlat.includes(r))){
-            detected.push(name);
-          }
-        }
-
-        await supabase
-          .from("Community specialties")
-          .delete()
-          .eq("community_id", communityId);
-
-        if (detected.length){
-          await supabase.from("Community specialties").insert(
-            detected.map(s=>({
-              community_id: communityId,
-              "Professional specialty": s
-            }))
-          );
-        }
-
-        specialtiesList = detected;
-
-        // TRAININGS
-        const today = new Date().toISOString().split("T")[0];
-
-        trainings = (
-          await Promise.all(
-            membersDb.map(async (m:any)=>{
-              const profile = profileMap[String(m.user_id)];
-              if (!profile) return null;
-
-              const { data: educationsRaw } = await supabase
-                .from("Education")
-                .select('University, "Graduation year"')
-                .eq("User profile_id", profile.id);
-
-              const valid =
-                educationsRaw?.filter(ed=>ed["Graduation year"] > today) ?? [];
-
-              if (!valid.length) return null;
-
-              return valid.map(ed=>({
-                "Profile pic": profile["Profile pic"],
-                "First name": profile["First name"],
-                University: ed.University,
-                "Graduation year": ed["Graduation year"]
-              }));
-            })
-          )
-        )
-          .flat()
-          .filter(Boolean);
-      }
+      const profileMap:any = {};
+      memberProfiles?.forEach(p=>{
+        profileMap[String(p.user_id)] = p;
+      });
 
       // =========================
-      // REVIEWS + REPLIES (COMPLETO)
+      // REVIEWS
       // =========================
       const { data: allReviews } = await supabase
         .from("community_reviews")
         .select("*")
         .eq("community_id", communityId);
 
-      const companyIdsReviews = Array.from(
-        new Set(
-          (allReviews ?? [])
-            .map((r:any)=>Number(r.company_id))
-            .filter(Boolean)
-        )
-      );
-
-      const userIdsReviews = Array.from(
-        new Set(
-          (allReviews ?? [])
-            .map((r:any)=>r.author_user_id)
-            .filter(Boolean)
-        )
-      );
+      const companyIdsReviews = [...new Set((allReviews ?? []).map((r:any)=>Number(r.company_id)).filter(Boolean))];
 
       const { data: companiesReviews } = await supabaseC
         .from("companies")
@@ -393,19 +277,10 @@ export default function ACommunityDashboard() {
         companyMap[Number(c.id)] = c;
       });
 
-      const { data: profilesReviews } = await supabase
-        .from("User profile")
-        .select('user_id, "Profile pic", "First name"')
-        .in("user_id", userIdsReviews);
-
-      const profileMapReviews:any = {};
-      profilesReviews?.forEach(p=>{
-        profileMapReviews[String(p.user_id)] = p;
-      });
-
+      // 🔥 ENRICH FINAL CORRETO
       const enrich = (r:any)=>{
         const company = companyMap[Number(r.company_id)];
-        const profile = profileMapReviews[String(r.author_user_id)] || null;
+        const profile = memberProfiles?.find(p=>Number(p.id) === Number(r.member_id));
 
         return {
           ...r,
@@ -433,20 +308,12 @@ export default function ACommunityDashboard() {
         .filter((r:any)=>r.author_type?.startsWith("community") && !r.company_id)
         .map(enrich);
 
-      // =========================
-      // FINAL DATA
-      // =========================
       const finalData = {
         ...community,
         community_name: communityName,
         "Profile pic": myProfile?.["Profile pic"] ?? null,
         connected_companies: connectedCompanies,
         company_requests: companyRequests,
-        connected_members: connectedMembers,
-        member_requests: memberRequests,
-        members,
-        trainings,
-        specialties: specialtiesList,
         community_reviews,
         community_membersreviews,
         community_replies,

@@ -356,11 +356,13 @@ export default function ACommunityDashboard() {
         )
       );
 
-      const userIdsReviews = Array.from(
-        new Set(
-          (allReviews ?? []).map((r:any)=>r.author_user_id)
-        )
-      );
+const userIdsReviews = Array.from(
+  new Set(
+    (allReviews ?? [])
+      .filter(r => r.author_user_id)
+      .map((r:any)=>r.author_user_id)
+  )
+);
 
       const { data: companiesReviews } = await supabaseC
         .from("companies")
@@ -382,18 +384,23 @@ export default function ACommunityDashboard() {
         profileMapReviews[String(p.user_id)] = p;
       });
 
-      const enrich = (r:any)=>{
-        const company = companyMap[Number(r.company_id)];
-        const profile = profileMapReviews[String(r.author_user_id)];
-        return {
-          ...r,
-          "Company Logo": company?.["Company Logo"] ?? null,
-          "Company name": company?.["Company name"] ?? null,
-          community_name: communityName,
-          "Profile pic": profile?.["Profile pic"] ?? null,
-          "First name": profile?.["First name"] ?? null
-        };
-      };
+const enrich = (r:any)=>{
+
+  const company = companyMap[Number(r.company_id)];
+  const profile =
+    r.author_user_id
+      ? profileMapReviews[String(r.author_user_id)]
+      : null;
+
+  return {
+    ...r,
+    "Company Logo": company?.["Company Logo"] ?? null,
+    "Company name": company?.["Company name"] ?? null,
+    community_name: communityName,
+    "Profile pic": profile?.["Profile pic"] ?? null,
+    "First name": profile?.["First name"] ?? null
+  };
+};
 
       const community_reviews = (allReviews ?? [])
         .filter((r:any)=>r.author_type === "company")

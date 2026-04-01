@@ -213,7 +213,9 @@ export default function ACommunityDashboard() {
 
       if (connections?.length){
 
-        const companyIds = [...new Set(connections.map((c:any)=>Number(c.company_id)))];
+ const companyIds = Array.from(
+  new Set(connections.map((c:any)=>Number(c.company_id)))
+);
 
         const { data: companies } = await supabaseC
           .from("companies")

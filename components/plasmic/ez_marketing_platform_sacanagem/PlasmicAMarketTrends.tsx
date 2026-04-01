@@ -1473,6 +1473,7 @@ function PlasmicAMarketTrends__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.a,
+                        projectcss.a__5uU4L,
                         sty.link__bLBq3
                       )}
                       component={Link}
@@ -1543,6 +1544,7 @@ function PlasmicAMarketTrends__RenderFunc(props: {
                         className={classNames(
                           projectcss.all,
                           projectcss.a,
+                          projectcss.a__5uU4L,
                           projectcss.__wab_text,
                           sty.link__q6Jsx
                         )}
@@ -1557,6 +1559,7 @@ function PlasmicAMarketTrends__RenderFunc(props: {
                         className={classNames(
                           projectcss.all,
                           projectcss.a,
+                          projectcss.a__5uU4L,
                           projectcss.__wab_text,
                           sty.link__cwAq9
                         )}
@@ -1571,6 +1574,7 @@ function PlasmicAMarketTrends__RenderFunc(props: {
                         className={classNames(
                           projectcss.all,
                           projectcss.a,
+                          projectcss.a__5uU4L,
                           projectcss.__wab_text,
                           sty.link__enlNb
                         )}
@@ -1585,6 +1589,7 @@ function PlasmicAMarketTrends__RenderFunc(props: {
                         className={classNames(
                           projectcss.all,
                           projectcss.a,
+                          projectcss.a__5uU4L,
                           projectcss.__wab_text,
                           sty.link__rvr64
                         )}

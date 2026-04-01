@@ -312,6 +312,7 @@ function PlasmicLANewPassword__RenderFunc(props: {
                     className={classNames(
                       projectcss.all,
                       projectcss.h6,
+                      projectcss.h6__5uU4L,
                       projectcss.__wab_text,
                       sty.h6
                     )}

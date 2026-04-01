@@ -797,6 +797,7 @@ function PlasmicUAnalysisAtCompanyLocation__RenderFunc(props: {
                         className={classNames(
                           projectcss.all,
                           projectcss.h3,
+                          projectcss.h3__5uU4L,
                           projectcss.__wab_text,
                           sty.h3__lS9Rj
                         )}
@@ -849,6 +850,7 @@ function PlasmicUAnalysisAtCompanyLocation__RenderFunc(props: {
                   className={classNames(
                     projectcss.all,
                     projectcss.h3,
+                    projectcss.h3__5uU4L,
                     projectcss.__wab_text,
                     sty.h3__tOYal
                   )}

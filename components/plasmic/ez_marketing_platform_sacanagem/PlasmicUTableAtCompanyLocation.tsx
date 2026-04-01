@@ -734,6 +734,7 @@ function PlasmicUTableAtCompanyLocation__RenderFunc(props: {
                               className={classNames(
                                 projectcss.all,
                                 projectcss.h3,
+                                projectcss.h3__5uU4L,
                                 projectcss.__wab_text,
                                 sty.h3__iuydh
                               )}
@@ -1080,6 +1081,7 @@ function PlasmicUTableAtCompanyLocation__RenderFunc(props: {
                               className={classNames(
                                 projectcss.all,
                                 projectcss.h3,
+                                projectcss.h3__5uU4L,
                                 projectcss.__wab_text,
                                 sty.h3__udK18
                               )}
@@ -1188,6 +1190,7 @@ function PlasmicUTableAtCompanyLocation__RenderFunc(props: {
                         className={classNames(
                           projectcss.all,
                           projectcss.h3,
+                          projectcss.h3__5uU4L,
                           projectcss.__wab_text,
                           sty.h3__mF64F
                         )}
@@ -1243,6 +1246,7 @@ function PlasmicUTableAtCompanyLocation__RenderFunc(props: {
                   className={classNames(
                     projectcss.all,
                     projectcss.h3,
+                    projectcss.h3__5uU4L,
                     projectcss.__wab_text,
                     sty.h3__nBYd
                   )}
@@ -1375,6 +1379,7 @@ function PlasmicUTableAtCompanyLocation__RenderFunc(props: {
                         className={classNames(
                           projectcss.all,
                           projectcss.h3,
+                          projectcss.h3__5uU4L,
                           projectcss.__wab_text,
                           sty.h3__x9VH
                         )}
@@ -1792,6 +1797,7 @@ function PlasmicUTableAtCompanyLocation__RenderFunc(props: {
                   className={classNames(
                     projectcss.all,
                     projectcss.h3,
+                    projectcss.h3__5uU4L,
                     projectcss.__wab_text,
                     sty.h3__eka3Y
                   )}

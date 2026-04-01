@@ -220,6 +220,7 @@ function PlasmicUTableAtCustomerLocationConfirmService__RenderFunc(props: {
             className={classNames(
               projectcss.all,
               projectcss.h3,
+              projectcss.h3__5uU4L,
               projectcss.__wab_text,
               sty.h3__afNnr
             )}
@@ -230,6 +231,7 @@ function PlasmicUTableAtCustomerLocationConfirmService__RenderFunc(props: {
             className={classNames(
               projectcss.all,
               projectcss.h3,
+              projectcss.h3__5uU4L,
               projectcss.__wab_text,
               sty.h3__q0Ol
             )}
@@ -240,6 +242,7 @@ function PlasmicUTableAtCustomerLocationConfirmService__RenderFunc(props: {
             className={classNames(
               projectcss.all,
               projectcss.h3,
+              projectcss.h3__5uU4L,
               projectcss.__wab_text,
               sty.h3__hms5I
             )}
@@ -250,6 +253,7 @@ function PlasmicUTableAtCustomerLocationConfirmService__RenderFunc(props: {
             className={classNames(
               projectcss.all,
               projectcss.h3,
+              projectcss.h3__5uU4L,
               projectcss.__wab_text,
               sty.h3__mvaXi
             )}
@@ -260,6 +264,7 @@ function PlasmicUTableAtCustomerLocationConfirmService__RenderFunc(props: {
             className={classNames(
               projectcss.all,
               projectcss.h3,
+              projectcss.h3__5uU4L,
               projectcss.__wab_text,
               sty.h3__rywdz
             )}
@@ -270,6 +275,7 @@ function PlasmicUTableAtCustomerLocationConfirmService__RenderFunc(props: {
             className={classNames(
               projectcss.all,
               projectcss.h3,
+              projectcss.h3__5uU4L,
               projectcss.__wab_text,
               sty.h3__pkj9V
             )}
@@ -408,6 +414,7 @@ function PlasmicUTableAtCustomerLocationConfirmService__RenderFunc(props: {
                   className={classNames(
                     projectcss.all,
                     projectcss.a,
+                    projectcss.a__5uU4L,
                     projectcss.__wab_text,
                     sty.link
                   )}

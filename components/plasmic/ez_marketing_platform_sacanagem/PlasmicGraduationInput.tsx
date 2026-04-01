@@ -335,21 +335,31 @@ function PlasmicGraduationInput__RenderFunc(props: {
         aria-label={args["aria-label"]}
         aria-labelledby={args["aria-labelledby"]}
         autoFocus={args.autoFocus}
-        className={classNames(projectcss.all, projectcss.input, sty.input, {
-          [sty.input___focusVisibleWithin]: triggers.focusVisibleWithin_root,
-          [sty.inputcolor_dark]: hasVariant($state, "color", "dark"),
-          [sty.inputisDisabled]: hasVariant($state, "isDisabled", "isDisabled"),
-          [sty.inputshowEndIcon]: hasVariant(
-            $state,
-            "showEndIcon",
-            "showEndIcon"
-          ),
-          [sty.inputshowStartIcon]: hasVariant(
-            $state,
-            "showStartIcon",
-            "showStartIcon"
-          )
-        })}
+        className={classNames(
+          projectcss.all,
+          projectcss.input,
+          projectcss.input__5uU4L,
+          sty.input,
+          {
+            [sty.input___focusVisibleWithin]: triggers.focusVisibleWithin_root,
+            [sty.inputcolor_dark]: hasVariant($state, "color", "dark"),
+            [sty.inputisDisabled]: hasVariant(
+              $state,
+              "isDisabled",
+              "isDisabled"
+            ),
+            [sty.inputshowEndIcon]: hasVariant(
+              $state,
+              "showEndIcon",
+              "showEndIcon"
+            ),
+            [sty.inputshowStartIcon]: hasVariant(
+              $state,
+              "showStartIcon",
+              "showStartIcon"
+            )
+          }
+        )}
         disabled={
           hasVariant($state, "isDisabled", "isDisabled") ? true : undefined
         }

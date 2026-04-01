@@ -337,6 +337,7 @@ function PlasmicURatingCompany__RenderFunc(props: {
             className={classNames(
               projectcss.all,
               projectcss.h3,
+              projectcss.h3__5uU4L,
               projectcss.__wab_text,
               sty.h3__xhvsc
             )}
@@ -817,6 +818,7 @@ function PlasmicURatingCompany__RenderFunc(props: {
                   className={classNames(
                     projectcss.all,
                     projectcss.h3,
+                    projectcss.h3__5uU4L,
                     projectcss.__wab_text,
                     sty.h3__hWd6
                   )}
@@ -1048,6 +1050,7 @@ function PlasmicURatingCompany__RenderFunc(props: {
                   className={classNames(
                     projectcss.all,
                     projectcss.a,
+                    projectcss.a__5uU4L,
                     projectcss.__wab_text,
                     sty.link
                   )}

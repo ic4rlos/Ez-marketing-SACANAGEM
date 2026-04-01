@@ -354,6 +354,7 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                     className={classNames(
                       projectcss.all,
                       projectcss.a,
+                      projectcss.a__5uU4L,
                       sty.link___5QrLc
                     )}
                     component={Link}
@@ -399,6 +400,7 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.a,
+                        projectcss.a__5uU4L,
                         projectcss.__wab_text,
                         sty.link__kFmdh
                       )}
@@ -413,6 +415,7 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.a,
+                        projectcss.a__5uU4L,
                         projectcss.__wab_text,
                         sty.link__vXqh
                       )}
@@ -427,6 +430,7 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.a,
+                        projectcss.a__5uU4L,
                         projectcss.__wab_text,
                         sty.link__miXby
                       )}
@@ -440,6 +444,7 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.a,
+                        projectcss.a__5uU4L,
                         projectcss.__wab_text,
                         sty.link__foMjE
                       )}
@@ -1113,6 +1118,7 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.h3,
+                        projectcss.h3__5uU4L,
                         projectcss.__wab_text,
                         sty.h3
                       )}
@@ -1338,6 +1344,7 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                 className={classNames(
                   projectcss.all,
                   projectcss.a,
+                  projectcss.a__5uU4L,
                   projectcss.__wab_text,
                   sty.linkedIn2
                 )}
@@ -1361,6 +1368,7 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                 className={classNames(
                   projectcss.all,
                   projectcss.a,
+                  projectcss.a__5uU4L,
                   projectcss.__wab_text,
                   sty.instagram2
                 )}
@@ -1396,6 +1404,7 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                 className={classNames(
                   projectcss.all,
                   projectcss.a,
+                  projectcss.a__5uU4L,
                   projectcss.__wab_text,
                   sty.x2
                 )}
@@ -1431,6 +1440,7 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                 className={classNames(
                   projectcss.all,
                   projectcss.a,
+                  projectcss.a__5uU4L,
                   projectcss.__wab_text,
                   sty.website2
                 )}
@@ -1789,6 +1799,7 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                     className={classNames(
                       projectcss.all,
                       projectcss.a,
+                      projectcss.a__5uU4L,
                       projectcss.__wab_text,
                       sty.communityName
                     )}
@@ -1813,6 +1824,7 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                     className={classNames(
                       projectcss.all,
                       projectcss.a,
+                      projectcss.a__5uU4L,
                       projectcss.__wab_text,
                       sty.companyName2
                     )}
@@ -1944,6 +1956,7 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                     className={classNames(
                       projectcss.all,
                       projectcss.a,
+                      projectcss.a__5uU4L,
                       projectcss.__wab_text,
                       sty.companyName3
                     )}
@@ -1969,6 +1982,7 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                     className={classNames(
                       projectcss.all,
                       projectcss.a,
+                      projectcss.a__5uU4L,
                       projectcss.__wab_text,
                       sty.communityName2
                     )}

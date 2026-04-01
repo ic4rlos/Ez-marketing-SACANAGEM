@@ -330,6 +330,7 @@ function PlasmicSelect__RenderFunc(props: {
           className={classNames(
             projectcss.all,
             projectcss.button,
+            projectcss.button__5uU4L,
             sty.trigger,
             {
               [sty.trigger___focusVisibleWithin]:

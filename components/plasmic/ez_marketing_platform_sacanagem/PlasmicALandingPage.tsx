@@ -331,6 +331,7 @@ function PlasmicALandingPage__RenderFunc(props: {
                   className={classNames(
                     projectcss.all,
                     projectcss.h1,
+                    projectcss.h1__5uU4L,
                     projectcss.__wab_text,
                     sty.h1__cmWgU
                   )}
@@ -444,6 +445,7 @@ function PlasmicALandingPage__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.h3,
+                        projectcss.h3__5uU4L,
                         projectcss.__wab_text,
                         sty.h3__qjjPt
                       )}
@@ -467,6 +469,7 @@ function PlasmicALandingPage__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.h3,
+                        projectcss.h3__5uU4L,
                         projectcss.__wab_text,
                         sty.h3__csjIh
                       )}
@@ -494,6 +497,7 @@ function PlasmicALandingPage__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.h3,
+                        projectcss.h3__5uU4L,
                         projectcss.__wab_text,
                         sty.h3___63V8
                       )}
@@ -614,6 +618,7 @@ function PlasmicALandingPage__RenderFunc(props: {
                   className={classNames(
                     projectcss.all,
                     projectcss.h2,
+                    projectcss.h2__5uU4L,
                     projectcss.__wab_text,
                     sty.h2__czJ7R
                   )}
@@ -637,7 +642,9 @@ function PlasmicALandingPage__RenderFunc(props: {
                         {"EZ Marketing allows agencies to "}
                       </React.Fragment>
                       <span
-                        className={"plasmic_default__all plasmic_default__span"}
+                        className={
+                          "plasmic_default__all plasmic_default__span plasmic_default__span__5uU4L"
+                        }
                         style={{ fontWeight: 700 }}
                       >
                         {
@@ -691,7 +698,7 @@ function PlasmicALandingPage__RenderFunc(props: {
                       <React.Fragment>
                         <span
                           className={
-                            "plasmic_default__all plasmic_default__span"
+                            "plasmic_default__all plasmic_default__span plasmic_default__span__5uU4L"
                           }
                           style={{ fontWeight: 700 }}
                         >
@@ -700,7 +707,7 @@ function PlasmicALandingPage__RenderFunc(props: {
                         <React.Fragment> </React.Fragment>
                         <span
                           className={
-                            "plasmic_default__all plasmic_default__span"
+                            "plasmic_default__all plasmic_default__span plasmic_default__span__5uU4L"
                           }
                           style={{ fontWeight: 400 }}
                         >
@@ -751,7 +758,7 @@ function PlasmicALandingPage__RenderFunc(props: {
                       <React.Fragment>
                         <span
                           className={
-                            "plasmic_default__all plasmic_default__span"
+                            "plasmic_default__all plasmic_default__span plasmic_default__span__5uU4L"
                           }
                           style={{ fontWeight: 700 }}
                         >
@@ -760,7 +767,7 @@ function PlasmicALandingPage__RenderFunc(props: {
                         <React.Fragment> </React.Fragment>
                         <span
                           className={
-                            "plasmic_default__all plasmic_default__span"
+                            "plasmic_default__all plasmic_default__span plasmic_default__span__5uU4L"
                           }
                           style={{ fontWeight: 400 }}
                         >
@@ -811,7 +818,7 @@ function PlasmicALandingPage__RenderFunc(props: {
                       <React.Fragment>
                         <span
                           className={
-                            "plasmic_default__all plasmic_default__span"
+                            "plasmic_default__all plasmic_default__span plasmic_default__span__5uU4L"
                           }
                           style={{ fontWeight: 700 }}
                         >
@@ -820,7 +827,7 @@ function PlasmicALandingPage__RenderFunc(props: {
                         <React.Fragment> </React.Fragment>
                         <span
                           className={
-                            "plasmic_default__all plasmic_default__span"
+                            "plasmic_default__all plasmic_default__span plasmic_default__span__5uU4L"
                           }
                           style={{ fontWeight: 400 }}
                         >
@@ -869,7 +876,7 @@ function PlasmicALandingPage__RenderFunc(props: {
                       <React.Fragment>
                         <span
                           className={
-                            "plasmic_default__all plasmic_default__span"
+                            "plasmic_default__all plasmic_default__span plasmic_default__span__5uU4L"
                           }
                           style={{ fontWeight: 700 }}
                         >
@@ -878,7 +885,7 @@ function PlasmicALandingPage__RenderFunc(props: {
                         <React.Fragment> </React.Fragment>
                         <span
                           className={
-                            "plasmic_default__all plasmic_default__span"
+                            "plasmic_default__all plasmic_default__span plasmic_default__span__5uU4L"
                           }
                           style={{ fontWeight: 400 }}
                         >
@@ -932,7 +939,7 @@ function PlasmicALandingPage__RenderFunc(props: {
                       <React.Fragment>
                         <span
                           className={
-                            "plasmic_default__all plasmic_default__span"
+                            "plasmic_default__all plasmic_default__span plasmic_default__span__5uU4L"
                           }
                           style={{ fontWeight: 700 }}
                         >
@@ -941,7 +948,7 @@ function PlasmicALandingPage__RenderFunc(props: {
                         <React.Fragment> </React.Fragment>
                         <span
                           className={
-                            "plasmic_default__all plasmic_default__span"
+                            "plasmic_default__all plasmic_default__span plasmic_default__span__5uU4L"
                           }
                           style={{ fontWeight: 400 }}
                         >
@@ -992,7 +999,7 @@ function PlasmicALandingPage__RenderFunc(props: {
                       <React.Fragment>
                         <span
                           className={
-                            "plasmic_default__all plasmic_default__span"
+                            "plasmic_default__all plasmic_default__span plasmic_default__span__5uU4L"
                           }
                           style={{ fontWeight: 700 }}
                         >
@@ -1001,7 +1008,7 @@ function PlasmicALandingPage__RenderFunc(props: {
                         <React.Fragment> </React.Fragment>
                         <span
                           className={
-                            "plasmic_default__all plasmic_default__span"
+                            "plasmic_default__all plasmic_default__span plasmic_default__span__5uU4L"
                           }
                           style={{ fontWeight: 400 }}
                         >
@@ -1087,6 +1094,7 @@ function PlasmicALandingPage__RenderFunc(props: {
                 className={classNames(
                   projectcss.all,
                   projectcss.h2,
+                  projectcss.h2__5uU4L,
                   projectcss.__wab_text,
                   sty.h2__cpoYt
                 )}
@@ -1133,6 +1141,7 @@ function PlasmicALandingPage__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.h5,
+                        projectcss.h5__5uU4L,
                         projectcss.__wab_text,
                         sty.h5__bEjgX
                       )}
@@ -1165,6 +1174,7 @@ function PlasmicALandingPage__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.h5,
+                        projectcss.h5__5uU4L,
                         projectcss.__wab_text,
                         sty.h5__lxQkD
                       )}
@@ -1197,6 +1207,7 @@ function PlasmicALandingPage__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.h5,
+                        projectcss.h5__5uU4L,
                         projectcss.__wab_text,
                         sty.h5___24FaZ
                       )}
@@ -1229,6 +1240,7 @@ function PlasmicALandingPage__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.h5,
+                        projectcss.h5__5uU4L,
                         projectcss.__wab_text,
                         sty.h5__ne5Ld
                       )}
@@ -1263,6 +1275,7 @@ function PlasmicALandingPage__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.h5,
+                        projectcss.h5__5uU4L,
                         projectcss.__wab_text,
                         sty.h5__fwYkk
                       )}
@@ -1295,6 +1308,7 @@ function PlasmicALandingPage__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.h5,
+                        projectcss.h5__5uU4L,
                         projectcss.__wab_text,
                         sty.h5__nz3RW
                       )}
@@ -1327,6 +1341,7 @@ function PlasmicALandingPage__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.h5,
+                        projectcss.h5__5uU4L,
                         projectcss.__wab_text,
                         sty.h5__brXnl
                       )}
@@ -1361,6 +1376,7 @@ function PlasmicALandingPage__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.h5,
+                        projectcss.h5__5uU4L,
                         projectcss.__wab_text,
                         sty.h5__kxope
                       )}
@@ -1393,6 +1409,7 @@ function PlasmicALandingPage__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.h5,
+                        projectcss.h5__5uU4L,
                         projectcss.__wab_text,
                         sty.h5___2EEhm
                       )}
@@ -1425,6 +1442,7 @@ function PlasmicALandingPage__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.h5,
+                        projectcss.h5__5uU4L,
                         projectcss.__wab_text,
                         sty.h5__iGOrE
                       )}
@@ -1457,6 +1475,7 @@ function PlasmicALandingPage__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.h5,
+                        projectcss.h5__5uU4L,
                         projectcss.__wab_text,
                         sty.h5__xE8VY
                       )}
@@ -1578,6 +1597,7 @@ function PlasmicALandingPage__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.h3,
+                        projectcss.h3__5uU4L,
                         projectcss.__wab_text,
                         sty.h3__fNyq0
                       )}
@@ -1640,6 +1660,7 @@ function PlasmicALandingPage__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.h3,
+                        projectcss.h3__5uU4L,
                         projectcss.__wab_text,
                         sty.h3__xAid
                       )}
@@ -1824,6 +1845,7 @@ function PlasmicALandingPage__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.h3,
+                        projectcss.h3__5uU4L,
                         projectcss.__wab_text,
                         sty.h3__hxFl1
                       )}
@@ -1862,6 +1884,7 @@ function PlasmicALandingPage__RenderFunc(props: {
                 className={classNames(
                   projectcss.all,
                   projectcss.h1,
+                  projectcss.h1__5uU4L,
                   projectcss.__wab_text,
                   sty.h1__joFga
                 )}

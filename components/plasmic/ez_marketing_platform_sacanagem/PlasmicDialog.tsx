@@ -259,7 +259,12 @@ function PlasmicDialog__RenderFunc(props: {
             <h5
               data-plasmic-name={"h5"}
               data-plasmic-override={overrides.h5}
-              className={classNames(projectcss.all, projectcss.h5, sty.h5)}
+              className={classNames(
+                projectcss.all,
+                projectcss.h5,
+                projectcss.h5__5uU4L,
+                sty.h5
+              )}
             >
               {renderPlasmicSlot({
                 defaultContents: "Dialog title",

@@ -318,6 +318,7 @@ function PlasmicARatingMembers__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.a,
+                        projectcss.a__5uU4L,
                         sty.link__dWq6J
                       )}
                       component={Link}
@@ -363,6 +364,7 @@ function PlasmicARatingMembers__RenderFunc(props: {
                         className={classNames(
                           projectcss.all,
                           projectcss.a,
+                          projectcss.a__5uU4L,
                           projectcss.__wab_text,
                           sty.link__lCy56
                         )}
@@ -377,6 +379,7 @@ function PlasmicARatingMembers__RenderFunc(props: {
                         className={classNames(
                           projectcss.all,
                           projectcss.a,
+                          projectcss.a__5uU4L,
                           projectcss.__wab_text,
                           sty.link__npsrp
                         )}
@@ -391,6 +394,7 @@ function PlasmicARatingMembers__RenderFunc(props: {
                         className={classNames(
                           projectcss.all,
                           projectcss.a,
+                          projectcss.a__5uU4L,
                           projectcss.__wab_text,
                           sty.link__kVooB
                         )}
@@ -404,6 +408,7 @@ function PlasmicARatingMembers__RenderFunc(props: {
                         className={classNames(
                           projectcss.all,
                           projectcss.a,
+                          projectcss.a__5uU4L,
                           projectcss.__wab_text,
                           sty.link__ztJCd
                         )}
@@ -918,6 +923,7 @@ function PlasmicARatingMembers__RenderFunc(props: {
                   className={classNames(
                     projectcss.all,
                     projectcss.a,
+                    projectcss.a__5uU4L,
                     projectcss.__wab_text,
                     sty.linkedIn
                   )}
@@ -941,6 +947,7 @@ function PlasmicARatingMembers__RenderFunc(props: {
                   className={classNames(
                     projectcss.all,
                     projectcss.a,
+                    projectcss.a__5uU4L,
                     projectcss.__wab_text,
                     sty.instagram
                   )}
@@ -964,6 +971,7 @@ function PlasmicARatingMembers__RenderFunc(props: {
                   className={classNames(
                     projectcss.all,
                     projectcss.a,
+                    projectcss.a__5uU4L,
                     projectcss.__wab_text,
                     sty.x
                   )}
@@ -1298,6 +1306,7 @@ function PlasmicARatingMembers__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.h3,
+                        projectcss.h3__5uU4L,
                         projectcss.__wab_text,
                         sty.h3
                       )}

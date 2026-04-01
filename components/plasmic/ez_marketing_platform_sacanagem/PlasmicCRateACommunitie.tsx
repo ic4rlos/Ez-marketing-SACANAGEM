@@ -334,6 +334,7 @@ function PlasmicCRateACommunitie__RenderFunc(props: {
                     className={classNames(
                       projectcss.all,
                       projectcss.a,
+                      projectcss.a__5uU4L,
                       sty.link___5D8Or
                     )}
                     component={Link}
@@ -379,6 +380,7 @@ function PlasmicCRateACommunitie__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.a,
+                        projectcss.a__5uU4L,
                         projectcss.__wab_text,
                         sty.link__kNpqn
                       )}
@@ -393,6 +395,7 @@ function PlasmicCRateACommunitie__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.a,
+                        projectcss.a__5uU4L,
                         projectcss.__wab_text,
                         sty.link__aj40X
                       )}
@@ -407,6 +410,7 @@ function PlasmicCRateACommunitie__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.a,
+                        projectcss.a__5uU4L,
                         projectcss.__wab_text,
                         sty.link__m1UYf
                       )}
@@ -420,6 +424,7 @@ function PlasmicCRateACommunitie__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.a,
+                        projectcss.a__5uU4L,
                         projectcss.__wab_text,
                         sty.link__rAhia
                       )}
@@ -1160,6 +1165,7 @@ function PlasmicCRateACommunitie__RenderFunc(props: {
                     className={classNames(
                       projectcss.all,
                       projectcss.h3,
+                      projectcss.h3__5uU4L,
                       projectcss.__wab_text,
                       sty.h3
                     )}

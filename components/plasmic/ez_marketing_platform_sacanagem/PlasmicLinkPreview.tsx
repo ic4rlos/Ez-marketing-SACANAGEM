@@ -206,6 +206,7 @@ function PlasmicLinkPreview__RenderFunc(props: {
                   className={classNames(
                     projectcss.all,
                     projectcss.h5,
+                    projectcss.h5__5uU4L,
                     projectcss.__wab_text,
                     sty.h5
                   )}
@@ -256,6 +257,7 @@ function PlasmicLinkPreview__RenderFunc(props: {
                 className={classNames(
                   projectcss.all,
                   projectcss.p,
+                  projectcss.p__5uU4L,
                   projectcss.__wab_text,
                   sty.p
                 )}

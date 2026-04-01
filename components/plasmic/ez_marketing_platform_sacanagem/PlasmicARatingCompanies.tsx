@@ -346,6 +346,7 @@ function PlasmicARatingCompanies__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.a,
+                        projectcss.a__5uU4L,
                         sty.link___560J1
                       )}
                       component={Link}
@@ -391,6 +392,7 @@ function PlasmicARatingCompanies__RenderFunc(props: {
                         className={classNames(
                           projectcss.all,
                           projectcss.a,
+                          projectcss.a__5uU4L,
                           projectcss.__wab_text,
                           sty.link__ie6Hq
                         )}
@@ -405,6 +407,7 @@ function PlasmicARatingCompanies__RenderFunc(props: {
                         className={classNames(
                           projectcss.all,
                           projectcss.a,
+                          projectcss.a__5uU4L,
                           projectcss.__wab_text,
                           sty.link__kjFh9
                         )}
@@ -419,6 +422,7 @@ function PlasmicARatingCompanies__RenderFunc(props: {
                         className={classNames(
                           projectcss.all,
                           projectcss.a,
+                          projectcss.a__5uU4L,
                           projectcss.__wab_text,
                           sty.link__ggprR
                         )}
@@ -432,6 +436,7 @@ function PlasmicARatingCompanies__RenderFunc(props: {
                         className={classNames(
                           projectcss.all,
                           projectcss.a,
+                          projectcss.a__5uU4L,
                           projectcss.__wab_text,
                           sty.link__th92W
                         )}
@@ -718,6 +723,7 @@ function PlasmicARatingCompanies__RenderFunc(props: {
                     className={classNames(
                       projectcss.all,
                       projectcss.a,
+                      projectcss.a__5uU4L,
                       projectcss.__wab_text,
                       sty.companyName9
                     )}
@@ -1079,6 +1085,7 @@ function PlasmicARatingCompanies__RenderFunc(props: {
                   className={classNames(
                     projectcss.all,
                     projectcss.a,
+                    projectcss.a__5uU4L,
                     projectcss.__wab_text,
                     sty.linkedIn
                   )}
@@ -1102,6 +1109,7 @@ function PlasmicARatingCompanies__RenderFunc(props: {
                   className={classNames(
                     projectcss.all,
                     projectcss.a,
+                    projectcss.a__5uU4L,
                     projectcss.__wab_text,
                     sty.instagram
                   )}
@@ -1125,6 +1133,7 @@ function PlasmicARatingCompanies__RenderFunc(props: {
                   className={classNames(
                     projectcss.all,
                     projectcss.a,
+                    projectcss.a__5uU4L,
                     projectcss.__wab_text,
                     sty.x
                   )}
@@ -1148,6 +1157,7 @@ function PlasmicARatingCompanies__RenderFunc(props: {
                   className={classNames(
                     projectcss.all,
                     projectcss.a,
+                    projectcss.a__5uU4L,
                     projectcss.__wab_text,
                     sty.website
                   )}
@@ -1459,6 +1469,7 @@ function PlasmicARatingCompanies__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.h3,
+                        projectcss.h3__5uU4L,
                         projectcss.__wab_text,
                         sty.h3
                       )}

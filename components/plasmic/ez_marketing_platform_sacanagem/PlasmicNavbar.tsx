@@ -170,6 +170,7 @@ function PlasmicNavbar__RenderFunc(props: {
             className={classNames(
               projectcss.all,
               projectcss.a,
+              projectcss.a__5uU4L,
               projectcss.__wab_text,
               sty.link__y0KPj
             )}
@@ -184,6 +185,7 @@ function PlasmicNavbar__RenderFunc(props: {
             className={classNames(
               projectcss.all,
               projectcss.a,
+              projectcss.a__5uU4L,
               projectcss.__wab_text,
               sty.link__pbNnN
             )}
@@ -198,6 +200,7 @@ function PlasmicNavbar__RenderFunc(props: {
             className={classNames(
               projectcss.all,
               projectcss.a,
+              projectcss.a__5uU4L,
               projectcss.__wab_text,
               sty.link___7VRpH
             )}
@@ -214,6 +217,7 @@ function PlasmicNavbar__RenderFunc(props: {
             className={classNames(
               projectcss.all,
               projectcss.a,
+              projectcss.a__5uU4L,
               projectcss.__wab_text,
               sty.link__wp5T8
             )}

@@ -616,6 +616,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.h6,
+                        projectcss.h6__5uU4L,
                         projectcss.__wab_text,
                         sty.h6__hgeaK
                       )}
@@ -970,6 +971,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.h6,
+                        projectcss.h6__5uU4L,
                         projectcss.__wab_text,
                         sty.h6__mhhqi
                       )}
@@ -1239,6 +1241,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.h6,
+                        projectcss.h6__5uU4L,
                         projectcss.__wab_text,
                         sty.h6__dNfJg
                       )}
@@ -2214,6 +2217,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.h6,
+                        projectcss.h6__5uU4L,
                         projectcss.__wab_text,
                         sty.h6__hadpd
                       )}
@@ -2806,6 +2810,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.h6,
+                        projectcss.h6__5uU4L,
                         projectcss.__wab_text,
                         sty.h6__rlIZe
                       )}

@@ -223,6 +223,7 @@ function PlasmicHomepage2__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.a,
+                        projectcss.a__5uU4L,
                         sty.link__kF2A2
                       )}
                       component={Link}
@@ -293,6 +294,7 @@ function PlasmicHomepage2__RenderFunc(props: {
                         className={classNames(
                           projectcss.all,
                           projectcss.a,
+                          projectcss.a__5uU4L,
                           projectcss.__wab_text,
                           sty.link__ot7Oy
                         )}
@@ -307,6 +309,7 @@ function PlasmicHomepage2__RenderFunc(props: {
                         className={classNames(
                           projectcss.all,
                           projectcss.a,
+                          projectcss.a__5uU4L,
                           projectcss.__wab_text,
                           sty.link___7UxCe
                         )}
@@ -321,6 +324,7 @@ function PlasmicHomepage2__RenderFunc(props: {
                         className={classNames(
                           projectcss.all,
                           projectcss.a,
+                          projectcss.a__5uU4L,
                           projectcss.__wab_text,
                           sty.link___49Cm4
                         )}
@@ -335,6 +339,7 @@ function PlasmicHomepage2__RenderFunc(props: {
                         className={classNames(
                           projectcss.all,
                           projectcss.a,
+                          projectcss.a__5uU4L,
                           projectcss.__wab_text,
                           sty.link__gQakl
                         )}

@@ -259,10 +259,16 @@ function PlasmicAlert__RenderFunc(props: {
           <h6
             data-plasmic-name={"h6"}
             data-plasmic-override={overrides.h6}
-            className={classNames(projectcss.all, projectcss.h6, sty.h6, {
-              [sty.h6noHeader]: hasVariant($state, "noHeader", "noHeader"),
-              [sty.h6noIcon]: hasVariant($state, "noIcon", "noIcon")
-            })}
+            className={classNames(
+              projectcss.all,
+              projectcss.h6,
+              projectcss.h6__5uU4L,
+              sty.h6,
+              {
+                [sty.h6noHeader]: hasVariant($state, "noHeader", "noHeader"),
+                [sty.h6noIcon]: hasVariant($state, "noIcon", "noIcon")
+              }
+            )}
           >
             {renderPlasmicSlot({
               defaultContents: "Heads up!",

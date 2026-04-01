@@ -331,6 +331,7 @@ function PlasmicCAdminCommunitie__RenderFunc(props: {
                     className={classNames(
                       projectcss.all,
                       projectcss.a,
+                      projectcss.a__5uU4L,
                       sty.link__kw7L
                     )}
                     component={Link}
@@ -377,6 +378,7 @@ function PlasmicCAdminCommunitie__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.a,
+                        projectcss.a__5uU4L,
                         projectcss.__wab_text,
                         sty.link__hwiaC
                       )}
@@ -391,6 +393,7 @@ function PlasmicCAdminCommunitie__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.a,
+                        projectcss.a__5uU4L,
                         projectcss.__wab_text,
                         sty.link___9COd
                       )}
@@ -405,6 +408,7 @@ function PlasmicCAdminCommunitie__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.a,
+                        projectcss.a__5uU4L,
                         projectcss.__wab_text,
                         sty.link__dohyn
                       )}
@@ -418,6 +422,7 @@ function PlasmicCAdminCommunitie__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.a,
+                        projectcss.a__5uU4L,
                         projectcss.__wab_text,
                         sty.link__chVZ
                       )}
@@ -880,6 +885,7 @@ function PlasmicCAdminCommunitie__RenderFunc(props: {
             className={classNames(
               projectcss.all,
               projectcss.textarea,
+              projectcss.textarea__5uU4L,
               sty.textarea
             )}
             onChange={async (...eventArgs: any) => {
@@ -2407,6 +2413,7 @@ function PlasmicCAdminCommunitie__RenderFunc(props: {
               className={classNames(
                 projectcss.all,
                 projectcss.a,
+                projectcss.a__5uU4L,
                 projectcss.__wab_text,
                 sty.link__jZ1Vj
               )}

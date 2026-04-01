@@ -275,6 +275,7 @@ function PlasmicHomeNoSubdomain__RenderFunc(props: {
                   className={classNames(
                     projectcss.all,
                     projectcss.h1,
+                    projectcss.h1__5uU4L,
                     projectcss.__wab_text,
                     sty.h1
                   )}

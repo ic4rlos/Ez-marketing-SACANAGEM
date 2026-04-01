@@ -517,6 +517,7 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
                     className={classNames(
                       projectcss.all,
                       projectcss.a,
+                      projectcss.a__5uU4L,
                       sty.link__nwWjS
                     )}
                     component={Link}
@@ -562,6 +563,7 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.a,
+                        projectcss.a__5uU4L,
                         projectcss.__wab_text,
                         sty.link__ne9I8
                       )}
@@ -576,6 +578,7 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.a,
+                        projectcss.a__5uU4L,
                         projectcss.__wab_text,
                         sty.link__aBrzb
                       )}
@@ -590,6 +593,7 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.a,
+                        projectcss.a__5uU4L,
                         projectcss.__wab_text,
                         sty.link__llyFe
                       )}
@@ -603,6 +607,7 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.a,
+                        projectcss.a__5uU4L,
                         projectcss.__wab_text,
                         sty.link__k9Tbq
                       )}
@@ -2629,6 +2634,7 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
                     className={classNames(
                       projectcss.all,
                       projectcss.h3,
+                      projectcss.h3__5uU4L,
                       projectcss.__wab_text,
                       sty.h3__fIaJl
                     )}
@@ -3093,6 +3099,7 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
                     className={classNames(
                       projectcss.all,
                       projectcss.h3,
+                      projectcss.h3__5uU4L,
                       projectcss.__wab_text,
                       sty.h3__mh14R
                     )}

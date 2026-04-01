@@ -553,6 +553,7 @@ function PlasmicUAnalysisAtCustomerLocation__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.h3,
+                        projectcss.h3__5uU4L,
                         projectcss.__wab_text,
                         sty.h3
                       )}

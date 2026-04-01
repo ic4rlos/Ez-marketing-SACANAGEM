@@ -163,7 +163,7 @@ export type PlasmicACommunityDashboard__OverridesType = {
   communityName?: Flex__<"div">;
   communityLocation?: Flex__<"div">;
   modal?: Flex__<typeof Modal>;
-  communityRate2?: Flex__<typeof AntdRate>;
+  communityRate?: Flex__<typeof AntdRate>;
   comment4?: Flex__<typeof AntdTextArea>;
   confirmCommunityRate2?: Flex__<typeof Button2>;
   rateSum?: Flex__<"div">;
@@ -555,7 +555,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
           })()
       },
       {
-        path: "communityRate2.value",
+        path: "communityRate.value",
         type: "private",
         variableType: "number",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) => 4
@@ -664,6 +664,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                     className={classNames(
                       projectcss.all,
                       projectcss.a,
+                      projectcss.a__5uU4L,
                       sty.link__e7HH2
                     )}
                     component={Link}
@@ -709,6 +710,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.a,
+                        projectcss.a__5uU4L,
                         projectcss.__wab_text,
                         sty.link__bVz9K
                       )}
@@ -723,6 +725,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.a,
+                        projectcss.a__5uU4L,
                         projectcss.__wab_text,
                         sty.link__jiQ0
                       )}
@@ -737,6 +740,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.a,
+                        projectcss.a__5uU4L,
                         projectcss.__wab_text,
                         sty.link__kOsCb
                       )}
@@ -750,6 +754,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.a,
+                        projectcss.a__5uU4L,
                         projectcss.__wab_text,
                         sty.link__xtciK
                       )}
@@ -1085,6 +1090,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.a,
+                        projectcss.a__5uU4L,
                         sty.youtubeChannel
                       )}
                       component={Link}
@@ -1116,6 +1122,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.a,
+                        projectcss.a__5uU4L,
                         sty.x
                       )}
                       component={Link}
@@ -1147,6 +1154,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.a,
+                        projectcss.a__5uU4L,
                         sty.tiktok
                       )}
                       component={Link}
@@ -1178,6 +1186,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.a,
+                        projectcss.a__5uU4L,
                         sty.instagram
                       )}
                       component={Link}
@@ -1430,6 +1439,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                         className={classNames(
                           projectcss.all,
                           projectcss.h3,
+                          projectcss.h3__5uU4L,
                           projectcss.__wab_text,
                           sty.h3__gvvsq
                         )}
@@ -1651,8 +1661,8 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                           customFunction: async () => {
                             return $props.onSave({
                               action: "confirm_community_rate",
-                              rating: $state.communityRate2,
-                              comment: $state.comment
+                              rating: $state.communityRate,
+                              comment: $state.comment4
                             });
                           }
                         };
@@ -1769,6 +1779,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
               className={classNames(
                 projectcss.all,
                 projectcss.h3,
+                projectcss.h3__5uU4L,
                 projectcss.__wab_text,
                 sty.h3__sY8UT
               )}
@@ -1793,14 +1804,14 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
           }}
           trigger={
             <AntdRate
-              data-plasmic-name={"communityRate2"}
-              data-plasmic-override={overrides.communityRate2}
+              data-plasmic-name={"communityRate"}
+              data-plasmic-override={overrides.communityRate}
               allowHalf={true}
-              className={classNames("__wab_instance", sty.communityRate2)}
+              className={classNames("__wab_instance", sty.communityRate)}
               defaultValue={4}
               onChange={async (...eventArgs: any) => {
                 generateStateOnChangeProp($state, [
-                  "communityRate2",
+                  "communityRate",
                   "value"
                 ]).apply(null, eventArgs);
               }}
@@ -1853,10 +1864,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                   </div>
                 </React.Fragment>
               }
-              value={generateStateValueProp($state, [
-                "communityRate2",
-                "value"
-              ])}
+              value={generateStateValueProp($state, ["communityRate", "value"])}
             />
           }
         />
@@ -2107,6 +2115,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                             className={classNames(
                               projectcss.all,
                               projectcss.a,
+                              projectcss.a__5uU4L,
                               projectcss.__wab_text,
                               sty.companyName
                             )}
@@ -2505,7 +2514,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                                       <React.Fragment>
                                         <span
                                           className={
-                                            "plasmic_default__all plasmic_default__span"
+                                            "plasmic_default__all plasmic_default__span plasmic_default__span__5uU4L"
                                           }
                                           style={{ color: "#000000" }}
                                         >
@@ -2535,7 +2544,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                                       <React.Fragment>
                                         <span
                                           className={
-                                            "plasmic_default__all plasmic_default__span"
+                                            "plasmic_default__all plasmic_default__span plasmic_default__span__5uU4L"
                                           }
                                           style={{ color: "#000000" }}
                                         >
@@ -2565,7 +2574,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                                       <React.Fragment>
                                         <span
                                           className={
-                                            "plasmic_default__all plasmic_default__span"
+                                            "plasmic_default__all plasmic_default__span plasmic_default__span__5uU4L"
                                           }
                                           style={{ color: "#000000" }}
                                         >
@@ -2595,7 +2604,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                                       <React.Fragment>
                                         <span
                                           className={
-                                            "plasmic_default__all plasmic_default__span"
+                                            "plasmic_default__all plasmic_default__span plasmic_default__span__5uU4L"
                                           }
                                           style={{ color: "#000000" }}
                                         >
@@ -2627,7 +2636,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                                       <React.Fragment>
                                         <span
                                           className={
-                                            "plasmic_default__all plasmic_default__span"
+                                            "plasmic_default__all plasmic_default__span plasmic_default__span__5uU4L"
                                           }
                                           style={{ color: "#000000" }}
                                         >
@@ -2833,6 +2842,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                                   className={classNames(
                                     projectcss.all,
                                     projectcss.h3,
+                                    projectcss.h3__5uU4L,
                                     projectcss.__wab_text,
                                     sty.h3__qtqwj
                                   )}
@@ -2913,6 +2923,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                     className={classNames(
                       projectcss.all,
                       projectcss.h3,
+                      projectcss.h3__5uU4L,
                       projectcss.__wab_text,
                       sty.h3__n0HTy
                     )}
@@ -2985,6 +2996,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                             className={classNames(
                               projectcss.all,
                               projectcss.a,
+                              projectcss.a__5uU4L,
                               projectcss.__wab_text,
                               sty.companyName9
                             )}
@@ -3412,6 +3424,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                                         className={classNames(
                                           projectcss.all,
                                           projectcss.a,
+                                          projectcss.a__5uU4L,
                                           projectcss.__wab_text,
                                           sty.companyName5
                                         )}
@@ -3828,6 +3841,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                                   className={classNames(
                                     projectcss.all,
                                     projectcss.h3,
+                                    projectcss.h3__5uU4L,
                                     projectcss.__wab_text,
                                     sty.h3__bzBoo
                                   )}
@@ -3968,6 +3982,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                   className={classNames(
                     projectcss.all,
                     projectcss.h3,
+                    projectcss.h3__5uU4L,
                     projectcss.__wab_text,
                     sty.h3__hjEwk
                   )}
@@ -4088,6 +4103,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                             className={classNames(
                               projectcss.all,
                               projectcss.a,
+                              projectcss.a__5uU4L,
                               projectcss.__wab_text,
                               sty.firstName
                             )}
@@ -4293,7 +4309,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                                       <React.Fragment>
                                         <span
                                           className={
-                                            "plasmic_default__all plasmic_default__span"
+                                            "plasmic_default__all plasmic_default__span plasmic_default__span__5uU4L"
                                           }
                                           style={{ color: "#000000" }}
                                         >
@@ -4323,7 +4339,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                                       <React.Fragment>
                                         <span
                                           className={
-                                            "plasmic_default__all plasmic_default__span"
+                                            "plasmic_default__all plasmic_default__span plasmic_default__span__5uU4L"
                                           }
                                           style={{ color: "#000000" }}
                                         >
@@ -4353,7 +4369,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                                       <React.Fragment>
                                         <span
                                           className={
-                                            "plasmic_default__all plasmic_default__span"
+                                            "plasmic_default__all plasmic_default__span plasmic_default__span__5uU4L"
                                           }
                                           style={{ color: "#000000" }}
                                         >
@@ -4385,7 +4401,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                                       <React.Fragment>
                                         <span
                                           className={
-                                            "plasmic_default__all plasmic_default__span"
+                                            "plasmic_default__all plasmic_default__span plasmic_default__span__5uU4L"
                                           }
                                           style={{ color: "#000000" }}
                                         >
@@ -4584,6 +4600,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                                 className={classNames(
                                   projectcss.all,
                                   projectcss.h3,
+                                  projectcss.h3__5uU4L,
                                   projectcss.__wab_text,
                                   sty.h3__s5Noe
                                 )}
@@ -4684,6 +4701,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                     className={classNames(
                       projectcss.all,
                       projectcss.h3,
+                      projectcss.h3__5uU4L,
                       projectcss.__wab_text,
                       sty.h3__vw5Kt
                     )}
@@ -4756,6 +4774,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                             className={classNames(
                               projectcss.all,
                               projectcss.a,
+                              projectcss.a__5uU4L,
                               projectcss.__wab_text,
                               sty.firstName2
                             )}
@@ -4989,6 +5008,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                                       className={classNames(
                                         projectcss.all,
                                         projectcss.a,
+                                        projectcss.a__5uU4L,
                                         projectcss.__wab_text,
                                         sty.firstName5
                                       )}
@@ -5262,6 +5282,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                                 className={classNames(
                                   projectcss.all,
                                   projectcss.h3,
+                                  projectcss.h3__5uU4L,
                                   projectcss.__wab_text,
                                   sty.h3___12G
                                 )}
@@ -5422,6 +5443,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                   className={classNames(
                     projectcss.all,
                     projectcss.h3,
+                    projectcss.h3__5uU4L,
                     projectcss.__wab_text,
                     sty.h3__nCVn2
                   )}
@@ -5585,6 +5607,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                           className={classNames(
                             projectcss.all,
                             projectcss.a,
+                            projectcss.a__5uU4L,
                             projectcss.__wab_text,
                             sty.companyName2
                           )}
@@ -5695,6 +5718,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                         className={classNames(
                           projectcss.all,
                           projectcss.a,
+                          projectcss.a__5uU4L,
                           projectcss.__wab_text,
                           sty.companyName7
                         )}
@@ -5733,6 +5757,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                         className={classNames(
                           projectcss.all,
                           projectcss.a,
+                          projectcss.a__5uU4L,
                           projectcss.__wab_text,
                           sty.communityName2
                         )}
@@ -5948,6 +5973,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                         className={classNames(
                           projectcss.all,
                           projectcss.a,
+                          projectcss.a__5uU4L,
                           projectcss.__wab_text,
                           sty.companyName10
                         )}
@@ -5986,6 +6012,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                         className={classNames(
                           projectcss.all,
                           projectcss.a,
+                          projectcss.a__5uU4L,
                           projectcss.__wab_text,
                           sty.communityName4
                         )}
@@ -6215,6 +6242,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                         className={classNames(
                           projectcss.all,
                           projectcss.a,
+                          projectcss.a__5uU4L,
                           projectcss.__wab_text,
                           sty.communityName3
                         )}
@@ -6254,6 +6282,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                         className={classNames(
                           projectcss.all,
                           projectcss.a,
+                          projectcss.a__5uU4L,
                           projectcss.__wab_text,
                           sty.companyName8
                         )}
@@ -6470,6 +6499,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                         className={classNames(
                           projectcss.all,
                           projectcss.a,
+                          projectcss.a__5uU4L,
                           projectcss.__wab_text,
                           sty.communityName5
                         )}
@@ -6509,6 +6539,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                         className={classNames(
                           projectcss.all,
                           projectcss.a,
+                          projectcss.a__5uU4L,
                           projectcss.__wab_text,
                           sty.companyName11
                         )}
@@ -10736,6 +10767,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
               className={classNames(
                 projectcss.all,
                 projectcss.a,
+                projectcss.a__5uU4L,
                 projectcss.__wab_text,
                 sty.website
               )}
@@ -10787,7 +10819,7 @@ const PlasmicDescendants = {
     "communityName",
     "communityLocation",
     "modal",
-    "communityRate2",
+    "communityRate",
     "comment4",
     "confirmCommunityRate2",
     "rateSum",
@@ -10950,8 +10982,8 @@ const PlasmicDescendants = {
   type: ["type"],
   communityName: ["communityName"],
   communityLocation: ["communityLocation"],
-  modal: ["modal", "communityRate2", "comment4", "confirmCommunityRate2"],
-  communityRate2: ["communityRate2"],
+  modal: ["modal", "communityRate", "comment4", "confirmCommunityRate2"],
+  communityRate: ["communityRate"],
   comment4: ["comment4"],
   confirmCommunityRate2: ["confirmCommunityRate2"],
   rateSum: ["rateSum"],
@@ -11438,7 +11470,7 @@ type NodeDefaultElementType = {
   communityName: "div";
   communityLocation: "div";
   modal: typeof Modal;
-  communityRate2: typeof AntdRate;
+  communityRate: typeof AntdRate;
   comment4: typeof AntdTextArea;
   confirmCommunityRate2: typeof Button2;
   rateSum: "div";
@@ -11652,7 +11684,7 @@ export const PlasmicACommunityDashboard = Object.assign(
     communityName: makeNodeComponent("communityName"),
     communityLocation: makeNodeComponent("communityLocation"),
     modal: makeNodeComponent("modal"),
-    communityRate2: makeNodeComponent("communityRate2"),
+    communityRate: makeNodeComponent("communityRate"),
     comment4: makeNodeComponent("comment4"),
     confirmCommunityRate2: makeNodeComponent("confirmCommunityRate2"),
     rateSum: makeNodeComponent("rateSum"),

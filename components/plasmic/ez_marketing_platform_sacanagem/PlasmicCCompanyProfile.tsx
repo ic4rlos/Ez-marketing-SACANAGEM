@@ -398,6 +398,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                     className={classNames(
                       projectcss.all,
                       projectcss.a,
+                      projectcss.a__5uU4L,
                       sty.link__dRcwv
                     )}
                     component={Link}
@@ -443,6 +444,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.a,
+                        projectcss.a__5uU4L,
                         projectcss.__wab_text,
                         sty.link__vxiKn
                       )}
@@ -457,6 +459,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.a,
+                        projectcss.a__5uU4L,
                         projectcss.__wab_text,
                         sty.link__kpvK3
                       )}
@@ -471,6 +474,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.a,
+                        projectcss.a__5uU4L,
                         projectcss.__wab_text,
                         sty.link__gaziW
                       )}
@@ -484,6 +488,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.a,
+                        projectcss.a__5uU4L,
                         projectcss.__wab_text,
                         sty.link__yeoL
                       )}
@@ -867,6 +872,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                   className={classNames(
                     projectcss.all,
                     projectcss.a,
+                    projectcss.a__5uU4L,
                     sty.link__r66C
                   )}
                   component={Link}
@@ -1083,6 +1089,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                                   className={classNames(
                                     projectcss.all,
                                     projectcss.a,
+                                    projectcss.a__5uU4L,
                                     projectcss.__wab_text,
                                     sty.communityName3
                                   )}
@@ -1302,7 +1309,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                                           <React.Fragment>
                                             <span
                                               className={
-                                                "plasmic_default__all plasmic_default__span"
+                                                "plasmic_default__all plasmic_default__span plasmic_default__span__5uU4L"
                                               }
                                               style={{ color: "#000000" }}
                                             >
@@ -1334,7 +1341,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                                           <React.Fragment>
                                             <span
                                               className={
-                                                "plasmic_default__all plasmic_default__span"
+                                                "plasmic_default__all plasmic_default__span plasmic_default__span__5uU4L"
                                               }
                                               style={{ color: "#000000" }}
                                             >
@@ -1366,7 +1373,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                                           <React.Fragment>
                                             <span
                                               className={
-                                                "plasmic_default__all plasmic_default__span"
+                                                "plasmic_default__all plasmic_default__span plasmic_default__span__5uU4L"
                                               }
                                               style={{ color: "#000000" }}
                                             >
@@ -1398,7 +1405,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                                           <React.Fragment>
                                             <span
                                               className={
-                                                "plasmic_default__all plasmic_default__span"
+                                                "plasmic_default__all plasmic_default__span plasmic_default__span__5uU4L"
                                               }
                                               style={{ color: "#000000" }}
                                             >
@@ -1598,6 +1605,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                                       className={classNames(
                                         projectcss.all,
                                         projectcss.h3,
+                                        projectcss.h3__5uU4L,
                                         projectcss.__wab_text,
                                         sty.h3__goRd
                                       )}
@@ -1837,6 +1845,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                         className={classNames(
                           projectcss.all,
                           projectcss.h3,
+                          projectcss.h3__5uU4L,
                           projectcss.__wab_text,
                           sty.h3___9RiPd
                         )}
@@ -1921,6 +1930,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                                   className={classNames(
                                     projectcss.all,
                                     projectcss.a,
+                                    projectcss.a__5uU4L,
                                     projectcss.__wab_text,
                                     sty.communityName4
                                   )}
@@ -2173,6 +2183,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                                             className={classNames(
                                               projectcss.all,
                                               projectcss.a,
+                                              projectcss.a__5uU4L,
                                               projectcss.__wab_text,
                                               sty.communityName5
                                             )}
@@ -2628,6 +2639,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                                       className={classNames(
                                         projectcss.all,
                                         projectcss.h3,
+                                        projectcss.h3__5uU4L,
                                         projectcss.__wab_text,
                                         sty.h3__xwSPr
                                       )}
@@ -2976,6 +2988,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.h3,
+                        projectcss.h3__5uU4L,
                         projectcss.__wab_text,
                         sty.h3__iu4Qs
                       )}
@@ -3088,6 +3101,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                 className={classNames(
                   projectcss.all,
                   projectcss.a,
+                  projectcss.a__5uU4L,
                   projectcss.__wab_text,
                   sty.linkedIn
                 )}
@@ -3111,6 +3125,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                 className={classNames(
                   projectcss.all,
                   projectcss.a,
+                  projectcss.a__5uU4L,
                   projectcss.__wab_text,
                   sty.instagram
                 )}
@@ -3146,6 +3161,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                 className={classNames(
                   projectcss.all,
                   projectcss.a,
+                  projectcss.a__5uU4L,
                   projectcss.__wab_text,
                   sty.x
                 )}
@@ -3181,6 +3197,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                 className={classNames(
                   projectcss.all,
                   projectcss.a,
+                  projectcss.a__5uU4L,
                   projectcss.__wab_text,
                   sty.website
                 )}
@@ -3541,6 +3558,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                     className={classNames(
                       projectcss.all,
                       projectcss.a,
+                      projectcss.a__5uU4L,
                       projectcss.__wab_text,
                       sty.communityName
                     )}
@@ -3565,6 +3583,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                     className={classNames(
                       projectcss.all,
                       projectcss.a,
+                      projectcss.a__5uU4L,
                       projectcss.__wab_text,
                       sty.companyName2
                     )}
@@ -3698,6 +3717,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                     className={classNames(
                       projectcss.all,
                       projectcss.a,
+                      projectcss.a__5uU4L,
                       projectcss.__wab_text,
                       sty.companyName3
                     )}
@@ -3723,6 +3743,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                     className={classNames(
                       projectcss.all,
                       projectcss.a,
+                      projectcss.a__5uU4L,
                       projectcss.__wab_text,
                       sty.communityName2
                     )}

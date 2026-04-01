@@ -458,6 +458,7 @@ function PlasmicAApplyToACommunity__RenderFunc(props: {
                     className={classNames(
                       projectcss.all,
                       projectcss.a,
+                      projectcss.a__5uU4L,
                       sty.link__najb0
                     )}
                     component={Link}
@@ -503,6 +504,7 @@ function PlasmicAApplyToACommunity__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.a,
+                        projectcss.a__5uU4L,
                         projectcss.__wab_text,
                         sty.link__iSBoI
                       )}
@@ -517,6 +519,7 @@ function PlasmicAApplyToACommunity__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.a,
+                        projectcss.a__5uU4L,
                         projectcss.__wab_text,
                         sty.link__iWfs
                       )}
@@ -531,6 +534,7 @@ function PlasmicAApplyToACommunity__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.a,
+                        projectcss.a__5uU4L,
                         projectcss.__wab_text,
                         sty.link__pbZG
                       )}
@@ -544,6 +548,7 @@ function PlasmicAApplyToACommunity__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.a,
+                        projectcss.a__5uU4L,
                         projectcss.__wab_text,
                         sty.link__gNUzN
                       )}
@@ -1086,6 +1091,7 @@ function PlasmicAApplyToACommunity__RenderFunc(props: {
               className={classNames(
                 projectcss.all,
                 projectcss.textarea,
+                projectcss.textarea__5uU4L,
                 sty.shortMessage
               )}
               onChange={async (...eventArgs: any) => {
@@ -1117,6 +1123,7 @@ function PlasmicAApplyToACommunity__RenderFunc(props: {
                   className={classNames(
                     projectcss.all,
                     projectcss.h3,
+                    projectcss.h3__5uU4L,
                     projectcss.__wab_text,
                     sty.h3
                   )}
@@ -1322,6 +1329,7 @@ function PlasmicAApplyToACommunity__RenderFunc(props: {
               className={classNames(
                 projectcss.all,
                 projectcss.a,
+                projectcss.a__5uU4L,
                 projectcss.__wab_text,
                 sty.link___1E1P7
               )}
@@ -5270,6 +5278,7 @@ function PlasmicAApplyToACommunity__RenderFunc(props: {
               className={classNames(
                 projectcss.all,
                 projectcss.a,
+                projectcss.a__5uU4L,
                 projectcss.__wab_text,
                 sty.website2
               )}

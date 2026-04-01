@@ -745,6 +745,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.h6,
+                        projectcss.h6__5uU4L,
                         projectcss.__wab_text,
                         sty.h6__r2ZCz
                       )}
@@ -1232,6 +1233,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.h6,
+                        projectcss.h6__5uU4L,
                         projectcss.__wab_text,
                         sty.h6__aKts0
                       )}
@@ -1548,6 +1550,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.h6,
+                        projectcss.h6__5uU4L,
                         projectcss.__wab_text,
                         sty.h6__ssUlp
                       )}
@@ -2766,6 +2769,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.h6,
+                        projectcss.h6__5uU4L,
                         projectcss.__wab_text,
                         sty.h6___9SfLi
                       )}
@@ -3691,6 +3695,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.h6,
+                        projectcss.h6__5uU4L,
                         projectcss.__wab_text,
                         sty.h6__yTzZ9
                       )}

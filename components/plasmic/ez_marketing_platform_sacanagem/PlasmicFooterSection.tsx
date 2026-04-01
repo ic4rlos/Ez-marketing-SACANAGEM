@@ -238,6 +238,7 @@ function PlasmicFooterSection__RenderFunc(props: {
             className={classNames(
               projectcss.all,
               projectcss.h4,
+              projectcss.h4__5uU4L,
               projectcss.__wab_text,
               sty.h4
             )}

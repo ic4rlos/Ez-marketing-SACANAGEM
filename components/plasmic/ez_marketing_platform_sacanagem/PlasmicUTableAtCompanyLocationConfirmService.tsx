@@ -219,6 +219,7 @@ function PlasmicUTableAtCompanyLocationConfirmService__RenderFunc(props: {
             className={classNames(
               projectcss.all,
               projectcss.h3,
+              projectcss.h3__5uU4L,
               projectcss.__wab_text,
               sty.h3__xPkuD
             )}
@@ -229,6 +230,7 @@ function PlasmicUTableAtCompanyLocationConfirmService__RenderFunc(props: {
             className={classNames(
               projectcss.all,
               projectcss.h3,
+              projectcss.h3__5uU4L,
               projectcss.__wab_text,
               sty.h3___558Lg
             )}
@@ -239,6 +241,7 @@ function PlasmicUTableAtCompanyLocationConfirmService__RenderFunc(props: {
             className={classNames(
               projectcss.all,
               projectcss.h3,
+              projectcss.h3__5uU4L,
               projectcss.__wab_text,
               sty.h3__oWRi
             )}
@@ -249,6 +252,7 @@ function PlasmicUTableAtCompanyLocationConfirmService__RenderFunc(props: {
             className={classNames(
               projectcss.all,
               projectcss.h3,
+              projectcss.h3__5uU4L,
               projectcss.__wab_text,
               sty.h3__pJWsV
             )}
@@ -259,6 +263,7 @@ function PlasmicUTableAtCompanyLocationConfirmService__RenderFunc(props: {
             className={classNames(
               projectcss.all,
               projectcss.h3,
+              projectcss.h3__5uU4L,
               projectcss.__wab_text,
               sty.h3__bOwOc
             )}
@@ -388,6 +393,7 @@ function PlasmicUTableAtCompanyLocationConfirmService__RenderFunc(props: {
                   className={classNames(
                     projectcss.all,
                     projectcss.a,
+                    projectcss.a__5uU4L,
                     projectcss.__wab_text,
                     sty.link
                   )}

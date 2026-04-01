@@ -318,6 +318,7 @@ function PlasmicLALogin__RenderFunc(props: {
                     className={classNames(
                       projectcss.all,
                       projectcss.h6,
+                      projectcss.h6__5uU4L,
                       projectcss.__wab_text,
                       sty.h6
                     )}
@@ -538,6 +539,7 @@ function PlasmicLALogin__RenderFunc(props: {
                     className={classNames(
                       projectcss.all,
                       projectcss.a,
+                      projectcss.a__5uU4L,
                       projectcss.__wab_text,
                       sty.link__aoDpj
                     )}
@@ -575,6 +577,7 @@ function PlasmicLALogin__RenderFunc(props: {
                 className={classNames(
                   projectcss.all,
                   projectcss.a,
+                  projectcss.a__5uU4L,
                   projectcss.__wab_text,
                   sty.link__xczi
                 )}

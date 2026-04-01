@@ -586,6 +586,7 @@ function PlasmicUTableAtCustomerLocation__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.h3,
+                        projectcss.h3__5uU4L,
                         projectcss.__wab_text,
                         sty.h3__ysWpd
                       )}
@@ -738,6 +739,7 @@ function PlasmicUTableAtCustomerLocation__RenderFunc(props: {
                         className={classNames(
                           projectcss.all,
                           projectcss.h3,
+                          projectcss.h3__5uU4L,
                           projectcss.__wab_text,
                           sty.h3__rc6Lu
                         )}
@@ -1155,6 +1157,7 @@ function PlasmicUTableAtCustomerLocation__RenderFunc(props: {
                   className={classNames(
                     projectcss.all,
                     projectcss.h3,
+                    projectcss.h3__5uU4L,
                     projectcss.__wab_text,
                     sty.h3__zAr4K
                   )}

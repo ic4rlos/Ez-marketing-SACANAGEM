@@ -24,7 +24,9 @@ export default function AApplyToACommunity() {
   const [avatarFiles, setAvatarFiles] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
+  // =========================
   // AUTH
+  // =========================
   useEffect(() => {
     async function loadUser() {
       const { data } = await supabase.auth.getUser();
@@ -33,7 +35,31 @@ export default function AApplyToACommunity() {
     loadUser();
   }, []);
 
-  // LOAD
+  // =========================
+  // REDIRECT se já tem comunidade
+  // =========================
+  useEffect(() => {
+    if (!viewer) return;
+
+    async function checkExistingCommunity() {
+      const { data } = await supabase
+        .from("community_members")
+        .select("community_id")
+        .eq("user_id", viewer.id)
+        .eq("status", "connected")
+        .maybeSingle();
+
+      if (data?.community_id) {
+        router.replace("/a-community-dashboard");
+      }
+    }
+
+    checkExistingCommunity();
+  }, [viewer]);
+
+  // =========================
+  // LOAD DATA
+  // =========================
   useEffect(() => {
     if (!id || !viewer) return;
 
@@ -49,7 +75,9 @@ export default function AApplyToACommunity() {
         .eq("id", communityId)
         .maybeSingle();
 
-      // MEMBERS (resiliente a RLS)
+      // =========================
+      // MEMBERS
+      // =========================
       const { data: membersDb } = await supabase
         .from("community_members")
         .select("user_id, status")
@@ -62,14 +90,12 @@ export default function AApplyToACommunity() {
         members = (
           await Promise.all(
             membersDb.map(async (m: any) => {
-              // tenta pegar profile (pode falhar por RLS)
               const { data: profile } = await supabase
                 .from("User profile")
                 .select('id, "Profile pic"')
                 .eq("user_id", m.user_id)
                 .maybeSingle();
 
-              // tenta pegar offices (só se profile existir)
               let offices: any[] = [];
 
               if (profile?.id) {
@@ -81,7 +107,6 @@ export default function AApplyToACommunity() {
                 offices = data ?? [];
               }
 
-              // fallback robusto
               if (!offices.length) {
                 return [{
                   "Profile pic": profile?.["Profile pic"] ?? null,
@@ -98,7 +123,9 @@ export default function AApplyToACommunity() {
         ).flat().filter(Boolean);
       }
 
+      // =========================
       // MEMBERSHIP
+      // =========================
       const { data: membership } = await supabase
         .from("community_members")
         .select("*")
@@ -106,7 +133,9 @@ export default function AApplyToACommunity() {
         .eq("community_id", communityId)
         .maybeSingle();
 
+      // =========================
       // SPECIALTIES
+      // =========================
       const { data: specialtiesRaw } = await supabase
         .from("Community specialties")
         .select('"Professional specialty"')
@@ -117,11 +146,50 @@ export default function AApplyToACommunity() {
           (s: any) => s["Professional specialty"]
         ) ?? [];
 
+      // =========================
+      // CONNECTED COMPANIES
+      // =========================
+      const { data: companiesRaw } = await supabase
+        .from("company_members")
+        .select("company_id")
+        .eq("user_id", viewer.id);
+
+      let connected_companies: any[] = [];
+
+      if (companiesRaw?.length) {
+        connected_companies = (
+          await Promise.all(
+            companiesRaw.map(async (c: any) => {
+              const { data: company } = await supabase
+                .from("Company")
+                .select('id, "Company Logo", "Company name", average_rate, rate_sum')
+                .eq("id", c.company_id)
+                .maybeSingle();
+
+              if (!company) return null;
+
+              return {
+                "Company Logo": company["Company Logo"],
+                "Company name": company["Company name"],
+                average_rate: company.average_rate ?? 0,
+                rate_sum: company.rate_sum ?? 0
+              };
+            })
+          )
+        ).filter(Boolean);
+      }
+
+      // =========================
+      // FINAL FORMDATA
+      // =========================
       const nextFormData = {
         ...(community ?? {}),
         members,
         membership: membership ?? null,
         specialties,
+        connected_companies,
+        average_rate: community?.average_rate ?? 0,
+        rate_sum: community?.rate_sum ?? 0,
         "Short message": ""
       };
 
@@ -138,7 +206,9 @@ export default function AApplyToACommunity() {
     };
   }, [id, viewer]);
 
-  // SAVE (sem upsert bugado)
+  // =========================
+  // SAVE
+  // =========================
   async function handleSave(data: any) {
     if (!viewer || !id) return;
 

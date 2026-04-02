@@ -161,7 +161,7 @@ export default function ACommunityDashboard() {
 
       router.reload();
     }
-  }
+  
  // 👇 COLE EXATAMENTE AQUI
   if (data?.action === "leave_community"){
 
@@ -191,6 +191,7 @@ export default function ACommunityDashboard() {
 
     router.push("/a-find-community");
   }
+}
 }
   // =========================
   // LOAD

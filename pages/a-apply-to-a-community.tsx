@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import { getSupabaseA } from "../lib/a-supabaseClient";
+import { getSupabaseC } from "../lib/c-supabaseClient";
 
 export const dynamic_config = "force-dynamic";
 export const runtime = "nodejs";
@@ -17,6 +18,7 @@ const PlasmicAApplyToACommunity = dynamic(
 export default function AApplyToACommunity() {
   const router = useRouter();
   const supabase = getSupabaseA();
+  const supabaseC = getSupabaseC();
   const { id } = router.query;
 
   const [viewer, setViewer] = useState<any>(null);
@@ -36,30 +38,28 @@ export default function AApplyToACommunity() {
   }, []);
 
   // =========================
-  // REDIRECT se já tem comunidade
+  // LOAD
   // =========================
   useEffect(() => {
     if (!viewer) return;
 
-    async function checkExistingCommunity() {
-      const { data } = await supabase
+    async function checkIfUserHasCommunity() {
+      const { data: member } = await supabase
         .from("community_members")
-        .select("community_id")
+        .select("community_id, status")
         .eq("user_id", viewer.id)
         .eq("status", "connected")
         .maybeSingle();
 
-      if (data?.community_id) {
-        router.replace("/a-community-dashboard");
+      if (member) {
+        router.push("/a-community-dashboard");
+        return;
       }
     }
 
-    checkExistingCommunity();
+    checkIfUserHasCommunity();
   }, [viewer]);
 
-  // =========================
-  // LOAD DATA
-  // =========================
   useEffect(() => {
     if (!id || !viewer) return;
 
@@ -76,20 +76,48 @@ export default function AApplyToACommunity() {
         .maybeSingle();
 
       // =========================
-      // PROFILE DO USUÁRIO LOGADO
+      // CONNECTED COMPANIES (igual dashboard)
       // =========================
-      const { data: myProfile } = await supabase
-        .from("User profile")
-        .select('"Profile pic"')
-        .eq("user_id", viewer.id)
-        .maybeSingle();
+      const { data: connections } = await supabase
+        .from("CONNECTIONS")
+        .select("*")
+        .eq("agency_id", communityId);
+
+      let connectedCompanies: any[] = [];
+
+      if (connections?.length) {
+        const companyIds = Array.from(
+          new Set(connections.map((c: any) => Number(c.company_id)))
+        );
+
+        const { data: companies } = await supabaseC
+          .from("companies")
+          .select('*')
+          .in("id", companyIds);
+
+        connectedCompanies = connections
+          .filter((c: any) => c.status === "connected")
+          .map((conn: any) => {
+            const company = companies?.find(
+              (c) => Number(c.id) === Number(conn.company_id)
+            );
+
+            return {
+              id: conn.id,
+              company_id: conn.company_id,
+              short_message: conn.short_message ?? "",
+              "Company Logo": company?.["Company Logo"] ?? "",
+              "Company name": company?.["Company name"] ?? ""
+            };
+          });
+      }
 
       // =========================
-      // MEMBERS
+      // MEMBERS (igual antes, resiliente)
       // =========================
       const { data: membersDb } = await supabase
         .from("community_members")
-        .select("user_id, status")
+        .select("user_id")
         .eq("community_id", communityId)
         .eq("status", "connected");
 
@@ -117,10 +145,12 @@ export default function AApplyToACommunity() {
               }
 
               if (!offices.length) {
-                return [{
-                  "Profile pic": profile?.["Profile pic"] ?? null,
-                  Office: "Member"
-                }];
+                return [
+                  {
+                    "Profile pic": profile?.["Profile pic"] ?? null,
+                    Office: "Member"
+                  }
+                ];
               }
 
               return offices.map((o: any) => ({
@@ -129,80 +159,35 @@ export default function AApplyToACommunity() {
               }));
             })
           )
-        ).flat().filter(Boolean);
+        )
+          .flat()
+          .filter(Boolean);
       }
 
       // =========================
-      // MEMBERSHIP
+      // REVIEWS → RATE
       // =========================
-      const { data: membership } = await supabase
-        .from("community_members")
-        .select("*")
-        .eq("user_id", viewer.id)
-        .eq("community_id", communityId)
-        .maybeSingle();
-
-      // =========================
-      // SPECIALTIES
-      // =========================
-      const { data: specialtiesRaw } = await supabase
-        .from("Community specialties")
-        .select('"Professional specialty"')
+      const { data: reviews } = await supabase
+        .from("community_reviews")
+        .select("rating")
         .eq("community_id", communityId);
 
-      const specialties =
-        specialtiesRaw?.map(
-          (s: any) => s["Professional specialty"]
-        ) ?? [];
+      const rate_sum =
+        reviews?.reduce((acc: number, r: any) => acc + Number(r.rating || 0), 0) ?? 0;
+
+      const average_rate =
+        reviews?.length ? rate_sum / reviews.length : 0;
 
       // =========================
-      // CONNECTED COMPANIES
-      // =========================
-      const { data: companiesRaw } = await supabase
-        .from("company_members")
-        .select("company_id")
-        .eq("user_id", viewer.id);
-
-      let connected_companies: any[] = [];
-
-      if (companiesRaw?.length) {
-        connected_companies = (
-          await Promise.all(
-            companiesRaw.map(async (c: any) => {
-              const { data: company } = await supabase
-                .from("Company")
-                .select('id, "Company Logo", "Company name", average_rate, rate_sum')
-                .eq("id", c.company_id)
-                .maybeSingle();
-
-              if (!company) return null;
-
-              return {
-                "Company Logo": company["Company Logo"],
-                "Company name": company["Company name"],
-                average_rate: company.average_rate ?? 0,
-                rate_sum: company.rate_sum ?? 0
-              };
-            })
-          )
-        ).filter(Boolean);
-      }
-
-      // =========================
-      // FINAL FORMDATA
+      // FINAL
       // =========================
       const nextFormData = {
         ...(community ?? {}),
         members,
-        membership: membership ?? null,
-        specialties,
-        connected_companies,
-        average_rate: community?.average_rate ?? 0,
-        rate_sum: community?.rate_sum ?? 0,
-
-        // ✅ FOTO DO USUÁRIO LOGADO
-        "Profile pic": myProfile?.["Profile pic"] ?? null,
-
+        connected_companies: connectedCompanies,
+        rate_sum,
+        average_rate,
+        "Profile pic": null,
         "Short message": ""
       };
 

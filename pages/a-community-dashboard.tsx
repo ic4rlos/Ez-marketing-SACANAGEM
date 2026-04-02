@@ -162,7 +162,36 @@ export default function ACommunityDashboard() {
       router.reload();
     }
   }
+ // 👇 COLE EXATAMENTE AQUI
+  if (data?.action === "leave_community"){
 
+    const { error } = await supabase
+      .from("community_members")
+      .delete()
+      .eq("user_id", user.id)
+      .eq("community_id", formData.id);
+
+    if (error){
+      console.error(error);
+      alert("Erro ao sair da comunidade");
+      return;
+    }
+
+    const { data: remaining } = await supabase
+      .from("community_members")
+      .select("id")
+      .eq("community_id", formData.id);
+
+    if (!remaining || remaining.length === 0){
+      await supabase
+        .from("Community")
+        .delete()
+        .eq("id", formData.id);
+    }
+
+    router.push("/a-find-community");
+  }
+}
   // =========================
   // LOAD
   // =========================

@@ -146,8 +146,8 @@ export type PlasmicAApplyToACommunity__OverridesType = {
   communityName?: Flex__<"div">;
   membersCarousel?: Flex__<typeof SliderWrapper>;
   member2?: Flex__<"div">;
-  office2?: Flex__<"div">;
   profilePic2?: Flex__<typeof PlasmicImg__>;
+  office2?: Flex__<"div">;
   container2?: Flex__<"div">;
   shortMessage?: Flex__<"textarea">;
   apply?: Flex__<typeof Modal>;
@@ -1017,32 +1017,6 @@ function PlasmicAApplyToACommunity__RenderFunc(props: {
                               sty.freeBox__yrWmT
                             )}
                           >
-                            <div
-                              data-plasmic-name={"office2"}
-                              data-plasmic-override={overrides.office2}
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.office2
-                              )}
-                            >
-                              <React.Fragment>
-                                {(() => {
-                                  try {
-                                    return currentItem.Office;
-                                  } catch (e) {
-                                    if (
-                                      e instanceof TypeError ||
-                                      e?.plasmicType ===
-                                        "PlasmicUndefinedDataError"
-                                    ) {
-                                      return "Data Analyst";
-                                    }
-                                    throw e;
-                                  }
-                                })()}
-                              </React.Fragment>
-                            </div>
                             <PlasmicImg__
                               data-plasmic-name={"profilePic2"}
                               data-plasmic-override={overrides.profilePic2}
@@ -1083,6 +1057,32 @@ function PlasmicAApplyToACommunity__RenderFunc(props: {
                               )}
                             >
                               {"Gold"}
+                            </div>
+                            <div
+                              data-plasmic-name={"office2"}
+                              data-plasmic-override={overrides.office2}
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.office2
+                              )}
+                            >
+                              <React.Fragment>
+                                {(() => {
+                                  try {
+                                    return currentItem.Office;
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return "Data Analyst";
+                                    }
+                                    throw e;
+                                  }
+                                })()}
+                              </React.Fragment>
                             </div>
                           </div>
                         </div>
@@ -5537,8 +5537,8 @@ const PlasmicDescendants = {
     "communityName",
     "membersCarousel",
     "member2",
-    "office2",
     "profilePic2",
+    "office2",
     "container2",
     "shortMessage",
     "apply",
@@ -5592,16 +5592,16 @@ const PlasmicDescendants = {
     "communityName",
     "membersCarousel",
     "member2",
-    "office2",
-    "profilePic2"
+    "profilePic2",
+    "office2"
   ],
   communityLogo: ["communityLogo"],
   type: ["type"],
   communityName: ["communityName"],
-  membersCarousel: ["membersCarousel", "member2", "office2", "profilePic2"],
-  member2: ["member2", "office2", "profilePic2"],
-  office2: ["office2"],
+  membersCarousel: ["membersCarousel", "member2", "profilePic2", "office2"],
+  member2: ["member2", "profilePic2", "office2"],
   profilePic2: ["profilePic2"],
+  office2: ["office2"],
   container2: [
     "container2",
     "shortMessage",
@@ -5706,8 +5706,8 @@ type NodeDefaultElementType = {
   communityName: "div";
   membersCarousel: typeof SliderWrapper;
   member2: "div";
-  office2: "div";
   profilePic2: typeof PlasmicImg__;
+  office2: "div";
   container2: "div";
   shortMessage: "textarea";
   apply: typeof Modal;
@@ -5823,8 +5823,8 @@ export const PlasmicAApplyToACommunity = Object.assign(
     communityName: makeNodeComponent("communityName"),
     membersCarousel: makeNodeComponent("membersCarousel"),
     member2: makeNodeComponent("member2"),
-    office2: makeNodeComponent("office2"),
     profilePic2: makeNodeComponent("profilePic2"),
+    office2: makeNodeComponent("office2"),
     container2: makeNodeComponent("container2"),
     shortMessage: makeNodeComponent("shortMessage"),
     apply: makeNodeComponent("apply"),

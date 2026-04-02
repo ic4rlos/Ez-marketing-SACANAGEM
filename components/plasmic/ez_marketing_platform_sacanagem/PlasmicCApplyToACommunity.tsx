@@ -146,8 +146,8 @@ export type PlasmicCApplyToACommunity__OverridesType = {
   communityName?: Flex__<"div">;
   membersCarousel?: Flex__<typeof SliderWrapper>;
   member2?: Flex__<"div">;
-  office2?: Flex__<"div">;
   profilePic2?: Flex__<typeof PlasmicImg__>;
+  office3?: Flex__<"div">;
   container2?: Flex__<"div">;
   shortMessage?: Flex__<"textarea">;
   apply?: Flex__<typeof Modal>;
@@ -768,6 +768,19 @@ function PlasmicCApplyToACommunity__RenderFunc(props: {
                     displayMinWidth={"0"}
                     displayWidth={"30px"}
                     loading={"lazy"}
+                    src={(() => {
+                      try {
+                        return $props.company?.["Company Logo"] ?? "";
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return undefined;
+                        }
+                        throw e;
+                      }
+                    })()}
                   />
                 </AntdButton>
               </AntdDropdown>
@@ -935,32 +948,6 @@ function PlasmicCApplyToACommunity__RenderFunc(props: {
                               sty.freeBox__wWlQ
                             )}
                           >
-                            <div
-                              data-plasmic-name={"office2"}
-                              data-plasmic-override={overrides.office2}
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.office2
-                              )}
-                            >
-                              <React.Fragment>
-                                {(() => {
-                                  try {
-                                    return currentItem.Office;
-                                  } catch (e) {
-                                    if (
-                                      e instanceof TypeError ||
-                                      e?.plasmicType ===
-                                        "PlasmicUndefinedDataError"
-                                    ) {
-                                      return "Data Analyst";
-                                    }
-                                    throw e;
-                                  }
-                                })()}
-                              </React.Fragment>
-                            </div>
                             <PlasmicImg__
                               data-plasmic-name={"profilePic2"}
                               data-plasmic-override={overrides.profilePic2}
@@ -1002,6 +989,32 @@ function PlasmicCApplyToACommunity__RenderFunc(props: {
                             >
                               {"Gold"}
                             </div>
+                            <div
+                              data-plasmic-name={"office3"}
+                              data-plasmic-override={overrides.office3}
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.office3
+                              )}
+                            >
+                              <React.Fragment>
+                                {(() => {
+                                  try {
+                                    return currentItem.Office;
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return "Data Analyst";
+                                    }
+                                    throw e;
+                                  }
+                                })()}
+                              </React.Fragment>
+                            </div>
                           </div>
                         </div>
                       );
@@ -1011,251 +1024,273 @@ function PlasmicCApplyToACommunity__RenderFunc(props: {
               })()}
             </div>
           </div>
-          <div
-            data-plasmic-name={"container2"}
-            data-plasmic-override={overrides.container2}
-            className={classNames(projectcss.all, sty.container2)}
-          >
-            <textarea
-              data-plasmic-name={"shortMessage"}
-              data-plasmic-override={overrides.shortMessage}
-              className={classNames(
-                projectcss.all,
-                projectcss.textarea,
-                projectcss.textarea__5uU4L,
-                sty.shortMessage
-              )}
-              onChange={async (...eventArgs: any) => {
-                (e => {
-                  generateStateOnChangeProp($state, ["shortMessage", "value"])(
-                    e.target.value
-                  );
-                }).apply(null, eventArgs);
-              }}
-              placeholder={
-                'If you are excited about working with this community, please enter a short message here and click "Invite"'
+          {(() => {
+            try {
+              return (
+                !$props.formData?.connection ||
+                $props.formData?.connection?.status !== "connected"
+              );
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return true;
               }
-              ref={ref => {
-                $refs["shortMessage"] = ref;
-              }}
-              value={
-                generateStateValueProp($state, ["shortMessage", "value"]) ?? ""
-              }
-            />
-
-            <Modal
-              data-plasmic-name={"apply"}
-              data-plasmic-override={overrides.apply}
-              className={classNames("__wab_instance", sty.apply)}
-              content={
-                <h3
-                  data-plasmic-name={"h3"}
-                  data-plasmic-override={overrides.h3}
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.h3,
-                    projectcss.h3__5uU4L,
-                    projectcss.__wab_text,
-                    sty.h3
-                  )}
-                >
-                  {"Apply for partnership"}
-                </h3>
-              }
-              footer={
-                <div className={classNames(projectcss.all, sty.freeBox__rMzZi)}>
-                  <Button2
-                    data-plasmic-name={"confirm"}
-                    data-plasmic-override={overrides.confirm}
-                    color={"muted"}
-                    label={
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__nUkzA
-                        )}
-                      >
-                        {"Confirm"}
-                      </div>
-                    }
-                    onClick={async event => {
-                      const $steps = {};
-
-                      $steps["invokeGlobalAction"] = true
-                        ? (() => {
-                            const actionArgs = { args: ["success", "Send"] };
-                            return $globalActions[
-                              "plasmic-antd5-config-provider.showNotification"
-                            ]?.apply(null, [...actionArgs.args]);
-                          })()
-                        : undefined;
-                      if (
-                        $steps["invokeGlobalAction"] != null &&
-                        typeof $steps["invokeGlobalAction"] === "object" &&
-                        typeof $steps["invokeGlobalAction"].then === "function"
-                      ) {
-                        $steps["invokeGlobalAction"] =
-                          await $steps["invokeGlobalAction"];
-                      }
-
-                      $steps["runCode"] = true
-                        ? (() => {
-                            const actionArgs = {
-                              customFunction: async () => {
-                                return $props.onSave({
-                                  short_message:
-                                    $state.shortMessage?.value ?? ""
-                                });
-                              }
-                            };
-                            return (({ customFunction }) => {
-                              return customFunction();
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
-                      if (
-                        $steps["runCode"] != null &&
-                        typeof $steps["runCode"] === "object" &&
-                        typeof $steps["runCode"].then === "function"
-                      ) {
-                        $steps["runCode"] = await $steps["runCode"];
-                      }
-
-                      $steps["updateApplyIsOpen"] = true
-                        ? (() => {
-                            const actionArgs = {
-                              variable: {
-                                objRoot: $state,
-                                variablePath: ["apply", "isOpen"]
-                              },
-                              operation: 0,
-                              value: false
-                            };
-                            return (({
-                              variable,
-                              value,
-                              startIndex,
-                              deleteCount
-                            }) => {
-                              if (!variable) {
-                                return;
-                              }
-                              const { objRoot, variablePath } = variable;
-
-                              $stateSet(objRoot, variablePath, value);
-                              return value;
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
-                      if (
-                        $steps["updateApplyIsOpen"] != null &&
-                        typeof $steps["updateApplyIsOpen"] === "object" &&
-                        typeof $steps["updateApplyIsOpen"].then === "function"
-                      ) {
-                        $steps["updateApplyIsOpen"] =
-                          await $steps["updateApplyIsOpen"];
-                      }
-                    }}
-                    size={"extraSmall"}
-                    type={"soft"}
-                  />
-
-                  <Button2
-                    data-plasmic-name={"button2"}
-                    data-plasmic-override={overrides.button2}
-                    color={"muted"}
-                    label={
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__igaIu
-                        )}
-                      >
-                        {"Cancel"}
-                      </div>
-                    }
-                    onClick={async event => {
-                      const $steps = {};
-
-                      $steps["updateApplyIsOpen"] = true
-                        ? (() => {
-                            const actionArgs = {
-                              variable: {
-                                objRoot: $state,
-                                variablePath: ["apply", "isOpen"]
-                              },
-                              operation: 0,
-                              value: false
-                            };
-                            return (({
-                              variable,
-                              value,
-                              startIndex,
-                              deleteCount
-                            }) => {
-                              if (!variable) {
-                                return;
-                              }
-                              const { objRoot, variablePath } = variable;
-
-                              $stateSet(objRoot, variablePath, value);
-                              return value;
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
-                      if (
-                        $steps["updateApplyIsOpen"] != null &&
-                        typeof $steps["updateApplyIsOpen"] === "object" &&
-                        typeof $steps["updateApplyIsOpen"].then === "function"
-                      ) {
-                        $steps["updateApplyIsOpen"] =
-                          await $steps["updateApplyIsOpen"];
-                      }
-                    }}
-                    size={"extraSmall"}
-                    type={"soft"}
-                  />
-                </div>
-              }
-              heading={null}
-              isOpen={generateStateValueProp($state, ["apply", "isOpen"])}
-              onOpenChange={async (...eventArgs: any) => {
-                generateStateOnChangeProp($state, ["apply", "isOpen"]).apply(
-                  null,
-                  eventArgs
-                );
-
-                if (
-                  eventArgs.length > 1 &&
-                  eventArgs[1] &&
-                  eventArgs[1]._plasmic_state_init_
-                ) {
-                  return;
+              throw e;
+            }
+          })() ? (
+            <div
+              data-plasmic-name={"container2"}
+              data-plasmic-override={overrides.container2}
+              className={classNames(projectcss.all, sty.container2)}
+            >
+              <textarea
+                data-plasmic-name={"shortMessage"}
+                data-plasmic-override={overrides.shortMessage}
+                className={classNames(
+                  projectcss.all,
+                  projectcss.textarea,
+                  projectcss.textarea__5uU4L,
+                  sty.shortMessage
+                )}
+                onChange={async (...eventArgs: any) => {
+                  (e => {
+                    generateStateOnChangeProp($state, [
+                      "shortMessage",
+                      "value"
+                    ])(e.target.value);
+                  }).apply(null, eventArgs);
+                }}
+                placeholder={
+                  'If you are excited about working with this community, please enter a short message here and click "Invite"'
                 }
-              }}
-              showHeader={false}
-              trigger={
-                <LoginButton
-                  className={classNames(
-                    "__wab_instance",
-                    sty.loginButton__zNfCx
-                  )}
-                >
-                  <div
+                ref={ref => {
+                  $refs["shortMessage"] = ref;
+                }}
+                value={
+                  generateStateValueProp($state, ["shortMessage", "value"]) ??
+                  ""
+                }
+              />
+
+              <Modal
+                data-plasmic-name={"apply"}
+                data-plasmic-override={overrides.apply}
+                className={classNames("__wab_instance", sty.apply)}
+                content={
+                  <h3
+                    data-plasmic-name={"h3"}
+                    data-plasmic-override={overrides.h3}
                     className={classNames(
                       projectcss.all,
+                      projectcss.h3,
+                      projectcss.h3__5uU4L,
                       projectcss.__wab_text,
-                      sty.text__zGeM
+                      sty.h3
                     )}
                   >
-                    {"Apply"}
+                    {"Apply for partnership"}
+                  </h3>
+                }
+                footer={
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__rMzZi)}
+                  >
+                    <Button2
+                      data-plasmic-name={"confirm"}
+                      data-plasmic-override={overrides.confirm}
+                      color={"muted"}
+                      label={
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__nUkzA
+                          )}
+                        >
+                          {"Confirm"}
+                        </div>
+                      }
+                      onClick={async event => {
+                        const $steps = {};
+
+                        $steps["invokeGlobalAction"] = true
+                          ? (() => {
+                              const actionArgs = { args: ["success", "Send"] };
+                              return $globalActions[
+                                "plasmic-antd5-config-provider.showNotification"
+                              ]?.apply(null, [...actionArgs.args]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["invokeGlobalAction"] != null &&
+                          typeof $steps["invokeGlobalAction"] === "object" &&
+                          typeof $steps["invokeGlobalAction"].then ===
+                            "function"
+                        ) {
+                          $steps["invokeGlobalAction"] =
+                            await $steps["invokeGlobalAction"];
+                        }
+
+                        $steps["runCode"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                customFunction: async () => {
+                                  return $props.onSave({
+                                    short_message:
+                                      $state.shortMessage?.value ?? ""
+                                  });
+                                }
+                              };
+                              return (({ customFunction }) => {
+                                return customFunction();
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["runCode"] != null &&
+                          typeof $steps["runCode"] === "object" &&
+                          typeof $steps["runCode"].then === "function"
+                        ) {
+                          $steps["runCode"] = await $steps["runCode"];
+                        }
+
+                        $steps["updateApplyIsOpen"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                variable: {
+                                  objRoot: $state,
+                                  variablePath: ["apply", "isOpen"]
+                                },
+                                operation: 0,
+                                value: false
+                              };
+                              return (({
+                                variable,
+                                value,
+                                startIndex,
+                                deleteCount
+                              }) => {
+                                if (!variable) {
+                                  return;
+                                }
+                                const { objRoot, variablePath } = variable;
+
+                                $stateSet(objRoot, variablePath, value);
+                                return value;
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["updateApplyIsOpen"] != null &&
+                          typeof $steps["updateApplyIsOpen"] === "object" &&
+                          typeof $steps["updateApplyIsOpen"].then === "function"
+                        ) {
+                          $steps["updateApplyIsOpen"] =
+                            await $steps["updateApplyIsOpen"];
+                        }
+                      }}
+                      size={"extraSmall"}
+                      type={"soft"}
+                    />
+
+                    <Button2
+                      data-plasmic-name={"button2"}
+                      data-plasmic-override={overrides.button2}
+                      color={"muted"}
+                      label={
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__igaIu
+                          )}
+                        >
+                          {"Cancel"}
+                        </div>
+                      }
+                      onClick={async event => {
+                        const $steps = {};
+
+                        $steps["updateApplyIsOpen"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                variable: {
+                                  objRoot: $state,
+                                  variablePath: ["apply", "isOpen"]
+                                },
+                                operation: 0,
+                                value: false
+                              };
+                              return (({
+                                variable,
+                                value,
+                                startIndex,
+                                deleteCount
+                              }) => {
+                                if (!variable) {
+                                  return;
+                                }
+                                const { objRoot, variablePath } = variable;
+
+                                $stateSet(objRoot, variablePath, value);
+                                return value;
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["updateApplyIsOpen"] != null &&
+                          typeof $steps["updateApplyIsOpen"] === "object" &&
+                          typeof $steps["updateApplyIsOpen"].then === "function"
+                        ) {
+                          $steps["updateApplyIsOpen"] =
+                            await $steps["updateApplyIsOpen"];
+                        }
+                      }}
+                      size={"extraSmall"}
+                      type={"soft"}
+                    />
                   </div>
-                </LoginButton>
-              }
-            />
-          </div>
+                }
+                heading={null}
+                isOpen={generateStateValueProp($state, ["apply", "isOpen"])}
+                onOpenChange={async (...eventArgs: any) => {
+                  generateStateOnChangeProp($state, ["apply", "isOpen"]).apply(
+                    null,
+                    eventArgs
+                  );
+
+                  if (
+                    eventArgs.length > 1 &&
+                    eventArgs[1] &&
+                    eventArgs[1]._plasmic_state_init_
+                  ) {
+                    return;
+                  }
+                }}
+                showHeader={false}
+                trigger={
+                  <LoginButton
+                    className={classNames(
+                      "__wab_instance",
+                      sty.loginButton__zNfCx
+                    )}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__zGeM
+                      )}
+                    >
+                      {"Apply"}
+                    </div>
+                  </LoginButton>
+                }
+              />
+            </div>
+          ) : null}
         </div>
         <div
           data-plasmic-name={"container10"}
@@ -1311,7 +1346,7 @@ function PlasmicCApplyToACommunity__RenderFunc(props: {
                 {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
                   (() => {
                     try {
-                      return $props.formData?.connected_companies || [1];
+                      return $props.company?.connected_companies || [1];
                     } catch (e) {
                       if (
                         e instanceof TypeError ||
@@ -5445,8 +5480,8 @@ const PlasmicDescendants = {
     "communityName",
     "membersCarousel",
     "member2",
-    "office2",
     "profilePic2",
+    "office3",
     "container2",
     "shortMessage",
     "apply",
@@ -5500,16 +5535,16 @@ const PlasmicDescendants = {
     "communityName",
     "membersCarousel",
     "member2",
-    "office2",
-    "profilePic2"
+    "profilePic2",
+    "office3"
   ],
   communityLogo: ["communityLogo"],
   type: ["type"],
   communityName: ["communityName"],
-  membersCarousel: ["membersCarousel", "member2", "office2", "profilePic2"],
-  member2: ["member2", "office2", "profilePic2"],
-  office2: ["office2"],
+  membersCarousel: ["membersCarousel", "member2", "profilePic2", "office3"],
+  member2: ["member2", "profilePic2", "office3"],
   profilePic2: ["profilePic2"],
+  office3: ["office3"],
   container2: [
     "container2",
     "shortMessage",
@@ -5614,8 +5649,8 @@ type NodeDefaultElementType = {
   communityName: "div";
   membersCarousel: typeof SliderWrapper;
   member2: "div";
-  office2: "div";
   profilePic2: typeof PlasmicImg__;
+  office3: "div";
   container2: "div";
   shortMessage: "textarea";
   apply: typeof Modal;
@@ -5731,8 +5766,8 @@ export const PlasmicCApplyToACommunity = Object.assign(
     communityName: makeNodeComponent("communityName"),
     membersCarousel: makeNodeComponent("membersCarousel"),
     member2: makeNodeComponent("member2"),
-    office2: makeNodeComponent("office2"),
     profilePic2: makeNodeComponent("profilePic2"),
+    office3: makeNodeComponent("office3"),
     container2: makeNodeComponent("container2"),
     shortMessage: makeNodeComponent("shortMessage"),
     apply: makeNodeComponent("apply"),

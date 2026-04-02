@@ -503,23 +503,6 @@
   margin: 0px;
   border-width: 2px;
 }
-.office2 {
-  animation: none;
-  position: relative;
-  width: 100px;
-  height: auto;
-  max-width: 100%;
-  transform: rotate3d(0, 0, 1, 90deg);
-  left: auto;
-  top: auto;
-  font-size: 11px;
-  color: #fafafa;
-  background: #000000cc;
-  min-height: 35px;
-  padding-left: 10px;
-  flex-shrink: 0;
-  margin: 0px;
-}
 .profilePic2 {
   animation: none;
   object-fit: cover;
@@ -551,6 +534,23 @@
   margin-left: -60px;
   flex-shrink: 0;
   padding: 0px 0px 0px 10px;
+}
+.office2 {
+  animation: none;
+  position: absolute;
+  width: 100px;
+  height: auto;
+  max-width: 100%;
+  transform: rotate3d(0, 0, 1, 90deg);
+  left: -49px;
+  top: 58px;
+  font-size: 11px;
+  color: #fafafa;
+  background: #000000cc;
+  min-height: 35px;
+  padding-left: 10px;
+  flex-shrink: 0;
+  margin: 0px;
 }
 .container2 {
   display: flex;

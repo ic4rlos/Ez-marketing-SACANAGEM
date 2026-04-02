@@ -130,7 +130,7 @@ export default function ACommunityDashboard() {
         .maybeSingle();
 
       if (existing){
-        alert("Você já avaliou neste período");
+        alert("You already rated in this period.");
         return;
       }
 

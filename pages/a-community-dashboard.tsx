@@ -189,10 +189,10 @@ export default function ACommunityDashboard() {
         .eq("user_id", user.id)
         .maybeSingle();
 
-      if (!member || member.status !== "connected"){
-        setLoading(false);
-        return;
-      }
+if (!member || member.status !== "connected"){
+  router.push("/a-find-community");
+  return;
+}
 
       const communityId = member.community_id;
 

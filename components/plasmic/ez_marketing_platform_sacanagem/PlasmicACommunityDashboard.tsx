@@ -5730,7 +5730,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                           )}
                           component={Link}
                           href={
-                            "/a-rating-companies?id=" + currentItem.company_id
+                            "/a-company-profile?id=" + currentItem.company_id
                           }
                           legacyBehavior={false}
                           platform={"nextjs"}

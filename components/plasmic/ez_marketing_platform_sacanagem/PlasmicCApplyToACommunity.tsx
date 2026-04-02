@@ -159,7 +159,7 @@ export type PlasmicCApplyToACommunity__OverridesType = {
   connectedCompany?: Flex__<"div">;
   company?: Flex__<typeof LoginButton>;
   companyLogo?: Flex__<typeof PlasmicImg__>;
-  companyName?: Flex__<"div">;
+  companyName3?: Flex__<"a"> & Partial<LinkProps>;
   container7?: Flex__<"div">;
   popover?: Flex__<typeof AntdPopover>;
   popover3?: Flex__<typeof AntdPopover>;
@@ -255,7 +255,20 @@ function PlasmicCApplyToACommunity__RenderFunc(props: {
         path: "communityRate.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
+          (() => {
+            try {
+              return $props.company?.average_rate;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return 5;
+              }
+              throw e;
+            }
+          })()
       },
       {
         path: "popover.open",
@@ -1295,47 +1308,103 @@ function PlasmicCApplyToACommunity__RenderFunc(props: {
                 data-plasmic-override={overrides.sliderCarousel2}
                 {...child$Props}
               >
-                <div
-                  data-plasmic-name={"connectedCompany"}
-                  data-plasmic-override={overrides.connectedCompany}
-                  className={classNames(projectcss.all, sty.connectedCompany)}
-                >
-                  <LoginButton
-                    data-plasmic-name={"company"}
-                    data-plasmic-override={overrides.company}
-                    className={classNames("__wab_instance", sty.company)}
-                    color={"softSand"}
-                    shape={"sharp"}
-                    showStartIcon={true}
-                    startIcon={
-                      <PlasmicImg__
-                        data-plasmic-name={"companyLogo"}
-                        data-plasmic-override={overrides.companyLogo}
-                        alt={""}
-                        className={classNames(sty.companyLogo)}
-                        displayHeight={"30px"}
-                        displayMaxHeight={"none"}
-                        displayMaxWidth={"100%"}
-                        displayMinHeight={"0"}
-                        displayMinWidth={"0"}
-                        displayWidth={"30px"}
-                        loading={"lazy"}
-                      />
+                {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
+                  (() => {
+                    try {
+                      return $props.formData?.connected_companies || [1];
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return [];
+                      }
+                      throw e;
                     }
-                  >
+                  })()
+                ).map((__plasmic_item_0, __plasmic_idx_0) => {
+                  const currentItem = __plasmic_item_0;
+                  const currentIndex = __plasmic_idx_0;
+                  return (
                     <div
-                      data-plasmic-name={"companyName"}
-                      data-plasmic-override={overrides.companyName}
+                      data-plasmic-name={"connectedCompany"}
+                      data-plasmic-override={overrides.connectedCompany}
                       className={classNames(
                         projectcss.all,
-                        projectcss.__wab_text,
-                        sty.companyName
+                        sty.connectedCompany
                       )}
+                      key={currentIndex}
                     >
-                      {"Company"}
+                      <LoginButton
+                        data-plasmic-name={"company"}
+                        data-plasmic-override={overrides.company}
+                        className={classNames("__wab_instance", sty.company)}
+                        color={"softSand"}
+                        shape={"sharp"}
+                        showStartIcon={true}
+                        startIcon={
+                          <PlasmicImg__
+                            data-plasmic-name={"companyLogo"}
+                            data-plasmic-override={overrides.companyLogo}
+                            alt={""}
+                            className={classNames(sty.companyLogo)}
+                            displayHeight={"30px"}
+                            displayMaxHeight={"none"}
+                            displayMaxWidth={"100%"}
+                            displayMinHeight={"0"}
+                            displayMinWidth={"0"}
+                            displayWidth={"30px"}
+                            loading={"lazy"}
+                            src={(() => {
+                              try {
+                                return currentItem["Company Logo"];
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return undefined;
+                                }
+                                throw e;
+                              }
+                            })()}
+                          />
+                        }
+                      >
+                        <PlasmicLink__
+                          data-plasmic-name={"companyName3"}
+                          data-plasmic-override={overrides.companyName3}
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.a,
+                            projectcss.a__5uU4L,
+                            projectcss.__wab_text,
+                            sty.companyName3
+                          )}
+                          component={Link}
+                          legacyBehavior={false}
+                          platform={"nextjs"}
+                        >
+                          <React.Fragment>
+                            {(() => {
+                              try {
+                                return currentItem["Company name"];
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return "Company";
+                                }
+                                throw e;
+                              }
+                            })()}
+                          </React.Fragment>
+                        </PlasmicLink__>
+                      </LoginButton>
                     </div>
-                  </LoginButton>
-                </div>
+                  );
+                })}
               </SliderWrapper>
             );
           })()}
@@ -5225,7 +5294,19 @@ function PlasmicCApplyToACommunity__RenderFunc(props: {
               data-plasmic-override={overrides.communityRate}
               allowHalf={true}
               className={classNames("__wab_instance", sty.communityRate)}
-              defaultValue={5}
+              defaultValue={(() => {
+                try {
+                  return $props.company?.average_rate;
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return 5;
+                  }
+                  throw e;
+                }
+              })()}
               disabled={true}
               multiCharacter={false}
               onChange={async (...eventArgs: any) => {
@@ -5296,7 +5377,21 @@ function PlasmicCApplyToACommunity__RenderFunc(props: {
                   sty.rateSum
                 )}
               >
-                {"50"}
+                <React.Fragment>
+                  {(() => {
+                    try {
+                      return $props.company?.rate_sum;
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return "50";
+                      }
+                      throw e;
+                    }
+                  })()}
+                </React.Fragment>
               </div>
               <div
                 className={classNames(
@@ -5363,7 +5458,7 @@ const PlasmicDescendants = {
     "connectedCompany",
     "company",
     "companyLogo",
-    "companyName",
+    "companyName3",
     "container7",
     "popover",
     "popover3",
@@ -5434,24 +5529,24 @@ const PlasmicDescendants = {
     "connectedCompany",
     "company",
     "companyLogo",
-    "companyName"
+    "companyName3"
   ],
   sliderCarousel2: [
     "sliderCarousel2",
     "connectedCompany",
     "company",
     "companyLogo",
-    "companyName"
+    "companyName3"
   ],
   connectedCompany: [
     "connectedCompany",
     "company",
     "companyLogo",
-    "companyName"
+    "companyName3"
   ],
-  company: ["company", "companyLogo", "companyName"],
+  company: ["company", "companyLogo", "companyName3"],
   companyLogo: ["companyLogo"],
-  companyName: ["companyName"],
+  companyName3: ["companyName3"],
   container7: [
     "container7",
     "popover",
@@ -5532,7 +5627,7 @@ type NodeDefaultElementType = {
   connectedCompany: "div";
   company: typeof LoginButton;
   companyLogo: typeof PlasmicImg__;
-  companyName: "div";
+  companyName3: "a";
   container7: "div";
   popover: typeof AntdPopover;
   popover3: typeof AntdPopover;
@@ -5649,7 +5744,7 @@ export const PlasmicCApplyToACommunity = Object.assign(
     connectedCompany: makeNodeComponent("connectedCompany"),
     company: makeNodeComponent("company"),
     companyLogo: makeNodeComponent("companyLogo"),
-    companyName: makeNodeComponent("companyName"),
+    companyName3: makeNodeComponent("companyName3"),
     container7: makeNodeComponent("container7"),
     popover: makeNodeComponent("popover"),
     popover3: makeNodeComponent("popover3"),

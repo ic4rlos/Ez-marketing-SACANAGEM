@@ -231,11 +231,11 @@ export type PlasmicACommunityDashboard__OverridesType = {
   shortMessage2?: Flex__<"div">;
   confirmConnection2?: Flex__<typeof Button2>;
   cancelConnection2?: Flex__<typeof Button2>;
-  sliderCarousel4?: Flex__<typeof SliderWrapper>;
   connectedCompany2?: Flex__<"div">;
   company?: Flex__<typeof LoginButton>;
   companyLogo4?: Flex__<typeof PlasmicImg__>;
   companyName2?: Flex__<"a"> & Partial<LinkProps>;
+  sliderCarousel2?: Flex__<typeof SliderWrapper>;
   connectedCompany3?: Flex__<"div">;
   company2?: Flex__<typeof LoginButton>;
   companyLogo8?: Flex__<typeof PlasmicImg__>;
@@ -607,12 +607,12 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
         variableType: "number"
       },
       {
-        path: "sliderCarousel4.currentSlide",
+        path: "sliderCarousel2.currentSlide",
         type: "private",
         variableType: "number",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) => 0,
 
-        refName: "sliderCarousel4",
+        refName: "sliderCarousel2",
         onMutate: generateOnMutateForSpec("currentSlide", SliderWrapper_Helpers)
       }
     ],
@@ -1934,6 +1934,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                 ).apply(null, eventArgs);
               },
               className: classNames("__wab_instance", sty.sliderCarousel),
+              dots: true,
               initialSlide: generateStateValueProp($state, [
                 "sliderCarousel",
                 "currentSlide"
@@ -5611,34 +5612,135 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
               />
             </div>
           ) : null}
+          <div className={classNames(projectcss.all, sty.freeBox__vXgI8)}>
+            {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
+              (() => {
+                try {
+                  return $props.formData?.connected_companies || [1];
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return [];
+                  }
+                  throw e;
+                }
+              })()
+            ).map((__plasmic_item_0, __plasmic_idx_0) => {
+              const currentItem = __plasmic_item_0;
+              const currentIndex = __plasmic_idx_0;
+              return (
+                <div
+                  data-plasmic-name={"connectedCompany2"}
+                  data-plasmic-override={overrides.connectedCompany2}
+                  className={classNames(projectcss.all, sty.connectedCompany2)}
+                  key={currentIndex}
+                >
+                  <LoginButton
+                    data-plasmic-name={"company"}
+                    data-plasmic-override={overrides.company}
+                    className={classNames("__wab_instance", sty.company)}
+                    color={"softSand"}
+                    shape={"sharp"}
+                    showStartIcon={true}
+                    startIcon={
+                      <PlasmicImg__
+                        data-plasmic-name={"companyLogo4"}
+                        data-plasmic-override={overrides.companyLogo4}
+                        alt={""}
+                        className={classNames(sty.companyLogo4)}
+                        displayHeight={"30px"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={"30px"}
+                        loading={"lazy"}
+                        src={(() => {
+                          try {
+                            return currentItem["Company Logo"];
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return undefined;
+                            }
+                            throw e;
+                          }
+                        })()}
+                      />
+                    }
+                  >
+                    <PlasmicLink__
+                      data-plasmic-name={"companyName2"}
+                      data-plasmic-override={overrides.companyName2}
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.a,
+                        projectcss.a__5uU4L,
+                        projectcss.__wab_text,
+                        sty.companyName2
+                      )}
+                      component={Link}
+                      href={"/a-rating-companies?id=" + currentItem.company_id}
+                      legacyBehavior={false}
+                      platform={"nextjs"}
+                    >
+                      <React.Fragment>
+                        {(() => {
+                          try {
+                            return currentItem["Company name"];
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return "Company";
+                            }
+                            throw e;
+                          }
+                        })()}
+                      </React.Fragment>
+                    </PlasmicLink__>
+                  </LoginButton>
+                </div>
+              );
+            })}
+          </div>
           {(() => {
             const child$Props = {
               arrows: false,
+              autoplay: true,
+              autoplaySpeed: 0,
               beforeChange: async (...eventArgs: any) => {
                 generateStateOnChangePropForCodeComponents(
                   $state,
                   "currentSlide",
-                  ["sliderCarousel4", "currentSlide"],
+                  ["sliderCarousel2", "currentSlide"],
                   SliderWrapper_Helpers
                 ).apply(null, eventArgs);
               },
-              className: classNames("__wab_instance", sty.sliderCarousel4),
+              centerMode: true,
+              className: classNames("__wab_instance", sty.sliderCarousel2),
+              cssEase: "linear",
               initialSlide: generateStateValueProp($state, [
-                "sliderCarousel4",
+                "sliderCarousel2",
                 "currentSlide"
               ]),
               ref: ref => {
-                $refs["sliderCarousel4"] = ref;
+                $refs["sliderCarousel2"] = ref;
               },
-              sliderScopeClassName: sty["sliderCarousel4__slider"],
-              slidesPerRow: 5
+              sliderScopeClassName: sty["sliderCarousel2__slider"],
+              speed: 5000
             };
             initializeCodeComponentStates(
               $state,
               [
                 {
                   name: "currentSlide",
-                  plasmicStateName: "sliderCarousel4.currentSlide"
+                  plasmicStateName: "sliderCarousel2.currentSlide"
                 }
               ],
               [],
@@ -5648,8 +5750,8 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
 
             return (
               <SliderWrapper
-                data-plasmic-name={"sliderCarousel4"}
-                data-plasmic-override={overrides.sliderCarousel4}
+                data-plasmic-name={"sliderCarousel2"}
+                data-plasmic-override={overrides.sliderCarousel2}
                 {...child$Props}
               >
                 {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
@@ -5671,27 +5773,27 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                   const currentIndex = __plasmic_idx_0;
                   return (
                     <div
-                      data-plasmic-name={"connectedCompany2"}
-                      data-plasmic-override={overrides.connectedCompany2}
+                      data-plasmic-name={"connectedCompany3"}
+                      data-plasmic-override={overrides.connectedCompany3}
                       className={classNames(
                         projectcss.all,
-                        sty.connectedCompany2
+                        sty.connectedCompany3
                       )}
                       key={currentIndex}
                     >
                       <LoginButton
-                        data-plasmic-name={"company"}
-                        data-plasmic-override={overrides.company}
-                        className={classNames("__wab_instance", sty.company)}
+                        data-plasmic-name={"company2"}
+                        data-plasmic-override={overrides.company2}
+                        className={classNames("__wab_instance", sty.company2)}
                         color={"softSand"}
                         shape={"sharp"}
                         showStartIcon={true}
                         startIcon={
                           <PlasmicImg__
-                            data-plasmic-name={"companyLogo4"}
-                            data-plasmic-override={overrides.companyLogo4}
+                            data-plasmic-name={"companyLogo8"}
+                            data-plasmic-override={overrides.companyLogo8}
                             alt={""}
-                            className={classNames(sty.companyLogo4)}
+                            className={classNames(sty.companyLogo8)}
                             displayHeight={"30px"}
                             displayMaxHeight={"none"}
                             displayMaxWidth={"100%"}
@@ -5716,14 +5818,14 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                         }
                       >
                         <PlasmicLink__
-                          data-plasmic-name={"companyName2"}
-                          data-plasmic-override={overrides.companyName2}
+                          data-plasmic-name={"companyName3"}
+                          data-plasmic-override={overrides.companyName3}
                           className={classNames(
                             projectcss.all,
                             projectcss.a,
                             projectcss.a__5uU4L,
                             projectcss.__wab_text,
-                            sty.companyName2
+                            sty.companyName3
                           )}
                           component={Link}
                           href={
@@ -5752,58 +5854,6 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                     </div>
                   );
                 })}
-                <div
-                  data-plasmic-name={"connectedCompany3"}
-                  data-plasmic-override={overrides.connectedCompany3}
-                  className={classNames(projectcss.all, sty.connectedCompany3)}
-                >
-                  <LoginButton
-                    data-plasmic-name={"company2"}
-                    data-plasmic-override={overrides.company2}
-                    className={classNames("__wab_instance", sty.company2)}
-                    color={"softSand"}
-                    shape={"sharp"}
-                    showStartIcon={true}
-                    startIcon={
-                      <PlasmicImg__
-                        data-plasmic-name={"companyLogo8"}
-                        data-plasmic-override={overrides.companyLogo8}
-                        alt={""}
-                        className={classNames(sty.companyLogo8)}
-                        displayHeight={"30px"}
-                        displayMaxHeight={"none"}
-                        displayMaxWidth={"100%"}
-                        displayMinHeight={"0"}
-                        displayMinWidth={"0"}
-                        displayWidth={"30px"}
-                        loading={"lazy"}
-                        src={{
-                          src: "/plasmic/ez_marketing_platform_sacanagem/images/image.svg",
-                          fullWidth: 262,
-                          fullHeight: 262,
-                          aspectRatio: 1
-                        }}
-                      />
-                    }
-                  >
-                    <PlasmicLink__
-                      data-plasmic-name={"companyName3"}
-                      data-plasmic-override={overrides.companyName3}
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.a,
-                        projectcss.a__5uU4L,
-                        projectcss.__wab_text,
-                        sty.companyName3
-                      )}
-                      component={Link}
-                      legacyBehavior={false}
-                      platform={"nextjs"}
-                    >
-                      {"Company"}
-                    </PlasmicLink__>
-                  </LoginButton>
-                </div>
               </SliderWrapper>
             );
           })()}
@@ -11055,11 +11105,11 @@ const PlasmicDescendants = {
     "shortMessage2",
     "confirmConnection2",
     "cancelConnection2",
-    "sliderCarousel4",
     "connectedCompany2",
     "company",
     "companyLogo4",
     "companyName2",
+    "sliderCarousel2",
     "connectedCompany3",
     "company2",
     "companyLogo8",
@@ -11230,11 +11280,11 @@ const PlasmicDescendants = {
     "shortMessage2",
     "confirmConnection2",
     "cancelConnection2",
-    "sliderCarousel4",
     "connectedCompany2",
     "company",
     "companyLogo4",
     "companyName2",
+    "sliderCarousel2",
     "connectedCompany3",
     "company2",
     "companyLogo8",
@@ -11448,17 +11498,6 @@ const PlasmicDescendants = {
   shortMessage2: ["shortMessage2"],
   confirmConnection2: ["confirmConnection2"],
   cancelConnection2: ["cancelConnection2"],
-  sliderCarousel4: [
-    "sliderCarousel4",
-    "connectedCompany2",
-    "company",
-    "companyLogo4",
-    "companyName2",
-    "connectedCompany3",
-    "company2",
-    "companyLogo8",
-    "companyName3"
-  ],
   connectedCompany2: [
     "connectedCompany2",
     "company",
@@ -11468,6 +11507,13 @@ const PlasmicDescendants = {
   company: ["company", "companyLogo4", "companyName2"],
   companyLogo4: ["companyLogo4"],
   companyName2: ["companyName2"],
+  sliderCarousel2: [
+    "sliderCarousel2",
+    "connectedCompany3",
+    "company2",
+    "companyLogo8",
+    "companyName3"
+  ],
   connectedCompany3: [
     "connectedCompany3",
     "company2",
@@ -11727,11 +11773,11 @@ type NodeDefaultElementType = {
   shortMessage2: "div";
   confirmConnection2: typeof Button2;
   cancelConnection2: typeof Button2;
-  sliderCarousel4: typeof SliderWrapper;
   connectedCompany2: "div";
   company: typeof LoginButton;
   companyLogo4: typeof PlasmicImg__;
   companyName2: "a";
+  sliderCarousel2: typeof SliderWrapper;
   connectedCompany3: "div";
   company2: typeof LoginButton;
   companyLogo8: typeof PlasmicImg__;
@@ -11945,11 +11991,11 @@ export const PlasmicACommunityDashboard = Object.assign(
     shortMessage2: makeNodeComponent("shortMessage2"),
     confirmConnection2: makeNodeComponent("confirmConnection2"),
     cancelConnection2: makeNodeComponent("cancelConnection2"),
-    sliderCarousel4: makeNodeComponent("sliderCarousel4"),
     connectedCompany2: makeNodeComponent("connectedCompany2"),
     company: makeNodeComponent("company"),
     companyLogo4: makeNodeComponent("companyLogo4"),
     companyName2: makeNodeComponent("companyName2"),
+    sliderCarousel2: makeNodeComponent("sliderCarousel2"),
     connectedCompany3: makeNodeComponent("connectedCompany3"),
     company2: makeNodeComponent("company2"),
     companyLogo8: makeNodeComponent("companyLogo8"),

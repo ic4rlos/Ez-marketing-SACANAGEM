@@ -1219,8 +1219,9 @@
 .profilePic {
   object-fit: cover;
   max-width: 150px;
-  width: auto;
+  width: 150px;
   height: 200px;
+  max-height: 200px;
   flex-shrink: 0;
   border-radius: 8px;
   margin: 0px 0px -200px;
@@ -1257,13 +1258,13 @@
   padding: 0px 0px 0px 10px;
 }
 .office {
-  position: relative;
-  width: 120px;
+  position: absolute;
+  width: 150px;
   height: auto;
   max-width: 100%;
   transform: rotate3d(0, 0, 1, 90deg) rotate3d(0, 0, 0, 90deg);
-  left: auto;
-  top: auto;
+  left: -18px;
+  top: 96px;
   font-size: 14px;
   color: #fafafa;
   background: #000000cc;
@@ -1271,7 +1272,6 @@
   padding-left: 10px;
   align-self: flex-end;
   flex-shrink: 0;
-  margin: 50px 0px 0px -12px;
 }
 .container10 {
   display: flex;
@@ -3861,6 +3861,55 @@
   text-overflow: clip !important;
 }
 .svg__mrKn8 {
+  position: relative;
+  object-fit: cover;
+  width: auto;
+  height: 1em;
+}
+.connectedCompany3 {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 8px;
+}
+.company2:global(.__wab_instance) {
+  max-width: 100%;
+  width: auto;
+  height: 56px;
+  flex-shrink: 0;
+}
+.companyLogo8 {
+  object-fit: cover;
+  max-width: 100%;
+  width: 30px;
+  height: 30px;
+}
+.companyLogo8 > picture > img {
+  object-fit: cover;
+}
+.companyName3 {
+  font-size: 14px;
+  margin-left: 3px;
+  margin-right: 3px;
+  color: #545454;
+  font-weight: 400;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  text-align: center;
+  text-transform: none;
+  line-height: 1.5;
+  letter-spacing: normal;
+  white-space: pre-wrap;
+  user-select: text;
+  text-decoration-line: none !important;
+  text-overflow: clip !important;
+}
+.svg___5DKhm {
   position: relative;
   object-fit: cover;
   width: auto;

@@ -236,6 +236,10 @@ export type PlasmicACommunityDashboard__OverridesType = {
   company?: Flex__<typeof LoginButton>;
   companyLogo4?: Flex__<typeof PlasmicImg__>;
   companyName2?: Flex__<"a"> & Partial<LinkProps>;
+  connectedCompany3?: Flex__<"div">;
+  company2?: Flex__<typeof LoginButton>;
+  companyLogo8?: Flex__<typeof PlasmicImg__>;
+  companyName3?: Flex__<"a"> & Partial<LinkProps>;
   countainer3?: Flex__<"div">;
   communityReviews?: Flex__<"div">;
   companyLogo5?: Flex__<typeof PlasmicImg__>;
@@ -1995,11 +1999,11 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                           alt={""}
                           className={classNames(sty.profilePic)}
                           displayHeight={"200px"}
-                          displayMaxHeight={"none"}
+                          displayMaxHeight={"200px"}
                           displayMaxWidth={"150px"}
                           displayMinHeight={"0"}
                           displayMinWidth={"0"}
-                          displayWidth={"auto"}
+                          displayWidth={"150px"}
                           src={(() => {
                             try {
                               return currentItem["Profile pic"];
@@ -5748,6 +5752,58 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                     </div>
                   );
                 })}
+                <div
+                  data-plasmic-name={"connectedCompany3"}
+                  data-plasmic-override={overrides.connectedCompany3}
+                  className={classNames(projectcss.all, sty.connectedCompany3)}
+                >
+                  <LoginButton
+                    data-plasmic-name={"company2"}
+                    data-plasmic-override={overrides.company2}
+                    className={classNames("__wab_instance", sty.company2)}
+                    color={"softSand"}
+                    shape={"sharp"}
+                    showStartIcon={true}
+                    startIcon={
+                      <PlasmicImg__
+                        data-plasmic-name={"companyLogo8"}
+                        data-plasmic-override={overrides.companyLogo8}
+                        alt={""}
+                        className={classNames(sty.companyLogo8)}
+                        displayHeight={"30px"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={"30px"}
+                        loading={"lazy"}
+                        src={{
+                          src: "/plasmic/ez_marketing_platform_sacanagem/images/image.svg",
+                          fullWidth: 262,
+                          fullHeight: 262,
+                          aspectRatio: 1
+                        }}
+                      />
+                    }
+                  >
+                    <PlasmicLink__
+                      data-plasmic-name={"companyName3"}
+                      data-plasmic-override={overrides.companyName3}
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.a,
+                        projectcss.a__5uU4L,
+                        projectcss.__wab_text,
+                        sty.companyName3
+                      )}
+                      component={Link}
+                      legacyBehavior={false}
+                      platform={"nextjs"}
+                    >
+                      {"Company"}
+                    </PlasmicLink__>
+                  </LoginButton>
+                </div>
               </SliderWrapper>
             );
           })()}
@@ -11004,6 +11060,10 @@ const PlasmicDescendants = {
     "company",
     "companyLogo4",
     "companyName2",
+    "connectedCompany3",
+    "company2",
+    "companyLogo8",
+    "companyName3",
     "countainer3",
     "communityReviews",
     "companyLogo5",
@@ -11174,7 +11234,11 @@ const PlasmicDescendants = {
     "connectedCompany2",
     "company",
     "companyLogo4",
-    "companyName2"
+    "companyName2",
+    "connectedCompany3",
+    "company2",
+    "companyLogo8",
+    "companyName3"
   ],
   linkedCompanies: [
     "linkedCompanies",
@@ -11389,7 +11453,11 @@ const PlasmicDescendants = {
     "connectedCompany2",
     "company",
     "companyLogo4",
-    "companyName2"
+    "companyName2",
+    "connectedCompany3",
+    "company2",
+    "companyLogo8",
+    "companyName3"
   ],
   connectedCompany2: [
     "connectedCompany2",
@@ -11400,6 +11468,15 @@ const PlasmicDescendants = {
   company: ["company", "companyLogo4", "companyName2"],
   companyLogo4: ["companyLogo4"],
   companyName2: ["companyName2"],
+  connectedCompany3: [
+    "connectedCompany3",
+    "company2",
+    "companyLogo8",
+    "companyName3"
+  ],
+  company2: ["company2", "companyLogo8", "companyName3"],
+  companyLogo8: ["companyLogo8"],
+  companyName3: ["companyName3"],
   countainer3: [
     "countainer3",
     "communityReviews",
@@ -11655,6 +11732,10 @@ type NodeDefaultElementType = {
   company: typeof LoginButton;
   companyLogo4: typeof PlasmicImg__;
   companyName2: "a";
+  connectedCompany3: "div";
+  company2: typeof LoginButton;
+  companyLogo8: typeof PlasmicImg__;
+  companyName3: "a";
   countainer3: "div";
   communityReviews: "div";
   companyLogo5: typeof PlasmicImg__;
@@ -11869,6 +11950,10 @@ export const PlasmicACommunityDashboard = Object.assign(
     company: makeNodeComponent("company"),
     companyLogo4: makeNodeComponent("companyLogo4"),
     companyName2: makeNodeComponent("companyName2"),
+    connectedCompany3: makeNodeComponent("connectedCompany3"),
+    company2: makeNodeComponent("company2"),
+    companyLogo8: makeNodeComponent("companyLogo8"),
+    companyName3: makeNodeComponent("companyName3"),
     countainer3: makeNodeComponent("countainer3"),
     communityReviews: makeNodeComponent("communityReviews"),
     companyLogo5: makeNodeComponent("companyLogo5"),

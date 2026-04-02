@@ -235,6 +235,10 @@ export type PlasmicACommunityDashboard__OverridesType = {
   company?: Flex__<typeof LoginButton>;
   companyLogo4?: Flex__<typeof PlasmicImg__>;
   companyName2?: Flex__<"a"> & Partial<LinkProps>;
+  connectedCompany4?: Flex__<"div">;
+  company3?: Flex__<typeof LoginButton>;
+  companyLogo9?: Flex__<typeof PlasmicImg__>;
+  companyName4?: Flex__<"a"> & Partial<LinkProps>;
   sliderCarousel2?: Flex__<typeof SliderWrapper>;
   connectedCompany3?: Flex__<"div">;
   company2?: Flex__<typeof LoginButton>;
@@ -5708,6 +5712,58 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                 </div>
               );
             })}
+            <div
+              data-plasmic-name={"connectedCompany4"}
+              data-plasmic-override={overrides.connectedCompany4}
+              className={classNames(projectcss.all, sty.connectedCompany4)}
+            >
+              <LoginButton
+                data-plasmic-name={"company3"}
+                data-plasmic-override={overrides.company3}
+                className={classNames("__wab_instance", sty.company3)}
+                color={"softSand"}
+                shape={"sharp"}
+                showStartIcon={true}
+                startIcon={
+                  <PlasmicImg__
+                    data-plasmic-name={"companyLogo9"}
+                    data-plasmic-override={overrides.companyLogo9}
+                    alt={""}
+                    className={classNames(sty.companyLogo9)}
+                    displayHeight={"30px"}
+                    displayMaxHeight={"none"}
+                    displayMaxWidth={"100%"}
+                    displayMinHeight={"0"}
+                    displayMinWidth={"0"}
+                    displayWidth={"30px"}
+                    loading={"lazy"}
+                    src={{
+                      src: "/plasmic/ez_marketing_platform_sacanagem/images/image.svg",
+                      fullWidth: 262,
+                      fullHeight: 262,
+                      aspectRatio: 1
+                    }}
+                  />
+                }
+              >
+                <PlasmicLink__
+                  data-plasmic-name={"companyName4"}
+                  data-plasmic-override={overrides.companyName4}
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.a,
+                    projectcss.a__5uU4L,
+                    projectcss.__wab_text,
+                    sty.companyName4
+                  )}
+                  component={Link}
+                  legacyBehavior={false}
+                  platform={"nextjs"}
+                >
+                  {"Company"}
+                </PlasmicLink__>
+              </LoginButton>
+            </div>
           </div>
           {(() => {
             const child$Props = {
@@ -11109,6 +11165,10 @@ const PlasmicDescendants = {
     "company",
     "companyLogo4",
     "companyName2",
+    "connectedCompany4",
+    "company3",
+    "companyLogo9",
+    "companyName4",
     "sliderCarousel2",
     "connectedCompany3",
     "company2",
@@ -11284,6 +11344,10 @@ const PlasmicDescendants = {
     "company",
     "companyLogo4",
     "companyName2",
+    "connectedCompany4",
+    "company3",
+    "companyLogo9",
+    "companyName4",
     "sliderCarousel2",
     "connectedCompany3",
     "company2",
@@ -11507,6 +11571,15 @@ const PlasmicDescendants = {
   company: ["company", "companyLogo4", "companyName2"],
   companyLogo4: ["companyLogo4"],
   companyName2: ["companyName2"],
+  connectedCompany4: [
+    "connectedCompany4",
+    "company3",
+    "companyLogo9",
+    "companyName4"
+  ],
+  company3: ["company3", "companyLogo9", "companyName4"],
+  companyLogo9: ["companyLogo9"],
+  companyName4: ["companyName4"],
   sliderCarousel2: [
     "sliderCarousel2",
     "connectedCompany3",
@@ -11777,6 +11850,10 @@ type NodeDefaultElementType = {
   company: typeof LoginButton;
   companyLogo4: typeof PlasmicImg__;
   companyName2: "a";
+  connectedCompany4: "div";
+  company3: typeof LoginButton;
+  companyLogo9: typeof PlasmicImg__;
+  companyName4: "a";
   sliderCarousel2: typeof SliderWrapper;
   connectedCompany3: "div";
   company2: typeof LoginButton;
@@ -11995,6 +12072,10 @@ export const PlasmicACommunityDashboard = Object.assign(
     company: makeNodeComponent("company"),
     companyLogo4: makeNodeComponent("companyLogo4"),
     companyName2: makeNodeComponent("companyName2"),
+    connectedCompany4: makeNodeComponent("connectedCompany4"),
+    company3: makeNodeComponent("company3"),
+    companyLogo9: makeNodeComponent("companyLogo9"),
+    companyName4: makeNodeComponent("companyName4"),
     sliderCarousel2: makeNodeComponent("sliderCarousel2"),
     connectedCompany3: makeNodeComponent("connectedCompany3"),
     company2: makeNodeComponent("company2"),

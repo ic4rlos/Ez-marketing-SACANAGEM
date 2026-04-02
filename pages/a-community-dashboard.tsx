@@ -192,7 +192,7 @@ export default function ACommunityDashboard() {
     router.push("/a-find-community");
   }
 }
-}
+
   // =========================
   // LOAD
   // =========================

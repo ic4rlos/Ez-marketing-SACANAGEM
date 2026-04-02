@@ -41,26 +41,6 @@ export default function AApplyToACommunity() {
   // LOAD
   // =========================
   useEffect(() => {
-    if (!viewer) return;
-
-    async function checkIfUserHasCommunity() {
-      const { data: member } = await supabase
-        .from("community_members")
-        .select("community_id, status")
-        .eq("user_id", viewer.id)
-        .eq("status", "connected")
-        .maybeSingle();
-
-      if (member) {
-        router.push("/a-community-dashboard");
-        return;
-      }
-    }
-
-    checkIfUserHasCommunity();
-  }, [viewer]);
-
-  useEffect(() => {
     if (!id || !viewer) return;
 
     let mounted = true;
@@ -68,7 +48,24 @@ export default function AApplyToACommunity() {
     async function loadAll() {
       const communityId = Number(id);
 
+      // =========================
+      // REDIRECT (já tem comunidade?)
+      // =========================
+      const { data: myMembership } = await supabase
+        .from("community_members")
+        .select("community_id, status")
+        .eq("user_id", viewer.id)
+        .eq("status", "connected")
+        .maybeSingle();
+
+      if (myMembership) {
+        router.push("/a-community-dashboard");
+        return;
+      }
+
+      // =========================
       // COMMUNITY
+      // =========================
       const { data: community } = await supabase
         .from("Community")
         .select("*")
@@ -76,44 +73,7 @@ export default function AApplyToACommunity() {
         .maybeSingle();
 
       // =========================
-      // CONNECTED COMPANIES (igual dashboard)
-      // =========================
-      const { data: connections } = await supabase
-        .from("CONNECTIONS")
-        .select("*")
-        .eq("agency_id", communityId);
-
-      let connectedCompanies: any[] = [];
-
-      if (connections?.length) {
-        const companyIds = Array.from(
-          new Set(connections.map((c: any) => Number(c.company_id)))
-        );
-
-        const { data: companies } = await supabaseC
-          .from("companies")
-          .select('*')
-          .in("id", companyIds);
-
-        connectedCompanies = connections
-          .filter((c: any) => c.status === "connected")
-          .map((conn: any) => {
-            const company = companies?.find(
-              (c) => Number(c.id) === Number(conn.company_id)
-            );
-
-            return {
-              id: conn.id,
-              company_id: conn.company_id,
-              short_message: conn.short_message ?? "",
-              "Company Logo": company?.["Company Logo"] ?? "",
-              "Company name": company?.["Company name"] ?? ""
-            };
-          });
-      }
-
-      // =========================
-      // MEMBERS (igual antes, resiliente)
+      // MEMBERS
       // =========================
       const { data: membersDb } = await supabase
         .from("community_members")
@@ -145,12 +105,10 @@ export default function AApplyToACommunity() {
               }
 
               if (!offices.length) {
-                return [
-                  {
-                    "Profile pic": profile?.["Profile pic"] ?? null,
-                    Office: "Member"
-                  }
-                ];
+                return [{
+                  "Profile pic": profile?.["Profile pic"] ?? null,
+                  Office: "Member"
+                }];
               }
 
               return offices.map((o: any) => ({
@@ -159,35 +117,81 @@ export default function AApplyToACommunity() {
               }));
             })
           )
-        )
-          .flat()
-          .filter(Boolean);
+        ).flat().filter(Boolean);
       }
 
       // =========================
-      // REVIEWS → RATE
+      // CONNECTED COMPANIES
+      // =========================
+      const { data: connections } = await supabase
+        .from("CONNECTIONS")
+        .select("*")
+        .eq("agency_id", communityId)
+        .eq("status", "connected");
+
+      let connectedCompanies: any[] = [];
+
+      if (connections?.length) {
+        const companyIds = connections.map((c: any) => c.company_id);
+
+        const { data: companies } = await supabaseC
+          .from("companies")
+          .select('id, "Company Logo", "Company name"')
+          .in("id", companyIds);
+
+        connectedCompanies = connections.map((conn: any) => {
+          const company = companies?.find(
+            (c: any) => Number(c.id) === Number(conn.company_id)
+          );
+
+          return {
+            "Company Logo": company?.["Company Logo"] ?? "",
+            "Company name": company?.["Company name"] ?? ""
+          };
+        });
+      }
+
+      // =========================
+      // REVIEWS (CORRIGIDO)
       // =========================
       const { data: reviews } = await supabase
         .from("community_reviews")
-        .select("rating")
-        .eq("community_id", communityId);
+        .select("rating, author_type")
+        .eq("community_id", communityId)
+        .in("author_type", ["company", "member"]);
 
-      const rate_sum =
-        reviews?.reduce((acc: number, r: any) => acc + Number(r.rating || 0), 0) ?? 0;
+      const validReviews = reviews ?? [];
+
+      const rate_sum = validReviews.length;
 
       const average_rate =
-        reviews?.length ? rate_sum / reviews.length : 0;
+        rate_sum > 0
+          ? validReviews.reduce(
+              (acc: number, r: any) => acc + Number(r.rating || 0),
+              0
+            ) / rate_sum
+          : 0;
 
       // =========================
-      // FINAL
+      // SPECIALTIES
       // =========================
+      const { data: specialtiesRaw } = await supabase
+        .from("Community specialties")
+        .select('"Professional specialty"')
+        .eq("community_id", communityId);
+
+      const specialties =
+        specialtiesRaw?.map(
+          (s: any) => s["Professional specialty"]
+        ) ?? [];
+
       const nextFormData = {
         ...(community ?? {}),
         members,
         connected_companies: connectedCompanies,
+        specialties,
         rate_sum,
         average_rate,
-        "Profile pic": null,
         "Short message": ""
       };
 

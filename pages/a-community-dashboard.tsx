@@ -394,7 +394,17 @@ export default function ACommunityDashboard() {
         .from("community_reviews")
         .select("*")
         .eq("community_id", communityId);
-
+const { data: myRating } = await supabase
+  .from("community_reviews")
+  .select("rating")
+  .eq("community_id", communityId)
+  .eq("author_user_id", user.id)
+  .eq("author_type", "member")
+  .eq("period_key", `${new Date().getFullYear()}-Q${Math.floor(new Date().getMonth()/3)+1}`)
+  .order("created_at", { ascending: false })
+  .limit(1)
+  .maybeSingle();
+      
       const companyIdsReviews = Array.from(
         new Set((allReviews ?? [])
           .map((r:any)=>Number(r.company_id))
@@ -436,6 +446,7 @@ export default function ACommunityDashboard() {
       setFormData({
         ...community,
         community_name: communityName,
+        current_user_rating: myRating?.rating ?? 0,
         "Profile pic": myProfile?.["Profile pic"] ?? null,
         connected_companies: connectedCompanies,
         company_requests: companyRequests,

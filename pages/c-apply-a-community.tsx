@@ -33,7 +33,6 @@ export default function CApplyACommunity() {
   // =========================
   // AUTH (C)
   // =========================
-
   useEffect(() => {
     async function loadUser() {
       const { data } = await supabaseC.auth.getUser();
@@ -45,7 +44,6 @@ export default function CApplyACommunity() {
   // =========================
   // LOAD
   // =========================
-
   useEffect(() => {
     if (!id || !companyUser) return;
 
@@ -57,7 +55,7 @@ export default function CApplyACommunity() {
       // 🔹 COMPANY (C)
       const { data: companyData } = await supabaseC
         .from("companies")
-        .select("*")
+        .select('*')
         .eq("user_id", companyUser.id)
         .maybeSingle();
 
@@ -70,10 +68,10 @@ export default function CApplyACommunity() {
         .eq("id", communityId)
         .maybeSingle();
 
-      // 🔹 MEMBERS (igual ao original)
+      // 🔹 MEMBERS
       const { data: membersDb } = await supabaseA
         .from("community_members")
-        .select("user_id, status")
+        .select("user_id")
         .eq("community_id", communityId)
         .eq("status", "connected");
 
@@ -101,32 +99,68 @@ export default function CApplyACommunity() {
               }
 
               if (!offices.length) {
-                return [
-                  {
-                    "Profile pic": profile?.["Profile pic"] ?? null,
-                    Office: "Member",
-                  },
-                ];
+                return [{
+                  "Profile pic": profile?.["Profile pic"] ?? null,
+                  Office: "Member"
+                }];
               }
 
               return offices.map((o: any) => ({
                 "Profile pic": profile?.["Profile pic"] ?? null,
-                Office: o.Office,
+                Office: o.Office
               }));
             })
           )
-        )
-          .flat()
-          .filter(Boolean);
+        ).flat().filter(Boolean);
       }
 
-      // 🔹 CONNECTION (em vez de membership)
-      const { data: connection } = await supabaseA
+      // 🔹 CONNECTED COMPANIES (IGUAL AO IRMÃO)
+      const { data: connections } = await supabaseA
         .from("CONNECTIONS")
         .select("*")
-        .eq("company_id", companyData?.id)
         .eq("agency_id", communityId)
-        .maybeSingle();
+        .eq("status", "connected");
+
+      let connectedCompanies: any[] = [];
+
+      if (connections?.length) {
+        const companyIds = connections.map((c: any) => c.company_id);
+
+        const { data: companies } = await supabaseC
+          .from("companies")
+          .select('id, "Company Logo", "Company name"')
+          .in("id", companyIds);
+
+        connectedCompanies = connections.map((conn: any) => {
+          const comp = companies?.find(
+            (c: any) => Number(c.id) === Number(conn.company_id)
+          );
+
+          return {
+            "Company Logo": comp?.["Company Logo"] ?? "",
+            "Company name": comp?.["Company name"] ?? ""
+          };
+        });
+      }
+
+      // 🔹 REVIEWS (IGUAL AO IRMÃO)
+      const { data: reviews } = await supabaseA
+        .from("community_reviews")
+        .select("rating, author_type")
+        .eq("community_id", communityId)
+        .eq("author_type", "company");
+
+      const validReviews = reviews ?? [];
+
+      const rate_sum = validReviews.length;
+
+      const average_rate =
+        rate_sum > 0
+          ? validReviews.reduce(
+              (acc: number, r: any) => acc + Number(r.rating || 0),
+              0
+            ) / rate_sum
+          : 0;
 
       // 🔹 SPECIALTIES
       const { data: specialtiesRaw } = await supabaseA
@@ -142,9 +176,12 @@ export default function CApplyACommunity() {
       const nextFormData = {
         ...(community ?? {}),
         members,
-        connection: connection ?? null,
+        connected_companies: connectedCompanies,
         specialties,
-        "Short message": "",
+        rate_sum,
+        average_rate,
+        "Company Logo": companyData?.["Company Logo"] ?? "",
+        "Short message": ""
       };
 
       if (!mounted) return;
@@ -161,9 +198,8 @@ export default function CApplyACommunity() {
   }, [id, companyUser]);
 
   // =========================
-  // SAVE (diferença crítica)
+  // SAVE
   // =========================
-
   async function handleSave(data: any) {
     if (!companyUser || !id || !company) return;
 
@@ -184,7 +220,6 @@ export default function CApplyACommunity() {
   // =========================
   // LOGOUT
   // =========================
-
   async function handleLogout() {
     await supabaseC.auth.signOut();
     router.replace("/");

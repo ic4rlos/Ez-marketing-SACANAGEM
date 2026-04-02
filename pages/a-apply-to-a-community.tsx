@@ -76,6 +76,15 @@ export default function AApplyToACommunity() {
         .maybeSingle();
 
       // =========================
+      // PROFILE DO USUÁRIO LOGADO
+      // =========================
+      const { data: myProfile } = await supabase
+        .from("User profile")
+        .select('"Profile pic"')
+        .eq("user_id", viewer.id)
+        .maybeSingle();
+
+      // =========================
       // MEMBERS
       // =========================
       const { data: membersDb } = await supabase
@@ -190,6 +199,10 @@ export default function AApplyToACommunity() {
         connected_companies,
         average_rate: community?.average_rate ?? 0,
         rate_sum: community?.rate_sum ?? 0,
+
+        // ✅ FOTO DO USUÁRIO LOGADO
+        "Profile pic": myProfile?.["Profile pic"] ?? null,
+
         "Short message": ""
       };
 

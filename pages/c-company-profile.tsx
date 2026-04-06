@@ -164,34 +164,13 @@ export default function CCompanyProfile() {
         communityMap[Number(c.id)] = c;
       });
 
-      const companyIds = Array.from(
-        new Set(
-          (allReviews ?? [])
-            .map((r: any) => Number(r.company_id))
-            .filter(Boolean)
-        )
-      );
-
-      const { data: companiesReviews } = await supabaseC
-        .from("companies")
-        .select('id, "Company Logo", "Company name"')
-        .in("id", companyIds);
-
-      const companyMap: any = {};
-      companiesReviews?.forEach((c: any) => {
-        companyMap[Number(c.id)] = c;
-      });
-
       const enrich = (r: any) => {
         const community = communityMap[Number(r.community_id)];
-        const company = companyMap[Number(r.company_id)];
 
         return {
           ...r,
           community_name: community?.community_name ?? "",
           community_logo: community?.community_logo ?? "",
-          "Company name": company?.["Company name"] ?? "",
-          "Company Logo": company?.["Company Logo"] ?? "",
         };
       };
 
@@ -203,7 +182,7 @@ export default function CCompanyProfile() {
         .filter((r: any) => r.author_type === "company")
         .map(enrich);
 
-      // ⭐ MÉDIA + 🔢 TOTAL
+      // ⭐ MÉTRICAS
       const ratings = company_reviews.map((r: any) =>
         Number(r.rating) || 0
       );
@@ -219,15 +198,15 @@ export default function CCompanyProfile() {
         ...companyData,
         connected_agencies: connectedAgencies,
         agency_requests: agencyRequests,
-
-        company_reviews,
-        company_replies,
-
-        average_rating,
-        total_reviews,
       };
 
-      setCompany(enrichedCompany);
+      setCompany({
+        ...enrichedCompany,
+        company_reviews,
+        company_replies,
+        average_rating,
+        total_reviews,
+      });
 
       // =========================
       // SOLUTIONS
@@ -333,8 +312,17 @@ export default function CCompanyProfile() {
     <PlasmicCCompanyProfile
       args={{
         company: company ?? {},
+
+        // 🔥 PADRÃO IGUAL DASHBOARD
+        company_reviews: company?.company_reviews ?? [],
+        company_replies: company?.company_replies ?? [],
+
+        average_rating: company?.average_rating ?? 0,
+        total_reviews: company?.total_reviews ?? 0,
+
         formData: solutions ?? [],
         solutions: solutions ?? [],
+
         onSave: handleSave,
         onLogout: handleLogout,
       }}

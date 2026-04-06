@@ -1026,10 +1026,7 @@ function PlasmicCApplyToACommunity__RenderFunc(props: {
           </div>
           {(() => {
             try {
-              return (
-                $props.formData?.connection &&
-                $props.formData?.connection?.status !== "connected"
-              );
+              return $props.formData?.connection?.status !== "connected";
             } catch (e) {
               if (
                 e instanceof TypeError ||

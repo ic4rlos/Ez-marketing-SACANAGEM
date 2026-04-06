@@ -258,7 +258,7 @@ function PlasmicCApplyToACommunity__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
-              return $props.company?.average_rate;
+              return $props.formData?.average_rate;
             } catch (e) {
               if (
                 e instanceof TypeError ||
@@ -1346,7 +1346,7 @@ function PlasmicCApplyToACommunity__RenderFunc(props: {
                 {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
                   (() => {
                     try {
-                      return $props.company?.connected_companies || [1];
+                      return $props.formData?.connected_companies || [1];
                     } catch (e) {
                       if (
                         e instanceof TypeError ||
@@ -5331,7 +5331,7 @@ function PlasmicCApplyToACommunity__RenderFunc(props: {
               className={classNames("__wab_instance", sty.communityRate)}
               defaultValue={(() => {
                 try {
-                  return $props.company?.average_rate;
+                  return $props.formData?.average_rate;
                 } catch (e) {
                   if (
                     e instanceof TypeError ||
@@ -5415,7 +5415,7 @@ function PlasmicCApplyToACommunity__RenderFunc(props: {
                 <React.Fragment>
                   {(() => {
                     try {
-                      return $props.company?.rate_sum;
+                      return $props.formData?.rate_sum;
                     } catch (e) {
                       if (
                         e instanceof TypeError ||

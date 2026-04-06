@@ -29,6 +29,7 @@ export default function CCompanyProfile() {
   // =========================
   // AUTH
   // =========================
+
   useEffect(() => {
     async function loadUser() {
       const { data } = await supabaseC.auth.getUser();
@@ -46,6 +47,7 @@ export default function CCompanyProfile() {
   // =========================
   // LOAD ALL
   // =========================
+
   async function loadAll() {
     if (!user) return;
 
@@ -63,6 +65,10 @@ export default function CCompanyProfile() {
         setLoading(false);
         return;
       }
+
+      // =========================
+      // CONNECTIONS
+      // =========================
 
       const { data: connections } = await supabaseA
         .from("CONNECTIONS")
@@ -138,12 +144,13 @@ export default function CCompanyProfile() {
       }
 
       // =========================
-      // REVIEWS
+      // REVIEWS (COMMUNITY)
       // =========================
 
       const { data: allReviews } = await supabaseA
         .from("community_reviews")
         .select("*")
+        .eq("author_type", "company")
         .eq("company_id", companyData.id);
 
       const communityIds = Array.from(
@@ -164,49 +171,45 @@ export default function CCompanyProfile() {
         communityMap[Number(c.id)] = c;
       });
 
-      const enrich = (r: any) => {
-        const community = communityMap[Number(r.community_id)];
+      const community_reviews =
+        (allReviews ?? []).map((r: any) => {
+          const community =
+            communityMap[Number(r.community_id)];
 
-        return {
-          ...r,
-          community_name: community?.community_name ?? "",
-          community_logo: community?.community_logo ?? "",
-        };
-      };
+          return {
+            ...r,
+            community_name:
+              community?.community_name ?? "",
+            community_logo:
+              community?.community_logo ?? "",
+          };
+        });
 
-      const company_reviews = (allReviews ?? [])
-        .filter((r: any) => r.author_type === "community")
-        .map(enrich);
-
-      const company_replies = (allReviews ?? [])
-        .filter((r: any) => r.author_type === "company")
-        .map(enrich);
-
-      // ⭐ MÉTRICAS
-      const ratings = company_reviews.map((r: any) =>
-        Number(r.rating) || 0
-      );
-
-      const total_reviews = ratings.length;
+      const total_reviews = community_reviews.length;
 
       const average_rating =
         total_reviews > 0
-          ? ratings.reduce((a, b) => a + b, 0) / total_reviews
+          ? community_reviews.reduce(
+              (acc: number, r: any) =>
+                acc + Number(r.rating || 0),
+              0
+            ) / total_reviews
           : 0;
+
+      // =========================
+      // FINAL COMPANY
+      // =========================
 
       const enrichedCompany = {
         ...companyData,
         connected_agencies: connectedAgencies,
         agency_requests: agencyRequests,
+        community_reviews,
+        total_reviews,
+        average_rating,
       };
 
-      setCompany({
-        ...enrichedCompany,
-        company_reviews,
-        company_replies,
-        average_rating,
-        total_reviews,
-      });
+      setCompany(enrichedCompany);
 
       // =========================
       // SOLUTIONS
@@ -238,7 +241,8 @@ export default function CCompanyProfile() {
             sol.solutions_steps
               ?.sort(
                 (a: any, b: any) =>
-                  (a.Step_order ?? 0) - (b.Step_order ?? 0)
+                  (a.Step_order ?? 0) -
+                  (b.Step_order ?? 0)
               )
               .map((s: any) => ({
                 id: s.id,
@@ -247,7 +251,6 @@ export default function CCompanyProfile() {
         })) ?? [];
 
       setSolutions(structuredSolutions);
-
     } catch (err) {
       console.error("Load error:", err);
     }
@@ -264,7 +267,7 @@ export default function CCompanyProfile() {
   // =========================
 
   async function handleSave(payload: any) {
-    const { action, connectionId } = payload;
+    const { action, connectionId, reason } = payload;
 
     if (!connectionId) return;
 
@@ -312,17 +315,14 @@ export default function CCompanyProfile() {
     <PlasmicCCompanyProfile
       args={{
         company: company ?? {},
-
-        // 🔥 PADRÃO IGUAL DASHBOARD
-        company_reviews: company?.company_reviews ?? [],
-        company_replies: company?.company_replies ?? [],
-
-        average_rating: company?.average_rating ?? 0,
-        total_reviews: company?.total_reviews ?? 0,
-
         formData: solutions ?? [],
         solutions: solutions ?? [],
-
+        community_reviews:
+          company?.community_reviews ?? [],
+        average_rating:
+          company?.average_rating ?? 0,
+        total_reviews:
+          company?.total_reviews ?? 0,
         onSave: handleSave,
         onLogout: handleLogout,
       }}

@@ -770,7 +770,7 @@ function PlasmicCApplyToACommunity__RenderFunc(props: {
                     loading={"lazy"}
                     src={(() => {
                       try {
-                        return $props.company?.["Company Logo"] ?? "";
+                        return $props.formData?.["Company Logo"] ?? "";
                       } catch (e) {
                         if (
                           e instanceof TypeError ||
@@ -1027,7 +1027,7 @@ function PlasmicCApplyToACommunity__RenderFunc(props: {
           {(() => {
             try {
               return (
-                !$props.formData?.connection ||
+                $props.formData?.connection &&
                 $props.formData?.connection?.status !== "connected"
               );
             } catch (e) {

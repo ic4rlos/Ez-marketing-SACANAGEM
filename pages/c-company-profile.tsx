@@ -29,7 +29,6 @@ export default function CCompanyProfile() {
   // =========================
   // AUTH
   // =========================
-
   useEffect(() => {
     async function loadUser() {
       const { data } = await supabaseC.auth.getUser();
@@ -47,7 +46,6 @@ export default function CCompanyProfile() {
   // =========================
   // LOAD ALL
   // =========================
-
   async function loadAll() {
     if (!user) return;
 
@@ -74,7 +72,7 @@ export default function CCompanyProfile() {
       let connectedAgencies: any[] = [];
       let agencyRequests: any[] = [];
 
-      if (connections && connections.length > 0) {
+      if (connections?.length) {
         const connected = connections.filter(
           (c: any) => c.status === "connected"
         );
@@ -92,7 +90,6 @@ export default function CCompanyProfile() {
           .select("*")
           .in("id", agencyIds);
 
-        // ✅ SOMENTE MEMBERS CONNECTED
         const { data: members } = await supabaseA
           .from("community_members")
           .select("community_id")
@@ -100,7 +97,6 @@ export default function CCompanyProfile() {
           .in("community_id", agencyIds);
 
         const memberCountMap: any = {};
-
         members?.forEach((m: any) => {
           const key = Number(m.community_id);
           memberCountMap[key] = (memberCountMap[key] || 0) + 1;
@@ -111,14 +107,9 @@ export default function CCompanyProfile() {
           .select("*");
 
         const specialtiesMap: any = {};
-
         specialties?.forEach((s: any) => {
           const key = Number(s.community_id);
-
-          if (!specialtiesMap[key]) {
-            specialtiesMap[key] = [];
-          }
-
+          if (!specialtiesMap[key]) specialtiesMap[key] = [];
           specialtiesMap[key].push(s["Professional specialty"]);
         });
 
@@ -131,10 +122,10 @@ export default function CCompanyProfile() {
 
             return {
               id: conn.id,
-              agency_id: conn.agency_id, // 🔥 necessário pro link
+              agency_id: conn.agency_id,
               short_message: conn.short_message ?? "",
-              community_name: community?.["community_name"] ?? "",
-              community_logo: community?.["community_logo"] ?? "",
+              community_name: community?.community_name ?? "",
+              community_logo: community?.community_logo ?? "",
               members:
                 memberCountMap[Number(conn.agency_id)] ?? 0,
               specialties:
@@ -146,13 +137,101 @@ export default function CCompanyProfile() {
         agencyRequests = format(requests);
       }
 
+      // =========================
+      // REVIEWS
+      // =========================
+
+      const { data: allReviews } = await supabaseA
+        .from("community_reviews")
+        .select("*")
+        .eq("company_id", companyData.id);
+
+      const communityIds = Array.from(
+        new Set(
+          (allReviews ?? [])
+            .map((r: any) => Number(r.community_id))
+            .filter(Boolean)
+        )
+      );
+
+      const { data: communitiesReviews } = await supabaseA
+        .from("Community")
+        .select("id, community_name, community_logo")
+        .in("id", communityIds);
+
+      const communityMap: any = {};
+      communitiesReviews?.forEach((c: any) => {
+        communityMap[Number(c.id)] = c;
+      });
+
+      const companyIds = Array.from(
+        new Set(
+          (allReviews ?? [])
+            .map((r: any) => Number(r.company_id))
+            .filter(Boolean)
+        )
+      );
+
+      const { data: companiesReviews } = await supabaseC
+        .from("companies")
+        .select('id, "Company Logo", "Company name"')
+        .in("id", companyIds);
+
+      const companyMap: any = {};
+      companiesReviews?.forEach((c: any) => {
+        companyMap[Number(c.id)] = c;
+      });
+
+      const enrich = (r: any) => {
+        const community = communityMap[Number(r.community_id)];
+        const company = companyMap[Number(r.company_id)];
+
+        return {
+          ...r,
+          community_name: community?.community_name ?? "",
+          community_logo: community?.community_logo ?? "",
+          "Company name": company?.["Company name"] ?? "",
+          "Company Logo": company?.["Company Logo"] ?? "",
+        };
+      };
+
+      const company_reviews = (allReviews ?? [])
+        .filter((r: any) => r.author_type === "community")
+        .map(enrich);
+
+      const company_replies = (allReviews ?? [])
+        .filter((r: any) => r.author_type === "company")
+        .map(enrich);
+
+      // ⭐ MÉDIA + 🔢 TOTAL
+      const ratings = company_reviews.map((r: any) =>
+        Number(r.rating) || 0
+      );
+
+      const total_reviews = ratings.length;
+
+      const average_rating =
+        total_reviews > 0
+          ? ratings.reduce((a, b) => a + b, 0) / total_reviews
+          : 0;
+
       const enrichedCompany = {
         ...companyData,
         connected_agencies: connectedAgencies,
         agency_requests: agencyRequests,
+
+        company_reviews,
+        company_replies,
+
+        average_rating,
+        total_reviews,
       };
 
       setCompany(enrichedCompany);
+
+      // =========================
+      // SOLUTIONS
+      // =========================
 
       const { data: solutionsData } = await supabaseC
         .from("solutions")
@@ -206,7 +285,7 @@ export default function CCompanyProfile() {
   // =========================
 
   async function handleSave(payload: any) {
-    const { action, connectionId, reason } = payload;
+    const { action, connectionId } = payload;
 
     if (!connectionId) return;
 

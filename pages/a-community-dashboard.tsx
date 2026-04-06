@@ -106,7 +106,23 @@ export default function ACommunityDashboard() {
   // SAVE
   // =========================
   async function onSave(data:any){
+  if (data?.action === "accept"){
+    await supabase.from("CONNECTIONS")
+      .update({ status: "connected" })
+      .eq("id", data.connectionId);
 
+    router.reload();
+    return;
+  }
+
+  if (data?.action === "reject"){
+    await supabase.from("CONNECTIONS")
+      .delete()
+      .eq("id", data.connectionId);
+
+    router.reload();
+    return;
+  }
     if (data?.action === "confirm_community_rate"){
 
       const now = new Date();

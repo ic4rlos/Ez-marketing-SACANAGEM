@@ -61,6 +61,16 @@ export default function CApplyACommunity() {
 
       setCompany(companyData ?? null);
 
+      // 🔥 CONNECTION (ESSENCIAL)
+      const { data: connection } = await supabaseA
+        .from("CONNECTIONS")
+        .select("*")
+        .eq("company_id", companyData?.id)
+        .eq("agency_id", communityId)
+        .maybeSingle();
+
+      const isConnected = connection?.status === "connected";
+
       // 🔹 COMMUNITY (A)
       const { data: community } = await supabaseA
         .from("Community")
@@ -114,7 +124,7 @@ export default function CApplyACommunity() {
         ).flat().filter(Boolean);
       }
 
-      // 🔹 CONNECTED COMPANIES (IGUAL AO IRMÃO)
+      // 🔹 CONNECTED COMPANIES
       const { data: connections } = await supabaseA
         .from("CONNECTIONS")
         .select("*")
@@ -143,7 +153,7 @@ export default function CApplyACommunity() {
         });
       }
 
-      // 🔹 REVIEWS (IGUAL AO IRMÃO)
+      // 🔹 REVIEWS
       const { data: reviews } = await supabaseA
         .from("community_reviews")
         .select("rating, author_type")
@@ -180,6 +190,8 @@ export default function CApplyACommunity() {
         specialties,
         rate_sum,
         average_rate,
+        connection: connection ?? null, // 🔥 necessário
+        isConnected, // 🔥 use isso no Plasmic
         "Company Logo": companyData?.["Company Logo"] ?? "",
         "Short message": ""
       };

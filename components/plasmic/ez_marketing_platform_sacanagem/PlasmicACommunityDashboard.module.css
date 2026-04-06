@@ -1164,6 +1164,7 @@
   user-select: text;
   text-decoration-line: none;
   text-overflow: clip;
+  display: none;
 }
 .container3 {
   display: flex;

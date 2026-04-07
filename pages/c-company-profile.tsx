@@ -192,7 +192,7 @@ export default function CCompanyProfile() {
           community_logo:
             community?.community_logo ?? "",
           comment: r.comment ?? "",
-          rating: rating || 0,
+          rating: Number(r.rating ?? 0), // 🔥 já aproveita e normaliza
         };
       };
 

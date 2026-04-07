@@ -186,6 +186,7 @@ export default function CCompanyProfile() {
         }
 
         return {
+          agency_id: Number(r.community_id), // 🔥 ESSENCIAL PRO LINK
           community_name:
             community?.community_name ?? "",
           community_logo:

@@ -29,6 +29,7 @@ export default function CCompanyProfile() {
   // =========================
   // AUTH
   // =========================
+
   useEffect(() => {
     async function loadUser() {
       const { data } = await supabaseC.auth.getUser();
@@ -46,6 +47,7 @@ export default function CCompanyProfile() {
   // =========================
   // LOAD ALL
   // =========================
+
   async function loadAll() {
     if (!user) return;
 
@@ -64,6 +66,10 @@ export default function CCompanyProfile() {
         return;
       }
 
+      // =========================
+      // CONNECTIONS
+      // =========================
+
       const { data: connections } = await supabaseA
         .from("CONNECTIONS")
         .select("*")
@@ -72,15 +78,7 @@ export default function CCompanyProfile() {
       let connectedAgencies: any[] = [];
       let agencyRequests: any[] = [];
 
-      if (connections && connections.length > 0) {
-        const connected = connections.filter(
-          (c: any) => c.status === "connected"
-        );
-
-        const requests = connections.filter(
-          (c: any) => c.status === "agency request"
-        );
-
+      if (connections?.length) {
         const agencyIds = connections.map((c: any) =>
           Number(c.agency_id)
         );
@@ -123,9 +121,9 @@ export default function CCompanyProfile() {
             return {
               id: conn.id,
               agency_id: conn.agency_id,
-              short_message: conn.short_message ?? "",
               community_name: community?.["community_name"] ?? "",
               community_logo: community?.["community_logo"] ?? "",
+              short_message: conn.short_message ?? "",
               members:
                 memberCountMap[Number(conn.agency_id)] ?? 0,
               specialties:
@@ -133,21 +131,27 @@ export default function CCompanyProfile() {
             };
           });
 
-        connectedAgencies = format(connected);
-        agencyRequests = format(requests);
+        connectedAgencies = format(
+          connections.filter((c) => c.status === "connected")
+        );
+
+        agencyRequests = format(
+          connections.filter((c) => c.status === "agency request")
+        );
       }
 
       // =========================
-      // REVIEWS
+      // REVIEWS (CORRETO PRA COMPANY)
       // =========================
-      const { data: allReviews } = await supabaseA
+
+      const { data: reviewsRaw } = await supabaseA
         .from("community_reviews")
         .select("*")
         .eq("company_id", companyData.id);
 
       const communityIds = Array.from(
         new Set(
-          (allReviews ?? [])
+          (reviewsRaw ?? [])
             .map((r: any) => Number(r.community_id))
             .filter(Boolean)
         )
@@ -168,25 +172,17 @@ export default function CCompanyProfile() {
 
         return {
           ...r,
-          agency_id: r.community_id,
           community_logo: community?.["community_logo"] ?? "",
-          community_name:
-            community?.["community_name"] ??
-            community?.community_name ??
-            "",
-          comment: r.comment ?? "",
-          rating: r.rating ?? 0,
+          community_name: community?.["community_name"] ?? "",
         };
       };
 
-      const company_reviews = (allReviews ?? [])
-        .filter((r: any) => r.author_type === "community")
+      const company_reviews = (reviewsRaw ?? [])
+        .filter((r) => r.author_type === "community")
         .map(enrich);
 
-      const company_replies = (allReviews ?? [])
-        .filter((r: any) =>
-          r.author_type?.startsWith("community")
-        )
+      const company_replies = (reviewsRaw ?? [])
+        .filter((r) => r.author_type === "company")
         .map(enrich);
 
       const totalReviews = company_reviews.length;
@@ -194,8 +190,7 @@ export default function CCompanyProfile() {
       const averageRating =
         totalReviews > 0
           ? company_reviews.reduce(
-              (acc: number, r: any) =>
-                acc + (r.rating ?? 0),
+              (acc: number, r: any) => acc + Number(r.rating || 0),
               0
             ) / totalReviews
           : 0;
@@ -215,6 +210,7 @@ export default function CCompanyProfile() {
       // =========================
       // SOLUTIONS
       // =========================
+
       const { data: solutionsData } = await supabaseC
         .from("solutions")
         .select(`
@@ -228,8 +224,7 @@ export default function CCompanyProfile() {
             Step_order
           )
         `)
-        .eq("Company_id", companyData.id)
-        .order("id", { ascending: true });
+        .eq("Company_id", companyData.id);
 
       const structuredSolutions =
         solutionsData?.map((sol: any) => ({
@@ -241,8 +236,7 @@ export default function CCompanyProfile() {
             sol.solutions_steps
               ?.sort(
                 (a: any, b: any) =>
-                  (a.Step_order ?? 0) -
-                  (b.Step_order ?? 0)
+                  (a.Step_order ?? 0) - (b.Step_order ?? 0)
               )
               .map((s: any) => ({
                 id: s.id,
@@ -251,7 +245,6 @@ export default function CCompanyProfile() {
         })) ?? [];
 
       setSolutions(structuredSolutions);
-
     } catch (err) {
       console.error("Load error:", err);
     }
@@ -264,8 +257,9 @@ export default function CCompanyProfile() {
   }, [user]);
 
   // =========================
-  // ACTION VIA onSave
+  // ACTIONS
   // =========================
+
   async function handleSave(payload: any) {
     const { action, connectionId } = payload;
 
@@ -278,14 +272,7 @@ export default function CCompanyProfile() {
         .eq("id", connectionId);
     }
 
-    if (action === "reject") {
-      await supabaseA
-        .from("CONNECTIONS")
-        .delete()
-        .eq("id", connectionId);
-    }
-
-    if (action === "disconnect") {
+    if (action === "reject" || action === "disconnect") {
       await supabaseA
         .from("CONNECTIONS")
         .delete()
@@ -298,6 +285,7 @@ export default function CCompanyProfile() {
   // =========================
   // LOGOUT
   // =========================
+
   async function handleLogout() {
     await supabaseC.auth.signOut();
     router.replace("/");
@@ -306,6 +294,7 @@ export default function CCompanyProfile() {
   // =========================
   // RENDER
   // =========================
+
   if (user === undefined) return null;
   if (loading) return null;
 

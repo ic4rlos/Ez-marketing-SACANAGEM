@@ -124,6 +124,7 @@ export default function CCompanyProfile() {
             const community = communities?.find(
               (c: any) =>
                 Number(c.id) === Number(conn.agency_id)
+              const agencyId = Number(r.community_id);
             );
 
             return {

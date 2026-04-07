@@ -144,13 +144,12 @@ export default function CCompanyProfile() {
       }
 
       // =========================
-      // REVIEWS (COMMUNITY)
+      // REVIEWS
       // =========================
 
       const { data: allReviews } = await supabaseA
         .from("community_reviews")
         .select("*")
-        .eq("author_type", "company")
         .eq("company_id", companyData.id);
 
       const communityIds = Array.from(
@@ -171,25 +170,48 @@ export default function CCompanyProfile() {
         communityMap[Number(c.id)] = c;
       });
 
-      const community_reviews =
-        (allReviews ?? []).map((r: any) => {
-          const community =
-            communityMap[Number(r.community_id)];
+      const enrich = (r: any) => {
+        const community =
+          communityMap[Number(r.community_id)];
 
-          return {
-            ...r,
-            community_name:
-              community?.community_name ?? "",
-            community_logo:
-              community?.community_logo ?? "",
-          };
-        });
+        return {
+          ...r,
+          community_name:
+            community?.community_name ?? "",
+          community_logo:
+            community?.community_logo ?? "",
+        };
+      };
 
-      const total_reviews = community_reviews.length;
+      const company_reviews = (allReviews ?? [])
+        .filter((r: any) => r.author_type === "community")
+        .map(enrich);
+
+      const company_membersreviews = (allReviews ?? [])
+        .filter((r: any) => r.author_type === "member")
+        .map(enrich);
+
+      const company_replies = (allReviews ?? [])
+        .filter(
+          (r: any) =>
+            r.author_type?.startsWith("company") &&
+            r.community_id
+        )
+        .map(enrich);
+
+      const company_membersreplies = (allReviews ?? [])
+        .filter(
+          (r: any) =>
+            r.author_type?.startsWith("company") &&
+            !r.community_id
+        )
+        .map(enrich);
+
+      const total_reviews = company_reviews.length;
 
       const average_rating =
         total_reviews > 0
-          ? community_reviews.reduce(
+          ? company_reviews.reduce(
               (acc: number, r: any) =>
                 acc + Number(r.rating || 0),
               0
@@ -204,7 +226,12 @@ export default function CCompanyProfile() {
         ...companyData,
         connected_agencies: connectedAgencies,
         agency_requests: agencyRequests,
-        community_reviews,
+
+        company_reviews,
+        company_membersreviews,
+        company_replies,
+        company_membersreplies,
+
         total_reviews,
         average_rating,
       };
@@ -267,7 +294,7 @@ export default function CCompanyProfile() {
   // =========================
 
   async function handleSave(payload: any) {
-    const { action, connectionId, reason } = payload;
+    const { action, connectionId } = payload;
 
     if (!connectionId) return;
 
@@ -317,12 +344,17 @@ export default function CCompanyProfile() {
         company: company ?? {},
         formData: solutions ?? [],
         solutions: solutions ?? [],
-        community_reviews:
-          company?.community_reviews ?? [],
-        average_rating:
-          company?.average_rating ?? 0,
-        total_reviews:
-          company?.total_reviews ?? 0,
+
+        company_reviews: company?.company_reviews ?? [],
+        company_membersreviews:
+          company?.company_membersreviews ?? [],
+        company_replies: company?.company_replies ?? [],
+        company_membersreplies:
+          company?.company_membersreplies ?? [],
+
+        average_rating: company?.average_rating ?? 0,
+        total_reviews: company?.total_reviews ?? 0,
+
         onSave: handleSave,
         onLogout: handleLogout,
       }}

@@ -4018,7 +4018,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                       const child$Props = {
                         allowHalf: true,
                         className: classNames("__wab_instance", sty.rating2),
-                        defaultValue: currentItem.comment,
+                        defaultValue: currentItem.rating,
 
                         disabled: true,
                         onChange: async (...eventArgs: any) => {
@@ -4101,7 +4101,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                           {
                             name: "rating2[].value",
                             initFunc: ({ $props, $state, $queries, $q }) =>
-                              currentItem.comment
+                              currentItem.rating
                           }
                         ],
                         [__plasmic_idx_0]

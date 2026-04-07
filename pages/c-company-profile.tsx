@@ -128,7 +128,7 @@ export default function CCompanyProfile() {
 
             return {
               id: conn.id,
-              agency_id: conn.agency_id,
+              agency_id: Number(conn.agency_id) || 0, // ✅ FIX LINK
               short_message: conn.short_message ?? "",
               community_name: community?.community_name ?? "",
               community_logo: community?.community_logo ?? "",
@@ -170,16 +170,28 @@ export default function CCompanyProfile() {
         communityMap[Number(c.id)] = c;
       });
 
+      // ✅ FIX RATING + COMMENT
       const enrich = (r: any) => {
         const community =
           communityMap[Number(r.community_id)];
 
+        let rating = 0;
+
+        if (typeof r.rating === "number") {
+          rating = r.rating;
+        } else if (typeof r.rating === "string") {
+          rating = Number(r.rating);
+        } else if (r.rating?.value) {
+          rating = Number(r.rating.value);
+        }
+
         return {
-          ...r,
           community_name:
             community?.community_name ?? "",
           community_logo:
             community?.community_logo ?? "",
+          comment: r.comment ?? "",
+          rating: rating || 0,
         };
       };
 
@@ -213,7 +225,7 @@ export default function CCompanyProfile() {
         total_reviews > 0
           ? company_reviews.reduce(
               (acc: number, r: any) =>
-                acc + Number(r.rating || 0),
+                acc + (r.rating || 0),
               0
             ) / total_reviews
           : 0;
@@ -290,7 +302,7 @@ export default function CCompanyProfile() {
   }, [user]);
 
   // =========================
-  // ACTION VIA onSave
+  // ACTIONS
   // =========================
 
   async function handleSave(payload: any) {
@@ -305,14 +317,7 @@ export default function CCompanyProfile() {
         .eq("id", connectionId);
     }
 
-    if (action === "reject") {
-      await supabaseA
-        .from("CONNECTIONS")
-        .delete()
-        .eq("id", connectionId);
-    }
-
-    if (action === "disconnect") {
+    if (action === "reject" || action === "disconnect") {
       await supabaseA
         .from("CONNECTIONS")
         .delete()

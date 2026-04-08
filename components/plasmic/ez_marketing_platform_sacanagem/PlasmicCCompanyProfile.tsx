@@ -3370,44 +3370,44 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                               sty.freeBox__gPysX
                             )}
                           >
-                            {(_par =>
-                              !_par ? [] : Array.isArray(_par) ? _par : [_par])(
-                              (() => {
-                                try {
-                                  return currentItem.steps;
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return [];
+                            <div
+                              data-plasmic-name={"steps"}
+                              data-plasmic-override={overrides.steps}
+                              className={classNames(projectcss.all, sty.steps)}
+                            >
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.__wab_text,
+                                  sty.text___9HSl
+                                )}
+                              >
+                                {"Steps"}
+                              </div>
+                              {(_par =>
+                                !_par
+                                  ? []
+                                  : Array.isArray(_par)
+                                    ? _par
+                                    : [_par])(
+                                (() => {
+                                  try {
+                                    return currentItem.steps;
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return [];
+                                    }
+                                    throw e;
                                   }
-                                  throw e;
-                                }
-                              })()
-                            ).map((__plasmic_item_1, __plasmic_idx_1) => {
-                              const step = __plasmic_item_1;
-                              const stepIndex = __plasmic_idx_1;
-                              return (
-                                <div
-                                  data-plasmic-name={"steps"}
-                                  data-plasmic-override={overrides.steps}
-                                  className={classNames(
-                                    projectcss.all,
-                                    sty.steps
-                                  )}
-                                  key={stepIndex}
-                                >
-                                  <div
-                                    className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
-                                      sty.text___9HSl
-                                    )}
-                                  >
-                                    {"Steps"}
-                                  </div>
+                                })()
+                              ).map((__plasmic_item_1, __plasmic_idx_1) => {
+                                const currentItem = __plasmic_item_1;
+                                const currentIndex = __plasmic_idx_1;
+                                return (
                                   <div
                                     data-plasmic-name={"stepText"}
                                     data-plasmic-override={overrides.stepText}
@@ -3416,6 +3416,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                                       projectcss.__wab_text,
                                       sty.stepText
                                     )}
+                                    key={currentIndex}
                                   >
                                     <React.Fragment>
                                       {(() => {
@@ -3434,9 +3435,9 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                                       })()}
                                     </React.Fragment>
                                   </div>
-                                </div>
-                              );
-                            })}
+                                );
+                              })}
+                            </div>
                             <div
                               className={classNames(
                                 projectcss.all,

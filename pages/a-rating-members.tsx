@@ -74,7 +74,12 @@ export default function ARatingMembers() {
           .select("*")
           .eq("user_id", id)
           .maybeSingle();
-
+// 🔥 LOGGED USER PROFILE PIC
+const { data: loggedProfile } = await supabase
+  .from("User profile")
+  .select("*")
+  .eq("user_id", user.id)
+  .maybeSingle();
         if (!profile) {
           setFormData(null);
           setLoading(false);
@@ -152,7 +157,7 @@ export default function ARatingMembers() {
         // =========================
         const enriched = {
           ...profile,
-
+logged_profile_pic: loggedProfile?.["Profile pic"] ?? null,
           community_logo: communityLogo,
 
           offices, // ✅ ADICIONADO

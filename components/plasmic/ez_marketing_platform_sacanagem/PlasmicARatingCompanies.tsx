@@ -164,9 +164,7 @@ export type PlasmicARatingCompanies__OverridesType = {
   confirmRate?: Flex__<typeof Button2>;
   button2?: Flex__<typeof Button2>;
   companyRated?: Flex__<typeof AntdRate>;
-  rateSum2?: Flex__<"div">;
   customerRated?: Flex__<typeof AntdRate>;
-  rateSum3?: Flex__<"div">;
   reportRate?: Flex__<"div">;
   reportData?: Flex__<"div">;
   companyRate?: Flex__<typeof AntdRate>;
@@ -1655,32 +1653,6 @@ function PlasmicARatingCompanies__RenderFunc(props: {
                     "value"
                   ])}
                 />
-
-                <div
-                  data-plasmic-name={"rateSum2"}
-                  data-plasmic-override={overrides.rateSum2}
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.rateSum2
-                  )}
-                >
-                  <React.Fragment>
-                    {(() => {
-                      try {
-                        return $props.company?.rate_sum_2;
-                      } catch (e) {
-                        if (
-                          e instanceof TypeError ||
-                          e?.plasmicType === "PlasmicUndefinedDataError"
-                        ) {
-                          return "(50)";
-                        }
-                        throw e;
-                      }
-                    })()}
-                  </React.Fragment>
-                </div>
               </div>
               <div className={classNames(projectcss.all, sty.freeBox__dDnmB)}>
                 <CustomerRatesSvgIcon
@@ -1775,32 +1747,6 @@ function PlasmicARatingCompanies__RenderFunc(props: {
                     "value"
                   ])}
                 />
-
-                <div
-                  data-plasmic-name={"rateSum3"}
-                  data-plasmic-override={overrides.rateSum3}
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.rateSum3
-                  )}
-                >
-                  <React.Fragment>
-                    {(() => {
-                      try {
-                        return $props.company?.rate_sum_3;
-                      } catch (e) {
-                        if (
-                          e instanceof TypeError ||
-                          e?.plasmicType === "PlasmicUndefinedDataError"
-                        ) {
-                          return "(50)";
-                        }
-                        throw e;
-                      }
-                    })()}
-                  </React.Fragment>
-                </div>
               </div>
             </div>
           </div>
@@ -2252,9 +2198,7 @@ const PlasmicDescendants = {
     "confirmRate",
     "button2",
     "companyRated",
-    "rateSum2",
     "customerRated",
-    "rateSum3",
     "reportRate",
     "reportData",
     "companyRate",
@@ -2310,9 +2254,7 @@ const PlasmicDescendants = {
     "confirmRate",
     "button2",
     "companyRated",
-    "rateSum2",
-    "customerRated",
-    "rateSum3"
+    "customerRated"
   ],
   actualData: ["actualData"],
   rate: ["rate", "rating", "h3", "comment", "confirmRate", "button2"],
@@ -2322,9 +2264,7 @@ const PlasmicDescendants = {
   confirmRate: ["confirmRate"],
   button2: ["button2"],
   companyRated: ["companyRated"],
-  rateSum2: ["rateSum2"],
   customerRated: ["customerRated"],
-  rateSum3: ["rateSum3"],
   reportRate: [
     "reportRate",
     "reportData",
@@ -2372,9 +2312,7 @@ type NodeDefaultElementType = {
   confirmRate: typeof Button2;
   button2: typeof Button2;
   companyRated: typeof AntdRate;
-  rateSum2: "div";
   customerRated: typeof AntdRate;
-  rateSum3: "div";
   reportRate: "div";
   reportData: "div";
   companyRate: typeof AntdRate;
@@ -2474,9 +2412,7 @@ export const PlasmicARatingCompanies = Object.assign(
     confirmRate: makeNodeComponent("confirmRate"),
     button2: makeNodeComponent("button2"),
     companyRated: makeNodeComponent("companyRated"),
-    rateSum2: makeNodeComponent("rateSum2"),
     customerRated: makeNodeComponent("customerRated"),
-    rateSum3: makeNodeComponent("rateSum3"),
     reportRate: makeNodeComponent("reportRate"),
     reportData: makeNodeComponent("reportData"),
     companyRate: makeNodeComponent("companyRate"),

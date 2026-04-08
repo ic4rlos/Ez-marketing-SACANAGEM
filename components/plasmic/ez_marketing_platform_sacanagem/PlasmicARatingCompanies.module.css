@@ -1442,7 +1442,7 @@
   animation: none;
   max-width: 100%;
   object-fit: cover;
-  color: #f2dea9;
+  color: var(--token-ldZErqf7foEV);
   padding: 8px;
 }
 .text__cAp6A {
@@ -1524,25 +1524,6 @@
   user-select: text;
   text-decoration-line: none !important;
   text-overflow: clip !important;
-}
-.rateSum2 {
-  animation: none;
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  font-size: 12px;
-  font-family: "Inter", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  color: #535353;
-  text-align: left;
-  text-transform: none;
-  line-height: 1.5;
-  letter-spacing: normal;
-  white-space: pre-wrap;
-  user-select: text;
-  text-decoration-line: none;
-  text-overflow: clip;
 }
 .freeBox__dDnmB {
   animation: none;
@@ -1691,25 +1672,6 @@
   user-select: text;
   text-decoration-line: none !important;
   text-overflow: clip !important;
-}
-.rateSum3 {
-  animation: none;
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  font-size: 12px;
-  font-family: "Inter", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  color: #535353;
-  text-align: left;
-  text-transform: none;
-  line-height: 1.5;
-  letter-spacing: normal;
-  white-space: pre-wrap;
-  user-select: text;
-  text-decoration-line: none;
-  text-overflow: clip;
 }
 .freeBox__dpv4U {
   animation: none;

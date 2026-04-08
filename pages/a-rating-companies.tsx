@@ -80,7 +80,12 @@ export default function ARatingCompanies() {
         }
 
         const { data: companyData } = await companyQuery.maybeSingle();
-
+// 🔥 LOGGED USER PROFILE PIC
+const { data: loggedProfile } = await supabaseA
+  .from("User profile")
+  .select("*")
+  .eq("user_id", user.id)
+  .maybeSingle();
         if (!companyData) {
           setCompany(null);
           setLoading(false);
@@ -151,7 +156,7 @@ const allCommunityReviews = reviews?.filter(
 
         const enrichedCompany = {
           ...companyData,
-
+logged_profile_pic: loggedProfile?.["Profile pic"] ?? null,
 average_rate: avg(allCommunityReviews), // 🔥 histórico total
 rate_sum: count(allCommunityReviews),   // 🔥 histórico total
 

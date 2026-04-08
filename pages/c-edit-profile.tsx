@@ -227,7 +227,7 @@ export default function CEditProfile() {
     }
 
     // ✅ SUCESSO FINAL: Redirecionar
-    router.replace("/company-profile");
+    router.replace("/c-company-profile");
   }
 
   if (loading) return null;

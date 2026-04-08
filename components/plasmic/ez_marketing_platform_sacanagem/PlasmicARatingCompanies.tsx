@@ -663,7 +663,7 @@ function PlasmicARatingCompanies__RenderFunc(props: {
                       loading={"lazy"}
                       src={(() => {
                         try {
-                          return $props.formData?.["Profile pic"] ?? null;
+                          return $props.company?.["Profile pic"];
                         } catch (e) {
                           if (
                             e instanceof TypeError ||

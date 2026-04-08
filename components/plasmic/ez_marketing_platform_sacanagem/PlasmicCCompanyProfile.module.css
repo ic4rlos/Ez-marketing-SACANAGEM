@@ -2374,6 +2374,17 @@
   text-decoration-line: none;
   text-overflow: clip;
 }
+.freeBox___4Zl9G {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  min-width: 0;
+}
 .stepText {
   animation: none;
   width: 50px;

@@ -3392,7 +3392,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                                     : [_par])(
                                 (() => {
                                   try {
-                                    return currentItem.steps;
+                                    return currentItem.steps || [1];
                                   } catch (e) {
                                     if (
                                       e instanceof TypeError ||
@@ -3409,31 +3409,38 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                                 const currentIndex = __plasmic_idx_1;
                                 return (
                                   <div
-                                    data-plasmic-name={"stepText"}
-                                    data-plasmic-override={overrides.stepText}
                                     className={classNames(
                                       projectcss.all,
-                                      projectcss.__wab_text,
-                                      sty.stepText
+                                      sty.freeBox___4Zl9G
                                     )}
                                     key={currentIndex}
                                   >
-                                    <React.Fragment>
-                                      {(() => {
-                                        try {
-                                          return step.step_text;
-                                        } catch (e) {
-                                          if (
-                                            e instanceof TypeError ||
-                                            e?.plasmicType ===
-                                              "PlasmicUndefinedDataError"
-                                          ) {
-                                            return "Working";
+                                    <div
+                                      data-plasmic-name={"stepText"}
+                                      data-plasmic-override={overrides.stepText}
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.__wab_text,
+                                        sty.stepText
+                                      )}
+                                    >
+                                      <React.Fragment>
+                                        {(() => {
+                                          try {
+                                            return step.step_text;
+                                          } catch (e) {
+                                            if (
+                                              e instanceof TypeError ||
+                                              e?.plasmicType ===
+                                                "PlasmicUndefinedDataError"
+                                            ) {
+                                              return "Working";
+                                            }
+                                            throw e;
                                           }
-                                          throw e;
-                                        }
-                                      })()}
-                                    </React.Fragment>
+                                        })()}
+                                      </React.Fragment>
+                                    </div>
                                   </div>
                                 );
                               })}

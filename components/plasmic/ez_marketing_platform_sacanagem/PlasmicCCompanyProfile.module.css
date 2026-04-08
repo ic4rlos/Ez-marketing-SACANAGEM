@@ -2335,7 +2335,7 @@
 .freeBox__gPysX {
   animation: none;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   position: relative;
   align-items: center;
   justify-content: center;
@@ -2362,7 +2362,6 @@
   user-select: text;
   text-decoration-line: none;
   text-overflow: clip;
-  flex-shrink: 0;
 }
 .steps {
   animation: none;
@@ -2397,7 +2396,7 @@
 .freeBox__aJfa {
   animation: none;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   position: relative;
   width: auto;
   height: auto;

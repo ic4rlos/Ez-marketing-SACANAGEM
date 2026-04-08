@@ -2315,7 +2315,7 @@
 .title2 {
   animation: none;
   position: relative;
-  width: 50px;
+  width: auto;
   height: auto;
   max-width: 100%;
   font-weight: 500;
@@ -2330,6 +2330,7 @@
   user-select: text;
   text-decoration-line: none !important;
   text-overflow: clip !important;
+  padding: 8px;
 }
 .freeBox__gPysX {
   animation: none;
@@ -2406,7 +2407,7 @@
 }
 .description {
   animation: none;
-  width: 400px;
+  width: auto;
   height: auto;
   max-width: 100%;
   font-size: 12px;

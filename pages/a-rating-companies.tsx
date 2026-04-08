@@ -119,7 +119,10 @@ export default function ARatingCompanies() {
               list.length;
 
         const count = (list: any[]) => list.length;
-
+// 🔥 TODAS avaliações (histórico completo)
+const allCommunityReviews = reviews?.filter(
+  (r: any) => r.author_type === "community"
+) ?? [];
         const communityReviews = reviewsThisPeriod.filter(
           (r: any) => r.author_type === "community"
         );
@@ -149,8 +152,8 @@ export default function ARatingCompanies() {
         const enrichedCompany = {
           ...companyData,
 
-          average_rate: avg(communityReviews),
-          rate_sum: count(communityReviews),
+average_rate: avg(allCommunityReviews), // 🔥 histórico total
+rate_sum: count(allCommunityReviews),   // 🔥 histórico total
 
           company_rated: avg(companyReviews),
           rate_sum_2: count(companyReviews),

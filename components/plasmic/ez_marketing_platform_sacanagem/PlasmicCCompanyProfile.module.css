@@ -2344,17 +2344,6 @@
   max-width: 100%;
   padding: 8px;
 }
-.steps {
-  animation: none;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  padding: 8px;
-}
 .text___9HSl {
   animation: none;
   width: 50px;
@@ -2373,17 +2362,18 @@
   user-select: text;
   text-decoration-line: none;
   text-overflow: clip;
+  flex-shrink: 0;
 }
-.freeBox___4Zl9G {
+.steps {
+  animation: none;
   display: flex;
   flex-direction: column;
-  position: relative;
-  width: 100%;
+  align-items: center;
+  justify-content: center;
+  width: auto;
   height: auto;
   max-width: 100%;
-  justify-content: flex-start;
-  align-items: center;
-  min-width: 0;
+  padding: 8px;
 }
 .stepText {
   animation: none;

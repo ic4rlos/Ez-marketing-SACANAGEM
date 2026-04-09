@@ -155,6 +155,15 @@ if (data?.action === "disconnect_member"){
     router.reload();
     return;
   }
+    if (data?.action === "disconnect"){
+  await supabase
+    .from("CONNECTIONS")
+    .delete()
+    .eq("id", data.connectionId);
+
+  router.reload();
+  return;
+}
     if (data?.action === "confirm_community_rate"){
 
       const now = new Date();
@@ -344,7 +353,7 @@ if (!member || member.status !== "connected"){
 
       const { data: profiles } = await supabase
         .from("User profile")
-        .select('id, user_id, "Profile pic", "First name", "Last name", "Birthday"')
+.select('id, user_id, "Profile pic", "First name", "Last name", "Birthday", "Location"')
         .in("user_id", userIds);
 
       const profileMap:any = {};
@@ -377,6 +386,7 @@ if (!member || member.status !== "connected"){
             "Profile pic": profile?.["Profile pic"] ?? "",
             "First name": profile?.["First name"] ?? "",
             "Last name": profile?.["Last name"] ?? "",
+            "Location": profile?.["Location"] ?? "",
             Birthday: profile?.Birthday ?? "",
             offices: profile?.id ? officesMap[profile.id] ?? [] : []
           };

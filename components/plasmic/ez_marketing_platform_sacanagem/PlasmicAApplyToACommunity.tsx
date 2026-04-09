@@ -839,7 +839,7 @@ function PlasmicAApplyToACommunity__RenderFunc(props: {
                     loading={"lazy"}
                     src={(() => {
                       try {
-                        return $props.formData?.["Profile pic"] ?? null;
+                        return $props.formData?.logged_profile_pic;
                       } catch (e) {
                         if (
                           e instanceof TypeError ||

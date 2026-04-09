@@ -811,7 +811,7 @@ function PlasmicARatingMembers__RenderFunc(props: {
                     <React.Fragment>
                       {(() => {
                         try {
-                          return $props.formData?.["Birthday"] ?? "";
+                          return $props.formData?.Age ?? 28;
                         } catch (e) {
                           if (
                             e instanceof TypeError ||

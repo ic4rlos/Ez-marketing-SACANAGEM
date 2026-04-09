@@ -74,7 +74,12 @@ export default function AProfile() {
         .select("*")
         .eq("user_id", targetUserId)
         .maybeSingle();
-
+// 🔥 LOGGED USER PROFILE PIC
+const { data: loggedProfile } = await supabase
+  .from("User profile")
+  .select("*")
+  .eq("user_id", user.id)
+  .maybeSingle();
       if (!profile) {
 
         setLoading(false);
@@ -111,11 +116,12 @@ export default function AProfile() {
       // COMMUNITY
       // =========================
 
-      const { data: membership } = await supabase
-        .from("community_members")
-        .select("*")
-        .eq("user_id", targetUserId)
-        .maybeSingle();
+const { data: membership } = await supabase
+  .from("community_members")
+  .select("*")
+  .eq("user_id", targetUserId)
+  .eq("status", "connected")
+  .maybeSingle();
 
       let communityLogo = null;
 
@@ -160,7 +166,7 @@ export default function AProfile() {
       // =========================
 
       setFormData({
-
+logged_profile_pic: loggedProfile?.["Profile pic"] ?? null,
         ...profile,
 
         Age: age,

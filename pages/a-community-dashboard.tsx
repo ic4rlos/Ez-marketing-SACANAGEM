@@ -132,7 +132,7 @@ if (data?.action === "reject_member"){
 if (data?.action === "disconnect_member"){
   await supabase
     .from("community_members")
-    .update({ status: "pending" })
+.delete()
     .eq("id", data.connectionId);
 
   router.reload();

@@ -157,6 +157,26 @@ const { data: loggedProfile } = await supabase
         // =========================
         const enriched = {
           ...profile,
+          // 🔥 AGE (PADRÃO PROFILE)
+let age = null;
+
+if (profile.Birthday) {
+  const birth = new Date(profile.Birthday);
+  const today = new Date();
+
+  age = today.getFullYear() - birth.getFullYear();
+
+  const monthDiff = today.getMonth() - birth.getMonth();
+
+  if (
+    monthDiff < 0 ||
+    (monthDiff === 0 && today.getDate() < birth.getDate())
+  ) {
+    age--;
+  }
+}
+
+Age: age,
 logged_profile_pic: loggedProfile?.["Profile pic"] ?? null,
           community_logo: communityLogo,
 

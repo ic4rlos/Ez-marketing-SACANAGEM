@@ -1,3 +1,4 @@
+```tsx
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
@@ -74,16 +75,39 @@ export default function ARatingMembers() {
           .select("*")
           .eq("user_id", id)
           .maybeSingle();
-// 🔥 LOGGED USER PROFILE PIC
-const { data: loggedProfile } = await supabase
-  .from("User profile")
-  .select("*")
-  .eq("user_id", user.id)
-  .maybeSingle();
+
+        // 🔥 LOGGED USER PROFILE PIC
+        const { data: loggedProfile } = await supabase
+          .from("User profile")
+          .select("*")
+          .eq("user_id", user.id)
+          .maybeSingle();
+
         if (!profile) {
           setFormData(null);
           setLoading(false);
           return;
+        }
+
+        // =========================
+        // 🔥 AGE (PADRÃO PROFILE)
+        // =========================
+        let age = null;
+
+        if (profile.Birthday) {
+          const birth = new Date(profile.Birthday);
+          const today = new Date();
+
+          age = today.getFullYear() - birth.getFullYear();
+
+          const monthDiff = today.getMonth() - birth.getMonth();
+
+          if (
+            monthDiff < 0 ||
+            (monthDiff === 0 && today.getDate() < birth.getDate())
+          ) {
+            age--;
+          }
         }
 
         // =========================
@@ -100,12 +124,12 @@ const { data: loggedProfile } = await supabase
           })) ?? [];
 
         // =========================
-        // COMMUNITY (CORRIGIDO)
+        // COMMUNITY
         // =========================
         const { data: memberConn } = await supabase
           .from("community_members")
           .select("*")
-          .eq("user_id", id) // ✅ CORRETO
+          .eq("user_id", id)
           .eq("status", "connected")
           .maybeSingle();
 
@@ -157,30 +181,12 @@ const { data: loggedProfile } = await supabase
         // =========================
         const enriched = {
           ...profile,
-          // 🔥 AGE (PADRÃO PROFILE)
-let age = null;
 
-if (profile.Birthday) {
-  const birth = new Date(profile.Birthday);
-  const today = new Date();
-
-  age = today.getFullYear() - birth.getFullYear();
-
-  const monthDiff = today.getMonth() - birth.getMonth();
-
-  if (
-    monthDiff < 0 ||
-    (monthDiff === 0 && today.getDate() < birth.getDate())
-  ) {
-    age--;
-  }
-}
-
-Age: age,
-logged_profile_pic: loggedProfile?.["Profile pic"] ?? null,
+          Age: age,
+          logged_profile_pic: loggedProfile?.["Profile pic"] ?? null,
           community_logo: communityLogo,
 
-          offices, // ✅ ADICIONADO
+          offices,
 
           ethics_rate: avg(ethics),
           ethics_count: count(ethics),
@@ -251,7 +257,6 @@ logged_profile_pic: loggedProfile?.["Profile pic"] ?? null,
   async function handleSave(payload: any) {
     let { rating, comment, type } = payload;
 
-    // 🔥 CORREÇÃO CRÍTICA
     if (rating === undefined || rating === null) return;
     if (!user || !formData || !periodKey) return;
 
@@ -319,3 +324,4 @@ logged_profile_pic: loggedProfile?.["Profile pic"] ?? null,
     />
   );
 }
+```

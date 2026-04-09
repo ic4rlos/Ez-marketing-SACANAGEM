@@ -184,9 +184,15 @@ export default function AApplyToACommunity() {
         specialtiesRaw?.map(
           (s: any) => s["Professional specialty"]
         ) ?? [];
-
+// 🔥 LOGGED USER PROFILE PIC
+const { data: loggedProfile } = await supabase
+  .from("User profile")
+  .select("*")
+  .eq("user_id", viewer.id)
+  .maybeSingle();
       const nextFormData = {
         ...(community ?? {}),
+        logged_profile_pic: loggedProfile?.["Profile pic"] ?? null,
         members,
         connected_companies: connectedCompanies,
         specialties,

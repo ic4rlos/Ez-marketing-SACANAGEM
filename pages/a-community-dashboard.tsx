@@ -106,6 +106,38 @@ export default function ACommunityDashboard() {
   // SAVE
   // =========================
   async function onSave(data:any){
+    // =========================
+// MEMBERS ACTIONS (FIX)
+// =========================
+if (data?.action === "accept_member"){
+  await supabase
+    .from("community_members")
+    .update({ status: "connected" })
+    .eq("id", data.connectionId);
+
+  router.reload();
+  return;
+}
+
+if (data?.action === "reject_member"){
+  await supabase
+    .from("community_members")
+    .delete()
+    .eq("id", data.connectionId);
+
+  router.reload();
+  return;
+}
+
+if (data?.action === "disconnect_member"){
+  await supabase
+    .from("community_members")
+    .update({ status: "pending" })
+    .eq("id", data.connectionId);
+
+  router.reload();
+  return;
+}
   if (data?.action === "accept"){
     await supabase.from("CONNECTIONS")
       .update({ status: "connected" })

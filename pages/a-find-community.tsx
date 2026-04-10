@@ -88,7 +88,13 @@ export default function AFindCommunity() {
     async function loadAll() {
 
       setLoading(true);
+const { data: userData } = await supabase.auth.getUser();
 
+const { data: myProfile } = await supabase
+  .from("User profile")
+  .select('"Profile pic"')
+  .eq("user_id", userData?.user?.id)
+  .maybeSingle();
       // =========================
       // COMMUNITIES
       // =========================

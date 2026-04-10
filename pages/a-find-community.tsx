@@ -166,7 +166,7 @@ const { data: myProfile } = await supabase
   return (
     <PlasmicAFindCommunity
       args={{
-        communities: communitiesBySpecialty
+        communities: communitiesBySpecialty,
               formData: {
         logged_profile_pic: myProfile?.["Profile pic"] ?? null
       }}

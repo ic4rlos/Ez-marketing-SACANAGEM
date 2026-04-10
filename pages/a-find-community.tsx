@@ -15,96 +15,162 @@ const PlasmicAFindCommunity = dynamic(
 
 // 🔥 MESMO MAPA DO DASHBOARD
 const SPECIALIZATIONS: any = {
-  "Service Scheduling and Management Capabilities":[
-    "Account Manager","Client Services Director","Project Manager","Marketing Automation Specialist"
+  "Service Scheduling and Management Capabilities": [
+    "Account Manager",
+    "Client Services Director",
+    "Project Manager",
+    "Marketing Automation Specialist",
   ],
-  "Influencer and Content Creator Presence":[
-    "Social Media Manager","Content Strategist","Copywriter","Videographer","Public Relations Specialist","Influencer Talent Scout"
+  "Influencer and Content Creator Presence": [
+    "Social Media Manager",
+    "Content Strategist",
+    "Copywriter",
+    "Videographer",
+    "Public Relations Specialist",
+    "Influencer Talent Scout",
   ],
-  "Commercial Production Capabilities":[
-    "Creative Director","Art Director","Graphic Designer","Copywriter","Videographer"
+  "Commercial Production Capabilities": [
+    "Creative Director",
+    "Art Director",
+    "Graphic Designer",
+    "Copywriter",
+    "Videographer",
   ],
-  "Online Customer Service":[
-    "Account Manager","Client Services Director"
+  "Online Customer Service": ["Account Manager", "Client Services Director"],
+  "Specialization in Vertical Sectors": [
+    "Brand Strategist",
+    "Marketing Analyst",
+    "SEO Specialist",
+    "PPC Specialist",
+    "Business Development Manager",
+    "Marketing Coordinator",
   ],
-  "Specialization in Vertical Sectors":[
-    "Brand Strategist","Marketing Analyst","SEO Specialist","PPC Specialist","Business Development Manager","Marketing Coordinator"
+  "Brand Development and Visual Identity Capabilities": [
+    "Brand Strategist",
+    "Creative Director",
+    "Art Director",
+    "Graphic Designer",
+    "UX/UI Designer",
+    "Copywriter",
   ],
-  "Brand Development and Visual Identity Capabilities":[
-    "Brand Strategist","Creative Director","Art Director","Graphic Designer","UX/UI Designer","Copywriter"
+  "Event Production and Management Capabilities": [
+    "Project Manager",
+    "Public Relations Specialist",
+    "Content Strategist",
+    "Digital Marketing Manager",
   ],
-  "Event Production and Management Capabilities":[
-    "Project Manager","Public Relations Specialist","Content Strategist","Digital Marketing Manager"
+  "Performance Campaign Management Capabilities": [
+    "Digital Marketing Manager",
+    "PPC Specialist",
+    "SEO Specialist",
+    "Marketing Analyst",
+    "Data Analyst",
+    "Marketing Automation Specialist",
   ],
-  "Performance Campaign Management Capabilities":[
-    "Digital Marketing Manager","PPC Specialist","SEO Specialist","Marketing Analyst","Data Analyst","Marketing Automation Specialist"
+  "Audiovisual Content Production": [
+    "Videographer",
+    "Creative Director",
+    "Art Director",
+    "Copywriter",
+    "Graphic Designer",
   ],
-  "Audiovisual Content Production":[
-    "Videographer","Creative Director","Art Director","Copywriter","Graphic Designer"
+  "Content Marketing and Blogging": [
+    "Content Strategist",
+    "Copywriter",
+    "SEO Specialist",
+    "Social Media Manager",
+    "Graphic Designer",
+    "Marketing Coordinator",
   ],
-  "Content Marketing and Blogging":[
-    "Content Strategist","Copywriter","SEO Specialist","Social Media Manager","Graphic Designer","Marketing Coordinator"
+  "Social Media and Engagement Strategies": [
+    "Social Media Manager",
+    "Content Strategist",
+    "Copywriter",
+    "Graphic Designer",
+    "Public Relations Specialist",
   ],
-  "Social Media and Engagement Strategies":[
-    "Social Media Manager","Content Strategist","Copywriter","Graphic Designer","Public Relations Specialist"
+  "Lead Generation and Sales Funnel Strategies": [
+    "Digital Marketing Manager",
+    "Business Development Manager",
+    "PPC Specialist",
+    "Account Manager",
+    "Marketing Automation Specialist",
   ],
-  "Lead Generation and Sales Funnel Strategies":[
-    "Digital Marketing Manager","Business Development Manager","PPC Specialist","Account Manager","Marketing Automation Specialist"
+  "Creation of Digital Experiences (UX/UI)": [
+    "UX/UI Designer",
+    "Creative Director",
+    "Project Manager",
+    "Content Strategist",
   ],
-  "Creation of Digital Experiences (UX/UI)":[
-    "UX/UI Designer","Creative Director","Project Manager","Content Strategist"
+  "Public Relations and Image Crisis Management": [
+    "Public Relations Specialist",
+    "Social Media Manager",
+    "Content Strategist",
+    "Brand Strategist",
   ],
-  "Public Relations and Image Crisis Management":[
-    "Public Relations Specialist","Social Media Manager","Content Strategist","Brand Strategist"
+  "E-commerce Management and Optimization": [
+    "Digital Marketing Manager",
+    "SEO Specialist",
+    "PPC Specialist",
+    "UX/UI Designer",
+    "Data Analyst",
   ],
-  "E-commerce Management and Optimization":[
-    "Digital Marketing Manager","SEO Specialist","PPC Specialist","UX/UI Designer","Data Analyst"
+  "Data Analysis and Marketing Metrics": [
+    "Data Analyst",
+    "Marketing Analyst",
+    "SEO Specialist",
+    "PPC Specialist",
   ],
-  "Data Analysis and Marketing Metrics":[
-    "Data Analyst","Marketing Analyst","SEO Specialist","PPC Specialist"
+  "Digital Product Marketing": [
+    "Content Strategist",
+    "PPC Specialist",
+    "Social Media Manager",
+    "Videographer",
   ],
-  "Digital Product Marketing":[
-    "Content Strategist","PPC Specialist","Social Media Manager","Videographer"
+  "Direct Marketing and Email Marketing": [
+    "Copywriter",
+    "Marketing Automation Specialist",
+    "Data Analyst",
   ],
-  "Direct Marketing and Email Marketing":[
-    "Copywriter","Marketing Automation Specialist","Data Analyst"
+  "Loyalty Strategies Clients": [
+    "Account Manager",
+    "Marketing Automation Specialist",
+    "Content Strategist",
   ],
-  "Loyalty Strategies Clients":[
-    "Account Manager","Marketing Automation Specialist","Content Strategist"
+  "Specialization in Podcasts": [
+    "Content Strategist",
+    "Copywriter",
+    "Social Media Manager",
+    "Public Relations Specialist",
+    "Project Manager",
   ],
-  "Specialization in Podcasts":[
-    "Content Strategist","Copywriter","Social Media Manager","Public Relations Specialist","Project Manager"
-  ]
 };
 
 export default function AFindCommunity() {
-
   const supabase = getSupabaseA();
 
   const [communitiesBySpecialty, setCommunitiesBySpecialty] = useState<any>({});
   const [loading, setLoading] = useState(true);
+  const [myProfile, setMyProfile] = useState<any>(null);
 
   useEffect(() => {
     async function loadAll() {
-
       setLoading(true);
-const { data: userData } = await supabase.auth.getUser();
 
-const { data: myProfile } = await supabase
-  .from("User profile")
-  .select('"Profile pic"')
-  .eq("user_id", userData?.user?.id)
-  .maybeSingle();
-      // =========================
-      // COMMUNITIES
-      // =========================
+      const { data: userData } = await supabase.auth.getUser();
+
+      const { data: profile } = await supabase
+        .from("User profile")
+        .select('"Profile pic"')
+        .eq("user_id", userData?.user?.id)
+        .maybeSingle();
+
+      setMyProfile(profile);
+
       const { data: communitiesData } = await supabase
         .from("Community")
         .select("*");
 
-      // =========================
-      // MEMBERS COUNT
-      // =========================
       const { data: members } = await supabase
         .from("community_members")
         .select("community_id")
@@ -116,9 +182,6 @@ const { data: myProfile } = await supabase
         memberCountMap[key] = (memberCountMap[key] || 0) + 1;
       });
 
-      // =========================
-      // SPECIALTIES (BANCO)
-      // =========================
       const { data: specialties } = await supabase
         .from("Community specialties")
         .select("*");
@@ -130,23 +193,16 @@ const { data: myProfile } = await supabase
         specialtiesMap[key].push(s["Professional specialty"]);
       });
 
-      // =========================
-      // FORMAT COMMUNITIES
-      // =========================
       const formatted = (communitiesData ?? []).map((c: any) => ({
         id: c.id,
         agency_id: c.id,
         community_name: c?.community_name ?? "",
         community_logo: c?.community_logo ?? "",
         members: memberCountMap[Number(c.id)] ?? 0,
-        specialties: specialtiesMap[Number(c.id)] ?? []
+        specialties: specialtiesMap[Number(c.id)] ?? [],
       }));
 
-      // =========================
-      // 🔥 GROUP BY SPECIALTY (AQUI É O SEGREDO)
-      // =========================
       const grouped: any = {};
-
       Object.keys(SPECIALIZATIONS).forEach((spec) => {
         grouped[spec] = formatted.filter((c: any) =>
           c.specialties?.includes(spec)
@@ -154,7 +210,6 @@ const { data: myProfile } = await supabase
       });
 
       setCommunitiesBySpecialty(grouped);
-
       setLoading(false);
     }
 
@@ -167,9 +222,9 @@ const { data: myProfile } = await supabase
     <PlasmicAFindCommunity
       args={{
         communities: communitiesBySpecialty,
-              formData: {
-        logged_profile_pic: myProfile?.["Profile pic"] ?? null
-              }
+        formData: {
+          logged_profile_pic: myProfile?.["Profile pic"] ?? null,
+        },
       }}
     />
   );

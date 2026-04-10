@@ -2800,52 +2800,6 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                                         __plasmic_idx_0,
                                         "value"
                                       ]).apply(null, eventArgs);
-
-                                      (async value => {
-                                        const $steps = {};
-
-                                        $steps["goToCContactACommunitie"] = true
-                                          ? (() => {
-                                              const actionArgs = {
-                                                destination: `/c-rate-community`
-                                              };
-                                              return (({ destination }) => {
-                                                if (
-                                                  typeof destination ===
-                                                    "string" &&
-                                                  destination.startsWith("#")
-                                                ) {
-                                                  document
-                                                    .getElementById(
-                                                      destination.substr(1)
-                                                    )
-                                                    .scrollIntoView({
-                                                      behavior: "smooth"
-                                                    });
-                                                } else {
-                                                  __nextRouter?.push(
-                                                    destination
-                                                  );
-                                                }
-                                              })?.apply(null, [actionArgs]);
-                                            })()
-                                          : undefined;
-                                        if (
-                                          $steps["goToCContactACommunitie"] !=
-                                            null &&
-                                          typeof $steps[
-                                            "goToCContactACommunitie"
-                                          ] === "object" &&
-                                          typeof $steps[
-                                            "goToCContactACommunitie"
-                                          ].then === "function"
-                                        ) {
-                                          $steps["goToCContactACommunitie"] =
-                                            await $steps[
-                                              "goToCContactACommunitie"
-                                            ];
-                                        }
-                                      }).apply(null, eventArgs);
                                     },
                                     symbols: (
                                       <React.Fragment>

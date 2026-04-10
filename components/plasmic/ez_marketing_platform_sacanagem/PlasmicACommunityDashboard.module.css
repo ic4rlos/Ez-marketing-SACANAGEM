@@ -2853,58 +2853,6 @@
   min-width: 0;
   padding: 8px;
 }
-.freeBox__y64Jz {
-  animation: none;
-  display: flex;
-  flex-direction: row;
-  position: relative;
-  align-items: stretch;
-  justify-content: flex-start;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  min-width: 0;
-  padding: 0px;
-}
-.age {
-  animation: none;
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  font-size: 12px;
-  font-family: "Inter", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  color: #535353;
-  text-align: left;
-  text-transform: none;
-  line-height: 1.5;
-  letter-spacing: normal;
-  white-space: pre-wrap;
-  user-select: text;
-  text-decoration-line: none;
-  text-overflow: clip;
-}
-.text__nEUE {
-  animation: none;
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  margin-left: 5px;
-  font-size: 12px;
-  font-family: "Inter", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  color: #535353;
-  text-align: left;
-  text-transform: none;
-  line-height: 1.5;
-  letter-spacing: normal;
-  white-space: pre-wrap;
-  user-select: text;
-  text-decoration-line: none;
-  text-overflow: clip;
-}
 .location3 {
   animation: none;
   width: auto;
@@ -3371,58 +3319,6 @@
   max-width: 100%;
   min-width: 0;
   padding: 8px;
-}
-.freeBox__hqw5N {
-  animation: none;
-  display: flex;
-  flex-direction: row;
-  position: relative;
-  align-items: stretch;
-  justify-content: flex-start;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  min-width: 0;
-  padding: 0px;
-}
-.age3 {
-  animation: none;
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  font-size: 12px;
-  font-family: "Inter", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  color: #535353;
-  text-align: left;
-  text-transform: none;
-  line-height: 1.5;
-  letter-spacing: normal;
-  white-space: pre-wrap;
-  user-select: text;
-  text-decoration-line: none;
-  text-overflow: clip;
-}
-.text__tRwGo {
-  animation: none;
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  margin-left: 5px;
-  font-size: 12px;
-  font-family: "Inter", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  color: #535353;
-  text-align: left;
-  text-transform: none;
-  line-height: 1.5;
-  letter-spacing: normal;
-  white-space: pre-wrap;
-  user-select: text;
-  text-decoration-line: none;
-  text-overflow: clip;
 }
 .location6 {
   animation: none;

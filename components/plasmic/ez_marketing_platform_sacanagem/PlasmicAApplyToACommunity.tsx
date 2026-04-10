@@ -1022,11 +1022,11 @@ function PlasmicAApplyToACommunity__RenderFunc(props: {
                               data-plasmic-override={overrides.profilePic2}
                               alt={""}
                               className={classNames(sty.profilePic2)}
-                              displayHeight={"auto"}
-                              displayMaxHeight={"none"}
+                              displayHeight={"150px"}
+                              displayMaxHeight={"150px"}
                               displayMaxWidth={"120px"}
                               displayMinHeight={"150px"}
-                              displayMinWidth={"0"}
+                              displayMinWidth={"120px"}
                               displayWidth={"120px"}
                               src={(() => {
                                 try {

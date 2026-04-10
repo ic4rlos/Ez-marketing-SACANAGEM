@@ -169,6 +169,7 @@ const { data: myProfile } = await supabase
         communities: communitiesBySpecialty,
               formData: {
         logged_profile_pic: myProfile?.["Profile pic"] ?? null
+              }
       }}
     />
   );

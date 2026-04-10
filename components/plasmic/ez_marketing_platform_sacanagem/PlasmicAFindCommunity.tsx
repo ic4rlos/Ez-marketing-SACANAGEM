@@ -130,7 +130,7 @@ export type PlasmicAFindCommunity__OverridesType = {
   root?: Flex__<"div">;
   topBarAuto?: Flex__<"div">;
   navigationBar?: Flex__<typeof NavigationBar>;
-  account2?: Flex__<typeof AntdDropdown>;
+  account?: Flex__<typeof AntdDropdown>;
   button?: Flex__<typeof AntdButton>;
   countainer1?: Flex__<"div">;
   dialog?: Flex__<typeof Dialog>;
@@ -1306,16 +1306,20 @@ function PlasmicAFindCommunity__RenderFunc(props: {
               />
 
               <AntdDropdown
-                data-plasmic-name={"account2"}
-                data-plasmic-override={overrides.account2}
-                className={classNames("__wab_instance", sty.account2)}
-                dropdownMenuScopeClassName={sty["account2__dropdownMenu"]}
+                data-plasmic-name={"account"}
+                data-plasmic-override={overrides.account}
+                className={classNames("__wab_instance", sty.account)}
+                dropdownMenuScopeClassName={sty["account__dropdownMenu"]}
+                menuClassName={classNames({ [sty["pcls_vnfxmahtLOqD"]]: true })}
+                menuItemClassName={classNames({
+                  [sty["pcls_P5Nit6fCc6Px"]]: true
+                })}
                 menuItems={() => (
                   <React.Fragment>
                     <AntdMenuItem
                       className={classNames(
                         "__wab_instance",
-                        sty.menuItem__ihlVu
+                        sty.menuItem__fGt63
                       )}
                       key={"menu-item-1"}
                     >
@@ -1323,7 +1327,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                         className={classNames(
                           projectcss.all,
                           projectcss.__wab_text,
-                          sty.text__frQhg
+                          sty.text__mmNo3
                         )}
                       >
                         {"Menu item"}
@@ -1332,7 +1336,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                     <AntdMenuItem
                       className={classNames(
                         "__wab_instance",
-                        sty.menuItem__seIvu
+                        sty.menuItem__wF431
                       )}
                       key={"menu-item-2"}
                     >
@@ -1340,7 +1344,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                         className={classNames(
                           projectcss.all,
                           projectcss.__wab_text,
-                          sty.text___0FDcv
+                          sty.text__s4Xri
                         )}
                       >
                         {"Menu item"}
@@ -1368,7 +1372,66 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                       { type: null }
                     ];
                     __composite["0"]["label"] = "Profile";
+                    __composite["0"]["onClick"] = async info => {
+                      const $steps = {};
+
+                      $steps["goToALogin"] = true
+                        ? (() => {
+                            const actionArgs = { destination: `/a-profile` };
+                            return (({ destination }) => {
+                              if (
+                                typeof destination === "string" &&
+                                destination.startsWith("#")
+                              ) {
+                                document
+                                  .getElementById(destination.substr(1))
+                                  .scrollIntoView({ behavior: "smooth" });
+                              } else {
+                                __nextRouter?.push(destination);
+                              }
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["goToALogin"] != null &&
+                        typeof $steps["goToALogin"] === "object" &&
+                        typeof $steps["goToALogin"].then === "function"
+                      ) {
+                        $steps["goToALogin"] = await $steps["goToALogin"];
+                      }
+                    };
                     __composite["1"]["label"] = "Edit profile";
+                    __composite["1"]["onClick"] = async info => {
+                      const $steps = {};
+
+                      $steps["goToACreateAccount"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              destination: `/a-edit-profile`
+                            };
+                            return (({ destination }) => {
+                              if (
+                                typeof destination === "string" &&
+                                destination.startsWith("#")
+                              ) {
+                                document
+                                  .getElementById(destination.substr(1))
+                                  .scrollIntoView({ behavior: "smooth" });
+                              } else {
+                                __nextRouter?.push(destination);
+                              }
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["goToACreateAccount"] != null &&
+                        typeof $steps["goToACreateAccount"] === "object" &&
+                        typeof $steps["goToACreateAccount"].then === "function"
+                      ) {
+                        $steps["goToACreateAccount"] =
+                          await $steps["goToACreateAccount"];
+                      }
+                    };
                     __composite["2"]["type"] = "divider";
                     return __composite;
                   })();
@@ -1381,12 +1444,91 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                       { type: null }
                     ];
                     __composite["0"]["label"] = "Settings & Privacy";
+                    __composite["0"]["onClick"] = async info => {
+                      const $steps = {};
+
+                      $steps["goToALogin"] = true
+                        ? (() => {
+                            const actionArgs = { destination: `/a-login` };
+                            return (({ destination }) => {
+                              if (
+                                typeof destination === "string" &&
+                                destination.startsWith("#")
+                              ) {
+                                document
+                                  .getElementById(destination.substr(1))
+                                  .scrollIntoView({ behavior: "smooth" });
+                              } else {
+                                __nextRouter?.push(destination);
+                              }
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["goToALogin"] != null &&
+                        typeof $steps["goToALogin"] === "object" &&
+                        typeof $steps["goToALogin"].then === "function"
+                      ) {
+                        $steps["goToALogin"] = await $steps["goToALogin"];
+                      }
+                    };
                     __composite["1"]["label"] = "Help";
+                    __composite["1"]["onClick"] = async info => {
+                      const $steps = {};
+
+                      $steps["goToALogin"] = true
+                        ? (() => {
+                            const actionArgs = { destination: `/a-login` };
+                            return (({ destination }) => {
+                              if (
+                                typeof destination === "string" &&
+                                destination.startsWith("#")
+                              ) {
+                                document
+                                  .getElementById(destination.substr(1))
+                                  .scrollIntoView({ behavior: "smooth" });
+                              } else {
+                                __nextRouter?.push(destination);
+                              }
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["goToALogin"] != null &&
+                        typeof $steps["goToALogin"] === "object" &&
+                        typeof $steps["goToALogin"].then === "function"
+                      ) {
+                        $steps["goToALogin"] = await $steps["goToALogin"];
+                      }
+                    };
                     __composite["2"]["type"] = "divider";
                     return __composite;
                   })();
                   __composite["2"]["type"] = "item";
                   __composite["2"]["label"] = "Sign out";
+                  __composite["2"]["onClick"] = async info => {
+                    const $steps = {};
+
+                    $steps["runCode"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            customFunction: async () => {
+                              return $props.onLogout?.();
+                            }
+                          };
+                          return (({ customFunction }) => {
+                            return customFunction();
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["runCode"] != null &&
+                      typeof $steps["runCode"] === "object" &&
+                      typeof $steps["runCode"].then === "function"
+                    ) {
+                      $steps["runCode"] = await $steps["runCode"];
+                    }
+                  };
                   return __composite;
                 })()}
                 trigger={"hover"}
@@ -1400,7 +1542,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                 >
                   <PlasmicImg__
                     alt={""}
-                    className={classNames(sty.img__l1Etq)}
+                    className={classNames(sty.img__zmZmz)}
                     displayHeight={"30px"}
                     displayMaxHeight={"none"}
                     displayMaxWidth={"100%"}
@@ -1410,7 +1552,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                     loading={"lazy"}
                     src={(() => {
                       try {
-                        return $props.formData?.["Profile pic"] ?? null;
+                        return $props.formData?.logged_profile_pic;
                       } catch (e) {
                         if (
                           e instanceof TypeError ||
@@ -12051,7 +12193,7 @@ const PlasmicDescendants = {
     "root",
     "topBarAuto",
     "navigationBar",
-    "account2",
+    "account",
     "button",
     "countainer1",
     "dialog",
@@ -12135,9 +12277,9 @@ const PlasmicDescendants = {
     "rate20",
     "pagination20"
   ],
-  topBarAuto: ["topBarAuto", "navigationBar", "account2", "button"],
+  topBarAuto: ["topBarAuto", "navigationBar", "account", "button"],
   navigationBar: ["navigationBar"],
-  account2: ["account2", "button"],
+  account: ["account", "button"],
   button: ["button"],
   countainer1: [
     "countainer1",
@@ -12310,7 +12452,7 @@ type NodeDefaultElementType = {
   root: "div";
   topBarAuto: "div";
   navigationBar: typeof NavigationBar;
-  account2: typeof AntdDropdown;
+  account: typeof AntdDropdown;
   button: typeof AntdButton;
   countainer1: "div";
   dialog: typeof Dialog;
@@ -12459,7 +12601,7 @@ export const PlasmicAFindCommunity = Object.assign(
     // Helper components rendering sub-elements
     topBarAuto: makeNodeComponent("topBarAuto"),
     navigationBar: makeNodeComponent("navigationBar"),
-    account2: makeNodeComponent("account2"),
+    account: makeNodeComponent("account"),
     button: makeNodeComponent("button"),
     countainer1: makeNodeComponent("countainer1"),
     dialog: makeNodeComponent("dialog"),

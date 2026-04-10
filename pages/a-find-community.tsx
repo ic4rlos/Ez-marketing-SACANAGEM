@@ -129,6 +129,7 @@ export default function AFindCommunity() {
       // =========================
       const formatted = (communitiesData ?? []).map((c: any) => ({
         id: c.id,
+        agency_id: c.id,
         community_name: c?.community_name ?? "",
         community_logo: c?.community_logo ?? "",
         members: memberCountMap[Number(c.id)] ?? 0,

@@ -586,7 +586,7 @@
   font-weight: 400;
   font-style: normal;
   color: #535353;
-  text-align: left;
+  text-align: center;
   text-transform: none;
   line-height: 1.5;
   letter-spacing: normal;
@@ -1032,9 +1032,7 @@
 }
 .svg__gAkqZ {
   animation: none;
-  object-fit: cover;
-  max-width: 100%;
-  margin-top: -7px;
+  align-self: flex-start;
   height: 1em;
 }
 .linkedIn2 {
@@ -1072,7 +1070,6 @@
   animation: none;
   object-fit: cover;
   max-width: 100%;
-  margin-top: -7px;
   height: 1em;
 }
 .instagram2 {
@@ -1111,7 +1108,6 @@
   animation: none;
   object-fit: cover;
   max-width: 100%;
-  margin-top: -7px;
   height: 1em;
 }
 .x2 {

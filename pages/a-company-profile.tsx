@@ -16,67 +16,102 @@ const PlasmicACompanyProfile = dynamic(
 );
 
 export default function ACompanyProfile() {
-
   const router = useRouter();
 
-  const supabaseA = getSupabaseA(); // agencies DB
-  const supabaseC = getSupabaseC(); // companies DB
+  const supabaseA = getSupabaseA();
+  const supabaseC = getSupabaseC();
 
   const { id } = router.query;
 
   const [viewer, setViewer] = useState<any>(null);
-  const [company, setCompany] = useState<any>(null);
-  const [formData, setFormData] = useState<any[]>([]);
+  const [formData, setFormData] = useState<any>({});
   const [loading, setLoading] = useState(true);
 
   // =========================
-  // AUTH (AGENCIES)
+  // AUTH
   // =========================
 
   useEffect(() => {
-
     async function loadUser() {
-
       const { data } = await supabaseA.auth.getUser();
-
       setViewer(data?.user ?? null);
-
     }
-
     loadUser();
-
   }, []);
 
   // =========================
-  // LOAD COMPANY (COMPANIES DB)
+  // LOAD ALL
   // =========================
 
   useEffect(() => {
-
     if (!id) return;
 
-    async function loadCompany() {
-
+    async function loadAll() {
       try {
-
         const companyId = Number(id);
 
-        const { data: companyData } = await supabaseC
+        // =========================
+        // COMPANY
+        // =========================
+
+        const { data: company } = await supabaseC
           .from("companies")
           .select("*")
           .eq("id", companyId)
           .maybeSingle();
 
-        if (!companyData) {
-
-          setCompany(null);
-          setFormData([]);
+        if (!company) {
+          setFormData({});
           setLoading(false);
           return;
-
         }
 
-        setCompany(companyData);
+        // =========================
+        // LOGGED PROFILE PIC
+        // =========================
+
+        let logged_profile_pic = null;
+
+        if (viewer?.id) {
+          const { data: profile } = await supabaseA
+            .from("User profile")
+            .select('"Profile pic"')
+            .eq("user_id", viewer.id)
+            .maybeSingle();
+
+          logged_profile_pic = profile?.["Profile pic"] ?? null;
+        }
+
+        // =========================
+        // CONNECTION
+        // =========================
+
+        let connection = null;
+
+        if (viewer?.id) {
+          const { data: membership } = await supabaseA
+            .from("community_members")
+            .select("community_id")
+            .eq("user_id", viewer.id)
+            .maybeSingle();
+
+          if (membership?.community_id) {
+            const { data } = await supabaseA
+              .from("CONNECTIONS")
+              .select("*")
+              .eq("agency_id", membership.community_id)
+              .eq("company_id", company.id)
+              .maybeSingle();
+
+            connection = data;
+          }
+        }
+
+        const isConnected = connection?.status === "connected";
+
+        // =========================
+        // SOLUTIONS
+        // =========================
 
         const { data: solutionsData } = await supabaseC
           .from("solutions")
@@ -91,10 +126,9 @@ export default function ACompanyProfile() {
               Step_order
             )
           `)
-          .eq("Company_id", companyData.id)
-          .order("id", { ascending: true });
+          .eq("Company_id", company.id);
 
-        const structuredSolutions =
+        const solutions =
           solutionsData?.map((sol: any) => ({
             id: sol.id,
             title: sol.Title ?? "",
@@ -112,97 +146,125 @@ export default function ACompanyProfile() {
                 })) ?? []
           })) ?? [];
 
-        setFormData(structuredSolutions);
+        // =========================
+        // REVIEWS
+        // =========================
 
+        const { data: reviews } = await supabaseA
+          .from("community_reviews")
+          .select("*")
+          .eq("company_id", company.id);
+
+        const normalize = (r: any) => ({
+          rating: Number(r?.rating ?? 0),
+          comment: r?.comment ?? ""
+        });
+
+        const company_reviews =
+          (reviews ?? [])
+            .filter((r: any) => r.author_type === "community")
+            .map(normalize);
+
+        const company_membersreviews =
+          (reviews ?? [])
+            .filter((r: any) => r.author_type === "member")
+            .map(normalize);
+
+        const company_replies =
+          (reviews ?? [])
+            .filter((r: any) => r.author_type?.startsWith("company"))
+            .map(normalize);
+
+        const total_reviews = company_reviews.length;
+
+        const average_rating =
+          total_reviews > 0
+            ? company_reviews.reduce(
+                (acc: number, r: any) => acc + r.rating,
+                0
+              ) / total_reviews
+            : 0;
+
+        // =========================
+        // FINAL OBJECT
+        // =========================
+
+        const nextFormData = {
+          ...company,
+
+          "Company nature": company?.["Company nature"] ?? "Standard",
+
+          solutions,
+          company_reviews,
+          company_membersreviews,
+          company_replies,
+
+          total_reviews,
+          average_rating,
+
+          connection,
+          isConnected,
+
+          logged_profile_pic
+        };
+
+        setFormData(nextFormData);
       } catch (err) {
-
-        console.error("Load company error:", err);
-
+        console.error(err);
       }
 
       setLoading(false);
-
     }
 
-    loadCompany();
-
-  }, [id]);
+    loadAll();
+  }, [id, viewer]);
 
   // =========================
-  // SAVE CONNECTION (AGENCIES DB)
+  // SAVE CONNECTION (ANTI DUPLICAÇÃO)
   // =========================
 
   async function handleSave(data: any) {
-
-  console.log("handleSave recebeu:", data);
-  console.log("short_message:", data?.short_message);
-    
     if (!viewer || !id) return;
 
-    try {
+    const { data: membership } = await supabaseA
+      .from("community_members")
+      .select("community_id")
+      .eq("user_id", viewer.id)
+      .maybeSingle();
 
-      console.log("Starting connection flow");
+    if (!membership) return;
 
-      const userId = viewer.id;
+    // 🔥 CHECK EXISTENTE
+    const { data: existingConnection } = await supabaseA
+      .from("CONNECTIONS")
+      .select("id, status")
+      .eq("agency_id", membership.community_id)
+      .eq("company_id", Number(id))
+      .maybeSingle();
 
-      // descobrir agency do usuário
-      const { data: membership, error: membershipError } = await supabaseA
-        .from("community_members")
-        .select("community_id")
-        .eq("user_id", userId)
-        .maybeSingle();
-
-      if (membershipError) {
-
-        console.error("Community lookup error:", membershipError);
-        return;
-
-      }
-
-      if (!membership) {
-
-        console.error("User not part of any community");
-        return;
-
-      }
-
-      const agencyId = membership.community_id;
-
-      console.log("Agency found:", agencyId);
-
-      const payload = {
-
-        status: "agency request",
-        acceptade_at: new Date().toISOString(),
-        created_by_user_id: userId,
-        agency_id: agencyId,
-        short_message: data?.short_message ?? "",
-        company_id: Number(id)
-
-      };
-
-      console.log("Payload being sent:", payload);
-
-      const { error: insertError } = await supabaseA
+    // 🔁 UPDATE SE EXISTIR
+    if (existingConnection) {
+      await supabaseA
         .from("CONNECTIONS")
-        .insert(payload);
+        .update({
+          status: "agency request",
+          short_message: data?.short_message ?? ""
+        })
+        .eq("id", existingConnection.id);
 
-      if (insertError) {
-
-        console.error("Insert error:", insertError);
-
-      } else {
-
-        console.log("Connection created successfully");
-
-      }
-
-    } catch (err) {
-
-      console.error("Connection error:", err);
-
+      return;
     }
 
+    // ➕ INSERT SE NÃO EXISTIR
+    await supabaseA
+      .from("CONNECTIONS")
+      .insert({
+        status: "agency request",
+        created_by_user_id: viewer.id,
+        agency_id: membership.community_id,
+        company_id: Number(id),
+        short_message: data?.short_message ?? ""
+      });
   }
 
   if (loading) return null;
@@ -210,12 +272,20 @@ export default function ACompanyProfile() {
   return (
     <PlasmicACompanyProfile
       args={{
-        company: company ?? {},
-        formData: formData ?? [],
-        solutions: formData ?? [],
+        formData,
+        company: formData,
+
+        solutions: formData?.solutions ?? [],
+
+        company_reviews: formData?.company_reviews ?? [],
+        company_membersreviews: formData?.company_membersreviews ?? [],
+        company_replies: formData?.company_replies ?? [],
+
+        total_reviews: formData?.total_reviews ?? 0,
+        average_rating: formData?.average_rating ?? 0,
+
         onSave: handleSave
       }}
     />
   );
-
 }

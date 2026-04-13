@@ -25,6 +25,7 @@ export default function ACompanyProfile() {
 
   const [viewer, setViewer] = useState<any>(null);
   const [formData, setFormData] = useState<any>({});
+  const [solutions, setSolutions] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
   // =========================
@@ -62,6 +63,7 @@ export default function ACompanyProfile() {
 
         if (!company) {
           setFormData({});
+          setSolutions([]);
           setLoading(false);
           return;
         }
@@ -110,7 +112,7 @@ export default function ACompanyProfile() {
         const isConnected = connection?.status === "connected";
 
         // =========================
-        // SOLUTIONS
+        // SOLUTIONS (SEPARADO 🔥)
         // =========================
 
         const { data: solutionsData } = await supabaseC
@@ -128,7 +130,7 @@ export default function ACompanyProfile() {
           `)
           .eq("Company_id", company.id);
 
-        const solutions =
+        const solutionsFormatted =
           solutionsData?.map((sol: any) => ({
             id: sol.id,
             title: sol.Title ?? "",
@@ -146,8 +148,10 @@ export default function ACompanyProfile() {
                 })) ?? []
           })) ?? [];
 
+        setSolutions(solutionsFormatted);
+
         // =========================
-        // REVIEWS + COMMUNITY ENRICH
+        // REVIEWS + ENRICH
         // =========================
 
         const { data: reviews } = await supabaseA
@@ -180,8 +184,11 @@ export default function ACompanyProfile() {
           const community = communityMap[Number(r.community_id)];
 
           return {
+            agency_id: Number(r.community_id), // 🔥 FIX LINK
+
             rating: Number(r?.rating ?? 0),
             comment: r?.comment ?? "",
+
             community_name: community?.community_name ?? "",
             community_logo: community?.community_logo ?? ""
           };
@@ -221,7 +228,6 @@ export default function ACompanyProfile() {
 
           "Company nature": company?.["Company nature"] ?? "Standard",
 
-          solutions,
           company_reviews,
           company_membersreviews,
           company_replies,
@@ -247,7 +253,7 @@ export default function ACompanyProfile() {
   }, [id, viewer]);
 
   // =========================
-  // SAVE CONNECTION (ANTI DUPLICAÇÃO)
+  // SAVE (ANTI DUPLICAÇÃO)
   // =========================
 
   async function handleSave(data: any) {
@@ -299,7 +305,7 @@ export default function ACompanyProfile() {
         formData,
         company: formData,
 
-        solutions: formData?.solutions ?? [],
+        solutions: solutions ?? [],
 
         company_reviews: formData?.company_reviews ?? [],
         company_membersreviews: formData?.company_membersreviews ?? [],

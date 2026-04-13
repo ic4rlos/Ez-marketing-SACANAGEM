@@ -398,8 +398,10 @@
   max-width: 100%;
   text-align: center;
   font-size: 25px;
-  font-weight: 600;
+  font-weight: 700;
   padding-bottom: 5px;
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: 4px;
   min-width: 0;
 }
 .sliderCarousel:global(.__wab_instance) {
@@ -7012,9 +7014,11 @@
   height: auto;
   max-width: 100%;
   text-align: left;
-  font-size: 25px;
-  font-weight: 600;
+  font-size: 17px;
+  font-weight: 700;
   padding-bottom: 5px;
+  letter-spacing: 3px;
+  font-family: "Montserrat", sans-serif;
   min-width: 0;
 }
 .sliderCarousel3:global(.__wab_instance) {
@@ -9618,9 +9622,11 @@
   height: auto;
   max-width: 100%;
   text-align: left;
-  font-size: 25px;
-  font-weight: 600;
+  font-size: 17px;
+  font-weight: 700;
   padding-bottom: 5px;
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: 3px;
   min-width: 0;
 }
 .sliderCarousel4:global(.__wab_instance) {

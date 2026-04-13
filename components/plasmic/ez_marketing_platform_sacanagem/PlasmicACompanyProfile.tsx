@@ -1927,7 +1927,7 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                         )}
                         component={Link}
                         href={
-                          "/c-apply-a-community?id=" + currentItem.agency_id
+                          "/a-apply-to-a-community?id=" + currentItem.agency_id
                         }
                         legacyBehavior={false}
                         platform={"nextjs"}
@@ -2242,7 +2242,7 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                         )}
                         component={Link}
                         href={
-                          "/c-apply-a-community?id=" + currentItem.agency_id
+                          "/a-apply-to-a-community?id=" + currentItem.agency_id
                         }
                         legacyBehavior={false}
                         platform={"nextjs"}

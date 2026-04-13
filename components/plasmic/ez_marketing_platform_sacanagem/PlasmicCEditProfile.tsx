@@ -452,37 +452,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
         path: "companyNature3",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
-          (() => {
-            try {
-              return (
-                $props.company?.["Company nature"] ??
-                (() => {
-                  const analysis = $state.radioGroup2.value;
-                  const travel = $state.radioGroup3.value;
-                  if (analysis === "Yes" && travel === "Yes") {
-                    return "Analysis - At Customer Location";
-                  } else if (analysis === "Yes" && travel === "No") {
-                    return "Analysis - At Company Location";
-                  } else if (analysis === "No" && travel === "Yes") {
-                    return "Table - At Customer Location";
-                  } else if (analysis === "No" && travel === "No") {
-                    return "Table - At Company Location";
-                  } else {
-                    return "Undefined";
-                  }
-                })()
-              );
-            } catch (e) {
-              if (
-                e instanceof TypeError ||
-                e?.plasmicType === "PlasmicUndefinedDataError"
-              ) {
-                return undefined;
-              }
-              throw e;
-            }
-          })()
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "googleCalendar.value",
@@ -2450,6 +2420,58 @@ function PlasmicCEditProfile__RenderFunc(props: {
                       "radioGroup2",
                       "value"
                     ]).apply(null, eventArgs);
+
+                    (async value => {
+                      const $steps = {};
+
+                      $steps["runCode"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              customFunction: async () => {
+                                return (() => {
+                                  const analysis = $state.radioGroup2.value;
+                                  const travel = $state.radioGroup3.value;
+                                  if (analysis === "Yes" && travel === "Yes") {
+                                    return ($state.companyNature3 =
+                                      "Analysis - At Customer Location");
+                                  } else if (
+                                    analysis === "Yes" &&
+                                    travel === "No"
+                                  ) {
+                                    return ($state.companyNature3 =
+                                      "Analysis - At Company Location");
+                                  } else if (
+                                    analysis === "No" &&
+                                    travel === "Yes"
+                                  ) {
+                                    return ($state.companyNature3 =
+                                      "Table - At Customer Location");
+                                  } else if (
+                                    analysis === "No" &&
+                                    travel === "No"
+                                  ) {
+                                    return ($state.companyNature3 =
+                                      "Table - At Company Location");
+                                  } else {
+                                    return ($state.companyNature3 =
+                                      "Undefined");
+                                  }
+                                })();
+                              }
+                            };
+                            return (({ customFunction }) => {
+                              return customFunction();
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["runCode"] != null &&
+                        typeof $steps["runCode"] === "object" &&
+                        typeof $steps["runCode"].then === "function"
+                      ) {
+                        $steps["runCode"] = await $steps["runCode"];
+                      }
+                    }).apply(null, eventArgs);
                   }}
                   options={[
                     { value: "option1", label: "Option 1" },
@@ -2515,6 +2537,58 @@ function PlasmicCEditProfile__RenderFunc(props: {
                       "radioGroup3",
                       "value"
                     ]).apply(null, eventArgs);
+
+                    (async value => {
+                      const $steps = {};
+
+                      $steps["runCode"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              customFunction: async () => {
+                                return (() => {
+                                  const analysis = $state.radioGroup2.value;
+                                  const travel = $state.radioGroup3.value;
+                                  if (analysis === "Yes" && travel === "Yes") {
+                                    return ($state.companyNature3 =
+                                      "Analysis - At Customer Location");
+                                  } else if (
+                                    analysis === "Yes" &&
+                                    travel === "No"
+                                  ) {
+                                    return ($state.companyNature3 =
+                                      "Analysis - At Company Location");
+                                  } else if (
+                                    analysis === "No" &&
+                                    travel === "Yes"
+                                  ) {
+                                    return ($state.companyNature3 =
+                                      "Table - At Customer Location");
+                                  } else if (
+                                    analysis === "No" &&
+                                    travel === "No"
+                                  ) {
+                                    return ($state.companyNature3 =
+                                      "Table - At Company Location");
+                                  } else {
+                                    return ($state.companyNature3 =
+                                      "Undefined");
+                                  }
+                                })();
+                              }
+                            };
+                            return (({ customFunction }) => {
+                              return customFunction();
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["runCode"] != null &&
+                        typeof $steps["runCode"] === "object" &&
+                        typeof $steps["runCode"].then === "function"
+                      ) {
+                        $steps["runCode"] = await $steps["runCode"];
+                      }
+                    }).apply(null, eventArgs);
                   }}
                   options={[
                     { value: "option1", label: "Option 1" },
@@ -3963,36 +4037,22 @@ function PlasmicCEditProfile__RenderFunc(props: {
                           const actionArgs = {
                             customFunction: async () => {
                               return (() => {
-                                console.log(
-                                  "================================================="
-                                );
-                                console.log("\uD83E\uDDEA DONE CLICKADO");
-                                console.log(
-                                  "\uD83D\uDD0D STATE companyLogo:",
-                                  $state.companyLogo
-                                );
-                                console.log(
-                                  "\uD83D\uDD0D TYPEOF companyLogo:",
-                                  typeof $state.companyLogo
-                                );
-                                try {
-                                  console.log(
-                                    "\uD83D\uDD0D JSON companyLogo:",
-                                    JSON.stringify($state.companyLogo)
-                                  );
-                                } catch (e) {
-                                  console.log(
-                                    "\u26A0️ companyLogo não serializável (provável Proxy)"
-                                  );
-                                }
-                                console.log(
-                                  "\uD83D\uDD0D STATE companyImage:",
-                                  $state.companyImage
-                                );
-                                console.log(
-                                  "\uD83D\uDD0D TYPEOF companyImage:",
-                                  typeof $state.companyImage
-                                );
+                                const analysis = $state.radioGroup2.value;
+                                const travel = $state.radioGroup3.value;
+                                const computedNature = (() => {
+                                  if (analysis === "Yes" && travel === "Yes")
+                                    return "Analysis - At Customer Location";
+                                  if (analysis === "Yes" && travel === "No")
+                                    return "Analysis - At Company Location";
+                                  if (analysis === "No" && travel === "Yes")
+                                    return "Table - At Customer Location";
+                                  if (analysis === "No" && travel === "No")
+                                    return "Table - At Company Location";
+                                  return "Undefined";
+                                })();
+                                const companyNatureToSend =
+                                  $props.company?.["Company nature"] ??
+                                  computedNature;
                                 return $props.onSave({
                                   company: {
                                     "Company name":
@@ -4018,8 +4078,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
                                       $state.solutionDescription?.value ?? "",
                                     "Why should they choose":
                                       $state.whyShouldTheyChoose?.value ?? "",
-                                    "Company nature":
-                                      $state.companyNature3?.value ?? "",
+                                    "Company nature": companyNatureToSend,
                                     "Company Logo": $state.companyLogo ?? "",
                                     "Company image":
                                       $state.companyImage ??

@@ -25,15 +25,16 @@ export default function ACompanyProfile() {
 
   const [viewer, setViewer] = useState<any>(null);
   const [formData, setFormData] = useState<any>({});
+  const [solutions, setSolutions] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
   // =========================
   // AUTH
   // =========================
+
   useEffect(() => {
     async function loadUser() {
       const { data } = await supabaseA.auth.getUser();
-      console.log("👤 USER:", data?.user);
       setViewer(data?.user ?? null);
     }
     loadUser();
@@ -42,15 +43,11 @@ export default function ACompanyProfile() {
   // =========================
   // LOAD ALL
   // =========================
+
   useEffect(() => {
-    if (!id) {
-      console.log("⛔ NO ID YET");
-      return;
-    }
+    if (!id) return;
 
     async function loadAll() {
-      console.log("🚀 LOAD ALL START", { id });
-
       try {
         const companyId = Number(id);
 
@@ -61,115 +58,178 @@ export default function ACompanyProfile() {
           .eq("id", companyId)
           .maybeSingle();
 
-        console.log("🏢 COMPANY:", company);
-
         if (!company) {
-          console.log("❌ NO COMPANY FOUND");
           setFormData({});
+          setSolutions([]);
           setLoading(false);
           return;
         }
 
-        // =========================
-        // SOLUTIONS RAW
-        // =========================
-        const { data: solutionsData, error: solutionsError } =
-          await supabaseC
-            .from("solutions")
-            .select(`
+        // LOGGED PROFILE PIC
+        let logged_profile_pic = null;
+
+        if (viewer?.id) {
+          const { data: profile } = await supabaseA
+            .from("User profile")
+            .select('"Profile pic"')
+            .eq("user_id", viewer.id)
+            .maybeSingle();
+
+          logged_profile_pic = profile?.["Profile pic"] ?? null;
+        }
+
+        // CONNECTION
+        let connection = null;
+
+        if (viewer?.id) {
+          const { data: membership } = await supabaseA
+            .from("community_members")
+            .select("community_id")
+            .eq("user_id", viewer.id)
+            .maybeSingle();
+
+          if (membership?.community_id) {
+            const { data } = await supabaseA
+              .from("CONNECTIONS")
+              .select("*")
+              .eq("agency_id", membership.community_id)
+              .eq("company_id", company.id)
+              .maybeSingle();
+
+            connection = data;
+          }
+        }
+
+        const isConnected = connection?.status === "connected";
+
+        // SOLUTIONS 🔥
+        const { data: solutionsData } = await supabaseC
+          .from("solutions")
+          .select(`
+            id,
+            Title,
+            Description,
+            Price,
+            solutions_steps (
               id,
-              Title,
-              Description,
-              Price,
-              solutions_steps (
-                id,
-                step_text,
-                Step_order
-              )
-            `)
-            .eq("Company_id", company.id);
+              step_text,
+              Step_order
+            )
+          `)
+          .eq("Company_id", company.id);
 
-        console.log("🧩 SOLUTIONS RAW:", solutionsData);
-        console.log("⚠️ SOLUTIONS ERROR:", solutionsError);
-        console.log(
-          "📊 SOLUTIONS RAW LENGTH:",
-          solutionsData?.length
-        );
-
-        // =========================
-        // SOLUTIONS FORMAT
-        // =========================
         const solutionsFormatted =
-          solutionsData?.map((sol: any, index: number) => {
-            console.log(`🔧 FORMAT SOLUTION [${index}] RAW:`, sol);
-
-            const stepsSorted =
+          solutionsData?.map((sol: any) => ({
+            id: sol.id,
+            title: sol.Title ?? "",
+            description: sol.Description ?? "",
+            price: sol.Price ?? "",
+            steps:
               sol.solutions_steps?.length
-                ? sol.solutions_steps.sort(
-                    (a: any, b: any) =>
-                      (a.Step_order ?? 0) -
-                      (b.Step_order ?? 0)
-                  )
-                : [];
+                ? sol.solutions_steps
+                    .sort(
+                      (a: any, b: any) =>
+                        (a.Step_order ?? 0) -
+                        (b.Step_order ?? 0)
+                    )
+                    .map((s: any) => ({
+                      id: s.id,
+                      step_text: s.step_text ?? ""
+                    }))
+                : [{}]
+          })) ?? [];
 
-            console.log(
-              `📍 STEPS SORTED [${index}]:`,
-              stepsSorted
-            );
+        setSolutions(solutionsFormatted);
 
-            const stepsMapped = stepsSorted.map((s: any) => ({
-              id: s.id,
-              step_text: s.step_text ?? ""
-            }));
+        // REVIEWS
+        const { data: reviews } = await supabaseA
+          .from("community_reviews")
+          .select("*")
+          .eq("company_id", company.id);
 
-            console.log(
-              `📍 STEPS MAPPED [${index}]:`,
-              stepsMapped
-            );
-
-            const formatted = {
-              id: sol.id,
-              title: sol.Title ?? "",
-              description: sol.Description ?? "",
-              price: sol.Price ?? "",
-              steps: stepsMapped
-            };
-
-            console.log(
-              `✅ SOLUTION FORMATTED [${index}]:`,
-              formatted
-            );
-
-            return formatted;
-          }) ?? [];
-
-        console.log("✅ SOLUTIONS FORMATTED FINAL:", solutionsFormatted);
-        console.log(
-          "📊 SOLUTIONS FORMATTED LENGTH:",
-          solutionsFormatted.length
+        const communityIds = Array.from(
+          new Set(
+            (reviews ?? [])
+              .map((r: any) => Number(r.community_id))
+              .filter(Boolean)
+          )
         );
 
-        // =========================
-        // FINAL OBJECT
-        // =========================
-        const nextFormData = {
-          ...company,
-          solutions: solutionsFormatted
+        let communityMap: any = {};
+
+        if (communityIds.length) {
+          const { data: communities } = await supabaseA
+            .from("Community")
+            .select("id, community_name, community_logo")
+            .in("id", communityIds);
+
+          communities?.forEach((c: any) => {
+            communityMap[Number(c.id)] = c;
+          });
+        }
+
+        const normalize = (r: any) => {
+          const community = communityMap[Number(r.community_id)];
+
+          return {
+            agency_id: Number(r.community_id),
+
+            rating: Number(r?.rating ?? 0),
+            comment: r?.comment ?? "",
+
+            community_name: community?.community_name ?? "",
+            community_logo: community?.community_logo ?? ""
+          };
         };
 
-        console.log("🧠 FINAL FORMDATA:", nextFormData);
-        console.log(
-          "📦 FORMDATA.SOLUTIONS:",
-          nextFormData.solutions
-        );
-        console.log(
-          "📊 FORMDATA.SOLUTIONS LENGTH:",
-          nextFormData.solutions?.length
-        );
+        const company_reviews =
+          (reviews ?? [])
+            .filter((r: any) => r.author_type === "community")
+            .map(normalize);
+
+        const company_membersreviews =
+          (reviews ?? [])
+            .filter((r: any) => r.author_type === "member")
+            .map(normalize);
+
+        const company_replies =
+          (reviews ?? [])
+            .filter((r: any) => r.author_type?.startsWith("company"))
+            .map(normalize);
+
+        const total_reviews = company_reviews.length;
+
+        const average_rating =
+          total_reviews > 0
+            ? company_reviews.reduce(
+                (acc: number, r: any) => acc + r.rating,
+                0
+              ) / total_reviews
+            : 0;
+
+        // FINAL OBJECT
+        const nextFormData = {
+          ...company,
+
+          "Company nature":
+            company?.["Company nature"] ?? "Standard",
+
+          company_reviews,
+          company_membersreviews,
+          company_replies,
+
+          total_reviews,
+          average_rating,
+
+          connection,
+          isConnected,
+
+          logged_profile_pic
+        };
 
         setFormData(nextFormData);
       } catch (err) {
-        console.error("💥 LOAD ERROR:", err);
+        console.error(err);
       }
 
       setLoading(false);
@@ -178,18 +238,47 @@ export default function ACompanyProfile() {
     loadAll();
   }, [id, viewer]);
 
-  // =========================
-  // RENDER DEBUG
-  // =========================
-  console.log("🖥️ RENDER FORMDATA:", formData);
-  console.log(
-    "🖥️ RENDER SOLUTIONS:",
-    formData?.solutions
-  );
-  console.log(
-    "🖥️ RENDER SOLUTIONS LENGTH:",
-    formData?.solutions?.length
-  );
+  // SAVE (ANTI DUPLICAÇÃO)
+  async function handleSave(data: any) {
+    if (!viewer || !id) return;
+
+    const { data: membership } = await supabaseA
+      .from("community_members")
+      .select("community_id")
+      .eq("user_id", viewer.id)
+      .maybeSingle();
+
+    if (!membership) return;
+
+    const { data: existingConnection } = await supabaseA
+      .from("CONNECTIONS")
+      .select("id")
+      .eq("agency_id", membership.community_id)
+      .eq("company_id", Number(id))
+      .maybeSingle();
+
+    if (existingConnection) {
+      await supabaseA
+        .from("CONNECTIONS")
+        .update({
+          status: "agency request",
+          short_message: data?.short_message ?? ""
+        })
+        .eq("id", existingConnection.id);
+
+      return;
+    }
+
+    await supabaseA
+      .from("CONNECTIONS")
+      .insert({
+        status: "agency request",
+        created_by_user_id: viewer.id,
+        agency_id: membership.community_id,
+        company_id: Number(id),
+        short_message: data?.short_message ?? ""
+      });
+  }
 
   if (loading) return null;
 
@@ -197,7 +286,20 @@ export default function ACompanyProfile() {
     <PlasmicACompanyProfile
       args={{
         formData,
-        company: formData
+        company: formData,
+
+        // 🔥 FIX FINAL DO REPEATER
+        solutions: solutions.length ? solutions : [{}],
+
+        company_reviews: formData?.company_reviews ?? [],
+        company_membersreviews:
+          formData?.company_membersreviews ?? [],
+        company_replies: formData?.company_replies ?? [],
+
+        total_reviews: formData?.total_reviews ?? 0,
+        average_rating: formData?.average_rating ?? 0,
+
+        onSave: handleSave
       }}
     />
   );

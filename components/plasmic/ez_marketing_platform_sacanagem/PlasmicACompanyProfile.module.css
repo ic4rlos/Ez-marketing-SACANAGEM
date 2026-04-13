@@ -850,7 +850,7 @@
   width: auto;
   height: 100%;
   max-width: 100%;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
   margin-left: 3px;
   margin-right: 3px;
@@ -911,20 +911,38 @@
   text-overflow: clip;
   padding: 0px 0px 0px 8px;
 }
+.foundationDate3 {
+  animation: none;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: 2px;
+  white-space: pre;
+  font-style: normal;
+  color: #535353;
+  text-align: left;
+  text-transform: none;
+  line-height: 1.5;
+  user-select: text;
+  text-decoration-line: none;
+  text-overflow: clip;
+  padding: 0px 0px 0px 8px;
+}
 .freeBox__uVxa {
   animation: none;
   display: flex;
   flex-direction: column;
   width: auto;
-  height: 100%;
+  height: auto;
   max-width: 100%;
-  justify-content: flex-start;
+  justify-content: space-evenly;
   align-items: center;
   position: relative;
   left: auto;
   top: auto;
-  min-height: 0;
-  padding: 8px 0px 0px;
 }
 .goalsSum4 {
   animation: none;
@@ -1190,14 +1208,14 @@
   text-overflow: clip;
   min-width: 0;
 }
-.sliderCarousel:global(.__wab_instance) {
+.sliderCarousel2:global(.__wab_instance) {
   animation: none;
   width: 900px;
   max-width: 100%;
   flex-direction: column;
   object-fit: cover;
 }
-.solution2 {
+.solution {
   animation: none;
   display: flex;
   flex-direction: column;
@@ -1209,7 +1227,7 @@
   align-items: center;
   padding: 8px;
 }
-.tooltip___27Eze:global(.__wab_instance) {
+.tooltip__logeX:global(.__wab_instance) {
   animation: none;
   max-width: 100%;
   object-fit: cover;
@@ -1218,10 +1236,10 @@
   flex-shrink: 0;
   border-radius: 10px;
 }
-.title2 {
+.title3 {
   animation: none;
   position: relative;
-  width: 50px;
+  width: auto;
   height: auto;
   max-width: 100%;
   font-weight: 500;
@@ -1237,31 +1255,21 @@
   text-decoration-line: none !important;
   text-overflow: clip !important;
   color: #535353;
-}
-.freeBox___1VgMx {
-  animation: none;
-  display: flex;
-  flex-direction: row;
-  position: relative;
-  align-items: center;
-  justify-content: center;
-  width: auto;
-  height: auto;
-  max-width: 100%;
   padding: 8px;
 }
-.steps2 {
+.freeBox__mlsEw {
   animation: none;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  position: relative;
+  align-items: flex-start;
+  justify-content: flex-start;
   width: auto;
   height: auto;
   max-width: 100%;
   padding: 8px;
 }
-.text__obydT {
+.text__chDso {
   animation: none;
   width: 50px;
   height: auto;
@@ -1280,11 +1288,22 @@
   text-decoration-line: none;
   text-overflow: clip;
 }
-.stepText2 {
+.steps {
   animation: none;
-  width: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: auto;
   height: auto;
   max-width: 100%;
+  padding: 8px;
+}
+.stepText {
+  animation: none;
+  width: auto;
+  height: auto;
+  max-width: 100px;
   color: #ffffff;
   font-weight: 400;
   font-size: 12px;
@@ -1299,10 +1318,10 @@
   text-decoration-line: none;
   text-overflow: clip;
 }
-.freeBox__qnbsi {
+.freeBox__izzq {
   animation: none;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   position: relative;
   width: auto;
   height: auto;
@@ -1311,9 +1330,9 @@
   align-items: flex-start;
   padding: 0px;
 }
-.description2 {
+.description {
   animation: none;
-  width: 400px;
+  width: auto;
   height: auto;
   max-width: 100%;
   font-size: 12px;
@@ -1330,7 +1349,7 @@
   text-decoration-line: none;
   text-overflow: clip;
 }
-.freeBox__niFob {
+.freeBox__j7PGs {
   animation: none;
   display: flex;
   flex-direction: row;
@@ -1342,7 +1361,7 @@
   max-width: 100%;
   padding: 0px;
 }
-.text___7FflU {
+.text__rzpvX {
   animation: none;
   width: 50px;
   height: auto;
@@ -1362,7 +1381,7 @@
   text-overflow: clip;
   flex-shrink: 0;
 }
-.price2 {
+.price {
   animation: none;
   width: 50px;
   height: auto;
@@ -1382,7 +1401,8 @@
   text-overflow: clip;
   flex-shrink: 0;
 }
-.freeBox__gZntf {
+.freeBox__ybVa3 {
+  animation: none;
   display: flex;
   flex-direction: row;
   position: relative;
@@ -1396,7 +1416,8 @@
   min-width: 1064px;
   padding: 0px;
 }
-.countainer9 {
+.countainer11 {
+  animation: none;
   display: flex;
   flex-direction: column;
   width: 522px;
@@ -1410,7 +1431,8 @@
   padding: 8px;
   border: 1px solid #53535333;
 }
-.text__lk7A9 {
+.text___8PvHh {
+  animation: none;
   position: relative;
   width: 100%;
   height: auto;
@@ -1431,7 +1453,8 @@
   text-overflow: clip;
   min-width: 0;
 }
-.freeBox___4J5By {
+.freeBox__gGJym {
+  animation: none;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -1446,7 +1469,8 @@
   border-radius: 8px;
   padding: 8px;
 }
-.companyReviews {
+.communityReplies {
+  animation: none;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -1460,7 +1484,8 @@
   border-radius: 8px;
   padding: 3px 3px 3px 20px;
 }
-.freeBox__mOji4 {
+.freeBox__mcAoi {
+  animation: none;
   display: flex;
   flex-direction: row;
   position: relative;
@@ -1471,7 +1496,8 @@
   max-width: 100%;
   padding: 0px 8px;
 }
-.communityLogo {
+.communityLogo2 {
+  animation: none;
   object-fit: cover;
   max-width: 100%;
   width: 30px;
@@ -1479,10 +1505,11 @@
   flex-shrink: 0;
   border-radius: 15px;
 }
-.communityLogo > picture > img {
+.communityLogo2 > picture > img {
   object-fit: cover;
 }
-.communityName {
+.communityName3 {
+  animation: none;
   font-size: 12px;
   margin-left: 3px;
   margin-right: 3px;
@@ -1499,7 +1526,8 @@
   text-decoration-line: none;
   text-overflow: clip;
 }
-.text__j3HmP {
+.text___5DhCt {
+  animation: none;
   position: relative;
   width: auto;
   height: auto;
@@ -1520,7 +1548,8 @@
   text-decoration-line: none;
   text-overflow: clip;
 }
-.companyName2 {
+.companyName5 {
+  animation: none;
   font-size: 12px;
   margin-left: 3px;
   margin-right: 3px;
@@ -1537,7 +1566,8 @@
   text-decoration-line: none;
   text-overflow: clip;
 }
-.comment {
+.comment3 {
+  animation: none;
   width: auto;
   height: auto;
   max-width: 100%;
@@ -1557,11 +1587,14 @@
   text-decoration-line: none;
   text-overflow: clip;
 }
-.rating:global(.__wab_instance) {
+.rating3:global(.__wab_instance) {
+  animation: none;
   max-width: 100%;
   object-fit: cover;
+  color: var(--token-QtAxzZLFXAHQ);
 }
-.text__enb8J {
+.text__iCvQ {
+  animation: none;
   font-family: "Inter", sans-serif;
   font-size: 16px;
   font-weight: 400;
@@ -1576,7 +1609,8 @@
   text-decoration-line: none !important;
   text-overflow: clip !important;
 }
-.text__a5TaO {
+.text__rPuXd {
+  animation: none;
   font-family: "Inter", sans-serif;
   font-size: 16px;
   font-weight: 400;
@@ -1591,7 +1625,8 @@
   text-decoration-line: none !important;
   text-overflow: clip !important;
 }
-.text__eislf {
+.text__iBrJw {
+  animation: none;
   font-family: "Inter", sans-serif;
   font-size: 16px;
   font-weight: 400;
@@ -1606,7 +1641,8 @@
   text-decoration-line: none !important;
   text-overflow: clip !important;
 }
-.text__cQng4 {
+.text__aMsU3 {
+  animation: none;
   font-family: "Inter", sans-serif;
   font-size: 16px;
   font-weight: 400;
@@ -1621,7 +1657,8 @@
   text-decoration-line: none !important;
   text-overflow: clip !important;
 }
-.text__y8T5E {
+.text__um0P2 {
+  animation: none;
   font-family: "Inter", sans-serif;
   font-size: 16px;
   font-weight: 400;
@@ -1636,7 +1673,8 @@
   text-decoration-line: none !important;
   text-overflow: clip !important;
 }
-.countainer10 {
+.countainer13 {
+  animation: none;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -1653,7 +1691,8 @@
   padding: 8px;
   border: 1px solid #53535333;
 }
-.text___86VDf {
+.text__wt4Zl {
+  animation: none;
   position: relative;
   width: 100%;
   height: auto;
@@ -1674,7 +1713,8 @@
   text-overflow: clip;
   min-width: 0;
 }
-.freeBox___6Gc7P {
+.freeBox__iV5Mz {
+  animation: none;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -1689,7 +1729,8 @@
   border-radius: 8px;
   padding: 8px 8px 0px;
 }
-.companyReplies {
+.communityReviews {
+  animation: none;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -1703,7 +1744,8 @@
   border-radius: 8px;
   padding: 3px 3px 3px 20px;
 }
-.freeBox__v3Ye7 {
+.freeBox__e5ZVl {
+  animation: none;
   display: flex;
   flex-direction: row;
   position: relative;
@@ -1714,7 +1756,8 @@
   max-width: 100%;
   padding: 0px 8px;
 }
-.companyLogo2 {
+.companyLogo4 {
+  animation: none;
   object-fit: cover;
   max-width: 100%;
   width: 30px;
@@ -1722,10 +1765,11 @@
   flex-shrink: 0;
   border-radius: 15px;
 }
-.companyLogo2 > picture > img {
+.companyLogo4 > picture > img {
   object-fit: cover;
 }
-.companyName3 {
+.companyName6 {
+  animation: none;
   font-size: 12px;
   margin-left: 3px;
   margin-right: 3px;
@@ -1742,7 +1786,8 @@
   text-decoration-line: none;
   text-overflow: clip;
 }
-.text___2HIre {
+.text___9CzYf {
+  animation: none;
   position: relative;
   width: auto;
   height: auto;
@@ -1763,7 +1808,8 @@
   text-decoration-line: none;
   text-overflow: clip;
 }
-.communityName2 {
+.communityName4 {
+  animation: none;
   font-size: 12px;
   margin-left: 3px;
   margin-right: 3px;
@@ -1780,7 +1826,8 @@
   text-decoration-line: none;
   text-overflow: clip;
 }
-.comment2 {
+.comment4 {
+  animation: none;
   width: auto;
   height: auto;
   max-width: 100%;
@@ -1800,11 +1847,14 @@
   text-decoration-line: none;
   text-overflow: clip;
 }
-.rating2:global(.__wab_instance) {
+.rating4:global(.__wab_instance) {
+  animation: none;
   max-width: 100%;
   object-fit: cover;
+  color: var(--token-QtAxzZLFXAHQ);
 }
-.text__gyMzw {
+.text__s9U6Q {
+  animation: none;
   font-family: "Inter", sans-serif;
   font-size: 16px;
   font-weight: 400;
@@ -1819,7 +1869,8 @@
   text-decoration-line: none !important;
   text-overflow: clip !important;
 }
-.text___0QbEn {
+.text___7XKzA {
+  animation: none;
   font-family: "Inter", sans-serif;
   font-size: 16px;
   font-weight: 400;
@@ -1834,7 +1885,8 @@
   text-decoration-line: none !important;
   text-overflow: clip !important;
 }
-.text__mNV {
+.text__dXrvj {
+  animation: none;
   font-family: "Inter", sans-serif;
   font-size: 16px;
   font-weight: 400;
@@ -1849,7 +1901,8 @@
   text-decoration-line: none !important;
   text-overflow: clip !important;
 }
-.text__pwlPy {
+.text___0LJzm {
+  animation: none;
   font-family: "Inter", sans-serif;
   font-size: 16px;
   font-weight: 400;
@@ -1864,7 +1917,8 @@
   text-decoration-line: none !important;
   text-overflow: clip !important;
 }
-.text__ehfxf {
+.text__hlPgJ {
+  animation: none;
   font-family: "Inter", sans-serif;
   font-size: 16px;
   font-weight: 400;

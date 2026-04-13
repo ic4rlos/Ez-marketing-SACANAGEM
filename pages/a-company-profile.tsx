@@ -147,7 +147,7 @@ export default function ACompanyProfile() {
           })) ?? [];
 
         // =========================
-        // REVIEWS
+        // REVIEWS + COMMUNITY ENRICH
         // =========================
 
         const { data: reviews } = await supabaseA
@@ -155,10 +155,37 @@ export default function ACompanyProfile() {
           .select("*")
           .eq("company_id", company.id);
 
-        const normalize = (r: any) => ({
-          rating: Number(r?.rating ?? 0),
-          comment: r?.comment ?? ""
-        });
+        const communityIds = Array.from(
+          new Set(
+            (reviews ?? [])
+              .map((r: any) => Number(r.community_id))
+              .filter(Boolean)
+          )
+        );
+
+        let communityMap: any = {};
+
+        if (communityIds.length) {
+          const { data: communities } = await supabaseA
+            .from("Community")
+            .select("id, community_name, community_logo")
+            .in("id", communityIds);
+
+          communities?.forEach((c: any) => {
+            communityMap[Number(c.id)] = c;
+          });
+        }
+
+        const normalize = (r: any) => {
+          const community = communityMap[Number(r.community_id)];
+
+          return {
+            rating: Number(r?.rating ?? 0),
+            comment: r?.comment ?? "",
+            community_name: community?.community_name ?? "",
+            community_logo: community?.community_logo ?? ""
+          };
+        };
 
         const company_reviews =
           (reviews ?? [])
@@ -234,15 +261,13 @@ export default function ACompanyProfile() {
 
     if (!membership) return;
 
-    // 🔥 CHECK EXISTENTE
     const { data: existingConnection } = await supabaseA
       .from("CONNECTIONS")
-      .select("id, status")
+      .select("id")
       .eq("agency_id", membership.community_id)
       .eq("company_id", Number(id))
       .maybeSingle();
 
-    // 🔁 UPDATE SE EXISTIR
     if (existingConnection) {
       await supabaseA
         .from("CONNECTIONS")
@@ -255,7 +280,6 @@ export default function ACompanyProfile() {
       return;
     }
 
-    // ➕ INSERT SE NÃO EXISTIR
     await supabaseA
       .from("CONNECTIONS")
       .insert({

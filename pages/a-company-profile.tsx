@@ -41,17 +41,16 @@ export default function ACompanyProfile() {
   }, []);
 
   // =========================
-  // LOAD ALL
+  // LOAD CORE (SEM SOLUTIONS)
   // =========================
 
   useEffect(() => {
     if (!id) return;
 
-    async function loadAll() {
+    async function loadCore() {
       try {
         const companyId = Number(id);
 
-        // COMPANY
         const { data: company } = await supabaseC
           .from("companies")
           .select("*")
@@ -60,12 +59,11 @@ export default function ACompanyProfile() {
 
         if (!company) {
           setFormData({});
-          setSolutions([]);
           setLoading(false);
           return;
         }
 
-        // LOGGED PROFILE PIC
+        // PROFILE PIC
         let logged_profile_pic = null;
 
         if (viewer?.id) {
@@ -102,45 +100,6 @@ export default function ACompanyProfile() {
 
         const isConnected = connection?.status === "connected";
 
-        // SOLUTIONS 🔥
-        const { data: solutionsData } = await supabaseC
-          .from("solutions")
-          .select(`
-            id,
-            Title,
-            Description,
-            Price,
-            solutions_steps (
-              id,
-              step_text,
-              Step_order
-            )
-          `)
-          .eq("Company_id", company.id);
-
-        const solutionsFormatted =
-          solutionsData?.map((sol: any) => ({
-            id: sol.id,
-            title: sol.Title ?? "",
-            description: sol.Description ?? "",
-            price: sol.Price ?? "",
-            steps:
-              sol.solutions_steps?.length
-                ? sol.solutions_steps
-                    .sort(
-                      (a: any, b: any) =>
-                        (a.Step_order ?? 0) -
-                        (b.Step_order ?? 0)
-                    )
-                    .map((s: any) => ({
-                      id: s.id,
-                      step_text: s.step_text ?? ""
-                    }))
-                : [{}]
-          })) ?? [];
-
-        setSolutions(solutionsFormatted);
-
         // REVIEWS
         const { data: reviews } = await supabaseA
           .from("community_reviews")
@@ -173,10 +132,8 @@ export default function ACompanyProfile() {
 
           return {
             agency_id: Number(r.community_id),
-
             rating: Number(r?.rating ?? 0),
             comment: r?.comment ?? "",
-
             community_name: community?.community_name ?? "",
             community_logo: community?.community_logo ?? ""
           };
@@ -207,8 +164,7 @@ export default function ACompanyProfile() {
               ) / total_reviews
             : 0;
 
-        // FINAL OBJECT
-        const nextFormData = {
+        setFormData({
           ...company,
 
           "Company nature":
@@ -225,9 +181,8 @@ export default function ACompanyProfile() {
           isConnected,
 
           logged_profile_pic
-        };
+        });
 
-        setFormData(nextFormData);
       } catch (err) {
         console.error(err);
       }
@@ -235,10 +190,64 @@ export default function ACompanyProfile() {
       setLoading(false);
     }
 
-    loadAll();
+    loadCore();
   }, [id, viewer]);
 
-  // SAVE (ANTI DUPLICAÇÃO)
+  // =========================
+  // LOAD SOLUTIONS (SEPARADO 🔥)
+  // =========================
+
+  useEffect(() => {
+    if (!id) return;
+
+    async function loadSolutions() {
+      const companyId = Number(id);
+
+      const { data: solutionsData } = await supabaseC
+        .from("solutions")
+        .select(`
+          id,
+          Title,
+          Description,
+          Price,
+          solutions_steps (
+            id,
+            step_text,
+            Step_order
+          )
+        `)
+        .eq("Company_id", companyId)
+        .order("id", { ascending: true });
+
+      const structuredSolutions =
+        solutionsData?.map((sol: any) => ({
+          id: sol.id,
+          title: sol.Title ?? "",
+          description: sol.Description ?? "",
+          price: sol.Price ?? "",
+          steps:
+            sol.solutions_steps
+              ?.sort(
+                (a: any, b: any) =>
+                  (a.Step_order ?? 0) -
+                  (b.Step_order ?? 0)
+              )
+              .map((s: any) => ({
+                id: s.id,
+                step_text: s.step_text ?? ""
+              })) ?? [],
+        })) ?? [];
+
+      setSolutions(structuredSolutions);
+    }
+
+    loadSolutions();
+  }, [id]);
+
+  // =========================
+  // SAVE
+  // =========================
+
   async function handleSave(data: any) {
     if (!viewer || !id) return;
 
@@ -288,8 +297,8 @@ export default function ACompanyProfile() {
         formData,
         company: formData,
 
-        // 🔥 FIX FINAL DO REPEATER
-        solutions: solutions.length ? solutions : [{}],
+        // 🔥 AGORA FUNCIONA IGUAL AO C
+        solutions: solutions ?? [],
 
         company_reviews: formData?.company_reviews ?? [],
         company_membersreviews:

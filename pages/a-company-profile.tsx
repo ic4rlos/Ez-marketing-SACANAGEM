@@ -51,10 +51,7 @@ export default function ACompanyProfile() {
       try {
         const companyId = Number(id);
 
-        // =========================
         // COMPANY
-        // =========================
-
         const { data: company } = await supabaseC
           .from("companies")
           .select("*")
@@ -68,10 +65,7 @@ export default function ACompanyProfile() {
           return;
         }
 
-        // =========================
         // LOGGED PROFILE PIC
-        // =========================
-
         let logged_profile_pic = null;
 
         if (viewer?.id) {
@@ -84,10 +78,7 @@ export default function ACompanyProfile() {
           logged_profile_pic = profile?.["Profile pic"] ?? null;
         }
 
-        // =========================
         // CONNECTION
-        // =========================
-
         let connection = null;
 
         if (viewer?.id) {
@@ -111,10 +102,7 @@ export default function ACompanyProfile() {
 
         const isConnected = connection?.status === "connected";
 
-        // =========================
-        // SOLUTIONS (SEPARADO 🔥)
-        // =========================
-
+        // SOLUTIONS 🔥
         const { data: solutionsData } = await supabaseC
           .from("solutions")
           .select(`
@@ -138,23 +126,22 @@ export default function ACompanyProfile() {
             price: sol.Price ?? "",
             steps:
               sol.solutions_steps?.length
-              ? sol.solutions_steps
-                .sort(
-                  (a: any, b: any) =>
-                    (a.Step_order ?? 0) - (b.Step_order ?? 0)
-                )
-                .map((s: any) => ({
-                  id: s.id,
-                  step_text: s.step_text ?? ""
-                })) ?? []
+                ? sol.solutions_steps
+                    .sort(
+                      (a: any, b: any) =>
+                        (a.Step_order ?? 0) -
+                        (b.Step_order ?? 0)
+                    )
+                    .map((s: any) => ({
+                      id: s.id,
+                      step_text: s.step_text ?? ""
+                    }))
+                : [{}]
           })) ?? [];
 
         setSolutions(solutionsFormatted);
 
-        // =========================
-        // REVIEWS + ENRICH
-        // =========================
-
+        // REVIEWS
         const { data: reviews } = await supabaseA
           .from("community_reviews")
           .select("*")
@@ -185,7 +172,7 @@ export default function ACompanyProfile() {
           const community = communityMap[Number(r.community_id)];
 
           return {
-            agency_id: Number(r.community_id), // 🔥 FIX LINK
+            agency_id: Number(r.community_id),
 
             rating: Number(r?.rating ?? 0),
             comment: r?.comment ?? "",
@@ -220,14 +207,12 @@ export default function ACompanyProfile() {
               ) / total_reviews
             : 0;
 
-        // =========================
         // FINAL OBJECT
-        // =========================
-
         const nextFormData = {
           ...company,
 
-          "Company nature": company?.["Company nature"] ?? "Standard",
+          "Company nature":
+            company?.["Company nature"] ?? "Standard",
 
           company_reviews,
           company_membersreviews,
@@ -253,10 +238,7 @@ export default function ACompanyProfile() {
     loadAll();
   }, [id, viewer]);
 
-  // =========================
   // SAVE (ANTI DUPLICAÇÃO)
-  // =========================
-
   async function handleSave(data: any) {
     if (!viewer || !id) return;
 
@@ -306,10 +288,12 @@ export default function ACompanyProfile() {
         formData,
         company: formData,
 
+        // 🔥 FIX FINAL DO REPEATER
         solutions: solutions.length ? solutions : [{}],
 
         company_reviews: formData?.company_reviews ?? [],
-        company_membersreviews: formData?.company_membersreviews ?? [],
+        company_membersreviews:
+          formData?.company_membersreviews ?? [],
         company_replies: formData?.company_replies ?? [],
 
         total_reviews: formData?.total_reviews ?? 0,

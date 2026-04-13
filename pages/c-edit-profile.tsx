@@ -106,7 +106,10 @@ export default function CEditProfile() {
     }
 
     const { company: companyValues, solutions } = payload;
-
+console.log("🧪 companyValues:", companyValues);
+console.log("🧪 keys:", Object.keys(companyValues));
+console.log("🧪 Company name:", companyValues["Company name"]);
+console.log("🧪 Company nature:", companyValues["Company nature"]);
     // ✅ LOGO
     const rawLogo = companyValues["Company Logo"];
     let logoUrl: string | null = null;

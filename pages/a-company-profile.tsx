@@ -25,13 +25,11 @@ export default function ACompanyProfile() {
 
   const [viewer, setViewer] = useState<any>(null);
   const [formData, setFormData] = useState<any>({});
-  const [solutions, setSolutions] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
   // =========================
   // AUTH
   // =========================
-
   useEffect(() => {
     async function loadUser() {
       const { data } = await supabaseA.auth.getUser();
@@ -41,16 +39,16 @@ export default function ACompanyProfile() {
   }, []);
 
   // =========================
-  // LOAD CORE (SEM SOLUTIONS)
+  // LOAD ALL
   // =========================
-
   useEffect(() => {
     if (!id) return;
 
-    async function loadCore() {
+    async function loadAll() {
       try {
         const companyId = Number(id);
 
+        // COMPANY
         const { data: company } = await supabaseC
           .from("companies")
           .select("*")
@@ -100,7 +98,47 @@ export default function ACompanyProfile() {
 
         const isConnected = connection?.status === "connected";
 
+        // =========================
+        // SOLUTIONS ✅ FIX REAL
+        // =========================
+        const { data: solutionsData } = await supabaseC
+          .from("solutions")
+          .select(`
+            id,
+            Title,
+            Description,
+            Price,
+            solutions_steps (
+              id,
+              step_text,
+              Step_order
+            )
+          `)
+          .eq("Company_id", company.id);
+
+        const solutionsFormatted =
+          solutionsData?.map((sol: any) => ({
+            id: sol.id,
+            title: sol.Title ?? "",
+            description: sol.Description ?? "",
+            price: sol.Price ?? "",
+            steps:
+              sol.solutions_steps?.length
+                ? sol.solutions_steps
+                    .sort(
+                      (a: any, b: any) =>
+                        (a.Step_order ?? 0) - (b.Step_order ?? 0)
+                    )
+                    .map((s: any) => ({
+                      id: s.id,
+                      step_text: s.step_text ?? ""
+                    }))
+                : [] // 🔥 nunca [{}]
+          })) ?? [];
+
+        // =========================
         // REVIEWS
+        // =========================
         const { data: reviews } = await supabaseA
           .from("community_reviews")
           .select("*")
@@ -164,11 +202,15 @@ export default function ACompanyProfile() {
               ) / total_reviews
             : 0;
 
-        setFormData({
+        // =========================
+        // FINAL OBJECT ✅ TUDO CENTRALIZADO
+        // =========================
+        const nextFormData = {
           ...company,
 
-          "Company nature":
-            company?.["Company nature"] ?? "Standard",
+          "Company nature": company?.["Company nature"] ?? "Standard",
+
+          solutions: solutionsFormatted, // 🔥 AQUI É O FIX
 
           company_reviews,
           company_membersreviews,
@@ -181,8 +223,9 @@ export default function ACompanyProfile() {
           isConnected,
 
           logged_profile_pic
-        });
+        };
 
+        setFormData(nextFormData);
       } catch (err) {
         console.error(err);
       }
@@ -190,64 +233,12 @@ export default function ACompanyProfile() {
       setLoading(false);
     }
 
-    loadCore();
+    loadAll();
   }, [id, viewer]);
-
-  // =========================
-  // LOAD SOLUTIONS (SEPARADO 🔥)
-  // =========================
-
-  useEffect(() => {
-    if (!id) return;
-
-    async function loadSolutions() {
-      const companyId = Number(id);
-
-      const { data: solutionsData } = await supabaseC
-        .from("solutions")
-        .select(`
-          id,
-          Title,
-          Description,
-          Price,
-          solutions_steps (
-            id,
-            step_text,
-            Step_order
-          )
-        `)
-        .eq("Company_id", companyId)
-        .order("id", { ascending: true });
-
-      const structuredSolutions =
-        solutionsData?.map((sol: any) => ({
-          id: sol.id,
-          title: sol.Title ?? "",
-          description: sol.Description ?? "",
-          price: sol.Price ?? "",
-          steps:
-            sol.solutions_steps
-              ?.sort(
-                (a: any, b: any) =>
-                  (a.Step_order ?? 0) -
-                  (b.Step_order ?? 0)
-              )
-              .map((s: any) => ({
-                id: s.id,
-                step_text: s.step_text ?? ""
-              })) ?? [],
-        })) ?? [];
-
-      setSolutions(structuredSolutions);
-    }
-
-    loadSolutions();
-  }, [id]);
 
   // =========================
   // SAVE
   // =========================
-
   async function handleSave(data: any) {
     if (!viewer || !id) return;
 
@@ -278,15 +269,13 @@ export default function ACompanyProfile() {
       return;
     }
 
-    await supabaseA
-      .from("CONNECTIONS")
-      .insert({
-        status: "agency request",
-        created_by_user_id: viewer.id,
-        agency_id: membership.community_id,
-        company_id: Number(id),
-        short_message: data?.short_message ?? ""
-      });
+    await supabaseA.from("CONNECTIONS").insert({
+      status: "agency request",
+      created_by_user_id: viewer.id,
+      agency_id: membership.community_id,
+      company_id: Number(id),
+      short_message: data?.short_message ?? ""
+    });
   }
 
   if (loading) return null;
@@ -297,8 +286,8 @@ export default function ACompanyProfile() {
         formData,
         company: formData,
 
-        // 🔥 AGORA FUNCIONA IGUAL AO C
-        solutions: solutions ?? [],
+        // 🔥 AGORA O PLASMIC DEVE USAR:
+        // $props.formData.solutions || [1]
 
         company_reviews: formData?.company_reviews ?? [],
         company_membersreviews:

@@ -1618,7 +1618,7 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                 {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
                   (() => {
                     try {
-                      return $props.formData.solutions || [1];
+                      return $props.solutions || [1];
                     } catch (e) {
                       if (
                         e instanceof TypeError ||

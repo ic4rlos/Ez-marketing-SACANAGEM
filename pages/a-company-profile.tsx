@@ -137,8 +137,9 @@ export default function ACompanyProfile() {
             description: sol.Description ?? "",
             price: sol.Price ?? "",
             steps:
-              sol.solutions_steps
-                ?.sort(
+              sol.solutions_steps?.length
+              ? sol.solutions_steps
+                .sort(
                   (a: any, b: any) =>
                     (a.Step_order ?? 0) - (b.Step_order ?? 0)
                 )
@@ -305,7 +306,7 @@ export default function ACompanyProfile() {
         formData,
         company: formData,
 
-        solutions: solutions ?? [],
+        solutions: solutions.length ? solutions : [{}],
 
         company_reviews: formData?.company_reviews ?? [],
         company_membersreviews: formData?.company_membersreviews ?? [],

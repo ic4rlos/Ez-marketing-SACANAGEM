@@ -547,6 +547,7 @@
   user-select: text;
   text-decoration-line: none;
   text-overflow: clip;
+  margin: 3px;
 }
 .link__r66C {
   display: flex;

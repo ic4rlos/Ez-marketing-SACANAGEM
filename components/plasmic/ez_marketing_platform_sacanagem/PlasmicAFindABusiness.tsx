@@ -141,43 +141,6 @@ export type PlasmicAFindABusiness__OverridesType = {
   hoverEngajament?: Flex__<"div">;
   infoBox?: Flex__<"div">;
   services1?: Flex__<"div">;
-  services2?: Flex__<"div">;
-  slide2?: Flex__<"div">;
-  price2?: Flex__<"div">;
-  hoverEngajament2?: Flex__<"div">;
-  infoBox2?: Flex__<"div">;
-  services3?: Flex__<"div">;
-  services4?: Flex__<"div">;
-  slide3?: Flex__<"div">;
-  price3?: Flex__<"div">;
-  hoverEngajament3?: Flex__<"div">;
-  infoBox3?: Flex__<"div">;
-  services5?: Flex__<"div">;
-  services6?: Flex__<"div">;
-  slide4?: Flex__<"div">;
-  price4?: Flex__<"div">;
-  hoverEngajament4?: Flex__<"div">;
-  infoBox4?: Flex__<"div">;
-  services7?: Flex__<"div">;
-  services8?: Flex__<"div">;
-  slide5?: Flex__<"div">;
-  price5?: Flex__<"div">;
-  hoverEngajament5?: Flex__<"div">;
-  infoBox5?: Flex__<"div">;
-  services9?: Flex__<"div">;
-  services10?: Flex__<"div">;
-  slide6?: Flex__<"div">;
-  price6?: Flex__<"div">;
-  hoverEngajament6?: Flex__<"div">;
-  infoBox6?: Flex__<"div">;
-  services11?: Flex__<"div">;
-  services12?: Flex__<"div">;
-  slide7?: Flex__<"div">;
-  price7?: Flex__<"div">;
-  hoverEngajament7?: Flex__<"div">;
-  infoBox7?: Flex__<"div">;
-  services13?: Flex__<"div">;
-  services14?: Flex__<"div">;
   comissionMoodel?: Flex__<"div">;
   tableAtCustomerLocation?: Flex__<typeof AntdDropdown>;
   services?: Flex__<"div">;
@@ -330,38 +293,6 @@ export type PlasmicAFindABusiness__OverridesType = {
   tam?: Flex__<"div">;
   competitive?: Flex__<"div">;
   price9?: Flex__<"div">;
-  slideNew2?: Flex__<"div">;
-  price10?: Flex__<"div">;
-  hoverEngajament9?: Flex__<"div">;
-  companyName2?: Flex__<"div">;
-  launch2?: Flex__<"div">;
-  tam2?: Flex__<"div">;
-  competitive2?: Flex__<"div">;
-  price11?: Flex__<"div">;
-  slideNew3?: Flex__<"div">;
-  price12?: Flex__<"div">;
-  hoverEngajament10?: Flex__<"div">;
-  companyName3?: Flex__<"div">;
-  launch3?: Flex__<"div">;
-  tam3?: Flex__<"div">;
-  competitive3?: Flex__<"div">;
-  price13?: Flex__<"div">;
-  slideNew4?: Flex__<"div">;
-  price14?: Flex__<"div">;
-  hoverEngajament11?: Flex__<"div">;
-  companyName4?: Flex__<"div">;
-  launch4?: Flex__<"div">;
-  tam4?: Flex__<"div">;
-  competitive4?: Flex__<"div">;
-  price15?: Flex__<"div">;
-  slideNew5?: Flex__<"div">;
-  price16?: Flex__<"div">;
-  hoverEngajament12?: Flex__<"div">;
-  companyName5?: Flex__<"div">;
-  launch5?: Flex__<"div">;
-  tam5?: Flex__<"div">;
-  competitive5?: Flex__<"div">;
-  price17?: Flex__<"div">;
   normal?: Flex__<"div">;
   sliderCarousel3?: Flex__<typeof SliderWrapper>;
   slide8?: Flex__<"div">;
@@ -371,99 +302,16 @@ export type PlasmicAFindABusiness__OverridesType = {
   launch6?: Flex__<"div">;
   tam6?: Flex__<"div">;
   competitive6?: Flex__<"div">;
+  random?: Flex__<"div">;
+  sliderCarousel4?: Flex__<typeof SliderWrapper>;
   slide9?: Flex__<"div">;
   price19?: Flex__<"div">;
   hoverEngajament14?: Flex__<"div">;
+  htmlVideo?: Flex__<typeof Video>;
   companyName7?: Flex__<"div">;
   launch7?: Flex__<"div">;
   tam7?: Flex__<"div">;
   competitive7?: Flex__<"div">;
-  slide10?: Flex__<"div">;
-  price20?: Flex__<"div">;
-  hoverEngajament15?: Flex__<"div">;
-  companyName8?: Flex__<"div">;
-  launch8?: Flex__<"div">;
-  tam8?: Flex__<"div">;
-  competitive8?: Flex__<"div">;
-  slide11?: Flex__<"div">;
-  price21?: Flex__<"div">;
-  hoverEngajament16?: Flex__<"div">;
-  companyName9?: Flex__<"div">;
-  launch9?: Flex__<"div">;
-  tam9?: Flex__<"div">;
-  competitive9?: Flex__<"div">;
-  slide12?: Flex__<"div">;
-  price22?: Flex__<"div">;
-  hoverEngajament17?: Flex__<"div">;
-  companyName10?: Flex__<"div">;
-  launch10?: Flex__<"div">;
-  tam10?: Flex__<"div">;
-  competitive10?: Flex__<"div">;
-  slide13?: Flex__<"div">;
-  price23?: Flex__<"div">;
-  hoverEngajament18?: Flex__<"div">;
-  companyName11?: Flex__<"div">;
-  launch11?: Flex__<"div">;
-  tam11?: Flex__<"div">;
-  competitive11?: Flex__<"div">;
-  slide14?: Flex__<"div">;
-  price24?: Flex__<"div">;
-  hoverEngajament19?: Flex__<"div">;
-  companyName12?: Flex__<"div">;
-  launch12?: Flex__<"div">;
-  tam12?: Flex__<"div">;
-  competitive12?: Flex__<"div">;
-  random?: Flex__<"div">;
-  sliderCarousel4?: Flex__<typeof SliderWrapper>;
-  slide15?: Flex__<"div">;
-  price25?: Flex__<"div">;
-  hoverEngajament20?: Flex__<"div">;
-  companyName13?: Flex__<"div">;
-  launch13?: Flex__<"div">;
-  tam13?: Flex__<"div">;
-  competitive13?: Flex__<"div">;
-  slide16?: Flex__<"div">;
-  price26?: Flex__<"div">;
-  hoverEngajament21?: Flex__<"div">;
-  companyName14?: Flex__<"div">;
-  launch14?: Flex__<"div">;
-  tam14?: Flex__<"div">;
-  competitive14?: Flex__<"div">;
-  slide17?: Flex__<"div">;
-  price27?: Flex__<"div">;
-  hoverEngajament22?: Flex__<"div">;
-  companyName15?: Flex__<"div">;
-  launch15?: Flex__<"div">;
-  tam15?: Flex__<"div">;
-  competitive15?: Flex__<"div">;
-  slide18?: Flex__<"div">;
-  price28?: Flex__<"div">;
-  hoverEngajament23?: Flex__<"div">;
-  companyName16?: Flex__<"div">;
-  launch16?: Flex__<"div">;
-  tam16?: Flex__<"div">;
-  competitive16?: Flex__<"div">;
-  slide19?: Flex__<"div">;
-  price29?: Flex__<"div">;
-  hoverEngajament24?: Flex__<"div">;
-  companyName17?: Flex__<"div">;
-  launch17?: Flex__<"div">;
-  tam17?: Flex__<"div">;
-  competitive17?: Flex__<"div">;
-  slide20?: Flex__<"div">;
-  price30?: Flex__<"div">;
-  hoverEngajament25?: Flex__<"div">;
-  companyName18?: Flex__<"div">;
-  launch18?: Flex__<"div">;
-  tam18?: Flex__<"div">;
-  competitive18?: Flex__<"div">;
-  slide21?: Flex__<"div">;
-  price31?: Flex__<"div">;
-  hoverEngajament26?: Flex__<"div">;
-  companyName19?: Flex__<"div">;
-  launch19?: Flex__<"div">;
-  tam19?: Flex__<"div">;
-  competitive19?: Flex__<"div">;
 };
 
 export interface DefaultAFindABusinessProps {}
@@ -561,55 +409,55 @@ function PlasmicAFindABusiness__RenderFunc(props: {
     $ctx as PageCtx
   );
 
-  const [isN28270037FocusVisible, triggerN28270037FocusVisibleProps] =
+  const [isN37334797FocusVisible, triggerN37334797FocusVisibleProps] =
     useTrigger("useFocusVisible", {
       isTextInput: false
     });
   const [
-    isN28270037FocusVisibleWithin,
-    triggerN28270037FocusVisibleWithinProps
+    isN37334797FocusVisibleWithin,
+    triggerN37334797FocusVisibleWithinProps
   ] = useTrigger("useFocusVisibleWithin", {
     isTextInput: false
   });
-  const [isN28270458FocusVisible, triggerN28270458FocusVisibleProps] =
+  const [isN37335218FocusVisible, triggerN37335218FocusVisibleProps] =
     useTrigger("useFocusVisible", {
       isTextInput: false
     });
   const [
-    isN28270458FocusVisibleWithin,
-    triggerN28270458FocusVisibleWithinProps
+    isN37335218FocusVisibleWithin,
+    triggerN37335218FocusVisibleWithinProps
   ] = useTrigger("useFocusVisibleWithin", {
     isTextInput: false
   });
-  const [isN28270879FocusVisible, triggerN28270879FocusVisibleProps] =
+  const [isN37335639FocusVisible, triggerN37335639FocusVisibleProps] =
     useTrigger("useFocusVisible", {
       isTextInput: false
     });
   const [
-    isN28270879FocusVisibleWithin,
-    triggerN28270879FocusVisibleWithinProps
+    isN37335639FocusVisibleWithin,
+    triggerN37335639FocusVisibleWithinProps
   ] = useTrigger("useFocusVisibleWithin", {
     isTextInput: false
   });
-  const [isN28271300FocusVisible, triggerN28271300FocusVisibleProps] =
+  const [isN37336060FocusVisible, triggerN37336060FocusVisibleProps] =
     useTrigger("useFocusVisible", {
       isTextInput: false
     });
   const [
-    isN28271300FocusVisibleWithin,
-    triggerN28271300FocusVisibleWithinProps
+    isN37336060FocusVisibleWithin,
+    triggerN37336060FocusVisibleWithinProps
   ] = useTrigger("useFocusVisibleWithin", {
     isTextInput: false
   });
   const triggers = {
-    focusVisible_28270037: isN28270037FocusVisible,
-    focusVisibleWithin_28270037: isN28270037FocusVisibleWithin,
-    focusVisible_28270458: isN28270458FocusVisible,
-    focusVisibleWithin_28270458: isN28270458FocusVisibleWithin,
-    focusVisible_28270879: isN28270879FocusVisible,
-    focusVisibleWithin_28270879: isN28270879FocusVisibleWithin,
-    focusVisible_28271300: isN28271300FocusVisible,
-    focusVisibleWithin_28271300: isN28271300FocusVisibleWithin
+    focusVisible_37334797: isN37334797FocusVisible,
+    focusVisibleWithin_37334797: isN37334797FocusVisibleWithin,
+    focusVisible_37335218: isN37335218FocusVisible,
+    focusVisibleWithin_37335218: isN37335218FocusVisibleWithin,
+    focusVisible_37335639: isN37335639FocusVisible,
+    focusVisibleWithin_37335639: isN37335639FocusVisibleWithin,
+    focusVisible_37336060: isN37336060FocusVisible,
+    focusVisibleWithin_37336060: isN37336060FocusVisibleWithin
   };
 
   const styleTokensClassNames = _useStyleTokens();
@@ -974,7 +822,7 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                     loading={"lazy"}
                     src={(() => {
                       try {
-                        return $props.formData?.["Profile pic"] ?? null;
+                        return $props.formData?.logged_profile_pic;
                       } catch (e) {
                         if (
                           e instanceof TypeError ||
@@ -1055,2230 +903,402 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                 data-plasmic-override={overrides.sliderCarousel}
                 {...child$Props}
               >
-                <div
-                  data-plasmic-name={"slide1"}
-                  data-plasmic-override={overrides.slide1}
-                  className={classNames(projectcss.all, sty.slide1)}
-                >
-                  <PlasmicImg__
-                    alt={""}
-                    className={classNames(sty.img__mTn04)}
-                    displayHeight={"300px"}
-                    displayMaxHeight={"none"}
-                    displayMaxWidth={"100%"}
-                    displayMinHeight={"0"}
-                    displayMinWidth={"0"}
-                    displayWidth={"auto"}
-                    src={
-                      "https://static1.plasmic.app/components/react-slick/slide1.png"
-                    }
-                  />
-
-                  <div
-                    data-plasmic-name={"price"}
-                    data-plasmic-override={overrides.price}
-                    className={classNames(projectcss.all, sty.price)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__clr5
-                      )}
-                    >
-                      {"Standard"}
-                    </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        sty.freeBox___3IjQe
-                      )}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__cESm
-                        )}
-                      >
-                        {"U$ 300"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__neLna
-                        )}
-                      >
-                        {"/ sale"}
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    data-plasmic-name={"hoverEngajament"}
-                    data-plasmic-override={overrides.hoverEngajament}
-                    className={classNames(projectcss.all, sty.hoverEngajament)}
-                  >
-                    <Video
-                      autoPlay={true}
-                      className={classNames(
-                        "__wab_instance",
-                        sty.htmlVideo__iaK7V
-                      )}
-                      controls={false}
-                      loop={true}
-                      muted={true}
-                      src={
-                        "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
+                {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
+                  (() => {
+                    try {
+                      return $props.company_highlights || [1];
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return [];
                       }
-                    />
-
+                      throw e;
+                    }
+                  })()
+                ).map((__plasmic_item_0, __plasmic_idx_0) => {
+                  const currentItem = __plasmic_item_0;
+                  const currentIndex = __plasmic_idx_0;
+                  return (
                     <div
-                      data-plasmic-name={"infoBox"}
-                      data-plasmic-override={overrides.infoBox}
-                      className={classNames(projectcss.all, sty.infoBox)}
+                      data-plasmic-name={"slide1"}
+                      data-plasmic-override={overrides.slide1}
+                      className={classNames(projectcss.all, sty.slide1)}
+                      key={currentIndex}
                     >
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__mTn04)}
+                        displayHeight={"300px"}
+                        displayMaxHeight={"300px"}
+                        displayMaxWidth={"300px"}
+                        displayMinHeight={"300px"}
+                        displayMinWidth={"300px"}
+                        displayWidth={"300px"}
+                        src={(() => {
+                          try {
+                            return currentItem["Company image"];
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return "https://static1.plasmic.app/components/react-slick/slide1.png";
+                            }
+                            throw e;
+                          }
+                        })()}
+                      />
+
                       <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__et4Bl
-                        )}
+                        data-plasmic-name={"price"}
+                        data-plasmic-override={overrides.price}
+                        className={classNames(projectcss.all, sty.price)}
                       >
                         <div
                           className={classNames(
                             projectcss.all,
                             projectcss.__wab_text,
-                            sty.text___5L1Q
+                            sty.text__clr5
                           )}
                         >
-                          {"Company"}
+                          <React.Fragment>
+                            {(() => {
+                              try {
+                                return currentItem["Company nature"];
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return "Standard";
+                                }
+                                throw e;
+                              }
+                            })()}
+                          </React.Fragment>
                         </div>
                         <div
                           className={classNames(
                             projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__xcwJv
+                            sty.freeBox___3IjQe
                           )}
                         >
-                          {"Legal structure"}
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text__cESm
+                            )}
+                          >
+                            {"U$ 300"}
+                          </div>
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text__neLna
+                            )}
+                          >
+                            {"/ sale"}
+                          </div>
                         </div>
                       </div>
                       <div
+                        data-plasmic-name={"hoverEngajament"}
+                        data-plasmic-override={overrides.hoverEngajament}
                         className={classNames(
                           projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___2Qqyk
+                          sty.hoverEngajament
                         )}
                       >
-                        {"Tagline"}
-                      </div>
-                      <div
-                        data-plasmic-name={"services1"}
-                        data-plasmic-override={overrides.services1}
-                        className={classNames(projectcss.all, sty.services1)}
-                      >
-                        <PlasmicLink__
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.a,
-                            projectcss.a__5uU4L,
-                            projectcss.__wab_text,
-                            sty.link__z7ZoF
-                          )}
-                          component={Link}
-                          href={`/affiliate-homepage`}
-                          legacyBehavior={false}
-                          platform={"nextjs"}
-                        >
-                          {"Service"}
-                        </PlasmicLink__>
-                        <PlasmicLink__
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.a,
-                            projectcss.a__5uU4L,
-                            projectcss.__wab_text,
-                            sty.link___4ZF77
-                          )}
-                          component={Link}
-                          href={`/affiliate-homepage`}
-                          legacyBehavior={false}
-                          platform={"nextjs"}
-                        >
-                          {"Service"}
-                        </PlasmicLink__>
-                        <PlasmicLink__
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.a,
-                            projectcss.a__5uU4L,
-                            projectcss.__wab_text,
-                            sty.link__qZfKg
-                          )}
-                          component={Link}
-                          href={`/affiliate-homepage`}
-                          legacyBehavior={false}
-                          platform={"nextjs"}
-                        >
-                          {"Service"}
-                        </PlasmicLink__>
-                      </div>
-                      <div
-                        data-plasmic-name={"services2"}
-                        data-plasmic-override={overrides.services2}
-                        className={classNames(projectcss.all, sty.services2)}
-                      >
-                        <PlasmicLink__
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.a,
-                            projectcss.a__5uU4L,
-                            projectcss.__wab_text,
-                            sty.link__jDqWu
-                          )}
-                          component={Link}
-                          href={`/affiliate-homepage`}
-                          legacyBehavior={false}
-                          platform={"nextjs"}
-                        >
-                          {"Service"}
-                        </PlasmicLink__>
-                        <PlasmicLink__
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.a,
-                            projectcss.a__5uU4L,
-                            projectcss.__wab_text,
-                            sty.link__w3Bzz
-                          )}
-                          component={Link}
-                          href={`/affiliate-homepage`}
-                          legacyBehavior={false}
-                          platform={"nextjs"}
-                        >
-                          {"Service"}
-                        </PlasmicLink__>
-                        <PlasmicLink__
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.a,
-                            projectcss.a__5uU4L,
-                            projectcss.__wab_text,
-                            sty.link___0OMx2
-                          )}
-                          component={Link}
-                          href={`/affiliate-homepage`}
-                          legacyBehavior={false}
-                          platform={"nextjs"}
-                        >
-                          {"Service"}
-                        </PlasmicLink__>
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__jpOMb
-                        )}
-                      >
-                        <LoginButton
+                        <Video
+                          autoPlay={true}
                           className={classNames(
                             "__wab_instance",
-                            sty.loginButton___8Ii7A
+                            sty.htmlVideo__iaK7V
                           )}
-                          onClick={async event => {
-                            const $steps = {};
+                          controls={false}
+                          loop={true}
+                          muted={true}
+                          src={
+                            "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
+                          }
+                        />
 
-                            $steps["goToACompanyProfile"] = true
-                              ? (() => {
-                                  const actionArgs = {
-                                    destination: `/a-company-profile`
-                                  };
-                                  return (({ destination }) => {
+                        <div
+                          data-plasmic-name={"infoBox"}
+                          data-plasmic-override={overrides.infoBox}
+                          className={classNames(projectcss.all, sty.infoBox)}
+                        >
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              sty.freeBox__et4Bl
+                            )}
+                          >
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text___5L1Q
+                              )}
+                            >
+                              <React.Fragment>
+                                {(() => {
+                                  try {
+                                    return currentItem["Company name"];
+                                  } catch (e) {
                                     if (
-                                      typeof destination === "string" &&
-                                      destination.startsWith("#")
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
                                     ) {
-                                      document
-                                        .getElementById(destination.substr(1))
-                                        .scrollIntoView({ behavior: "smooth" });
-                                    } else {
-                                      __nextRouter?.push(destination);
+                                      return "Company";
                                     }
-                                  })?.apply(null, [actionArgs]);
-                                })()
-                              : undefined;
-                            if (
-                              $steps["goToACompanyProfile"] != null &&
-                              typeof $steps["goToACompanyProfile"] ===
-                                "object" &&
-                              typeof $steps["goToACompanyProfile"].then ===
-                                "function"
-                            ) {
-                              $steps["goToACompanyProfile"] =
-                                await $steps["goToACompanyProfile"];
-                            }
-                          }}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__zbs5O
-                            )}
-                          >
-                            {"Apply"}
-                          </div>
-                        </LoginButton>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox___8TEq
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__ehQuF
-                            )}
-                          >
-                            {"Standard"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__rxJr1
-                            )}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__p5Vlc
-                              )}
-                            >
-                              {"U$ 300"}
+                                    throw e;
+                                  }
+                                })()}
+                              </React.Fragment>
                             </div>
                             <div
                               className={classNames(
                                 projectcss.all,
                                 projectcss.__wab_text,
-                                sty.text__rp9U7
+                                sty.text__xcwJv
                               )}
                             >
-                              {"/ sale"}
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  data-plasmic-name={"slide2"}
-                  data-plasmic-override={overrides.slide2}
-                  className={classNames(projectcss.all, sty.slide2)}
-                >
-                  <PlasmicImg__
-                    alt={""}
-                    className={classNames(sty.img__yoFws)}
-                    displayHeight={"300px"}
-                    displayMaxHeight={"none"}
-                    displayMaxWidth={"100%"}
-                    displayMinHeight={"0"}
-                    displayMinWidth={"0"}
-                    displayWidth={"auto"}
-                    src={
-                      "https://static1.plasmic.app/components/react-slick/slide1.png"
-                    }
-                  />
-
-                  <div
-                    data-plasmic-name={"price2"}
-                    data-plasmic-override={overrides.price2}
-                    className={classNames(projectcss.all, sty.price2)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__zAzpr
-                      )}
-                    >
-                      {"Standard"}
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__aFcPw)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__p2J7G
-                        )}
-                      >
-                        {"U$ 300"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__fadp5
-                        )}
-                      >
-                        {"/ sale"}
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    data-plasmic-name={"hoverEngajament2"}
-                    data-plasmic-override={overrides.hoverEngajament2}
-                    className={classNames(projectcss.all, sty.hoverEngajament2)}
-                  >
-                    <Video
-                      autoPlay={true}
-                      className={classNames(
-                        "__wab_instance",
-                        sty.htmlVideo__eSr70
-                      )}
-                      controls={false}
-                      loop={true}
-                      muted={true}
-                      src={
-                        "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
-                      }
-                    />
-
-                    <div
-                      data-plasmic-name={"infoBox2"}
-                      data-plasmic-override={overrides.infoBox2}
-                      className={classNames(projectcss.all, sty.infoBox2)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__pnTGd
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__fr1Sn
-                          )}
-                        >
-                          {"Company"}
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text___1Wt0M
-                          )}
-                        >
-                          {"Legal structure"}
-                        </div>
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__zmmsh
-                        )}
-                      >
-                        {"Tagline"}
-                      </div>
-                      <div
-                        data-plasmic-name={"services3"}
-                        data-plasmic-override={overrides.services3}
-                        className={classNames(projectcss.all, sty.services3)}
-                      >
-                        <PlasmicLink__
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.a,
-                            projectcss.a__5uU4L,
-                            projectcss.__wab_text,
-                            sty.link__zrBWx
-                          )}
-                          component={Link}
-                          href={`/affiliate-homepage`}
-                          legacyBehavior={false}
-                          platform={"nextjs"}
-                        >
-                          {"Service"}
-                        </PlasmicLink__>
-                        <PlasmicLink__
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.a,
-                            projectcss.a__5uU4L,
-                            projectcss.__wab_text,
-                            sty.link__j3IwI
-                          )}
-                          component={Link}
-                          href={`/affiliate-homepage`}
-                          legacyBehavior={false}
-                          platform={"nextjs"}
-                        >
-                          {"Service"}
-                        </PlasmicLink__>
-                        <PlasmicLink__
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.a,
-                            projectcss.a__5uU4L,
-                            projectcss.__wab_text,
-                            sty.link__wEmY
-                          )}
-                          component={Link}
-                          href={`/affiliate-homepage`}
-                          legacyBehavior={false}
-                          platform={"nextjs"}
-                        >
-                          {"Service"}
-                        </PlasmicLink__>
-                      </div>
-                      <div
-                        data-plasmic-name={"services4"}
-                        data-plasmic-override={overrides.services4}
-                        className={classNames(projectcss.all, sty.services4)}
-                      >
-                        <PlasmicLink__
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.a,
-                            projectcss.a__5uU4L,
-                            projectcss.__wab_text,
-                            sty.link__jVeN
-                          )}
-                          component={Link}
-                          href={`/affiliate-homepage`}
-                          legacyBehavior={false}
-                          platform={"nextjs"}
-                        >
-                          {"Service"}
-                        </PlasmicLink__>
-                        <PlasmicLink__
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.a,
-                            projectcss.a__5uU4L,
-                            projectcss.__wab_text,
-                            sty.link__wuV8
-                          )}
-                          component={Link}
-                          href={`/affiliate-homepage`}
-                          legacyBehavior={false}
-                          platform={"nextjs"}
-                        >
-                          {"Service"}
-                        </PlasmicLink__>
-                        <PlasmicLink__
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.a,
-                            projectcss.a__5uU4L,
-                            projectcss.__wab_text,
-                            sty.link__n01J
-                          )}
-                          component={Link}
-                          href={`/affiliate-homepage`}
-                          legacyBehavior={false}
-                          platform={"nextjs"}
-                        >
-                          {"Service"}
-                        </PlasmicLink__>
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__hh54O
-                        )}
-                      >
-                        <LoginButton
-                          className={classNames(
-                            "__wab_instance",
-                            sty.loginButton__bqQix
-                          )}
-                          onClick={async event => {
-                            const $steps = {};
-
-                            $steps["goToACompanyProfile"] = true
-                              ? (() => {
-                                  const actionArgs = {
-                                    destination: `/a-company-profile`
-                                  };
-                                  return (({ destination }) => {
+                              <React.Fragment>
+                                {(() => {
+                                  try {
+                                    return currentItem["Company type"];
+                                  } catch (e) {
                                     if (
-                                      typeof destination === "string" &&
-                                      destination.startsWith("#")
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
                                     ) {
-                                      document
-                                        .getElementById(destination.substr(1))
-                                        .scrollIntoView({ behavior: "smooth" });
-                                    } else {
-                                      __nextRouter?.push(destination);
+                                      return "Legal structure";
                                     }
-                                  })?.apply(null, [actionArgs]);
-                                })()
-                              : undefined;
-                            if (
-                              $steps["goToACompanyProfile"] != null &&
-                              typeof $steps["goToACompanyProfile"] ===
-                                "object" &&
-                              typeof $steps["goToACompanyProfile"].then ===
-                                "function"
-                            ) {
-                              $steps["goToACompanyProfile"] =
-                                await $steps["goToACompanyProfile"];
-                            }
-                          }}
-                        >
+                                    throw e;
+                                  }
+                                })()}
+                              </React.Fragment>
+                            </div>
+                          </div>
                           <div
                             className={classNames(
                               projectcss.all,
                               projectcss.__wab_text,
-                              sty.text___6JtvB
+                              sty.text___2Qqyk
                             )}
                           >
-                            {"Apply"}
+                            <React.Fragment>
+                              {(() => {
+                                try {
+                                  return currentItem["Company tagline"];
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return "Tagline";
+                                  }
+                                  throw e;
+                                }
+                              })()}
+                            </React.Fragment>
                           </div>
-                        </LoginButton>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__hopEo
-                          )}
-                        >
+                          <div
+                            data-plasmic-name={"services1"}
+                            data-plasmic-override={overrides.services1}
+                            className={classNames(
+                              projectcss.all,
+                              sty.services1
+                            )}
+                          >
+                            {(_par =>
+                              !_par ? [] : Array.isArray(_par) ? _par : [_par])(
+                              (() => {
+                                try {
+                                  return currentItem.solutions || [1];
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return [];
+                                  }
+                                  throw e;
+                                }
+                              })()
+                            ).map((__plasmic_item_1, __plasmic_idx_1) => {
+                              const currentItem = __plasmic_item_1;
+                              const currentIndex = __plasmic_idx_1;
+                              return (
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.freeBox__lon9H
+                                  )}
+                                  key={currentIndex}
+                                >
+                                  <PlasmicLink__
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.a,
+                                      projectcss.a__5uU4L,
+                                      projectcss.__wab_text,
+                                      sty.link___0OMx2
+                                    )}
+                                    component={Link}
+                                    legacyBehavior={false}
+                                    platform={"nextjs"}
+                                  >
+                                    <React.Fragment>
+                                      {(() => {
+                                        try {
+                                          return currentItem.title;
+                                        } catch (e) {
+                                          if (
+                                            e instanceof TypeError ||
+                                            e?.plasmicType ===
+                                              "PlasmicUndefinedDataError"
+                                          ) {
+                                            return "Service";
+                                          }
+                                          throw e;
+                                        }
+                                      })()}
+                                    </React.Fragment>
+                                  </PlasmicLink__>
+                                </div>
+                              );
+                            })}
+                          </div>
                           <div
                             className={classNames(
                               projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__oehus
+                              sty.freeBox__jpOMb
                             )}
                           >
-                            {"Standard"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__kRx2T
-                            )}
-                          >
+                            <LoginButton
+                              className={classNames(
+                                "__wab_instance",
+                                sty.loginButton___8Ii7A
+                              )}
+                              onClick={async event => {
+                                const $steps = {};
+
+                                $steps["goToPage"] = true
+                                  ? (() => {
+                                      const actionArgs = {
+                                        destination:
+                                          "/a-company-profile?id=" +
+                                          currentItem.company_id
+                                      };
+                                      return (({ destination }) => {
+                                        if (
+                                          typeof destination === "string" &&
+                                          destination.startsWith("#")
+                                        ) {
+                                          document
+                                            .getElementById(
+                                              destination.substr(1)
+                                            )
+                                            .scrollIntoView({
+                                              behavior: "smooth"
+                                            });
+                                        } else {
+                                          __nextRouter?.push(destination);
+                                        }
+                                      })?.apply(null, [actionArgs]);
+                                    })()
+                                  : undefined;
+                                if (
+                                  $steps["goToPage"] != null &&
+                                  typeof $steps["goToPage"] === "object" &&
+                                  typeof $steps["goToPage"].then === "function"
+                                ) {
+                                  $steps["goToPage"] = await $steps["goToPage"];
+                                }
+                              }}
+                            >
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.__wab_text,
+                                  sty.text__zbs5O
+                                )}
+                              >
+                                {"Apply"}
+                              </div>
+                            </LoginButton>
                             <div
                               className={classNames(
                                 projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__nGOwG
+                                sty.freeBox___8TEq
                               )}
                             >
-                              {"U$ 300"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__r8H82
-                              )}
-                            >
-                              {"/ sale"}
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  data-plasmic-name={"slide3"}
-                  data-plasmic-override={overrides.slide3}
-                  className={classNames(projectcss.all, sty.slide3)}
-                >
-                  <PlasmicImg__
-                    alt={""}
-                    className={classNames(sty.img__jeTpK)}
-                    displayHeight={"300px"}
-                    displayMaxHeight={"none"}
-                    displayMaxWidth={"100%"}
-                    displayMinHeight={"0"}
-                    displayMinWidth={"0"}
-                    displayWidth={"auto"}
-                    src={
-                      "https://static1.plasmic.app/components/react-slick/slide1.png"
-                    }
-                  />
-
-                  <div
-                    data-plasmic-name={"price3"}
-                    data-plasmic-override={overrides.price3}
-                    className={classNames(projectcss.all, sty.price3)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__igF6O
-                      )}
-                    >
-                      {"Standard"}
-                    </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        sty.freeBox___44JlI
-                      )}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__pqUc
-                        )}
-                      >
-                        {"U$ 300"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__neAfl
-                        )}
-                      >
-                        {"/ sale"}
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    data-plasmic-name={"hoverEngajament3"}
-                    data-plasmic-override={overrides.hoverEngajament3}
-                    className={classNames(projectcss.all, sty.hoverEngajament3)}
-                  >
-                    <Video
-                      autoPlay={true}
-                      className={classNames(
-                        "__wab_instance",
-                        sty.htmlVideo__lrfRy
-                      )}
-                      controls={false}
-                      loop={true}
-                      muted={true}
-                      src={
-                        "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
-                      }
-                    />
-
-                    <div
-                      data-plasmic-name={"infoBox3"}
-                      data-plasmic-override={overrides.infoBox3}
-                      className={classNames(projectcss.all, sty.infoBox3)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__e5ZAa
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__jbgtt
-                          )}
-                        >
-                          {"Company"}
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__kiuZl
-                          )}
-                        >
-                          {"Legal structure"}
-                        </div>
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__f9XlG
-                        )}
-                      >
-                        {"Tagline"}
-                      </div>
-                      <div
-                        data-plasmic-name={"services5"}
-                        data-plasmic-override={overrides.services5}
-                        className={classNames(projectcss.all, sty.services5)}
-                      >
-                        <PlasmicLink__
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.a,
-                            projectcss.a__5uU4L,
-                            projectcss.__wab_text,
-                            sty.link__oXMcp
-                          )}
-                          component={Link}
-                          href={`/affiliate-homepage`}
-                          legacyBehavior={false}
-                          platform={"nextjs"}
-                        >
-                          {"Service"}
-                        </PlasmicLink__>
-                        <PlasmicLink__
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.a,
-                            projectcss.a__5uU4L,
-                            projectcss.__wab_text,
-                            sty.link__hdd6C
-                          )}
-                          component={Link}
-                          href={`/affiliate-homepage`}
-                          legacyBehavior={false}
-                          platform={"nextjs"}
-                        >
-                          {"Service"}
-                        </PlasmicLink__>
-                        <PlasmicLink__
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.a,
-                            projectcss.a__5uU4L,
-                            projectcss.__wab_text,
-                            sty.link__qdunH
-                          )}
-                          component={Link}
-                          href={`/affiliate-homepage`}
-                          legacyBehavior={false}
-                          platform={"nextjs"}
-                        >
-                          {"Service"}
-                        </PlasmicLink__>
-                      </div>
-                      <div
-                        data-plasmic-name={"services6"}
-                        data-plasmic-override={overrides.services6}
-                        className={classNames(projectcss.all, sty.services6)}
-                      >
-                        <PlasmicLink__
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.a,
-                            projectcss.a__5uU4L,
-                            projectcss.__wab_text,
-                            sty.link__b8PhM
-                          )}
-                          component={Link}
-                          href={`/affiliate-homepage`}
-                          legacyBehavior={false}
-                          platform={"nextjs"}
-                        >
-                          {"Service"}
-                        </PlasmicLink__>
-                        <PlasmicLink__
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.a,
-                            projectcss.a__5uU4L,
-                            projectcss.__wab_text,
-                            sty.link__dKl4M
-                          )}
-                          component={Link}
-                          href={`/affiliate-homepage`}
-                          legacyBehavior={false}
-                          platform={"nextjs"}
-                        >
-                          {"Service"}
-                        </PlasmicLink__>
-                        <PlasmicLink__
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.a,
-                            projectcss.a__5uU4L,
-                            projectcss.__wab_text,
-                            sty.link__rCmF
-                          )}
-                          component={Link}
-                          href={`/affiliate-homepage`}
-                          legacyBehavior={false}
-                          platform={"nextjs"}
-                        >
-                          {"Service"}
-                        </PlasmicLink__>
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__cqO70
-                        )}
-                      >
-                        <LoginButton
-                          className={classNames(
-                            "__wab_instance",
-                            sty.loginButton___9ZCe9
-                          )}
-                          onClick={async event => {
-                            const $steps = {};
-
-                            $steps["goToACompanyProfile"] = true
-                              ? (() => {
-                                  const actionArgs = {
-                                    destination: `/a-company-profile`
-                                  };
-                                  return (({ destination }) => {
-                                    if (
-                                      typeof destination === "string" &&
-                                      destination.startsWith("#")
-                                    ) {
-                                      document
-                                        .getElementById(destination.substr(1))
-                                        .scrollIntoView({ behavior: "smooth" });
-                                    } else {
-                                      __nextRouter?.push(destination);
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.__wab_text,
+                                  sty.text__ehQuF
+                                )}
+                              >
+                                <React.Fragment>
+                                  {(() => {
+                                    try {
+                                      return currentItem["Company nature"];
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return "Standard";
+                                      }
+                                      throw e;
                                     }
-                                  })?.apply(null, [actionArgs]);
-                                })()
-                              : undefined;
-                            if (
-                              $steps["goToACompanyProfile"] != null &&
-                              typeof $steps["goToACompanyProfile"] ===
-                                "object" &&
-                              typeof $steps["goToACompanyProfile"].then ===
-                                "function"
-                            ) {
-                              $steps["goToACompanyProfile"] =
-                                await $steps["goToACompanyProfile"];
-                            }
-                          }}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__qzWu4
-                            )}
-                          >
-                            {"Apply"}
-                          </div>
-                        </LoginButton>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__rtRg0
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__vcBqx
-                            )}
-                          >
-                            {"Standard"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__dr1Mi
-                            )}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__zHgGa
-                              )}
-                            >
-                              {"U$ 300"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__pigj7
-                              )}
-                            >
-                              {"/ sale"}
+                                  })()}
+                                </React.Fragment>
+                              </div>
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox__rxJr1
+                                )}
+                              >
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__p5Vlc
+                                  )}
+                                >
+                                  {"U$ 300"}
+                                </div>
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__rp9U7
+                                  )}
+                                >
+                                  {"/ sale"}
+                                </div>
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                </div>
-                <div
-                  data-plasmic-name={"slide4"}
-                  data-plasmic-override={overrides.slide4}
-                  className={classNames(projectcss.all, sty.slide4)}
-                >
-                  <PlasmicImg__
-                    alt={""}
-                    className={classNames(sty.img__jB1Tf)}
-                    displayHeight={"300px"}
-                    displayMaxHeight={"none"}
-                    displayMaxWidth={"100%"}
-                    displayMinHeight={"0"}
-                    displayMinWidth={"0"}
-                    displayWidth={"auto"}
-                    src={
-                      "https://static1.plasmic.app/components/react-slick/slide1.png"
-                    }
-                  />
-
-                  <div
-                    data-plasmic-name={"price4"}
-                    data-plasmic-override={overrides.price4}
-                    className={classNames(projectcss.all, sty.price4)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__pe1Rs
-                      )}
-                    >
-                      {"Standard"}
-                    </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        sty.freeBox___89JFb
-                      )}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__ojurD
-                        )}
-                      >
-                        {"U$ 300"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__gVPw
-                        )}
-                      >
-                        {"/ sale"}
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    data-plasmic-name={"hoverEngajament4"}
-                    data-plasmic-override={overrides.hoverEngajament4}
-                    className={classNames(projectcss.all, sty.hoverEngajament4)}
-                  >
-                    <Video
-                      autoPlay={true}
-                      className={classNames(
-                        "__wab_instance",
-                        sty.htmlVideo__tSmWn
-                      )}
-                      controls={false}
-                      loop={true}
-                      muted={true}
-                      src={
-                        "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
-                      }
-                    />
-
-                    <div
-                      data-plasmic-name={"infoBox4"}
-                      data-plasmic-override={overrides.infoBox4}
-                      className={classNames(projectcss.all, sty.infoBox4)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__fJi8B
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__b9T88
-                          )}
-                        >
-                          {"Company"}
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text___17Rhn
-                          )}
-                        >
-                          {"Legal structure"}
-                        </div>
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__m6Z0M
-                        )}
-                      >
-                        {"Tagline"}
-                      </div>
-                      <div
-                        data-plasmic-name={"services7"}
-                        data-plasmic-override={overrides.services7}
-                        className={classNames(projectcss.all, sty.services7)}
-                      >
-                        <PlasmicLink__
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.a,
-                            projectcss.a__5uU4L,
-                            projectcss.__wab_text,
-                            sty.link__fx1Ii
-                          )}
-                          component={Link}
-                          href={`/affiliate-homepage`}
-                          legacyBehavior={false}
-                          platform={"nextjs"}
-                        >
-                          {"Service"}
-                        </PlasmicLink__>
-                        <PlasmicLink__
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.a,
-                            projectcss.a__5uU4L,
-                            projectcss.__wab_text,
-                            sty.link__bNi1A
-                          )}
-                          component={Link}
-                          href={`/affiliate-homepage`}
-                          legacyBehavior={false}
-                          platform={"nextjs"}
-                        >
-                          {"Service"}
-                        </PlasmicLink__>
-                        <PlasmicLink__
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.a,
-                            projectcss.a__5uU4L,
-                            projectcss.__wab_text,
-                            sty.link__m668N
-                          )}
-                          component={Link}
-                          href={`/affiliate-homepage`}
-                          legacyBehavior={false}
-                          platform={"nextjs"}
-                        >
-                          {"Service"}
-                        </PlasmicLink__>
-                      </div>
-                      <div
-                        data-plasmic-name={"services8"}
-                        data-plasmic-override={overrides.services8}
-                        className={classNames(projectcss.all, sty.services8)}
-                      >
-                        <PlasmicLink__
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.a,
-                            projectcss.a__5uU4L,
-                            projectcss.__wab_text,
-                            sty.link___3ATso
-                          )}
-                          component={Link}
-                          href={`/affiliate-homepage`}
-                          legacyBehavior={false}
-                          platform={"nextjs"}
-                        >
-                          {"Service"}
-                        </PlasmicLink__>
-                        <PlasmicLink__
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.a,
-                            projectcss.a__5uU4L,
-                            projectcss.__wab_text,
-                            sty.link___1ZdFu
-                          )}
-                          component={Link}
-                          href={`/affiliate-homepage`}
-                          legacyBehavior={false}
-                          platform={"nextjs"}
-                        >
-                          {"Service"}
-                        </PlasmicLink__>
-                        <PlasmicLink__
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.a,
-                            projectcss.a__5uU4L,
-                            projectcss.__wab_text,
-                            sty.link__nJ63M
-                          )}
-                          component={Link}
-                          href={`/affiliate-homepage`}
-                          legacyBehavior={false}
-                          platform={"nextjs"}
-                        >
-                          {"Service"}
-                        </PlasmicLink__>
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__cnc1P
-                        )}
-                      >
-                        <LoginButton
-                          className={classNames(
-                            "__wab_instance",
-                            sty.loginButton__tsNhe
-                          )}
-                          onClick={async event => {
-                            const $steps = {};
-
-                            $steps["goToACompanyProfile"] = true
-                              ? (() => {
-                                  const actionArgs = {
-                                    destination: `/a-company-profile`
-                                  };
-                                  return (({ destination }) => {
-                                    if (
-                                      typeof destination === "string" &&
-                                      destination.startsWith("#")
-                                    ) {
-                                      document
-                                        .getElementById(destination.substr(1))
-                                        .scrollIntoView({ behavior: "smooth" });
-                                    } else {
-                                      __nextRouter?.push(destination);
-                                    }
-                                  })?.apply(null, [actionArgs]);
-                                })()
-                              : undefined;
-                            if (
-                              $steps["goToACompanyProfile"] != null &&
-                              typeof $steps["goToACompanyProfile"] ===
-                                "object" &&
-                              typeof $steps["goToACompanyProfile"].then ===
-                                "function"
-                            ) {
-                              $steps["goToACompanyProfile"] =
-                                await $steps["goToACompanyProfile"];
-                            }
-                          }}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__y0Ej1
-                            )}
-                          >
-                            {"Apply"}
-                          </div>
-                        </LoginButton>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__f6Oct
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__pt5WM
-                            )}
-                          >
-                            {"Standard"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__hEowO
-                            )}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__s4Mlw
-                              )}
-                            >
-                              {"U$ 300"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__l7R6O
-                              )}
-                            >
-                              {"/ sale"}
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  data-plasmic-name={"slide5"}
-                  data-plasmic-override={overrides.slide5}
-                  className={classNames(projectcss.all, sty.slide5)}
-                >
-                  <PlasmicImg__
-                    alt={""}
-                    className={classNames(sty.img__iuBlk)}
-                    displayHeight={"300px"}
-                    displayMaxHeight={"none"}
-                    displayMaxWidth={"100%"}
-                    displayMinHeight={"0"}
-                    displayMinWidth={"0"}
-                    displayWidth={"auto"}
-                    src={
-                      "https://static1.plasmic.app/components/react-slick/slide1.png"
-                    }
-                  />
-
-                  <div
-                    data-plasmic-name={"price5"}
-                    data-plasmic-override={overrides.price5}
-                    className={classNames(projectcss.all, sty.price5)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__tbPyv
-                      )}
-                    >
-                      {"Standard"}
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__eeak2)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__sccPe
-                        )}
-                      >
-                        {"U$ 300"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__taHtJ
-                        )}
-                      >
-                        {"/ sale"}
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    data-plasmic-name={"hoverEngajament5"}
-                    data-plasmic-override={overrides.hoverEngajament5}
-                    className={classNames(projectcss.all, sty.hoverEngajament5)}
-                  >
-                    <Video
-                      autoPlay={true}
-                      className={classNames(
-                        "__wab_instance",
-                        sty.htmlVideo__gvOuK
-                      )}
-                      controls={false}
-                      loop={true}
-                      muted={true}
-                      src={
-                        "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
-                      }
-                    />
-
-                    <div
-                      data-plasmic-name={"infoBox5"}
-                      data-plasmic-override={overrides.infoBox5}
-                      className={classNames(projectcss.all, sty.infoBox5)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox___5Hm36
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__rqsdB
-                          )}
-                        >
-                          {"Company"}
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__yd9X8
-                          )}
-                        >
-                          {"Legal structure"}
-                        </div>
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__jNbZp
-                        )}
-                      >
-                        {"Tagline"}
-                      </div>
-                      <div
-                        data-plasmic-name={"services9"}
-                        data-plasmic-override={overrides.services9}
-                        className={classNames(projectcss.all, sty.services9)}
-                      >
-                        <PlasmicLink__
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.a,
-                            projectcss.a__5uU4L,
-                            projectcss.__wab_text,
-                            sty.link__a9Pf6
-                          )}
-                          component={Link}
-                          href={`/affiliate-homepage`}
-                          legacyBehavior={false}
-                          platform={"nextjs"}
-                        >
-                          {"Service"}
-                        </PlasmicLink__>
-                        <PlasmicLink__
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.a,
-                            projectcss.a__5uU4L,
-                            projectcss.__wab_text,
-                            sty.link__zAd9
-                          )}
-                          component={Link}
-                          href={`/affiliate-homepage`}
-                          legacyBehavior={false}
-                          platform={"nextjs"}
-                        >
-                          {"Service"}
-                        </PlasmicLink__>
-                        <PlasmicLink__
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.a,
-                            projectcss.a__5uU4L,
-                            projectcss.__wab_text,
-                            sty.link__j1Ix
-                          )}
-                          component={Link}
-                          href={`/affiliate-homepage`}
-                          legacyBehavior={false}
-                          platform={"nextjs"}
-                        >
-                          {"Service"}
-                        </PlasmicLink__>
-                      </div>
-                      <div
-                        data-plasmic-name={"services10"}
-                        data-plasmic-override={overrides.services10}
-                        className={classNames(projectcss.all, sty.services10)}
-                      >
-                        <PlasmicLink__
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.a,
-                            projectcss.a__5uU4L,
-                            projectcss.__wab_text,
-                            sty.link__eNlG
-                          )}
-                          component={Link}
-                          href={`/affiliate-homepage`}
-                          legacyBehavior={false}
-                          platform={"nextjs"}
-                        >
-                          {"Service"}
-                        </PlasmicLink__>
-                        <PlasmicLink__
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.a,
-                            projectcss.a__5uU4L,
-                            projectcss.__wab_text,
-                            sty.link__nFjs
-                          )}
-                          component={Link}
-                          href={`/affiliate-homepage`}
-                          legacyBehavior={false}
-                          platform={"nextjs"}
-                        >
-                          {"Service"}
-                        </PlasmicLink__>
-                        <PlasmicLink__
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.a,
-                            projectcss.a__5uU4L,
-                            projectcss.__wab_text,
-                            sty.link__fwpTy
-                          )}
-                          component={Link}
-                          href={`/affiliate-homepage`}
-                          legacyBehavior={false}
-                          platform={"nextjs"}
-                        >
-                          {"Service"}
-                        </PlasmicLink__>
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__t7HjB
-                        )}
-                      >
-                        <LoginButton
-                          className={classNames(
-                            "__wab_instance",
-                            sty.loginButton__snlrO
-                          )}
-                          onClick={async event => {
-                            const $steps = {};
-
-                            $steps["goToACompanyProfile"] = true
-                              ? (() => {
-                                  const actionArgs = {
-                                    destination: `/a-company-profile`
-                                  };
-                                  return (({ destination }) => {
-                                    if (
-                                      typeof destination === "string" &&
-                                      destination.startsWith("#")
-                                    ) {
-                                      document
-                                        .getElementById(destination.substr(1))
-                                        .scrollIntoView({ behavior: "smooth" });
-                                    } else {
-                                      __nextRouter?.push(destination);
-                                    }
-                                  })?.apply(null, [actionArgs]);
-                                })()
-                              : undefined;
-                            if (
-                              $steps["goToACompanyProfile"] != null &&
-                              typeof $steps["goToACompanyProfile"] ===
-                                "object" &&
-                              typeof $steps["goToACompanyProfile"].then ===
-                                "function"
-                            ) {
-                              $steps["goToACompanyProfile"] =
-                                await $steps["goToACompanyProfile"];
-                            }
-                          }}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__hitcr
-                            )}
-                          >
-                            {"Apply"}
-                          </div>
-                        </LoginButton>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__yNlix
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__vaRQo
-                            )}
-                          >
-                            {"Standard"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__y0Zv
-                            )}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__saMdx
-                              )}
-                            >
-                              {"U$ 300"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text___2TsO
-                              )}
-                            >
-                              {"/ sale"}
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  data-plasmic-name={"slide6"}
-                  data-plasmic-override={overrides.slide6}
-                  className={classNames(projectcss.all, sty.slide6)}
-                >
-                  <PlasmicImg__
-                    alt={""}
-                    className={classNames(sty.img__fOwjw)}
-                    displayHeight={"300px"}
-                    displayMaxHeight={"none"}
-                    displayMaxWidth={"100%"}
-                    displayMinHeight={"0"}
-                    displayMinWidth={"0"}
-                    displayWidth={"auto"}
-                    src={
-                      "https://static1.plasmic.app/components/react-slick/slide1.png"
-                    }
-                  />
-
-                  <div
-                    data-plasmic-name={"price6"}
-                    data-plasmic-override={overrides.price6}
-                    className={classNames(projectcss.all, sty.price6)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__zjWLk
-                      )}
-                    >
-                      {"Standard"}
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__qfNsH)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__lcuX8
-                        )}
-                      >
-                        {"U$ 300"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__mXhf
-                        )}
-                      >
-                        {"/ sale"}
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    data-plasmic-name={"hoverEngajament6"}
-                    data-plasmic-override={overrides.hoverEngajament6}
-                    className={classNames(projectcss.all, sty.hoverEngajament6)}
-                  >
-                    <Video
-                      autoPlay={true}
-                      className={classNames(
-                        "__wab_instance",
-                        sty.htmlVideo__iL9M
-                      )}
-                      controls={false}
-                      loop={true}
-                      muted={true}
-                      src={
-                        "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
-                      }
-                    />
-
-                    <div
-                      data-plasmic-name={"infoBox6"}
-                      data-plasmic-override={overrides.infoBox6}
-                      className={classNames(projectcss.all, sty.infoBox6)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__nd5Ys
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text___5Dvq
-                          )}
-                        >
-                          {"Company"}
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text___3JjiU
-                          )}
-                        >
-                          {"Legal structure"}
-                        </div>
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__xSpP2
-                        )}
-                      >
-                        {"Tagline"}
-                      </div>
-                      <div
-                        data-plasmic-name={"services11"}
-                        data-plasmic-override={overrides.services11}
-                        className={classNames(projectcss.all, sty.services11)}
-                      >
-                        <PlasmicLink__
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.a,
-                            projectcss.a__5uU4L,
-                            projectcss.__wab_text,
-                            sty.link__kwdHd
-                          )}
-                          component={Link}
-                          href={`/affiliate-homepage`}
-                          legacyBehavior={false}
-                          platform={"nextjs"}
-                        >
-                          {"Service"}
-                        </PlasmicLink__>
-                        <PlasmicLink__
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.a,
-                            projectcss.a__5uU4L,
-                            projectcss.__wab_text,
-                            sty.link___68RPp
-                          )}
-                          component={Link}
-                          href={`/affiliate-homepage`}
-                          legacyBehavior={false}
-                          platform={"nextjs"}
-                        >
-                          {"Service"}
-                        </PlasmicLink__>
-                        <PlasmicLink__
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.a,
-                            projectcss.a__5uU4L,
-                            projectcss.__wab_text,
-                            sty.link__nh1Nx
-                          )}
-                          component={Link}
-                          href={`/affiliate-homepage`}
-                          legacyBehavior={false}
-                          platform={"nextjs"}
-                        >
-                          {"Service"}
-                        </PlasmicLink__>
-                      </div>
-                      <div
-                        data-plasmic-name={"services12"}
-                        data-plasmic-override={overrides.services12}
-                        className={classNames(projectcss.all, sty.services12)}
-                      >
-                        <PlasmicLink__
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.a,
-                            projectcss.a__5uU4L,
-                            projectcss.__wab_text,
-                            sty.link__afcMj
-                          )}
-                          component={Link}
-                          href={`/affiliate-homepage`}
-                          legacyBehavior={false}
-                          platform={"nextjs"}
-                        >
-                          {"Service"}
-                        </PlasmicLink__>
-                        <PlasmicLink__
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.a,
-                            projectcss.a__5uU4L,
-                            projectcss.__wab_text,
-                            sty.link__ksV1C
-                          )}
-                          component={Link}
-                          href={`/affiliate-homepage`}
-                          legacyBehavior={false}
-                          platform={"nextjs"}
-                        >
-                          {"Service"}
-                        </PlasmicLink__>
-                        <PlasmicLink__
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.a,
-                            projectcss.a__5uU4L,
-                            projectcss.__wab_text,
-                            sty.link__beUhQ
-                          )}
-                          component={Link}
-                          href={`/affiliate-homepage`}
-                          legacyBehavior={false}
-                          platform={"nextjs"}
-                        >
-                          {"Service"}
-                        </PlasmicLink__>
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__zlu7
-                        )}
-                      >
-                        <LoginButton
-                          className={classNames(
-                            "__wab_instance",
-                            sty.loginButton__jaFxg
-                          )}
-                          onClick={async event => {
-                            const $steps = {};
-
-                            $steps["goToACompanyProfile"] = true
-                              ? (() => {
-                                  const actionArgs = {
-                                    destination: `/a-company-profile`
-                                  };
-                                  return (({ destination }) => {
-                                    if (
-                                      typeof destination === "string" &&
-                                      destination.startsWith("#")
-                                    ) {
-                                      document
-                                        .getElementById(destination.substr(1))
-                                        .scrollIntoView({ behavior: "smooth" });
-                                    } else {
-                                      __nextRouter?.push(destination);
-                                    }
-                                  })?.apply(null, [actionArgs]);
-                                })()
-                              : undefined;
-                            if (
-                              $steps["goToACompanyProfile"] != null &&
-                              typeof $steps["goToACompanyProfile"] ===
-                                "object" &&
-                              typeof $steps["goToACompanyProfile"].then ===
-                                "function"
-                            ) {
-                              $steps["goToACompanyProfile"] =
-                                await $steps["goToACompanyProfile"];
-                            }
-                          }}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__pssfD
-                            )}
-                          >
-                            {"Apply"}
-                          </div>
-                        </LoginButton>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__vKe9
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__ttOae
-                            )}
-                          >
-                            {"Standard"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__d6HhR
-                            )}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__zXqb
-                              )}
-                            >
-                              {"U$ 300"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__u3Rjl
-                              )}
-                            >
-                              {"/ sale"}
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  data-plasmic-name={"slide7"}
-                  data-plasmic-override={overrides.slide7}
-                  className={classNames(projectcss.all, sty.slide7)}
-                >
-                  <PlasmicImg__
-                    alt={""}
-                    className={classNames(sty.img__mNhWn)}
-                    displayHeight={"300px"}
-                    displayMaxHeight={"none"}
-                    displayMaxWidth={"100%"}
-                    displayMinHeight={"0"}
-                    displayMinWidth={"0"}
-                    displayWidth={"auto"}
-                    src={
-                      "https://static1.plasmic.app/components/react-slick/slide1.png"
-                    }
-                  />
-
-                  <div
-                    data-plasmic-name={"price7"}
-                    data-plasmic-override={overrides.price7}
-                    className={classNames(projectcss.all, sty.price7)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__dnZx5
-                      )}
-                    >
-                      {"Standard"}
-                    </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        sty.freeBox___8Z5Km
-                      )}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__zoZea
-                        )}
-                      >
-                        {"U$ 300"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__iKtFf
-                        )}
-                      >
-                        {"/ sale"}
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    data-plasmic-name={"hoverEngajament7"}
-                    data-plasmic-override={overrides.hoverEngajament7}
-                    className={classNames(projectcss.all, sty.hoverEngajament7)}
-                  >
-                    <Video
-                      autoPlay={true}
-                      className={classNames(
-                        "__wab_instance",
-                        sty.htmlVideo__yfJ9
-                      )}
-                      controls={false}
-                      loop={true}
-                      muted={true}
-                      src={
-                        "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
-                      }
-                    />
-
-                    <div
-                      data-plasmic-name={"infoBox7"}
-                      data-plasmic-override={overrides.infoBox7}
-                      className={classNames(projectcss.all, sty.infoBox7)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox___2OzAr
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__mNu9N
-                          )}
-                        >
-                          {"Company"}
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__qdsMt
-                          )}
-                        >
-                          {"Legal structure"}
-                        </div>
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__fuIb3
-                        )}
-                      >
-                        {"Tagline"}
-                      </div>
-                      <div
-                        data-plasmic-name={"services13"}
-                        data-plasmic-override={overrides.services13}
-                        className={classNames(projectcss.all, sty.services13)}
-                      >
-                        <PlasmicLink__
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.a,
-                            projectcss.a__5uU4L,
-                            projectcss.__wab_text,
-                            sty.link__afonz
-                          )}
-                          component={Link}
-                          href={`/affiliate-homepage`}
-                          legacyBehavior={false}
-                          platform={"nextjs"}
-                        >
-                          {"Service"}
-                        </PlasmicLink__>
-                        <PlasmicLink__
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.a,
-                            projectcss.a__5uU4L,
-                            projectcss.__wab_text,
-                            sty.link__k1JaZ
-                          )}
-                          component={Link}
-                          href={`/affiliate-homepage`}
-                          legacyBehavior={false}
-                          platform={"nextjs"}
-                        >
-                          {"Service"}
-                        </PlasmicLink__>
-                        <PlasmicLink__
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.a,
-                            projectcss.a__5uU4L,
-                            projectcss.__wab_text,
-                            sty.link__mbTbg
-                          )}
-                          component={Link}
-                          href={`/affiliate-homepage`}
-                          legacyBehavior={false}
-                          platform={"nextjs"}
-                        >
-                          {"Service"}
-                        </PlasmicLink__>
-                      </div>
-                      <div
-                        data-plasmic-name={"services14"}
-                        data-plasmic-override={overrides.services14}
-                        className={classNames(projectcss.all, sty.services14)}
-                      >
-                        <PlasmicLink__
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.a,
-                            projectcss.a__5uU4L,
-                            projectcss.__wab_text,
-                            sty.link__fFaWx
-                          )}
-                          component={Link}
-                          href={`/affiliate-homepage`}
-                          legacyBehavior={false}
-                          platform={"nextjs"}
-                        >
-                          {"Service"}
-                        </PlasmicLink__>
-                        <PlasmicLink__
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.a,
-                            projectcss.a__5uU4L,
-                            projectcss.__wab_text,
-                            sty.link___7XIz8
-                          )}
-                          component={Link}
-                          href={`/affiliate-homepage`}
-                          legacyBehavior={false}
-                          platform={"nextjs"}
-                        >
-                          {"Service"}
-                        </PlasmicLink__>
-                        <PlasmicLink__
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.a,
-                            projectcss.a__5uU4L,
-                            projectcss.__wab_text,
-                            sty.link__nLwms
-                          )}
-                          component={Link}
-                          href={`/affiliate-homepage`}
-                          legacyBehavior={false}
-                          platform={"nextjs"}
-                        >
-                          {"Service"}
-                        </PlasmicLink__>
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__zadq6
-                        )}
-                      >
-                        <LoginButton
-                          className={classNames(
-                            "__wab_instance",
-                            sty.loginButton__hDfxb
-                          )}
-                          onClick={async event => {
-                            const $steps = {};
-
-                            $steps["goToACompanyProfile"] = true
-                              ? (() => {
-                                  const actionArgs = {
-                                    destination: `/a-company-profile`
-                                  };
-                                  return (({ destination }) => {
-                                    if (
-                                      typeof destination === "string" &&
-                                      destination.startsWith("#")
-                                    ) {
-                                      document
-                                        .getElementById(destination.substr(1))
-                                        .scrollIntoView({ behavior: "smooth" });
-                                    } else {
-                                      __nextRouter?.push(destination);
-                                    }
-                                  })?.apply(null, [actionArgs]);
-                                })()
-                              : undefined;
-                            if (
-                              $steps["goToACompanyProfile"] != null &&
-                              typeof $steps["goToACompanyProfile"] ===
-                                "object" &&
-                              typeof $steps["goToACompanyProfile"].then ===
-                                "function"
-                            ) {
-                              $steps["goToACompanyProfile"] =
-                                await $steps["goToACompanyProfile"];
-                            }
-                          }}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__qTalL
-                            )}
-                          >
-                            {"Apply"}
-                          </div>
-                        </LoginButton>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__hYS3
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__mv54F
-                            )}
-                          >
-                            {"Standard"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox___0Ke1O
-                            )}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__dtFq2
-                              )}
-                            >
-                              {"U$ 300"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__d2PZ0
-                              )}
-                            >
-                              {"/ sale"}
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                  );
+                })}
               </SliderWrapper>
             );
           })()}
@@ -3906,9 +1926,9 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                       sty.link__w7OTb,
                       {
                         [sty.link___focusVisibleWithin__w7OTb5SWd3]:
-                          triggers.focusVisibleWithin_28270037,
+                          triggers.focusVisibleWithin_37334797,
                         [sty.link___focusVisible__w7OTb9N36P]:
-                          triggers.focusVisible_28270037
+                          triggers.focusVisible_37334797
                       }
                     )}
                     component={Link}
@@ -3918,8 +1938,8 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                       "Companies with fixed prices that go to the location to provide services"
                     }
                     data-plasmic-trigger-props={[
-                      triggerN28270037FocusVisibleProps,
-                      triggerN28270037FocusVisibleWithinProps
+                      triggerN37334797FocusVisibleProps,
+                      triggerN37334797FocusVisibleWithinProps
                     ]}
                   >
                     <React.Fragment>
@@ -4560,9 +2580,9 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                       sty.link__li62,
                       {
                         [sty.link___focusVisibleWithin__li62TyKlW]:
-                          triggers.focusVisibleWithin_28270458,
+                          triggers.focusVisibleWithin_37335218,
                         [sty.link___focusVisible__li62NlhE5]:
-                          triggers.focusVisible_28270458
+                          triggers.focusVisible_37335218
                       }
                     )}
                     component={Link}
@@ -4570,8 +2590,8 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                     platform={"nextjs"}
                     title={"Fixed-price companies that welcome customers"}
                     data-plasmic-trigger-props={[
-                      triggerN28270458FocusVisibleProps,
-                      triggerN28270458FocusVisibleWithinProps
+                      triggerN37335218FocusVisibleProps,
+                      triggerN37335218FocusVisibleWithinProps
                     ]}
                   >
                     <React.Fragment>
@@ -5210,9 +3230,9 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                       sty.link___2ZDaz,
                       {
                         [sty.link___focusVisibleWithin___2ZDazAuceu]:
-                          triggers.focusVisibleWithin_28270879,
+                          triggers.focusVisibleWithin_37335639,
                         [sty.link___focusVisible___2ZDazimth]:
-                          triggers.focusVisible_28270879
+                          triggers.focusVisible_37335639
                       }
                     )}
                     component={Link}
@@ -5222,8 +3242,8 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                       "Budget-priced companies that go to the location to provide services"
                     }
                     data-plasmic-trigger-props={[
-                      triggerN28270879FocusVisibleProps,
-                      triggerN28270879FocusVisibleWithinProps
+                      triggerN37335639FocusVisibleProps,
+                      triggerN37335639FocusVisibleWithinProps
                     ]}
                   >
                     <React.Fragment>
@@ -5864,9 +3884,9 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                       sty.link___8Fedr,
                       {
                         [sty.link___focusVisibleWithin___8FedruhXAh]:
-                          triggers.focusVisibleWithin_28271300,
+                          triggers.focusVisibleWithin_37336060,
                         [sty.link___focusVisible___8FedrNhrid]:
-                          triggers.focusVisible_28271300
+                          triggers.focusVisible_37336060
                       }
                     )}
                     component={Link}
@@ -5874,8 +3894,8 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                     platform={"nextjs"}
                     title={"Budget-priced companies that welcome customers"}
                     data-plasmic-trigger-props={[
-                      triggerN28271300FocusVisibleProps,
-                      triggerN28271300FocusVisibleWithinProps
+                      triggerN37336060FocusVisibleProps,
+                      triggerN37336060FocusVisibleWithinProps
                     ]}
                   >
                     <React.Fragment>
@@ -5996,1559 +4016,469 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                     data-plasmic-override={overrides.sliderCarousel2}
                     {...child$Props}
                   >
-                    <div
-                      data-plasmic-name={"slideNew1"}
-                      data-plasmic-override={overrides.slideNew1}
-                      className={classNames(projectcss.all, sty.slideNew1)}
-                    >
-                      <PlasmicImg__
-                        alt={""}
-                        className={classNames(sty.img__q6HG)}
-                        displayHeight={"446px"}
-                        displayMaxHeight={"none"}
-                        displayMaxWidth={"auto"}
-                        displayMinHeight={"0"}
-                        displayMinWidth={"0"}
-                        displayWidth={"446px"}
-                        height={"500"}
-                        onClick={async event => {
-                          const $steps = {};
-
-                          $steps["goToACompanyProfile"] = true
-                            ? (() => {
-                                const actionArgs = {
-                                  destination: `/a-company-profile`
-                                };
-                                return (({ destination }) => {
-                                  if (
-                                    typeof destination === "string" &&
-                                    destination.startsWith("#")
-                                  ) {
-                                    document
-                                      .getElementById(destination.substr(1))
-                                      .scrollIntoView({ behavior: "smooth" });
-                                  } else {
-                                    __nextRouter?.push(destination);
-                                  }
-                                })?.apply(null, [actionArgs]);
-                              })()
-                            : undefined;
+                    {(_par =>
+                      !_par ? [] : Array.isArray(_par) ? _par : [_par])(
+                      (() => {
+                        try {
+                          return $props.company_news || [1];
+                        } catch (e) {
                           if (
-                            $steps["goToACompanyProfile"] != null &&
-                            typeof $steps["goToACompanyProfile"] === "object" &&
-                            typeof $steps["goToACompanyProfile"].then ===
-                              "function"
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
                           ) {
-                            $steps["goToACompanyProfile"] =
-                              await $steps["goToACompanyProfile"];
+                            return [];
                           }
-                        }}
-                        src={
-                          "https://images.unsplash.com/photo-1532635245-05a2903ffd56?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1834&q=80"
+                          throw e;
                         }
-                        width={"500"}
-                      />
+                      })()
+                    ).map((__plasmic_item_0, __plasmic_idx_0) => {
+                      const currentItem = __plasmic_item_0;
+                      const currentIndex = __plasmic_idx_0;
+                      return (
+                        <div
+                          data-plasmic-name={"slideNew1"}
+                          data-plasmic-override={overrides.slideNew1}
+                          className={classNames(projectcss.all, sty.slideNew1)}
+                          key={currentIndex}
+                        >
+                          <PlasmicImg__
+                            alt={""}
+                            className={classNames(sty.img__q6HG)}
+                            displayHeight={"446px"}
+                            displayMaxHeight={"none"}
+                            displayMaxWidth={"auto"}
+                            displayMinHeight={"0"}
+                            displayMinWidth={"0"}
+                            displayWidth={"446px"}
+                            height={"500"}
+                            onClick={async event => {
+                              const $steps = {};
 
-                      <div
-                        data-plasmic-name={"price8"}
-                        data-plasmic-override={overrides.price8}
-                        className={classNames(projectcss.all, sty.price8)}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__qnBal
-                          )}
-                        >
-                          {"Standard"}
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__swj2I
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__sAn8C
-                            )}
-                          >
-                            {"U$ 300"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__wZyPy
-                            )}
-                          >
-                            {"/ sale"}
-                          </div>
-                        </div>
-                      </div>
-                      <div
-                        data-plasmic-name={"hoverEngajament8"}
-                        data-plasmic-override={overrides.hoverEngajament8}
-                        className={classNames(
-                          projectcss.all,
-                          sty.hoverEngajament8
-                        )}
-                      >
-                        <AntdTooltip
-                          className={classNames(
-                            "__wab_instance",
-                            sty.tooltip__ighVg
-                          )}
-                          overlayClassName={classNames({
-                            [sty["pcls_PsXeB2_qjWF8"]]: true
-                          })}
-                          placement={"left"}
-                          title={
-                            <React.Fragment>
-                              <div
-                                data-plasmic-name={"companyName"}
-                                data-plasmic-override={overrides.companyName}
-                                className={classNames(
-                                  projectcss.all,
-                                  sty.companyName
-                                )}
-                              >
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__at3M
-                                  )}
-                                >
-                                  {"Company"}
-                                </div>
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__ln4Ta
-                                  )}
-                                >
-                                  {"Legal structure"}
-                                </div>
-                              </div>
-                              <div
-                                data-plasmic-name={"launch"}
-                                data-plasmic-override={overrides.launch}
-                                className={classNames(
-                                  projectcss.all,
-                                  sty.launch
-                                )}
-                              >
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__msIog
-                                  )}
-                                >
-                                  {"Launch in"}
-                                </div>
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__rpKkM
-                                  )}
-                                >
-                                  {"00/00/0000"}
-                                </div>
-                              </div>
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__pj1Qw
-                                )}
-                              >
-                                {"Tagline"}
-                              </div>
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__ubrAz
-                                )}
-                              >
-                                {"Problem// solution"}
-                              </div>
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__jgHsN
-                                )}
-                              >
-                                {"Advantage"}
-                              </div>
-                              <div
-                                data-plasmic-name={"tam"}
-                                data-plasmic-override={overrides.tam}
-                                className={classNames(projectcss.all, sty.tam)}
-                              >
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__bnAFe
-                                  )}
-                                >
-                                  {"TAM:"}
-                                </div>
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__kKw67
-                                  )}
-                                >
-                                  {"50000"}
-                                </div>
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__zdns
-                                  )}
-                                >
-                                  {"people"}
-                                </div>
-                              </div>
-                              <div
-                                data-plasmic-name={"competitive"}
-                                data-plasmic-override={overrides.competitive}
-                                className={classNames(
-                                  projectcss.all,
-                                  sty.competitive
-                                )}
-                              >
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text___1FduP
-                                  )}
-                                >
-                                  {"competitive:"}
-                                </div>
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__lElbm
-                                  )}
-                                >
-                                  {"15"}
-                                </div>
-                              </div>
-                            </React.Fragment>
-                          }
-                          titleText={"Tooltip contents"}
-                        >
-                          <Video
-                            autoPlay={true}
-                            className={classNames(
-                              "__wab_instance",
-                              sty.htmlVideo__svhp4
-                            )}
-                            controls={false}
-                            loop={true}
-                            muted={true}
-                            src={
-                              "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
-                            }
+                              $steps["goToPage"] = true
+                                ? (() => {
+                                    const actionArgs = {
+                                      destination:
+                                        "/a-company-profile?id=" +
+                                        currentItem.company_id
+                                    };
+                                    return (({ destination }) => {
+                                      if (
+                                        typeof destination === "string" &&
+                                        destination.startsWith("#")
+                                      ) {
+                                        document
+                                          .getElementById(destination.substr(1))
+                                          .scrollIntoView({
+                                            behavior: "smooth"
+                                          });
+                                      } else {
+                                        __nextRouter?.push(destination);
+                                      }
+                                    })?.apply(null, [actionArgs]);
+                                  })()
+                                : undefined;
+                              if (
+                                $steps["goToPage"] != null &&
+                                typeof $steps["goToPage"] === "object" &&
+                                typeof $steps["goToPage"].then === "function"
+                              ) {
+                                $steps["goToPage"] = await $steps["goToPage"];
+                              }
+                            }}
+                            src={(() => {
+                              try {
+                                return currentItem["Company image"];
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return "https://images.unsplash.com/photo-1532635245-05a2903ffd56?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1834&q=80";
+                                }
+                                throw e;
+                              }
+                            })()}
+                            width={"500"}
                           />
-                        </AntdTooltip>
-                        <div
-                          data-plasmic-name={"price9"}
-                          data-plasmic-override={overrides.price9}
-                          className={classNames(projectcss.all, sty.price9)}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__xIgxc
-                            )}
-                          >
-                            {"Standard"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__ptnu8
-                            )}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__dnqUb
-                              )}
-                            >
-                              {"U$ 300"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__dy8Gv
-                              )}
-                            >
-                              {"/ sale"}
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      data-plasmic-name={"slideNew2"}
-                      data-plasmic-override={overrides.slideNew2}
-                      className={classNames(projectcss.all, sty.slideNew2)}
-                    >
-                      <PlasmicImg__
-                        alt={""}
-                        className={classNames(sty.img__olLks)}
-                        displayHeight={"446px"}
-                        displayMaxHeight={"none"}
-                        displayMaxWidth={"auto"}
-                        displayMinHeight={"0"}
-                        displayMinWidth={"0"}
-                        displayWidth={"446px"}
-                        height={"500"}
-                        onClick={async event => {
-                          const $steps = {};
 
-                          $steps["goToACompanyProfile"] = true
-                            ? (() => {
-                                const actionArgs = {
-                                  destination: `/a-company-profile`
-                                };
-                                return (({ destination }) => {
-                                  if (
-                                    typeof destination === "string" &&
-                                    destination.startsWith("#")
-                                  ) {
-                                    document
-                                      .getElementById(destination.substr(1))
-                                      .scrollIntoView({ behavior: "smooth" });
-                                  } else {
-                                    __nextRouter?.push(destination);
+                          <div
+                            data-plasmic-name={"price8"}
+                            data-plasmic-override={overrides.price8}
+                            className={classNames(projectcss.all, sty.price8)}
+                          >
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__qnBal
+                              )}
+                            >
+                              <React.Fragment>
+                                {(() => {
+                                  try {
+                                    return currentItem["Company nature"];
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return "Standard";
+                                    }
+                                    throw e;
                                   }
-                                })?.apply(null, [actionArgs]);
-                              })()
-                            : undefined;
-                          if (
-                            $steps["goToACompanyProfile"] != null &&
-                            typeof $steps["goToACompanyProfile"] === "object" &&
-                            typeof $steps["goToACompanyProfile"].then ===
-                              "function"
-                          ) {
-                            $steps["goToACompanyProfile"] =
-                              await $steps["goToACompanyProfile"];
-                          }
-                        }}
-                        src={
-                          "https://images.unsplash.com/photo-1532635245-05a2903ffd56?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1834&q=80"
-                        }
-                        width={"500"}
-                      />
-
-                      <div
-                        data-plasmic-name={"price10"}
-                        data-plasmic-override={overrides.price10}
-                        className={classNames(projectcss.all, sty.price10)}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text___0Te3N
-                          )}
-                        >
-                          {"Standard"}
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox___2Jldd
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__hnawP
-                            )}
-                          >
-                            {"U$ 300"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__ynKp
-                            )}
-                          >
-                            {"/ sale"}
-                          </div>
-                        </div>
-                      </div>
-                      <div
-                        data-plasmic-name={"hoverEngajament9"}
-                        data-plasmic-override={overrides.hoverEngajament9}
-                        className={classNames(
-                          projectcss.all,
-                          sty.hoverEngajament9
-                        )}
-                      >
-                        <AntdTooltip
-                          className={classNames(
-                            "__wab_instance",
-                            sty.tooltip__kkIuR
-                          )}
-                          placement={"left"}
-                          title={
-                            <React.Fragment>
-                              <div
-                                data-plasmic-name={"companyName2"}
-                                data-plasmic-override={overrides.companyName2}
-                                className={classNames(
-                                  projectcss.all,
-                                  sty.companyName2
-                                )}
-                              >
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__xUfK
-                                  )}
-                                >
-                                  {"Company"}
-                                </div>
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__oqTUf
-                                  )}
-                                >
-                                  {"Legal structure"}
-                                </div>
-                              </div>
-                              <div
-                                data-plasmic-name={"launch2"}
-                                data-plasmic-override={overrides.launch2}
-                                className={classNames(
-                                  projectcss.all,
-                                  sty.launch2
-                                )}
-                              >
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__gxHbv
-                                  )}
-                                >
-                                  {"Launch in"}
-                                </div>
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__qv8Oo
-                                  )}
-                                >
-                                  {"00/00/0000"}
-                                </div>
-                              </div>
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__m5Zbr
-                                )}
-                              >
-                                {"Tagline"}
-                              </div>
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__pr9Cj
-                                )}
-                              >
-                                {"Problem// solution"}
-                              </div>
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__pTyp
-                                )}
-                              >
-                                {"Advantage"}
-                              </div>
-                              <div
-                                data-plasmic-name={"tam2"}
-                                data-plasmic-override={overrides.tam2}
-                                className={classNames(projectcss.all, sty.tam2)}
-                              >
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__cx8L
-                                  )}
-                                >
-                                  {"TAM:"}
-                                </div>
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__pRla
-                                  )}
-                                >
-                                  {"50000"}
-                                </div>
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__ub5Y4
-                                  )}
-                                >
-                                  {"people"}
-                                </div>
-                              </div>
-                              <div
-                                data-plasmic-name={"competitive2"}
-                                data-plasmic-override={overrides.competitive2}
-                                className={classNames(
-                                  projectcss.all,
-                                  sty.competitive2
-                                )}
-                              >
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__pSja
-                                  )}
-                                >
-                                  {"competitive:"}
-                                </div>
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__gBhQk
-                                  )}
-                                >
-                                  {"15"}
-                                </div>
-                              </div>
-                            </React.Fragment>
-                          }
-                          titleText={"Tooltip contents"}
-                        >
-                          <Video
-                            autoPlay={true}
-                            className={classNames(
-                              "__wab_instance",
-                              sty.htmlVideo__y7AlX
-                            )}
-                            controls={false}
-                            loop={true}
-                            muted={true}
-                            src={
-                              "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
-                            }
-                          />
-                        </AntdTooltip>
-                        <div
-                          data-plasmic-name={"price11"}
-                          data-plasmic-override={overrides.price11}
-                          className={classNames(projectcss.all, sty.price11)}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__zpsHo
-                            )}
-                          >
-                            {"Standard"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox___5Ls0U
-                            )}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__paCxq
-                              )}
-                            >
-                              {"U$ 300"}
+                                })()}
+                              </React.Fragment>
                             </div>
                             <div
                               className={classNames(
                                 projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__lc1Gc
+                                sty.freeBox__swj2I
                               )}
                             >
-                              {"/ sale"}
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.__wab_text,
+                                  sty.text__sAn8C
+                                )}
+                              >
+                                {"U$ 300"}
+                              </div>
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.__wab_text,
+                                  sty.text__wZyPy
+                                )}
+                              >
+                                {"/ sale"}
+                              </div>
                             </div>
                           </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      data-plasmic-name={"slideNew3"}
-                      data-plasmic-override={overrides.slideNew3}
-                      className={classNames(projectcss.all, sty.slideNew3)}
-                    >
-                      <PlasmicImg__
-                        alt={""}
-                        className={classNames(sty.img__nYsqC)}
-                        displayHeight={"446px"}
-                        displayMaxHeight={"none"}
-                        displayMaxWidth={"auto"}
-                        displayMinHeight={"0"}
-                        displayMinWidth={"0"}
-                        displayWidth={"446px"}
-                        height={"500"}
-                        onClick={async event => {
-                          const $steps = {};
-
-                          $steps["goToACompanyProfile"] = true
-                            ? (() => {
-                                const actionArgs = {
-                                  destination: `/a-company-profile`
-                                };
-                                return (({ destination }) => {
-                                  if (
-                                    typeof destination === "string" &&
-                                    destination.startsWith("#")
-                                  ) {
-                                    document
-                                      .getElementById(destination.substr(1))
-                                      .scrollIntoView({ behavior: "smooth" });
-                                  } else {
-                                    __nextRouter?.push(destination);
-                                  }
-                                })?.apply(null, [actionArgs]);
-                              })()
-                            : undefined;
-                          if (
-                            $steps["goToACompanyProfile"] != null &&
-                            typeof $steps["goToACompanyProfile"] === "object" &&
-                            typeof $steps["goToACompanyProfile"].then ===
-                              "function"
-                          ) {
-                            $steps["goToACompanyProfile"] =
-                              await $steps["goToACompanyProfile"];
-                          }
-                        }}
-                        src={
-                          "https://images.unsplash.com/photo-1532635245-05a2903ffd56?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1834&q=80"
-                        }
-                        width={"500"}
-                      />
-
-                      <div
-                        data-plasmic-name={"price12"}
-                        data-plasmic-override={overrides.price12}
-                        className={classNames(projectcss.all, sty.price12)}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__d8Tv8
-                          )}
-                        >
-                          {"Standard"}
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox___033Qe
-                          )}
-                        >
                           <div
+                            data-plasmic-name={"hoverEngajament8"}
+                            data-plasmic-override={overrides.hoverEngajament8}
                             className={classNames(
                               projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__hz4JB
+                              sty.hoverEngajament8
                             )}
                           >
-                            {"U$ 300"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__ibJ9K
-                            )}
-                          >
-                            {"/ sale"}
-                          </div>
-                        </div>
-                      </div>
-                      <div
-                        data-plasmic-name={"hoverEngajament10"}
-                        data-plasmic-override={overrides.hoverEngajament10}
-                        className={classNames(
-                          projectcss.all,
-                          sty.hoverEngajament10
-                        )}
-                      >
-                        <AntdTooltip
-                          className={classNames(
-                            "__wab_instance",
-                            sty.tooltip__sPk0
-                          )}
-                          placement={"left"}
-                          title={
-                            <React.Fragment>
-                              <div
-                                data-plasmic-name={"companyName3"}
-                                data-plasmic-override={overrides.companyName3}
-                                className={classNames(
-                                  projectcss.all,
-                                  sty.companyName3
-                                )}
-                              >
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__bkSAt
-                                  )}
-                                >
-                                  {"Company"}
-                                </div>
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__fsIYx
-                                  )}
-                                >
-                                  {"Legal structure"}
-                                </div>
-                              </div>
-                              <div
-                                data-plasmic-name={"launch3"}
-                                data-plasmic-override={overrides.launch3}
-                                className={classNames(
-                                  projectcss.all,
-                                  sty.launch3
-                                )}
-                              >
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__xPg4X
-                                  )}
-                                >
-                                  {"Launch in"}
-                                </div>
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__sPn70
-                                  )}
-                                >
-                                  {"00/00/0000"}
-                                </div>
-                              </div>
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__vr4Yk
-                                )}
-                              >
-                                {"Tagline"}
-                              </div>
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__ve6Wo
-                                )}
-                              >
-                                {"Problem// solution"}
-                              </div>
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__vdteR
-                                )}
-                              >
-                                {"Advantage"}
-                              </div>
-                              <div
-                                data-plasmic-name={"tam3"}
-                                data-plasmic-override={overrides.tam3}
-                                className={classNames(projectcss.all, sty.tam3)}
-                              >
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__jlPUu
-                                  )}
-                                >
-                                  {"TAM:"}
-                                </div>
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__cxZEw
-                                  )}
-                                >
-                                  {"50000"}
-                                </div>
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__fHmLo
-                                  )}
-                                >
-                                  {"people"}
-                                </div>
-                              </div>
-                              <div
-                                data-plasmic-name={"competitive3"}
-                                data-plasmic-override={overrides.competitive3}
-                                className={classNames(
-                                  projectcss.all,
-                                  sty.competitive3
-                                )}
-                              >
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__ncg3R
-                                  )}
-                                >
-                                  {"competitive:"}
-                                </div>
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__wN1GQ
-                                  )}
-                                >
-                                  {"15"}
-                                </div>
-                              </div>
-                            </React.Fragment>
-                          }
-                          titleText={"Tooltip contents"}
-                        >
-                          <Video
-                            autoPlay={true}
-                            className={classNames(
-                              "__wab_instance",
-                              sty.htmlVideo__bqx7F
-                            )}
-                            controls={false}
-                            loop={true}
-                            muted={true}
-                            src={
-                              "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
-                            }
-                          />
-                        </AntdTooltip>
-                        <div
-                          data-plasmic-name={"price13"}
-                          data-plasmic-override={overrides.price13}
-                          className={classNames(projectcss.all, sty.price13)}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__mqKbu
-                            )}
-                          >
-                            {"Standard"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__xfI9C
-                            )}
-                          >
-                            <div
+                            <AntdTooltip
                               className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__z0Cnz
+                                "__wab_instance",
+                                sty.tooltip__ighVg
                               )}
+                              overlayClassName={classNames({
+                                [sty["pcls_PsXeB2_qjWF8"]]: true
+                              })}
+                              placement={"left"}
+                              title={
+                                <React.Fragment>
+                                  <div
+                                    data-plasmic-name={"companyName"}
+                                    data-plasmic-override={
+                                      overrides.companyName
+                                    }
+                                    className={classNames(
+                                      projectcss.all,
+                                      sty.companyName
+                                    )}
+                                  >
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.__wab_text,
+                                        sty.text__at3M
+                                      )}
+                                    >
+                                      <React.Fragment>
+                                        {(() => {
+                                          try {
+                                            return currentItem["Company name"];
+                                          } catch (e) {
+                                            if (
+                                              e instanceof TypeError ||
+                                              e?.plasmicType ===
+                                                "PlasmicUndefinedDataError"
+                                            ) {
+                                              return "Company";
+                                            }
+                                            throw e;
+                                          }
+                                        })()}
+                                      </React.Fragment>
+                                    </div>
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.__wab_text,
+                                        sty.text__ln4Ta
+                                      )}
+                                    >
+                                      <React.Fragment>
+                                        {(() => {
+                                          try {
+                                            return currentItem["Company type"];
+                                          } catch (e) {
+                                            if (
+                                              e instanceof TypeError ||
+                                              e?.plasmicType ===
+                                                "PlasmicUndefinedDataError"
+                                            ) {
+                                              return "Legal structure";
+                                            }
+                                            throw e;
+                                          }
+                                        })()}
+                                      </React.Fragment>
+                                    </div>
+                                  </div>
+                                  <div
+                                    data-plasmic-name={"launch"}
+                                    data-plasmic-override={overrides.launch}
+                                    className={classNames(
+                                      projectcss.all,
+                                      sty.launch
+                                    )}
+                                  >
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.__wab_text,
+                                        sty.text__msIog
+                                      )}
+                                    >
+                                      {"Launch in"}
+                                    </div>
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.__wab_text,
+                                        sty.text__rpKkM
+                                      )}
+                                    >
+                                      {"00/00/0000"}
+                                    </div>
+                                  </div>
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text__pj1Qw
+                                    )}
+                                  >
+                                    <React.Fragment>
+                                      {(() => {
+                                        try {
+                                          return currentItem["Company tagline"];
+                                        } catch (e) {
+                                          if (
+                                            e instanceof TypeError ||
+                                            e?.plasmicType ===
+                                              "PlasmicUndefinedDataError"
+                                          ) {
+                                            return "Tagline";
+                                          }
+                                          throw e;
+                                        }
+                                      })()}
+                                    </React.Fragment>
+                                  </div>
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text__ubrAz
+                                    )}
+                                  >
+                                    <React.Fragment>
+                                      {(() => {
+                                        try {
+                                          return currentItem[
+                                            "Customer problem"
+                                          ];
+                                        } catch (e) {
+                                          if (
+                                            e instanceof TypeError ||
+                                            e?.plasmicType ===
+                                              "PlasmicUndefinedDataError"
+                                          ) {
+                                            return "Problem// solution";
+                                          }
+                                          throw e;
+                                        }
+                                      })()}
+                                    </React.Fragment>
+                                  </div>
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text__jgHsN
+                                    )}
+                                  >
+                                    <React.Fragment>
+                                      {(() => {
+                                        try {
+                                          return currentItem[
+                                            "Solution description"
+                                          ];
+                                        } catch (e) {
+                                          if (
+                                            e instanceof TypeError ||
+                                            e?.plasmicType ===
+                                              "PlasmicUndefinedDataError"
+                                          ) {
+                                            return "Advantage";
+                                          }
+                                          throw e;
+                                        }
+                                      })()}
+                                    </React.Fragment>
+                                  </div>
+                                  <div
+                                    data-plasmic-name={"tam"}
+                                    data-plasmic-override={overrides.tam}
+                                    className={classNames(
+                                      projectcss.all,
+                                      sty.tam
+                                    )}
+                                  >
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.__wab_text,
+                                        sty.text__bnAFe
+                                      )}
+                                    >
+                                      {"TAM:"}
+                                    </div>
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.__wab_text,
+                                        sty.text__kKw67
+                                      )}
+                                    >
+                                      {"50000"}
+                                    </div>
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.__wab_text,
+                                        sty.text__zdns
+                                      )}
+                                    >
+                                      {"people"}
+                                    </div>
+                                  </div>
+                                  <div
+                                    data-plasmic-name={"competitive"}
+                                    data-plasmic-override={
+                                      overrides.competitive
+                                    }
+                                    className={classNames(
+                                      projectcss.all,
+                                      sty.competitive
+                                    )}
+                                  >
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.__wab_text,
+                                        sty.text___1FduP
+                                      )}
+                                    >
+                                      {"competitive:"}
+                                    </div>
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.__wab_text,
+                                        sty.text__lElbm
+                                      )}
+                                    >
+                                      {"15"}
+                                    </div>
+                                  </div>
+                                </React.Fragment>
+                              }
+                              titleText={"Tooltip contents"}
                             >
-                              {"U$ 300"}
-                            </div>
+                              <Video
+                                autoPlay={true}
+                                className={classNames(
+                                  "__wab_instance",
+                                  sty.htmlVideo__svhp4
+                                )}
+                                controls={false}
+                                loop={true}
+                                muted={true}
+                                src={
+                                  "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
+                                }
+                              />
+                            </AntdTooltip>
                             <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__klL8
-                              )}
+                              data-plasmic-name={"price9"}
+                              data-plasmic-override={overrides.price9}
+                              className={classNames(projectcss.all, sty.price9)}
                             >
-                              {"/ sale"}
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.__wab_text,
+                                  sty.text__xIgxc
+                                )}
+                              >
+                                <React.Fragment>
+                                  {(() => {
+                                    try {
+                                      return currentItem["Company nature"];
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return "Standard";
+                                      }
+                                      throw e;
+                                    }
+                                  })()}
+                                </React.Fragment>
+                              </div>
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox__ptnu8
+                                )}
+                              >
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__dnqUb
+                                  )}
+                                >
+                                  {"U$ 300"}
+                                </div>
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__dy8Gv
+                                  )}
+                                >
+                                  {"/ sale"}
+                                </div>
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-                    </div>
-                    <div
-                      data-plasmic-name={"slideNew4"}
-                      data-plasmic-override={overrides.slideNew4}
-                      className={classNames(projectcss.all, sty.slideNew4)}
-                    >
-                      <PlasmicImg__
-                        alt={""}
-                        className={classNames(sty.img___7HiuK)}
-                        displayHeight={"446px"}
-                        displayMaxHeight={"none"}
-                        displayMaxWidth={"auto"}
-                        displayMinHeight={"0"}
-                        displayMinWidth={"0"}
-                        displayWidth={"446px"}
-                        height={"500"}
-                        onClick={async event => {
-                          const $steps = {};
-
-                          $steps["goToACompanyProfile"] = true
-                            ? (() => {
-                                const actionArgs = {
-                                  destination: `/a-company-profile`
-                                };
-                                return (({ destination }) => {
-                                  if (
-                                    typeof destination === "string" &&
-                                    destination.startsWith("#")
-                                  ) {
-                                    document
-                                      .getElementById(destination.substr(1))
-                                      .scrollIntoView({ behavior: "smooth" });
-                                  } else {
-                                    __nextRouter?.push(destination);
-                                  }
-                                })?.apply(null, [actionArgs]);
-                              })()
-                            : undefined;
-                          if (
-                            $steps["goToACompanyProfile"] != null &&
-                            typeof $steps["goToACompanyProfile"] === "object" &&
-                            typeof $steps["goToACompanyProfile"].then ===
-                              "function"
-                          ) {
-                            $steps["goToACompanyProfile"] =
-                              await $steps["goToACompanyProfile"];
-                          }
-                        }}
-                        src={
-                          "https://images.unsplash.com/photo-1532635245-05a2903ffd56?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1834&q=80"
-                        }
-                        width={"500"}
-                      />
-
-                      <div
-                        data-plasmic-name={"price14"}
-                        data-plasmic-override={overrides.price14}
-                        className={classNames(projectcss.all, sty.price14)}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__lCxvB
-                          )}
-                        >
-                          {"Standard"}
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__vpkV
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__auZir
-                            )}
-                          >
-                            {"U$ 300"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__csigY
-                            )}
-                          >
-                            {"/ sale"}
-                          </div>
-                        </div>
-                      </div>
-                      <div
-                        data-plasmic-name={"hoverEngajament11"}
-                        data-plasmic-override={overrides.hoverEngajament11}
-                        className={classNames(
-                          projectcss.all,
-                          sty.hoverEngajament11
-                        )}
-                      >
-                        <AntdTooltip
-                          className={classNames(
-                            "__wab_instance",
-                            sty.tooltip__xbTXe
-                          )}
-                          placement={"left"}
-                          title={
-                            <React.Fragment>
-                              <div
-                                data-plasmic-name={"companyName4"}
-                                data-plasmic-override={overrides.companyName4}
-                                className={classNames(
-                                  projectcss.all,
-                                  sty.companyName4
-                                )}
-                              >
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__aqEhn
-                                  )}
-                                >
-                                  {"Company"}
-                                </div>
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__oLJzj
-                                  )}
-                                >
-                                  {"Legal structure"}
-                                </div>
-                              </div>
-                              <div
-                                data-plasmic-name={"launch4"}
-                                data-plasmic-override={overrides.launch4}
-                                className={classNames(
-                                  projectcss.all,
-                                  sty.launch4
-                                )}
-                              >
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__fO0Yy
-                                  )}
-                                >
-                                  {"Launch in"}
-                                </div>
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__yj7TJ
-                                  )}
-                                >
-                                  {"00/00/0000"}
-                                </div>
-                              </div>
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__orYEw
-                                )}
-                              >
-                                {"Tagline"}
-                              </div>
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text___304Zn
-                                )}
-                              >
-                                {"Problem// solution"}
-                              </div>
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__hhiJo
-                                )}
-                              >
-                                {"Advantage"}
-                              </div>
-                              <div
-                                data-plasmic-name={"tam4"}
-                                data-plasmic-override={overrides.tam4}
-                                className={classNames(projectcss.all, sty.tam4)}
-                              >
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__kgUxK
-                                  )}
-                                >
-                                  {"TAM:"}
-                                </div>
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__j9Fxv
-                                  )}
-                                >
-                                  {"50000"}
-                                </div>
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__ebkRh
-                                  )}
-                                >
-                                  {"people"}
-                                </div>
-                              </div>
-                              <div
-                                data-plasmic-name={"competitive4"}
-                                data-plasmic-override={overrides.competitive4}
-                                className={classNames(
-                                  projectcss.all,
-                                  sty.competitive4
-                                )}
-                              >
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__p8Jh
-                                  )}
-                                >
-                                  {"competitive:"}
-                                </div>
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__nz7J7
-                                  )}
-                                >
-                                  {"15"}
-                                </div>
-                              </div>
-                            </React.Fragment>
-                          }
-                          titleText={"Tooltip contents"}
-                        >
-                          <Video
-                            autoPlay={true}
-                            className={classNames(
-                              "__wab_instance",
-                              sty.htmlVideo__gPz4F
-                            )}
-                            controls={false}
-                            loop={true}
-                            muted={true}
-                            src={
-                              "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
-                            }
-                          />
-                        </AntdTooltip>
-                        <div
-                          data-plasmic-name={"price15"}
-                          data-plasmic-override={overrides.price15}
-                          className={classNames(projectcss.all, sty.price15)}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__hBUko
-                            )}
-                          >
-                            {"Standard"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__bmSM
-                            )}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__lEfFq
-                              )}
-                            >
-                              {"U$ 300"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text___7Kjjc
-                              )}
-                            >
-                              {"/ sale"}
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      data-plasmic-name={"slideNew5"}
-                      data-plasmic-override={overrides.slideNew5}
-                      className={classNames(projectcss.all, sty.slideNew5)}
-                    >
-                      <PlasmicImg__
-                        alt={""}
-                        className={classNames(sty.img__osYi3)}
-                        displayHeight={"446px"}
-                        displayMaxHeight={"none"}
-                        displayMaxWidth={"auto"}
-                        displayMinHeight={"0"}
-                        displayMinWidth={"0"}
-                        displayWidth={"446px"}
-                        height={"500"}
-                        onClick={async event => {
-                          const $steps = {};
-
-                          $steps["goToACompanyProfile"] = true
-                            ? (() => {
-                                const actionArgs = {
-                                  destination: `/a-company-profile`
-                                };
-                                return (({ destination }) => {
-                                  if (
-                                    typeof destination === "string" &&
-                                    destination.startsWith("#")
-                                  ) {
-                                    document
-                                      .getElementById(destination.substr(1))
-                                      .scrollIntoView({ behavior: "smooth" });
-                                  } else {
-                                    __nextRouter?.push(destination);
-                                  }
-                                })?.apply(null, [actionArgs]);
-                              })()
-                            : undefined;
-                          if (
-                            $steps["goToACompanyProfile"] != null &&
-                            typeof $steps["goToACompanyProfile"] === "object" &&
-                            typeof $steps["goToACompanyProfile"].then ===
-                              "function"
-                          ) {
-                            $steps["goToACompanyProfile"] =
-                              await $steps["goToACompanyProfile"];
-                          }
-                        }}
-                        src={
-                          "https://images.unsplash.com/photo-1532635245-05a2903ffd56?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1834&q=80"
-                        }
-                        width={"500"}
-                      />
-
-                      <div
-                        data-plasmic-name={"price16"}
-                        data-plasmic-override={overrides.price16}
-                        className={classNames(projectcss.all, sty.price16)}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__c8QiX
-                          )}
-                        >
-                          {"Standard"}
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__jzEo9
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__haV
-                            )}
-                          >
-                            {"U$ 300"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__h8Agg
-                            )}
-                          >
-                            {"/ sale"}
-                          </div>
-                        </div>
-                      </div>
-                      <div
-                        data-plasmic-name={"hoverEngajament12"}
-                        data-plasmic-override={overrides.hoverEngajament12}
-                        className={classNames(
-                          projectcss.all,
-                          sty.hoverEngajament12
-                        )}
-                      >
-                        <AntdTooltip
-                          className={classNames(
-                            "__wab_instance",
-                            sty.tooltip__h7PBr
-                          )}
-                          placement={"left"}
-                          title={
-                            <React.Fragment>
-                              <div
-                                data-plasmic-name={"companyName5"}
-                                data-plasmic-override={overrides.companyName5}
-                                className={classNames(
-                                  projectcss.all,
-                                  sty.companyName5
-                                )}
-                              >
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__xWaBq
-                                  )}
-                                >
-                                  {"Company"}
-                                </div>
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__shAma
-                                  )}
-                                >
-                                  {"Legal structure"}
-                                </div>
-                              </div>
-                              <div
-                                data-plasmic-name={"launch5"}
-                                data-plasmic-override={overrides.launch5}
-                                className={classNames(
-                                  projectcss.all,
-                                  sty.launch5
-                                )}
-                              >
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__tOqj7
-                                  )}
-                                >
-                                  {"Launch in"}
-                                </div>
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__jsf4Q
-                                  )}
-                                >
-                                  {"00/00/0000"}
-                                </div>
-                              </div>
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text___9Qs2T
-                                )}
-                              >
-                                {"Tagline"}
-                              </div>
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__cccOg
-                                )}
-                              >
-                                {"Problem// solution"}
-                              </div>
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__hNcpX
-                                )}
-                              >
-                                {"Advantage"}
-                              </div>
-                              <div
-                                data-plasmic-name={"tam5"}
-                                data-plasmic-override={overrides.tam5}
-                                className={classNames(projectcss.all, sty.tam5)}
-                              >
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__ay1Os
-                                  )}
-                                >
-                                  {"TAM:"}
-                                </div>
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__g3Owr
-                                  )}
-                                >
-                                  {"50000"}
-                                </div>
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__i3VSx
-                                  )}
-                                >
-                                  {"people"}
-                                </div>
-                              </div>
-                              <div
-                                data-plasmic-name={"competitive5"}
-                                data-plasmic-override={overrides.competitive5}
-                                className={classNames(
-                                  projectcss.all,
-                                  sty.competitive5
-                                )}
-                              >
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__omAfw
-                                  )}
-                                >
-                                  {"competitive:"}
-                                </div>
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text___4ExnI
-                                  )}
-                                >
-                                  {"15"}
-                                </div>
-                              </div>
-                            </React.Fragment>
-                          }
-                          titleText={"Tooltip contents"}
-                        >
-                          <Video
-                            autoPlay={true}
-                            className={classNames(
-                              "__wab_instance",
-                              sty.htmlVideo__wTfda
-                            )}
-                            controls={false}
-                            loop={true}
-                            muted={true}
-                            src={
-                              "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
-                            }
-                          />
-                        </AntdTooltip>
-                        <div
-                          data-plasmic-name={"price17"}
-                          data-plasmic-override={overrides.price17}
-                          className={classNames(projectcss.all, sty.price17)}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__x949F
-                            )}
-                          >
-                            {"Standard"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__fMreu
-                            )}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text___4OPrs
-                              )}
-                            >
-                              {"U$ 300"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text___3Kfhb
-                              )}
-                            >
-                              {"/ sale"}
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                      );
+                    })}
                   </SliderWrapper>
                 );
               })()}
@@ -7619,319 +4549,93 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                 data-plasmic-override={overrides.sliderCarousel3}
                 {...child$Props}
               >
-                <div
-                  data-plasmic-name={"slide8"}
-                  data-plasmic-override={overrides.slide8}
-                  className={classNames(projectcss.all, sty.slide8)}
-                >
-                  <PlasmicImg__
-                    alt={""}
-                    className={classNames(sty.img___43ToC)}
-                    displayHeight={"200px"}
-                    displayMaxHeight={"none"}
-                    displayMaxWidth={"100%"}
-                    displayMinHeight={"0"}
-                    displayMinWidth={"0"}
-                    displayWidth={"100%"}
-                    src={
-                      "https://static1.plasmic.app/components/react-slick/slide1.png"
-                    }
-                  />
-
-                  <div
-                    data-plasmic-name={"price18"}
-                    data-plasmic-override={overrides.price18}
-                    className={classNames(projectcss.all, sty.price18)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__eSr1P
-                      )}
-                    >
-                      {"Standard"}
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__gkVdf)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__neou9
-                        )}
-                      >
-                        {"U$ 300"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__dLqah
-                        )}
-                      >
-                        {"/ sale"}
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    data-plasmic-name={"hoverEngajament13"}
-                    data-plasmic-override={overrides.hoverEngajament13}
-                    className={classNames(
-                      projectcss.all,
-                      sty.hoverEngajament13
-                    )}
-                  >
-                    <AntdTooltip
-                      className={classNames(
-                        "__wab_instance",
-                        sty.tooltip__zzSWw
-                      )}
-                      overlayClassName={classNames({
-                        [sty["pcls_-A16ue5QFcff"]]: true
-                      })}
-                      placement={"left"}
-                      title={
-                        <React.Fragment>
-                          <div
-                            data-plasmic-name={"companyName6"}
-                            data-plasmic-override={overrides.companyName6}
-                            className={classNames(
-                              projectcss.all,
-                              sty.companyName6
-                            )}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__iSj3
-                              )}
-                            >
-                              {"Company"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__zSjHb
-                              )}
-                            >
-                              {"Legal structure"}
-                            </div>
-                          </div>
-                          <div
-                            data-plasmic-name={"launch6"}
-                            data-plasmic-override={overrides.launch6}
-                            className={classNames(projectcss.all, sty.launch6)}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text___5RZvq
-                              )}
-                            >
-                              {"Launch in"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__hijmp
-                              )}
-                            >
-                              {"00/00/0000"}
-                            </div>
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__lQiEq
-                            )}
-                          >
-                            {"Tagline"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__c6HdX
-                            )}
-                          >
-                            {"Problem// solution"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__neMw7
-                            )}
-                          >
-                            {"Advantage"}
-                          </div>
-                          <div
-                            data-plasmic-name={"tam6"}
-                            data-plasmic-override={overrides.tam6}
-                            className={classNames(projectcss.all, sty.tam6)}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text___2A8Js
-                              )}
-                            >
-                              {"TAM:"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text___4Fl4K
-                              )}
-                            >
-                              {"50000"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__woqAu
-                              )}
-                            >
-                              {"people"}
-                            </div>
-                          </div>
-                          <div
-                            data-plasmic-name={"competitive6"}
-                            data-plasmic-override={overrides.competitive6}
-                            className={classNames(
-                              projectcss.all,
-                              sty.competitive6
-                            )}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__jlOtp
-                              )}
-                            >
-                              {"competitive:"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__p1JIr
-                              )}
-                            >
-                              {"15"}
-                            </div>
-                          </div>
-                        </React.Fragment>
+                {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
+                  (() => {
+                    try {
+                      return $props.company_requests || [1];
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return [];
                       }
-                      titleText={"Tooltip contents"}
-                    >
-                      <Video
-                        autoPlay={true}
-                        className={classNames(
-                          "__wab_instance",
-                          sty.htmlVideo__jL0QH
-                        )}
-                        controls={false}
-                        loop={true}
-                        muted={true}
-                        src={
-                          "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
-                        }
-                      />
-                    </AntdTooltip>
+                      throw e;
+                    }
+                  })()
+                ).map((__plasmic_item_0, __plasmic_idx_0) => {
+                  const currentItem = __plasmic_item_0;
+                  const currentIndex = __plasmic_idx_0;
+                  return (
                     <div
-                      className={classNames(
-                        projectcss.all,
-                        sty.freeBox___7Uo9L
-                      )}
+                      data-plasmic-name={"slide8"}
+                      data-plasmic-override={overrides.slide8}
+                      className={classNames(projectcss.all, sty.slide8)}
+                      key={currentIndex}
                     >
-                      <LoginButton
-                        className={classNames(
-                          "__wab_instance",
-                          sty.loginButton__brIbl
-                        )}
-                        color={"softGreen"}
-                        onClick={async event => {
-                          const $steps = {};
-
-                          $steps["goToACompanyProfile"] = true
-                            ? (() => {
-                                const actionArgs = {
-                                  destination: `/a-company-profile`
-                                };
-                                return (({ destination }) => {
-                                  if (
-                                    typeof destination === "string" &&
-                                    destination.startsWith("#")
-                                  ) {
-                                    document
-                                      .getElementById(destination.substr(1))
-                                      .scrollIntoView({ behavior: "smooth" });
-                                  } else {
-                                    __nextRouter?.push(destination);
-                                  }
-                                })?.apply(null, [actionArgs]);
-                              })()
-                            : undefined;
-                          if (
-                            $steps["goToACompanyProfile"] != null &&
-                            typeof $steps["goToACompanyProfile"] === "object" &&
-                            typeof $steps["goToACompanyProfile"].then ===
-                              "function"
-                          ) {
-                            $steps["goToACompanyProfile"] =
-                              await $steps["goToACompanyProfile"];
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img___43ToC)}
+                        displayHeight={"200px"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={"100%"}
+                        src={(() => {
+                          try {
+                            return currentItem["Company image"];
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return "https://static1.plasmic.app/components/react-slick/slide1.png";
+                            }
+                            throw e;
                           }
-                        }}
-                        shape={"sharp"}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__qDoB
-                          )}
-                        >
-                          {"Apply"}
-                        </div>
-                      </LoginButton>
+                        })()}
+                      />
+
                       <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__tponz
-                        )}
+                        data-plasmic-name={"price18"}
+                        data-plasmic-override={overrides.price18}
+                        className={classNames(projectcss.all, sty.price18)}
                       >
                         <div
                           className={classNames(
                             projectcss.all,
                             projectcss.__wab_text,
-                            sty.text__vKzEv
+                            sty.text__eSr1P
                           )}
                         >
-                          {"Standard"}
+                          <React.Fragment>
+                            {(() => {
+                              try {
+                                return currentItem["Company nature"];
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return "Standard";
+                                }
+                                throw e;
+                              }
+                            })()}
+                          </React.Fragment>
                         </div>
                         <div
                           className={classNames(
                             projectcss.all,
-                            sty.freeBox__la0
+                            sty.freeBox__gkVdf
                           )}
                         >
                           <div
                             className={classNames(
                               projectcss.all,
                               projectcss.__wab_text,
-                              sty.text__uduLd
+                              sty.text__neou9
                             )}
                           >
                             {"U$ 300"}
@@ -7940,1987 +4644,387 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                             className={classNames(
                               projectcss.all,
                               projectcss.__wab_text,
-                              sty.text__aiOnt
+                              sty.text__dLqah
                             )}
                           >
                             {"/ sale"}
                           </div>
                         </div>
                       </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  data-plasmic-name={"slide9"}
-                  data-plasmic-override={overrides.slide9}
-                  className={classNames(projectcss.all, sty.slide9)}
-                >
-                  <PlasmicImg__
-                    alt={""}
-                    className={classNames(sty.img__mVuSo)}
-                    displayHeight={"200px"}
-                    displayMaxHeight={"none"}
-                    displayMaxWidth={"100%"}
-                    displayMinHeight={"0"}
-                    displayMinWidth={"0"}
-                    displayWidth={"100%"}
-                    src={
-                      "https://static1.plasmic.app/components/react-slick/slide2.png"
-                    }
-                  />
-
-                  <div
-                    data-plasmic-name={"price19"}
-                    data-plasmic-override={overrides.price19}
-                    className={classNames(projectcss.all, sty.price19)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__drza4
-                      )}
-                    >
-                      {"Standard"}
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__jSfc)}
-                    >
                       <div
+                        data-plasmic-name={"hoverEngajament13"}
+                        data-plasmic-override={overrides.hoverEngajament13}
                         className={classNames(
                           projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___5Sl7D
+                          sty.hoverEngajament13
                         )}
                       >
-                        {"U$ 300"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__hIZwN
-                        )}
-                      >
-                        {"/ sale"}
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    data-plasmic-name={"hoverEngajament14"}
-                    data-plasmic-override={overrides.hoverEngajament14}
-                    className={classNames(
-                      projectcss.all,
-                      sty.hoverEngajament14
-                    )}
-                  >
-                    <AntdTooltip
-                      className={classNames(
-                        "__wab_instance",
-                        sty.tooltip__rC5A
-                      )}
-                      overlayClassName={classNames({
-                        [sty["pcls_beXsrsfFLYbt"]]: true
-                      })}
-                      placement={"left"}
-                      title={
-                        <React.Fragment>
-                          <div
-                            data-plasmic-name={"companyName7"}
-                            data-plasmic-override={overrides.companyName7}
-                            className={classNames(
-                              projectcss.all,
-                              sty.companyName7
-                            )}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text___2HvSj
-                              )}
-                            >
-                              {"Company"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__kf7FL
-                              )}
-                            >
-                              {"Legal structure"}
-                            </div>
-                          </div>
-                          <div
-                            data-plasmic-name={"launch7"}
-                            data-plasmic-override={overrides.launch7}
-                            className={classNames(projectcss.all, sty.launch7)}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__j0I8D
-                              )}
-                            >
-                              {"Launch in"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text___89ZMe
-                              )}
-                            >
-                              {"00/00/0000"}
-                            </div>
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__fedg
-                            )}
-                          >
-                            {"Tagline"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__ve34R
-                            )}
-                          >
-                            {"Problem// solution"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__pxWc1
-                            )}
-                          >
-                            {"Advantage"}
-                          </div>
-                          <div
-                            data-plasmic-name={"tam7"}
-                            data-plasmic-override={overrides.tam7}
-                            className={classNames(projectcss.all, sty.tam7)}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__bJket
-                              )}
-                            >
-                              {"TAM:"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__siIBb
-                              )}
-                            >
-                              {"50000"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__bn2AM
-                              )}
-                            >
-                              {"people"}
-                            </div>
-                          </div>
-                          <div
-                            data-plasmic-name={"competitive7"}
-                            data-plasmic-override={overrides.competitive7}
-                            className={classNames(
-                              projectcss.all,
-                              sty.competitive7
-                            )}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__rkiy7
-                              )}
-                            >
-                              {"competitive:"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text___1A6Rf
-                              )}
-                            >
-                              {"15"}
-                            </div>
-                          </div>
-                        </React.Fragment>
-                      }
-                      titleText={"Tooltip contents"}
-                    >
-                      <Video
-                        autoPlay={true}
-                        className={classNames(
-                          "__wab_instance",
-                          sty.htmlVideo__iw8N6
-                        )}
-                        controls={false}
-                        loop={true}
-                        muted={true}
-                        src={
-                          "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
-                        }
-                      />
-                    </AntdTooltip>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__oqWzY)}
-                    >
-                      <LoginButton
-                        className={classNames(
-                          "__wab_instance",
-                          sty.loginButton__bujYi
-                        )}
-                        color={"softGreen"}
-                        onClick={async event => {
-                          const $steps = {};
-
-                          $steps["goToACompanyProfile"] = true
-                            ? (() => {
-                                const actionArgs = {
-                                  destination: `/a-company-profile`
-                                };
-                                return (({ destination }) => {
-                                  if (
-                                    typeof destination === "string" &&
-                                    destination.startsWith("#")
-                                  ) {
-                                    document
-                                      .getElementById(destination.substr(1))
-                                      .scrollIntoView({ behavior: "smooth" });
-                                  } else {
-                                    __nextRouter?.push(destination);
-                                  }
-                                })?.apply(null, [actionArgs]);
-                              })()
-                            : undefined;
-                          if (
-                            $steps["goToACompanyProfile"] != null &&
-                            typeof $steps["goToACompanyProfile"] === "object" &&
-                            typeof $steps["goToACompanyProfile"].then ===
-                              "function"
-                          ) {
-                            $steps["goToACompanyProfile"] =
-                              await $steps["goToACompanyProfile"];
+                        <AntdTooltip
+                          className={classNames(
+                            "__wab_instance",
+                            sty.tooltip__zzSWw
+                          )}
+                          overlayClassName={classNames({
+                            [sty["pcls_-A16ue5QFcff"]]: true
+                          })}
+                          placement={"left"}
+                          title={
+                            <React.Fragment>
+                              <div
+                                data-plasmic-name={"companyName6"}
+                                data-plasmic-override={overrides.companyName6}
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.companyName6
+                                )}
+                              >
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__iSj3
+                                  )}
+                                >
+                                  <React.Fragment>
+                                    {(() => {
+                                      try {
+                                        return currentItem["Company name"];
+                                      } catch (e) {
+                                        if (
+                                          e instanceof TypeError ||
+                                          e?.plasmicType ===
+                                            "PlasmicUndefinedDataError"
+                                        ) {
+                                          return "Company";
+                                        }
+                                        throw e;
+                                      }
+                                    })()}
+                                  </React.Fragment>
+                                </div>
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__zSjHb
+                                  )}
+                                >
+                                  <React.Fragment>
+                                    {(() => {
+                                      try {
+                                        return currentItem["Company type"];
+                                      } catch (e) {
+                                        if (
+                                          e instanceof TypeError ||
+                                          e?.plasmicType ===
+                                            "PlasmicUndefinedDataError"
+                                        ) {
+                                          return "Legal structure";
+                                        }
+                                        throw e;
+                                      }
+                                    })()}
+                                  </React.Fragment>
+                                </div>
+                              </div>
+                              <div
+                                data-plasmic-name={"launch6"}
+                                data-plasmic-override={overrides.launch6}
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.launch6
+                                )}
+                              >
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text___5RZvq
+                                  )}
+                                >
+                                  {"Launch in"}
+                                </div>
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__hijmp
+                                  )}
+                                >
+                                  {"00/00/0000"}
+                                </div>
+                              </div>
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.__wab_text,
+                                  sty.text__lQiEq
+                                )}
+                              >
+                                <React.Fragment>
+                                  {(() => {
+                                    try {
+                                      return currentItem["Company tagline"];
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return "Tagline";
+                                      }
+                                      throw e;
+                                    }
+                                  })()}
+                                </React.Fragment>
+                              </div>
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.__wab_text,
+                                  sty.text__c6HdX
+                                )}
+                              >
+                                <React.Fragment>
+                                  {(() => {
+                                    try {
+                                      return currentItem["Customer problem"];
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return "Problem// solution";
+                                      }
+                                      throw e;
+                                    }
+                                  })()}
+                                </React.Fragment>
+                              </div>
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.__wab_text,
+                                  sty.text__neMw7
+                                )}
+                              >
+                                <React.Fragment>
+                                  {(() => {
+                                    try {
+                                      return currentItem[
+                                        "Solution description"
+                                      ];
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return "Advantage";
+                                      }
+                                      throw e;
+                                    }
+                                  })()}
+                                </React.Fragment>
+                              </div>
+                              <div
+                                data-plasmic-name={"tam6"}
+                                data-plasmic-override={overrides.tam6}
+                                className={classNames(projectcss.all, sty.tam6)}
+                              >
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text___2A8Js
+                                  )}
+                                >
+                                  {"TAM:"}
+                                </div>
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text___4Fl4K
+                                  )}
+                                >
+                                  {"50000"}
+                                </div>
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__woqAu
+                                  )}
+                                >
+                                  {"people"}
+                                </div>
+                              </div>
+                              <div
+                                data-plasmic-name={"competitive6"}
+                                data-plasmic-override={overrides.competitive6}
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.competitive6
+                                )}
+                              >
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__jlOtp
+                                  )}
+                                >
+                                  {"competitive:"}
+                                </div>
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__p1JIr
+                                  )}
+                                >
+                                  {"15"}
+                                </div>
+                              </div>
+                            </React.Fragment>
                           }
-                        }}
-                        shape={"sharp"}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__ogB17
-                          )}
+                          titleText={"Tooltip contents"}
                         >
-                          {"Apply"}
-                        </div>
-                      </LoginButton>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__nyjJp
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__nbOsk
-                          )}
-                        >
-                          {"Standard"}
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__qAqdq
-                          )}
-                        >
-                          <div
+                          <Video
+                            autoPlay={true}
                             className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__iQ36Z
+                              "__wab_instance",
+                              sty.htmlVideo__jL0QH
                             )}
-                          >
-                            {"U$ 300"}
-                          </div>
-                          <div
+                            controls={false}
+                            loop={true}
+                            muted={true}
+                            src={
+                              "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
+                            }
+                          />
+                        </AntdTooltip>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox___7Uo9L
+                          )}
+                        >
+                          <LoginButton
                             className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__ypPpA
+                              "__wab_instance",
+                              sty.loginButton__brIbl
                             )}
-                          >
-                            {"/ sale"}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  data-plasmic-name={"slide10"}
-                  data-plasmic-override={overrides.slide10}
-                  className={classNames(projectcss.all, sty.slide10)}
-                >
-                  <PlasmicImg__
-                    alt={""}
-                    className={classNames(sty.img__xzDuh)}
-                    displayHeight={"200px"}
-                    displayMaxHeight={"none"}
-                    displayMaxWidth={"100%"}
-                    displayMinHeight={"0"}
-                    displayMinWidth={"0"}
-                    displayWidth={"100%"}
-                    src={
-                      "https://static1.plasmic.app/components/react-slick/slide3.png"
-                    }
-                  />
+                            color={"softGreen"}
+                            onClick={async event => {
+                              const $steps = {};
 
-                  <div
-                    data-plasmic-name={"price20"}
-                    data-plasmic-override={overrides.price20}
-                    className={classNames(projectcss.all, sty.price20)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__wwOhV
-                      )}
-                    >
-                      {"Standard"}
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__qvzu3)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__tkchO
-                        )}
-                      >
-                        {"U$ 300"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__wfCaT
-                        )}
-                      >
-                        {"/ sale"}
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    data-plasmic-name={"hoverEngajament15"}
-                    data-plasmic-override={overrides.hoverEngajament15}
-                    className={classNames(
-                      projectcss.all,
-                      sty.hoverEngajament15
-                    )}
-                  >
-                    <AntdTooltip
-                      className={classNames(
-                        "__wab_instance",
-                        sty.tooltip__zj7Ii
-                      )}
-                      overlayClassName={classNames({
-                        [sty["pcls_yMf4gC-rtOP2"]]: true
-                      })}
-                      placement={"left"}
-                      title={
-                        <React.Fragment>
+                              $steps["goToPage"] = true
+                                ? (() => {
+                                    const actionArgs = {
+                                      destination:
+                                        "/a-company-profile?id=" +
+                                        currentItem.company_id
+                                    };
+                                    return (({ destination }) => {
+                                      if (
+                                        typeof destination === "string" &&
+                                        destination.startsWith("#")
+                                      ) {
+                                        document
+                                          .getElementById(destination.substr(1))
+                                          .scrollIntoView({
+                                            behavior: "smooth"
+                                          });
+                                      } else {
+                                        __nextRouter?.push(destination);
+                                      }
+                                    })?.apply(null, [actionArgs]);
+                                  })()
+                                : undefined;
+                              if (
+                                $steps["goToPage"] != null &&
+                                typeof $steps["goToPage"] === "object" &&
+                                typeof $steps["goToPage"].then === "function"
+                              ) {
+                                $steps["goToPage"] = await $steps["goToPage"];
+                              }
+                            }}
+                            shape={"sharp"}
+                          >
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__qDoB
+                              )}
+                            >
+                              {"Apply"}
+                            </div>
+                          </LoginButton>
                           <div
-                            data-plasmic-name={"companyName8"}
-                            data-plasmic-override={overrides.companyName8}
                             className={classNames(
                               projectcss.all,
-                              sty.companyName8
+                              sty.freeBox__tponz
                             )}
                           >
                             <div
                               className={classNames(
                                 projectcss.all,
                                 projectcss.__wab_text,
-                                sty.text__wYaUr
+                                sty.text__vKzEv
                               )}
                             >
-                              {"Company"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__sWaa6
-                              )}
-                            >
-                              {"Legal structure"}
-                            </div>
-                          </div>
-                          <div
-                            data-plasmic-name={"launch8"}
-                            data-plasmic-override={overrides.launch8}
-                            className={classNames(projectcss.all, sty.launch8)}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__uu2Hp
-                              )}
-                            >
-                              {"Launch in"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__a22Kp
-                              )}
-                            >
-                              {"00/00/0000"}
-                            </div>
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__jJ64C
-                            )}
-                          >
-                            {"Tagline"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__ssATq
-                            )}
-                          >
-                            {"Problem// solution"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__q0SGk
-                            )}
-                          >
-                            {"Advantage"}
-                          </div>
-                          <div
-                            data-plasmic-name={"tam8"}
-                            data-plasmic-override={overrides.tam8}
-                            className={classNames(projectcss.all, sty.tam8)}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__lcVeE
-                              )}
-                            >
-                              {"TAM:"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__ijQew
-                              )}
-                            >
-                              {"50000"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__bj7Z
-                              )}
-                            >
-                              {"people"}
-                            </div>
-                          </div>
-                          <div
-                            data-plasmic-name={"competitive8"}
-                            data-plasmic-override={overrides.competitive8}
-                            className={classNames(
-                              projectcss.all,
-                              sty.competitive8
-                            )}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text___7UmJ0
-                              )}
-                            >
-                              {"competitive:"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text___2SceJ
-                              )}
-                            >
-                              {"15"}
-                            </div>
-                          </div>
-                        </React.Fragment>
-                      }
-                      titleText={"Tooltip contents"}
-                    >
-                      <Video
-                        autoPlay={true}
-                        className={classNames(
-                          "__wab_instance",
-                          sty.htmlVideo___4T7Rf
-                        )}
-                        controls={false}
-                        loop={true}
-                        muted={true}
-                        src={
-                          "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
-                        }
-                      />
-                    </AntdTooltip>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__lDiU)}
-                    >
-                      <LoginButton
-                        className={classNames(
-                          "__wab_instance",
-                          sty.loginButton__ghUz5
-                        )}
-                        color={"softGreen"}
-                        onClick={async event => {
-                          const $steps = {};
-
-                          $steps["goToACompanyProfile"] = true
-                            ? (() => {
-                                const actionArgs = {
-                                  destination: `/a-company-profile`
-                                };
-                                return (({ destination }) => {
-                                  if (
-                                    typeof destination === "string" &&
-                                    destination.startsWith("#")
-                                  ) {
-                                    document
-                                      .getElementById(destination.substr(1))
-                                      .scrollIntoView({ behavior: "smooth" });
-                                  } else {
-                                    __nextRouter?.push(destination);
+                              <React.Fragment>
+                                {(() => {
+                                  try {
+                                    return currentItem["Company nature"];
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return "Standard";
+                                    }
+                                    throw e;
                                   }
-                                })?.apply(null, [actionArgs]);
-                              })()
-                            : undefined;
-                          if (
-                            $steps["goToACompanyProfile"] != null &&
-                            typeof $steps["goToACompanyProfile"] === "object" &&
-                            typeof $steps["goToACompanyProfile"].then ===
-                              "function"
-                          ) {
-                            $steps["goToACompanyProfile"] =
-                              await $steps["goToACompanyProfile"];
-                          }
-                        }}
-                        shape={"sharp"}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__fndcJ
-                          )}
-                        >
-                          {"Apply"}
-                        </div>
-                      </LoginButton>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__vy8F0
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__fmEct
-                          )}
-                        >
-                          {"Standard"}
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__b7NdA
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text___75TzB
-                            )}
-                          >
-                            {"U$ 300"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__jI51B
-                            )}
-                          >
-                            {"/ sale"}
+                                })()}
+                              </React.Fragment>
+                            </div>
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                sty.freeBox__la0
+                              )}
+                            >
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.__wab_text,
+                                  sty.text__uduLd
+                                )}
+                              >
+                                {"U$ 300"}
+                              </div>
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.__wab_text,
+                                  sty.text__aiOnt
+                                )}
+                              >
+                                {"/ sale"}
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                </div>
-                <div
-                  data-plasmic-name={"slide11"}
-                  data-plasmic-override={overrides.slide11}
-                  className={classNames(projectcss.all, sty.slide11)}
-                >
-                  <PlasmicImg__
-                    alt={""}
-                    className={classNames(sty.img__vSdH)}
-                    displayHeight={"200px"}
-                    displayMaxHeight={"none"}
-                    displayMaxWidth={"100%"}
-                    displayMinHeight={"0"}
-                    displayMinWidth={"0"}
-                    displayWidth={"100%"}
-                    src={
-                      "https://static1.plasmic.app/components/react-slick/slide1.png"
-                    }
-                  />
-
-                  <div
-                    data-plasmic-name={"price21"}
-                    data-plasmic-override={overrides.price21}
-                    className={classNames(projectcss.all, sty.price21)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__wRnp5
-                      )}
-                    >
-                      {"Standard"}
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__gkPmO)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___3Yn4
-                        )}
-                      >
-                        {"U$ 300"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__w5Yz
-                        )}
-                      >
-                        {"/ sale"}
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    data-plasmic-name={"hoverEngajament16"}
-                    data-plasmic-override={overrides.hoverEngajament16}
-                    className={classNames(
-                      projectcss.all,
-                      sty.hoverEngajament16
-                    )}
-                  >
-                    <AntdTooltip
-                      className={classNames(
-                        "__wab_instance",
-                        sty.tooltip__qzLtL
-                      )}
-                      overlayClassName={classNames({
-                        [sty["pcls_VObjfJdvDHa6"]]: true
-                      })}
-                      placement={"left"}
-                      title={
-                        <React.Fragment>
-                          <div
-                            data-plasmic-name={"companyName9"}
-                            data-plasmic-override={overrides.companyName9}
-                            className={classNames(
-                              projectcss.all,
-                              sty.companyName9
-                            )}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__jNgKt
-                              )}
-                            >
-                              {"Company"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__b4AM3
-                              )}
-                            >
-                              {"Legal structure"}
-                            </div>
-                          </div>
-                          <div
-                            data-plasmic-name={"launch9"}
-                            data-plasmic-override={overrides.launch9}
-                            className={classNames(projectcss.all, sty.launch9)}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__xawjz
-                              )}
-                            >
-                              {"Launch in"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__tGuP
-                              )}
-                            >
-                              {"00/00/0000"}
-                            </div>
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__nSpJ
-                            )}
-                          >
-                            {"Tagline"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text___2GuSv
-                            )}
-                          >
-                            {"Problem// solution"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__xVaWe
-                            )}
-                          >
-                            {"Advantage"}
-                          </div>
-                          <div
-                            data-plasmic-name={"tam9"}
-                            data-plasmic-override={overrides.tam9}
-                            className={classNames(projectcss.all, sty.tam9)}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text___6Fvi8
-                              )}
-                            >
-                              {"TAM:"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__ctve3
-                              )}
-                            >
-                              {"50000"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__pQlMa
-                              )}
-                            >
-                              {"people"}
-                            </div>
-                          </div>
-                          <div
-                            data-plasmic-name={"competitive9"}
-                            data-plasmic-override={overrides.competitive9}
-                            className={classNames(
-                              projectcss.all,
-                              sty.competitive9
-                            )}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__pRrQ9
-                              )}
-                            >
-                              {"competitive:"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text___0SKsl
-                              )}
-                            >
-                              {"15"}
-                            </div>
-                          </div>
-                        </React.Fragment>
-                      }
-                      titleText={"Tooltip contents"}
-                    >
-                      <Video
-                        autoPlay={true}
-                        className={classNames(
-                          "__wab_instance",
-                          sty.htmlVideo__hjNrB
-                        )}
-                        controls={false}
-                        loop={true}
-                        muted={true}
-                        src={
-                          "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
-                        }
-                      />
-                    </AntdTooltip>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__f0GgK)}
-                    >
-                      <LoginButton
-                        className={classNames(
-                          "__wab_instance",
-                          sty.loginButton__dLBn1
-                        )}
-                        color={"softGreen"}
-                        onClick={async event => {
-                          const $steps = {};
-
-                          $steps["goToACompanyProfile"] = true
-                            ? (() => {
-                                const actionArgs = {
-                                  destination: `/a-company-profile`
-                                };
-                                return (({ destination }) => {
-                                  if (
-                                    typeof destination === "string" &&
-                                    destination.startsWith("#")
-                                  ) {
-                                    document
-                                      .getElementById(destination.substr(1))
-                                      .scrollIntoView({ behavior: "smooth" });
-                                  } else {
-                                    __nextRouter?.push(destination);
-                                  }
-                                })?.apply(null, [actionArgs]);
-                              })()
-                            : undefined;
-                          if (
-                            $steps["goToACompanyProfile"] != null &&
-                            typeof $steps["goToACompanyProfile"] === "object" &&
-                            typeof $steps["goToACompanyProfile"].then ===
-                              "function"
-                          ) {
-                            $steps["goToACompanyProfile"] =
-                              await $steps["goToACompanyProfile"];
-                          }
-                        }}
-                        shape={"sharp"}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__jqfAt
-                          )}
-                        >
-                          {"Apply"}
-                        </div>
-                      </LoginButton>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__ovwGx
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__xjWuu
-                          )}
-                        >
-                          {"Standard"}
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__qQgF
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__zjfNd
-                            )}
-                          >
-                            {"U$ 300"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__q0Gg
-                            )}
-                          >
-                            {"/ sale"}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  data-plasmic-name={"slide12"}
-                  data-plasmic-override={overrides.slide12}
-                  className={classNames(projectcss.all, sty.slide12)}
-                >
-                  <PlasmicImg__
-                    alt={""}
-                    className={classNames(sty.img__d4JWr)}
-                    displayHeight={"200px"}
-                    displayMaxHeight={"none"}
-                    displayMaxWidth={"100%"}
-                    displayMinHeight={"0"}
-                    displayMinWidth={"0"}
-                    displayWidth={"100%"}
-                    src={
-                      "https://static1.plasmic.app/components/react-slick/slide2.png"
-                    }
-                  />
-
-                  <div
-                    data-plasmic-name={"price22"}
-                    data-plasmic-override={overrides.price22}
-                    className={classNames(projectcss.all, sty.price22)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__iej1X
-                      )}
-                    >
-                      {"Standard"}
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__hnbkV)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__oubVr
-                        )}
-                      >
-                        {"U$ 300"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__guzLx
-                        )}
-                      >
-                        {"/ sale"}
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    data-plasmic-name={"hoverEngajament17"}
-                    data-plasmic-override={overrides.hoverEngajament17}
-                    className={classNames(
-                      projectcss.all,
-                      sty.hoverEngajament17
-                    )}
-                  >
-                    <AntdTooltip
-                      className={classNames(
-                        "__wab_instance",
-                        sty.tooltip__cjDn5
-                      )}
-                      overlayClassName={classNames({
-                        [sty["pcls_pU8GsLxg1dCV"]]: true
-                      })}
-                      placement={"left"}
-                      title={
-                        <React.Fragment>
-                          <div
-                            data-plasmic-name={"companyName10"}
-                            data-plasmic-override={overrides.companyName10}
-                            className={classNames(
-                              projectcss.all,
-                              sty.companyName10
-                            )}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__vG5L
-                              )}
-                            >
-                              {"Company"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__hBa2O
-                              )}
-                            >
-                              {"Legal structure"}
-                            </div>
-                          </div>
-                          <div
-                            data-plasmic-name={"launch10"}
-                            data-plasmic-override={overrides.launch10}
-                            className={classNames(projectcss.all, sty.launch10)}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__gzzwD
-                              )}
-                            >
-                              {"Launch in"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__rEgMi
-                              )}
-                            >
-                              {"00/00/0000"}
-                            </div>
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__yokBk
-                            )}
-                          >
-                            {"Tagline"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__gaDcs
-                            )}
-                          >
-                            {"Problem// solution"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__zkcpU
-                            )}
-                          >
-                            {"Advantage"}
-                          </div>
-                          <div
-                            data-plasmic-name={"tam10"}
-                            data-plasmic-override={overrides.tam10}
-                            className={classNames(projectcss.all, sty.tam10)}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__y021
-                              )}
-                            >
-                              {"TAM:"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__h3UVu
-                              )}
-                            >
-                              {"50000"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__f9UuD
-                              )}
-                            >
-                              {"people"}
-                            </div>
-                          </div>
-                          <div
-                            data-plasmic-name={"competitive10"}
-                            data-plasmic-override={overrides.competitive10}
-                            className={classNames(
-                              projectcss.all,
-                              sty.competitive10
-                            )}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text___8BrUv
-                              )}
-                            >
-                              {"competitive:"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__pcMjE
-                              )}
-                            >
-                              {"15"}
-                            </div>
-                          </div>
-                        </React.Fragment>
-                      }
-                      titleText={"Tooltip contents"}
-                    >
-                      <Video
-                        autoPlay={true}
-                        className={classNames(
-                          "__wab_instance",
-                          sty.htmlVideo__nvsew
-                        )}
-                        controls={false}
-                        loop={true}
-                        muted={true}
-                        src={
-                          "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
-                        }
-                      />
-                    </AntdTooltip>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        sty.freeBox___0NBij
-                      )}
-                    >
-                      <LoginButton
-                        className={classNames(
-                          "__wab_instance",
-                          sty.loginButton__tjlmr
-                        )}
-                        color={"softGreen"}
-                        onClick={async event => {
-                          const $steps = {};
-
-                          $steps["goToACompanyProfile"] = true
-                            ? (() => {
-                                const actionArgs = {
-                                  destination: `/a-company-profile`
-                                };
-                                return (({ destination }) => {
-                                  if (
-                                    typeof destination === "string" &&
-                                    destination.startsWith("#")
-                                  ) {
-                                    document
-                                      .getElementById(destination.substr(1))
-                                      .scrollIntoView({ behavior: "smooth" });
-                                  } else {
-                                    __nextRouter?.push(destination);
-                                  }
-                                })?.apply(null, [actionArgs]);
-                              })()
-                            : undefined;
-                          if (
-                            $steps["goToACompanyProfile"] != null &&
-                            typeof $steps["goToACompanyProfile"] === "object" &&
-                            typeof $steps["goToACompanyProfile"].then ===
-                              "function"
-                          ) {
-                            $steps["goToACompanyProfile"] =
-                              await $steps["goToACompanyProfile"];
-                          }
-                        }}
-                        shape={"sharp"}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__uAu0D
-                          )}
-                        >
-                          {"Apply"}
-                        </div>
-                      </LoginButton>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox___5I8A3
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__wjH6S
-                          )}
-                        >
-                          {"Standard"}
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__cj4Yj
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__xbC2B
-                            )}
-                          >
-                            {"U$ 300"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__pkd45
-                            )}
-                          >
-                            {"/ sale"}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  data-plasmic-name={"slide13"}
-                  data-plasmic-override={overrides.slide13}
-                  className={classNames(projectcss.all, sty.slide13)}
-                >
-                  <PlasmicImg__
-                    alt={""}
-                    className={classNames(sty.img__rPoTb)}
-                    displayHeight={"200px"}
-                    displayMaxHeight={"none"}
-                    displayMaxWidth={"100%"}
-                    displayMinHeight={"0"}
-                    displayMinWidth={"0"}
-                    displayWidth={"100%"}
-                    src={
-                      "https://static1.plasmic.app/components/react-slick/slide3.png"
-                    }
-                  />
-
-                  <div
-                    data-plasmic-name={"price23"}
-                    data-plasmic-override={overrides.price23}
-                    className={classNames(projectcss.all, sty.price23)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__veLs
-                      )}
-                    >
-                      {"Standard"}
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__i68Q)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__cJxAy
-                        )}
-                      >
-                        {"U$ 300"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__pEtln
-                        )}
-                      >
-                        {"/ sale"}
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    data-plasmic-name={"hoverEngajament18"}
-                    data-plasmic-override={overrides.hoverEngajament18}
-                    className={classNames(
-                      projectcss.all,
-                      sty.hoverEngajament18
-                    )}
-                  >
-                    <AntdTooltip
-                      className={classNames(
-                        "__wab_instance",
-                        sty.tooltip__hqI59
-                      )}
-                      overlayClassName={classNames({
-                        [sty["pcls_iAkWy8LLAyiK"]]: true
-                      })}
-                      placement={"left"}
-                      title={
-                        <React.Fragment>
-                          <div
-                            data-plasmic-name={"companyName11"}
-                            data-plasmic-override={overrides.companyName11}
-                            className={classNames(
-                              projectcss.all,
-                              sty.companyName11
-                            )}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__nrHFt
-                              )}
-                            >
-                              {"Company"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__cSkd
-                              )}
-                            >
-                              {"Legal structure"}
-                            </div>
-                          </div>
-                          <div
-                            data-plasmic-name={"launch11"}
-                            data-plasmic-override={overrides.launch11}
-                            className={classNames(projectcss.all, sty.launch11)}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__wjs9V
-                              )}
-                            >
-                              {"Launch in"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__ziOoq
-                              )}
-                            >
-                              {"00/00/0000"}
-                            </div>
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text___7IbKw
-                            )}
-                          >
-                            {"Tagline"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__tz6Bw
-                            )}
-                          >
-                            {"Problem// solution"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__lbd1
-                            )}
-                          >
-                            {"Advantage"}
-                          </div>
-                          <div
-                            data-plasmic-name={"tam11"}
-                            data-plasmic-override={overrides.tam11}
-                            className={classNames(projectcss.all, sty.tam11)}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__idKIi
-                              )}
-                            >
-                              {"TAM:"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__s4IBm
-                              )}
-                            >
-                              {"50000"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__fnwzX
-                              )}
-                            >
-                              {"people"}
-                            </div>
-                          </div>
-                          <div
-                            data-plasmic-name={"competitive11"}
-                            data-plasmic-override={overrides.competitive11}
-                            className={classNames(
-                              projectcss.all,
-                              sty.competitive11
-                            )}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__lfVa
-                              )}
-                            >
-                              {"competitive:"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__cjXcL
-                              )}
-                            >
-                              {"15"}
-                            </div>
-                          </div>
-                        </React.Fragment>
-                      }
-                      titleText={"Tooltip contents"}
-                    >
-                      <Video
-                        autoPlay={true}
-                        className={classNames(
-                          "__wab_instance",
-                          sty.htmlVideo___1DFr
-                        )}
-                        controls={false}
-                        loop={true}
-                        muted={true}
-                        src={
-                          "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
-                        }
-                      />
-                    </AntdTooltip>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__xUWb6)}
-                    >
-                      <LoginButton
-                        className={classNames(
-                          "__wab_instance",
-                          sty.loginButton___6Ka9S
-                        )}
-                        color={"softGreen"}
-                        onClick={async event => {
-                          const $steps = {};
-
-                          $steps["goToACompanyProfile"] = true
-                            ? (() => {
-                                const actionArgs = {
-                                  destination: `/a-company-profile`
-                                };
-                                return (({ destination }) => {
-                                  if (
-                                    typeof destination === "string" &&
-                                    destination.startsWith("#")
-                                  ) {
-                                    document
-                                      .getElementById(destination.substr(1))
-                                      .scrollIntoView({ behavior: "smooth" });
-                                  } else {
-                                    __nextRouter?.push(destination);
-                                  }
-                                })?.apply(null, [actionArgs]);
-                              })()
-                            : undefined;
-                          if (
-                            $steps["goToACompanyProfile"] != null &&
-                            typeof $steps["goToACompanyProfile"] === "object" &&
-                            typeof $steps["goToACompanyProfile"].then ===
-                              "function"
-                          ) {
-                            $steps["goToACompanyProfile"] =
-                              await $steps["goToACompanyProfile"];
-                          }
-                        }}
-                        shape={"sharp"}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__fZKb3
-                          )}
-                        >
-                          {"Apply"}
-                        </div>
-                      </LoginButton>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox___3CQxw
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text___27FuV
-                          )}
-                        >
-                          {"Standard"}
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__qpXlE
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__ovNml
-                            )}
-                          >
-                            {"U$ 300"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__jKulI
-                            )}
-                          >
-                            {"/ sale"}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  data-plasmic-name={"slide14"}
-                  data-plasmic-override={overrides.slide14}
-                  className={classNames(projectcss.all, sty.slide14)}
-                >
-                  <PlasmicImg__
-                    alt={""}
-                    className={classNames(sty.img___8Zj6R)}
-                    displayHeight={"200px"}
-                    displayMaxHeight={"none"}
-                    displayMaxWidth={"100%"}
-                    displayMinHeight={"0"}
-                    displayMinWidth={"0"}
-                    displayWidth={"100%"}
-                    src={
-                      "https://static1.plasmic.app/components/react-slick/slide2.png"
-                    }
-                  />
-
-                  <div
-                    data-plasmic-name={"price24"}
-                    data-plasmic-override={overrides.price24}
-                    className={classNames(projectcss.all, sty.price24)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__er69I
-                      )}
-                    >
-                      {"Standard"}
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__owOZr)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__zFwHo
-                        )}
-                      >
-                        {"U$ 300"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__vJLwT
-                        )}
-                      >
-                        {"/ sale"}
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    data-plasmic-name={"hoverEngajament19"}
-                    data-plasmic-override={overrides.hoverEngajament19}
-                    className={classNames(
-                      projectcss.all,
-                      sty.hoverEngajament19
-                    )}
-                  >
-                    <AntdTooltip
-                      className={classNames(
-                        "__wab_instance",
-                        sty.tooltip__e96X
-                      )}
-                      overlayClassName={classNames({
-                        [sty["pcls_gDtx4-30YS4U"]]: true
-                      })}
-                      placement={"left"}
-                      title={
-                        <React.Fragment>
-                          <div
-                            data-plasmic-name={"companyName12"}
-                            data-plasmic-override={overrides.companyName12}
-                            className={classNames(
-                              projectcss.all,
-                              sty.companyName12
-                            )}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__fmmjS
-                              )}
-                            >
-                              {"Company"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__oFzdX
-                              )}
-                            >
-                              {"Legal structure"}
-                            </div>
-                          </div>
-                          <div
-                            data-plasmic-name={"launch12"}
-                            data-plasmic-override={overrides.launch12}
-                            className={classNames(projectcss.all, sty.launch12)}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__mt5W2
-                              )}
-                            >
-                              {"Launch in"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__uwjoc
-                              )}
-                            >
-                              {"00/00/0000"}
-                            </div>
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__m7O8A
-                            )}
-                          >
-                            {"Tagline"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__eZ9Jo
-                            )}
-                          >
-                            {"Problem// solution"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text___8NnKt
-                            )}
-                          >
-                            {"Advantage"}
-                          </div>
-                          <div
-                            data-plasmic-name={"tam12"}
-                            data-plasmic-override={overrides.tam12}
-                            className={classNames(projectcss.all, sty.tam12)}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__g60Ke
-                              )}
-                            >
-                              {"TAM:"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__ix8Tb
-                              )}
-                            >
-                              {"50000"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__eemHf
-                              )}
-                            >
-                              {"people"}
-                            </div>
-                          </div>
-                          <div
-                            data-plasmic-name={"competitive12"}
-                            data-plasmic-override={overrides.competitive12}
-                            className={classNames(
-                              projectcss.all,
-                              sty.competitive12
-                            )}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__tYlh0
-                              )}
-                            >
-                              {"competitive:"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__gciZt
-                              )}
-                            >
-                              {"15"}
-                            </div>
-                          </div>
-                        </React.Fragment>
-                      }
-                      titleText={"Tooltip contents"}
-                    >
-                      <Video
-                        autoPlay={true}
-                        className={classNames(
-                          "__wab_instance",
-                          sty.htmlVideo__dHnod
-                        )}
-                        controls={false}
-                        loop={true}
-                        muted={true}
-                        src={
-                          "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
-                        }
-                      />
-                    </AntdTooltip>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__loHit)}
-                    >
-                      <LoginButton
-                        className={classNames(
-                          "__wab_instance",
-                          sty.loginButton__ijKzC
-                        )}
-                        color={"softGreen"}
-                        onClick={async event => {
-                          const $steps = {};
-
-                          $steps["goToACompanyProfile"] = true
-                            ? (() => {
-                                const actionArgs = {
-                                  destination: `/a-company-profile`
-                                };
-                                return (({ destination }) => {
-                                  if (
-                                    typeof destination === "string" &&
-                                    destination.startsWith("#")
-                                  ) {
-                                    document
-                                      .getElementById(destination.substr(1))
-                                      .scrollIntoView({ behavior: "smooth" });
-                                  } else {
-                                    __nextRouter?.push(destination);
-                                  }
-                                })?.apply(null, [actionArgs]);
-                              })()
-                            : undefined;
-                          if (
-                            $steps["goToACompanyProfile"] != null &&
-                            typeof $steps["goToACompanyProfile"] === "object" &&
-                            typeof $steps["goToACompanyProfile"].then ===
-                              "function"
-                          ) {
-                            $steps["goToACompanyProfile"] =
-                              await $steps["goToACompanyProfile"];
-                          }
-                        }}
-                        shape={"sharp"}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__llvoh
-                          )}
-                        >
-                          {"Apply"}
-                        </div>
-                      </LoginButton>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__g9C2Q
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__ldhUv
-                          )}
-                        >
-                          {"Standard"}
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__qqJcV
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__i1SB
-                            )}
-                          >
-                            {"U$ 300"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__yi7CE
-                            )}
-                          >
-                            {"/ sale"}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                  );
+                })}
               </SliderWrapper>
             );
           })()}
@@ -9989,316 +5093,93 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                 data-plasmic-override={overrides.sliderCarousel4}
                 {...child$Props}
               >
-                <div
-                  data-plasmic-name={"slide15"}
-                  data-plasmic-override={overrides.slide15}
-                  className={classNames(projectcss.all, sty.slide15)}
-                >
-                  <PlasmicImg__
-                    alt={""}
-                    className={classNames(sty.img__h9HKc)}
-                    displayHeight={"200px"}
-                    displayMaxHeight={"none"}
-                    displayMaxWidth={"100%"}
-                    displayMinHeight={"0"}
-                    displayMinWidth={"0"}
-                    displayWidth={"100%"}
-                    src={
-                      "https://static1.plasmic.app/components/react-slick/slide1.png"
-                    }
-                  />
-
-                  <div
-                    data-plasmic-name={"price25"}
-                    data-plasmic-override={overrides.price25}
-                    className={classNames(projectcss.all, sty.price25)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__mzH6T
-                      )}
-                    >
-                      {"Standard"}
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__i6X0)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__cx1Z
-                        )}
-                      >
-                        {"U$ 300"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__gqjN2
-                        )}
-                      >
-                        {"/ sale"}
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    data-plasmic-name={"hoverEngajament20"}
-                    data-plasmic-override={overrides.hoverEngajament20}
-                    className={classNames(
-                      projectcss.all,
-                      sty.hoverEngajament20
-                    )}
-                  >
-                    <AntdTooltip
-                      className={classNames(
-                        "__wab_instance",
-                        sty.tooltip__gmFXj
-                      )}
-                      overlayClassName={classNames({
-                        [sty["pcls_vTHo_cjD4sml"]]: true
-                      })}
-                      placement={"left"}
-                      title={
-                        <React.Fragment>
-                          <div
-                            data-plasmic-name={"companyName13"}
-                            data-plasmic-override={overrides.companyName13}
-                            className={classNames(
-                              projectcss.all,
-                              sty.companyName13
-                            )}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__w5MdB
-                              )}
-                            >
-                              {"Company"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__qlrFn
-                              )}
-                            >
-                              {"Legal structure"}
-                            </div>
-                          </div>
-                          <div
-                            data-plasmic-name={"launch13"}
-                            data-plasmic-override={overrides.launch13}
-                            className={classNames(projectcss.all, sty.launch13)}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__jOaRj
-                              )}
-                            >
-                              {"Launch in"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text___2N1LM
-                              )}
-                            >
-                              {"00/00/0000"}
-                            </div>
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__og7Xs
-                            )}
-                          >
-                            {"Tagline"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__x46Wz
-                            )}
-                          >
-                            {"Problem// solution"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__rNXot
-                            )}
-                          >
-                            {"Advantage"}
-                          </div>
-                          <div
-                            data-plasmic-name={"tam13"}
-                            data-plasmic-override={overrides.tam13}
-                            className={classNames(projectcss.all, sty.tam13)}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text___379C4
-                              )}
-                            >
-                              {"TAM:"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__mpZzz
-                              )}
-                            >
-                              {"50000"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__fnhMz
-                              )}
-                            >
-                              {"people"}
-                            </div>
-                          </div>
-                          <div
-                            data-plasmic-name={"competitive13"}
-                            data-plasmic-override={overrides.competitive13}
-                            className={classNames(
-                              projectcss.all,
-                              sty.competitive13
-                            )}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text___568FB
-                              )}
-                            >
-                              {"competitive:"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__w7Lj
-                              )}
-                            >
-                              {"15"}
-                            </div>
-                          </div>
-                        </React.Fragment>
+                {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
+                  (() => {
+                    try {
+                      return $props.company_requests || [1];
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return [];
                       }
-                      titleText={"Tooltip contents"}
-                    >
-                      <Video
-                        autoPlay={true}
-                        className={classNames(
-                          "__wab_instance",
-                          sty.htmlVideo__x7Fwl
-                        )}
-                        controls={false}
-                        loop={true}
-                        muted={true}
-                        src={
-                          "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
-                        }
-                      />
-                    </AntdTooltip>
+                      throw e;
+                    }
+                  })()
+                ).map((__plasmic_item_0, __plasmic_idx_0) => {
+                  const currentItem = __plasmic_item_0;
+                  const currentIndex = __plasmic_idx_0;
+                  return (
                     <div
-                      className={classNames(projectcss.all, sty.freeBox__miTZv)}
+                      data-plasmic-name={"slide9"}
+                      data-plasmic-override={overrides.slide9}
+                      className={classNames(projectcss.all, sty.slide9)}
+                      key={currentIndex}
                     >
-                      <LoginButton
-                        className={classNames(
-                          "__wab_instance",
-                          sty.loginButton__aTFo
-                        )}
-                        color={"softGreen"}
-                        onClick={async event => {
-                          const $steps = {};
-
-                          $steps["goToACompanyProfile"] = true
-                            ? (() => {
-                                const actionArgs = {
-                                  destination: `/a-company-profile`
-                                };
-                                return (({ destination }) => {
-                                  if (
-                                    typeof destination === "string" &&
-                                    destination.startsWith("#")
-                                  ) {
-                                    document
-                                      .getElementById(destination.substr(1))
-                                      .scrollIntoView({ behavior: "smooth" });
-                                  } else {
-                                    __nextRouter?.push(destination);
-                                  }
-                                })?.apply(null, [actionArgs]);
-                              })()
-                            : undefined;
-                          if (
-                            $steps["goToACompanyProfile"] != null &&
-                            typeof $steps["goToACompanyProfile"] === "object" &&
-                            typeof $steps["goToACompanyProfile"].then ===
-                              "function"
-                          ) {
-                            $steps["goToACompanyProfile"] =
-                              await $steps["goToACompanyProfile"];
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__aSmWs)}
+                        displayHeight={"200px"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={"100%"}
+                        src={(() => {
+                          try {
+                            return currentItem["Company image"];
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return "https://static1.plasmic.app/components/react-slick/slide1.png";
+                            }
+                            throw e;
                           }
-                        }}
-                        shape={"sharp"}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__xqoLy
-                          )}
-                        >
-                          {"Apply"}
-                        </div>
-                      </LoginButton>
+                        })()}
+                      />
+
                       <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__biYm
-                        )}
+                        data-plasmic-name={"price19"}
+                        data-plasmic-override={overrides.price19}
+                        className={classNames(projectcss.all, sty.price19)}
                       >
                         <div
                           className={classNames(
                             projectcss.all,
                             projectcss.__wab_text,
-                            sty.text__amKzI
+                            sty.text__hMaEs
                           )}
                         >
-                          {"Standard"}
+                          <React.Fragment>
+                            {(() => {
+                              try {
+                                return currentItem["Company nature"];
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return "Standard";
+                                }
+                                throw e;
+                              }
+                            })()}
+                          </React.Fragment>
                         </div>
                         <div
                           className={classNames(
                             projectcss.all,
-                            sty.freeBox__xfBa
+                            sty.freeBox__wjwi
                           )}
                         >
                           <div
                             className={classNames(
                               projectcss.all,
                               projectcss.__wab_text,
-                              sty.text__kxj1G
+                              sty.text__qdPds
                             )}
                           >
                             {"U$ 300"}
@@ -10307,1993 +5188,392 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                             className={classNames(
                               projectcss.all,
                               projectcss.__wab_text,
-                              sty.text__r7Faq
+                              sty.text__uIoBf
                             )}
                           >
                             {"/ sale"}
                           </div>
                         </div>
                       </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  data-plasmic-name={"slide16"}
-                  data-plasmic-override={overrides.slide16}
-                  className={classNames(projectcss.all, sty.slide16)}
-                >
-                  <PlasmicImg__
-                    alt={""}
-                    className={classNames(sty.img__wacQ3)}
-                    displayHeight={"200px"}
-                    displayMaxHeight={"none"}
-                    displayMaxWidth={"100%"}
-                    displayMinHeight={"0"}
-                    displayMinWidth={"0"}
-                    displayWidth={"100%"}
-                    src={
-                      "https://static1.plasmic.app/components/react-slick/slide2.png"
-                    }
-                  />
-
-                  <div
-                    data-plasmic-name={"price26"}
-                    data-plasmic-override={overrides.price26}
-                    className={classNames(projectcss.all, sty.price26)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__bcN69
-                      )}
-                    >
-                      {"Standard"}
-                    </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        sty.freeBox___5RxZf
-                      )}
-                    >
                       <div
+                        data-plasmic-name={"hoverEngajament14"}
+                        data-plasmic-override={overrides.hoverEngajament14}
                         className={classNames(
                           projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___3Z1N4
+                          sty.hoverEngajament14
                         )}
                       >
-                        {"U$ 300"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__exV7
-                        )}
-                      >
-                        {"/ sale"}
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    data-plasmic-name={"hoverEngajament21"}
-                    data-plasmic-override={overrides.hoverEngajament21}
-                    className={classNames(
-                      projectcss.all,
-                      sty.hoverEngajament21
-                    )}
-                  >
-                    <AntdTooltip
-                      className={classNames(
-                        "__wab_instance",
-                        sty.tooltip__a2MHp
-                      )}
-                      overlayClassName={classNames({
-                        [sty["pcls_3bTgeFHEadB_"]]: true
-                      })}
-                      placement={"left"}
-                      title={
-                        <React.Fragment>
-                          <div
-                            data-plasmic-name={"companyName14"}
-                            data-plasmic-override={overrides.companyName14}
-                            className={classNames(
-                              projectcss.all,
-                              sty.companyName14
-                            )}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__bgnx4
-                              )}
-                            >
-                              {"Company"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__cbph7
-                              )}
-                            >
-                              {"Legal structure"}
-                            </div>
-                          </div>
-                          <div
-                            data-plasmic-name={"launch14"}
-                            data-plasmic-override={overrides.launch14}
-                            className={classNames(projectcss.all, sty.launch14)}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__hFc5B
-                              )}
-                            >
-                              {"Launch in"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__uq4Y0
-                              )}
-                            >
-                              {"00/00/0000"}
-                            </div>
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__sf6Kc
-                            )}
-                          >
-                            {"Tagline"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__jkdhJ
-                            )}
-                          >
-                            {"Problem// solution"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text___4PfPb
-                            )}
-                          >
-                            {"Advantage"}
-                          </div>
-                          <div
-                            data-plasmic-name={"tam14"}
-                            data-plasmic-override={overrides.tam14}
-                            className={classNames(projectcss.all, sty.tam14)}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text___2LsN3
-                              )}
-                            >
-                              {"TAM:"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__xyHs2
-                              )}
-                            >
-                              {"50000"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__krx5Z
-                              )}
-                            >
-                              {"people"}
-                            </div>
-                          </div>
-                          <div
-                            data-plasmic-name={"competitive14"}
-                            data-plasmic-override={overrides.competitive14}
-                            className={classNames(
-                              projectcss.all,
-                              sty.competitive14
-                            )}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__e17Fr
-                              )}
-                            >
-                              {"competitive:"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__qqXXh
-                              )}
-                            >
-                              {"15"}
-                            </div>
-                          </div>
-                        </React.Fragment>
-                      }
-                      titleText={"Tooltip contents"}
-                    >
-                      <Video
-                        autoPlay={true}
-                        className={classNames(
-                          "__wab_instance",
-                          sty.htmlVideo__yLtSq
-                        )}
-                        controls={false}
-                        loop={true}
-                        muted={true}
-                        src={
-                          "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
-                        }
-                      />
-                    </AntdTooltip>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__zz2Vn)}
-                    >
-                      <LoginButton
-                        className={classNames(
-                          "__wab_instance",
-                          sty.loginButton__ikxZ
-                        )}
-                        color={"softGreen"}
-                        onClick={async event => {
-                          const $steps = {};
-
-                          $steps["goToACompanyProfile"] = true
-                            ? (() => {
-                                const actionArgs = {
-                                  destination: `/a-company-profile`
-                                };
-                                return (({ destination }) => {
-                                  if (
-                                    typeof destination === "string" &&
-                                    destination.startsWith("#")
-                                  ) {
-                                    document
-                                      .getElementById(destination.substr(1))
-                                      .scrollIntoView({ behavior: "smooth" });
-                                  } else {
-                                    __nextRouter?.push(destination);
-                                  }
-                                })?.apply(null, [actionArgs]);
-                              })()
-                            : undefined;
-                          if (
-                            $steps["goToACompanyProfile"] != null &&
-                            typeof $steps["goToACompanyProfile"] === "object" &&
-                            typeof $steps["goToACompanyProfile"].then ===
-                              "function"
-                          ) {
-                            $steps["goToACompanyProfile"] =
-                              await $steps["goToACompanyProfile"];
+                        <AntdTooltip
+                          className={classNames(
+                            "__wab_instance",
+                            sty.tooltip__mJaO
+                          )}
+                          overlayClassName={classNames({
+                            [sty["pcls_3Hvrz19OjYAg"]]: true
+                          })}
+                          placement={"left"}
+                          title={
+                            <React.Fragment>
+                              <div
+                                data-plasmic-name={"companyName7"}
+                                data-plasmic-override={overrides.companyName7}
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.companyName7
+                                )}
+                              >
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__zrSn8
+                                  )}
+                                >
+                                  <React.Fragment>
+                                    {(() => {
+                                      try {
+                                        return currentItem["Company name"];
+                                      } catch (e) {
+                                        if (
+                                          e instanceof TypeError ||
+                                          e?.plasmicType ===
+                                            "PlasmicUndefinedDataError"
+                                        ) {
+                                          return "Company";
+                                        }
+                                        throw e;
+                                      }
+                                    })()}
+                                  </React.Fragment>
+                                </div>
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__iLuQc
+                                  )}
+                                >
+                                  <React.Fragment>
+                                    {(() => {
+                                      try {
+                                        return currentItem["Company type"];
+                                      } catch (e) {
+                                        if (
+                                          e instanceof TypeError ||
+                                          e?.plasmicType ===
+                                            "PlasmicUndefinedDataError"
+                                        ) {
+                                          return "Legal structure";
+                                        }
+                                        throw e;
+                                      }
+                                    })()}
+                                  </React.Fragment>
+                                </div>
+                              </div>
+                              <div
+                                data-plasmic-name={"launch7"}
+                                data-plasmic-override={overrides.launch7}
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.launch7
+                                )}
+                              >
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text___0DHM
+                                  )}
+                                >
+                                  {"Launch in"}
+                                </div>
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__miRs0
+                                  )}
+                                >
+                                  {"00/00/0000"}
+                                </div>
+                              </div>
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.__wab_text,
+                                  sty.text__mvDhk
+                                )}
+                              >
+                                <React.Fragment>
+                                  {(() => {
+                                    try {
+                                      return currentItem["Company tagline"];
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return "Tagline";
+                                      }
+                                      throw e;
+                                    }
+                                  })()}
+                                </React.Fragment>
+                              </div>
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.__wab_text,
+                                  sty.text__c8Gxe
+                                )}
+                              >
+                                <React.Fragment>
+                                  {(() => {
+                                    try {
+                                      return currentItem["Customer problem"];
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return "Problem// solution";
+                                      }
+                                      throw e;
+                                    }
+                                  })()}
+                                </React.Fragment>
+                              </div>
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.__wab_text,
+                                  sty.text__kKnQ8
+                                )}
+                              >
+                                <React.Fragment>
+                                  {(() => {
+                                    try {
+                                      return currentItem[
+                                        "Solution description"
+                                      ];
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return "Advantage";
+                                      }
+                                      throw e;
+                                    }
+                                  })()}
+                                </React.Fragment>
+                              </div>
+                              <div
+                                data-plasmic-name={"tam7"}
+                                data-plasmic-override={overrides.tam7}
+                                className={classNames(projectcss.all, sty.tam7)}
+                              >
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__x4WmH
+                                  )}
+                                >
+                                  {"TAM:"}
+                                </div>
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__bj
+                                  )}
+                                >
+                                  {"50000"}
+                                </div>
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__guyx0
+                                  )}
+                                >
+                                  {"people"}
+                                </div>
+                              </div>
+                              <div
+                                data-plasmic-name={"competitive7"}
+                                data-plasmic-override={overrides.competitive7}
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.competitive7
+                                )}
+                              >
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__x6L3
+                                  )}
+                                >
+                                  {"competitive:"}
+                                </div>
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__zS19
+                                  )}
+                                >
+                                  {"15"}
+                                </div>
+                              </div>
+                            </React.Fragment>
                           }
-                        }}
-                        shape={"sharp"}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__x13Pn
-                          )}
+                          titleText={"Tooltip contents"}
                         >
-                          {"Apply"}
-                        </div>
-                      </LoginButton>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__idGtq
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__mm78D
-                          )}
-                        >
-                          {"Standard"}
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__nel4C
-                          )}
-                        >
-                          <div
+                          <Video
+                            data-plasmic-name={"htmlVideo"}
+                            data-plasmic-override={overrides.htmlVideo}
+                            autoPlay={true}
                             className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__nuB6D
+                              "__wab_instance",
+                              sty.htmlVideo
                             )}
-                          >
-                            {"U$ 300"}
-                          </div>
-                          <div
+                            controls={false}
+                            loop={true}
+                            muted={true}
+                            ref={ref => {
+                              $refs["htmlVideo"] = ref;
+                            }}
+                            src={
+                              "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
+                            }
+                          />
+                        </AntdTooltip>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox__hNqQ
+                          )}
+                        >
+                          <LoginButton
                             className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__lBhAf
+                              "__wab_instance",
+                              sty.loginButton__dvhgC
                             )}
-                          >
-                            {"/ sale"}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  data-plasmic-name={"slide17"}
-                  data-plasmic-override={overrides.slide17}
-                  className={classNames(projectcss.all, sty.slide17)}
-                >
-                  <PlasmicImg__
-                    alt={""}
-                    className={classNames(sty.img__dtJXt)}
-                    displayHeight={"200px"}
-                    displayMaxHeight={"none"}
-                    displayMaxWidth={"100%"}
-                    displayMinHeight={"0"}
-                    displayMinWidth={"0"}
-                    displayWidth={"100%"}
-                    src={
-                      "https://static1.plasmic.app/components/react-slick/slide3.png"
-                    }
-                  />
+                            color={"softGreen"}
+                            onClick={async event => {
+                              const $steps = {};
 
-                  <div
-                    data-plasmic-name={"price27"}
-                    data-plasmic-override={overrides.price27}
-                    className={classNames(projectcss.all, sty.price27)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__p67Hl
-                      )}
-                    >
-                      {"Standard"}
-                    </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        sty.freeBox___8FozY
-                      )}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__g42Lt
-                        )}
-                      >
-                        {"U$ 300"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__yQj1F
-                        )}
-                      >
-                        {"/ sale"}
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    data-plasmic-name={"hoverEngajament22"}
-                    data-plasmic-override={overrides.hoverEngajament22}
-                    className={classNames(
-                      projectcss.all,
-                      sty.hoverEngajament22
-                    )}
-                  >
-                    <AntdTooltip
-                      className={classNames(
-                        "__wab_instance",
-                        sty.tooltip__cAdAr
-                      )}
-                      overlayClassName={classNames({
-                        [sty["pcls_LK4rteS-uupt"]]: true
-                      })}
-                      placement={"left"}
-                      title={
-                        <React.Fragment>
+                              $steps["goToPage"] = true
+                                ? (() => {
+                                    const actionArgs = {
+                                      destination:
+                                        "/a-company-profile?id=" +
+                                        currentItem.company_id
+                                    };
+                                    return (({ destination }) => {
+                                      if (
+                                        typeof destination === "string" &&
+                                        destination.startsWith("#")
+                                      ) {
+                                        document
+                                          .getElementById(destination.substr(1))
+                                          .scrollIntoView({
+                                            behavior: "smooth"
+                                          });
+                                      } else {
+                                        __nextRouter?.push(destination);
+                                      }
+                                    })?.apply(null, [actionArgs]);
+                                  })()
+                                : undefined;
+                              if (
+                                $steps["goToPage"] != null &&
+                                typeof $steps["goToPage"] === "object" &&
+                                typeof $steps["goToPage"].then === "function"
+                              ) {
+                                $steps["goToPage"] = await $steps["goToPage"];
+                              }
+                            }}
+                            shape={"sharp"}
+                          >
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__ea9Wi
+                              )}
+                            >
+                              {"Apply"}
+                            </div>
+                          </LoginButton>
                           <div
-                            data-plasmic-name={"companyName15"}
-                            data-plasmic-override={overrides.companyName15}
                             className={classNames(
                               projectcss.all,
-                              sty.companyName15
+                              sty.freeBox__kFtY7
                             )}
                           >
                             <div
                               className={classNames(
                                 projectcss.all,
                                 projectcss.__wab_text,
-                                sty.text__iqt9S
+                                sty.text__ofRy3
                               )}
                             >
-                              {"Company"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__jrTZb
-                              )}
-                            >
-                              {"Legal structure"}
-                            </div>
-                          </div>
-                          <div
-                            data-plasmic-name={"launch15"}
-                            data-plasmic-override={overrides.launch15}
-                            className={classNames(projectcss.all, sty.launch15)}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__el5Er
-                              )}
-                            >
-                              {"Launch in"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__akry6
-                              )}
-                            >
-                              {"00/00/0000"}
-                            </div>
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text___6SaZ
-                            )}
-                          >
-                            {"Tagline"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text___10LbZ
-                            )}
-                          >
-                            {"Problem// solution"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__rkZon
-                            )}
-                          >
-                            {"Advantage"}
-                          </div>
-                          <div
-                            data-plasmic-name={"tam15"}
-                            data-plasmic-override={overrides.tam15}
-                            className={classNames(projectcss.all, sty.tam15)}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__gI2S
-                              )}
-                            >
-                              {"TAM:"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__d2VoI
-                              )}
-                            >
-                              {"50000"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__osaXr
-                              )}
-                            >
-                              {"people"}
-                            </div>
-                          </div>
-                          <div
-                            data-plasmic-name={"competitive15"}
-                            data-plasmic-override={overrides.competitive15}
-                            className={classNames(
-                              projectcss.all,
-                              sty.competitive15
-                            )}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__qq1S3
-                              )}
-                            >
-                              {"competitive:"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__kwQl0
-                              )}
-                            >
-                              {"15"}
-                            </div>
-                          </div>
-                        </React.Fragment>
-                      }
-                      titleText={"Tooltip contents"}
-                    >
-                      <Video
-                        autoPlay={true}
-                        className={classNames(
-                          "__wab_instance",
-                          sty.htmlVideo__osxJ
-                        )}
-                        controls={false}
-                        loop={true}
-                        muted={true}
-                        src={
-                          "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
-                        }
-                      />
-                    </AntdTooltip>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__cajAq)}
-                    >
-                      <LoginButton
-                        className={classNames(
-                          "__wab_instance",
-                          sty.loginButton__bePig
-                        )}
-                        color={"softGreen"}
-                        onClick={async event => {
-                          const $steps = {};
-
-                          $steps["goToACompanyProfile"] = true
-                            ? (() => {
-                                const actionArgs = {
-                                  destination: `/a-company-profile`
-                                };
-                                return (({ destination }) => {
-                                  if (
-                                    typeof destination === "string" &&
-                                    destination.startsWith("#")
-                                  ) {
-                                    document
-                                      .getElementById(destination.substr(1))
-                                      .scrollIntoView({ behavior: "smooth" });
-                                  } else {
-                                    __nextRouter?.push(destination);
+                              <React.Fragment>
+                                {(() => {
+                                  try {
+                                    return currentItem["Company nature"];
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return "Standard";
+                                    }
+                                    throw e;
                                   }
-                                })?.apply(null, [actionArgs]);
-                              })()
-                            : undefined;
-                          if (
-                            $steps["goToACompanyProfile"] != null &&
-                            typeof $steps["goToACompanyProfile"] === "object" &&
-                            typeof $steps["goToACompanyProfile"].then ===
-                              "function"
-                          ) {
-                            $steps["goToACompanyProfile"] =
-                              await $steps["goToACompanyProfile"];
-                          }
-                        }}
-                        shape={"sharp"}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text___55Ucx
-                          )}
-                        >
-                          {"Apply"}
-                        </div>
-                      </LoginButton>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__a0FG
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__tJyKl
-                          )}
-                        >
-                          {"Standard"}
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__wfEh4
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text___3SgKj
-                            )}
-                          >
-                            {"U$ 300"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__eoZmO
-                            )}
-                          >
-                            {"/ sale"}
+                                })()}
+                              </React.Fragment>
+                            </div>
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                sty.freeBox__q1Raw
+                              )}
+                            >
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.__wab_text,
+                                  sty.text___6NWyv
+                                )}
+                              >
+                                {"U$ 300"}
+                              </div>
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.__wab_text,
+                                  sty.text__xET
+                                )}
+                              >
+                                {"/ sale"}
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                </div>
-                <div
-                  data-plasmic-name={"slide18"}
-                  data-plasmic-override={overrides.slide18}
-                  className={classNames(projectcss.all, sty.slide18)}
-                >
-                  <PlasmicImg__
-                    alt={""}
-                    className={classNames(sty.img___9KiW)}
-                    displayHeight={"200px"}
-                    displayMaxHeight={"none"}
-                    displayMaxWidth={"100%"}
-                    displayMinHeight={"0"}
-                    displayMinWidth={"0"}
-                    displayWidth={"100%"}
-                    src={
-                      "https://static1.plasmic.app/components/react-slick/slide1.png"
-                    }
-                  />
-
-                  <div
-                    data-plasmic-name={"price28"}
-                    data-plasmic-override={overrides.price28}
-                    className={classNames(projectcss.all, sty.price28)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__tDcm4
-                      )}
-                    >
-                      {"Standard"}
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__pSnMr)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__zwNz5
-                        )}
-                      >
-                        {"U$ 300"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__whqy7
-                        )}
-                      >
-                        {"/ sale"}
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    data-plasmic-name={"hoverEngajament23"}
-                    data-plasmic-override={overrides.hoverEngajament23}
-                    className={classNames(
-                      projectcss.all,
-                      sty.hoverEngajament23
-                    )}
-                  >
-                    <AntdTooltip
-                      className={classNames(
-                        "__wab_instance",
-                        sty.tooltip___2PSrz
-                      )}
-                      overlayClassName={classNames({
-                        [sty["pcls_-Wx_4RTyL7h5"]]: true
-                      })}
-                      placement={"left"}
-                      title={
-                        <React.Fragment>
-                          <div
-                            data-plasmic-name={"companyName16"}
-                            data-plasmic-override={overrides.companyName16}
-                            className={classNames(
-                              projectcss.all,
-                              sty.companyName16
-                            )}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text___0C7Rw
-                              )}
-                            >
-                              {"Company"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__dFJf
-                              )}
-                            >
-                              {"Legal structure"}
-                            </div>
-                          </div>
-                          <div
-                            data-plasmic-name={"launch16"}
-                            data-plasmic-override={overrides.launch16}
-                            className={classNames(projectcss.all, sty.launch16)}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__nkeNe
-                              )}
-                            >
-                              {"Launch in"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__gTuRm
-                              )}
-                            >
-                              {"00/00/0000"}
-                            </div>
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__yg16O
-                            )}
-                          >
-                            {"Tagline"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__iziKd
-                            )}
-                          >
-                            {"Problem// solution"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text___5Tbks
-                            )}
-                          >
-                            {"Advantage"}
-                          </div>
-                          <div
-                            data-plasmic-name={"tam16"}
-                            data-plasmic-override={overrides.tam16}
-                            className={classNames(projectcss.all, sty.tam16)}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text___9Q5Pz
-                              )}
-                            >
-                              {"TAM:"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__z7RWp
-                              )}
-                            >
-                              {"50000"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__hHTzs
-                              )}
-                            >
-                              {"people"}
-                            </div>
-                          </div>
-                          <div
-                            data-plasmic-name={"competitive16"}
-                            data-plasmic-override={overrides.competitive16}
-                            className={classNames(
-                              projectcss.all,
-                              sty.competitive16
-                            )}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__nc0K6
-                              )}
-                            >
-                              {"competitive:"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__yLoN4
-                              )}
-                            >
-                              {"15"}
-                            </div>
-                          </div>
-                        </React.Fragment>
-                      }
-                      titleText={"Tooltip contents"}
-                    >
-                      <Video
-                        autoPlay={true}
-                        className={classNames(
-                          "__wab_instance",
-                          sty.htmlVideo__kPijw
-                        )}
-                        controls={false}
-                        loop={true}
-                        muted={true}
-                        src={
-                          "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
-                        }
-                      />
-                    </AntdTooltip>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        sty.freeBox___0KiWq
-                      )}
-                    >
-                      <LoginButton
-                        className={classNames(
-                          "__wab_instance",
-                          sty.loginButton__ymT50
-                        )}
-                        color={"softGreen"}
-                        onClick={async event => {
-                          const $steps = {};
-
-                          $steps["goToACompanyProfile"] = true
-                            ? (() => {
-                                const actionArgs = {
-                                  destination: `/a-company-profile`
-                                };
-                                return (({ destination }) => {
-                                  if (
-                                    typeof destination === "string" &&
-                                    destination.startsWith("#")
-                                  ) {
-                                    document
-                                      .getElementById(destination.substr(1))
-                                      .scrollIntoView({ behavior: "smooth" });
-                                  } else {
-                                    __nextRouter?.push(destination);
-                                  }
-                                })?.apply(null, [actionArgs]);
-                              })()
-                            : undefined;
-                          if (
-                            $steps["goToACompanyProfile"] != null &&
-                            typeof $steps["goToACompanyProfile"] === "object" &&
-                            typeof $steps["goToACompanyProfile"].then ===
-                              "function"
-                          ) {
-                            $steps["goToACompanyProfile"] =
-                              await $steps["goToACompanyProfile"];
-                          }
-                        }}
-                        shape={"sharp"}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__lYzml
-                          )}
-                        >
-                          {"Apply"}
-                        </div>
-                      </LoginButton>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__mAeor
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__bo68W
-                          )}
-                        >
-                          {"Standard"}
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__rvFpC
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__zClbz
-                            )}
-                          >
-                            {"U$ 300"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__iCwEl
-                            )}
-                          >
-                            {"/ sale"}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  data-plasmic-name={"slide19"}
-                  data-plasmic-override={overrides.slide19}
-                  className={classNames(projectcss.all, sty.slide19)}
-                >
-                  <PlasmicImg__
-                    alt={""}
-                    className={classNames(sty.img__ycQk2)}
-                    displayHeight={"200px"}
-                    displayMaxHeight={"none"}
-                    displayMaxWidth={"100%"}
-                    displayMinHeight={"0"}
-                    displayMinWidth={"0"}
-                    displayWidth={"100%"}
-                    src={
-                      "https://static1.plasmic.app/components/react-slick/slide2.png"
-                    }
-                  />
-
-                  <div
-                    data-plasmic-name={"price29"}
-                    data-plasmic-override={overrides.price29}
-                    className={classNames(projectcss.all, sty.price29)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__lVKeb
-                      )}
-                    >
-                      {"Standard"}
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__jW455)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___2XJuK
-                        )}
-                      >
-                        {"U$ 300"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__bQuUs
-                        )}
-                      >
-                        {"/ sale"}
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    data-plasmic-name={"hoverEngajament24"}
-                    data-plasmic-override={overrides.hoverEngajament24}
-                    className={classNames(
-                      projectcss.all,
-                      sty.hoverEngajament24
-                    )}
-                  >
-                    <AntdTooltip
-                      className={classNames(
-                        "__wab_instance",
-                        sty.tooltip__mpUsT
-                      )}
-                      overlayClassName={classNames({
-                        [sty["pcls_8uIQvljmU8at"]]: true
-                      })}
-                      placement={"left"}
-                      title={
-                        <React.Fragment>
-                          <div
-                            data-plasmic-name={"companyName17"}
-                            data-plasmic-override={overrides.companyName17}
-                            className={classNames(
-                              projectcss.all,
-                              sty.companyName17
-                            )}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__wTBri
-                              )}
-                            >
-                              {"Company"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__lnXRj
-                              )}
-                            >
-                              {"Legal structure"}
-                            </div>
-                          </div>
-                          <div
-                            data-plasmic-name={"launch17"}
-                            data-plasmic-override={overrides.launch17}
-                            className={classNames(projectcss.all, sty.launch17)}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__nzUt
-                              )}
-                            >
-                              {"Launch in"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text___9JDh
-                              )}
-                            >
-                              {"00/00/0000"}
-                            </div>
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text___4C6E0
-                            )}
-                          >
-                            {"Tagline"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__b8TxL
-                            )}
-                          >
-                            {"Problem// solution"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__n0USt
-                            )}
-                          >
-                            {"Advantage"}
-                          </div>
-                          <div
-                            data-plasmic-name={"tam17"}
-                            data-plasmic-override={overrides.tam17}
-                            className={classNames(projectcss.all, sty.tam17)}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__bjho1
-                              )}
-                            >
-                              {"TAM:"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__lu5AT
-                              )}
-                            >
-                              {"50000"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text___7VrEr
-                              )}
-                            >
-                              {"people"}
-                            </div>
-                          </div>
-                          <div
-                            data-plasmic-name={"competitive17"}
-                            data-plasmic-override={overrides.competitive17}
-                            className={classNames(
-                              projectcss.all,
-                              sty.competitive17
-                            )}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__qpKcJ
-                              )}
-                            >
-                              {"competitive:"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__pEmb9
-                              )}
-                            >
-                              {"15"}
-                            </div>
-                          </div>
-                        </React.Fragment>
-                      }
-                      titleText={"Tooltip contents"}
-                    >
-                      <Video
-                        autoPlay={true}
-                        className={classNames(
-                          "__wab_instance",
-                          sty.htmlVideo__etwRl
-                        )}
-                        controls={false}
-                        loop={true}
-                        muted={true}
-                        src={
-                          "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
-                        }
-                      />
-                    </AntdTooltip>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__pAnkl)}
-                    >
-                      <LoginButton
-                        className={classNames(
-                          "__wab_instance",
-                          sty.loginButton__oH7J3
-                        )}
-                        color={"softGreen"}
-                        onClick={async event => {
-                          const $steps = {};
-
-                          $steps["goToACompanyProfile"] = true
-                            ? (() => {
-                                const actionArgs = {
-                                  destination: `/a-company-profile`
-                                };
-                                return (({ destination }) => {
-                                  if (
-                                    typeof destination === "string" &&
-                                    destination.startsWith("#")
-                                  ) {
-                                    document
-                                      .getElementById(destination.substr(1))
-                                      .scrollIntoView({ behavior: "smooth" });
-                                  } else {
-                                    __nextRouter?.push(destination);
-                                  }
-                                })?.apply(null, [actionArgs]);
-                              })()
-                            : undefined;
-                          if (
-                            $steps["goToACompanyProfile"] != null &&
-                            typeof $steps["goToACompanyProfile"] === "object" &&
-                            typeof $steps["goToACompanyProfile"].then ===
-                              "function"
-                          ) {
-                            $steps["goToACompanyProfile"] =
-                              await $steps["goToACompanyProfile"];
-                          }
-                        }}
-                        shape={"sharp"}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__czRjO
-                          )}
-                        >
-                          {"Apply"}
-                        </div>
-                      </LoginButton>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__jqGW
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__trpXd
-                          )}
-                        >
-                          {"Standard"}
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__xMxdK
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__tAunD
-                            )}
-                          >
-                            {"U$ 300"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__kb5XO
-                            )}
-                          >
-                            {"/ sale"}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  data-plasmic-name={"slide20"}
-                  data-plasmic-override={overrides.slide20}
-                  className={classNames(projectcss.all, sty.slide20)}
-                >
-                  <PlasmicImg__
-                    alt={""}
-                    className={classNames(sty.img__jhmHe)}
-                    displayHeight={"200px"}
-                    displayMaxHeight={"none"}
-                    displayMaxWidth={"100%"}
-                    displayMinHeight={"0"}
-                    displayMinWidth={"0"}
-                    displayWidth={"100%"}
-                    src={
-                      "https://static1.plasmic.app/components/react-slick/slide3.png"
-                    }
-                  />
-
-                  <div
-                    data-plasmic-name={"price30"}
-                    data-plasmic-override={overrides.price30}
-                    className={classNames(projectcss.all, sty.price30)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__zEgac
-                      )}
-                    >
-                      {"Standard"}
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__zZvwr)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__uv3Od
-                        )}
-                      >
-                        {"U$ 300"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__qxGc2
-                        )}
-                      >
-                        {"/ sale"}
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    data-plasmic-name={"hoverEngajament25"}
-                    data-plasmic-override={overrides.hoverEngajament25}
-                    className={classNames(
-                      projectcss.all,
-                      sty.hoverEngajament25
-                    )}
-                  >
-                    <AntdTooltip
-                      className={classNames(
-                        "__wab_instance",
-                        sty.tooltip__xelh4
-                      )}
-                      overlayClassName={classNames({
-                        [sty["pcls_F9GGNsmcy6sO"]]: true
-                      })}
-                      placement={"left"}
-                      title={
-                        <React.Fragment>
-                          <div
-                            data-plasmic-name={"companyName18"}
-                            data-plasmic-override={overrides.companyName18}
-                            className={classNames(
-                              projectcss.all,
-                              sty.companyName18
-                            )}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__vAcwA
-                              )}
-                            >
-                              {"Company"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__ck3Vo
-                              )}
-                            >
-                              {"Legal structure"}
-                            </div>
-                          </div>
-                          <div
-                            data-plasmic-name={"launch18"}
-                            data-plasmic-override={overrides.launch18}
-                            className={classNames(projectcss.all, sty.launch18)}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__sDsep
-                              )}
-                            >
-                              {"Launch in"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text___3EtVt
-                              )}
-                            >
-                              {"00/00/0000"}
-                            </div>
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__hRcQn
-                            )}
-                          >
-                            {"Tagline"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__jws16
-                            )}
-                          >
-                            {"Problem// solution"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__zvwkV
-                            )}
-                          >
-                            {"Advantage"}
-                          </div>
-                          <div
-                            data-plasmic-name={"tam18"}
-                            data-plasmic-override={overrides.tam18}
-                            className={classNames(projectcss.all, sty.tam18)}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text___28AJf
-                              )}
-                            >
-                              {"TAM:"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__n6Kc4
-                              )}
-                            >
-                              {"50000"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__dFgL8
-                              )}
-                            >
-                              {"people"}
-                            </div>
-                          </div>
-                          <div
-                            data-plasmic-name={"competitive18"}
-                            data-plasmic-override={overrides.competitive18}
-                            className={classNames(
-                              projectcss.all,
-                              sty.competitive18
-                            )}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__xSv0A
-                              )}
-                            >
-                              {"competitive:"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__j2MGi
-                              )}
-                            >
-                              {"15"}
-                            </div>
-                          </div>
-                        </React.Fragment>
-                      }
-                      titleText={"Tooltip contents"}
-                    >
-                      <Video
-                        autoPlay={true}
-                        className={classNames(
-                          "__wab_instance",
-                          sty.htmlVideo__kWov
-                        )}
-                        controls={false}
-                        loop={true}
-                        muted={true}
-                        src={
-                          "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
-                        }
-                      />
-                    </AntdTooltip>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__viHJz)}
-                    >
-                      <LoginButton
-                        className={classNames(
-                          "__wab_instance",
-                          sty.loginButton___3DLcS
-                        )}
-                        color={"softGreen"}
-                        onClick={async event => {
-                          const $steps = {};
-
-                          $steps["goToACompanyProfile"] = true
-                            ? (() => {
-                                const actionArgs = {
-                                  destination: `/a-company-profile`
-                                };
-                                return (({ destination }) => {
-                                  if (
-                                    typeof destination === "string" &&
-                                    destination.startsWith("#")
-                                  ) {
-                                    document
-                                      .getElementById(destination.substr(1))
-                                      .scrollIntoView({ behavior: "smooth" });
-                                  } else {
-                                    __nextRouter?.push(destination);
-                                  }
-                                })?.apply(null, [actionArgs]);
-                              })()
-                            : undefined;
-                          if (
-                            $steps["goToACompanyProfile"] != null &&
-                            typeof $steps["goToACompanyProfile"] === "object" &&
-                            typeof $steps["goToACompanyProfile"].then ===
-                              "function"
-                          ) {
-                            $steps["goToACompanyProfile"] =
-                              await $steps["goToACompanyProfile"];
-                          }
-                        }}
-                        shape={"sharp"}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__d2AaG
-                          )}
-                        >
-                          {"Apply"}
-                        </div>
-                      </LoginButton>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox___91I2O
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__zKrY
-                          )}
-                        >
-                          {"Standard"}
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__qZBn1
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__zF9Ns
-                            )}
-                          >
-                            {"U$ 300"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__y9LzX
-                            )}
-                          >
-                            {"/ sale"}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  data-plasmic-name={"slide21"}
-                  data-plasmic-override={overrides.slide21}
-                  className={classNames(projectcss.all, sty.slide21)}
-                >
-                  <PlasmicImg__
-                    alt={""}
-                    className={classNames(sty.img__ty6)}
-                    displayHeight={"200px"}
-                    displayMaxHeight={"none"}
-                    displayMaxWidth={"100%"}
-                    displayMinHeight={"0"}
-                    displayMinWidth={"0"}
-                    displayWidth={"100%"}
-                    src={
-                      "https://static1.plasmic.app/components/react-slick/slide2.png"
-                    }
-                  />
-
-                  <div
-                    data-plasmic-name={"price31"}
-                    data-plasmic-override={overrides.price31}
-                    className={classNames(projectcss.all, sty.price31)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__rsybT
-                      )}
-                    >
-                      {"Standard"}
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__wAocR)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__jn2Zu
-                        )}
-                      >
-                        {"U$ 300"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___5NZ7P
-                        )}
-                      >
-                        {"/ sale"}
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    data-plasmic-name={"hoverEngajament26"}
-                    data-plasmic-override={overrides.hoverEngajament26}
-                    className={classNames(
-                      projectcss.all,
-                      sty.hoverEngajament26
-                    )}
-                  >
-                    <AntdTooltip
-                      className={classNames(
-                        "__wab_instance",
-                        sty.tooltip__eTzjn
-                      )}
-                      overlayClassName={classNames({
-                        [sty["pcls_0vvxobLwfzKT"]]: true
-                      })}
-                      placement={"left"}
-                      title={
-                        <React.Fragment>
-                          <div
-                            data-plasmic-name={"companyName19"}
-                            data-plasmic-override={overrides.companyName19}
-                            className={classNames(
-                              projectcss.all,
-                              sty.companyName19
-                            )}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__zdEgB
-                              )}
-                            >
-                              {"Company"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__slw1R
-                              )}
-                            >
-                              {"Legal structure"}
-                            </div>
-                          </div>
-                          <div
-                            data-plasmic-name={"launch19"}
-                            data-plasmic-override={overrides.launch19}
-                            className={classNames(projectcss.all, sty.launch19)}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__s6BSj
-                              )}
-                            >
-                              {"Launch in"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text___2Hs9J
-                              )}
-                            >
-                              {"00/00/0000"}
-                            </div>
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__fr2U0
-                            )}
-                          >
-                            {"Tagline"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__frylU
-                            )}
-                          >
-                            {"Problem// solution"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__w2B6D
-                            )}
-                          >
-                            {"Advantage"}
-                          </div>
-                          <div
-                            data-plasmic-name={"tam19"}
-                            data-plasmic-override={overrides.tam19}
-                            className={classNames(projectcss.all, sty.tam19)}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__r7HOj
-                              )}
-                            >
-                              {"TAM:"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__duZCc
-                              )}
-                            >
-                              {"50000"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__svghv
-                              )}
-                            >
-                              {"people"}
-                            </div>
-                          </div>
-                          <div
-                            data-plasmic-name={"competitive19"}
-                            data-plasmic-override={overrides.competitive19}
-                            className={classNames(
-                              projectcss.all,
-                              sty.competitive19
-                            )}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__w9UqZ
-                              )}
-                            >
-                              {"competitive:"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__xTeu1
-                              )}
-                            >
-                              {"15"}
-                            </div>
-                          </div>
-                        </React.Fragment>
-                      }
-                      titleText={"Tooltip contents"}
-                    >
-                      <Video
-                        autoPlay={true}
-                        className={classNames(
-                          "__wab_instance",
-                          sty.htmlVideo__rxz6X
-                        )}
-                        controls={false}
-                        loop={true}
-                        muted={true}
-                        src={
-                          "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
-                        }
-                      />
-                    </AntdTooltip>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__o9QuS)}
-                    >
-                      <LoginButton
-                        className={classNames(
-                          "__wab_instance",
-                          sty.loginButton__wbWd
-                        )}
-                        color={"softGreen"}
-                        onClick={async event => {
-                          const $steps = {};
-
-                          $steps["goToACompanyProfile"] = true
-                            ? (() => {
-                                const actionArgs = {
-                                  destination: `/a-company-profile`
-                                };
-                                return (({ destination }) => {
-                                  if (
-                                    typeof destination === "string" &&
-                                    destination.startsWith("#")
-                                  ) {
-                                    document
-                                      .getElementById(destination.substr(1))
-                                      .scrollIntoView({ behavior: "smooth" });
-                                  } else {
-                                    __nextRouter?.push(destination);
-                                  }
-                                })?.apply(null, [actionArgs]);
-                              })()
-                            : undefined;
-                          if (
-                            $steps["goToACompanyProfile"] != null &&
-                            typeof $steps["goToACompanyProfile"] === "object" &&
-                            typeof $steps["goToACompanyProfile"].then ===
-                              "function"
-                          ) {
-                            $steps["goToACompanyProfile"] =
-                              await $steps["goToACompanyProfile"];
-                          }
-                        }}
-                        shape={"sharp"}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__cuifS
-                          )}
-                        >
-                          {"Apply"}
-                        </div>
-                      </LoginButton>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__jxA6P
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text___9CGVj
-                          )}
-                        >
-                          {"Standard"}
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__mhK9I
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__ddBg0
-                            )}
-                          >
-                            {"U$ 300"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__fIjWe
-                            )}
-                          >
-                            {"/ sale"}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                  );
+                })}
               </SliderWrapper>
             );
           })()}
@@ -12317,43 +5597,6 @@ const PlasmicDescendants = {
     "hoverEngajament",
     "infoBox",
     "services1",
-    "services2",
-    "slide2",
-    "price2",
-    "hoverEngajament2",
-    "infoBox2",
-    "services3",
-    "services4",
-    "slide3",
-    "price3",
-    "hoverEngajament3",
-    "infoBox3",
-    "services5",
-    "services6",
-    "slide4",
-    "price4",
-    "hoverEngajament4",
-    "infoBox4",
-    "services7",
-    "services8",
-    "slide5",
-    "price5",
-    "hoverEngajament5",
-    "infoBox5",
-    "services9",
-    "services10",
-    "slide6",
-    "price6",
-    "hoverEngajament6",
-    "infoBox6",
-    "services11",
-    "services12",
-    "slide7",
-    "price7",
-    "hoverEngajament7",
-    "infoBox7",
-    "services13",
-    "services14",
     "comissionMoodel",
     "tableAtCustomerLocation",
     "services",
@@ -12506,38 +5749,6 @@ const PlasmicDescendants = {
     "tam",
     "competitive",
     "price9",
-    "slideNew2",
-    "price10",
-    "hoverEngajament9",
-    "companyName2",
-    "launch2",
-    "tam2",
-    "competitive2",
-    "price11",
-    "slideNew3",
-    "price12",
-    "hoverEngajament10",
-    "companyName3",
-    "launch3",
-    "tam3",
-    "competitive3",
-    "price13",
-    "slideNew4",
-    "price14",
-    "hoverEngajament11",
-    "companyName4",
-    "launch4",
-    "tam4",
-    "competitive4",
-    "price15",
-    "slideNew5",
-    "price16",
-    "hoverEngajament12",
-    "companyName5",
-    "launch5",
-    "tam5",
-    "competitive5",
-    "price17",
     "normal",
     "sliderCarousel3",
     "slide8",
@@ -12547,99 +5758,16 @@ const PlasmicDescendants = {
     "launch6",
     "tam6",
     "competitive6",
+    "random",
+    "sliderCarousel4",
     "slide9",
     "price19",
     "hoverEngajament14",
+    "htmlVideo",
     "companyName7",
     "launch7",
     "tam7",
-    "competitive7",
-    "slide10",
-    "price20",
-    "hoverEngajament15",
-    "companyName8",
-    "launch8",
-    "tam8",
-    "competitive8",
-    "slide11",
-    "price21",
-    "hoverEngajament16",
-    "companyName9",
-    "launch9",
-    "tam9",
-    "competitive9",
-    "slide12",
-    "price22",
-    "hoverEngajament17",
-    "companyName10",
-    "launch10",
-    "tam10",
-    "competitive10",
-    "slide13",
-    "price23",
-    "hoverEngajament18",
-    "companyName11",
-    "launch11",
-    "tam11",
-    "competitive11",
-    "slide14",
-    "price24",
-    "hoverEngajament19",
-    "companyName12",
-    "launch12",
-    "tam12",
-    "competitive12",
-    "random",
-    "sliderCarousel4",
-    "slide15",
-    "price25",
-    "hoverEngajament20",
-    "companyName13",
-    "launch13",
-    "tam13",
-    "competitive13",
-    "slide16",
-    "price26",
-    "hoverEngajament21",
-    "companyName14",
-    "launch14",
-    "tam14",
-    "competitive14",
-    "slide17",
-    "price27",
-    "hoverEngajament22",
-    "companyName15",
-    "launch15",
-    "tam15",
-    "competitive15",
-    "slide18",
-    "price28",
-    "hoverEngajament23",
-    "companyName16",
-    "launch16",
-    "tam16",
-    "competitive16",
-    "slide19",
-    "price29",
-    "hoverEngajament24",
-    "companyName17",
-    "launch17",
-    "tam17",
-    "competitive17",
-    "slide20",
-    "price30",
-    "hoverEngajament25",
-    "companyName18",
-    "launch18",
-    "tam18",
-    "competitive18",
-    "slide21",
-    "price31",
-    "hoverEngajament26",
-    "companyName19",
-    "launch19",
-    "tam19",
-    "competitive19"
+    "competitive7"
   ],
   topBarAuto: ["topBarAuto", "navigationBar", "account3", "button"],
   navigationBar: ["navigationBar"],
@@ -12652,44 +5780,7 @@ const PlasmicDescendants = {
     "price",
     "hoverEngajament",
     "infoBox",
-    "services1",
-    "services2",
-    "slide2",
-    "price2",
-    "hoverEngajament2",
-    "infoBox2",
-    "services3",
-    "services4",
-    "slide3",
-    "price3",
-    "hoverEngajament3",
-    "infoBox3",
-    "services5",
-    "services6",
-    "slide4",
-    "price4",
-    "hoverEngajament4",
-    "infoBox4",
-    "services7",
-    "services8",
-    "slide5",
-    "price5",
-    "hoverEngajament5",
-    "infoBox5",
-    "services9",
-    "services10",
-    "slide6",
-    "price6",
-    "hoverEngajament6",
-    "infoBox6",
-    "services11",
-    "services12",
-    "slide7",
-    "price7",
-    "hoverEngajament7",
-    "infoBox7",
-    "services13",
-    "services14"
+    "services1"
   ],
   sliderCarousel: [
     "sliderCarousel",
@@ -12697,146 +5788,13 @@ const PlasmicDescendants = {
     "price",
     "hoverEngajament",
     "infoBox",
-    "services1",
-    "services2",
-    "slide2",
-    "price2",
-    "hoverEngajament2",
-    "infoBox2",
-    "services3",
-    "services4",
-    "slide3",
-    "price3",
-    "hoverEngajament3",
-    "infoBox3",
-    "services5",
-    "services6",
-    "slide4",
-    "price4",
-    "hoverEngajament4",
-    "infoBox4",
-    "services7",
-    "services8",
-    "slide5",
-    "price5",
-    "hoverEngajament5",
-    "infoBox5",
-    "services9",
-    "services10",
-    "slide6",
-    "price6",
-    "hoverEngajament6",
-    "infoBox6",
-    "services11",
-    "services12",
-    "slide7",
-    "price7",
-    "hoverEngajament7",
-    "infoBox7",
-    "services13",
-    "services14"
+    "services1"
   ],
-  slide1: [
-    "slide1",
-    "price",
-    "hoverEngajament",
-    "infoBox",
-    "services1",
-    "services2"
-  ],
+  slide1: ["slide1", "price", "hoverEngajament", "infoBox", "services1"],
   price: ["price"],
-  hoverEngajament: ["hoverEngajament", "infoBox", "services1", "services2"],
-  infoBox: ["infoBox", "services1", "services2"],
+  hoverEngajament: ["hoverEngajament", "infoBox", "services1"],
+  infoBox: ["infoBox", "services1"],
   services1: ["services1"],
-  services2: ["services2"],
-  slide2: [
-    "slide2",
-    "price2",
-    "hoverEngajament2",
-    "infoBox2",
-    "services3",
-    "services4"
-  ],
-  price2: ["price2"],
-  hoverEngajament2: ["hoverEngajament2", "infoBox2", "services3", "services4"],
-  infoBox2: ["infoBox2", "services3", "services4"],
-  services3: ["services3"],
-  services4: ["services4"],
-  slide3: [
-    "slide3",
-    "price3",
-    "hoverEngajament3",
-    "infoBox3",
-    "services5",
-    "services6"
-  ],
-  price3: ["price3"],
-  hoverEngajament3: ["hoverEngajament3", "infoBox3", "services5", "services6"],
-  infoBox3: ["infoBox3", "services5", "services6"],
-  services5: ["services5"],
-  services6: ["services6"],
-  slide4: [
-    "slide4",
-    "price4",
-    "hoverEngajament4",
-    "infoBox4",
-    "services7",
-    "services8"
-  ],
-  price4: ["price4"],
-  hoverEngajament4: ["hoverEngajament4", "infoBox4", "services7", "services8"],
-  infoBox4: ["infoBox4", "services7", "services8"],
-  services7: ["services7"],
-  services8: ["services8"],
-  slide5: [
-    "slide5",
-    "price5",
-    "hoverEngajament5",
-    "infoBox5",
-    "services9",
-    "services10"
-  ],
-  price5: ["price5"],
-  hoverEngajament5: ["hoverEngajament5", "infoBox5", "services9", "services10"],
-  infoBox5: ["infoBox5", "services9", "services10"],
-  services9: ["services9"],
-  services10: ["services10"],
-  slide6: [
-    "slide6",
-    "price6",
-    "hoverEngajament6",
-    "infoBox6",
-    "services11",
-    "services12"
-  ],
-  price6: ["price6"],
-  hoverEngajament6: [
-    "hoverEngajament6",
-    "infoBox6",
-    "services11",
-    "services12"
-  ],
-  infoBox6: ["infoBox6", "services11", "services12"],
-  services11: ["services11"],
-  services12: ["services12"],
-  slide7: [
-    "slide7",
-    "price7",
-    "hoverEngajament7",
-    "infoBox7",
-    "services13",
-    "services14"
-  ],
-  price7: ["price7"],
-  hoverEngajament7: [
-    "hoverEngajament7",
-    "infoBox7",
-    "services13",
-    "services14"
-  ],
-  infoBox7: ["infoBox7", "services13", "services14"],
-  services13: ["services13"],
-  services14: ["services14"],
   comissionMoodel: [
     "comissionMoodel",
     "tableAtCustomerLocation",
@@ -13420,39 +6378,7 @@ const PlasmicDescendants = {
     "launch",
     "tam",
     "competitive",
-    "price9",
-    "slideNew2",
-    "price10",
-    "hoverEngajament9",
-    "companyName2",
-    "launch2",
-    "tam2",
-    "competitive2",
-    "price11",
-    "slideNew3",
-    "price12",
-    "hoverEngajament10",
-    "companyName3",
-    "launch3",
-    "tam3",
-    "competitive3",
-    "price13",
-    "slideNew4",
-    "price14",
-    "hoverEngajament11",
-    "companyName4",
-    "launch4",
-    "tam4",
-    "competitive4",
-    "price15",
-    "slideNew5",
-    "price16",
-    "hoverEngajament12",
-    "companyName5",
-    "launch5",
-    "tam5",
-    "competitive5",
-    "price17"
+    "price9"
   ],
   sliderCarousel2: [
     "sliderCarousel2",
@@ -13463,39 +6389,7 @@ const PlasmicDescendants = {
     "launch",
     "tam",
     "competitive",
-    "price9",
-    "slideNew2",
-    "price10",
-    "hoverEngajament9",
-    "companyName2",
-    "launch2",
-    "tam2",
-    "competitive2",
-    "price11",
-    "slideNew3",
-    "price12",
-    "hoverEngajament10",
-    "companyName3",
-    "launch3",
-    "tam3",
-    "competitive3",
-    "price13",
-    "slideNew4",
-    "price14",
-    "hoverEngajament11",
-    "companyName4",
-    "launch4",
-    "tam4",
-    "competitive4",
-    "price15",
-    "slideNew5",
-    "price16",
-    "hoverEngajament12",
-    "companyName5",
-    "launch5",
-    "tam5",
-    "competitive5",
-    "price17"
+    "price9"
   ],
   slideNew1: [
     "slideNew1",
@@ -13521,102 +6415,6 @@ const PlasmicDescendants = {
   tam: ["tam"],
   competitive: ["competitive"],
   price9: ["price9"],
-  slideNew2: [
-    "slideNew2",
-    "price10",
-    "hoverEngajament9",
-    "companyName2",
-    "launch2",
-    "tam2",
-    "competitive2",
-    "price11"
-  ],
-  price10: ["price10"],
-  hoverEngajament9: [
-    "hoverEngajament9",
-    "companyName2",
-    "launch2",
-    "tam2",
-    "competitive2",
-    "price11"
-  ],
-  companyName2: ["companyName2"],
-  launch2: ["launch2"],
-  tam2: ["tam2"],
-  competitive2: ["competitive2"],
-  price11: ["price11"],
-  slideNew3: [
-    "slideNew3",
-    "price12",
-    "hoverEngajament10",
-    "companyName3",
-    "launch3",
-    "tam3",
-    "competitive3",
-    "price13"
-  ],
-  price12: ["price12"],
-  hoverEngajament10: [
-    "hoverEngajament10",
-    "companyName3",
-    "launch3",
-    "tam3",
-    "competitive3",
-    "price13"
-  ],
-  companyName3: ["companyName3"],
-  launch3: ["launch3"],
-  tam3: ["tam3"],
-  competitive3: ["competitive3"],
-  price13: ["price13"],
-  slideNew4: [
-    "slideNew4",
-    "price14",
-    "hoverEngajament11",
-    "companyName4",
-    "launch4",
-    "tam4",
-    "competitive4",
-    "price15"
-  ],
-  price14: ["price14"],
-  hoverEngajament11: [
-    "hoverEngajament11",
-    "companyName4",
-    "launch4",
-    "tam4",
-    "competitive4",
-    "price15"
-  ],
-  companyName4: ["companyName4"],
-  launch4: ["launch4"],
-  tam4: ["tam4"],
-  competitive4: ["competitive4"],
-  price15: ["price15"],
-  slideNew5: [
-    "slideNew5",
-    "price16",
-    "hoverEngajament12",
-    "companyName5",
-    "launch5",
-    "tam5",
-    "competitive5",
-    "price17"
-  ],
-  price16: ["price16"],
-  hoverEngajament12: [
-    "hoverEngajament12",
-    "companyName5",
-    "launch5",
-    "tam5",
-    "competitive5",
-    "price17"
-  ],
-  companyName5: ["companyName5"],
-  launch5: ["launch5"],
-  tam5: ["tam5"],
-  competitive5: ["competitive5"],
-  price17: ["price17"],
   normal: [
     "normal",
     "sliderCarousel3",
@@ -13626,49 +6424,7 @@ const PlasmicDescendants = {
     "companyName6",
     "launch6",
     "tam6",
-    "competitive6",
-    "slide9",
-    "price19",
-    "hoverEngajament14",
-    "companyName7",
-    "launch7",
-    "tam7",
-    "competitive7",
-    "slide10",
-    "price20",
-    "hoverEngajament15",
-    "companyName8",
-    "launch8",
-    "tam8",
-    "competitive8",
-    "slide11",
-    "price21",
-    "hoverEngajament16",
-    "companyName9",
-    "launch9",
-    "tam9",
-    "competitive9",
-    "slide12",
-    "price22",
-    "hoverEngajament17",
-    "companyName10",
-    "launch10",
-    "tam10",
-    "competitive10",
-    "slide13",
-    "price23",
-    "hoverEngajament18",
-    "companyName11",
-    "launch11",
-    "tam11",
-    "competitive11",
-    "slide14",
-    "price24",
-    "hoverEngajament19",
-    "companyName12",
-    "launch12",
-    "tam12",
-    "competitive12"
+    "competitive6"
   ],
   sliderCarousel3: [
     "sliderCarousel3",
@@ -13678,49 +6434,7 @@ const PlasmicDescendants = {
     "companyName6",
     "launch6",
     "tam6",
-    "competitive6",
-    "slide9",
-    "price19",
-    "hoverEngajament14",
-    "companyName7",
-    "launch7",
-    "tam7",
-    "competitive7",
-    "slide10",
-    "price20",
-    "hoverEngajament15",
-    "companyName8",
-    "launch8",
-    "tam8",
-    "competitive8",
-    "slide11",
-    "price21",
-    "hoverEngajament16",
-    "companyName9",
-    "launch9",
-    "tam9",
-    "competitive9",
-    "slide12",
-    "price22",
-    "hoverEngajament17",
-    "companyName10",
-    "launch10",
-    "tam10",
-    "competitive10",
-    "slide13",
-    "price23",
-    "hoverEngajament18",
-    "companyName11",
-    "launch11",
-    "tam11",
-    "competitive11",
-    "slide14",
-    "price24",
-    "hoverEngajament19",
-    "companyName12",
-    "launch12",
-    "tam12",
-    "competitive12"
+    "competitive6"
   ],
   slide8: [
     "slide8",
@@ -13743,10 +6457,34 @@ const PlasmicDescendants = {
   launch6: ["launch6"],
   tam6: ["tam6"],
   competitive6: ["competitive6"],
+  random: [
+    "random",
+    "sliderCarousel4",
+    "slide9",
+    "price19",
+    "hoverEngajament14",
+    "htmlVideo",
+    "companyName7",
+    "launch7",
+    "tam7",
+    "competitive7"
+  ],
+  sliderCarousel4: [
+    "sliderCarousel4",
+    "slide9",
+    "price19",
+    "hoverEngajament14",
+    "htmlVideo",
+    "companyName7",
+    "launch7",
+    "tam7",
+    "competitive7"
+  ],
   slide9: [
     "slide9",
     "price19",
     "hoverEngajament14",
+    "htmlVideo",
     "companyName7",
     "launch7",
     "tam7",
@@ -13755,372 +6493,17 @@ const PlasmicDescendants = {
   price19: ["price19"],
   hoverEngajament14: [
     "hoverEngajament14",
+    "htmlVideo",
     "companyName7",
     "launch7",
     "tam7",
     "competitive7"
   ],
+  htmlVideo: ["htmlVideo"],
   companyName7: ["companyName7"],
   launch7: ["launch7"],
   tam7: ["tam7"],
-  competitive7: ["competitive7"],
-  slide10: [
-    "slide10",
-    "price20",
-    "hoverEngajament15",
-    "companyName8",
-    "launch8",
-    "tam8",
-    "competitive8"
-  ],
-  price20: ["price20"],
-  hoverEngajament15: [
-    "hoverEngajament15",
-    "companyName8",
-    "launch8",
-    "tam8",
-    "competitive8"
-  ],
-  companyName8: ["companyName8"],
-  launch8: ["launch8"],
-  tam8: ["tam8"],
-  competitive8: ["competitive8"],
-  slide11: [
-    "slide11",
-    "price21",
-    "hoverEngajament16",
-    "companyName9",
-    "launch9",
-    "tam9",
-    "competitive9"
-  ],
-  price21: ["price21"],
-  hoverEngajament16: [
-    "hoverEngajament16",
-    "companyName9",
-    "launch9",
-    "tam9",
-    "competitive9"
-  ],
-  companyName9: ["companyName9"],
-  launch9: ["launch9"],
-  tam9: ["tam9"],
-  competitive9: ["competitive9"],
-  slide12: [
-    "slide12",
-    "price22",
-    "hoverEngajament17",
-    "companyName10",
-    "launch10",
-    "tam10",
-    "competitive10"
-  ],
-  price22: ["price22"],
-  hoverEngajament17: [
-    "hoverEngajament17",
-    "companyName10",
-    "launch10",
-    "tam10",
-    "competitive10"
-  ],
-  companyName10: ["companyName10"],
-  launch10: ["launch10"],
-  tam10: ["tam10"],
-  competitive10: ["competitive10"],
-  slide13: [
-    "slide13",
-    "price23",
-    "hoverEngajament18",
-    "companyName11",
-    "launch11",
-    "tam11",
-    "competitive11"
-  ],
-  price23: ["price23"],
-  hoverEngajament18: [
-    "hoverEngajament18",
-    "companyName11",
-    "launch11",
-    "tam11",
-    "competitive11"
-  ],
-  companyName11: ["companyName11"],
-  launch11: ["launch11"],
-  tam11: ["tam11"],
-  competitive11: ["competitive11"],
-  slide14: [
-    "slide14",
-    "price24",
-    "hoverEngajament19",
-    "companyName12",
-    "launch12",
-    "tam12",
-    "competitive12"
-  ],
-  price24: ["price24"],
-  hoverEngajament19: [
-    "hoverEngajament19",
-    "companyName12",
-    "launch12",
-    "tam12",
-    "competitive12"
-  ],
-  companyName12: ["companyName12"],
-  launch12: ["launch12"],
-  tam12: ["tam12"],
-  competitive12: ["competitive12"],
-  random: [
-    "random",
-    "sliderCarousel4",
-    "slide15",
-    "price25",
-    "hoverEngajament20",
-    "companyName13",
-    "launch13",
-    "tam13",
-    "competitive13",
-    "slide16",
-    "price26",
-    "hoverEngajament21",
-    "companyName14",
-    "launch14",
-    "tam14",
-    "competitive14",
-    "slide17",
-    "price27",
-    "hoverEngajament22",
-    "companyName15",
-    "launch15",
-    "tam15",
-    "competitive15",
-    "slide18",
-    "price28",
-    "hoverEngajament23",
-    "companyName16",
-    "launch16",
-    "tam16",
-    "competitive16",
-    "slide19",
-    "price29",
-    "hoverEngajament24",
-    "companyName17",
-    "launch17",
-    "tam17",
-    "competitive17",
-    "slide20",
-    "price30",
-    "hoverEngajament25",
-    "companyName18",
-    "launch18",
-    "tam18",
-    "competitive18",
-    "slide21",
-    "price31",
-    "hoverEngajament26",
-    "companyName19",
-    "launch19",
-    "tam19",
-    "competitive19"
-  ],
-  sliderCarousel4: [
-    "sliderCarousel4",
-    "slide15",
-    "price25",
-    "hoverEngajament20",
-    "companyName13",
-    "launch13",
-    "tam13",
-    "competitive13",
-    "slide16",
-    "price26",
-    "hoverEngajament21",
-    "companyName14",
-    "launch14",
-    "tam14",
-    "competitive14",
-    "slide17",
-    "price27",
-    "hoverEngajament22",
-    "companyName15",
-    "launch15",
-    "tam15",
-    "competitive15",
-    "slide18",
-    "price28",
-    "hoverEngajament23",
-    "companyName16",
-    "launch16",
-    "tam16",
-    "competitive16",
-    "slide19",
-    "price29",
-    "hoverEngajament24",
-    "companyName17",
-    "launch17",
-    "tam17",
-    "competitive17",
-    "slide20",
-    "price30",
-    "hoverEngajament25",
-    "companyName18",
-    "launch18",
-    "tam18",
-    "competitive18",
-    "slide21",
-    "price31",
-    "hoverEngajament26",
-    "companyName19",
-    "launch19",
-    "tam19",
-    "competitive19"
-  ],
-  slide15: [
-    "slide15",
-    "price25",
-    "hoverEngajament20",
-    "companyName13",
-    "launch13",
-    "tam13",
-    "competitive13"
-  ],
-  price25: ["price25"],
-  hoverEngajament20: [
-    "hoverEngajament20",
-    "companyName13",
-    "launch13",
-    "tam13",
-    "competitive13"
-  ],
-  companyName13: ["companyName13"],
-  launch13: ["launch13"],
-  tam13: ["tam13"],
-  competitive13: ["competitive13"],
-  slide16: [
-    "slide16",
-    "price26",
-    "hoverEngajament21",
-    "companyName14",
-    "launch14",
-    "tam14",
-    "competitive14"
-  ],
-  price26: ["price26"],
-  hoverEngajament21: [
-    "hoverEngajament21",
-    "companyName14",
-    "launch14",
-    "tam14",
-    "competitive14"
-  ],
-  companyName14: ["companyName14"],
-  launch14: ["launch14"],
-  tam14: ["tam14"],
-  competitive14: ["competitive14"],
-  slide17: [
-    "slide17",
-    "price27",
-    "hoverEngajament22",
-    "companyName15",
-    "launch15",
-    "tam15",
-    "competitive15"
-  ],
-  price27: ["price27"],
-  hoverEngajament22: [
-    "hoverEngajament22",
-    "companyName15",
-    "launch15",
-    "tam15",
-    "competitive15"
-  ],
-  companyName15: ["companyName15"],
-  launch15: ["launch15"],
-  tam15: ["tam15"],
-  competitive15: ["competitive15"],
-  slide18: [
-    "slide18",
-    "price28",
-    "hoverEngajament23",
-    "companyName16",
-    "launch16",
-    "tam16",
-    "competitive16"
-  ],
-  price28: ["price28"],
-  hoverEngajament23: [
-    "hoverEngajament23",
-    "companyName16",
-    "launch16",
-    "tam16",
-    "competitive16"
-  ],
-  companyName16: ["companyName16"],
-  launch16: ["launch16"],
-  tam16: ["tam16"],
-  competitive16: ["competitive16"],
-  slide19: [
-    "slide19",
-    "price29",
-    "hoverEngajament24",
-    "companyName17",
-    "launch17",
-    "tam17",
-    "competitive17"
-  ],
-  price29: ["price29"],
-  hoverEngajament24: [
-    "hoverEngajament24",
-    "companyName17",
-    "launch17",
-    "tam17",
-    "competitive17"
-  ],
-  companyName17: ["companyName17"],
-  launch17: ["launch17"],
-  tam17: ["tam17"],
-  competitive17: ["competitive17"],
-  slide20: [
-    "slide20",
-    "price30",
-    "hoverEngajament25",
-    "companyName18",
-    "launch18",
-    "tam18",
-    "competitive18"
-  ],
-  price30: ["price30"],
-  hoverEngajament25: [
-    "hoverEngajament25",
-    "companyName18",
-    "launch18",
-    "tam18",
-    "competitive18"
-  ],
-  companyName18: ["companyName18"],
-  launch18: ["launch18"],
-  tam18: ["tam18"],
-  competitive18: ["competitive18"],
-  slide21: [
-    "slide21",
-    "price31",
-    "hoverEngajament26",
-    "companyName19",
-    "launch19",
-    "tam19",
-    "competitive19"
-  ],
-  price31: ["price31"],
-  hoverEngajament26: [
-    "hoverEngajament26",
-    "companyName19",
-    "launch19",
-    "tam19",
-    "competitive19"
-  ],
-  companyName19: ["companyName19"],
-  launch19: ["launch19"],
-  tam19: ["tam19"],
-  competitive19: ["competitive19"]
+  competitive7: ["competitive7"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -14138,43 +6521,6 @@ type NodeDefaultElementType = {
   hoverEngajament: "div";
   infoBox: "div";
   services1: "div";
-  services2: "div";
-  slide2: "div";
-  price2: "div";
-  hoverEngajament2: "div";
-  infoBox2: "div";
-  services3: "div";
-  services4: "div";
-  slide3: "div";
-  price3: "div";
-  hoverEngajament3: "div";
-  infoBox3: "div";
-  services5: "div";
-  services6: "div";
-  slide4: "div";
-  price4: "div";
-  hoverEngajament4: "div";
-  infoBox4: "div";
-  services7: "div";
-  services8: "div";
-  slide5: "div";
-  price5: "div";
-  hoverEngajament5: "div";
-  infoBox5: "div";
-  services9: "div";
-  services10: "div";
-  slide6: "div";
-  price6: "div";
-  hoverEngajament6: "div";
-  infoBox6: "div";
-  services11: "div";
-  services12: "div";
-  slide7: "div";
-  price7: "div";
-  hoverEngajament7: "div";
-  infoBox7: "div";
-  services13: "div";
-  services14: "div";
   comissionMoodel: "div";
   tableAtCustomerLocation: typeof AntdDropdown;
   services: "div";
@@ -14327,38 +6673,6 @@ type NodeDefaultElementType = {
   tam: "div";
   competitive: "div";
   price9: "div";
-  slideNew2: "div";
-  price10: "div";
-  hoverEngajament9: "div";
-  companyName2: "div";
-  launch2: "div";
-  tam2: "div";
-  competitive2: "div";
-  price11: "div";
-  slideNew3: "div";
-  price12: "div";
-  hoverEngajament10: "div";
-  companyName3: "div";
-  launch3: "div";
-  tam3: "div";
-  competitive3: "div";
-  price13: "div";
-  slideNew4: "div";
-  price14: "div";
-  hoverEngajament11: "div";
-  companyName4: "div";
-  launch4: "div";
-  tam4: "div";
-  competitive4: "div";
-  price15: "div";
-  slideNew5: "div";
-  price16: "div";
-  hoverEngajament12: "div";
-  companyName5: "div";
-  launch5: "div";
-  tam5: "div";
-  competitive5: "div";
-  price17: "div";
   normal: "div";
   sliderCarousel3: typeof SliderWrapper;
   slide8: "div";
@@ -14368,99 +6682,16 @@ type NodeDefaultElementType = {
   launch6: "div";
   tam6: "div";
   competitive6: "div";
+  random: "div";
+  sliderCarousel4: typeof SliderWrapper;
   slide9: "div";
   price19: "div";
   hoverEngajament14: "div";
+  htmlVideo: typeof Video;
   companyName7: "div";
   launch7: "div";
   tam7: "div";
   competitive7: "div";
-  slide10: "div";
-  price20: "div";
-  hoverEngajament15: "div";
-  companyName8: "div";
-  launch8: "div";
-  tam8: "div";
-  competitive8: "div";
-  slide11: "div";
-  price21: "div";
-  hoverEngajament16: "div";
-  companyName9: "div";
-  launch9: "div";
-  tam9: "div";
-  competitive9: "div";
-  slide12: "div";
-  price22: "div";
-  hoverEngajament17: "div";
-  companyName10: "div";
-  launch10: "div";
-  tam10: "div";
-  competitive10: "div";
-  slide13: "div";
-  price23: "div";
-  hoverEngajament18: "div";
-  companyName11: "div";
-  launch11: "div";
-  tam11: "div";
-  competitive11: "div";
-  slide14: "div";
-  price24: "div";
-  hoverEngajament19: "div";
-  companyName12: "div";
-  launch12: "div";
-  tam12: "div";
-  competitive12: "div";
-  random: "div";
-  sliderCarousel4: typeof SliderWrapper;
-  slide15: "div";
-  price25: "div";
-  hoverEngajament20: "div";
-  companyName13: "div";
-  launch13: "div";
-  tam13: "div";
-  competitive13: "div";
-  slide16: "div";
-  price26: "div";
-  hoverEngajament21: "div";
-  companyName14: "div";
-  launch14: "div";
-  tam14: "div";
-  competitive14: "div";
-  slide17: "div";
-  price27: "div";
-  hoverEngajament22: "div";
-  companyName15: "div";
-  launch15: "div";
-  tam15: "div";
-  competitive15: "div";
-  slide18: "div";
-  price28: "div";
-  hoverEngajament23: "div";
-  companyName16: "div";
-  launch16: "div";
-  tam16: "div";
-  competitive16: "div";
-  slide19: "div";
-  price29: "div";
-  hoverEngajament24: "div";
-  companyName17: "div";
-  launch17: "div";
-  tam17: "div";
-  competitive17: "div";
-  slide20: "div";
-  price30: "div";
-  hoverEngajament25: "div";
-  companyName18: "div";
-  launch18: "div";
-  tam18: "div";
-  competitive18: "div";
-  slide21: "div";
-  price31: "div";
-  hoverEngajament26: "div";
-  companyName19: "div";
-  launch19: "div";
-  tam19: "div";
-  competitive19: "div";
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -14536,43 +6767,6 @@ export const PlasmicAFindABusiness = Object.assign(
     hoverEngajament: makeNodeComponent("hoverEngajament"),
     infoBox: makeNodeComponent("infoBox"),
     services1: makeNodeComponent("services1"),
-    services2: makeNodeComponent("services2"),
-    slide2: makeNodeComponent("slide2"),
-    price2: makeNodeComponent("price2"),
-    hoverEngajament2: makeNodeComponent("hoverEngajament2"),
-    infoBox2: makeNodeComponent("infoBox2"),
-    services3: makeNodeComponent("services3"),
-    services4: makeNodeComponent("services4"),
-    slide3: makeNodeComponent("slide3"),
-    price3: makeNodeComponent("price3"),
-    hoverEngajament3: makeNodeComponent("hoverEngajament3"),
-    infoBox3: makeNodeComponent("infoBox3"),
-    services5: makeNodeComponent("services5"),
-    services6: makeNodeComponent("services6"),
-    slide4: makeNodeComponent("slide4"),
-    price4: makeNodeComponent("price4"),
-    hoverEngajament4: makeNodeComponent("hoverEngajament4"),
-    infoBox4: makeNodeComponent("infoBox4"),
-    services7: makeNodeComponent("services7"),
-    services8: makeNodeComponent("services8"),
-    slide5: makeNodeComponent("slide5"),
-    price5: makeNodeComponent("price5"),
-    hoverEngajament5: makeNodeComponent("hoverEngajament5"),
-    infoBox5: makeNodeComponent("infoBox5"),
-    services9: makeNodeComponent("services9"),
-    services10: makeNodeComponent("services10"),
-    slide6: makeNodeComponent("slide6"),
-    price6: makeNodeComponent("price6"),
-    hoverEngajament6: makeNodeComponent("hoverEngajament6"),
-    infoBox6: makeNodeComponent("infoBox6"),
-    services11: makeNodeComponent("services11"),
-    services12: makeNodeComponent("services12"),
-    slide7: makeNodeComponent("slide7"),
-    price7: makeNodeComponent("price7"),
-    hoverEngajament7: makeNodeComponent("hoverEngajament7"),
-    infoBox7: makeNodeComponent("infoBox7"),
-    services13: makeNodeComponent("services13"),
-    services14: makeNodeComponent("services14"),
     comissionMoodel: makeNodeComponent("comissionMoodel"),
     tableAtCustomerLocation: makeNodeComponent("tableAtCustomerLocation"),
     services: makeNodeComponent("services"),
@@ -14725,38 +6919,6 @@ export const PlasmicAFindABusiness = Object.assign(
     tam: makeNodeComponent("tam"),
     competitive: makeNodeComponent("competitive"),
     price9: makeNodeComponent("price9"),
-    slideNew2: makeNodeComponent("slideNew2"),
-    price10: makeNodeComponent("price10"),
-    hoverEngajament9: makeNodeComponent("hoverEngajament9"),
-    companyName2: makeNodeComponent("companyName2"),
-    launch2: makeNodeComponent("launch2"),
-    tam2: makeNodeComponent("tam2"),
-    competitive2: makeNodeComponent("competitive2"),
-    price11: makeNodeComponent("price11"),
-    slideNew3: makeNodeComponent("slideNew3"),
-    price12: makeNodeComponent("price12"),
-    hoverEngajament10: makeNodeComponent("hoverEngajament10"),
-    companyName3: makeNodeComponent("companyName3"),
-    launch3: makeNodeComponent("launch3"),
-    tam3: makeNodeComponent("tam3"),
-    competitive3: makeNodeComponent("competitive3"),
-    price13: makeNodeComponent("price13"),
-    slideNew4: makeNodeComponent("slideNew4"),
-    price14: makeNodeComponent("price14"),
-    hoverEngajament11: makeNodeComponent("hoverEngajament11"),
-    companyName4: makeNodeComponent("companyName4"),
-    launch4: makeNodeComponent("launch4"),
-    tam4: makeNodeComponent("tam4"),
-    competitive4: makeNodeComponent("competitive4"),
-    price15: makeNodeComponent("price15"),
-    slideNew5: makeNodeComponent("slideNew5"),
-    price16: makeNodeComponent("price16"),
-    hoverEngajament12: makeNodeComponent("hoverEngajament12"),
-    companyName5: makeNodeComponent("companyName5"),
-    launch5: makeNodeComponent("launch5"),
-    tam5: makeNodeComponent("tam5"),
-    competitive5: makeNodeComponent("competitive5"),
-    price17: makeNodeComponent("price17"),
     normal: makeNodeComponent("normal"),
     sliderCarousel3: makeNodeComponent("sliderCarousel3"),
     slide8: makeNodeComponent("slide8"),
@@ -14766,99 +6928,16 @@ export const PlasmicAFindABusiness = Object.assign(
     launch6: makeNodeComponent("launch6"),
     tam6: makeNodeComponent("tam6"),
     competitive6: makeNodeComponent("competitive6"),
+    random: makeNodeComponent("random"),
+    sliderCarousel4: makeNodeComponent("sliderCarousel4"),
     slide9: makeNodeComponent("slide9"),
     price19: makeNodeComponent("price19"),
     hoverEngajament14: makeNodeComponent("hoverEngajament14"),
+    htmlVideo: makeNodeComponent("htmlVideo"),
     companyName7: makeNodeComponent("companyName7"),
     launch7: makeNodeComponent("launch7"),
     tam7: makeNodeComponent("tam7"),
     competitive7: makeNodeComponent("competitive7"),
-    slide10: makeNodeComponent("slide10"),
-    price20: makeNodeComponent("price20"),
-    hoverEngajament15: makeNodeComponent("hoverEngajament15"),
-    companyName8: makeNodeComponent("companyName8"),
-    launch8: makeNodeComponent("launch8"),
-    tam8: makeNodeComponent("tam8"),
-    competitive8: makeNodeComponent("competitive8"),
-    slide11: makeNodeComponent("slide11"),
-    price21: makeNodeComponent("price21"),
-    hoverEngajament16: makeNodeComponent("hoverEngajament16"),
-    companyName9: makeNodeComponent("companyName9"),
-    launch9: makeNodeComponent("launch9"),
-    tam9: makeNodeComponent("tam9"),
-    competitive9: makeNodeComponent("competitive9"),
-    slide12: makeNodeComponent("slide12"),
-    price22: makeNodeComponent("price22"),
-    hoverEngajament17: makeNodeComponent("hoverEngajament17"),
-    companyName10: makeNodeComponent("companyName10"),
-    launch10: makeNodeComponent("launch10"),
-    tam10: makeNodeComponent("tam10"),
-    competitive10: makeNodeComponent("competitive10"),
-    slide13: makeNodeComponent("slide13"),
-    price23: makeNodeComponent("price23"),
-    hoverEngajament18: makeNodeComponent("hoverEngajament18"),
-    companyName11: makeNodeComponent("companyName11"),
-    launch11: makeNodeComponent("launch11"),
-    tam11: makeNodeComponent("tam11"),
-    competitive11: makeNodeComponent("competitive11"),
-    slide14: makeNodeComponent("slide14"),
-    price24: makeNodeComponent("price24"),
-    hoverEngajament19: makeNodeComponent("hoverEngajament19"),
-    companyName12: makeNodeComponent("companyName12"),
-    launch12: makeNodeComponent("launch12"),
-    tam12: makeNodeComponent("tam12"),
-    competitive12: makeNodeComponent("competitive12"),
-    random: makeNodeComponent("random"),
-    sliderCarousel4: makeNodeComponent("sliderCarousel4"),
-    slide15: makeNodeComponent("slide15"),
-    price25: makeNodeComponent("price25"),
-    hoverEngajament20: makeNodeComponent("hoverEngajament20"),
-    companyName13: makeNodeComponent("companyName13"),
-    launch13: makeNodeComponent("launch13"),
-    tam13: makeNodeComponent("tam13"),
-    competitive13: makeNodeComponent("competitive13"),
-    slide16: makeNodeComponent("slide16"),
-    price26: makeNodeComponent("price26"),
-    hoverEngajament21: makeNodeComponent("hoverEngajament21"),
-    companyName14: makeNodeComponent("companyName14"),
-    launch14: makeNodeComponent("launch14"),
-    tam14: makeNodeComponent("tam14"),
-    competitive14: makeNodeComponent("competitive14"),
-    slide17: makeNodeComponent("slide17"),
-    price27: makeNodeComponent("price27"),
-    hoverEngajament22: makeNodeComponent("hoverEngajament22"),
-    companyName15: makeNodeComponent("companyName15"),
-    launch15: makeNodeComponent("launch15"),
-    tam15: makeNodeComponent("tam15"),
-    competitive15: makeNodeComponent("competitive15"),
-    slide18: makeNodeComponent("slide18"),
-    price28: makeNodeComponent("price28"),
-    hoverEngajament23: makeNodeComponent("hoverEngajament23"),
-    companyName16: makeNodeComponent("companyName16"),
-    launch16: makeNodeComponent("launch16"),
-    tam16: makeNodeComponent("tam16"),
-    competitive16: makeNodeComponent("competitive16"),
-    slide19: makeNodeComponent("slide19"),
-    price29: makeNodeComponent("price29"),
-    hoverEngajament24: makeNodeComponent("hoverEngajament24"),
-    companyName17: makeNodeComponent("companyName17"),
-    launch17: makeNodeComponent("launch17"),
-    tam17: makeNodeComponent("tam17"),
-    competitive17: makeNodeComponent("competitive17"),
-    slide20: makeNodeComponent("slide20"),
-    price30: makeNodeComponent("price30"),
-    hoverEngajament25: makeNodeComponent("hoverEngajament25"),
-    companyName18: makeNodeComponent("companyName18"),
-    launch18: makeNodeComponent("launch18"),
-    tam18: makeNodeComponent("tam18"),
-    competitive18: makeNodeComponent("competitive18"),
-    slide21: makeNodeComponent("slide21"),
-    price31: makeNodeComponent("price31"),
-    hoverEngajament26: makeNodeComponent("hoverEngajament26"),
-    companyName19: makeNodeComponent("companyName19"),
-    launch19: makeNodeComponent("launch19"),
-    tam19: makeNodeComponent("tam19"),
-    competitive19: makeNodeComponent("competitive19"),
 
     // Metadata about props expected for PlasmicAFindABusiness
     internalVariantProps: PlasmicAFindABusiness__VariantProps,

@@ -594,6 +594,7 @@
   user-select: text;
   text-decoration-line: none;
   text-overflow: clip;
+  margin: 3px;
 }
 .apply:global(.__wab_instance):global(.__wab_instance) {
   animation: none;
@@ -849,7 +850,7 @@
   position: relative;
   width: auto;
   height: 100%;
-  max-width: 100%;
+  max-width: 201px;
   justify-content: space-around;
   align-items: center;
   margin-left: 3px;
@@ -920,7 +921,7 @@
   font-weight: 600;
   font-family: "Montserrat", sans-serif;
   letter-spacing: 2px;
-  white-space: pre;
+  white-space: pre-wrap;
   font-style: normal;
   color: #535353;
   text-align: left;
@@ -928,7 +929,6 @@
   line-height: 1.5;
   user-select: text;
   text-decoration-line: none;
-  text-overflow: clip;
   padding: 0px 0px 0px 8px;
 }
 .freeBox__uVxa {

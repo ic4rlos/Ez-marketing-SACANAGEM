@@ -25,7 +25,7 @@ export default function AFindABusiness() {
     async function loadAll() {
       try {
         // =========================
-        // AUTH 🔥 (faltava isso)
+        // AUTH
         // =========================
         const { data: userData } = await supabaseA.auth.getUser();
 
@@ -68,9 +68,9 @@ export default function AFindABusiness() {
         });
 
         // =========================
-        // FORMAT FINAL 🔥
+        // BASE FORMAT
         // =========================
-        const formatted = (companies ?? []).map((c: any) => ({
+        const base = (companies ?? []).map((c: any) => ({
           company_id: c.id,
 
           "Company Logo": c?.["Company Logo"] ?? "",
@@ -84,12 +84,26 @@ export default function AFindABusiness() {
           "Company tagline": c?.["Company tagline"] ?? "",
           "Company nature": c?.["Company nature"] ?? "Standard",
 
+          "Customer problem": c?.["Customer problem"] ?? "",
+          "Solution description": c?.["Solution description"] ?? "",
+
           solutions: solutionsMap[Number(c.id)] ?? [],
         }));
 
+        // =========================
+        // SPLIT EM 3 LISTAS 🔥
+        // =========================
+
+        const company_highlights = base.slice(0, 5); // destaque (primeiros)
+        const company_news = base.slice(5, 10); // meio
+        const company_normal = base.slice(10); // restante
+
         setFormData({
-          logged_profile_pic, // 🔥 AGORA EXISTE
-          company_requests: formatted,
+          logged_profile_pic,
+
+          company_highlights,
+          company_news,
+          company_normal,
         });
       } catch (err) {
         console.error(err);
@@ -108,9 +122,19 @@ export default function AFindABusiness() {
       args={{
         formData,
 
-        company_requests:
-          formData?.company_requests?.length
-            ? formData.company_requests
+        company_highlights:
+          formData?.company_highlights?.length
+            ? formData.company_highlights
+            : [{}],
+
+        company_news:
+          formData?.company_news?.length
+            ? formData.company_news
+            : [{}],
+
+        company_normal:
+          formData?.company_normal?.length
+            ? formData.company_normal
             : [{}],
       }}
     />

@@ -528,6 +528,25 @@ function PlasmicCEditProfile__RenderFunc(props: {
               throw e;
             }
           })()
+      },
+      {
+        path: "userChangedRadios",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
+          (() => {
+            try {
+              return false;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
       }
     ],
     [$props, $ctx, $refs]
@@ -2431,6 +2450,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
                                 return (() => {
                                   const analysis = $state.radioGroup2.value;
                                   const travel = $state.radioGroup3.value;
+                                  $state.userChangedRadios = true;
                                   if (analysis === "Yes" && travel === "Yes") {
                                     return ($state.companyNature3 =
                                       "Analysis - At Customer Location");
@@ -2548,6 +2568,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
                                 return (() => {
                                   const analysis = $state.radioGroup2.value;
                                   const travel = $state.radioGroup3.value;
+                                  $state.userChangedRadios = true;
                                   if (analysis === "Yes" && travel === "Yes") {
                                     return ($state.companyNature3 =
                                       "Analysis - At Customer Location");
@@ -4075,8 +4096,10 @@ function PlasmicCEditProfile__RenderFunc(props: {
                                   $props.company?.["Company nature"]
                                 );
                                 const companyNatureToSend =
-                                  $props.company?.["Company nature"] ??
-                                  computedNature;
+                                  $state.userChangedRadios
+                                    ? $state.companyNature3
+                                    : ($props.company?.["Company nature"] ??
+                                      $state.companyNature3);
                                 console.log(
                                   "companyNatureToSend (final):",
                                   companyNatureToSend

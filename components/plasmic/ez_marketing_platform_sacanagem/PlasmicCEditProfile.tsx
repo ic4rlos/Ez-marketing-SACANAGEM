@@ -4037,8 +4037,27 @@ function PlasmicCEditProfile__RenderFunc(props: {
                           const actionArgs = {
                             customFunction: async () => {
                               return (() => {
-                                const analysis = $state.radioGroup2.value;
-                                const travel = $state.radioGroup3.value;
+                                console.log(
+                                  "================================================="
+                                );
+                                console.log("\uD83E\uDDEA DONE CLICKADO");
+                                console.log("DEBUG STATE (full):", $state);
+                                console.log(
+                                  "radioGroup2.value:",
+                                  $state.radioGroup2?.value
+                                );
+                                console.log(
+                                  "radioGroup3.value:",
+                                  $state.radioGroup3?.value
+                                );
+                                const analysis = $state.radioGroup2?.value;
+                                const travel = $state.radioGroup3?.value;
+                                console.log(
+                                  "analysis:",
+                                  analysis,
+                                  "travel:",
+                                  travel
+                                );
                                 const computedNature = (() => {
                                   if (analysis === "Yes" && travel === "Yes")
                                     return "Analysis - At Customer Location";
@@ -4050,9 +4069,18 @@ function PlasmicCEditProfile__RenderFunc(props: {
                                     return "Table - At Company Location";
                                   return "Undefined";
                                 })();
+                                console.log("computedNature:", computedNature);
+                                console.log(
+                                  "existing Company nature:",
+                                  $props.company?.["Company nature"]
+                                );
                                 const companyNatureToSend =
                                   $props.company?.["Company nature"] ??
                                   computedNature;
+                                console.log(
+                                  "companyNatureToSend (final):",
+                                  companyNatureToSend
+                                );
                                 return $props.onSave({
                                   company: {
                                     "Company name":

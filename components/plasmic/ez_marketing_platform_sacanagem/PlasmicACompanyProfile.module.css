@@ -910,6 +910,7 @@
   user-select: text;
   text-decoration-line: none;
   text-overflow: clip;
+  flex-shrink: 0;
   padding: 0px 0px 0px 8px;
 }
 .foundationDate3 {
@@ -924,7 +925,7 @@
   white-space: pre-wrap;
   font-style: normal;
   color: #535353;
-  text-align: left;
+  text-align: center;
   text-transform: none;
   line-height: 1.5;
   user-select: text;

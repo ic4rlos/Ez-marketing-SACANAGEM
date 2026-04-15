@@ -409,55 +409,55 @@ function PlasmicAFindABusiness__RenderFunc(props: {
     $ctx as PageCtx
   );
 
-  const [isN37334797FocusVisible, triggerN37334797FocusVisibleProps] =
-    useTrigger("useFocusVisible", {
+  const [isN7212118FocusVisible, triggerN7212118FocusVisibleProps] = useTrigger(
+    "useFocusVisible",
+    {
+      isTextInput: false
+    }
+  );
+  const [isN7212118FocusVisibleWithin, triggerN7212118FocusVisibleWithinProps] =
+    useTrigger("useFocusVisibleWithin", {
       isTextInput: false
     });
-  const [
-    isN37334797FocusVisibleWithin,
-    triggerN37334797FocusVisibleWithinProps
-  ] = useTrigger("useFocusVisibleWithin", {
-    isTextInput: false
-  });
-  const [isN37335218FocusVisible, triggerN37335218FocusVisibleProps] =
-    useTrigger("useFocusVisible", {
+  const [isN7212539FocusVisible, triggerN7212539FocusVisibleProps] = useTrigger(
+    "useFocusVisible",
+    {
+      isTextInput: false
+    }
+  );
+  const [isN7212539FocusVisibleWithin, triggerN7212539FocusVisibleWithinProps] =
+    useTrigger("useFocusVisibleWithin", {
       isTextInput: false
     });
-  const [
-    isN37335218FocusVisibleWithin,
-    triggerN37335218FocusVisibleWithinProps
-  ] = useTrigger("useFocusVisibleWithin", {
-    isTextInput: false
-  });
-  const [isN37335639FocusVisible, triggerN37335639FocusVisibleProps] =
-    useTrigger("useFocusVisible", {
+  const [isN7212960FocusVisible, triggerN7212960FocusVisibleProps] = useTrigger(
+    "useFocusVisible",
+    {
+      isTextInput: false
+    }
+  );
+  const [isN7212960FocusVisibleWithin, triggerN7212960FocusVisibleWithinProps] =
+    useTrigger("useFocusVisibleWithin", {
       isTextInput: false
     });
-  const [
-    isN37335639FocusVisibleWithin,
-    triggerN37335639FocusVisibleWithinProps
-  ] = useTrigger("useFocusVisibleWithin", {
-    isTextInput: false
-  });
-  const [isN37336060FocusVisible, triggerN37336060FocusVisibleProps] =
-    useTrigger("useFocusVisible", {
+  const [isN7213381FocusVisible, triggerN7213381FocusVisibleProps] = useTrigger(
+    "useFocusVisible",
+    {
+      isTextInput: false
+    }
+  );
+  const [isN7213381FocusVisibleWithin, triggerN7213381FocusVisibleWithinProps] =
+    useTrigger("useFocusVisibleWithin", {
       isTextInput: false
     });
-  const [
-    isN37336060FocusVisibleWithin,
-    triggerN37336060FocusVisibleWithinProps
-  ] = useTrigger("useFocusVisibleWithin", {
-    isTextInput: false
-  });
   const triggers = {
-    focusVisible_37334797: isN37334797FocusVisible,
-    focusVisibleWithin_37334797: isN37334797FocusVisibleWithin,
-    focusVisible_37335218: isN37335218FocusVisible,
-    focusVisibleWithin_37335218: isN37335218FocusVisibleWithin,
-    focusVisible_37335639: isN37335639FocusVisible,
-    focusVisibleWithin_37335639: isN37335639FocusVisibleWithin,
-    focusVisible_37336060: isN37336060FocusVisible,
-    focusVisibleWithin_37336060: isN37336060FocusVisibleWithin
+    focusVisible_7212118: isN7212118FocusVisible,
+    focusVisibleWithin_7212118: isN7212118FocusVisibleWithin,
+    focusVisible_7212539: isN7212539FocusVisible,
+    focusVisibleWithin_7212539: isN7212539FocusVisibleWithin,
+    focusVisible_7212960: isN7212960FocusVisible,
+    focusVisibleWithin_7212960: isN7212960FocusVisibleWithin,
+    focusVisible_7213381: isN7213381FocusVisible,
+    focusVisibleWithin_7213381: isN7213381FocusVisibleWithin
   };
 
   const styleTokensClassNames = _useStyleTokens();
@@ -872,6 +872,7 @@ function PlasmicAFindABusiness__RenderFunc(props: {
               cssEase: "linear",
               dots: true,
               focusOnSelect: false,
+              infinite: true,
               initialSlide: generateStateValueProp($state, [
                 "sliderCarousel",
                 "currentSlide"
@@ -1260,7 +1261,7 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                                         e?.plasmicType ===
                                           "PlasmicUndefinedDataError"
                                       ) {
-                                        return "Standard";
+                                        return "Analysis - At Customer Location";
                                       }
                                       throw e;
                                     }
@@ -1926,9 +1927,9 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                       sty.link__w7OTb,
                       {
                         [sty.link___focusVisibleWithin__w7OTb5SWd3]:
-                          triggers.focusVisibleWithin_37334797,
+                          triggers.focusVisibleWithin_7212118,
                         [sty.link___focusVisible__w7OTb9N36P]:
-                          triggers.focusVisible_37334797
+                          triggers.focusVisible_7212118
                       }
                     )}
                     component={Link}
@@ -1938,8 +1939,8 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                       "Companies with fixed prices that go to the location to provide services"
                     }
                     data-plasmic-trigger-props={[
-                      triggerN37334797FocusVisibleProps,
-                      triggerN37334797FocusVisibleWithinProps
+                      triggerN7212118FocusVisibleProps,
+                      triggerN7212118FocusVisibleWithinProps
                     ]}
                   >
                     <React.Fragment>
@@ -2580,9 +2581,9 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                       sty.link__li62,
                       {
                         [sty.link___focusVisibleWithin__li62TyKlW]:
-                          triggers.focusVisibleWithin_37335218,
+                          triggers.focusVisibleWithin_7212539,
                         [sty.link___focusVisible__li62NlhE5]:
-                          triggers.focusVisible_37335218
+                          triggers.focusVisible_7212539
                       }
                     )}
                     component={Link}
@@ -2590,8 +2591,8 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                     platform={"nextjs"}
                     title={"Fixed-price companies that welcome customers"}
                     data-plasmic-trigger-props={[
-                      triggerN37335218FocusVisibleProps,
-                      triggerN37335218FocusVisibleWithinProps
+                      triggerN7212539FocusVisibleProps,
+                      triggerN7212539FocusVisibleWithinProps
                     ]}
                   >
                     <React.Fragment>
@@ -3230,9 +3231,9 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                       sty.link___2ZDaz,
                       {
                         [sty.link___focusVisibleWithin___2ZDazAuceu]:
-                          triggers.focusVisibleWithin_37335639,
+                          triggers.focusVisibleWithin_7212960,
                         [sty.link___focusVisible___2ZDazimth]:
-                          triggers.focusVisible_37335639
+                          triggers.focusVisible_7212960
                       }
                     )}
                     component={Link}
@@ -3242,8 +3243,8 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                       "Budget-priced companies that go to the location to provide services"
                     }
                     data-plasmic-trigger-props={[
-                      triggerN37335639FocusVisibleProps,
-                      triggerN37335639FocusVisibleWithinProps
+                      triggerN7212960FocusVisibleProps,
+                      triggerN7212960FocusVisibleWithinProps
                     ]}
                   >
                     <React.Fragment>
@@ -3884,9 +3885,9 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                       sty.link___8Fedr,
                       {
                         [sty.link___focusVisibleWithin___8FedruhXAh]:
-                          triggers.focusVisibleWithin_37336060,
+                          triggers.focusVisibleWithin_7213381,
                         [sty.link___focusVisible___8FedrNhrid]:
-                          triggers.focusVisible_37336060
+                          triggers.focusVisible_7213381
                       }
                     )}
                     component={Link}
@@ -3894,8 +3895,8 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                     platform={"nextjs"}
                     title={"Budget-priced companies that welcome customers"}
                     data-plasmic-trigger-props={[
-                      triggerN37336060FocusVisibleProps,
-                      triggerN37336060FocusVisibleWithinProps
+                      triggerN7213381FocusVisibleProps,
+                      triggerN7213381FocusVisibleWithinProps
                     ]}
                   >
                     <React.Fragment>
@@ -4258,7 +4259,24 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                                         sty.text__rpKkM
                                       )}
                                     >
-                                      {"00/00/0000"}
+                                      <React.Fragment>
+                                        {(() => {
+                                          try {
+                                            return currentItem[
+                                              "Foundation date"
+                                            ];
+                                          } catch (e) {
+                                            if (
+                                              e instanceof TypeError ||
+                                              e?.plasmicType ===
+                                                "PlasmicUndefinedDataError"
+                                            ) {
+                                              return "00/00/0000";
+                                            }
+                                            throw e;
+                                          }
+                                        })()}
+                                      </React.Fragment>
                                     </div>
                                   </div>
                                   <div
@@ -4751,7 +4769,22 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                                     sty.text__hijmp
                                   )}
                                 >
-                                  {"00/00/0000"}
+                                  <React.Fragment>
+                                    {(() => {
+                                      try {
+                                        return currentItem["Foundation date"];
+                                      } catch (e) {
+                                        if (
+                                          e instanceof TypeError ||
+                                          e?.plasmicType ===
+                                            "PlasmicUndefinedDataError"
+                                        ) {
+                                          return "00/00/0000";
+                                        }
+                                        throw e;
+                                      }
+                                    })()}
+                                  </React.Fragment>
                                 </div>
                               </div>
                               <div
@@ -5295,7 +5328,22 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                                     sty.text__miRs0
                                   )}
                                 >
-                                  {"00/00/0000"}
+                                  <React.Fragment>
+                                    {(() => {
+                                      try {
+                                        return currentItem["Foundation date"];
+                                      } catch (e) {
+                                        if (
+                                          e instanceof TypeError ||
+                                          e?.plasmicType ===
+                                            "PlasmicUndefinedDataError"
+                                        ) {
+                                          return "00/00/0000";
+                                        }
+                                        throw e;
+                                      }
+                                    })()}
+                                  </React.Fragment>
                                 </div>
                               </div>
                               <div

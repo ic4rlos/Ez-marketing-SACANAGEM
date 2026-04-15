@@ -409,55 +409,55 @@ function PlasmicAFindABusiness__RenderFunc(props: {
     $ctx as PageCtx
   );
 
-  const [isN7212118FocusVisible, triggerN7212118FocusVisibleProps] = useTrigger(
+  const [isN6312909FocusVisible, triggerN6312909FocusVisibleProps] = useTrigger(
     "useFocusVisible",
     {
       isTextInput: false
     }
   );
-  const [isN7212118FocusVisibleWithin, triggerN7212118FocusVisibleWithinProps] =
+  const [isN6312909FocusVisibleWithin, triggerN6312909FocusVisibleWithinProps] =
     useTrigger("useFocusVisibleWithin", {
       isTextInput: false
     });
-  const [isN7212539FocusVisible, triggerN7212539FocusVisibleProps] = useTrigger(
+  const [isN6313330FocusVisible, triggerN6313330FocusVisibleProps] = useTrigger(
     "useFocusVisible",
     {
       isTextInput: false
     }
   );
-  const [isN7212539FocusVisibleWithin, triggerN7212539FocusVisibleWithinProps] =
+  const [isN6313330FocusVisibleWithin, triggerN6313330FocusVisibleWithinProps] =
     useTrigger("useFocusVisibleWithin", {
       isTextInput: false
     });
-  const [isN7212960FocusVisible, triggerN7212960FocusVisibleProps] = useTrigger(
+  const [isN6313751FocusVisible, triggerN6313751FocusVisibleProps] = useTrigger(
     "useFocusVisible",
     {
       isTextInput: false
     }
   );
-  const [isN7212960FocusVisibleWithin, triggerN7212960FocusVisibleWithinProps] =
+  const [isN6313751FocusVisibleWithin, triggerN6313751FocusVisibleWithinProps] =
     useTrigger("useFocusVisibleWithin", {
       isTextInput: false
     });
-  const [isN7213381FocusVisible, triggerN7213381FocusVisibleProps] = useTrigger(
+  const [isN6314172FocusVisible, triggerN6314172FocusVisibleProps] = useTrigger(
     "useFocusVisible",
     {
       isTextInput: false
     }
   );
-  const [isN7213381FocusVisibleWithin, triggerN7213381FocusVisibleWithinProps] =
+  const [isN6314172FocusVisibleWithin, triggerN6314172FocusVisibleWithinProps] =
     useTrigger("useFocusVisibleWithin", {
       isTextInput: false
     });
   const triggers = {
-    focusVisible_7212118: isN7212118FocusVisible,
-    focusVisibleWithin_7212118: isN7212118FocusVisibleWithin,
-    focusVisible_7212539: isN7212539FocusVisible,
-    focusVisibleWithin_7212539: isN7212539FocusVisibleWithin,
-    focusVisible_7212960: isN7212960FocusVisible,
-    focusVisibleWithin_7212960: isN7212960FocusVisibleWithin,
-    focusVisible_7213381: isN7213381FocusVisible,
-    focusVisibleWithin_7213381: isN7213381FocusVisibleWithin
+    focusVisible_6312909: isN6312909FocusVisible,
+    focusVisibleWithin_6312909: isN6312909FocusVisibleWithin,
+    focusVisible_6313330: isN6313330FocusVisible,
+    focusVisibleWithin_6313330: isN6313330FocusVisibleWithin,
+    focusVisible_6313751: isN6313751FocusVisible,
+    focusVisibleWithin_6313751: isN6313751FocusVisibleWithin,
+    focusVisible_6314172: isN6314172FocusVisible,
+    focusVisibleWithin_6314172: isN6314172FocusVisibleWithin
   };
 
   const styleTokensClassNames = _useStyleTokens();
@@ -1927,9 +1927,9 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                       sty.link__w7OTb,
                       {
                         [sty.link___focusVisibleWithin__w7OTb5SWd3]:
-                          triggers.focusVisibleWithin_7212118,
+                          triggers.focusVisibleWithin_6312909,
                         [sty.link___focusVisible__w7OTb9N36P]:
-                          triggers.focusVisible_7212118
+                          triggers.focusVisible_6312909
                       }
                     )}
                     component={Link}
@@ -1939,8 +1939,8 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                       "Companies with fixed prices that go to the location to provide services"
                     }
                     data-plasmic-trigger-props={[
-                      triggerN7212118FocusVisibleProps,
-                      triggerN7212118FocusVisibleWithinProps
+                      triggerN6312909FocusVisibleProps,
+                      triggerN6312909FocusVisibleWithinProps
                     ]}
                   >
                     <React.Fragment>
@@ -2581,9 +2581,9 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                       sty.link__li62,
                       {
                         [sty.link___focusVisibleWithin__li62TyKlW]:
-                          triggers.focusVisibleWithin_7212539,
+                          triggers.focusVisibleWithin_6313330,
                         [sty.link___focusVisible__li62NlhE5]:
-                          triggers.focusVisible_7212539
+                          triggers.focusVisible_6313330
                       }
                     )}
                     component={Link}
@@ -2591,8 +2591,8 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                     platform={"nextjs"}
                     title={"Fixed-price companies that welcome customers"}
                     data-plasmic-trigger-props={[
-                      triggerN7212539FocusVisibleProps,
-                      triggerN7212539FocusVisibleWithinProps
+                      triggerN6313330FocusVisibleProps,
+                      triggerN6313330FocusVisibleWithinProps
                     ]}
                   >
                     <React.Fragment>
@@ -3231,9 +3231,9 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                       sty.link___2ZDaz,
                       {
                         [sty.link___focusVisibleWithin___2ZDazAuceu]:
-                          triggers.focusVisibleWithin_7212960,
+                          triggers.focusVisibleWithin_6313751,
                         [sty.link___focusVisible___2ZDazimth]:
-                          triggers.focusVisible_7212960
+                          triggers.focusVisible_6313751
                       }
                     )}
                     component={Link}
@@ -3243,8 +3243,8 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                       "Budget-priced companies that go to the location to provide services"
                     }
                     data-plasmic-trigger-props={[
-                      triggerN7212960FocusVisibleProps,
-                      triggerN7212960FocusVisibleWithinProps
+                      triggerN6313751FocusVisibleProps,
+                      triggerN6313751FocusVisibleWithinProps
                     ]}
                   >
                     <React.Fragment>
@@ -3885,9 +3885,9 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                       sty.link___8Fedr,
                       {
                         [sty.link___focusVisibleWithin___8FedruhXAh]:
-                          triggers.focusVisibleWithin_7213381,
+                          triggers.focusVisibleWithin_6314172,
                         [sty.link___focusVisible___8FedrNhrid]:
-                          triggers.focusVisible_7213381
+                          triggers.focusVisible_6314172
                       }
                     )}
                     component={Link}
@@ -3895,8 +3895,8 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                     platform={"nextjs"}
                     title={"Budget-priced companies that welcome customers"}
                     data-plasmic-trigger-props={[
-                      triggerN7213381FocusVisibleProps,
-                      triggerN7213381FocusVisibleWithinProps
+                      triggerN6314172FocusVisibleProps,
+                      triggerN6314172FocusVisibleWithinProps
                     ]}
                   >
                     <React.Fragment>
@@ -4052,40 +4052,6 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                             displayMinWidth={"0"}
                             displayWidth={"446px"}
                             height={"500"}
-                            onClick={async event => {
-                              const $steps = {};
-
-                              $steps["goToPage"] = true
-                                ? (() => {
-                                    const actionArgs = {
-                                      destination:
-                                        "/a-company-profile?id=" +
-                                        currentItem.company_id
-                                    };
-                                    return (({ destination }) => {
-                                      if (
-                                        typeof destination === "string" &&
-                                        destination.startsWith("#")
-                                      ) {
-                                        document
-                                          .getElementById(destination.substr(1))
-                                          .scrollIntoView({
-                                            behavior: "smooth"
-                                          });
-                                      } else {
-                                        __nextRouter?.push(destination);
-                                      }
-                                    })?.apply(null, [actionArgs]);
-                                  })()
-                                : undefined;
-                              if (
-                                $steps["goToPage"] != null &&
-                                typeof $steps["goToPage"] === "object" &&
-                                typeof $steps["goToPage"].then === "function"
-                              ) {
-                                $steps["goToPage"] = await $steps["goToPage"];
-                              }
-                            }}
                             src={(() => {
                               try {
                                 return currentItem["Company image"];
@@ -4164,6 +4130,40 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                               projectcss.all,
                               sty.hoverEngajament8
                             )}
+                            onClick={async event => {
+                              const $steps = {};
+
+                              $steps["goToPage"] = true
+                                ? (() => {
+                                    const actionArgs = {
+                                      destination:
+                                        "/a-company-profile?id=" +
+                                        currentItem.company_id
+                                    };
+                                    return (({ destination }) => {
+                                      if (
+                                        typeof destination === "string" &&
+                                        destination.startsWith("#")
+                                      ) {
+                                        document
+                                          .getElementById(destination.substr(1))
+                                          .scrollIntoView({
+                                            behavior: "smooth"
+                                          });
+                                      } else {
+                                        __nextRouter?.push(destination);
+                                      }
+                                    })?.apply(null, [actionArgs]);
+                                  })()
+                                : undefined;
+                              if (
+                                $steps["goToPage"] != null &&
+                                typeof $steps["goToPage"] === "object" &&
+                                typeof $steps["goToPage"].then === "function"
+                              ) {
+                                $steps["goToPage"] = await $steps["goToPage"];
+                              }
+                            }}
                           >
                             <AntdTooltip
                               className={classNames(
@@ -4570,7 +4570,7 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                 {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
                   (() => {
                     try {
-                      return $props.company_requests || [1];
+                      return $props.company_normal || [1];
                     } catch (e) {
                       if (
                         e instanceof TypeError ||
@@ -5129,7 +5129,7 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                 {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
                   (() => {
                     try {
-                      return $props.company_requests || [1];
+                      return $props.company_normal || [1];
                     } catch (e) {
                       if (
                         e instanceof TypeError ||

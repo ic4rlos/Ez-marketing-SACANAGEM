@@ -95,9 +95,9 @@ export default function AFindABusiness() {
         // SPLIT EM 3 LISTAS 🔥
         // =========================
 
-        const company_highlights = base.slice(0, 5); // destaque (primeiros)
-        const company_news = base.slice(5, 10); // meio
-        const company_normal = base.slice(10); // restante
+const company_highlights = base;
+const company_news = base;
+const company_normal = base;
 
         setFormData({
           logged_profile_pic,

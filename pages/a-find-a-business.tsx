@@ -83,6 +83,7 @@ export default function AFindABusiness() {
           "Location": c?.["Location"] ?? "",
           "Company tagline": c?.["Company tagline"] ?? "",
           "Company nature": c?.["Company nature"] ?? "Standard",
+          "Foundation date": c?.["Foundation date"] ?? "",
 
           "Customer problem": c?.["Customer problem"] ?? "",
           "Solution description": c?.["Solution description"] ?? "",

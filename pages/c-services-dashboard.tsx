@@ -22,10 +22,8 @@ export default function CServiceDashboard() {
 
   const [companyUser, setCompanyUser] = useState<any>(null);
   const [company, setCompany] = useState<any>(null);
-
   const [loading, setLoading] = useState(true);
 
-  // containers
   const [tableCustomer, setTableCustomer] = useState<any[]>([]);
   const [tableCompany, setTableCompany] = useState<any[]>([]);
   const [analysisCustomer, setAnalysisCustomer] = useState<any[]>([]);
@@ -43,7 +41,7 @@ export default function CServiceDashboard() {
   }, []);
 
   // =========================
-  // LOAD
+  // LOAD DATA
   // =========================
   useEffect(() => {
     if (!companyUser) return;
@@ -63,7 +61,7 @@ export default function CServiceDashboard() {
 
       setCompany(companyData);
 
-      // ORDERS
+      // orders
       const { data: orders } = await supabaseA
         .from("orders")
         .select("*")
@@ -74,14 +72,14 @@ export default function CServiceDashboard() {
         return;
       }
 
-      // pegar solutions
+      // solutions
       const solutionIds = Array.from(
         new Set(orders.map((o: any) => o.solution_id))
       );
 
       const { data: solutions } = await supabaseC
         .from("solutions")
-        .select("id, Title")
+        .select('id, Title, "Solution nature"')
         .in("id", solutionIds);
 
       const solutionMap: any = {};
@@ -89,7 +87,7 @@ export default function CServiceDashboard() {
         solutionMap[s.id] = s;
       });
 
-      // pegar communities
+      // communities
       const communityIds = Array.from(
         new Set(orders.map((o: any) => o.community_id))
       );
@@ -105,7 +103,7 @@ export default function CServiceDashboard() {
       });
 
       // =========================
-      // FORMAT + CLASSIFY
+      // FORMAT + CLASSIFY (POR NATURE)
       // =========================
 
       const tCustomer: any[] = [];
@@ -129,17 +127,22 @@ export default function CServiceDashboard() {
           status: o.current_status
         };
 
-        const status = o.current_status ?? "";
+        const nature = solution?.["Solution nature"];
 
-        // 🔥 CLASSIFICAÇÃO INICIAL (SIMPLIFICADA)
-        if (status.includes("Proposal") || status.includes("3")) {
-          aCustomer.push(item);
-        } else if (status.includes("2") || status.includes("4")) {
-          aCompany.push(item);
-        } else if (status.includes("Waiting") || status.includes("Customer")) {
+        if (nature === "Table - At Customer Location") {
           tCustomer.push(item);
-        } else {
+        }
+
+        if (nature === "Table - At Company Location") {
           tCompany.push(item);
+        }
+
+        if (nature === "Analysis - At Customer Location") {
+          aCustomer.push(item);
+        }
+
+        if (nature === "Analysis - At Company Location") {
+          aCompany.push(item);
         }
       });
 
@@ -165,26 +168,13 @@ export default function CServiceDashboard() {
 
     let newStatus = null;
 
-    // exemplos iniciais
-    if (action === "confirm_eta") {
-      newStatus = "Waiting locomotion";
-    }
-
-    if (action === "cancel") {
-      newStatus = "Customer Canceled";
-    }
-
-    if (action === "on_way") {
-      newStatus = "Waiting customer";
-    }
-
-    if (action === "trouble_address") {
-      newStatus = "Trouble with Address?";
-    }
+    if (action === "confirm_eta") newStatus = "Waiting locomotion";
+    if (action === "cancel") newStatus = "Customer Canceled";
+    if (action === "on_way") newStatus = "Waiting customer";
+    if (action === "trouble_address") newStatus = "Trouble with Address?";
 
     if (!newStatus) return;
 
-    // update order
     await supabaseA
       .from("orders")
       .update({
@@ -193,7 +183,6 @@ export default function CServiceDashboard() {
       })
       .eq("id", orderId);
 
-    // log
     await supabaseA.from("order_events").insert({
       order_id: orderId,
       event_type: newStatus,

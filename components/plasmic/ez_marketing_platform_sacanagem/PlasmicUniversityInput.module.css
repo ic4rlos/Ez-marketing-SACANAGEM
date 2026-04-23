@@ -15,11 +15,11 @@
   background: #232320;
   border-color: #717069;
 }
-.root:hover {
+.root:hover:hover {
   background: none;
   border-color: #c8c7c1;
 }
-.root:focus-within {
+.root:focus-within:focus-within {
   box-shadow: none;
   outline: none;
   border-radius: 6px;

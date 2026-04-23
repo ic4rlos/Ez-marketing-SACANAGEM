@@ -103,49 +103,49 @@
     100% repeat;
   outline: none;
 }
-.root:focus-within {
+.root:focus-within:focus-within {
   box-shadow: none;
   outline: none;
   border-color: #228b224d;
 }
-.root:hover {
+.root:hover:hover {
   background: linear-gradient(180deg, #228b22 0%, #a5e612 100%);
   border-color: #228b2233;
 }
-.root:active {
+.root:active:active {
   background: #228b22;
 }
-.rootcolor_blue:hover {
+.rootcolor_blue:hover:hover {
   background: #369eff;
 }
-.rootcolor_blue:active {
+.rootcolor_blue:active:active {
   background: #52a9ff;
 }
-.rootcolor_green:hover {
+.rootcolor_green:hover:hover {
   background: #3cb179;
 }
-.rootcolor_green:active {
+.rootcolor_green:active:active {
   background: #4cc38a;
 }
-.rootcolor_yellow:hover {
+.rootcolor_yellow:hover:hover {
   background: #ffef5c;
 }
-.rootcolor_yellow:active {
+.rootcolor_yellow:active:active {
   background: #f0c000;
 }
-.rootcolor_red:hover {
+.rootcolor_red:hover:hover {
   background: #ec5e41;
 }
-.rootcolor_red:active {
+.rootcolor_red:active:active {
   background: #f16a50;
 }
-.rootcolor_sand:hover {
+.rootcolor_sand:hover:hover {
   background: #7f7e77;
 }
-.rootcolor_sand:active {
+.rootcolor_sand:active:active {
   background: #a1a09a;
 }
-.rootcolor_white:hover {
+.rootcolor_white:hover:hover {
   background: linear-gradient(
     100deg,
     #e5d19c99 0%,
@@ -154,49 +154,49 @@
     #8e774699 100%
   );
 }
-.rootcolor_white:active {
+.rootcolor_white:active:active {
   background: #89764c;
 }
-.rootcolor_softBlue:hover {
+.rootcolor_softBlue:hover:hover {
   background: #e1f0ff;
 }
-.rootcolor_softBlue:active {
+.rootcolor_softBlue:active:active {
   background: #cee7fe;
 }
-.rootcolor_softGreen:active {
+.rootcolor_softGreen:active:active {
   background: #ccebd7;
 }
-.rootcolor_softGreen:hover {
+.rootcolor_softGreen:hover:hover {
   background: #ddf3e4;
 }
-.rootcolor_softYellow:active {
+.rootcolor_softYellow:active:active {
   background: #fef2a4;
 }
-.rootcolor_softYellow:hover {
+.rootcolor_softYellow:hover:hover {
   background: #fff8bb;
 }
-.rootcolor_softRed:active {
+.rootcolor_softRed:active:active {
   background: #fdd8d3;
 }
-.rootcolor_softRed:hover {
+.rootcolor_softRed:hover:hover {
   background: #ffe6e2;
 }
-.rootcolor_softSand:hover {
+.rootcolor_softSand:hover:hover {
   background: #e9e9e6;
 }
-.rootcolor_softSand:active {
+.rootcolor_softSand:active:active {
   background: #e3e3e0;
 }
-.rootcolor_clear:hover {
+.rootcolor_clear:hover:hover {
   background: #e9e9e6;
 }
-.rootcolor_clear:active {
+.rootcolor_clear:active:active {
   background: #e3e3e0;
 }
-.rootcolor_link:hover {
+.rootcolor_link:hover:hover {
   background: #ffffff00;
 }
-.rootcolor_link:active {
+.rootcolor_link:active:active {
   background: #ffffff00;
 }
 .startIconContainer {

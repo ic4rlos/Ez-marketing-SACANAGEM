@@ -2323,15 +2323,15 @@
   font-size: 12px;
   font-weight: 600;
 }
-.optionGroup:global(.__wab_instance) {
+.optionGroup__lqYqj:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;
 }
-.solution:global(.__wab_instance) {
+.solution2:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;
 }
-.freeBox__eWe8 {
+.freeBox__veqS {
   display: flex;
   flex-direction: row;
   position: relative;
@@ -2345,7 +2345,7 @@
   min-height: 0;
   padding: 0px;
 }
-.companyLogo {
+.companyLogo2 {
   object-fit: cover;
   max-width: 100%;
   width: 25px;
@@ -2353,10 +2353,52 @@
   margin-top: 3px;
   flex-shrink: 0;
 }
-.companyLogo > picture > img {
+.companyLogo2 > picture > img {
   object-fit: cover;
 }
-.title {
+.title3 {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+  min-width: 0;
+}
+.optionGroup___2BdDa:global(.__wab_instance) {
+  max-width: 100%;
+  object-fit: cover;
+}
+.solution3:global(.__wab_instance) {
+  max-width: 100%;
+  object-fit: cover;
+}
+.freeBox__qt1Cb {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  align-items: stretch;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  margin-top: 1px;
+  min-width: 0;
+  min-height: 0;
+  padding: 0px;
+}
+.companyLogo3 {
+  object-fit: cover;
+  max-width: 100%;
+  width: 25px;
+  height: 25px;
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+.companyLogo3 > picture > img {
+  object-fit: cover;
+}
+.title4 {
   width: 100%;
   height: auto;
   max-width: 100%;
@@ -3080,10 +3122,20 @@
   font-weight: 600;
   min-width: 0;
 }
+.freeBox__uqKNs {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  align-items: stretch;
+  justify-content: flex-start;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+}
 .awatingConfirmation {
   display: flex;
   flex-direction: row;
-  position: relative;
   align-items: center;
   justify-content: center;
   width: 100%;
@@ -3231,13 +3283,13 @@
 .emailInput4:global(.__wab_instance) {
   max-width: 100%;
 }
-.svg___0RByW {
+.svg__eLxVk {
   position: relative;
   object-fit: cover;
   width: auto;
   height: 1em;
 }
-.svg__qtU3 {
+.svg__yueFx {
   position: relative;
   object-fit: cover;
   width: auto;
@@ -3305,7 +3357,7 @@
   max-width: 100%;
   width: 100px;
 }
-.svg___2CUDg {
+.svg___4SwgW {
   position: relative;
   object-fit: cover;
   width: auto;
@@ -3314,7 +3366,7 @@
 .text__l8N6F {
   font-size: 12px;
 }
-.svg__jPOak {
+.svg___7KWQp {
   position: relative;
   object-fit: cover;
   width: auto;
@@ -3324,7 +3376,7 @@
   max-width: 100%;
   width: 100px;
 }
-.svg__fg0I6 {
+.svg___5ZQul {
   position: relative;
   object-fit: cover;
   width: auto;
@@ -3335,7 +3387,7 @@
   white-space: pre-wrap;
   text-align: center;
 }
-.svg__i7Ysx {
+.svg___5BaS2 {
   position: relative;
   object-fit: cover;
   width: auto;
@@ -3345,7 +3397,7 @@
   max-width: 100%;
   width: 100px;
 }
-.svg__ftQbf {
+.svg__x2VX {
   position: relative;
   object-fit: cover;
   width: auto;
@@ -3356,7 +3408,7 @@
   white-space: pre-wrap;
   text-align: center;
 }
-.svg__ukL06 {
+.svg__ld4D {
   position: relative;
   object-fit: cover;
   width: auto;
@@ -7032,10 +7084,20 @@
   font-weight: 600;
   min-width: 0;
 }
+.freeBox__i0X3K {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  min-width: 0;
+}
 .awatingConfirmation2 {
   display: flex;
   flex-direction: row;
-  position: relative;
   align-items: center;
   justify-content: center;
   width: 100%;
@@ -7223,7 +7285,7 @@
   max-width: 100%;
   width: 100px;
 }
-.svg__tDh97 {
+.svg__u97Fn {
   position: relative;
   object-fit: cover;
   width: auto;
@@ -7232,7 +7294,7 @@
 .text___1KrPs {
   font-size: 12px;
 }
-.svg__iykhc {
+.svg__wxsrD {
   position: relative;
   object-fit: cover;
   width: auto;
@@ -7242,7 +7304,7 @@
   max-width: 100%;
   width: 100px;
 }
-.svg__prSz {
+.svg__b3Sb {
   position: relative;
   object-fit: cover;
   width: auto;
@@ -7253,7 +7315,7 @@
   white-space: pre-wrap;
   text-align: center;
 }
-.svg___2BVn {
+.svg__hdzem {
   position: relative;
   object-fit: cover;
   width: auto;
@@ -10285,10 +10347,20 @@
   font-weight: 600;
   min-width: 0;
 }
+.freeBox___6Abnp {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  min-width: 0;
+}
 .awatingConfirmation3 {
   display: flex;
   flex-direction: row;
-  position: relative;
   align-items: center;
   justify-content: center;
   width: 100%;
@@ -10436,13 +10508,13 @@
 .emailInput3:global(.__wab_instance) {
   max-width: 100%;
 }
-.svg__mmNFu {
+.svg__sljRm {
   position: relative;
   object-fit: cover;
   width: auto;
   height: 1em;
 }
-.svg__lPdO {
+.svg__c0YrV {
   position: relative;
   object-fit: cover;
   width: auto;
@@ -10510,7 +10582,7 @@
   max-width: 100%;
   width: 100px;
 }
-.svg___9J86V {
+.svg__moVst {
   position: relative;
   object-fit: cover;
   width: auto;
@@ -10519,7 +10591,7 @@
 .text__qV1TK {
   font-size: 12px;
 }
-.svg__n4To6 {
+.svg__yzlW5 {
   position: relative;
   object-fit: cover;
   width: auto;
@@ -10529,7 +10601,7 @@
   max-width: 100%;
   width: 100px;
 }
-.svg__lg449 {
+.svg__kFxv5 {
   position: relative;
   object-fit: cover;
   width: auto;
@@ -10540,7 +10612,7 @@
   white-space: pre-wrap;
   text-align: center;
 }
-.svg__u5P3Q {
+.svg__ul4AF {
   position: relative;
   object-fit: cover;
   width: auto;
@@ -10550,7 +10622,7 @@
   max-width: 100%;
   width: 100px;
 }
-.svg__p8Rm5 {
+.svg___4VI4B {
   position: relative;
   object-fit: cover;
   width: auto;
@@ -10561,7 +10633,7 @@
   white-space: pre-wrap;
   text-align: center;
 }
-.svg__s768I {
+.svg__lHdNp {
   position: relative;
   object-fit: cover;
   width: auto;
@@ -11491,7 +11563,7 @@
   color: #ff0000;
   min-width: 0;
 }
-.troubleWithAdress2 {
+.troubleWithAddress3 {
   display: flex;
   flex-direction: row;
   position: relative;
@@ -15164,10 +15236,20 @@
   font-weight: 600;
   min-width: 0;
 }
+.freeBox__nU5Mp {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  min-width: 0;
+}
 .awatingConfirmation4 {
   display: flex;
   flex-direction: row;
-  position: relative;
   align-items: center;
   justify-content: center;
   width: 100%;
@@ -15355,7 +15437,7 @@
   max-width: 100%;
   width: 100px;
 }
-.svg__f7J1H {
+.svg__iI5R {
   position: relative;
   object-fit: cover;
   width: auto;
@@ -15364,7 +15446,7 @@
 .text__xHavy {
   font-size: 12px;
 }
-.svg__rqZuh {
+.svg__fetcs {
   position: relative;
   object-fit: cover;
   width: auto;
@@ -15374,7 +15456,7 @@
   max-width: 100%;
   width: 100px;
 }
-.svg__eQkt0 {
+.svg__qSxi {
   position: relative;
   object-fit: cover;
   width: auto;
@@ -15385,7 +15467,7 @@
   white-space: pre-wrap;
   text-align: center;
 }
-.svg__jQMyV {
+.svg__p9Sev {
   position: relative;
   object-fit: cover;
   width: auto;

@@ -16,7 +16,7 @@
   background: #232320;
   border-color: #717069;
 }
-.root:hover {
+.root:hover:hover {
   background:
     linear-gradient(#ffffff, #ffffff),
     linear-gradient(0deg, #389e0d 0%, #56b9ff 100%) 0% 0% / 100% 100% repeat,
@@ -25,7 +25,7 @@
     #ffffff;
   border-color: #c8c7c1;
 }
-.root:focus-within {
+.root:focus-within:focus-within {
   box-shadow: none;
   outline: none;
   border-radius: 6px;

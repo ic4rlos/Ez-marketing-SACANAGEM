@@ -9,7 +9,7 @@
   min-width: 200px;
   row-gap: var(--token-t2k15FQuuV6M);
 }
-.ariaRangeSlider[data-disabled]:global(.__wab_instance) {
+.ariaRangeSlider[data-disabled][data-disabled]:global(.__wab_instance) {
   opacity: 0.5;
 }
 .freeBox___7BiPi {

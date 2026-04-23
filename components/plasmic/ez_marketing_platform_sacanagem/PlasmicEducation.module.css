@@ -10,7 +10,7 @@
   box-shadow: 2px 7px 7px 0px rgba(0, 0, 0, 0.2);
   border-radius: 15px;
 }
-.root:hover {
+.root:hover:hover {
   height: 220px;
 }
 .upload:global(.__wab_instance) {

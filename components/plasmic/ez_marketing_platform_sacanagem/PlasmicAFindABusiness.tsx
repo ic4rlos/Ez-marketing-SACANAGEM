@@ -409,55 +409,55 @@ function PlasmicAFindABusiness__RenderFunc(props: {
     $ctx as PageCtx
   );
 
-  const [isN6312909FocusVisible, triggerN6312909FocusVisibleProps] = useTrigger(
+  const [isN3248881FocusVisible, triggerN3248881FocusVisibleProps] = useTrigger(
     "useFocusVisible",
     {
       isTextInput: false
     }
   );
-  const [isN6312909FocusVisibleWithin, triggerN6312909FocusVisibleWithinProps] =
+  const [isN3248881FocusVisibleWithin, triggerN3248881FocusVisibleWithinProps] =
     useTrigger("useFocusVisibleWithin", {
       isTextInput: false
     });
-  const [isN6313330FocusVisible, triggerN6313330FocusVisibleProps] = useTrigger(
+  const [isN3249302FocusVisible, triggerN3249302FocusVisibleProps] = useTrigger(
     "useFocusVisible",
     {
       isTextInput: false
     }
   );
-  const [isN6313330FocusVisibleWithin, triggerN6313330FocusVisibleWithinProps] =
+  const [isN3249302FocusVisibleWithin, triggerN3249302FocusVisibleWithinProps] =
     useTrigger("useFocusVisibleWithin", {
       isTextInput: false
     });
-  const [isN6313751FocusVisible, triggerN6313751FocusVisibleProps] = useTrigger(
+  const [isN3249723FocusVisible, triggerN3249723FocusVisibleProps] = useTrigger(
     "useFocusVisible",
     {
       isTextInput: false
     }
   );
-  const [isN6313751FocusVisibleWithin, triggerN6313751FocusVisibleWithinProps] =
+  const [isN3249723FocusVisibleWithin, triggerN3249723FocusVisibleWithinProps] =
     useTrigger("useFocusVisibleWithin", {
       isTextInput: false
     });
-  const [isN6314172FocusVisible, triggerN6314172FocusVisibleProps] = useTrigger(
+  const [isN3250144FocusVisible, triggerN3250144FocusVisibleProps] = useTrigger(
     "useFocusVisible",
     {
       isTextInput: false
     }
   );
-  const [isN6314172FocusVisibleWithin, triggerN6314172FocusVisibleWithinProps] =
+  const [isN3250144FocusVisibleWithin, triggerN3250144FocusVisibleWithinProps] =
     useTrigger("useFocusVisibleWithin", {
       isTextInput: false
     });
   const triggers = {
-    focusVisible_6312909: isN6312909FocusVisible,
-    focusVisibleWithin_6312909: isN6312909FocusVisibleWithin,
-    focusVisible_6313330: isN6313330FocusVisible,
-    focusVisibleWithin_6313330: isN6313330FocusVisibleWithin,
-    focusVisible_6313751: isN6313751FocusVisible,
-    focusVisibleWithin_6313751: isN6313751FocusVisibleWithin,
-    focusVisible_6314172: isN6314172FocusVisible,
-    focusVisibleWithin_6314172: isN6314172FocusVisibleWithin
+    focusVisible_3248881: isN3248881FocusVisible,
+    focusVisibleWithin_3248881: isN3248881FocusVisibleWithin,
+    focusVisible_3249302: isN3249302FocusVisible,
+    focusVisibleWithin_3249302: isN3249302FocusVisibleWithin,
+    focusVisible_3249723: isN3249723FocusVisible,
+    focusVisibleWithin_3249723: isN3249723FocusVisibleWithin,
+    focusVisible_3250144: isN3250144FocusVisible,
+    focusVisibleWithin_3250144: isN3250144FocusVisibleWithin
   };
 
   const styleTokensClassNames = _useStyleTokens();
@@ -1927,9 +1927,9 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                       sty.link__w7OTb,
                       {
                         [sty.link___focusVisibleWithin__w7OTb5SWd3]:
-                          triggers.focusVisibleWithin_6312909,
+                          triggers.focusVisibleWithin_3248881,
                         [sty.link___focusVisible__w7OTb9N36P]:
-                          triggers.focusVisible_6312909
+                          triggers.focusVisible_3248881
                       }
                     )}
                     component={Link}
@@ -1939,8 +1939,8 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                       "Companies with fixed prices that go to the location to provide services"
                     }
                     data-plasmic-trigger-props={[
-                      triggerN6312909FocusVisibleProps,
-                      triggerN6312909FocusVisibleWithinProps
+                      triggerN3248881FocusVisibleProps,
+                      triggerN3248881FocusVisibleWithinProps
                     ]}
                   >
                     <React.Fragment>
@@ -2581,9 +2581,9 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                       sty.link__li62,
                       {
                         [sty.link___focusVisibleWithin__li62TyKlW]:
-                          triggers.focusVisibleWithin_6313330,
+                          triggers.focusVisibleWithin_3249302,
                         [sty.link___focusVisible__li62NlhE5]:
-                          triggers.focusVisible_6313330
+                          triggers.focusVisible_3249302
                       }
                     )}
                     component={Link}
@@ -2591,8 +2591,8 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                     platform={"nextjs"}
                     title={"Fixed-price companies that welcome customers"}
                     data-plasmic-trigger-props={[
-                      triggerN6313330FocusVisibleProps,
-                      triggerN6313330FocusVisibleWithinProps
+                      triggerN3249302FocusVisibleProps,
+                      triggerN3249302FocusVisibleWithinProps
                     ]}
                   >
                     <React.Fragment>
@@ -3231,9 +3231,9 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                       sty.link___2ZDaz,
                       {
                         [sty.link___focusVisibleWithin___2ZDazAuceu]:
-                          triggers.focusVisibleWithin_6313751,
+                          triggers.focusVisibleWithin_3249723,
                         [sty.link___focusVisible___2ZDazimth]:
-                          triggers.focusVisible_6313751
+                          triggers.focusVisible_3249723
                       }
                     )}
                     component={Link}
@@ -3243,8 +3243,8 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                       "Budget-priced companies that go to the location to provide services"
                     }
                     data-plasmic-trigger-props={[
-                      triggerN6313751FocusVisibleProps,
-                      triggerN6313751FocusVisibleWithinProps
+                      triggerN3249723FocusVisibleProps,
+                      triggerN3249723FocusVisibleWithinProps
                     ]}
                   >
                     <React.Fragment>
@@ -3885,9 +3885,9 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                       sty.link___8Fedr,
                       {
                         [sty.link___focusVisibleWithin___8FedruhXAh]:
-                          triggers.focusVisibleWithin_6314172,
+                          triggers.focusVisibleWithin_3250144,
                         [sty.link___focusVisible___8FedrNhrid]:
-                          triggers.focusVisible_6314172
+                          triggers.focusVisible_3250144
                       }
                     )}
                     component={Link}
@@ -3895,8 +3895,8 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                     platform={"nextjs"}
                     title={"Budget-priced companies that welcome customers"}
                     data-plasmic-trigger-props={[
-                      triggerN6314172FocusVisibleProps,
-                      triggerN6314172FocusVisibleWithinProps
+                      triggerN3250144FocusVisibleProps,
+                      triggerN3250144FocusVisibleWithinProps
                     ]}
                   >
                     <React.Fragment>
@@ -4599,7 +4599,7 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                         displayMaxWidth={"100%"}
                         displayMinHeight={"0"}
                         displayMinWidth={"0"}
-                        displayWidth={"100%"}
+                        displayWidth={"300px"}
                         src={(() => {
                           try {
                             return currentItem["Company image"];
@@ -5158,7 +5158,7 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                         displayMaxWidth={"100%"}
                         displayMinHeight={"0"}
                         displayMinWidth={"0"}
-                        displayWidth={"100%"}
+                        displayWidth={"300px"}
                         src={(() => {
                           try {
                             return currentItem["Company image"];

@@ -8,7 +8,7 @@
 .rootcolor_softGreen {
   border-color: #ffffff00;
 }
-.root:focus-within {
+.root:focus-within:focus-within {
   outline: none;
 }
 .root___focusVisibleWithin {

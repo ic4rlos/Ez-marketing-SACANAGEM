@@ -23,7 +23,12 @@ export default function CServiceDashboard() {
   const [companyUser, setCompanyUser] = useState<any>(null);
   const [company, setCompany] = useState<any>(null);
   const [orders, setOrders] = useState<any[]>([]);
+  const [solutions, setSolutions] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+
+  // filtros
+  const [selectedSolution, setSelectedSolution] = useState("all");
+  const [period, setPeriod] = useState(7);
 
   // =========================
   // AUTH
@@ -43,7 +48,6 @@ export default function CServiceDashboard() {
     if (!companyUser) return;
 
     async function loadAll() {
-      // empresa
       const { data: companyData } = await supabaseC
         .from("companies")
         .select("*")
@@ -57,32 +61,25 @@ export default function CServiceDashboard() {
 
       setCompany(companyData);
 
+      // solutions da empresa
+      const { data: solutionsData } = await supabaseC
+        .from("solutions")
+        .select("id, Title")
+        .eq("company_id", companyData.id);
+
+      setSolutions(solutionsData || []);
+
       // orders
       const { data: ordersDb } = await supabaseA
         .from("orders")
         .select("*")
         .eq("company_id", companyData.id);
 
-      if (!ordersDb?.length) {
+      if (!ordersDb) {
         setOrders([]);
         setLoading(false);
         return;
       }
-
-      // solutions
-      const solutionIds = Array.from(
-        new Set(ordersDb.map((o: any) => o.solution_id))
-      );
-
-      const { data: solutions } = await supabaseC
-        .from("solutions")
-        .select('id, Title, "Solution nature"')
-        .in("id", solutionIds);
-
-      const solutionMap: any = {};
-      solutions?.forEach((s: any) => {
-        solutionMap[s.id] = s;
-      });
 
       // communities
       const communityIds = Array.from(
@@ -99,31 +96,17 @@ export default function CServiceDashboard() {
         communityMap[c.id] = c;
       });
 
-      // =========================
-      // FORMAT (UMA LISTA ÚNICA)
-      // =========================
-
-      const formatted = ordersDb.map((o: any) => {
-        const solution = solutionMap[o.solution_id];
-        const community = communityMap[o.community_id];
-
-        return {
-          id: o.id,
-          solution: solution?.Title ?? "",
-          community: community?.community_name ?? "",
-          created_at: o.created_at,
-          address: o.address,
-          scheduled: o.scheduled_at,
-          estimated_time: o.estimated_time_minutes,
-          price: o.price,
-
-          // 🔥 CRÍTICO
-          current_status: o.current_status,
-
-          // 🔥 CRÍTICO (nature vem da solution)
-          solution_nature: solution?.["Solution nature"] ?? ""
-        };
-      });
+      const formatted = ordersDb.map((o: any) => ({
+        id: o.id,
+        solution_id: o.solution_id,
+        community: communityMap[o.community_id]?.community_name ?? "",
+        created_at: o.created_at,
+        address: o.address,
+        scheduled: o.scheduled_at,
+        estimated_time: o.estimated_time_minutes,
+        price: o.price,
+        current_status: o.current_status
+      }));
 
       setOrders(formatted);
       setLoading(false);
@@ -133,7 +116,29 @@ export default function CServiceDashboard() {
   }, [companyUser]);
 
   // =========================
-  // ACTION ENGINE
+  // FILTER ENGINE
+  // =========================
+  function getFilteredOrders() {
+    const now = new Date();
+
+    return orders.filter((o) => {
+      // filtro de período
+      const created = new Date(o.created_at);
+      const diffDays =
+        (now.getTime() - created.getTime()) / (1000 * 60 * 60 * 24);
+
+      if (diffDays > period) return false;
+
+      // filtro de solution
+      if (selectedSolution !== "all" && o.solution_id !== selectedSolution)
+        return false;
+
+      return true;
+    });
+  }
+
+  // =========================
+  // ACTION
   // =========================
   async function onSave(data: any) {
     const orderId = data?.orderId;
@@ -172,8 +177,13 @@ export default function CServiceDashboard() {
   return (
     <PlasmicCServiceDashboard
       args={{
-        company, // 🔥 AGORA FUNCIONA O VISIBILITY
-        orders: orders.length ? orders : [{}],
+        company,
+        orders: getFilteredOrders().length ? getFilteredOrders() : [{}],
+        solutions,
+        selectedSolution,
+        setSelectedSolution,
+        period,
+        setPeriod,
         onSave
       }}
     />

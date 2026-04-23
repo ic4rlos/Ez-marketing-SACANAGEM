@@ -22,12 +22,8 @@ export default function CServiceDashboard() {
 
   const [companyUser, setCompanyUser] = useState<any>(null);
   const [company, setCompany] = useState<any>(null);
+  const [orders, setOrders] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
-
-  const [tableCustomer, setTableCustomer] = useState<any[]>([]);
-  const [tableCompany, setTableCompany] = useState<any[]>([]);
-  const [analysisCustomer, setAnalysisCustomer] = useState<any[]>([]);
-  const [analysisCompany, setAnalysisCompany] = useState<any[]>([]);
 
   // =========================
   // AUTH
@@ -41,13 +37,13 @@ export default function CServiceDashboard() {
   }, []);
 
   // =========================
-  // LOAD DATA
+  // LOAD
   // =========================
   useEffect(() => {
     if (!companyUser) return;
 
     async function loadAll() {
-      // empresa logada
+      // empresa
       const { data: companyData } = await supabaseC
         .from("companies")
         .select("*")
@@ -62,19 +58,20 @@ export default function CServiceDashboard() {
       setCompany(companyData);
 
       // orders
-      const { data: orders } = await supabaseA
+      const { data: ordersDb } = await supabaseA
         .from("orders")
         .select("*")
         .eq("company_id", companyData.id);
 
-      if (!orders?.length) {
+      if (!ordersDb?.length) {
+        setOrders([]);
         setLoading(false);
         return;
       }
 
       // solutions
       const solutionIds = Array.from(
-        new Set(orders.map((o: any) => o.solution_id))
+        new Set(ordersDb.map((o: any) => o.solution_id))
       );
 
       const { data: solutions } = await supabaseC
@@ -89,7 +86,7 @@ export default function CServiceDashboard() {
 
       // communities
       const communityIds = Array.from(
-        new Set(orders.map((o: any) => o.community_id))
+        new Set(ordersDb.map((o: any) => o.community_id))
       );
 
       const { data: communities } = await supabaseA
@@ -103,19 +100,14 @@ export default function CServiceDashboard() {
       });
 
       // =========================
-      // FORMAT + CLASSIFY (POR NATURE)
+      // FORMAT (UMA LISTA ÚNICA)
       // =========================
 
-      const tCustomer: any[] = [];
-      const tCompany: any[] = [];
-      const aCustomer: any[] = [];
-      const aCompany: any[] = [];
-
-      orders.forEach((o: any) => {
+      const formatted = ordersDb.map((o: any) => {
         const solution = solutionMap[o.solution_id];
         const community = communityMap[o.community_id];
 
-        const item = {
+        return {
           id: o.id,
           solution: solution?.Title ?? "",
           community: community?.community_name ?? "",
@@ -124,33 +116,16 @@ export default function CServiceDashboard() {
           scheduled: o.scheduled_at,
           estimated_time: o.estimated_time_minutes,
           price: o.price,
-          status: o.current_status
+
+          // 🔥 CRÍTICO
+          current_status: o.current_status,
+
+          // 🔥 CRÍTICO (nature vem da solution)
+          solution_nature: solution?.["Solution nature"] ?? ""
         };
-
-        const nature = solution?.["Solution nature"];
-
-        if (nature === "Table - At Customer Location") {
-          tCustomer.push(item);
-        }
-
-        if (nature === "Table - At Company Location") {
-          tCompany.push(item);
-        }
-
-        if (nature === "Analysis - At Customer Location") {
-          aCustomer.push(item);
-        }
-
-        if (nature === "Analysis - At Company Location") {
-          aCompany.push(item);
-        }
       });
 
-      setTableCustomer(tCustomer);
-      setTableCompany(tCompany);
-      setAnalysisCustomer(aCustomer);
-      setAnalysisCompany(aCompany);
-
+      setOrders(formatted);
       setLoading(false);
     }
 
@@ -197,10 +172,8 @@ export default function CServiceDashboard() {
   return (
     <PlasmicCServiceDashboard
       args={{
-        table_customer: tableCustomer.length ? tableCustomer : [{}],
-        table_company: tableCompany.length ? tableCompany : [{}],
-        analysis_customer: analysisCustomer.length ? analysisCustomer : [{}],
-        analysis_company: analysisCompany.length ? analysisCompany : [{}],
+        company, // 🔥 AGORA FUNCIONA O VISIBILITY
+        orders: orders.length ? orders : [{}],
         onSave
       }}
     />

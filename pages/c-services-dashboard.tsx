@@ -194,7 +194,7 @@ export default function CServiceDashboard() {
     <PlasmicCServiceDashboard
       company={company}
       orders={getFilteredOrders().length ? getFilteredOrders() : [{}]}
-      solutions={solutions.length ? solutions : [{}]}
+      solutions={solutions}
       selectedSolution={selectedSolution}
       setSelectedSolution={setSelectedSolution}
       period={period}

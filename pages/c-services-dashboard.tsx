@@ -26,8 +26,7 @@ export default function CServiceDashboard() {
   const [solutions, setSolutions] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
-  // filtros
-  const [selectedSolution, setSelectedSolution] = useState("all");
+  const [selectedSolution, setSelectedSolution] = useState<any>("all");
   const [period, setPeriod] = useState(7);
 
   // =========================
@@ -42,12 +41,13 @@ export default function CServiceDashboard() {
   }, []);
 
   // =========================
-  // LOAD
+  // LOAD DATA
   // =========================
   useEffect(() => {
     if (!companyUser) return;
 
     async function loadAll() {
+      // COMPANY
       const { data: companyData } = await supabaseC
         .from("companies")
         .select("*")
@@ -61,15 +61,29 @@ export default function CServiceDashboard() {
 
       setCompany(companyData);
 
-      // solutions da empresa
-      const { data: solutionsData } = await supabaseC
-        .from("solutions")
-        .select("id, Title")
+      // =========================
+      // SOLUTIONS (CORRETO)
+      // =========================
+      const { data: companySolutions } = await supabaseC
+        .from("company_solutions")
+        .select(`
+          solution_id,
+          solutions (
+            id,
+            Title,
+            "Solution nature"
+          )
+        `)
         .eq("company_id", companyData.id);
 
-      setSolutions(solutionsData || []);
+      const formattedSolutions =
+        companySolutions?.map((s: any) => s.solutions) || [];
 
-      // orders
+      setSolutions(formattedSolutions);
+
+      // =========================
+      // ORDERS
+      // =========================
       const { data: ordersDb } = await supabaseA
         .from("orders")
         .select("*")
@@ -81,7 +95,7 @@ export default function CServiceDashboard() {
         return;
       }
 
-      // communities
+      // COMMUNITIES
       const communityIds = Array.from(
         new Set(ordersDb.map((o: any) => o.community_id))
       );
@@ -96,7 +110,8 @@ export default function CServiceDashboard() {
         communityMap[c.id] = c;
       });
 
-      const formatted = ordersDb.map((o: any) => ({
+      // FORMAT
+      const formattedOrders = ordersDb.map((o: any) => ({
         id: o.id,
         solution_id: o.solution_id,
         community: communityMap[o.community_id]?.community_name ?? "",
@@ -108,7 +123,7 @@ export default function CServiceDashboard() {
         current_status: o.current_status
       }));
 
-      setOrders(formatted);
+      setOrders(formattedOrders);
       setLoading(false);
     }
 
@@ -122,15 +137,16 @@ export default function CServiceDashboard() {
     const now = new Date();
 
     return orders.filter((o) => {
-      // filtro de período
       const created = new Date(o.created_at);
       const diffDays =
         (now.getTime() - created.getTime()) / (1000 * 60 * 60 * 24);
 
       if (diffDays > period) return false;
 
-      // filtro de solution
-      if (selectedSolution !== "all" && o.solution_id !== selectedSolution)
+      if (
+        selectedSolution !== "all" &&
+        o.solution_id !== Number(selectedSolution)
+      )
         return false;
 
       return true;
@@ -138,7 +154,7 @@ export default function CServiceDashboard() {
   }
 
   // =========================
-  // ACTION
+  // ACTION ENGINE
   // =========================
   async function onSave(data: any) {
     const orderId = data?.orderId;
@@ -176,16 +192,14 @@ export default function CServiceDashboard() {
 
   return (
     <PlasmicCServiceDashboard
-      args={{
-        company,
-        orders: getFilteredOrders().length ? getFilteredOrders() : [{}],
-        solutions,
-        selectedSolution,
-        setSelectedSolution,
-        period,
-        setPeriod,
-        onSave
-      }}
+      company={company}
+      orders={getFilteredOrders().length ? getFilteredOrders() : [{}]}
+      solutions={solutions.length ? solutions : [{}]}
+      selectedSolution={selectedSolution}
+      setSelectedSolution={setSelectedSolution}
+      period={period}
+      setPeriod={setPeriod}
+      onSave={onSave}
     />
   );
 }

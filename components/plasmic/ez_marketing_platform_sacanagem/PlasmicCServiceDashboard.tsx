@@ -1147,6 +1147,19 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
                     displayMinWidth={"0"}
                     displayWidth={"30px"}
                     loading={"lazy"}
+                    src={(() => {
+                      try {
+                        return $props.company?.["Company Logo"] ?? "";
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return undefined;
+                        }
+                        throw e;
+                      }
+                    })()}
                   />
                 </AntdButton>
               </AntdDropdown>
@@ -3878,9 +3891,7 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
                       ? (() => {
                           const actionArgs = {
                             customFunction: async () => {
-                              return $props.setSelectedSolution(
-                                $event.target.value
-                              );
+                              return $props.setSelectedSolution(currentItem.id);
                             }
                           };
                           return (({ customFunction }) => {
@@ -3971,7 +3982,7 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
                 {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
                   (() => {
                     try {
-                      return $props.solutions || [1];
+                      return $props.solutionsData || [1];
                     } catch (e) {
                       if (
                         e instanceof TypeError ||

@@ -21,6 +21,9 @@ export default function CServiceDashboard() {
   const [solutionsData, setSolutionsData] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
+  // 🔥 filtro já preparado (mesmo sem usar ainda)
+  const [selectedSolution, setSelectedSolution] = useState<any>(null);
+
   // =========================
   // AUTH
   // =========================
@@ -42,7 +45,9 @@ export default function CServiceDashboard() {
       try {
         setLoading(true);
 
+        // =========================
         // COMPANY
+        // =========================
         const { data: companyData } = await supabaseC
           .from("companies")
           .select("*")
@@ -54,26 +59,40 @@ export default function CServiceDashboard() {
           return;
         }
 
-        // 🔥 MAPEAMENTO IGUAL AO RESTO DO SISTEMA
+        // 🔥 MAPEAMENTO PADRÃO (igual sistema inteiro)
         const mappedCompany = {
           ...companyData,
-          "Company Logo": companyData["Company Logo"] ?? companyData.company_logo ?? "",
-          "Company nature": companyData["Company nature"] ?? companyData.company_nature ?? "",
-          "Company name": companyData["Company name"] ?? companyData.name ?? ""
+          "Company Logo":
+            companyData["Company Logo"] ??
+            companyData.company_logo ??
+            "",
+          "Company nature":
+            companyData["Company nature"] ??
+            companyData.company_nature ??
+            "",
+          "Company name":
+            companyData["Company name"] ??
+            companyData.name ??
+            "",
         };
 
         setCompany(mappedCompany);
 
         // =========================
-        // SOLUTIONS (CORRETO)
+        // SOLUTIONS (MESMA LÓGICA DO COMPANY PROFILE)
         // =========================
         const { data: solutions } = await supabaseC
           .from("solutions")
           .select("id, Title")
-          .eq("Company_id", companyData.id); // 🔥 CORRETO
+          .eq("Company_id", companyData.id); // 🔥 ESSENCIAL
 
-        setSolutionsData(solutions ?? []);
+        const formattedSolutions =
+          solutions?.map((s: any) => ({
+            id: s.id,
+            title: s.Title ?? "",
+          })) ?? [];
 
+        setSolutionsData(formattedSolutions);
       } catch (err) {
         console.error("Load error:", err);
       }
@@ -89,8 +108,16 @@ export default function CServiceDashboard() {
   return (
     <PlasmicCServiceDashboard
       args={{
+        // 🔥 BASE
         company: company ?? {},
-        solutionsData: solutionsData.length ? solutionsData : [{}],
+
+        // 🔥 REPEATER
+        solutionsData:
+          solutionsData.length ? solutionsData : [{}],
+
+        // 🔥 FILTER READY
+        selectedSolution,
+        setSelectedSolution,
       }}
     />
   );

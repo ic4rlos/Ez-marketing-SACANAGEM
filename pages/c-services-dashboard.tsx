@@ -16,9 +16,9 @@ const PlasmicCServiceDashboard = dynamic(
 export default function CServiceDashboard() {
   const supabaseC = getSupabaseC();
 
-  const [companyUser, setCompanyUser] = useState<any>(null);
+  const [user, setUser] = useState<any>(undefined);
   const [company, setCompany] = useState<any>(null);
-  const [solutions, setSolutions] = useState<any[]>([]);
+  const [solutionsData, setSolutionsData] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
   // =========================
@@ -27,61 +27,70 @@ export default function CServiceDashboard() {
   useEffect(() => {
     async function loadUser() {
       const { data } = await supabaseC.auth.getUser();
-      setCompanyUser(data?.user ?? null);
+      setUser(data?.user ?? null);
     }
     loadUser();
   }, []);
 
   // =========================
-  // LOAD BASE (SÓ O NECESSÁRIO)
+  // LOAD BASE (PADRÃO CORRETO)
   // =========================
   useEffect(() => {
-    if (!companyUser) return;
+    if (!user) return;
 
-    async function loadBase() {
-      // COMPANY
-      const { data: companyData } = await supabaseC
-        .from("companies")
-        .select("*")
-        .eq("user_id", companyUser.id)
-        .maybeSingle();
+    async function loadAll() {
+      try {
+        setLoading(true);
 
-      if (!companyData) {
-        setLoading(false);
-        return;
+        // COMPANY
+        const { data: companyData } = await supabaseC
+          .from("companies")
+          .select("*")
+          .eq("user_id", user.id)
+          .maybeSingle();
+
+        if (!companyData) {
+          setLoading(false);
+          return;
+        }
+
+        // 🔥 MAPEAMENTO IGUAL AO RESTO DO SISTEMA
+        const mappedCompany = {
+          ...companyData,
+          "Company Logo": companyData["Company Logo"] ?? companyData.company_logo ?? "",
+          "Company nature": companyData["Company nature"] ?? companyData.company_nature ?? "",
+          "Company name": companyData["Company name"] ?? companyData.name ?? ""
+        };
+
+        setCompany(mappedCompany);
+
+        // =========================
+        // SOLUTIONS (CORRETO)
+        // =========================
+        const { data: solutions } = await supabaseC
+          .from("solutions")
+          .select("id, Title")
+          .eq("Company_id", companyData.id); // 🔥 CORRETO
+
+        setSolutionsData(solutions ?? []);
+
+      } catch (err) {
+        console.error("Load error:", err);
       }
-
-      // 🔥 MAPEAR EXATAMENTE COMO PLASMIC ESPERA
-      const mappedCompany = {
-        ...companyData,
-        "Company Logo": companyData.company_logo ?? "",
-        "Company nature": companyData.company_nature ?? "",
-        "Company name": companyData.name ?? ""
-      };
-
-      setCompany(mappedCompany);
-
-      // SOLUTIONS DA EMPRESA
-      const { data: solutionsData } = await supabaseC
-        .from("solutions")
-        .select("id, Title")
-        .eq("company_id", companyData.id);
-
-      setSolutions(solutionsData || []);
 
       setLoading(false);
     }
 
-    loadBase();
-  }, [companyUser]);
+    loadAll();
+  }, [user]);
 
   if (loading) return null;
 
   return (
     <PlasmicCServiceDashboard
       args={{
-        company,
-        solutions: solutions.length ? solutions : [{}]
+        company: company ?? {},
+        solutionsData: solutionsData.length ? solutionsData : [{}],
       }}
     />
   );

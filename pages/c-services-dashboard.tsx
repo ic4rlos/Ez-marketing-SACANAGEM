@@ -23,7 +23,7 @@ export default function CServiceDashboard() {
   const [companyUser, setCompanyUser] = useState<any>(null);
   const [company, setCompany] = useState<any>(null);
   const [orders, setOrders] = useState<any[]>([]);
-  const [solutions, setSolutions] = useState<any[]>([]);
+  const [solutionsData, setSolutionsData] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
   const [selectedSolution, setSelectedSolution] = useState<any>("all");
@@ -62,7 +62,7 @@ export default function CServiceDashboard() {
       setCompany(companyData);
 
       // =========================
-      // SOLUTIONS (CORRETO)
+      // SOLUTIONS (SEM CONFLITO)
       // =========================
       const { data: companySolutions } = await supabaseC
         .from("company_solutions")
@@ -79,7 +79,7 @@ export default function CServiceDashboard() {
       const formattedSolutions =
         companySolutions?.map((s: any) => s.solutions) || [];
 
-      setSolutions(formattedSolutions);
+      setSolutionsData(formattedSolutions);
 
       // =========================
       // ORDERS
@@ -193,8 +193,8 @@ export default function CServiceDashboard() {
   return (
     <PlasmicCServiceDashboard
       company={company}
-      orders={getFilteredOrders().length ? getFilteredOrders() : [{}]}
-      solutions={solutions}
+      orders={getFilteredOrders()}
+      solutionsData={solutionsData}
       selectedSolution={selectedSolution}
       setSelectedSolution={setSelectedSolution}
       period={period}

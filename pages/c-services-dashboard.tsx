@@ -27,7 +27,7 @@ export default function CServiceDashboard() {
   const [loading, setLoading] = useState(true);
 
   const [selectedSolution, setSelectedSolution] = useState<any>("all");
-  const [period, setPeriod] = useState(7);
+  const [period, setPeriod] = useState<number>(7);
 
   // =========================
   // AUTH
@@ -41,13 +41,12 @@ export default function CServiceDashboard() {
   }, []);
 
   // =========================
-  // LOAD DATA
+  // LOAD
   // =========================
   useEffect(() => {
     if (!companyUser) return;
 
     async function loadAll() {
-      // COMPANY
       const { data: companyData } = await supabaseC
         .from("companies")
         .select("*")
@@ -59,31 +58,25 @@ export default function CServiceDashboard() {
         return;
       }
 
-      setCompany(companyData);
+      // 🔥 MAPEAMENTO PRA PLASMIC
+      const mappedCompany = {
+        ...companyData,
+        "Company Logo": companyData.company_logo,
+        "Company nature": companyData.company_nature,
+        "Company name": companyData.name
+      };
 
-      // =========================
-      // SOLUTIONS (SEM CONFLITO)
-      // =========================
-      const { data: companySolutions } = await supabaseC
-        .from("company_solutions")
-        .select(`
-          solution_id,
-          solutions (
-            id,
-            Title,
-            "Solution nature"
-          )
-        `)
+      setCompany(mappedCompany);
+
+      // solutions
+      const { data: solutions } = await supabaseC
+        .from("solutions")
+        .select("id, Title")
         .eq("company_id", companyData.id);
 
-      const formattedSolutions =
-        companySolutions?.map((s: any) => s.solutions) || [];
+      setSolutionsData(solutions || []);
 
-      setSolutionsData(formattedSolutions);
-
-      // =========================
-      // ORDERS
-      // =========================
+      // orders
       const { data: ordersDb } = await supabaseA
         .from("orders")
         .select("*")
@@ -95,7 +88,7 @@ export default function CServiceDashboard() {
         return;
       }
 
-      // COMMUNITIES
+      // communities
       const communityIds = Array.from(
         new Set(ordersDb.map((o: any) => o.community_id))
       );
@@ -110,8 +103,7 @@ export default function CServiceDashboard() {
         communityMap[c.id] = c;
       });
 
-      // FORMAT
-      const formattedOrders = ordersDb.map((o: any) => ({
+      const formatted = ordersDb.map((o: any) => ({
         id: o.id,
         solution_id: o.solution_id,
         community: communityMap[o.community_id]?.community_name ?? "",
@@ -123,7 +115,7 @@ export default function CServiceDashboard() {
         current_status: o.current_status
       }));
 
-      setOrders(formattedOrders);
+      setOrders(formatted);
       setLoading(false);
     }
 
@@ -145,7 +137,7 @@ export default function CServiceDashboard() {
 
       if (
         selectedSolution !== "all" &&
-        o.solution_id !== Number(selectedSolution)
+        o.solution_id !== selectedSolution
       )
         return false;
 
@@ -154,7 +146,7 @@ export default function CServiceDashboard() {
   }
 
   // =========================
-  // ACTION ENGINE
+  // ACTION
   // =========================
   async function onSave(data: any) {
     const orderId = data?.orderId;
@@ -167,7 +159,8 @@ export default function CServiceDashboard() {
     if (action === "confirm_eta") newStatus = "Waiting locomotion";
     if (action === "cancel") newStatus = "Customer Canceled";
     if (action === "on_way") newStatus = "Waiting customer";
-    if (action === "trouble_address") newStatus = "Trouble with Address?";
+    if (action === "trouble_address")
+      newStatus = "Trouble with Address?";
 
     if (!newStatus) return;
 
@@ -192,14 +185,16 @@ export default function CServiceDashboard() {
 
   return (
     <PlasmicCServiceDashboard
-      company={company}
-      orders={getFilteredOrders()}
-      solutionsData={solutionsData}
-      selectedSolution={selectedSolution}
-      setSelectedSolution={setSelectedSolution}
-      period={period}
-      setPeriod={setPeriod}
-      onSave={onSave}
+      args={{
+        company,
+        orders: getFilteredOrders().length ? getFilteredOrders() : [{}],
+        solutionsData,
+        selectedSolution,
+        setSelectedSolution,
+        period,
+        setPeriod,
+        onSave
+      }}
     />
   );
 }

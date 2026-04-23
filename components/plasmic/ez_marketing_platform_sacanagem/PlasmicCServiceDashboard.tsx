@@ -4432,7 +4432,7 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
           try {
             return (
               $props.company?.["Company nature"] ===
-              "Table- At Customer Location"
+              "Table - At Customer Location"
             );
           } catch (e) {
             if (
@@ -9311,7 +9311,7 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
           try {
             return (
               $props.company?.["Company nature"] ===
-              "Table- At Company Location"
+              "Table - At Company Location"
             );
           } catch (e) {
             if (
@@ -13424,7 +13424,7 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
           try {
             return (
               $props.company?.["Company nature"] ===
-              "Analysis- At Customer Location"
+              "Analysis - At Customer Location"
             );
           } catch (e) {
             if (
@@ -19213,7 +19213,7 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
           try {
             return (
               $props.company?.["Company nature"] ===
-              "Analysis- At Company Location"
+              "Analysis - At Company Location"
             );
           } catch (e) {
             if (

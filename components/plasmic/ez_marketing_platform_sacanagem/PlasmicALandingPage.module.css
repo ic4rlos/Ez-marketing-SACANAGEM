@@ -3346,6 +3346,11 @@
     margin: 0px;
   }
 }
+.embedHtml__iqpnB:global(.__wab_instance) {
+  animation: none;
+  max-width: 100%;
+  object-fit: cover;
+}
 .loginButton__kllBj:global(.__wab_instance) {
   max-width: 100%;
   width: auto;
@@ -3402,7 +3407,7 @@
     margin-top: 80px;
   }
 }
-.embedHtml:global(.__wab_instance) {
+.embedHtml__mGg20:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;
 }

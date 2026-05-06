@@ -59,13 +59,20 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
+import { usePlasmicDataSourceContext } from "@plasmicapp/data-sources-context";
+import {
+  executePlasmicDataOp,
+  usePlasmicDataOp,
+  usePlasmicInvalidate
+} from "@plasmicapp/react-web/lib/data-sources";
+
 import { FormWrapper } from "@plasmicpkgs/antd5/skinny/Form";
 import { formHelpers as FormWrapper_Helpers } from "@plasmicpkgs/antd5/skinny/Form";
 import { FormItemWrapper } from "@plasmicpkgs/antd5/skinny/FormItem";
 import { AntdInput } from "@plasmicpkgs/antd5/skinny/registerInput";
 import { inputHelpers as AntdInput_Helpers } from "@plasmicpkgs/antd5/skinny/registerInput";
-import LoginButton from "../../LoginButton"; // plasmic-import: DYHdsjcJLpSq/component
 import { Embed } from "@plasmicpkgs/plasmic-basic-components";
+import LoginButton from "../../LoginButton"; // plasmic-import: DYHdsjcJLpSq/component
 import FooterSection from "../../FooterSection"; // plasmic-import: u6frPd1Kf3_M/component
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: 5uU4LbmmcY9V8oBke7M62e/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: 5uU4LbmmcY9V8oBke7M62e/styleTokensProvider
@@ -139,7 +146,6 @@ export type PlasmicCLandingPageContact__OverridesType = {
   input14?: Flex__<typeof AntdInput>;
   loginButton?: Flex__<typeof LoginButton>;
   input?: Flex__<typeof AntdInput>;
-  embedHtml?: Flex__<typeof Embed>;
   footerSection?: Flex__<typeof FooterSection>;
   metaPixel?: Flex__<typeof Embed>;
 };
@@ -263,6 +269,8 @@ function PlasmicCLandingPageContact__RenderFunc(props: {
     $q: {},
     $refs
   });
+  const dataSourcesCtx = usePlasmicDataSourceContext();
+  const plasmicInvalidate = usePlasmicInvalidate();
 
   const pageMetadata = generateDynamicMetadata(
     wrapQueriesWithLoadingProxy({}),
@@ -376,6 +384,48 @@ function PlasmicCLandingPageContact__RenderFunc(props: {
                   mode: "advanced",
                   onFinish: async values => {
                     const $steps = {};
+
+                    $steps["postgresCreate"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            dataOp: {
+                              sourceId: "cXpDvHyf8LmX7xTCuzmAUU",
+                              opId: "412eee9a-ef20-47b7-bba1-4d8fb3dc2d92",
+                              userArgs: {
+                                variables: [$state.form.value]
+                              },
+                              cacheKey: null,
+                              invalidatedKeys: ["plasmic_refresh_all"],
+                              roleId: null
+                            }
+                          };
+                          return (async ({ dataOp, continueOnError }) => {
+                            try {
+                              const response = await executePlasmicDataOp(
+                                dataOp,
+                                {
+                                  userAuthToken: dataSourcesCtx?.userAuthToken,
+                                  user: dataSourcesCtx?.user
+                                }
+                              );
+                              await plasmicInvalidate(dataOp.invalidatedKeys);
+                              return response;
+                            } catch (e) {
+                              if (!continueOnError) {
+                                throw e;
+                              }
+                              return e;
+                            }
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["postgresCreate"] != null &&
+                      typeof $steps["postgresCreate"] === "object" &&
+                      typeof $steps["postgresCreate"].then === "function"
+                    ) {
+                      $steps["postgresCreate"] = await $steps["postgresCreate"];
+                    }
                   },
                   onIsSubmittingChange: async (...eventArgs: any) => {
                     generateStateOnChangePropForCodeComponents(
@@ -679,6 +729,16 @@ function PlasmicCLandingPageContact__RenderFunc(props: {
                         );
                       })()}
                     </FormItemWrapper>
+                    <Embed
+                      className={classNames(
+                        "__wab_instance",
+                        sty.embedHtml__fwoDs
+                      )}
+                      code={
+                        '<div class="g-recaptcha" data-sitekey="6LfO7VMrAAAAAMX35PH4yiluTp0VqTqtKJMDfraA"></div>\r\n<script src="https://www.google.com/recaptcha/api.js" async defer></script>\r\n\r\n'
+                      }
+                    />
+
                     <LoginButton
                       data-plasmic-name={"loginButton"}
                       data-plasmic-override={overrides.loginButton}
@@ -762,9 +822,7 @@ function PlasmicCLandingPageContact__RenderFunc(props: {
             </div>
           </div>
           <Embed
-            data-plasmic-name={"embedHtml"}
-            data-plasmic-override={overrides.embedHtml}
-            className={classNames("__wab_instance", sty.embedHtml)}
+            className={classNames("__wab_instance", sty.embedHtml__ekxhF)}
             code={
               '<script>\r\n  document.addEventListener("DOMContentLoaded", function() {\r\n    const form = document.querySelector("form");\r\n    if (form) {\r\n      form.addEventListener("submit", function(e) {\r\n        const token = grecaptcha.getResponse();\r\n        if (!token) {\r\n          alert("Please tick the reCAPTCHA");\r\n          e.preventDefault();\r\n          e.stopImmediatePropagation();\r\n          return false;\r\n        }\r\n        // Preenche o hidden input\r\n        document.querySelector(\'input[name="captcha_token"]\').value = token;\r\n\r\n        // Pequeno delay pra garantir envio do Supabase\r\n        setTimeout(function() {\r\n          window.location.href = "/thank-you";\r\n        }, 300);\r\n      });\r\n    }\r\n  });\r\n</script>\r\n\r\n\r\n'
             }
@@ -804,7 +862,6 @@ const PlasmicDescendants = {
     "input14",
     "loginButton",
     "input",
-    "embedHtml",
     "footerSection",
     "metaPixel"
   ],
@@ -840,7 +897,6 @@ const PlasmicDescendants = {
   input14: ["input14"],
   loginButton: ["loginButton"],
   input: ["input"],
-  embedHtml: ["embedHtml"],
   footerSection: ["footerSection"],
   metaPixel: ["metaPixel"]
 } as const;
@@ -860,7 +916,6 @@ type NodeDefaultElementType = {
   input14: typeof AntdInput;
   loginButton: typeof LoginButton;
   input: typeof AntdInput;
-  embedHtml: typeof Embed;
   footerSection: typeof FooterSection;
   metaPixel: typeof Embed;
 };
@@ -938,7 +993,6 @@ export const PlasmicCLandingPageContact = Object.assign(
     input14: makeNodeComponent("input14"),
     loginButton: makeNodeComponent("loginButton"),
     input: makeNodeComponent("input"),
-    embedHtml: makeNodeComponent("embedHtml"),
     footerSection: makeNodeComponent("footerSection"),
     metaPixel: makeNodeComponent("metaPixel"),
 

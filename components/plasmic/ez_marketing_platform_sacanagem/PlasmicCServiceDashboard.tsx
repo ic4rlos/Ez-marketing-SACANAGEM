@@ -182,9 +182,7 @@ export type PlasmicCServiceDashboard__OverridesType = {
   cashIn5?: Flex__<"div">;
   solutions?: Flex__<typeof AntdSelect>;
   title2?: Flex__<"div">;
-  solution2?: Flex__<typeof AntdOption>;
-  companyLogo2?: Flex__<typeof PlasmicImg__>;
-  title3?: Flex__<"div">;
+  optionGroup?: Flex__<typeof AntdOptionGroup>;
   solution3?: Flex__<typeof AntdOption>;
   companyLogo3?: Flex__<typeof PlasmicImg__>;
   title4?: Flex__<"div">;
@@ -3935,50 +3933,6 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
                 useChildren={true}
                 value={generateStateValueProp($state, ["solutions", "value"])}
               >
-                <AntdOptionGroup
-                  className={classNames(
-                    "__wab_instance",
-                    sty.optionGroup__lqYqj
-                  )}
-                  label={null}
-                >
-                  <AntdOption
-                    data-plasmic-name={"solution2"}
-                    data-plasmic-override={overrides.solution2}
-                    className={classNames("__wab_instance", sty.solution2)}
-                    value={"option1"}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__veqS)}
-                    >
-                      <PlasmicImg__
-                        data-plasmic-name={"companyLogo2"}
-                        data-plasmic-override={overrides.companyLogo2}
-                        alt={""}
-                        className={classNames(sty.companyLogo2)}
-                        displayHeight={"25px"}
-                        displayMaxHeight={"none"}
-                        displayMaxWidth={"100%"}
-                        displayMinHeight={"0"}
-                        displayMinWidth={"0"}
-                        displayWidth={"25px"}
-                        loading={"lazy"}
-                      />
-
-                      <div
-                        data-plasmic-name={"title3"}
-                        data-plasmic-override={overrides.title3}
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.title3
-                        )}
-                      >
-                        {"All"}
-                      </div>
-                    </div>
-                  </AntdOption>
-                </AntdOptionGroup>
                 {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
                   (() => {
                     try {
@@ -3998,10 +3952,9 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
                   const currentIndex = __plasmic_idx_0;
                   return (
                     <AntdOptionGroup
-                      className={classNames(
-                        "__wab_instance",
-                        sty.optionGroup___2BdDa
-                      )}
+                      data-plasmic-name={"optionGroup"}
+                      data-plasmic-override={overrides.optionGroup}
+                      className={classNames("__wab_instance", sty.optionGroup)}
                       key={currentIndex}
                       label={null}
                     >
@@ -4041,6 +3994,19 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
                             displayMinWidth={"0"}
                             displayWidth={"25px"}
                             loading={"lazy"}
+                            src={(() => {
+                              try {
+                                return $props.company?.["Company Logo"] ?? "";
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return undefined;
+                                }
+                                throw e;
+                              }
+                            })()}
                           />
 
                           <div
@@ -24402,9 +24368,7 @@ const PlasmicDescendants = {
     "cashIn5",
     "solutions",
     "title2",
-    "solution2",
-    "companyLogo2",
-    "title3",
+    "optionGroup",
     "solution3",
     "companyLogo3",
     "title4",
@@ -24563,9 +24527,7 @@ const PlasmicDescendants = {
     "cashIn5",
     "solutions",
     "title2",
-    "solution2",
-    "companyLogo2",
-    "title3",
+    "optionGroup",
     "solution3",
     "companyLogo3",
     "title4",
@@ -24645,17 +24607,13 @@ const PlasmicDescendants = {
   solutions: [
     "solutions",
     "title2",
-    "solution2",
-    "companyLogo2",
-    "title3",
+    "optionGroup",
     "solution3",
     "companyLogo3",
     "title4"
   ],
   title2: ["title2"],
-  solution2: ["solution2", "companyLogo2", "title3"],
-  companyLogo2: ["companyLogo2"],
-  title3: ["title3"],
+  optionGroup: ["optionGroup", "solution3", "companyLogo3", "title4"],
   solution3: ["solution3", "companyLogo3", "title4"],
   companyLogo3: ["companyLogo3"],
   title4: ["title4"],
@@ -25051,9 +25009,7 @@ type NodeDefaultElementType = {
   cashIn5: "div";
   solutions: typeof AntdSelect;
   title2: "div";
-  solution2: typeof AntdOption;
-  companyLogo2: typeof PlasmicImg__;
-  title3: "div";
+  optionGroup: typeof AntdOptionGroup;
   solution3: typeof AntdOption;
   companyLogo3: typeof PlasmicImg__;
   title4: "div";
@@ -25274,9 +25230,7 @@ export const PlasmicCServiceDashboard = Object.assign(
     cashIn5: makeNodeComponent("cashIn5"),
     solutions: makeNodeComponent("solutions"),
     title2: makeNodeComponent("title2"),
-    solution2: makeNodeComponent("solution2"),
-    companyLogo2: makeNodeComponent("companyLogo2"),
-    title3: makeNodeComponent("title3"),
+    optionGroup: makeNodeComponent("optionGroup"),
     solution3: makeNodeComponent("solution3"),
     companyLogo3: makeNodeComponent("companyLogo3"),
     title4: makeNodeComponent("title4"),

@@ -59,7 +59,6 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
-import Navbar2 from "../../Navbar2"; // plasmic-import: eleeTDsx-h9m/component
 import LoginButton from "../../LoginButton"; // plasmic-import: DYHdsjcJLpSq/component
 import FooterSection from "../../FooterSection"; // plasmic-import: u6frPd1Kf3_M/component
 import { Embed } from "@plasmicpkgs/plasmic-basic-components";
@@ -126,7 +125,6 @@ export const PlasmicHomeNoSubdomain__ArgProps = new Array<ArgPropType>();
 export type PlasmicHomeNoSubdomain__OverridesType = {
   root?: Flex__<"div">;
   headerHeroSection?: Flex__<"div">;
-  navbar2?: Flex__<typeof Navbar2>;
   h1?: Flex__<"h1">;
   footerSection?: Flex__<typeof FooterSection>;
   metaPixel?: Flex__<typeof Embed>;
@@ -216,36 +214,30 @@ function PlasmicHomeNoSubdomain__RenderFunc(props: {
             sty.root
           )}
         >
+          <PlasmicImg__
+            alt={""}
+            className={classNames(sty.img__vxhxr)}
+            displayHeight={"100%"}
+            displayMaxHeight={"none"}
+            displayMaxWidth={"100%"}
+            displayMinHeight={"0"}
+            displayMinWidth={"0"}
+            displayWidth={"100%"}
+            loading={"lazy"}
+            src={{
+              src: "/plasmic/ez_marketing_platform_sacanagem/images/pexelsPixabay164572Jpg.jpg",
+              fullWidth: 3000,
+              fullHeight: 2000,
+              aspectRatio: undefined
+            }}
+          />
+
           <div
             data-plasmic-name={"headerHeroSection"}
             data-plasmic-override={overrides.headerHeroSection}
             className={classNames(projectcss.all, sty.headerHeroSection)}
           >
-            <Navbar2
-              data-plasmic-name={"navbar2"}
-              data-plasmic-override={overrides.navbar2}
-              className={classNames("__wab_instance", sty.navbar2)}
-            />
-
             <div className={classNames(projectcss.all, sty.freeBox__fr3O)}>
-              <PlasmicImg__
-                alt={""}
-                className={classNames(sty.img__es4Wi)}
-                displayHeight={"auto"}
-                displayMaxHeight={"none"}
-                displayMaxWidth={"100%"}
-                displayMinHeight={"0"}
-                displayMinWidth={"0"}
-                displayWidth={"auto"}
-                loading={"lazy"}
-                src={{
-                  src: "/plasmic/ez_marketing_platform_sacanagem/images/pexelsPixabay164572Jpg.jpg",
-                  fullWidth: 3000,
-                  fullHeight: 2000,
-                  aspectRatio: undefined
-                }}
-              />
-
               <div className={classNames(projectcss.all, sty.freeBox__noYxY)}>
                 <PlasmicImg__
                   alt={""}
@@ -336,7 +328,7 @@ function PlasmicHomeNoSubdomain__RenderFunc(props: {
                         role={"img"}
                       />
                     }
-                    isDisabled={true}
+                    link={`/agency-landing-page`}
                     shape={"rounded"}
                     showEndIcon={true}
                     submitsForm={false}
@@ -376,16 +368,8 @@ function PlasmicHomeNoSubdomain__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: [
-    "root",
-    "headerHeroSection",
-    "navbar2",
-    "h1",
-    "footerSection",
-    "metaPixel"
-  ],
-  headerHeroSection: ["headerHeroSection", "navbar2", "h1"],
-  navbar2: ["navbar2"],
+  root: ["root", "headerHeroSection", "h1", "footerSection", "metaPixel"],
+  headerHeroSection: ["headerHeroSection", "h1"],
   h1: ["h1"],
   footerSection: ["footerSection"],
   metaPixel: ["metaPixel"]
@@ -396,7 +380,6 @@ type DescendantsType<T extends NodeNameType> =
 type NodeDefaultElementType = {
   root: "div";
   headerHeroSection: "div";
-  navbar2: typeof Navbar2;
   h1: "h1";
   footerSection: typeof FooterSection;
   metaPixel: typeof Embed;
@@ -465,7 +448,6 @@ export const PlasmicHomeNoSubdomain = Object.assign(
   {
     // Helper components rendering sub-elements
     headerHeroSection: makeNodeComponent("headerHeroSection"),
-    navbar2: makeNodeComponent("navbar2"),
     h1: makeNodeComponent("h1"),
     footerSection: makeNodeComponent("footerSection"),
     metaPixel: makeNodeComponent("metaPixel"),
